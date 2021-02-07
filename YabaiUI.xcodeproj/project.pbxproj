@@ -3,24 +3,28 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		3380D2FF25D05F4200C10913 /* YabaiUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380D2FE25D05F4200C10913 /* YabaiUIApp.swift */; };
-		3380D30125D05F4200C10913 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380D30025D05F4200C10913 /* ContentView.swift */; };
 		3380D30325D05F4200C10913 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3380D30225D05F4200C10913 /* Assets.xcassets */; };
 		3380D30625D05F4200C10913 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3380D30525D05F4200C10913 /* Preview Assets.xcassets */; };
+		3380D31325D0668300C10913 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380D31225D0668300C10913 /* Extensions.swift */; };
+		3380D31C25D06E1500C10913 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 3380D31B25D06E1500C10913 /* ComposableArchitecture */; };
+		3380D33725D0723000C10913 /* SpaceSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380D33625D0723000C10913 /* SpaceSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3380D2FB25D05F4200C10913 /* YabaiUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YabaiUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3380D2FE25D05F4200C10913 /* YabaiUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiUIApp.swift; sourceTree = "<group>"; };
-		3380D30025D05F4200C10913 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3380D30225D05F4200C10913 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3380D30525D05F4200C10913 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3380D30725D05F4200C10913 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3380D30825D05F4200C10913 /* YabaiUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YabaiUI.entitlements; sourceTree = "<group>"; };
+		3380D30F25D065FA00C10913 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		3380D31225D0668300C10913 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		3380D33625D0723000C10913 /* SpaceSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3380D31C25D06E1500C10913 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,6 +42,7 @@
 		3380D2F225D05F4100C10913 = {
 			isa = PBXGroup;
 			children = (
+				3380D30F25D065FA00C10913 /* MyPlayground.playground */,
 				3380D2FD25D05F4200C10913 /* YabaiUI */,
 				3380D2FC25D05F4200C10913 /* Products */,
 			);
@@ -54,7 +60,8 @@
 			isa = PBXGroup;
 			children = (
 				3380D2FE25D05F4200C10913 /* YabaiUIApp.swift */,
-				3380D30025D05F4200C10913 /* ContentView.swift */,
+				3380D32425D06EB300C10913 /* State */,
+				3380D31125D0667100C10913 /* Common */,
 				3380D30225D05F4200C10913 /* Assets.xcassets */,
 				3380D30725D05F4200C10913 /* Info.plist */,
 				3380D30825D05F4200C10913 /* YabaiUI.entitlements */,
@@ -69,6 +76,22 @@
 				3380D30525D05F4200C10913 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3380D31125D0667100C10913 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				3380D31225D0668300C10913 /* Extensions.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		3380D32425D06EB300C10913 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				3380D33625D0723000C10913 /* SpaceSettings.swift */,
+			);
+			path = State;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -87,6 +110,9 @@
 			dependencies = (
 			);
 			name = YabaiUI;
+			packageProductDependencies = (
+				3380D31B25D06E1500C10913 /* ComposableArchitecture */,
+			);
 			productName = YabaiUI;
 			productReference = 3380D2FB25D05F4200C10913 /* YabaiUI.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +140,9 @@
 				Base,
 			);
 			mainGroup = 3380D2F225D05F4100C10913;
+			packageReferences = (
+				3380D31A25D06E1500C10913 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			productRefGroup = 3380D2FC25D05F4200C10913 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -140,8 +169,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3380D30125D05F4200C10913 /* ContentView.swift in Sources */,
+				3380D31325D0668300C10913 /* Extensions.swift in Sources */,
 				3380D2FF25D05F4200C10913 /* YabaiUIApp.swift in Sources */,
+				3380D33725D0723000C10913 /* SpaceSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +363,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3380D31A25D06E1500C10913 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.14.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3380D31B25D06E1500C10913 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3380D31A25D06E1500C10913 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3380D2F325D05F4100C10913 /* Project object */;
 }
