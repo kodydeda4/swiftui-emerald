@@ -71,7 +71,6 @@ struct SpaceSettingsView: View {
             List {
                 Section(header: Text("Space Settings")) {
                     
-
                     Picker(selection: viewStore.binding(
                             get: \.layout,
                             send: SpaceSettings.Action.updateLayout),
@@ -88,7 +87,7 @@ struct SpaceSettingsView: View {
             .toolbar {
                 ToolbarItem {
                     Button("Apply Changes") {
-                        writeToFile(contents: "Yabai -m config \(viewStore.layout)")
+                        writeToFile(contents: "yabai -m config \(viewStore.layout)")
 
                     }
                 }
