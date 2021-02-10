@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		33387D6525D3F64300E76D29 /* Yabai.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33387D6425D3F64300E76D29 /* Yabai.swift */; };
 		33387D6825D3FADB00E76D29 /* SKHD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33387D6725D3FADB00E76D29 /* SKHD.swift */; };
+		3361CDF725D44AEC0086F6A7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CDF625D44AEC0086F6A7 /* Extensions.swift */; };
 		3380D2FF25D05F4200C10913 /* YabaiUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380D2FE25D05F4200C10913 /* YabaiUIApp.swift */; };
 		3380D30325D05F4200C10913 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3380D30225D05F4200C10913 /* Assets.xcassets */; };
 		3380D30625D05F4200C10913 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3380D30525D05F4200C10913 /* Preview Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		33387D6425D3F64300E76D29 /* Yabai.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yabai.swift; sourceTree = "<group>"; };
 		33387D6725D3FADB00E76D29 /* SKHD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHD.swift; sourceTree = "<group>"; };
+		3361CDF625D44AEC0086F6A7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3380D2FB25D05F4200C10913 /* YabaiUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YabaiUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3380D2FE25D05F4200C10913 /* YabaiUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiUIApp.swift; sourceTree = "<group>"; };
 		3380D30225D05F4200C10913 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 		3380D31125D0667100C10913 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				3361CDF625D44AEC0086F6A7 /* Extensions.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3361CDF725D44AEC0086F6A7 /* Extensions.swift in Sources */,
 				33387D6525D3F64300E76D29 /* Yabai.swift in Sources */,
 				3380D2FF25D05F4200C10913 /* YabaiUIApp.swift in Sources */,
 				3380D33725D0723000C10913 /* Root.swift in Sources */,

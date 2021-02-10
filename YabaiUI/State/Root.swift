@@ -19,33 +19,30 @@ struct Root {
         var skhd = SKHD.State()
         var errorString: String = ""
         
-        let yabaiPath: URL = FileManager.default
-            .urls(for: .documentDirectory, in: .userDomainMask)[0]
-            .appendingPathComponent("Yabai.json")
+        let yabaiPath: URL = getDocumentsDirectory()
+            .appendingPathComponent("yabai.json")
         
-        let skhdPath: URL = FileManager.default
-            .urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let skhdPath: URL = getDocumentsDirectory()
             .appendingPathComponent("SKHD.json")
-        
-        let yabaiConfigPath: URL = FileManager.default
-            .urls(for: .documentDirectory, in: .userDomainMask)[0]
+            
+        let yabaiConfigPath: URL = getDocumentsDirectory()
             .appendingPathComponent("YabaiConfig.json")
         
-        let skhdConfigPath: URL = FileManager.default
-            .urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let skhdConfigPath: URL = getDocumentsDirectory()
             .appendingPathComponent("SKHDConfig.json")
     }
     
     enum Action: Equatable {
         case yabai(Yabai.Action)
         case skhd(SKHD.Action)
-        case saveData
-        case loadData
-        case exportData
+        case save
+        case load
+        case exportConfigs
     }
     
     struct Environment {
         // environment
+        
         
         func save(state: State) -> Result<Bool, Error> {
             do {
@@ -116,12 +113,12 @@ extension Root {
             switch action {
             
             case let .yabai(subAction):
-                return Effect(value: .saveData)
+                return Effect(value: .save)
                 
             case let .skhd(subAction):
                 return .none
                 
-            case .saveData:
+            case .save:
                 switch environment.save(state: state) {
                 case .success:
                     state.errorString = ""
@@ -130,7 +127,7 @@ extension Root {
                 }
                 return .none
                 
-            case .loadData:
+            case .load:
                 switch environment.load(state: state) {
                 case let .success((decodedYabaiState, decodedSKHDState)):
                     state.yabai = decodedYabaiState
@@ -140,7 +137,7 @@ extension Root {
                 }
                 return .none
                 
-            case .exportData:
+            case .exportConfigs:
                 switch environment.exportConfigs(state: state) {
                 case .success:
                     state.errorString = ""
@@ -160,7 +157,6 @@ extension Root {
         environment: .init()
     )
 }
-
 
 // MARK:- RootView
 
@@ -182,11 +178,11 @@ struct RootView: View {
                                 action: Root.Action.skhd))
                 }
             }
-            .onAppear { viewStore.send(.loadData) }
+            .onAppear { viewStore.send(.load) }
             .toolbar {
                 ToolbarItem {
                     Button("Export Data") {
-                        viewStore.send(.exportData)
+                        viewStore.send(.exportConfigs)
                     }
                 }
             }
@@ -199,4 +195,3 @@ struct RootView_Previews: PreviewProvider {
         RootView(store: Root.defaultStore)
     }
 }
-
