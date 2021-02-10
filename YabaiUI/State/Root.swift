@@ -18,6 +18,8 @@ struct Root {
         var skhd = SKHD.State()
         var errorString: String = ""
         
+        // klojd said might want to store the data in an ApplicationSupport folder.
+        
         //let yabaiFileURL = Bundle.main.url(forResource: "YabaiData", withExtension: "json")!
 
         let yabaiFileURL: URL = FileManager
