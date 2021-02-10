@@ -42,9 +42,6 @@ struct Root {
     }
     
     struct Environment {
-        // environment
-        
-        
         func save(state: State) -> Result<Bool, Error> {
             do {
                 let encodedYabaiState = try JSONEncoder().encode(state.yabai)

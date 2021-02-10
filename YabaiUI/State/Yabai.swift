@@ -4,11 +4,12 @@
 //
 //  Created by Kody Deda on 2/10/21.
 //
-//------------------------------------------------------------------------
-// Yabai
-// - A tiling window manager for macOS based on binary space partitioning
-//   https://github.com/koekeishiya/yabai/blob/master/doc/yabai.asciidoc
-//------------------------------------------------------------------------
+
+/*---------------------------------------------------------------------------
+    Yabai
+    - A tiling window manager for macOS based on binary space partitioning
+      https://github.com/koekeishiya/yabai/blob/master/doc/yabai.asciidoc
+ ---------------------------------------------------------------------------*/
 
 //MARK:- Yabai
 
