@@ -8,6 +8,8 @@
 import SwiftUI
 import ComposableArchitecture
 
+// -- how to register keystrokes for skhd?
+
 //MARK:- Root
 
 struct Root {
@@ -21,7 +23,7 @@ struct Root {
             .first!
             .appendingPathComponent("Yabai")
             .appendingPathExtension("json")
-                
+        
         let skhdFileURL: URL = FileManager
             .default
             .urls(for: .documentDirectory, in: .userDomainMask)
@@ -57,7 +59,7 @@ extension Root {
         ),
         Reducer { state, action, environment in
             switch action {
-
+            
             case let .yabai(subAction):
                 // ...
                 return .none
@@ -65,7 +67,7 @@ extension Root {
             case let .skhd(subAction):
                 //...
                 return .none
-            
+                
             case .saveData:
                 // save yabai
                 if let encoded = try? JSONEncoder().encode(state.yabai) {
@@ -95,7 +97,7 @@ extension Root {
             case .exportData:
                 print("Export Yabai and SKHD preferences to their respective files & formats.")
                 return .none
-
+                
             }
         }
     )
@@ -117,12 +119,10 @@ struct RootView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            
             VStack {
                 YabaiView(store: store.scope(
                             state: \.yabai,
                             action: Root.Action.yabai))
-                    
                 SKHDView(store: store.scope(
                             state: \.skhd,
                             action: Root.Action.skhd))

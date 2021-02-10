@@ -99,61 +99,63 @@ struct YabaiView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            Form {
-                Picker("Layout", selection:
-                        viewStore.binding(
-                            get: \.yabaiSpaceSettings.layout,
-                            send: Yabai.Action.updateLayout)
-                ) {
-                    ForEach(YabaiSpaceSettings.Layout.allCases) {
-                        Text($0.rawValue)
+            List {
+                Section(header: Text("Space Settings")) {
+                    Picker("Layout", selection:
+                            viewStore.binding(
+                                get: \.yabaiSpaceSettings.layout,
+                                send: Yabai.Action.updateLayout)
+                    ) {
+                        ForEach(YabaiSpaceSettings.Layout.allCases) {
+                            Text($0.rawValue)
+                        }
+                        
+                    }
+                    HStack {
+                        Text("Top Padding")
+                        TextField(
+                            "",
+                            value: viewStore.binding(
+                                get: \.yabaiSpaceSettings.topPadding,
+                                send: Yabai.Action.updateTopPadding),
+                            formatter: NumberFormatter()
+                        )
                     }
                     
-                }
-                HStack {
-                    Text("Top Padding")
-                    TextField(
-                        "",
-                        value: viewStore.binding(
-                            get: \.yabaiSpaceSettings.topPadding,
-                            send: Yabai.Action.updateTopPadding),
-                        formatter: NumberFormatter()
-                    )
-                }
-                
-                HStack {
-                    Text("Bottom Padding")
-                    TextField(
-                        "",
-                        value: viewStore.binding(
-                            get: \.yabaiSpaceSettings.bottomPadding,
-                            send: Yabai.Action.updateBottomPadding
-                        ),
-                        formatter: NumberFormatter()
-                    )
-                }
-                
-                HStack {
-                    Text("Left Padding")
-                    TextField(
-                        "",
-                        value: viewStore.binding(
-                            get: \.yabaiSpaceSettings.leftPadding,
-                            send: Yabai.Action.updateLeftPadding),
-                        formatter: NumberFormatter()
-                    )
-                }
-                
-                HStack {
-                    Text("Right Padding")
-                    TextField(
-                        "",
-                        value: viewStore.binding(
-                            get: \.yabaiSpaceSettings.rightPadding,
-                            send: Yabai.Action.updateRightPadding
-                        ),
-                        formatter: NumberFormatter()
-                    )
+                    HStack {
+                        Text("Bottom Padding")
+                        TextField(
+                            "",
+                            value: viewStore.binding(
+                                get: \.yabaiSpaceSettings.bottomPadding,
+                                send: Yabai.Action.updateBottomPadding
+                            ),
+                            formatter: NumberFormatter()
+                        )
+                    }
+                    
+                    HStack {
+                        Text("Left Padding")
+                        TextField(
+                            "",
+                            value: viewStore.binding(
+                                get: \.yabaiSpaceSettings.leftPadding,
+                                send: Yabai.Action.updateLeftPadding),
+                            formatter: NumberFormatter()
+                        )
+                    }
+                    
+                    HStack {
+                        Text("Right Padding")
+                        TextField(
+                            "",
+                            value: viewStore.binding(
+                                get: \.yabaiSpaceSettings.rightPadding,
+                                send: Yabai.Action.updateRightPadding
+                            ),
+                            formatter: NumberFormatter()
+                        )
+                    }
                 }
             }
             .padding()
