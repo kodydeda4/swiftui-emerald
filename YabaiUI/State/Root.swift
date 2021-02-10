@@ -79,6 +79,7 @@ struct Root {
                 
                 let skhdConfigData = createSKHDConfig(state: state)
                 try skhdConfigData.write(to: state.skhdConfigPath, atomically: true, encoding: .utf8)
+                
                 return .success(true)
             } catch {
                 return .failure(error)

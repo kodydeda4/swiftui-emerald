@@ -13,12 +13,18 @@
 
 //MARK:- Yabai
 
-
 import SwiftUI
 import ComposableArchitecture
 
 struct Yabai {
     struct State: Equatable, Codable {
+        var layout: Layout = .float
+        var paddingTop: Int = 0
+        var paddingBottom: Int = 0
+        var paddingLeft: Int = 0
+        var paddingRight: Int = 0
+        var windowGap: Int = 0
+        
         enum Layout: String, Codable, CaseIterable, Identifiable {
             case bsp
             case stack
@@ -26,13 +32,6 @@ struct Yabai {
             
             var id: Layout { self }
         }
-        
-        var layout: Layout = .float
-        var paddingTop: Int = 0
-        var paddingBottom: Int = 0
-        var paddingLeft: Int = 0
-        var paddingRight: Int = 0
-        var windowGap: Int = 0
     }
     
     enum Action: Equatable {
@@ -107,8 +106,6 @@ struct YabaiView: View {
                         Text($0.rawValue)
                     }
                 }
-                
-                
                 HStack {
                     Text("Top Padding")
                     TextField(
@@ -119,7 +116,6 @@ struct YabaiView: View {
                         formatter: NumberFormatter()
                     )
                 }
-                
                 HStack {
                     Text("Bottom Padding")
                     TextField(
@@ -131,7 +127,6 @@ struct YabaiView: View {
                         formatter: NumberFormatter()
                     )
                 }
-                
                 HStack {
                     Text("Left Padding")
                     TextField(
@@ -142,7 +137,6 @@ struct YabaiView: View {
                         formatter: NumberFormatter()
                     )
                 }
-                
                 HStack {
                     Text("Right Padding")
                     TextField(
