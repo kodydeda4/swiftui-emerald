@@ -11,6 +11,7 @@ import ComposableArchitecture
 // -- how to register keystrokes for skhd?
 // -- klajd { store data in ApplicationSupport folder }
 
+
 //MARK:- Root
 
 struct Root {
@@ -18,19 +19,37 @@ struct Root {
         var yabai = Yabai.State()
         var skhd = SKHD.State()
         
-        let yabaiPath: URL = getDocumentsDirectory()
-            .appendingPathComponent("yabai.json")
+        var yabaiUIApplicationSupportDirectory: URL {
+            let path = FileManager.default
+                .urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
+                .appendingPathComponent("YabaiUI")
+            
+            if !FileManager.default.fileExists(atPath: path.absoluteString) {
+                try! FileManager.default
+                    .createDirectory(at: path, withIntermediateDirectories: true, attributes: nil)
+            }
+            
+            return path
+        }
+
+        var yabaiPath: URL {
+            yabaiUIApplicationSupportDirectory
+            .appendingPathComponent("yabaiState.json")
+        }
         
-        let skhdPath: URL = getDocumentsDirectory()
-            .appendingPathComponent("SKHD.json")
+        var skhdPath: URL {
+            yabaiUIApplicationSupportDirectory
+            .appendingPathComponent("skhdState.json")
+        }
             
         let yabaiConfigPath: URL = getDocumentsDirectory()
             .appendingPathComponent("YabaiConfig.json")
         
         let skhdConfigPath: URL = getDocumentsDirectory()
             .appendingPathComponent("SKHDConfig.json")
-        
+
         var errorString: String = ""
+        
     }
     
     enum Action: Equatable {
@@ -42,6 +61,7 @@ struct Root {
     }
     
     struct Environment {
+
         func save(state: State) -> Result<Bool, Error> {
             do {
                 let encodedYabaiState = try JSONEncoder().encode(state.yabai)
