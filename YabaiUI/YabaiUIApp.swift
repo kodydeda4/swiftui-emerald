@@ -11,7 +11,7 @@ import SwiftUI
 struct YabaiUIApp: App {
     var body: some Scene {
         WindowGroup {
-            SpaceSettingsView(store: SpaceSettings.defaultStore)
+            RootView(store: Root.defaultStore)
         }
     }
 }
