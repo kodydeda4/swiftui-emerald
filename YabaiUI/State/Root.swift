@@ -21,14 +21,13 @@ struct Root {
             .first!
             .appendingPathComponent("Yabai")
             .appendingPathExtension("json")
-        
+                
         let skhdFileURL: URL = FileManager
             .default
             .urls(for: .documentDirectory, in: .userDomainMask)
             .first!
             .appendingPathComponent("SKHD")
             .appendingPathExtension("json")
-        
     }
     
     enum Action: Equatable {
@@ -36,6 +35,7 @@ struct Root {
         case skhd(SKHD.Action)
         case saveData
         case loadData
+        case exportData
     }
     
     struct Environment {
@@ -91,6 +91,10 @@ extension Root {
                     }
                 }
                 return .none
+                
+            case .exportData:
+                print("Export Yabai and SKHD preferences to their respective files & formats.")
+                return .none
 
             }
         }
@@ -128,6 +132,11 @@ struct RootView: View {
                 ToolbarItem {
                     Button("Save") {
                         viewStore.send(.saveData)
+                    }
+                }
+                ToolbarItem {
+                    Button("Export Data") {
+                        viewStore.send(.exportData)
                     }
                 }
             }

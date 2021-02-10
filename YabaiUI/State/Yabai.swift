@@ -4,12 +4,17 @@
 //
 //  Created by Kody Deda on 2/10/21.
 //
+//------------------------------------------------------------------------
+// Yabai
+// - A tiling window manager for macOS based on binary space partitioning
+//   https://github.com/koekeishiya/yabai/
+//------------------------------------------------------------------------
+
+//MARK:- Yabai
 
 import SwiftUI
 import ComposableArchitecture
 
-//MARK:- Yabai
-//https://github.com/koekeishiya/yabai/blob/master/doc/yabai.asciidoc#612-global-settings
 
 struct Yabai {
     struct State: Equatable, Codable {
@@ -29,9 +34,11 @@ extension Yabai {
     static let reducer = Reducer<State, Action, Environment>.combine(
         Reducer { state, action, environment in
             switch action {
+            
             case let .updateYabaiString(string):
                 state.yabaiString = string
                 return .none
+                
             }
         }
     )

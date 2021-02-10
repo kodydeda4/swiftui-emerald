@@ -4,11 +4,17 @@
 //
 //  Created by Kody Deda on 2/10/21.
 //
+//------------------------------------------------------------------------
+// SKHD
+// - Simple hotkey daemon for macOS
+//   https://github.com/koekeishiya/skhd
+//------------------------------------------------------------------------
+
+//MARK:- SKHD
 
 import SwiftUI
 import ComposableArchitecture
 
-//MARK:- Skhd
 
 struct SKHD {
     struct State: Equatable, Codable {
@@ -29,8 +35,8 @@ struct SKHD {
 extension SKHD {
     static let reducer = Reducer<State, Action, Environment>.combine(
         Reducer { state, action, environment in
-            
             switch action {
+            
             case let .updateSKHDString(string):
                 state.skhdString = string
                 return .none
@@ -48,7 +54,7 @@ extension SKHD {
     )
 }
 
-// MARK:- SkhdView
+// MARK:- SKHDView
 
 struct SKHDView: View {
     let store: Store<SKHD.State, SKHD.Action>
