@@ -61,11 +61,9 @@ extension Root {
             switch action {
             
             case let .yabai(subAction):
-                // ...
                 return .none
                 
             case let .skhd(subAction):
-                //...
                 return .none
                 
             case .saveData:
@@ -95,7 +93,11 @@ extension Root {
                 return .none
                 
             case .exportData:
-                print("Export Yabai and SKHD preferences to their respective files & formats.")
+                // export yabai
+                print("Export ~/.yabairc file in yabai format")
+                
+                // export skhd
+                print("Export ~/.skhdrc file in skhd format")
                 return .none
                 
             }
