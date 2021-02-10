@@ -17,7 +17,6 @@ struct Root {
     struct State: Equatable {
         var yabai = Yabai.State()
         var skhd = SKHD.State()
-        var errorString: String = ""
         
         let yabaiPath: URL = getDocumentsDirectory()
             .appendingPathComponent("yabai.json")
@@ -30,6 +29,8 @@ struct Root {
         
         let skhdConfigPath: URL = getDocumentsDirectory()
             .appendingPathComponent("SKHDConfig.json")
+        
+        var errorString: String = ""
     }
     
     enum Action: Equatable {
@@ -116,7 +117,7 @@ extension Root {
                 return Effect(value: .save)
                 
             case let .skhd(subAction):
-                return .none
+                return Effect(value: .save)
                 
             case .save:
                 switch environment.save(state: state) {
