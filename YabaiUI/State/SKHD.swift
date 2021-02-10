@@ -15,16 +15,13 @@
 import SwiftUI
 import ComposableArchitecture
 
-
 struct SKHD {
     struct State: Equatable, Codable {
         var skhdString: String = ""
-        
     }
     
     enum Action: Equatable {
         case updateSKHDString(String)
-        
     }
     
     struct Environment {

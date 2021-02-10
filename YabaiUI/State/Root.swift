@@ -17,6 +17,8 @@ struct Root {
         var yabai = Yabai.State()
         var skhd = SKHD.State()
         
+        //let yabaiFileURL = Bundle.main.url(forResource: "YabaiData", withExtension: "json")!
+
         let yabaiFileURL: URL = FileManager
             .default
             .urls(for: .documentDirectory, in: .userDomainMask)
@@ -93,13 +95,38 @@ extension Root {
                 return .none
                 
             case .exportData:
-                // export yabai
-                print("Export ~/.yabairc file in yabai format")
+                // Export YabaiConfig
+                let yabaiConfigData = "Yabai's Specialy Formatted Config File"
                 
-                // export skhd
-                print("Export ~/.skhdrc file in skhd format")
+                let yabaiConfigPath: URL = FileManager
+                    .default
+                    .urls(for: .documentDirectory, in: .userDomainMask)
+                    .first!
+                    .appendingPathComponent("YabaiConfig")
+                    .appendingPathExtension("json")
+                
+                do {
+                    try yabaiConfigData.write(to: yabaiConfigPath, atomically: true, encoding: .utf8)
+                } catch {
+                    print(error.localizedDescription)
+                }
+                
+                // Export SKHDConfig
+                let skhdConfigData = "SKHD's Specialy Formatted Config File"
+                
+                let skhdConfigPath: URL = FileManager
+                    .default
+                    .urls(for: .documentDirectory, in: .userDomainMask)
+                    .first!
+                    .appendingPathComponent("SKHDConfig")
+                    .appendingPathExtension("json")
+                
+                do {
+                    try skhdConfigData.write(to: skhdConfigPath, atomically: true, encoding: .utf8)
+                } catch {
+                    print(error.localizedDescription)
+                }
                 return .none
-                
             }
         }
     )
