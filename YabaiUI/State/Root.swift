@@ -47,8 +47,6 @@ struct Root {
     
     struct Environment {
         // environment
-//        func mySave(state: State)
-        
         func save(state: State) -> Result<Bool, Error> {
             do {
                 // save yabai
@@ -59,6 +57,21 @@ struct Root {
                 let encoded2 = try JSONEncoder().encode(state.skhd)
                 try encoded2.write(to: state.skhdFileURL)
                 return .success(true)
+            } catch {
+                return .failure(error)
+            }
+        }
+        
+        func load(state: State) -> Result<(Yabai.State, SKHD.State), Error> {
+            
+            do {
+                let data1 = try? Data(contentsOf: state.yabaiFileURL)
+                let decodedState1 = try? JSONDecoder().decode(Yabai.State.self, from: data1!)
+                
+                let data2 = try? Data(contentsOf: state.skhdFileURL)
+                let decodedState2 = try? JSONDecoder().decode(SKHD.State.self, from: data2!)
+                
+                return .success((decodedState1!, decodedState2!))
             } catch {
                 return .failure(error)
             }
@@ -92,23 +105,21 @@ extension Root {
                 case .success:
                     state.errorString = ""
                 case let .failure(error):
-                    state.errorString = "Failed to save"
+                    state.errorString = "Failed to Save"
                 }
                 return .none
                 
             case .loadData:
                 // load yabai
-                if let data = try? Data(contentsOf: state.yabaiFileURL) {
-                    if let decodedState = try? JSONDecoder().decode(Yabai.State.self, from: data) {
-                        state.yabai = decodedState
-                    }
+                switch environment.load(state: state) {
+                case let .success((yabaiState, skhdState)):
+                    state.yabai = yabaiState
+                    state.skhd = skhdState
+
+                case let .failure(error):
+                    state.errorString = "Failed to Load"
                 }
-                // load skhd
-                if let data = try? Data(contentsOf: state.skhdFileURL) {
-                    if let decodedState = try? JSONDecoder().decode(SKHD.State.self, from: data) {
-                        state.skhd = decodedState
-                    }
-                }
+
                 return .none
                 
             case .exportData:
