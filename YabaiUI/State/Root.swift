@@ -39,44 +39,32 @@ struct Root {
     struct Environment {
         // environment
         
-        func saveYabai(state: State) -> Result<Bool, Error> {
+        func save(state: State) -> Result<Bool, Error> {
             do {
-                let data = try JSONEncoder().encode(state.skhd)
-                try data.write(to: state.skhdURL)
+                let encodedYabaiState = try JSONEncoder().encode(state.yabai)
+                try encodedYabaiState.write(to: state.yabaiURL)
+                
+                let encodedSKHDState = try JSONEncoder().encode(state.skhd)
+                try encodedSKHDState.write(to: state.skhdURL)
+
                 return .success(true)
                 
             } catch {
                 return .failure(error)
             }
         }
-        
-        func saveSKHD(state: State) -> Result<Bool, Error> {
+
+        func load(state: State) -> Result<(Yabai.State, SKHD.State), Error> {
             do {
-                let data = try JSONEncoder().encode(state.yabai)
-                try data.write(to: state.yabaiURL)
-                return .success(true)
-            } catch {
-                return .failure(error)
-            }
-        }
-        
-        func loadYabai(state: State) -> Result<Yabai.State, Error> {
-            do {
-                let data = try Data(contentsOf: state.yabaiURL)
-                let decodedState = try JSONDecoder().decode(Yabai.State.self, from: data)
-                return .success(decodedState)
+                let yabaiData = try Data(contentsOf: state.yabaiURL)
+                let decodedYabaiState = try JSONDecoder().decode(Yabai.State.self, from: yabaiData)
+                
+                let skhdData = try Data(contentsOf: state.skhdURL)
+                let decodedSKHDState = try JSONDecoder().decode(SKHD.State.self, from: skhdData)
+
+                return .success((decodedYabaiState, decodedSKHDState))
             }
             catch {
-                return .failure(error)
-            }
-        }
-        
-        func loadSKHD(state: State) -> Result<SKHD.State, Error> {
-            do {
-                let data = try Data(contentsOf: state.skhdURL)
-                let decodedState = try JSONDecoder().decode(SKHD.State.self, from: data)
-                return .success(decodedState)
-            } catch {
                 return .failure(error)
             }
         }
@@ -105,37 +93,22 @@ extension Root {
                 return .none
                 
             case .saveData:
-                switch environment.saveYabai(state: state) {
+                switch environment.save(state: state) {
                 case .success:
                     state.errorString = ""
                 case let .failure(error):
-                    state.errorString = "Failed to save Yabai.State"
-                }
-                
-                switch environment.saveSKHD(state: state) {
-                case .success:
-                    state.errorString = ""
-                case let .failure(error):
-                    state.errorString = "Failed to save SKHD.State"
+                    state.errorString = "Failed to save State"
                 }
                 return .none
                 
             case .loadData:
-                
-                switch environment.loadYabai(state: state) {
-                case let .success(decodedState):
-                    state.yabai = decodedState
+                switch environment.load(state: state) {
+                case let .success((decodedYabaiState, decodedSKHDState)):
+                    state.yabai = decodedYabaiState
+                    state.skhd = decodedSKHDState
                 case let .failure(error):
-                    state.errorString = "Failed to load Yabai.State"
+                    state.errorString = "Failed to load State"
                 }
-                
-                switch environment.loadSKHD(state: state) {
-                case let .success(decodedState):
-                    state.skhd = decodedState
-                case let .failure(error):
-                    state.errorString = "Failed to load SKHD.State"
-                }
-                
                 return .none
                 
             case .exportData:
