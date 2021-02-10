@@ -181,11 +181,6 @@ struct RootView: View {
             .onAppear { viewStore.send(.loadData) }
             .toolbar {
                 ToolbarItem {
-                    Button("Save") {
-                        viewStore.send(.saveData)
-                    }
-                }
-                ToolbarItem {
                     Button("Export Data") {
                         viewStore.send(.exportData)
                     }
