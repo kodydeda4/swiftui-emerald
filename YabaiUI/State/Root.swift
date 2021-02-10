@@ -9,8 +9,6 @@ import SwiftUI
 import ComposableArchitecture
 
 // -- how to register keystrokes for skhd?
-// -- klajd { store data in ApplicationSupport folder }
-
 
 //MARK:- Root
 
@@ -101,7 +99,8 @@ struct Root {
                 try skhdConfigData.write(to: state.skhdConfigPath, atomically: true, encoding: .utf8)
                 
                 return .success(true)
-            } catch {
+            }
+            catch {
                 return .failure(error)
             }
         }
