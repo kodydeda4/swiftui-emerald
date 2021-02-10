@@ -19,11 +19,11 @@ struct Root {
         var skhd = SKHD.State()
         var errorString: String = ""
         
-        let yabaiStateURL: URL = FileManager.default
+        let yabaiURL: URL = FileManager.default
             .urls(for: .documentDirectory, in: .userDomainMask)[0]
             .appendingPathComponent("Yabai.json")
         
-        let skhdStateURL: URL = FileManager.default
+        let skhdURL: URL = FileManager.default
             .urls(for: .documentDirectory, in: .userDomainMask)[0]
             .appendingPathComponent("SKHD.json")
     }
@@ -42,7 +42,7 @@ struct Root {
         func saveYabai(state: State) -> Result<Bool, Error> {
             do {
                 let data = try JSONEncoder().encode(state.skhd)
-                try data.write(to: state.skhdStateURL)
+                try data.write(to: state.skhdURL)
                 return .success(true)
                 
             } catch {
@@ -53,7 +53,7 @@ struct Root {
         func saveSKHD(state: State) -> Result<Bool, Error> {
             do {
                 let data = try JSONEncoder().encode(state.yabai)
-                try data.write(to: state.yabaiStateURL)
+                try data.write(to: state.yabaiURL)
                 return .success(true)
             } catch {
                 return .failure(error)
@@ -62,7 +62,7 @@ struct Root {
         
         func loadYabai(state: State) -> Result<Yabai.State, Error> {
             do {
-                let data = try Data(contentsOf: state.yabaiStateURL)
+                let data = try Data(contentsOf: state.yabaiURL)
                 let decodedState = try JSONDecoder().decode(Yabai.State.self, from: data)
                 return .success(decodedState)
             }
@@ -73,7 +73,7 @@ struct Root {
         
         func loadSKHD(state: State) -> Result<SKHD.State, Error> {
             do {
-                let data = try Data(contentsOf: state.skhdStateURL)
+                let data = try Data(contentsOf: state.skhdURL)
                 let decodedState = try JSONDecoder().decode(SKHD.State.self, from: data)
                 return .success(decodedState)
             } catch {
