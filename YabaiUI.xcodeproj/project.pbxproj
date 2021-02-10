@@ -89,8 +89,8 @@
 			isa = PBXGroup;
 			children = (
 				3380D33625D0723000C10913 /* Root.swift */,
-				33387D6725D3FADB00E76D29 /* SKHD.swift */,
 				33387D6425D3F64300E76D29 /* Yabai.swift */,
+				33387D6725D3FADB00E76D29 /* SKHD.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";

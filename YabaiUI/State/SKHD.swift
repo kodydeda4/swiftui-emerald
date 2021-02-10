@@ -1,5 +1,5 @@
 //
-//  Skhd.swift
+//  SKHD.swift
 //  YabaiUI
 //
 //  Created by Kody Deda on 2/10/21.
