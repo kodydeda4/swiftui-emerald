@@ -14,7 +14,6 @@
 		3380D30625D05F4200C10913 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3380D30525D05F4200C10913 /* Preview Assets.xcassets */; };
 		3380D31C25D06E1500C10913 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 3380D31B25D06E1500C10913 /* ComposableArchitecture */; };
 		3380D33725D0723000C10913 /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380D33625D0723000C10913 /* Root.swift */; };
-		33B5922825D424040044A890 /* YabaiData.json in Resources */ = {isa = PBXBuildFile; fileRef = 33B5922725D424040044A890 /* YabaiData.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +26,6 @@
 		3380D30725D05F4200C10913 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3380D30825D05F4200C10913 /* YabaiUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YabaiUI.entitlements; sourceTree = "<group>"; };
 		3380D33625D0723000C10913 /* Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Root.swift; sourceTree = "<group>"; };
-		33B5922725D424040044A890 /* YabaiData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = YabaiData.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +60,6 @@
 			isa = PBXGroup;
 			children = (
 				3380D2FE25D05F4200C10913 /* YabaiUIApp.swift */,
-				33B5922625D423D70044A890 /* Data */,
 				3380D32425D06EB300C10913 /* State */,
 				3380D31125D0667100C10913 /* Common */,
 				3380D30225D05F4200C10913 /* Assets.xcassets */,
@@ -96,14 +93,6 @@
 				33387D6425D3F64300E76D29 /* Yabai.swift */,
 			);
 			path = State;
-			sourceTree = "<group>";
-		};
-		33B5922625D423D70044A890 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				33B5922725D424040044A890 /* YabaiData.json */,
-			);
-			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,7 +159,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3380D30625D05F4200C10913 /* Preview Assets.xcassets in Resources */,
-				33B5922825D424040044A890 /* YabaiData.json in Resources */,
 				3380D30325D05F4200C10913 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
