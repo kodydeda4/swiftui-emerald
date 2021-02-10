@@ -119,13 +119,18 @@ struct RootView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            VStack {
-                YabaiView(store: store.scope(
-                            state: \.yabai,
-                            action: Root.Action.yabai))
-                SKHDView(store: store.scope(
-                            state: \.skhd,
-                            action: Root.Action.skhd))
+            List {
+                Section(header: Text("Yabai Settings")) {
+                    YabaiView(store: store.scope(
+                                state: \.yabai,
+                                action: Root.Action.yabai))
+                }
+                Divider()
+                Section(header: Text("SKHD Settings")) {
+                    SKHDView(store: store.scope(
+                                state: \.skhd,
+                                action: Root.Action.skhd))
+                }
             }
             .onAppear { viewStore.send(.loadData) }
             .toolbar {

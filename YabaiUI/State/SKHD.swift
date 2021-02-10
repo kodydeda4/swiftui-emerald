@@ -19,7 +19,7 @@ import ComposableArchitecture
 struct SKHD {
     struct State: Equatable, Codable {
         var skhdString: String = ""
-
+        
     }
     
     enum Action: Equatable {
@@ -40,7 +40,7 @@ extension SKHD {
             case let .updateSKHDString(string):
                 state.skhdString = string
                 return .none
-            
+                
             }
         }
     )
@@ -61,14 +61,14 @@ struct SKHDView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            List {
-                Text("SKHD String")
-                    .foregroundColor(.gray)
-                
-                TextField("Untitled", text: viewStore.binding(
-                    get: \.skhdString,
-                    send: SKHD.Action.updateSKHDString
-                ))
+            VStack {
+                HStack {
+                    Text("Example")
+                    TextField("Untitled", text: viewStore.binding(
+                        get: \.skhdString,
+                        send: SKHD.Action.updateSKHDString
+                    ))
+                }
             }
         }
     }
