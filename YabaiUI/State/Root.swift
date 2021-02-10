@@ -16,6 +16,7 @@ struct Root {
     struct State: Equatable {
         var yabai = Yabai.State()
         var skhd = SKHD.State()
+        var errorString: String = ""
         
         //let yabaiFileURL = Bundle.main.url(forResource: "YabaiData", withExtension: "json")!
 
@@ -44,6 +45,22 @@ struct Root {
     
     struct Environment {
         // environment
+//        func mySave(state: State)
+        
+        func save(state: State) -> Result<Bool, Error> {
+            do {
+                // save yabai
+                let encoded1 = try JSONEncoder().encode(state.yabai)
+                try encoded1.write(to: state.yabaiFileURL)
+                
+                // save skhd
+                let encoded2 = try JSONEncoder().encode(state.skhd)
+                try encoded2.write(to: state.skhdFileURL)
+                return .success(true)
+            } catch {
+                return .failure(error)
+            }
+        }
     }
 }
 
@@ -63,19 +80,17 @@ extension Root {
             switch action {
             
             case let .yabai(subAction):
-                return .none
+                return Effect(value: .saveData)
                 
             case let .skhd(subAction):
                 return .none
                 
             case .saveData:
-                // save yabai
-                if let encoded = try? JSONEncoder().encode(state.yabai) {
-                    try? encoded.write(to: state.yabaiFileURL)
-                }
-                // save skhd
-                if let encoded = try? JSONEncoder().encode(state.skhd) {
-                    try? encoded.write(to: state.skhdFileURL)
+                switch environment.save(state: state) {
+                case .success:
+                    state.errorString = ""
+                case let .failure(error):
+                    state.errorString = "Failed to save"
                 }
                 return .none
                 

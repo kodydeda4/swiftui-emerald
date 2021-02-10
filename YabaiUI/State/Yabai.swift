@@ -59,23 +59,23 @@ extension Yabai {
                 
             case let .updatePaddingTop(int):
                 state.paddingTop = int
-                return.none
+                return .none
                 
             case let .updatePaddingBottom(int):
                 state.paddingBottom = int
-                return.none
+                return .none
                 
             case let .updatePaddingLeft(int):
                 state.paddingLeft = int
-                return.none
+                return .none
                 
             case let .updatePaddingRight(int):
                 state.paddingRight = int
-                return.none
+                return .none
                 
             case let .updateWindowGap(int):
                 state.windowGap = int
-                return.none
+                return .none
             }
         }
     )
