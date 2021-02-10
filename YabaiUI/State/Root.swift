@@ -19,13 +19,21 @@ struct Root {
         var skhd = SKHD.State()
         var errorString: String = ""
         
-        let yabaiURL: URL = FileManager.default
+        let yabaiPath: URL = FileManager.default
             .urls(for: .documentDirectory, in: .userDomainMask)[0]
             .appendingPathComponent("Yabai.json")
         
-        let skhdURL: URL = FileManager.default
+        let skhdPath: URL = FileManager.default
             .urls(for: .documentDirectory, in: .userDomainMask)[0]
             .appendingPathComponent("SKHD.json")
+        
+        let yabaiConfigPath: URL = FileManager.default
+            .urls(for: .documentDirectory, in: .userDomainMask)[0]
+            .appendingPathComponent("YabaiConfig.json")
+        
+        let skhdConfigPath: URL = FileManager.default
+            .urls(for: .documentDirectory, in: .userDomainMask)[0]
+            .appendingPathComponent("SKHDConfig.json")
     }
     
     enum Action: Equatable {
@@ -42,10 +50,10 @@ struct Root {
         func save(state: State) -> Result<Bool, Error> {
             do {
                 let encodedYabaiState = try JSONEncoder().encode(state.yabai)
-                try encodedYabaiState.write(to: state.yabaiURL)
+                try encodedYabaiState.write(to: state.yabaiPath)
                 
                 let encodedSKHDState = try JSONEncoder().encode(state.skhd)
-                try encodedSKHDState.write(to: state.skhdURL)
+                try encodedSKHDState.write(to: state.skhdPath)
 
                 return .success(true)
                 
@@ -56,10 +64,10 @@ struct Root {
 
         func load(state: State) -> Result<(Yabai.State, SKHD.State), Error> {
             do {
-                let yabaiData = try Data(contentsOf: state.yabaiURL)
+                let yabaiData = try Data(contentsOf: state.yabaiPath)
                 let decodedYabaiState = try JSONDecoder().decode(Yabai.State.self, from: yabaiData)
                 
-                let skhdData = try Data(contentsOf: state.skhdURL)
+                let skhdData = try Data(contentsOf: state.skhdPath)
                 let decodedSKHDState = try JSONDecoder().decode(SKHD.State.self, from: skhdData)
 
                 return .success((decodedYabaiState, decodedSKHDState))
@@ -67,6 +75,27 @@ struct Root {
             catch {
                 return .failure(error)
             }
+        }
+        
+        func exportConfigs(state: State) -> Result<Bool, Error> {
+            do {
+                let yabaiConfigData = createYabaiConfig(state: state)
+                try yabaiConfigData.write(to: state.yabaiConfigPath, atomically: true, encoding: .utf8)
+                
+                let skhdConfigData = createSKHDConfig(state: state)
+                try skhdConfigData.write(to: state.skhdConfigPath, atomically: true, encoding: .utf8)
+                return .success(true)
+            } catch {
+                return .failure(error)
+            }
+        }
+        
+        func createYabaiConfig(state: State) -> String {
+            return "Yabai's Specialy Formatted Config File"
+        }
+        
+        func createSKHDConfig(state: State) -> String {
+            return "SKHD's Specialy Formatted Config File"
         }
     }
 }
@@ -112,37 +141,12 @@ extension Root {
                 return .none
                 
             case .exportData:
-//                // Export YabaiConfig
-//                let yabaiConfigData = "Yabai's Specialy Formatted Config File"
-//
-//                let yabaiConfigPath: URL = FileManager
-//                    .default
-//                    .urls(for: .documentDirectory, in: .userDomainMask)
-//                    .first!
-//                    .appendingPathComponent("YabaiConfig")
-//                    .appendingPathExtension("json")
-//
-//                do {
-//                    try yabaiConfigData.write(to: yabaiConfigPath, atomically: true, encoding: .utf8)
-//                } catch {
-//                    print(error.localizedDescription)
-//                }
-//
-//                // Export SKHDConfig
-//                let skhdConfigData = "SKHD's Specialy Formatted Config File"
-//
-//                let skhdConfigPath: URL = FileManager
-//                    .default
-//                    .urls(for: .documentDirectory, in: .userDomainMask)
-//                    .first!
-//                    .appendingPathComponent("SKHDConfig")
-//                    .appendingPathExtension("json")
-//
-//                do {
-//                    try skhdConfigData.write(to: skhdConfigPath, atomically: true, encoding: .utf8)
-//                } catch {
-//                    print(error.localizedDescription)
-//                }
+                switch environment.exportConfigs(state: state) {
+                case .success:
+                    state.errorString = ""
+                case let .failure(error):
+                    state.errorString = "Failed to export config files."
+                }
                 return .none
             }
         }
