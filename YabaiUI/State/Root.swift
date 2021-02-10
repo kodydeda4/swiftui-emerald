@@ -11,22 +11,29 @@ import ComposableArchitecture
 //MARK:- Root
 
 struct Root {
-    struct State: Equatable, Codable {
-        var firstName: String = ""
-        var lastName: String = ""
+    struct State: Equatable {
+        var yabai = Yabai.State()
+        var skhd = SKHD.State()
         
-        let fileURL: URL = FileManager
+        let yabaiFileURL: URL = FileManager
             .default
             .urls(for: .documentDirectory, in: .userDomainMask)
             .first!
-            .appendingPathComponent("YabaiUI")
+            .appendingPathComponent("Yabai")
+            .appendingPathExtension("json")
+        
+        let skhdFileURL: URL = FileManager
+            .default
+            .urls(for: .documentDirectory, in: .userDomainMask)
+            .first!
+            .appendingPathComponent("SKHD")
             .appendingPathExtension("json")
         
     }
     
     enum Action: Equatable {
-        case updateFirstName(String)
-        case updateLastName(String)
+        case yabai(Yabai.Action)
+        case skhd(SKHD.Action)
         case saveData
         case loadData
     }
@@ -38,31 +45,53 @@ struct Root {
 
 extension Root {
     static let reducer = Reducer<State, Action, Environment>.combine(
-        
+        Yabai.reducer.pullback(
+            state: \.yabai,
+            action: /Action.yabai,
+            environment: { _ in .init() }
+        ),
+        SKHD.reducer.pullback(
+            state: \.skhd,
+            action: /Action.skhd,
+            environment: { _ in .init() }
+        ),
         Reducer { state, action, environment in
             switch action {
-            
-            case let .updateFirstName(string):
-                state.firstName = string
-                return .none
-            
-            case let .updateLastName(string):
-                state.lastName = string
-                return .none
 
+            case let .yabai(subAction):
+                // ...
+                return .none
+                
+            case let .skhd(subAction):
+                //...
+                return .none
+            
             case .saveData:
-                if let encoded = try? JSONEncoder().encode(state) {
-                    try? encoded.write(to: state.fileURL)
+                // save yabai
+                if let encoded = try? JSONEncoder().encode(state.yabai) {
+                    try? encoded.write(to: state.yabaiFileURL)
+                }
+                // save skhd
+                if let encoded = try? JSONEncoder().encode(state.skhd) {
+                    try? encoded.write(to: state.skhdFileURL)
                 }
                 return .none
                 
             case .loadData:
-                if let data = try? Data(contentsOf: state.fileURL) {
-                    if let decodedState = try? JSONDecoder().decode(State.self, from: data) {
-                        state = decodedState
+                // load yabai
+                if let data = try? Data(contentsOf: state.yabaiFileURL) {
+                    if let decodedState = try? JSONDecoder().decode(Yabai.State.self, from: data) {
+                        state.yabai = decodedState
+                    }
+                }
+                // load skhd
+                if let data = try? Data(contentsOf: state.skhdFileURL) {
+                    if let decodedState = try? JSONDecoder().decode(SKHD.State.self, from: data) {
+                        state.skhd = decodedState
                     }
                 }
                 return .none
+
             }
         }
     )
@@ -84,25 +113,15 @@ struct RootView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            List {
-                
-                HStack {
-                    Text("First Name")
-                        .foregroundColor(.gray)
-                    TextField("Untitled", text: viewStore.binding(
-                        get: \.firstName,
-                        send: Root.Action.updateFirstName
-                    ))
-                }
-                
-                HStack {
-                    Text("Last Name")
-                        .foregroundColor(.gray)
-                    TextField("Untitled", text: viewStore.binding(
-                        get: \.lastName,
-                        send: Root.Action.updateLastName
-                    ))
-                }
+            
+            VStack {
+                YabaiView(store: store.scope(
+                            state: \.yabai,
+                            action: Root.Action.yabai))
+                    
+                SKHDView(store: store.scope(
+                            state: \.skhd,
+                            action: Root.Action.skhd))
             }
             .onAppear { viewStore.send(.loadData) }
             .toolbar {
