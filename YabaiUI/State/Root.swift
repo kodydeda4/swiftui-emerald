@@ -18,8 +18,9 @@ struct Root {
         var yabai = Yabai.State()
         var skhd = SKHD.State()
         
-        var yabaiVersion: String { run("/usr/local/bin/yabai", "-v").stdout }
-        var skhdVersion: String { run("/usr/local/bin/skhd", "-v").stdout }
+        var yabaiVersion: String = run("/usr/local/bin/yabai", "-v").stdout
+        var skhdVersion: String = run("/usr/local/bin/skhd", "-v").stdout
+        var brewVersion: String = run("/usr/local/bin/brew", "-v").stdout
         
         var yabaiUIApplicationSupportDirectory: URL {
             let path = FileManager.default
@@ -187,6 +188,22 @@ struct RootView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             List {
+                VStack(alignment: .leading) {
+                    
+                    Text("Yabai Version")
+                    Text(viewStore.yabaiVersion).foregroundColor(.gray)
+                        .padding(.bottom)
+                    
+                    Text("SKHD Version")
+                    Text(viewStore.skhdVersion).foregroundColor(.gray)
+                        .padding(.bottom)
+                    
+                    Text("HomeBrew Version")
+                    Text(viewStore.brewVersion).foregroundColor(.gray)
+                        .padding(.bottom)
+                }
+                
+                
                 Section(header: Text("Yabai Settings")) {
                     YabaiView(store: store.scope(
                                 state: \.yabai,
@@ -199,7 +216,6 @@ struct RootView: View {
                                 action: Root.Action.skhd))
                 }
             }
-            .navigationSubtitle("\(viewStore.yabaiVersion) | \(viewStore.skhdVersion)")
             .onAppear { viewStore.send(.load) }
             .toolbar {
                 ToolbarItem {
