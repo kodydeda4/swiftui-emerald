@@ -9,14 +9,13 @@ import SwiftUI
 import ComposableArchitecture
 import SwiftShell
 
-// -- how to register keystrokes for skhd?
-
 //MARK:- Root
 
 struct Root {
     struct State: Equatable {
         var yabai = Yabai.State()
         var skhd = SKHD.State()
+        var onboarding = Onboarding.State()
         
         var yabaiVersion: String = run("/usr/local/bin/yabai", "-v").stdout
         var skhdVersion: String = run("/usr/local/bin/skhd", "-v").stdout
@@ -60,10 +59,10 @@ struct Root {
         case save
         case load
         case exportConfigs
+        case onboarding(Onboarding.Action)
     }
     
     struct Environment {
-
         func save(state: State) -> Result<Bool, Error> {
             do {
                 let encodedYabaiState = try JSONEncoder().encode(state.yabai)
@@ -131,9 +130,14 @@ extension Root {
             action: /Action.skhd,
             environment: { _ in .init() }
         ),
+        Onboarding.reducer.pullback(
+            state: \.onboarding,
+            action: /Root.Action.onboarding,
+            environment: { _ in .init() }
+        ),
         Reducer { state, action, environment in
             switch action {
-            
+        
             case let .yabai(subAction):
                 return Effect(value: .save)
                 
@@ -166,6 +170,9 @@ extension Root {
                 case let .failure(error):
                     state.errorString = "Failed to export config files."
                 }
+                return .none
+                
+            case let .onboarding(subAction):
                 return .none
             }
         }
