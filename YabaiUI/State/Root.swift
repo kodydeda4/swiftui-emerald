@@ -40,10 +40,10 @@ struct Root {
         }
             
         let yabaiConfigPath = URL(fileURLWithPath: NSHomeDirectory())
-            .appendingPathComponent("YabaiConfig.json")
+            .appendingPathComponent("yabaiConfig")
         
         let skhdConfigPath = URL(fileURLWithPath: NSHomeDirectory())
-            .appendingPathComponent("SKHDConfig.json")
+            .appendingPathComponent("skhdConfig")
 
         var errorString: String = ""
         
