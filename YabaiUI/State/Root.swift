@@ -26,7 +26,6 @@ struct Root {
                 try! FileManager.default
                     .createDirectory(at: path, withIntermediateDirectories: true, attributes: nil)
             }
-            
             return path
         }
 
@@ -40,10 +39,10 @@ struct Root {
             .appendingPathComponent("skhdState.json")
         }
             
-        let yabaiConfigPath: URL = getDocumentsDirectory()
+        let yabaiConfigPath = URL(fileURLWithPath: NSHomeDirectory())
             .appendingPathComponent("YabaiConfig.json")
         
-        let skhdConfigPath: URL = getDocumentsDirectory()
+        let skhdConfigPath = URL(fileURLWithPath: NSHomeDirectory())
             .appendingPathComponent("SKHDConfig.json")
 
         var errorString: String = ""
