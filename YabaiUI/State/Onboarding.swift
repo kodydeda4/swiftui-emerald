@@ -87,12 +87,19 @@ struct OnboardingView: View {
                 Button("Alert") {
                     viewStore.send(.alertButtonTapped)
                 }
-                .alert(isPresented: .constant(true)) {
-                    Alert(
-                        title: Text("What's new in YabaiUI"),
-                        message: Text("Lorem ipsum sum four three six nine"),
-                        dismissButton: .default(Text("Continue")))
+                .sheet(isPresented: .constant(true)) {
+                    // sheet dismissed using Binding
+                    // SheetView(isVisible: self.$sheetIsShowing, enteredText: self.$dialogResult)
+                    
+                    // sheet dismissed using Environment presentation mode
+                    SheetView()
                 }
+                //                .alert(isPresented: .constant(true)) {
+                //                    Alert(
+                //                        title: Text("What's new in YabaiUI"),
+                //                        message: Text("Lorem ipsum sum four three six nine"),
+                //                        dismissButton: .default(Text("Continue")))
+                //                }
                 //.alert(store.scope(state: \.alert), dismiss: .alertDismissed)
                 
             }
@@ -100,6 +107,23 @@ struct OnboardingView: View {
     }
 }
 
+struct SheetView: View {
+    //let store: Store<Onboarding.State, Onboarding.Action>
+
+    @Environment(\.presentationMode) var presentationMode
+    
+    //@Binding var enteredText: String
+    
+    var body: some View {
+        VStack {
+            Button("Contine") {
+                presentationMode.wrappedValue.dismiss()
+            }
+        }
+        .frame(width: 300, height: 200)
+        .padding()
+    }
+}
 
 struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
