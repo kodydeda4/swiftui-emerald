@@ -16,6 +16,7 @@ struct Root {
         var yabai = Yabai.State()
         var skhd = SKHD.State()
         var onboarding = Onboarding.State()
+
         
         var yabaiVersion: String = run("/usr/local/bin/yabai", "-v").stdout
         var skhdVersion: String = run("/usr/local/bin/skhd", "-v").stdout
@@ -210,6 +211,9 @@ struct RootView: View {
                         .padding(.bottom)
                 }
                 
+                OnboardingView(store: store.scope(
+                            state: \.onboarding,
+                            action: Root.Action.onboarding))
                 
                 Section(header: Text("Yabai Settings")) {
                     YabaiView(store: store.scope(

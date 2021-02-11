@@ -83,15 +83,23 @@ struct OnboardingView: View {
         WithViewStore(store) { viewStore in
             Form {
                 Text("Count: \(viewStore.count)")
-
-                Button("Alert") { viewStore.send(.alertButtonTapped) }
-                  .alert(store.scope(state: \.alert),
-                    dismiss: .alertDismissed
-                  )
-              }
+                
+                Button("Alert") {
+                    viewStore.send(.alertButtonTapped)
+                }
+                .alert(isPresented: .constant(true)) {
+                    Alert(
+                        title: Text("What's new in YabaiUI"),
+                        message: Text("Lorem ipsum sum four three six nine"),
+                        dismissButton: .default(Text("Continue")))
+                }
+                //.alert(store.scope(state: \.alert), dismiss: .alertDismissed)
+                
+            }
         }
     }
 }
+
 
 struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
