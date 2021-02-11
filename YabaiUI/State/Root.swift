@@ -7,6 +7,7 @@
 
 import SwiftUI
 import ComposableArchitecture
+import SwiftShell
 
 // -- how to register keystrokes for skhd?
 
@@ -16,6 +17,9 @@ struct Root {
     struct State: Equatable {
         var yabai = Yabai.State()
         var skhd = SKHD.State()
+        
+        var yabaiVersion: String { run("/usr/local/bin/yabai", "-v").stdout }
+        var skhdVersion: String { run("/usr/local/bin/skhd", "-v").stdout }
         
         var yabaiUIApplicationSupportDirectory: URL {
             let path = FileManager.default
@@ -195,6 +199,7 @@ struct RootView: View {
                                 action: Root.Action.skhd))
                 }
             }
+            .navigationSubtitle("\(viewStore.yabaiVersion) | \(viewStore.skhdVersion)")
             .onAppear { viewStore.send(.load) }
             .toolbar {
                 ToolbarItem {

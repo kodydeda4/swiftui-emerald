@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3315223F25D5786C00C8E46A /* SwiftShell in Frameworks */ = {isa = PBXBuildFile; productRef = 3315223E25D5786C00C8E46A /* SwiftShell */; };
 		33387D6525D3F64300E76D29 /* Yabai.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33387D6425D3F64300E76D29 /* Yabai.swift */; };
 		33387D6825D3FADB00E76D29 /* SKHD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33387D6725D3FADB00E76D29 /* SKHD.swift */; };
 		3361CDF725D44AEC0086F6A7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CDF625D44AEC0086F6A7 /* Extensions.swift */; };
@@ -36,6 +37,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3380D31C25D06E1500C10913 /* ComposableArchitecture in Frameworks */,
+				3315223F25D5786C00C8E46A /* SwiftShell in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +118,7 @@
 			name = YabaiUI;
 			packageProductDependencies = (
 				3380D31B25D06E1500C10913 /* ComposableArchitecture */,
+				3315223E25D5786C00C8E46A /* SwiftShell */,
 			);
 			productName = YabaiUI;
 			productReference = 3380D2FB25D05F4200C10913 /* YabaiUI.app */;
@@ -146,6 +149,7 @@
 			mainGroup = 3380D2F225D05F4100C10913;
 			packageReferences = (
 				3380D31A25D06E1500C10913 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				3315223D25D5786C00C8E46A /* XCRemoteSwiftPackageReference "SwiftShell" */,
 			);
 			productRefGroup = 3380D2FC25D05F4200C10913 /* Products */;
 			projectDirPath = "";
@@ -371,6 +375,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3315223D25D5786C00C8E46A /* XCRemoteSwiftPackageReference "SwiftShell" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kareman/SwiftShell";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
 		3380D31A25D06E1500C10913 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
@@ -382,6 +394,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3315223E25D5786C00C8E46A /* SwiftShell */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3315223D25D5786C00C8E46A /* XCRemoteSwiftPackageReference "SwiftShell" */;
+			productName = SwiftShell;
+		};
 		3380D31B25D06E1500C10913 /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3380D31A25D06E1500C10913 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
