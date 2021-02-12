@@ -1,50 +1,12 @@
 //
-//  Onboarding.swift
+//  OnboardingView.swift
 //  YabaiUI
 //
-//  Created by Kody Deda on 2/11/21.
+//  Created by Kody Deda on 2/12/21.
 //
 
 import SwiftUI
 import ComposableArchitecture
-
-//MARK:- Onboarding
-
-struct Onboarding {
-    struct State: Equatable {
-        var isDismissed = false
-    }
-    
-    enum Action: Equatable {
-        case toggleDismissed
-    }
-    
-    struct Environment {
-        // environment
-    }
-}
-
-extension Onboarding {
-    static let reducer = Reducer<State, Action, Environment>.combine(
-        Reducer { state, action, environment in
-            switch action {
-            
-            case .toggleDismissed:
-                state.isDismissed.toggle()
-                return .none
-                
-            }
-        }
-    )
-}
-
-extension Onboarding {
-    static let defaultStore = Store(
-        initialState: .init(),
-        reducer: reducer,
-        environment: .init()
-    )
-}
 
 // MARK:- OnboardingView
 
@@ -54,32 +16,25 @@ struct OnboardingView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             VStack {
-                VStack {
-                    Image("iconLogo")
-                        .resizable()
-                        .frame(width: 100, height: 100)
-                    
-                    Text("Welcome to YabaiUI")
-                        .font(.largeTitle)
-                        .fontWeight(.medium)
-                    
-                    Text("Some super neat description.")
-                        .font(.body)
-                        .foregroundColor(.gray)
-                }
+                Image("iconLogo")
+                    .resizable()
+                    .frame(width: 100, height: 100)
+
+                TitleView(
+                    title: "Welcome to YabaiUI",
+                    titleDescription: "Some super neat description."
+                )
                 VStack {
                     FeatureView(
                         image: Image(systemName: "sparkles"),
                         featureName: "Feature A",
                         featureDescription: "Description about how cool said feature is."
                     )
-                    
                     FeatureView(
                         image: Image(systemName: "scribble.variable"),
                         featureName: "Feature B",
                         featureDescription: "Description about how cool said feature is."
                     )
-                    
                     FeatureView(
                         image: Image(systemName: "leaf.fill"),
                         featureName: "Feature C",
@@ -87,7 +42,6 @@ struct OnboardingView: View {
                     )
                 }
                 .padding()
-                
                 Spacer()
                 Button("Continue") {
                     viewStore.send(.toggleDismissed)
@@ -103,9 +57,23 @@ struct OnboardingView: View {
     }
 }
 
-struct OnboardingView_Previews: PreviewProvider {
-    static var previews: some View {
-        OnboardingView(store: Onboarding.defaultStore)
+struct TitleView: View {
+    var title: String
+    var titleDescription: String
+    
+    var body: some View {
+        VStack {
+            VStack {
+                Text(title)
+                    .font(.largeTitle)
+                    .fontWeight(.medium)
+                
+                Text(titleDescription)
+                    .font(.body)
+                    .foregroundColor(.gray)
+            }
+            
+        }
     }
 }
 
@@ -120,8 +88,6 @@ private struct FeatureView: View {
                 .resizable()
                 .frame(width: 24, height: 24)
                 .foregroundColor(.accentColor)
-                
-            
             
             VStack(alignment: .leading) {
                 Text(featureName)
@@ -145,3 +111,12 @@ private struct FeatureView_Previews: PreviewProvider {
         )
     }
 }
+
+struct OnboardingView_Previews: PreviewProvider {
+    static var previews: some View {
+        OnboardingView(store: Onboarding.defaultStore)
+    }
+}
+
+
+

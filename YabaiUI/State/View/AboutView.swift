@@ -47,7 +47,7 @@ struct AboutView: View {
                         .lineLimit(1)
                 }
             }
-            .navigationTitle("YabaiUI - About")
+            .navigationTitle("About")
         }
     }
 }
