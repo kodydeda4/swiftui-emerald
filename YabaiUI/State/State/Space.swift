@@ -8,14 +8,14 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct Yabai {
+struct Space {
     struct State: Equatable, Codable {
-        var layout: Layout = .float
-        var paddingTop: Int = 0
-        var paddingBottom: Int = 0
-        var paddingLeft: Int = 0
-        var paddingRight: Int = 0
-        var windowGap: Int = 0
+        var layout         : Layout  = .float
+        var paddingTop     : Int     = 0
+        var paddingBottom  : Int     = 0
+        var paddingLeft    : Int     = 0
+        var paddingRight   : Int     = 0
+        var windowGap      : Int     = 0
         
         enum Layout: String, Codable, CaseIterable, Identifiable {
             case bsp
@@ -34,13 +34,12 @@ struct Yabai {
         case updatePaddingRight(Int)
         case updateWindowGap(Int)
     }
-    
     struct Environment {
         // environment
     }
 }
 
-extension Yabai {
+extension Space {
     static let reducer = Reducer<State, Action, Environment>.combine(
         Reducer { state, action, environment in
             switch action {
@@ -81,7 +80,7 @@ extension Yabai {
     )
 }
 
-extension Yabai {
+extension Space {
     static let defaultStore = Store(
         initialState: .init(),
         reducer: reducer,

@@ -21,7 +21,7 @@ struct SidebarView: View {
                     NavigationLink(destination: TemporaryTextView(text: "Display")) {
                         Label("Display", systemImage: "display")
                     }
-                    NavigationLink(destination: SpaceSettingsView(store: store)) {
+                    NavigationLink(destination: SpaceSettingsView(store: store.scope(state: \.space, action: Root.Action.space))) {
                         Label("Space", systemImage: "rectangle.3.offgrid")
                     }
                     NavigationLink(destination: TemporaryTextView(text: "Window")) {

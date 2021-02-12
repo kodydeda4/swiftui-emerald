@@ -8,29 +8,29 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct SpaceSettingsView: View {
-    let store: Store<Root.State, Root.Action>
-    
-    var body: some View {
-        List {
-            Section(header: Text("Yabai Settings")) {
-                YabaiSpaceSettingsView(store: store.scope(
-                            state: \.yabai,
-                            action: Root.Action.yabai))
-            }
-            Divider()
-            Section(header: Text("SKHD Settings")) {
-                SKHDSpaceSettingsView(store: store.scope(
-                            state: \.skhd,
-                            action: Root.Action.skhd))
-            }
-        }
-        .navigationTitle("Space")
-    }
-}
+//struct SpaceSettingsView: View {
+//    let store: Store<Root.State, Root.Action>
+//
+//    var body: some View {
+//        List {
+//            Section(header: Text("Yabai Settings")) {
+//                YabaiSpaceSettingsView(store: store.scope(
+//                            state: \.space,
+//                            action: Root.Action.space))
+//            }
+//            Divider()
+//            Section(header: Text("SKHD Settings")) {
+//                SKHDSpaceSettingsView(store: store.scope(
+//                            state: \.skhd,
+//                            action: Root.Action.skhd))
+//            }
+//        }
+//        .navigationTitle("Space")
+//    }
+//}
 
-struct YabaiSpaceSettingsView: View {
-    let store: Store<Yabai.State, Yabai.Action>
+struct SpaceSettingsView: View {
+    let store: Store<Space.State, Space.Action>
     @State var errorMessage: String = ""
     
     var body: some View {
@@ -40,9 +40,9 @@ struct YabaiSpaceSettingsView: View {
                 Picker("Layout", selection:
                         viewStore.binding(
                             get: \.layout,
-                            send: Yabai.Action.updateLayout)
+                            send: Space.Action.updateLayout)
                 ) {
-                    ForEach(Yabai.State.Layout.allCases) {
+                    ForEach(Space.State.Layout.allCases) {
                         Text($0.rawValue)
                     }
                 }
@@ -52,7 +52,7 @@ struct YabaiSpaceSettingsView: View {
                         "",
                         value: viewStore.binding(
                             get: \.paddingTop,
-                            send: Yabai.Action.updatePaddingTop),
+                            send: Space.Action.updatePaddingTop),
                         formatter: NumberFormatter()
                     )
                 }
@@ -62,7 +62,7 @@ struct YabaiSpaceSettingsView: View {
                         "",
                         value: viewStore.binding(
                             get: \.paddingBottom,
-                            send: Yabai.Action.updatePaddingBottom
+                            send: Space.Action.updatePaddingBottom
                         ),
                         formatter: NumberFormatter()
                     )
@@ -73,7 +73,7 @@ struct YabaiSpaceSettingsView: View {
                         "",
                         value: viewStore.binding(
                             get: \.paddingLeft,
-                            send: Yabai.Action.updatePaddingLeft),
+                            send: Space.Action.updatePaddingLeft),
                         formatter: NumberFormatter()
                     )
                 }
@@ -83,43 +83,44 @@ struct YabaiSpaceSettingsView: View {
                         "",
                         value: viewStore.binding(
                             get: \.paddingRight,
-                            send: Yabai.Action.updatePaddingRight
+                            send: Space.Action.updatePaddingRight
                         ),
                         formatter: NumberFormatter()
                     )
                 }
             }
         }
+        .navigationTitle("Space")
     }
 }
 
-struct SKHDSpaceSettingsView: View {
-    let store: Store<SKHD.State, SKHD.Action>
-    
-    var body: some View {
-        WithViewStore(store) { viewStore in
-            VStack {
-                HStack {
-                    Text("Example")
-                    TextField("Untitled", text: viewStore.binding(
-                        get: \.skhdString,
-                        send: SKHD.Action.updateSKHDString
-                    ))
-                }
-            }
-        }
-    }
-}
+//struct SKHDSpaceSettingsView: View {
+//    let store: Store<SKHD.State, SKHD.Action>
+//
+//    var body: some View {
+//        WithViewStore(store) { viewStore in
+//            VStack {
+//                HStack {
+//                    Text("Example")
+//                    TextField("Untitled", text: viewStore.binding(
+//                        get: \.skhdString,
+//                        send: SKHD.Action.updateSKHDString
+//                    ))
+//                }
+//            }
+//        }
+//    }
+//}
 
-struct SKHDSpaceSettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SKHDSpaceSettingsView(store: SKHD.defaultStore)
-    }
-}
+//struct SKHDSpaceSettingsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SKHDSpaceSettingsView(store: SKHD.defaultStore)
+//    }
+//}
 
 
 struct SpaceSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SpaceSettingsView(store: Root.defaultStore)
+        SpaceSettingsView(store: Space.defaultStore)
     }
 }
