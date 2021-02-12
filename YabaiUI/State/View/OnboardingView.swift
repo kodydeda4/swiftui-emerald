@@ -8,8 +8,6 @@
 import SwiftUI
 import ComposableArchitecture
 
-// MARK:- OnboardingView
-
 struct OnboardingView: View {
     let store: Store<Onboarding.State, Onboarding.Action>
     

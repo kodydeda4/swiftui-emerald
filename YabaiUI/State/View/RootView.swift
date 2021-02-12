@@ -8,8 +8,6 @@
 import SwiftUI
 import ComposableArchitecture
 
-// MARK:- RootView
-
 struct RootView: View {
     let store: Store<Root.State, Root.Action>
     

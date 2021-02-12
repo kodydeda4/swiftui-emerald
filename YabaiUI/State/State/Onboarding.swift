@@ -8,8 +8,6 @@
 import SwiftUI
 import ComposableArchitecture
 
-//MARK:- Onboarding
-
 struct Onboarding {
     struct State: Equatable {
         var isDismissed = false

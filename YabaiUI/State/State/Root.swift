@@ -9,8 +9,6 @@ import SwiftUI
 import ComposableArchitecture
 import SwiftShell
 
-//MARK:- Root
-
 struct Root {
     struct State: Equatable {
         var yabai = Yabai.State()
@@ -195,5 +193,3 @@ extension Root {
         environment: .init()
     )
 }
-
-
