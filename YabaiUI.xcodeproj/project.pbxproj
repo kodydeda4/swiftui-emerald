@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3315223F25D5786C00C8E46A /* SwiftShell in Frameworks */ = {isa = PBXBuildFile; productRef = 3315223E25D5786C00C8E46A /* SwiftShell */; };
 		3323C69225D7026D00D655DE /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3323C69125D7026D00D655DE /* Config.swift */; };
+		3323C69525D7173D00D655DE /* ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3323C69425D7173D00D655DE /* ConfigView.swift */; };
 		33387D6525D3F64300E76D29 /* Yabai.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33387D6425D3F64300E76D29 /* Yabai.swift */; };
 		33387D6825D3FADB00E76D29 /* SKHD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33387D6725D3FADB00E76D29 /* SKHD.swift */; };
 		3361CDF725D44AEC0086F6A7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CDF625D44AEC0086F6A7 /* Extensions.swift */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		3323C69125D7026D00D655DE /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		3323C69425D7173D00D655DE /* ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigView.swift; sourceTree = "<group>"; };
 		33387D6425D3F64300E76D29 /* Yabai.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yabai.swift; sourceTree = "<group>"; };
 		33387D6725D3FADB00E76D29 /* SKHD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHD.swift; sourceTree = "<group>"; };
 		3361CDF625D44AEC0086F6A7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				3385DF6C25D628BF00ACDE21 /* SpaceSettingsView.swift */,
 				3385DF6925D6279200ACDE21 /* AboutView.swift */,
 				339C453425D6ED0F0079ACA1 /* OnboardingView.swift */,
+				3323C69425D7173D00D655DE /* ConfigView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				3380D33725D0723000C10913 /* Root.swift in Sources */,
 				3385DF6725D6270B00ACDE21 /* SidebarView.swift in Sources */,
 				33387D6825D3FADB00E76D29 /* SKHD.swift in Sources */,
+				3323C69525D7173D00D655DE /* ConfigView.swift in Sources */,
 				339C453525D6ED0F0079ACA1 /* OnboardingView.swift in Sources */,
 				3385DF7025D6361200ACDE21 /* AppleScript.swift in Sources */,
 				339C453125D6ECCA0079ACA1 /* RootView.swift in Sources */,
