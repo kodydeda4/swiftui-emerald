@@ -108,8 +108,8 @@
 		3380D32425D06EB300C10913 /* State */ = {
 			isa = PBXGroup;
 			children = (
-				339C452E25D6ECAA0079ACA1 /* View */,
 				339C452D25D6ECA30079ACA1 /* State */,
+				339C452E25D6ECAA0079ACA1 /* View */,
 			);
 			path = State;
 			sourceTree = "<group>";

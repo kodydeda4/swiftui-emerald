@@ -8,7 +8,6 @@
 import SwiftUI
 import ComposableArchitecture
 
-
 // MARK:- SpaceSettingsView
 
 struct SpaceSettingsView: View {
