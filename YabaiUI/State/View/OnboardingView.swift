@@ -17,9 +17,9 @@ struct OnboardingView: View {
         WithViewStore(store) { viewStore in
             VStack {
                 VStack {
-                    Image("iconLogo")
+                    Image("yabaiLogo")
                         .resizable()
-                        .frame(width: 100, height: 100)
+                        .frame(width: 75, height: 75)
                     
                     Text("Welcome to YabaiUI")
                         .font(.largeTitle)
@@ -47,6 +47,8 @@ struct OnboardingView: View {
                         featureDescription: "Description about how cool said feature is."
                     )
                 }
+                .padding()
+                
                 Spacer()
                 Button("Continue") { viewStore.send(.toggleDismissed) }
                     .buttonStyle(PlainButtonStyle())

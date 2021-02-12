@@ -28,7 +28,7 @@ struct SpaceSettingsView: View {
                             action: Root.Action.skhd))
             }
         }
-        .navigationTitle("Space Settings")
+        .navigationTitle("Space")
     }
 }
 
