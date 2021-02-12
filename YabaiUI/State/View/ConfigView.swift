@@ -11,6 +11,7 @@ import ComposableArchitecture
 struct ConfigView: View {
     let store: Store<Config.State, Config.Action>
     
+    
     var body: some View {
         WithViewStore(store) { viewStore in
             List {
@@ -39,12 +40,16 @@ struct DebugView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            Section(header: Text("UNTITLED")) {
-                Toggle("debugOutput", isOn: viewStore.binding(
+            Section(header: Text("Global")) {
+                Toggle(
+                    "Debug Output",
+                    isOn: viewStore.binding(
                         get: \.debugOutput,
                         send: Config.Action.updateDebugOutput)
                 )
-                Picker("externalBar", selection:
+                Picker(
+                    "External Bar",
+                    selection:
                         viewStore.binding(
                             get: \.externalBar,
                             send: Config.Action.updateExternalBar)
@@ -58,21 +63,21 @@ struct DebugView: View {
     }
 }
 
-struct MouseSettingsView: View {
+private struct MouseSettingsView: View {
     let store: Store<Config.State, Config.Action>
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            Section(header: Text("MouseSettingsView")) {
+            Section(header: Text("Mouse")) {
                 Toggle(
-                    "mouseFollowsFocus",
+                    "Mouse Follows Focus",
                     isOn: viewStore.binding(
                         get: \.mouseFollowsFocus,
                         send: Config.Action.updateMouseFollowsFocus
                     )
                 )
                 Picker(
-                    "focusFollowsMouse",
+                    "Focus Follows Mouse",
                     selection:
                         viewStore.binding(
                             get: \.focusFollowsMouse,
@@ -88,14 +93,15 @@ struct MouseSettingsView: View {
 }
 
 
-struct WindowView: View {
+private struct WindowView: View {
     let store: Store<Config.State, Config.Action>
     
     var body: some View {
         WithViewStore(store) { viewStore in
             Section(header: Text("Window")) {
                 Picker(
-                    "windowPlacement", selection: viewStore.binding(
+                    "Window Placement",
+                    selection: viewStore.binding(
                         get: \.windowPlacement,
                         send: Config.Action.updateWindowPlacement
                     )
@@ -104,47 +110,59 @@ struct WindowView: View {
                         Text($0.rawValue)
                     }
                 }
-                Toggle("windowTopmost", isOn: viewStore.binding(
+                Toggle(
+                    "Window Topmost",
+                    isOn: viewStore.binding(
                         get: \.windowTopmost,
-                        send: Config.Action.updateWindowTopmost)
+                        send: Config.Action.updateWindowTopmost
+                    )
                 )
-                Toggle("windowShadow", isOn: viewStore.binding(
+                Toggle(
+                    "Window Shadow",
+                    isOn: viewStore.binding(
                         get: \.windowShadow,
-                        send: Config.Action.updateWindowShadow)
+                        send: Config.Action.updateWindowShadow
+                    )
                 )
-                Toggle("windowOpacity", isOn: viewStore.binding(
+                Toggle(
+                    "Window Opacity",
+                    isOn: viewStore.binding(
                         get: \.windowOpacity,
-                        send: Config.Action.updateWindowOpacity)
+                        send: Config.Action.updateWindowOpacity
+                    )
                 )
-            
-            
+                
+                
                 HStack {
-                    Text("windowOpacityDuration")
+                    Text("Window Opacity Duration")
                     TextField(
-                        "windowOpacityDuration",
+                        "",
                         value: viewStore.binding(
                             get: \.windowOpacityDuration,
-                            send: Config.Action.updateWindowOpacityDuration),
+                            send: Config.Action.updateWindowOpacityDuration
+                        ),
                         formatter: NumberFormatter()
                     )
                 }
                 HStack {
-                    Text("activeWindowOpacity")
+                    Text("Active Window Opacity")
                     TextField(
-                        "activeWindowOpacity",
+                        "",
                         value: viewStore.binding(
                             get: \.activeWindowOpacity,
-                            send: Config.Action.updateActiveWindowOpacity),
+                            send: Config.Action.updateActiveWindowOpacity
+                        ),
                         formatter: NumberFormatter()
                     )
                 }
                 HStack {
-                    Text("normalWindowOpacity")
+                    Text("Normal Window Opacity")
                     TextField(
-                        "normalWindowOpacity",
+                        "",
                         value: viewStore.binding(
                             get: \.normalWindowOpacity,
-                            send: Config.Action.updateNormalWindowOpacity),
+                            send: Config.Action.updateNormalWindowOpacity
+                        ),
                         formatter: NumberFormatter()
                     )
                 }
@@ -153,20 +171,20 @@ struct WindowView: View {
     }
 }
 
-struct BordersView: View {
+private struct BordersView: View {
     let store: Store<Config.State, Config.Action>
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            Section(header: Text("BordersView")) {
-                Toggle("windowBorder", isOn: viewStore.binding(
+            Section(header: Text("Window Borders")) {
+                Toggle("Window Border", isOn: viewStore.binding(
                         get: \.windowBorder,
                         send: Config.Action.updateWindowBorder)
                 )
                 HStack {
-                    Text("windowBorderWidth")
+                    Text("Window Border Width")
                     TextField(
-                        "windowBorderWidth",
+                        "",
                         value: viewStore.binding(
                             get: \.windowBorderWidth,
                             send: Config.Action.updateWindowBorderWidth),
@@ -174,21 +192,21 @@ struct BordersView: View {
                     )
                 }
                 ColorPicker(
-                    "activeWindowBorderColor",
+                    "Active Window Border Color",
                     selection: viewStore.binding(
                         get: \.activeWindowBorderColor,
                         send: Config.Action.updateActiveWindowBorderColor
                     )
                 )
                 ColorPicker(
-                    "normalWindowBorderColor",
+                    "Normal Window Border Color",
                     selection: viewStore.binding(
                         get: \.normalWindowBorderColor,
                         send: Config.Action.updateNormalWindowBorderColor
                     )
                 )
                 ColorPicker(
-                    "insertFeedbackColor",
+                    "Insert Feedback Color",
                     selection: viewStore.binding(
                         get: \.insertFeedbackColor,
                         send: Config.Action.updateInsertFeedbackColor
@@ -199,23 +217,23 @@ struct BordersView: View {
     }
 }
 
-struct SplitRatioView: View {
+private struct SplitRatioView: View {
     let store: Store<Config.State, Config.Action>
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            Section(header: Text("SplitRatioView")) {
+            Section(header: Text("Split Ratios")) {
                 HStack {
-                    Text("splitRatio")
+                    Text("Split Ratio")
                     TextField(
-                        "splitRatio",
+                        "Split Ratio",
                         value: viewStore.binding(
                             get: \.splitRatio,
                             send: Config.Action.updateSplitRatio),
                         formatter: NumberFormatter()
                     )
                 }
-                Toggle("autoBalance", isOn: viewStore.binding(
+                Toggle("Auto Balance", isOn: viewStore.binding(
                         get: \.autoBalance,
                         send: Config.Action.updateAutoBalance)
                 )
@@ -224,13 +242,13 @@ struct SplitRatioView: View {
     }
 }
 
-struct MouseModifierView: View {
+private struct MouseModifierView: View {
     let store: Store<Config.State, Config.Action>
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            Section(header: Text("MouseModifierView")) {
-                Picker("mouseModifier", selection:
+            Section(header: Text("Mouse Modifiers")) {
+                Picker("Mouse Modifier", selection:
                         viewStore.binding(
                             get: \.mouseModifier,
                             send: Config.Action.updateMouseModifier)
@@ -239,7 +257,7 @@ struct MouseModifierView: View {
                         Text($0.rawValue)
                     }
                 }
-                Picker("mouseAction1", selection:
+                Picker("Mouse Action 1", selection:
                         viewStore.binding(
                             get: \.mouseAction1,
                             send: Config.Action.updateMouseAction1)
@@ -248,7 +266,7 @@ struct MouseModifierView: View {
                         Text($0.rawValue)
                     }
                 }
-                Picker("mouseAction2", selection:
+                Picker("Mouse Action 2", selection:
                         viewStore.binding(
                             get: \.mouseAction2,
                             send: Config.Action.updateMouseAction2)
@@ -257,7 +275,7 @@ struct MouseModifierView: View {
                         Text($0.rawValue)
                     }
                 }
-                Picker("mouseAction2", selection:
+                Picker("Mouse Action 2", selection:
                         viewStore.binding(
                             get: \.mouseDropAction,
                             send: Config.Action.updateMouseDropAction)

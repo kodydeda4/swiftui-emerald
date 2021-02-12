@@ -10,11 +10,11 @@ import ComposableArchitecture
 
 struct Onboarding {
     struct State: Equatable {
-        var isDismissed = false
+        var isOnboaring = false
     }
     
     enum Action: Equatable {
-        case toggleDismissed
+        case toggleIsOnboaring
     }
     
     struct Environment {
@@ -27,8 +27,8 @@ extension Onboarding {
         Reducer { state, action, environment in
             switch action {
             
-            case .toggleDismissed:
-                state.isDismissed.toggle()
+            case .toggleIsOnboaring:
+                state.isOnboaring.toggle()
                 return .none
                 
             }

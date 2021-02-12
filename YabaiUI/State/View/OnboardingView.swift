@@ -47,7 +47,7 @@ struct OnboardingView: View {
                 .padding()
                 
                 Spacer()
-                Button("Continue") { viewStore.send(.toggleDismissed) }
+                Button("Continue") { viewStore.send(.toggleIsOnboaring) }
                     .buttonStyle(PlainButtonStyle())
                     .padding(.vertical, 6)
                     .padding(.horizontal, 12)

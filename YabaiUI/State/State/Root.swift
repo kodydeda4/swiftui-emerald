@@ -14,27 +14,13 @@ struct Root {
         var yabai = Yabai.State()
         var skhd = SKHD.State()
         var config = Config.State()
-        
-        var displayingOnboard = false
         var onboarding = Onboarding.State()
-        var errorString: String = ""
         
+        var errorString: String = ""
         var yabaiVersion: String = run("/usr/local/bin/yabai", "-v").stdout
         var skhdVersion: String = run("/usr/local/bin/skhd", "-v").stdout
         var brewVersion: String = run("/usr/local/bin/brew", "-v").stdout
         
-        var yabaiUIApplicationSupportDirectory: URL {
-            let path = FileManager.default
-                .urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
-                .appendingPathComponent("YabaiUI")
-            
-            if !FileManager.default.fileExists(atPath: path.absoluteString) {
-                try! FileManager.default
-                    .createDirectory(at: path, withIntermediateDirectories: true, attributes: nil)
-            }
-            return path
-        }
-
         var yabaiPath: URL {
             yabaiUIApplicationSupportDirectory
             .appendingPathComponent("yabaiState.json")
@@ -50,17 +36,29 @@ struct Root {
         
         let skhdConfigPath = URL(fileURLWithPath: NSHomeDirectory())
             .appendingPathComponent("skhdConfig")
+        
+        
+        var yabaiUIApplicationSupportDirectory: URL {
+            let path = FileManager.default
+                .urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
+                .appendingPathComponent("YabaiUI")
+            
+            if !FileManager.default.fileExists(atPath: path.absoluteString) {
+                try! FileManager.default
+                    .createDirectory(at: path, withIntermediateDirectories: true, attributes: nil)
+            }
+            return path
+        }
     }
     
     enum Action: Equatable {
         case yabai(Yabai.Action)
         case skhd(SKHD.Action)
         case config(Config.Action)
+        case onboarding(Onboarding.Action)
         case save
         case load
         case exportConfigs
-        case onboarding(Onboarding.Action)
-        case toggleDisplayingOnboard
     }
     
     struct Environment {
@@ -68,12 +66,9 @@ struct Root {
             do {
                 let encodedYabaiState = try JSONEncoder().encode(state.yabai)
                 try encodedYabaiState.write(to: state.yabaiPath)
-                
                 let encodedSKHDState = try JSONEncoder().encode(state.skhd)
                 try encodedSKHDState.write(to: state.skhdPath)
-
                 return .success(true)
-                
             } catch {
                 return .failure(error)
             }
@@ -83,10 +78,8 @@ struct Root {
             do {
                 let yabaiData = try Data(contentsOf: state.yabaiPath)
                 let decodedYabaiState = try JSONDecoder().decode(Yabai.State.self, from: yabaiData)
-                
                 let skhdData = try Data(contentsOf: state.skhdPath)
                 let decodedSKHDState = try JSONDecoder().decode(SKHD.State.self, from: skhdData)
-
                 return .success((decodedYabaiState, decodedSKHDState))
             }
             catch {
@@ -98,10 +91,8 @@ struct Root {
             do {
                 let yabaiConfigData = createYabaiConfig(state: state)
                 try yabaiConfigData.write(to: state.yabaiConfigPath, atomically: true, encoding: .utf8)
-                
                 let skhdConfigData = createSKHDConfig(state: state)
                 try skhdConfigData.write(to: state.skhdConfigPath, atomically: true, encoding: .utf8)
-                
                 return .success(true)
             }
             catch {
@@ -153,8 +144,7 @@ extension Root {
             case let .config(subAction):
                 return .none
                 
-            case .toggleDisplayingOnboard:
-                state.displayingOnboard.toggle()
+            case let .onboarding(subAction):
                 return .none
                 
             case .save:
@@ -182,13 +172,6 @@ extension Root {
                     state.errorString = ""
                 case let .failure(error):
                     state.errorString = "Failed to export config files."
-                }
-                return .none
-                
-            case let .onboarding(subAction):
-                switch subAction {
-                case .toggleDismissed:
-                    state.displayingOnboard.toggle()
                 }
                 return .none
             }

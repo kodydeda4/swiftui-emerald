@@ -23,8 +23,8 @@ struct RootView: View {
             }
             .onAppear { viewStore.send(.load) }
             .sheet(isPresented: viewStore.binding(
-                    get: \.displayingOnboard,
-                    send: Root.Action.toggleDisplayingOnboard)
+                    get: \.onboarding.isOnboaring,
+                    send: Root.Action.onboarding(.toggleIsOnboaring))
             ) {
                 OnboardingView(store: store.scope(
                             state: \.onboarding,
@@ -38,7 +38,7 @@ struct RootView: View {
                 }
                 ToolbarItem {
                     Button("Toggle OnboardingView") {
-                        viewStore.send(.toggleDisplayingOnboard)
+                        viewStore.send(.onboarding(.toggleIsOnboaring))
                     }
                 }
             }
