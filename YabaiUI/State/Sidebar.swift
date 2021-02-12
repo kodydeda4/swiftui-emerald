@@ -20,7 +20,6 @@ struct SidebarView: View {
                         Label("Space", systemImage: "rectangle.3.offgrid")
                             .accentColor(.purple)
                     }
-                    .navigationSubtitle("Space")
                     
                     Divider()
                     

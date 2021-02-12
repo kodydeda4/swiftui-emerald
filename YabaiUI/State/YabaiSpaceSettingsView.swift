@@ -25,6 +25,7 @@ struct YabaiSpaceSettingsView: View {
                             action: Root.Action.skhd))
             }
         }
+        .navigationTitle("YabaiUI - Space Settings")
     }
 }
 

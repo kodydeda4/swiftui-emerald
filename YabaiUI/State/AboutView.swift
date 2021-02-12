@@ -15,8 +15,14 @@ struct AboutView: View {
         WithViewStore(store) { viewStore in
             List {
                 VStack(alignment: .leading) {
-                    Text("Authors")
+                    Text("YabaiUI Authors")
                     Text("Team Alpha - Kody Deda, Zane Bernard, Zachary Mitzke, Robin Wood, Paolo Imperio")
+                        .foregroundColor(.gray)
+                }
+                
+                VStack(alignment: .leading) {
+                    Text("Yabai & SKHD Authors")
+                    Text("koekeishiya")
                         .foregroundColor(.gray)
                 }
                 
@@ -41,6 +47,7 @@ struct AboutView: View {
                         .lineLimit(1)
                 }
             }
+            .navigationTitle("YabaiUI - About")
         }
     }
 }

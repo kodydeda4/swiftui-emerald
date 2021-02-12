@@ -216,11 +216,11 @@ struct RootView: View {
                             action: Root.Action.onboarding))
             }
             .toolbar {
-                ToolbarItem {
-                    Button(action: toggleSidebar) {
-                        Image(systemName: "sidebar.left")
-                    }
-                }
+                //ToolbarItem {
+                //    Button(action: toggleSidebar) {
+                //        Image(systemName: "sidebar.left")
+                //    }
+                //}
                 ToolbarItem {
                     Button("Export Data") {
                         viewStore.send(.exportConfigs)
