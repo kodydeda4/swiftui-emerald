@@ -35,7 +35,6 @@ struct Config {
         
         enum MouseModifier: String, Codable, CaseIterable, Identifiable {
             var id: MouseModifier { self }
-            
             case cmd
             case alt
             case shift
