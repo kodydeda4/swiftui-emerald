@@ -16,8 +16,9 @@ struct Root {
         // Features.  Currently they just have yabai related stuffs.
         var space = Space.State()
         var config = Config.State()
-        
         var errorString: String = ""
+        
+        
         var yabaiVersion: String = run("/usr/local/bin/yabai", "-v").stdout
         var skhdVersion: String = run("/usr/local/bin/skhd", "-v").stdout
         var brewVersion: String = run("/usr/local/bin/brew", "-v").stdout
@@ -26,15 +27,9 @@ struct Root {
             yabaiUIApplicationSupportDirectory
             .appendingPathComponent("yabaiState.json")
         }
-        
-        var skhdPath: URL {
-            yabaiUIApplicationSupportDirectory
-            .appendingPathComponent("skhdState.json")
-        }
-            
+
         let yabaiConfigPath = URL(fileURLWithPath: NSHomeDirectory())
             .appendingPathComponent("yabaiConfig")
-                
         
         var yabaiUIApplicationSupportDirectory: URL {
             let path = FileManager.default
@@ -51,7 +46,6 @@ struct Root {
     
     enum Action: Equatable {
         case onboarding(Onboarding.Action)
-        
         case space(Space.Action)
         case config(Config.Action)
         case save

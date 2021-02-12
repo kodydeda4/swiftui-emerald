@@ -8,28 +8,7 @@
 import SwiftUI
 import ComposableArchitecture
 
-//struct SpaceSettingsView: View {
-//    let store: Store<Root.State, Root.Action>
-//
-//    var body: some View {
-//        List {
-//            Section(header: Text("Yabai Settings")) {
-//                YabaiSpaceSettingsView(store: store.scope(
-//                            state: \.space,
-//                            action: Root.Action.space))
-//            }
-//            Divider()
-//            Section(header: Text("SKHD Settings")) {
-//                SKHDSpaceSettingsView(store: store.scope(
-//                            state: \.skhd,
-//                            action: Root.Action.skhd))
-//            }
-//        }
-//        .navigationTitle("Space")
-//    }
-//}
-
-struct SpaceSettingsView: View {
+struct SpaceView: View {
     let store: Store<Space.State, Space.Action>
     @State var errorMessage: String = ""
     
@@ -94,33 +73,8 @@ struct SpaceSettingsView: View {
     }
 }
 
-//struct SKHDSpaceSettingsView: View {
-//    let store: Store<SKHD.State, SKHD.Action>
-//
-//    var body: some View {
-//        WithViewStore(store) { viewStore in
-//            VStack {
-//                HStack {
-//                    Text("Example")
-//                    TextField("Untitled", text: viewStore.binding(
-//                        get: \.skhdString,
-//                        send: SKHD.Action.updateSKHDString
-//                    ))
-//                }
-//            }
-//        }
-//    }
-//}
-
-//struct SKHDSpaceSettingsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SKHDSpaceSettingsView(store: SKHD.defaultStore)
-//    }
-//}
-
-
 struct SpaceSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SpaceSettingsView(store: Space.defaultStore)
+        SpaceView(store: Space.defaultStore)
     }
 }
