@@ -203,33 +203,8 @@ struct RootView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            List {
-                VStack(alignment: .leading) {
-                    
-                    Text("Yabai Version")
-                    Text(viewStore.yabaiVersion).foregroundColor(.gray)
-                        .padding(.bottom)
-                    
-                    Text("SKHD Version")
-                    Text(viewStore.skhdVersion).foregroundColor(.gray)
-                        .padding(.bottom)
-                    
-                    Text("HomeBrew Version")
-                    Text(viewStore.brewVersion).foregroundColor(.gray)
-                        .padding(.bottom)
-                }
-                
-                Section(header: Text("Yabai Settings")) {
-                    YabaiView(store: store.scope(
-                                state: \.yabai,
-                                action: Root.Action.yabai))
-                }
-                Divider()
-                Section(header: Text("SKHD Settings")) {
-                    SKHDView(store: store.scope(
-                                state: \.skhd,
-                                action: Root.Action.skhd))
-                }
+            NavigationView {
+                SidebarView(store: store)
             }
             .onAppear { viewStore.send(.load) }
             .sheet(isPresented: viewStore.binding(
@@ -242,6 +217,11 @@ struct RootView: View {
             }
             .toolbar {
                 ToolbarItem {
+                    Button(action: toggleSidebar) {
+                        Image(systemName: "sidebar.left")
+                    }
+                }
+                ToolbarItem {
                     Button("Export Data") {
                         viewStore.send(.exportConfigs)
                     }
@@ -251,7 +231,6 @@ struct RootView: View {
                         viewStore.send(.toggleDisplayingOnboard)
                     }
                 }
-
             }
         }
     }
