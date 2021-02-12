@@ -103,7 +103,7 @@ struct Config {
         case updateMouseModifier(Config.State.MouseModifier)
         case updateMouseAction1(Config.State.MouseAction)
         case updateMouseAction2(Config.State.MouseAction)
-        case updateMouseDrop_action(Config.State.MouseDropAction)
+        case updateMouseDropAction(Config.State.MouseDropAction)
     }
     
     struct Environment {
@@ -200,7 +200,7 @@ extension Config {
                 state.mouseAction2 = mouseAction
                 return .none
                 
-            case let .updateMouseDrop_action(mouseDropAction):
+            case let .updateMouseDropAction(mouseDropAction):
                 state.mouseDropAction = mouseDropAction
                 return .none
                 
@@ -224,37 +224,198 @@ struct ConfigView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            Toggle("debugOutput", isOn: viewStore.binding(get: \.debugOutput, send: Config.Action.updateDebugOutput))
-            
-            
-            
-            
-//            var debugOutput             : Bool               = false
-//            var externalBar             : ExternalBar        = .off
-//            var mouseFollowsFocus       : Bool               = false
-//            var focusFollowsMouse       : FocusFollowsMouse  = .off
-//            var windowPlacement         : WindowPlacement    = .firstChild
-//            var windowTopmost           : Bool               = false
-//            var windowShadow            : Bool               = false
-//            var windowOpacity           : Bool               = false
-//            var windowOpacityDuration   : Float              = 1
-//            var activeWindowOpacity     : Float              = 1
-//            var normalWindowOpacity     : Float              = 1
-//            var windowBorder            : Bool               = false
-//            var windowBorderWidth       : Int                = 0
-//            var activeWindowBorderColor : Color              = .clear
-//            var normalWindowBorderColor : Color              = .clear
-//            var insertFeedbackColor     : Color              = .clear
-//            var splitRatio              : Float              = 1
-//            var autoBalance             : Bool               = false
-//            var mouseModifier           : MouseModifier      = .cmd
-//            var mouseAction1            : MouseAction        = .move
-//            var mouseAction2            : MouseAction        = .move
-//            var mouseDropAction         : MouseDropAction    = .swap
-            
-            
-
-            
+            VStack {
+                Section {
+                    Toggle("debugOutput", isOn: viewStore.binding(
+                            get: \.debugOutput,
+                            send: Config.Action.updateDebugOutput)
+                    )
+                    
+                    Picker("externalBar", selection:
+                            viewStore.binding(
+                                get: \.externalBar,
+                                send: Config.Action.updateExternalBar)
+                    ) {
+                        ForEach(Config.State.ExternalBar.allCases) {
+                            Text($0.rawValue)
+                        }
+                    }
+                    
+                    
+                    Toggle("mouseFollowsFocus", isOn: viewStore.binding(
+                            get: \.mouseFollowsFocus,
+                            send: Config.Action.updateMouseFollowsFocus)
+                    )
+                    
+                    
+                    Picker("focusFollowsMouse", selection:
+                            viewStore.binding(
+                                get: \.focusFollowsMouse,
+                                send: Config.Action.updateFocusFollowsMouse)
+                    ) {
+                        ForEach(Config.State.FocusFollowsMouse.allCases) {
+                            Text($0.rawValue)
+                        }
+                    }
+                    
+                    Picker("windowPlacement", selection:
+                            viewStore.binding(
+                                get: \.windowPlacement,
+                                send: Config.Action.updateWindowPlacement)
+                    ) {
+                        ForEach(Config.State.WindowPlacement.allCases) {
+                            Text($0.rawValue)
+                        }
+                    }
+                    
+                    Toggle("windowTopmost", isOn: viewStore.binding(
+                            get: \.windowTopmost,
+                            send: Config.Action.updateWindowTopmost)
+                    )
+                    
+                    Toggle("windowShadow", isOn: viewStore.binding(
+                            get: \.windowShadow,
+                            send: Config.Action.updateWindowShadow)
+                    )
+                    
+                    Toggle("windowOpacity", isOn: viewStore.binding(
+                            get: \.windowOpacity,
+                            send: Config.Action.updateWindowOpacity)
+                    )
+                    
+                    HStack {
+                        Text("windowOpacityDuration")
+                        TextField(
+                            "windowOpacityDuration",
+                            value: viewStore.binding(
+                                get: \.windowOpacityDuration,
+                                send: Config.Action.updateWindowOpacityDuration),
+                            formatter: NumberFormatter()
+                        )
+                    }
+                }
+                
+                Section {
+                    
+                    HStack {
+                        Text("activeWindowOpacity")
+                        TextField(
+                            "activeWindowOpacity",
+                            value: viewStore.binding(
+                                get: \.activeWindowOpacity,
+                                send: Config.Action.updateActiveWindowOpacity),
+                            formatter: NumberFormatter()
+                        )
+                    }
+                    
+                    HStack {
+                        Text("normalWindowOpacity")
+                        TextField(
+                            "normalWindowOpacity",
+                            value: viewStore.binding(
+                                get: \.normalWindowOpacity,
+                                send: Config.Action.updateNormalWindowOpacity),
+                            formatter: NumberFormatter()
+                        )
+                    }
+                    
+                    Toggle("windowBorder", isOn: viewStore.binding(
+                            get: \.windowBorder,
+                            send: Config.Action.updateWindowBorder)
+                    )
+                    
+                    HStack {
+                        Text("windowBorderWidth")
+                        TextField(
+                            "windowBorderWidth",
+                            value: viewStore.binding(
+                                get: \.windowBorderWidth,
+                                send: Config.Action.updateWindowBorderWidth),
+                            formatter: NumberFormatter()
+                        )
+                    }
+                    
+                    ColorPicker(
+                        "activeWindowBorderColor",
+                        selection: viewStore.binding(
+                            get: \.activeWindowBorderColor,
+                            send: Config.Action.updateActiveWindowBorderColor
+                        )
+                    )
+                    
+                    ColorPicker(
+                        "normalWindowBorderColor",
+                        selection: viewStore.binding(
+                            get: \.normalWindowBorderColor,
+                            send: Config.Action.updateNormalWindowBorderColor
+                        )
+                    )
+                    
+                    ColorPicker(
+                        "insertFeedbackColor",
+                        selection: viewStore.binding(
+                            get: \.insertFeedbackColor,
+                            send: Config.Action.updateInsertFeedbackColor
+                        )
+                    )
+                    
+                    HStack {
+                        Text("splitRatio")
+                        TextField(
+                            "splitRatio",
+                            value: viewStore.binding(
+                                get: \.splitRatio,
+                                send: Config.Action.updateSplitRatio),
+                            formatter: NumberFormatter()
+                        )
+                    }
+                    
+                    Toggle("autoBalance", isOn: viewStore.binding(
+                            get: \.autoBalance,
+                            send: Config.Action.updateAutoBalance)
+                    )
+                    
+                    Picker("mouseModifier", selection:
+                            viewStore.binding(
+                                get: \.mouseModifier,
+                                send: Config.Action.updateMouseModifier)
+                    ) {
+                        ForEach(Config.State.MouseModifier.allCases) {
+                            Text($0.rawValue)
+                        }
+                    }
+                }
+                    
+                    Picker("mouseAction1", selection:
+                            viewStore.binding(
+                                get: \.mouseAction1,
+                                send: Config.Action.updateMouseAction1)
+                    ) {
+                        ForEach(Config.State.MouseAction.allCases) {
+                            Text($0.rawValue)
+                        }
+                    }
+                
+                Picker("mouseAction2", selection:
+                        viewStore.binding(
+                            get: \.mouseAction2,
+                            send: Config.Action.updateMouseAction2)
+                ) {
+                    ForEach(Config.State.MouseAction.allCases) {
+                        Text($0.rawValue)
+                    }
+                }
+                
+                Picker("mouseAction2", selection:
+                        viewStore.binding(
+                            get: \.mouseDropAction,
+                            send: Config.Action.updateMouseDropAction)
+                ) {
+                    ForEach(Config.State.MouseDropAction.allCases) {
+                        Text($0.rawValue)
+                    }
+                }
+            }
         }
     }
 }
