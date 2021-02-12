@@ -27,7 +27,6 @@ struct OnboardingView: View {
                         .font(.body)
                         .foregroundColor(.gray)
                 }
-                
                 VStack {
                     FeatureView(
                         image: Image(systemName: "sparkles"),
@@ -100,6 +99,5 @@ struct OnboardingView_Previews: PreviewProvider {
         OnboardingView(store: Onboarding.defaultStore)
     }
 }
-
 
 
