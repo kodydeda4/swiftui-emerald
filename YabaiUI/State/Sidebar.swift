@@ -17,14 +17,16 @@ struct SidebarView: View {
                 Section(header: Text("Settings")) {
                     // Links
                     NavigationLink(destination: YabaiSpaceSettingsView(store: store)) {
-                        Label("Space", systemImage: "rectangle.3.offgrid").accentColor(.purple)
+                        Label("Space", systemImage: "rectangle.3.offgrid")
+                            .accentColor(.purple)
                     }
                     .navigationSubtitle("Space")
                     
                     Divider()
                     
                     NavigationLink(destination: AboutView(store: store)) {
-                        Label("About", systemImage: "ellipsis").accentColor(.purple)
+                        Label("About", systemImage: "terminal")
+                            .accentColor(.purple)
                     }
                     .navigationSubtitle("About")
                 }
