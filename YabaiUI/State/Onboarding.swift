@@ -103,23 +103,83 @@ struct VStackOfTextViews_Previews: PreviewProvider {
 
 // MARK:- OnboardingView
 
+struct FeatureView: View {
+    let image: Image
+    let featureName: String
+    let featureDescription: String
+    
+    var body: some View {
+        HStack {
+            image
+                .resizable()
+                .frame(width: 24, height: 24)
+                .foregroundColor(.accentColor)
+                
+            
+            
+            VStack(alignment: .leading) {
+                Text(featureName)
+                    .font(.title3)
+                    .fontWeight(.medium)
+                
+                Text(featureDescription)
+                    .font(.body)
+                    .foregroundColor(.gray)
+            }
+        }
+    }
+}
+
+
 struct OnboardingView: View {
     let store: Store<Onboarding.State, Onboarding.Action>
     
     var body: some View {
         WithViewStore(store) { viewStore in
             VStack {
-                Image("iconLogo")
-                    .resizable()
-                    .frame(width: 100, height: 100)
+                VStack {
+                    Image("iconLogo")
+                        .resizable()
+                        .frame(width: 100, height: 100)
+                    
+                    Text("Welcome to YabaiUI")
+                        .font(.largeTitle)
+                        .fontWeight(.medium)
+                    
+                    Text("Some super neat description.")
+                        .font(.body)
+                        .foregroundColor(.gray)
+                }
+                VStack {
+                    FeatureView(
+                        image: Image(systemName: "sparkles"),
+                        featureName: "Feature A",
+                        featureDescription: "Description about how cool said feature is."
+                    )
+                    
+                    FeatureView(
+                        image: Image(systemName: "scribble.variable"),
+                        featureName: "Feature B",
+                        featureDescription: "Description about how cool said feature is."
+                    )
+                    
+                    FeatureView(
+                        image: Image(systemName: "leaf.fill"),
+                        featureName: "Feature C",
+                        featureDescription: "Description about how cool said feature is."
+                    )
+                }
+                .padding()
                 
-                Text("Welcome to YabaiUI")
-                    .font(.largeTitle)
-                
-                
-                Button("Contine") {
+                Spacer()
+                Button("Continue") {
                     viewStore.send(.toggleDismissed)
                 }
+                .buttonStyle(PlainButtonStyle())
+                .padding(.vertical, 6)
+                .padding(.horizontal, 12)
+                .background(Color.accentColor)
+                .clipShape(RoundedRectangle(cornerRadius: 6))
             }
             .padding()
         }
