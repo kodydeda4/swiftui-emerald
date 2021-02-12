@@ -16,14 +16,20 @@ struct OnboardingView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             VStack {
-                Image("iconLogo")
-                    .resizable()
-                    .frame(width: 100, height: 100)
-
-                TitleView(
-                    title: "Welcome to YabaiUI",
-                    titleDescription: "Some super neat description."
-                )
+                VStack {
+                    Image("iconLogo")
+                        .resizable()
+                        .frame(width: 100, height: 100)
+                    
+                    Text("Welcome to YabaiUI")
+                        .font(.largeTitle)
+                        .fontWeight(.medium)
+                    
+                    Text("Some super neat description.")
+                        .font(.body)
+                        .foregroundColor(.gray)
+                }
+                
                 VStack {
                     FeatureView(
                         image: Image(systemName: "sparkles"),
@@ -41,38 +47,15 @@ struct OnboardingView: View {
                         featureDescription: "Description about how cool said feature is."
                     )
                 }
-                .padding()
                 Spacer()
-                Button("Continue") {
-                    viewStore.send(.toggleDismissed)
-                }
-                .buttonStyle(PlainButtonStyle())
-                .padding(.vertical, 6)
-                .padding(.horizontal, 12)
-                .background(Color.accentColor)
-                .clipShape(RoundedRectangle(cornerRadius: 6))
+                Button("Continue") { viewStore.send(.toggleDismissed) }
+                    .buttonStyle(PlainButtonStyle())
+                    .padding(.vertical, 6)
+                    .padding(.horizontal, 12)
+                    .background(Color.accentColor)
+                    .clipShape(RoundedRectangle(cornerRadius: 6))
             }
             .padding()
-        }
-    }
-}
-
-struct TitleView: View {
-    var title: String
-    var titleDescription: String
-    
-    var body: some View {
-        VStack {
-            VStack {
-                Text(title)
-                    .font(.largeTitle)
-                    .fontWeight(.medium)
-                
-                Text(titleDescription)
-                    .font(.body)
-                    .foregroundColor(.gray)
-            }
-            
         }
     }
 }
