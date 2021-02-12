@@ -55,6 +55,14 @@ extension Yabai {
             
             case let .updateLayout(layout):
                 state.layout = layout
+                switch layout {
+                case .float:
+                    let _ = AppleScript.yabaiSetFloating.execute()
+                case .bsp:
+                    let _ = AppleScript.yabaiSetBSP.execute()
+                case .stack:
+                    print()
+                }
                 return .none
                 
             case let .updatePaddingTop(int):
@@ -99,13 +107,6 @@ struct YabaiView: View {
         WithViewStore(store) { viewStore in
             VStack {
                 Text(errorMessage)
-                Button("float") {
-                    errorMessage = AppleScript.yabaiSetFloating.execute()
-                }
-                Button("bsp") {
-                    errorMessage = AppleScript.yabaiSetBSP.execute()
-                }
-                
                 Picker("Layout", selection:
                         viewStore.binding(
                             get: \.layout,
