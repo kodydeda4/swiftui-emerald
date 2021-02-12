@@ -205,6 +205,11 @@ struct RootView: View {
         WithViewStore(store) { viewStore in
             NavigationView {
                 SidebarView(store: store)
+                VStack {
+                    Text("Welcome Page")
+                        .font(.largeTitle)
+                        .foregroundColor(Color(NSColor.placeholderTextColor))
+                }
             }
             .onAppear { viewStore.send(.load) }
             .sheet(isPresented: viewStore.binding(

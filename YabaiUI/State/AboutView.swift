@@ -21,7 +21,7 @@ struct AboutView: View {
                 }
                 
                 VStack(alignment: .leading) {
-                    Text("Yabai & SKHD Authors")
+                    Text("Yabai & SKHD Author")
                     Text("koekeishiya")
                         .foregroundColor(.gray)
                 }

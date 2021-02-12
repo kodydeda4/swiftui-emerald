@@ -8,6 +8,22 @@
 import ComposableArchitecture
 import SwiftUI
 
+struct UnderConstructionView: View {
+    let text: String
+    
+    init(_ text: String) {
+        self.text = text
+    }
+    
+    var body: some View {
+        VStack {
+            Text(text)
+                .font(.largeTitle)
+                .foregroundColor(Color(NSColor.placeholderTextColor))
+        }
+    }
+}
+
 struct SidebarView: View {
     let store: Store<Root.State, Root.Action>
     
@@ -15,19 +31,31 @@ struct SidebarView: View {
         WithViewStore(store) { viewStore in
             List {
                 Section(header: Text("Settings")) {
-                    // Links
+                    NavigationLink(destination: UnderConstructionView("Config")) {
+                        Label("Config", systemImage: "slider.horizontal.3")
+                    }
+                    NavigationLink(destination: UnderConstructionView("Display")) {
+                        Label("Display", systemImage: "display")
+                    }
                     NavigationLink(destination: YabaiSpaceSettingsView(store: store)) {
                         Label("Space", systemImage: "rectangle.3.offgrid")
-                            .accentColor(.purple)
                     }
-                    
-                    Divider()
-                    
-                    NavigationLink(destination: AboutView(store: store)) {
-                        Label("About", systemImage: "terminal")
-                            .accentColor(.purple)
+                    NavigationLink(destination: UnderConstructionView("Window")) {
+                        Label("Window", systemImage: "macwindow")
                     }
-                    .navigationSubtitle("About")
+                    NavigationLink(destination: UnderConstructionView("Query")) {
+                        Label("Query", systemImage: "terminal")
+                    }
+                    NavigationLink(destination: UnderConstructionView("Rule")) {
+                        Label("Rule", systemImage: "keyboard")
+                    }
+                    NavigationLink(destination: UnderConstructionView("Signal")) {
+                        Label("Signal", systemImage: "antenna.radiowaves.left.and.right")
+                    }
+                }
+                Divider()
+                NavigationLink(destination: AboutView(store: store)) {
+                    Label("About", systemImage: "gear")
                 }
             }
         }
