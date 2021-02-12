@@ -15,8 +15,10 @@ struct Root {
     struct State: Equatable {
         var yabai = Yabai.State()
         var skhd = SKHD.State()
+        
+        var displayingOnboard = false
         var onboarding = Onboarding.State()
-
+        var errorString: String = ""
         
         var yabaiVersion: String = run("/usr/local/bin/yabai", "-v").stdout
         var skhdVersion: String = run("/usr/local/bin/skhd", "-v").stdout
@@ -50,7 +52,7 @@ struct Root {
         let skhdConfigPath = URL(fileURLWithPath: NSHomeDirectory())
             .appendingPathComponent("skhdConfig")
 
-        var errorString: String = ""
+        
         
     }
     
@@ -61,6 +63,7 @@ struct Root {
         case load
         case exportConfigs
         case onboarding(Onboarding.Action)
+        case toggleDisplayingOnboard
     }
     
     struct Environment {
@@ -145,6 +148,10 @@ extension Root {
             case let .skhd(subAction):
                 return Effect(value: .save)
                 
+            case .toggleDisplayingOnboard:
+                state.displayingOnboard.toggle()
+                return .none
+                
             case .save:
                 switch environment.save(state: state) {
                 case .success:
@@ -174,6 +181,10 @@ extension Root {
                 return .none
                 
             case let .onboarding(subAction):
+                switch subAction {
+                case .toggleDismissed:
+                    state.displayingOnboard.toggle()
+                }
                 return .none
             }
         }
@@ -211,10 +222,6 @@ struct RootView: View {
                         .padding(.bottom)
                 }
                 
-                OnboardingView(store: store.scope(
-                            state: \.onboarding,
-                            action: Root.Action.onboarding))
-                
                 Section(header: Text("Yabai Settings")) {
                     YabaiView(store: store.scope(
                                 state: \.yabai,
@@ -228,12 +235,26 @@ struct RootView: View {
                 }
             }
             .onAppear { viewStore.send(.load) }
+            .sheet(isPresented: viewStore.binding(
+                    get: \.displayingOnboard,
+                    send: Root.Action.toggleDisplayingOnboard)
+            ) {
+                OnboardingView(store: store.scope(
+                            state: \.onboarding,
+                            action: Root.Action.onboarding))
+            }
             .toolbar {
                 ToolbarItem {
                     Button("Export Data") {
                         viewStore.send(.exportConfigs)
                     }
                 }
+                ToolbarItem {
+                    Button("Toggle OnboardingView") {
+                        viewStore.send(.toggleDisplayingOnboard)
+                    }
+                }
+
             }
         }
     }

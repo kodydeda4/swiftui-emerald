@@ -12,16 +12,11 @@ import ComposableArchitecture
 
 struct Onboarding {
     struct State: Equatable {
-        var alert: AlertState<Onboarding.Action>?
-        var count = 0
+        var isDismissed = false
     }
     
     enum Action: Equatable {
-        case alertButtonTapped
-        case alertCancelTapped
-        case alertDismissed
-        case decrementButtonTapped
-        case incrementButtonTapped
+        case toggleDismissed
     }
     
     struct Environment {
@@ -31,37 +26,13 @@ struct Onboarding {
 
 extension Onboarding {
     static let reducer = Reducer<State, Action, Environment>.combine(
-        // pullbacks
-        
         Reducer { state, action, environment in
-            // mutations
             switch action {
             
-            case .alertButtonTapped:
-                state.alert = .init(
-                    title: .init("Alert!"),
-                    message: .init("This is an alert"),
-                    primaryButton: .cancel(),
-                    secondaryButton: .default(.init("Increment"), send: .incrementButtonTapped)
-                )
+            case .toggleDismissed:
+                state.isDismissed.toggle()
                 return .none
                 
-            case .alertCancelTapped:
-                return .none
-                
-            case .alertDismissed:
-                state.alert = nil
-                return .none
-                
-            case .decrementButtonTapped:
-                state.alert = .init(title: .init("Decremented!"))
-                state.count -= 1
-                return .none
-                
-            case .incrementButtonTapped:
-                state.alert = .init(title: .init("Incremented!"))
-                state.count += 1
-                return .none
             }
         }
     )
@@ -76,52 +47,20 @@ extension Onboarding {
 }
 
 // MARK:- OnboardingView
+
 struct OnboardingView: View {
     let store: Store<Onboarding.State, Onboarding.Action>
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            Form {
-                Text("Count: \(viewStore.count)")
-                
-                Button("Alert") {
-                    viewStore.send(.alertButtonTapped)
+            VStack {
+                Button("Contine") {
+                    viewStore.send(.toggleDismissed)
                 }
-                .sheet(isPresented: .constant(true)) {
-                    // sheet dismissed using Binding
-                    // SheetView(isVisible: self.$sheetIsShowing, enteredText: self.$dialogResult)
-                    
-                    // sheet dismissed using Environment presentation mode
-                    SheetView()
-                }
-                //                .alert(isPresented: .constant(true)) {
-                //                    Alert(
-                //                        title: Text("What's new in YabaiUI"),
-                //                        message: Text("Lorem ipsum sum four three six nine"),
-                //                        dismissButton: .default(Text("Continue")))
-                //                }
-                //.alert(store.scope(state: \.alert), dismiss: .alertDismissed)
-                
             }
+            //.frame(width: 300, height: 200)
+            .padding()
         }
-    }
-}
-
-struct SheetView: View {
-    //let store: Store<Onboarding.State, Onboarding.Action>
-
-    @Environment(\.presentationMode) var presentationMode
-    
-    //@Binding var enteredText: String
-    
-    var body: some View {
-        VStack {
-            Button("Contine") {
-                presentationMode.wrappedValue.dismiss()
-            }
-        }
-        .frame(width: 300, height: 200)
-        .padding()
     }
 }
 
