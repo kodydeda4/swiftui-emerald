@@ -93,10 +93,19 @@ extension Yabai {
 
 struct YabaiView: View {
     let store: Store<Yabai.State, Yabai.Action>
+    @State var errorMessage: String = ""
     
     var body: some View {
         WithViewStore(store) { viewStore in
             VStack {
+                Text(errorMessage)
+                Button("float") {
+                    errorMessage = AppleScript.yabaiSetFloating.execute()
+                }
+                Button("bsp") {
+                    errorMessage = AppleScript.yabaiSetBSP.execute()
+                }
+                
                 Picker("Layout", selection:
                         viewStore.binding(
                             get: \.layout,

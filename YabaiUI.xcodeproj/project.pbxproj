@@ -19,6 +19,7 @@
 		3385DF6725D6270B00ACDE21 /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3385DF6625D6270B00ACDE21 /* Sidebar.swift */; };
 		3385DF6A25D6279200ACDE21 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3385DF6925D6279200ACDE21 /* AboutView.swift */; };
 		3385DF6D25D628BF00ACDE21 /* YabaiSpaceSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3385DF6C25D628BF00ACDE21 /* YabaiSpaceSettingsView.swift */; };
+		3385DF7025D6361200ACDE21 /* AppleScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3385DF6F25D6361200ACDE21 /* AppleScript.swift */; };
 		33B62D2925D5E31400DD5934 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B62D2825D5E31400DD5934 /* Onboarding.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 		3385DF6625D6270B00ACDE21 /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
 		3385DF6925D6279200ACDE21 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		3385DF6C25D628BF00ACDE21 /* YabaiSpaceSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiSpaceSettingsView.swift; sourceTree = "<group>"; };
+		3385DF6F25D6361200ACDE21 /* AppleScript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleScript.swift; sourceTree = "<group>"; };
 		33B62D2825D5E31400DD5934 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,6 +95,7 @@
 		3380D31125D0667100C10913 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				3385DF6F25D6361200ACDE21 /* AppleScript.swift */,
 				3361CDF625D44AEC0086F6A7 /* Extensions.swift */,
 			);
 			path = Common;
@@ -198,6 +201,7 @@
 				3380D33725D0723000C10913 /* Root.swift in Sources */,
 				3385DF6725D6270B00ACDE21 /* Sidebar.swift in Sources */,
 				33387D6825D3FADB00E76D29 /* SKHD.swift in Sources */,
+				3385DF7025D6361200ACDE21 /* AppleScript.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
