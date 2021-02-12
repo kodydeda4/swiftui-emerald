@@ -46,90 +46,7 @@ extension Onboarding {
     )
 }
 
-
-struct VStackOfTextViews: View {
-    
-    var body: some View {
-        VStack {
-            Group {
-                Text("largeTitle")
-                    .font(.largeTitle)
-                
-                Text("title")
-                    .font(.title)
-                
-                Text("title2")
-                    .font(.title2)
-                
-                Text("title3")
-                    .font(.title3)
-            }
-            
-            Group {
-                Text("subheadline")
-                    .font(.subheadline)
-                
-                Text("headline")
-                    .font(.headline)
-            }
-            
-            Group {
-                Text("body")
-                    .font(.body)
-                
-                Text("caption")
-                    .font(.caption)
-                
-                Text("caption2")
-                    .font(.caption2)
-                
-                Text("footnote")
-                    .font(.footnote)
-                
-                Text("callout")
-                    .font(.callout)
-                
-            }
-        }
-    }
-}
-
-struct VStackOfTextViews_Previews: PreviewProvider {
-    static var previews: some View {
-        VStackOfTextViews()
-    }
-}
-
-
 // MARK:- OnboardingView
-
-struct FeatureView: View {
-    let image: Image
-    let featureName: String
-    let featureDescription: String
-    
-    var body: some View {
-        HStack {
-            image
-                .resizable()
-                .frame(width: 24, height: 24)
-                .foregroundColor(.accentColor)
-                
-            
-            
-            VStack(alignment: .leading) {
-                Text(featureName)
-                    .font(.title3)
-                    .fontWeight(.medium)
-                
-                Text(featureDescription)
-                    .font(.body)
-                    .foregroundColor(.gray)
-            }
-        }
-    }
-}
-
 
 struct OnboardingView: View {
     let store: Store<Onboarding.State, Onboarding.Action>
@@ -189,5 +106,42 @@ struct OnboardingView: View {
 struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
         OnboardingView(store: Onboarding.defaultStore)
+    }
+}
+
+private struct FeatureView: View {
+    let image: Image
+    let featureName: String
+    let featureDescription: String
+    
+    var body: some View {
+        HStack {
+            image
+                .resizable()
+                .frame(width: 24, height: 24)
+                .foregroundColor(.accentColor)
+                
+            
+            
+            VStack(alignment: .leading) {
+                Text(featureName)
+                    .font(.title3)
+                    .fontWeight(.medium)
+                
+                Text(featureDescription)
+                    .font(.body)
+                    .foregroundColor(.gray)
+            }
+        }
+    }
+}
+
+private struct FeatureView_Previews: PreviewProvider {
+    static var previews: some View {
+        FeatureView(
+            image: Image(systemName: "sparkles"),
+            featureName: "Feature",
+            featureDescription: "Description"
+        )
     }
 }

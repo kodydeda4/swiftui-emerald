@@ -51,9 +51,6 @@ struct Root {
         
         let skhdConfigPath = URL(fileURLWithPath: NSHomeDirectory())
             .appendingPathComponent("skhdConfig")
-
-        
-        
     }
     
     enum Action: Equatable {
