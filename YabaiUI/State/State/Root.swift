@@ -13,6 +13,7 @@ struct Root {
     struct State: Equatable {
         var yabai = Yabai.State()
         var skhd = SKHD.State()
+        var config = Config.State()
         
         var displayingOnboard = false
         var onboarding = Onboarding.State()
@@ -54,6 +55,7 @@ struct Root {
     enum Action: Equatable {
         case yabai(Yabai.Action)
         case skhd(SKHD.Action)
+        case config(Config.Action)
         case save
         case load
         case exportConfigs
@@ -134,6 +136,11 @@ extension Root {
             action: /Root.Action.onboarding,
             environment: { _ in .init() }
         ),
+        Config.reducer.pullback(
+            state: \.config,
+            action: /Root.Action.config,
+            environment: { _ in .init() }
+        ),
         Reducer { state, action, environment in
             switch action {
         
@@ -142,6 +149,9 @@ extension Root {
                 
             case let .skhd(subAction):
                 return Effect(value: .save)
+                
+            case let .config(subAction):
+                return .none
                 
             case .toggleDisplayingOnboard:
                 state.displayingOnboard.toggle()

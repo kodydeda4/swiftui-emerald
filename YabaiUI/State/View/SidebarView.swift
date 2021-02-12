@@ -15,8 +15,8 @@ struct SidebarView: View {
         WithViewStore(store) { viewStore in
             List {
                 Section(header: Text("Settings")) {
-                    NavigationLink(destination: TemporaryTextView(text: "Config")) {
-                        Label("Config", systemImage: "slider.horizontal.3")
+                    NavigationLink(destination: ConfigView(store: store.scope(state: \.config, action: Root.Action.config))) {
+                        Label("Config", systemImage: "rectangle.3.offgrid")
                     }
                     NavigationLink(destination: TemporaryTextView(text: "Display")) {
                         Label("Display", systemImage: "display")

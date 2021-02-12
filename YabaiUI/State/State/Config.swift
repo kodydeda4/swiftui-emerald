@@ -42,6 +42,7 @@ struct Config {
             case ctrl
             case fn
         }
+        
         enum MouseAction: String, Codable, CaseIterable, Identifiable  {
             var id: MouseAction { self }
             
@@ -223,6 +224,36 @@ struct ConfigView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
+            Toggle("debugOutput", isOn: viewStore.binding(get: \.debugOutput, send: Config.Action.updateDebugOutput))
+            
+            
+            
+            
+//            var debugOutput             : Bool               = false
+//            var externalBar             : ExternalBar        = .off
+//            var mouseFollowsFocus       : Bool               = false
+//            var focusFollowsMouse       : FocusFollowsMouse  = .off
+//            var windowPlacement         : WindowPlacement    = .firstChild
+//            var windowTopmost           : Bool               = false
+//            var windowShadow            : Bool               = false
+//            var windowOpacity           : Bool               = false
+//            var windowOpacityDuration   : Float              = 1
+//            var activeWindowOpacity     : Float              = 1
+//            var normalWindowOpacity     : Float              = 1
+//            var windowBorder            : Bool               = false
+//            var windowBorderWidth       : Int                = 0
+//            var activeWindowBorderColor : Color              = .clear
+//            var normalWindowBorderColor : Color              = .clear
+//            var insertFeedbackColor     : Color              = .clear
+//            var splitRatio              : Float              = 1
+//            var autoBalance             : Bool               = false
+//            var mouseModifier           : MouseModifier      = .cmd
+//            var mouseAction1            : MouseAction        = .move
+//            var mouseAction2            : MouseAction        = .move
+//            var mouseDropAction         : MouseDropAction    = .swap
+            
+            
+
             
         }
     }
