@@ -38,5 +38,3 @@ extension Onboarding {
         environment: ()
     )
 }
-
-

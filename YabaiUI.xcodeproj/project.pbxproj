@@ -78,6 +78,7 @@
 		3323C6A925D72CC000D655DE /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				335E481025DAAB3800CDE271 /* Settings.swift */,
 				33387D6425D3F64300E76D29 /* Space.swift */,
 				3323C69125D7026D00D655DE /* Config.swift */,
 			);
@@ -145,7 +146,6 @@
 			isa = PBXGroup;
 			children = (
 				3380D33625D0723000C10913 /* Root.swift */,
-				335E481025DAAB3800CDE271 /* Settings.swift */,
 				33B62D2825D5E31400DD5934 /* Onboarding.swift */,
 				33E5538C25DAB0D100241787 /* ConfigManager.swift */,
 				3323C6A925D72CC000D655DE /* Settings */,

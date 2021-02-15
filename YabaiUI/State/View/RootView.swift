@@ -21,14 +21,19 @@ struct RootView: View {
                         .foregroundColor(Color(NSColor.placeholderTextColor))
                 }
             }
-            .onAppear { viewStore.send(.loadSettings) }
-            .sheet(isPresented: viewStore.binding(
-                    get: \.onboarding.isOnboaring,
-                    send: Root.Action.onboarding(.toggleIsOnboaring))
+            
+            .onAppear { viewStore.send(.settings(.load)) }
+            .sheet(isPresented:
+                    viewStore.binding(
+                        get: \.onboarding.isOnboaring,
+                        send: Root.Action.onboarding(.toggleIsOnboaring))
             ) {
-                OnboardingView(store: store.scope(
-                            state: \.onboarding,
-                            action: Root.Action.onboarding))
+                OnboardingView(
+                    store: store.scope(
+                        state: \.onboarding,
+                        action: Root.Action.onboarding
+                    )
+                )
             }
             .toolbar {
                 ToolbarItem {
