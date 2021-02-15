@@ -9,21 +9,21 @@ import ComposableArchitecture
 import SwiftUI
 
 struct SidebarView: View {
-    let store: Store<Yabai.State, Yabai.Action>
+    let store: Store<Root.State, Root.Action>
     
     var body: some View {
         WithViewStore(store) { viewStore in
             List {
                 Section(header: Text("Settings")) {
-                    NavigationLink(destination: ConfigView(store: store.scope(state: \.config, action: Yabai.Action.config))) {
-                        Label("Config", systemImage: "rectangle.3.offgrid")
-                    }
+//                    NavigationLink(destination: ConfigView(store: store.scope(state: \.config, action: Yabai.Action.config))) {
+//                        Label("Config", systemImage: "rectangle.3.offgrid")
+//                    }
                     NavigationLink(destination: TemporaryTextView(text: "Display")) {
                         Label("Display", systemImage: "display")
                     }
-                    NavigationLink(destination: SpaceView(store: store.scope(state: \.space, action: Yabai.Action.space))) {
-                        Label("Space", systemImage: "rectangle.3.offgrid")
-                    }
+//                    NavigationLink(destination: SpaceView(store: store.scope(state: \.space, action: Yabai.Action.space))) {
+//                        Label("Space", systemImage: "rectangle.3.offgrid")
+//                    }
                     NavigationLink(destination: TemporaryTextView(text: "Window")) {
                         Label("Window", systemImage: "macwindow")
                     }
@@ -71,6 +71,6 @@ struct TemporaryTextView: View {
 
 struct Sidebar_Previews: PreviewProvider {
     static var previews: some View {
-        SidebarView(store: Yabai.defaultStore)
+        SidebarView(store: Root.defaultStore)
     }
 }

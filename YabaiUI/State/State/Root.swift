@@ -58,7 +58,14 @@ struct RootView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            List {}
+            NavigationView {
+                SidebarView(store: store)
+                VStack {
+                    Text("Welcome Page")
+                        .font(.largeTitle)
+                        .foregroundColor(Color(NSColor.placeholderTextColor))
+                }
+            }
                 //.onAppear { viewStore.send(.load) }
                 .sheet(isPresented: viewStore.binding(
                         get: \.onboarding.isOnboaring,
