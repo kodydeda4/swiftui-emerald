@@ -70,7 +70,7 @@ extension Root {
         Onboarding.reducer.pullback(
             state: \.onboarding,
             action: /Root.Action.onboarding,
-            environment: { _ in .init() }
+            environment: { _ in () }
         ),
         Settings.reducer.pullback(
             state: \.settings,

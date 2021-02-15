@@ -23,9 +23,9 @@ struct Config {
         var normalWindowOpacity     : Float              = 1
         var windowBorder            : Bool               = false
         var windowBorderWidth       : Int                = 0
-//        var activeWindowBorderColor : Color              = .clear
-//        var normalWindowBorderColor : Color              = .clear
-//        var insertFeedbackColor     : Color              = .clear
+        //        var activeWindowBorderColor : Color              = .clear
+        //        var normalWindowBorderColor : Color              = .clear
+        //        var insertFeedbackColor     : Color              = .clear
         var splitRatio              : Float              = 1
         var autoBalance             : Bool               = false
         var mouseModifier           : MouseModifier      = .cmd
@@ -81,28 +81,7 @@ struct Config {
     }
     
     enum Action: Equatable {
-        case updateDebugOutput(Bool)
-        case updateExternalBar(Config.State.ExternalBar)
-        case updateMouseFollowsFocus(Bool)
-        case updateFocusFollowsMouse(Config.State.FocusFollowsMouse)
-        case updateWindowPlacement(Config.State.WindowPlacement)
-        case updateWindowTopmost(Bool)
-        case updateWindowShadow(Bool)
-        case updateWindowOpacity(Bool)
-        case updateWindowOpacityDuration(Float)
-        case updateActiveWindowOpacity(Float)
-        case updateNormalWindowOpacity(Float)
-        case updateWindowBorder(Bool)
-        case updateWindowBorderWidth(Int)
-//        case updateActiveWindowBorderColor(Color)
-//        case updateNormalWindowBorderColor(Color)
-//        case updateInsertFeedbackColor(Color)
-        case updateSplitRatio(Float)
-        case updateAutoBalance(Bool)
-        case updateMouseModifier(Config.State.MouseModifier)
-        case updateMouseAction1(Config.State.MouseAction)
-        case updateMouseAction2(Config.State.MouseAction)
-        case updateMouseDropAction(Config.State.MouseDropAction)
+        case form(BindingAction<Config.State>)
     }
     
     struct Environment {
@@ -111,101 +90,14 @@ struct Config {
 }
 
 extension Config {
-    static let reducer = Reducer<State, Action, Environment>.combine(
-        Reducer { state, action, environment in
-            switch action {
-            
-            case let .updateDebugOutput(bool):
-                state.debugOutput = bool
-                return .none
-                
-            case let .updateExternalBar(externalBar):
-                state.externalBar = externalBar
-                return .none
-                
-            case let .updateMouseFollowsFocus(bool):
-                state.mouseFollowsFocus = bool
-                return .none
-                
-            case let .updateFocusFollowsMouse(focusFollowsMouse):
-                state.focusFollowsMouse = focusFollowsMouse
-                return .none
-                
-            case let .updateWindowPlacement(windowPlacement):
-                state.windowPlacement = windowPlacement
-                return .none
-                
-            case let .updateWindowTopmost(bool):
-                state.windowTopmost = bool
-                return .none
-                
-            case let .updateWindowShadow(bool):
-                state.windowShadow = bool
-                return .none
-                
-            case let .updateWindowOpacity(bool):
-                state.windowOpacity = bool
-                return .none
-                
-            case let .updateWindowOpacityDuration(float):
-                state.windowOpacityDuration = float
-                return .none
-                
-            case let .updateActiveWindowOpacity(float):
-                state.activeWindowOpacity = float
-                return .none
-                
-            case let .updateNormalWindowOpacity(float):
-                state.normalWindowOpacity = float
-                return .none
-                
-            case let .updateWindowBorder(bool):
-                state.windowBorder = bool
-                return .none
-                
-            case let .updateWindowBorderWidth(int):
-                state.windowBorderWidth = int
-                return .none
-                
-//            case let .updateActiveWindowBorderColor(color):
-//                state.activeWindowBorderColor = color
-//                return .none
-//
-//            case let .updateNormalWindowBorderColor(color):
-//                state.normalWindowBorderColor = color
-//                return .none
-//
-//            case let .updateInsertFeedbackColor(color):
-//                state.insertFeedbackColor = color
-//                return .none
-                
-            case let .updateSplitRatio(float):
-                state.splitRatio = float
-                return .none
-                
-            case let .updateAutoBalance(bool):
-                state.autoBalance = bool
-                return .none
-                
-            case let .updateMouseModifier(mouseModifier):
-                state.mouseModifier = mouseModifier
-                return .none
-                
-            case let .updateMouseAction1(mouseAction):
-                state.mouseAction1 = mouseAction
-                return .none
-                
-            case let .updateMouseAction2(mouseAction):
-                state.mouseAction2 = mouseAction
-                return .none
-                
-            case let .updateMouseDropAction(mouseDropAction):
-                state.mouseDropAction = mouseDropAction
-                return .none
-                
-            }
+    static let reducer = Reducer<State, Action, Environment> {
+        state, action, environment in
+        switch action {
+        case .form:
+            return .none
         }
-    )
+    }
+    .binding(action: /Action.form)
 }
 
 extension Config {

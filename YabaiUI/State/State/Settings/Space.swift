@@ -27,12 +27,7 @@ struct Space {
     }
     
     enum Action: Equatable {
-        case updateLayout(State.Layout)
-        case updatePaddingTop(Int)
-        case updatePaddingBottom(Int)
-        case updatePaddingLeft(Int)
-        case updatePaddingRight(Int)
-        case updateWindowGap(Int)
+        case form(BindingAction<Space.State>)
     }
     struct Environment {
         // environment
@@ -40,45 +35,30 @@ struct Space {
 }
 
 extension Space {
-    static let reducer = Reducer<State, Action, Environment>.combine(
-        Reducer { state, action, environment in
-            switch action {
-            
-            case let .updateLayout(layout):
-                state.layout = layout
-                switch layout {
-                case .float:
-                    let _ = AppleScript.yabaiSetFloating.execute()
-                case .bsp:
-                    let _ = AppleScript.yabaiSetBSP.execute()
-                case .stack:
-                    print()
-                }
-                return .none
-                
-            case let .updatePaddingTop(int):
-                state.paddingTop = int
-                return .none
-                
-            case let .updatePaddingBottom(int):
-                state.paddingBottom = int
-                return .none
-                
-            case let .updatePaddingLeft(int):
-                state.paddingLeft = int
-                return .none
-                
-            case let .updatePaddingRight(int):
-                state.paddingRight = int
-                return .none
-                
-            case let .updateWindowGap(int):
-                state.windowGap = int
-                return .none
-            }
+    static let reducer = Reducer<State, Action, Environment> {
+        state, action, environment in
+        switch action {
+        case .form:
+            return .none
         }
-    )
+        
+    }
+    .binding(action: /Action.form)
 }
+
+
+//case let .updateLayout(layout):
+//state.layout = layout
+//switch layout {
+//case .float:
+//    let _ = AppleScript.yabaiSetFloating.execute()
+//case .bsp:
+//    let _ = AppleScript.yabaiSetBSP.execute()
+//case .stack:
+//    print()
+//}
+//return .none
+
 
 extension Space {
     static let defaultStore = Store(

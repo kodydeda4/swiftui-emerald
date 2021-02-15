@@ -16,31 +16,26 @@ struct Onboarding {
     enum Action: Equatable {
         case toggleIsOnboaring
     }
-    
-    struct Environment {
-        // environment
-    }
 }
 
 extension Onboarding {
-    static let reducer = Reducer<State, Action, Environment>.combine(
-        Reducer { state, action, environment in
-            switch action {
+    static let reducer = Reducer<State, Action, Void> {
+        state, action, _ in
+        switch action {
+        
+        case .toggleIsOnboaring:
+            state.isOnboaring.toggle()
+            return .none
             
-            case .toggleIsOnboaring:
-                state.isOnboaring.toggle()
-                return .none
-                
-            }
         }
-    )
+    }
 }
 
 extension Onboarding {
     static let defaultStore = Store(
         initialState: .init(),
         reducer: reducer,
-        environment: .init()
+        environment: ()
     )
 }
 
