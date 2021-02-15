@@ -33,49 +33,47 @@ struct Root {
     }
     
     enum Action: Equatable {
-        case onboarding(Onboarding.Action)
         case settings(Settings.Action)
+        case onboarding(Onboarding.Action)
         case configManager(ConfigManager.Action)
-        case save
-        case load
+        case saveSettings
+        case loadSettings
     }
     
     struct Environment {
-        func save(state: State) -> Result<Bool, Error> {
+        func saveSettings(state: State) -> Result<Bool, Error> {
             do {
-                let encodedState = try JSONEncoder().encode(state.settings)
-                try encodedState.write(to: state.settingsDataURL)
+                let encoded = try JSONEncoder().encode(state.settings)
+                try encoded.write(to: state.settingsDataURL)
                 return .success(true)
             } catch {
                 return .failure(error)
             }
         }
-
-        func load(state: State) -> Result<(Settings.State), Error> {
+        func loadSettings(state: State) -> Result<(Settings.State), Error> {
             do {
-                let yabaiData = try Data(contentsOf: state.settingsDataURL)
-                let decodedYabaiState = try JSONDecoder().decode(Settings.State.self, from: yabaiData)
-                return .success(decodedYabaiState)
+                let data = try Data(contentsOf: state.settingsDataURL)
+                let decoded = try JSONDecoder().decode(Settings.State.self, from: data)
+                return .success(decoded)
             }
             catch {
                 return .failure(error)
             }
         }
-
     }
 }
 
 extension Root {
     static let reducer = Reducer<State, Action, Environment>.combine(
-        Onboarding.reducer.pullback(
-            state: \.onboarding,
-            action: /Root.Action.onboarding,
-            environment: { _ in () }
-        ),
         Settings.reducer.pullback(
             state: \.settings,
             action: /Root.Action.settings,
             environment: { _ in .init() }
+        ),
+        Onboarding.reducer.pullback(
+            state: \.onboarding,
+            action: /Root.Action.onboarding,
+            environment: { _ in () }
         ),
         ConfigManager.reducer.pullback(
             state: \.configManager,
@@ -86,7 +84,7 @@ extension Root {
             switch action {
                         
             case let .settings(subAction):
-                return Effect(value: .save)
+                return Effect(value: .saveSettings)
 
             case let .onboarding(subAction):
                 return .none
@@ -94,8 +92,8 @@ extension Root {
             case let .configManager(subAction):
                 return .none
                 
-            case .save:
-                switch environment.save(state: state) {
+            case .saveSettings:
+                switch environment.saveSettings(state: state) {
                 case .success:
                     state.errorString = ""
                 case let .failure(error):
@@ -103,10 +101,10 @@ extension Root {
                 }
                 return .none
                 
-            case .load:
-                switch environment.load(state: state) {
-                case let .success(decodedYabaiState):
-                    state.settings = decodedYabaiState
+            case .loadSettings:
+                switch environment.loadSettings(state: state) {
+                case let .success(decoded):
+                    state.settings = decoded
                 case let .failure(error):
                     state.errorString = "Failed to load State"
                 }

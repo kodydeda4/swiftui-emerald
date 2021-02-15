@@ -9,6 +9,8 @@ import SwiftUI
 import ComposableArchitecture
 import SwiftShell
 
+// Manages creating and exporting Yabai & SKHD config files.
+
 struct ConfigManager {
     struct State: Equatable {
         var errorString: String = ""
