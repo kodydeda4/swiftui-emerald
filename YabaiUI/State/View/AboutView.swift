@@ -9,7 +9,7 @@ import SwiftUI
 import ComposableArchitecture
 
 struct AboutView: View {
-    let store: Store<Yabai.State, Yabai.Action>
+    let store: Store<Root.State, Root.Action>
     
     var body: some View {
         WithViewStore(store) { viewStore in
@@ -54,6 +54,6 @@ struct AboutView: View {
 
 struct AboutView_Previews: PreviewProvider {
     static var previews: some View {
-        AboutView(store: Yabai.defaultStore)
+        AboutView(store: Root.defaultStore)
     }
 }
