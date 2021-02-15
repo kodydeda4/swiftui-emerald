@@ -11,8 +11,9 @@ struct Settings {
     struct State: Codable, Equatable {
         var errorString: String = ""
 
-        var config = Config.State()
-        var space = Space.State()
+        var globalSettings = GlobalSettings.State()
+        var spaceSettings = SpaceSettings.State()
+        
         var settingsDataURL: URL {
             yabaiUIApplicationSupportDirectory
             .appendingPathComponent("settingsData.json")
@@ -28,12 +29,12 @@ struct Settings {
             }
             return path
         }
-
+        
     }
     
     enum Action: Equatable {
-        case config(Config.Action)
-        case space(Space.Action)
+        case globalSettings(GlobalSettings.Action)
+        case spaceSettings(SpaceSettings.Action)
         case save
         case load
     }
@@ -63,22 +64,22 @@ struct Settings {
 
 extension Settings {
     static let reducer = Reducer<State, Action, Environment>.combine(
-        Config.reducer.pullback(
-            state: \.config,
-            action: /Settings.Action.config,
+        GlobalSettings.reducer.pullback(
+            state: \.globalSettings,
+            action: /Settings.Action.globalSettings,
             environment: { _ in () }
         ),
-        Space.reducer.pullback(
-            state: \.space,
-            action: /Action.space,
+        SpaceSettings.reducer.pullback(
+            state: \.spaceSettings,
+            action: /Action.spaceSettings,
             environment: { _ in () }
         ),
         Reducer { state, action, environment in
             switch action {                
-            case let .config(subAction):
+            case let .globalSettings(subAction):
                 return Effect(value: .save)
                 
-            case let .space(subAction):
+            case let .spaceSettings(subAction):
                 return Effect(value: .save)
                 
             case .save:
@@ -86,7 +87,7 @@ extension Settings {
                 case .success:
                     state.errorString = ""
                 case let .failure(error):
-                    state.errorString = "Failed to save State"
+                    state.errorString = "Error - Failed to save State"
                 }
                 return .none
                 
@@ -95,7 +96,7 @@ extension Settings {
                 case let .success(decoded):
                     state = decoded
                 case let .failure(error):
-                    state.errorString = "Failed to load State"
+                    state.errorString = "Error - Failed to load State"
                 }
                 return .none
                 

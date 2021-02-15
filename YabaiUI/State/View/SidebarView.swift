@@ -46,13 +46,13 @@ private struct SettingsNavlinks: View {
     
     var body: some View {
         NavigationLink(
-            destination: ConfigView(store: store.scope(state: \.config, action: Settings.Action.config))) {
-            Label("Config", systemImage: "rectangle.3.offgrid")
+            destination: GlobalSettingsView(store: store.scope(state: \.globalSettings, action: Settings.Action.globalSettings))) {
+            Label("Global", systemImage: "globe")
         }
         NavigationLink(destination: TemporaryTextView(text: "Display")) {
             Label("Display", systemImage: "display")
         }
-        NavigationLink(destination: SpaceView(store: store.scope(state: \.space, action: Settings.Action.space))) {
+        NavigationLink(destination: SpaceSettingsView(store: store.scope(state: \.spaceSettings, action: Settings.Action.spaceSettings))) {
             Label("Space", systemImage: "rectangle.3.offgrid")
         }
         NavigationLink(destination: TemporaryTextView(text: "Window")) {

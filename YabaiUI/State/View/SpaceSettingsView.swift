@@ -8,11 +8,11 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct SpaceView: View {
-    let store: Store<Space.State, Space.Action>
+struct SpaceSettingsView: View {
+    let store: Store<SpaceSettings.State, SpaceSettings.Action>
     @State var errorMessage: String = ""
     
-    var keyPath = Space.Action.keyPath
+    var keyPath = SpaceSettings.Action.keyPath
     
     var body: some View {
         WithViewStore(store) { viewStore in
@@ -20,7 +20,7 @@ struct SpaceView: View {
                 Section(header: Text("Layout & Padding")) {
                     //Text(errorMessage)
                     Picker("Layout", selection: viewStore.binding(keyPath: \.layout, send: keyPath)) {
-                        ForEach(Space.State.Layout.allCases) {
+                        ForEach(SpaceSettings.State.Layout.allCases) {
                             Text($0.rawValue)
                         }
                     }
@@ -49,6 +49,6 @@ struct SpaceView: View {
 
 struct SpaceSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SpaceView(store: Space.defaultStore)
+        SpaceSettingsView(store: SpaceSettings.defaultStore)
     }
 }

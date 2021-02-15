@@ -20,14 +20,10 @@ struct Root {
         case onboarding(Onboarding.Action)
         case configManager(ConfigManager.Action)
     }
-    
-    struct Environment {
-
-    }
 }
 
 extension Root {
-    static let reducer = Reducer<State, Action, Environment>.combine(
+    static let reducer = Reducer<State, Action, Void>.combine(
         Settings.reducer.pullback(
             state: \.settings,
             action: /Root.Action.settings,
@@ -42,21 +38,7 @@ extension Root {
             state: \.configManager,
             action: /Root.Action.configManager,
             environment: { _ in .init() }
-        ),
-        Reducer { state, action, environment in
-            switch action {
-                        
-            case let .settings(subAction):
-                return .none
-
-            case let .onboarding(subAction):
-                return .none
-                
-            case let .configManager(subAction):
-                return .none
-                                
-            }
-        }
+        )
     )
 }
 
@@ -64,6 +46,6 @@ extension Root {
     static let defaultStore = Store(
         initialState: .init(),
         reducer: reducer,
-        environment: .init()
+        environment: ()
     )
 }

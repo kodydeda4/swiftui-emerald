@@ -1,5 +1,5 @@
 //
-//  Config.swift
+//  GlobalSettings.swift
 //  YabaiUI
 //
 //  Created by Kody Deda on 2/12/21.
@@ -8,7 +8,7 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct Config {
+struct GlobalSettings {
     struct State: Codable, Equatable {
         var debugOutput             : Bool               = false
         var externalBar             : ExternalBar        = .off
@@ -44,21 +44,18 @@ struct Config {
         
         enum MouseAction: String, Codable, CaseIterable, Identifiable  {
             var id: MouseAction { self }
-            
             case move
             case resize
         }
         
         enum MouseDropAction: String, Codable, CaseIterable, Identifiable  {
             var id: MouseDropAction { self }
-            
             case swap
             case stack
         }
         
         enum ExternalBar: String, Codable, CaseIterable, Identifiable  {
             var id: ExternalBar { self }
-            
             case main
             case all
             case off
@@ -66,7 +63,6 @@ struct Config {
         
         enum FocusFollowsMouse: String, Codable, CaseIterable, Identifiable  {
             var id: FocusFollowsMouse { self }
-            
             case autoFocus
             case autoRaise
             case off
@@ -74,18 +70,17 @@ struct Config {
         
         enum WindowPlacement: String, Codable, CaseIterable, Identifiable  {
             var id: WindowPlacement { self }
-            
             case firstChild
             case secondChild
         }
     }
     
     enum Action: Equatable {
-        case keyPath(BindingAction<Config.State>)
+        case keyPath(BindingAction<GlobalSettings.State>)
     }
 }
 
-extension Config {
+extension GlobalSettings {
     static let reducer = Reducer<State, Action, Void> {
         state, action, _ in
         switch action {
@@ -96,7 +91,7 @@ extension Config {
     .binding(action: /Action.keyPath)
 }
 
-extension Config {
+extension GlobalSettings {
     static let defaultStore = Store(
         initialState: .init(),
         reducer: reducer,

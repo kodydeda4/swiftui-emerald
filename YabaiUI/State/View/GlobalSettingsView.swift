@@ -1,5 +1,5 @@
 //
-//  ConfigView.swift
+//  GlobalSettingsView.swift
 //  YabaiUI
 //
 //  Created by Kody Deda on 2/12/21.
@@ -8,9 +8,9 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct ConfigView: View {
-    let store: Store<Config.State, Config.Action>
-    var keyPath = Config.Action.keyPath
+struct GlobalSettingsView: View {
+    let store: Store<GlobalSettings.State, GlobalSettings.Action>
+    var keyPath = GlobalSettings.Action.keyPath
     
     var body: some View {
         WithViewStore(store) { viewStore in
@@ -18,7 +18,7 @@ struct ConfigView: View {
                 Section(header: Text("Global")) {
                     Toggle("Debug Output", isOn: viewStore.binding(keyPath: \.debugOutput, send: keyPath))
                     Picker("External Bar", selection: viewStore.binding(keyPath: \.externalBar, send: keyPath)) {
-                        ForEach(Config.State.ExternalBar.allCases) {
+                        ForEach(GlobalSettings.State.ExternalBar.allCases) {
                             Text($0.rawValue)
                         }
                     }
@@ -26,7 +26,7 @@ struct ConfigView: View {
                 Section(header: Text("Mouse")) {
                     Toggle("Mouse Follows Focus", isOn: viewStore.binding(keyPath: \.mouseFollowsFocus, send: keyPath))
                     Picker("Focus Follows Mouse", selection: viewStore.binding(keyPath: \.focusFollowsMouse, send: keyPath)) {
-                        ForEach(Config.State.FocusFollowsMouse.allCases) {
+                        ForEach(GlobalSettings.State.FocusFollowsMouse.allCases) {
                             Text($0.rawValue)
                         }
                     }
@@ -34,7 +34,7 @@ struct ConfigView: View {
                 Section(header: Text("Window")) {
                     Picker(
                         "Window Placement", selection: viewStore.binding(keyPath: \.windowPlacement, send: keyPath)) {
-                        ForEach(Config.State.WindowPlacement.allCases) {
+                        ForEach(GlobalSettings.State.WindowPlacement.allCases) {
                             Text($0.rawValue)
                         }
                     }
@@ -83,22 +83,22 @@ struct ConfigView: View {
                 }
                 Section(header: Text("Mouse Modifiers")) {
                     Picker("Mouse Modifier", selection: viewStore.binding(keyPath: \.mouseModifier, send: keyPath)) {
-                        ForEach(Config.State.MouseModifier.allCases) {
+                        ForEach(GlobalSettings.State.MouseModifier.allCases) {
                             Text($0.rawValue)
                         }
                     }
                     Picker("Mouse Action 1", selection: viewStore.binding(keyPath: \.mouseAction1, send: keyPath)) {
-                        ForEach(Config.State.MouseAction.allCases) {
+                        ForEach(GlobalSettings.State.MouseAction.allCases) {
                             Text($0.rawValue)
                         }
                     }
                     Picker("Mouse Action 2", selection: viewStore.binding(keyPath: \.mouseAction2, send: keyPath)) {
-                        ForEach(Config.State.MouseAction.allCases) {
+                        ForEach(GlobalSettings.State.MouseAction.allCases) {
                             Text($0.rawValue)
                         }
                     }
                     Picker("Mouse Action 2", selection: viewStore.binding(keyPath: \.mouseDropAction, send: keyPath)) {
-                        ForEach(Config.State.MouseDropAction.allCases) {
+                        ForEach(GlobalSettings.State.MouseDropAction.allCases) {
                             Text($0.rawValue)
                         }
                     }
@@ -109,8 +109,8 @@ struct ConfigView: View {
     }
 }
 
-struct ConfigView_Previews: PreviewProvider {
+struct GlobalSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        ConfigView(store: Config.defaultStore)
+        GlobalSettingsView(store: GlobalSettings.defaultStore)
     }
 }

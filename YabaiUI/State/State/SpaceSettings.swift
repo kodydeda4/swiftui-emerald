@@ -1,5 +1,5 @@
 //
-//  Yabai.swift
+//  SpaceSettings.swift
 //  YabaiUI
 //
 //  Created by Kody Deda on 2/10/21.
@@ -8,7 +8,7 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct Space {
+struct SpaceSettings {
     struct State: Equatable, Codable {
         var layout         : Layout  = .float
         var paddingTop     : Int     = 0
@@ -26,11 +26,11 @@ struct Space {
         }
     }
     enum Action: Equatable {
-        case keyPath(BindingAction<Space.State>)
+        case keyPath(BindingAction<SpaceSettings.State>)
     }
 }
 
-extension Space {
+extension SpaceSettings {
     static let reducer = Reducer<State, Action, Void> {
         state, action, _ in
         switch action {
@@ -39,6 +39,14 @@ extension Space {
         }
     }
     .binding(action: /Action.keyPath)
+}
+
+extension SpaceSettings {
+    static let defaultStore = Store(
+        initialState: .init(),
+        reducer: reducer,
+        environment: ()
+    )
 }
 
 
@@ -53,13 +61,3 @@ extension Space {
 //    print()
 //}
 //return .none
-
-
-extension Space {
-    static let defaultStore = Store(
-        initialState: .init(),
-        reducer: reducer,
-        environment: ()
-    )
-}
-
