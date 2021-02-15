@@ -10,22 +10,22 @@ import ComposableArchitecture
 
 struct ConfigView: View {
     let store: Store<Config.State, Config.Action>
-    var form = Config.Action.form
+    var keyPath = Config.Action.keyPath
     
     var body: some View {
         WithViewStore(store) { viewStore in
             List {
                 Section(header: Text("Global")) {
-                    Toggle("Debug Output", isOn: viewStore.binding(keyPath: \.debugOutput, send: form))
-                    Picker("External Bar", selection: viewStore.binding(keyPath: \.externalBar, send: form)) {
+                    Toggle("Debug Output", isOn: viewStore.binding(keyPath: \.debugOutput, send: keyPath))
+                    Picker("External Bar", selection: viewStore.binding(keyPath: \.externalBar, send: keyPath)) {
                         ForEach(Config.State.ExternalBar.allCases) {
                             Text($0.rawValue)
                         }
                     }
                 }
                 Section(header: Text("Mouse")) {
-                    Toggle("Mouse Follows Focus", isOn: viewStore.binding(keyPath: \.mouseFollowsFocus, send: form))
-                    Picker("Focus Follows Mouse", selection: viewStore.binding(keyPath: \.focusFollowsMouse, send: form)) {
+                    Toggle("Mouse Follows Focus", isOn: viewStore.binding(keyPath: \.mouseFollowsFocus, send: keyPath))
+                    Picker("Focus Follows Mouse", selection: viewStore.binding(keyPath: \.focusFollowsMouse, send: keyPath)) {
                         ForEach(Config.State.FocusFollowsMouse.allCases) {
                             Text($0.rawValue)
                         }
@@ -33,33 +33,33 @@ struct ConfigView: View {
                 }
                 Section(header: Text("Window")) {
                     Picker(
-                        "Window Placement", selection: viewStore.binding(keyPath: \.windowPlacement, send: form)) {
+                        "Window Placement", selection: viewStore.binding(keyPath: \.windowPlacement, send: keyPath)) {
                         ForEach(Config.State.WindowPlacement.allCases) {
                             Text($0.rawValue)
                         }
                     }
-                    Toggle("Window Topmost", isOn: viewStore.binding(keyPath: \.windowTopmost, send: form))
-                    Toggle("Window Shadow", isOn: viewStore.binding(keyPath: \.windowShadow, send: form))
-                    Toggle("Window Opacity", isOn: viewStore.binding(keyPath: \.windowOpacity, send: form))
+                    Toggle("Window Topmost", isOn: viewStore.binding(keyPath: \.windowTopmost, send: keyPath))
+                    Toggle("Window Shadow", isOn: viewStore.binding(keyPath: \.windowShadow, send: keyPath))
+                    Toggle("Window Opacity", isOn: viewStore.binding(keyPath: \.windowOpacity, send: keyPath))
                     
                     HStack {
                         Text("Window Opacity Duration")
-                        TextField("", value: viewStore.binding(keyPath: \.windowOpacityDuration, send: form), formatter: NumberFormatter())
+                        TextField("", value: viewStore.binding(keyPath: \.windowOpacityDuration, send: keyPath), formatter: NumberFormatter())
                     }
                     HStack {
                         Text("Active Window Opacity")
-                        TextField("", value: viewStore.binding(keyPath: \.activeWindowOpacity, send: form), formatter: NumberFormatter())
+                        TextField("", value: viewStore.binding(keyPath: \.activeWindowOpacity, send: keyPath), formatter: NumberFormatter())
                     }
                     HStack {
                         Text("Normal Window Opacity")
-                        TextField("",value: viewStore.binding(keyPath: \.normalWindowOpacity, send: form), formatter: NumberFormatter())
+                        TextField("",value: viewStore.binding(keyPath: \.normalWindowOpacity, send: keyPath), formatter: NumberFormatter())
                     }
                 }
                 Section(header: Text("Window Borders")) {
-                    Toggle("Window Border", isOn: viewStore.binding(keyPath: \.windowBorder, send: form))
+                    Toggle("Window Border", isOn: viewStore.binding(keyPath: \.windowBorder, send: keyPath))
                     HStack {
                         Text("Window Border Width")
-                        TextField("", value: viewStore.binding(keyPath: \.windowBorderWidth, send: form), formatter: NumberFormatter())
+                        TextField("", value: viewStore.binding(keyPath: \.windowBorderWidth, send: keyPath), formatter: NumberFormatter())
                     }
 //                    ColorPicker(
 //                        "Active Window Border Color",
@@ -77,27 +77,27 @@ struct ConfigView: View {
                 Section(header: Text("Split Ratios")) {
                     HStack {
                         Text("Split Ratio")
-                        TextField("Split Ratio", value: viewStore.binding(keyPath: \.splitRatio, send: form), formatter: NumberFormatter())
+                        TextField("Split Ratio", value: viewStore.binding(keyPath: \.splitRatio, send: keyPath), formatter: NumberFormatter())
                     }
-                    Toggle("Auto Balance", isOn: viewStore.binding(keyPath: \.autoBalance, send: form))
+                    Toggle("Auto Balance", isOn: viewStore.binding(keyPath: \.autoBalance, send: keyPath))
                 }
                 Section(header: Text("Mouse Modifiers")) {
-                    Picker("Mouse Modifier", selection: viewStore.binding(keyPath: \.mouseModifier, send: form)) {
+                    Picker("Mouse Modifier", selection: viewStore.binding(keyPath: \.mouseModifier, send: keyPath)) {
                         ForEach(Config.State.MouseModifier.allCases) {
                             Text($0.rawValue)
                         }
                     }
-                    Picker("Mouse Action 1", selection: viewStore.binding(keyPath: \.mouseAction1, send: form)) {
+                    Picker("Mouse Action 1", selection: viewStore.binding(keyPath: \.mouseAction1, send: keyPath)) {
                         ForEach(Config.State.MouseAction.allCases) {
                             Text($0.rawValue)
                         }
                     }
-                    Picker("Mouse Action 2", selection: viewStore.binding(keyPath: \.mouseAction2, send: form)) {
+                    Picker("Mouse Action 2", selection: viewStore.binding(keyPath: \.mouseAction2, send: keyPath)) {
                         ForEach(Config.State.MouseAction.allCases) {
                             Text($0.rawValue)
                         }
                     }
-                    Picker("Mouse Action 2", selection: viewStore.binding(keyPath: \.mouseDropAction, send: form)) {
+                    Picker("Mouse Action 2", selection: viewStore.binding(keyPath: \.mouseDropAction, send: keyPath)) {
                         ForEach(Config.State.MouseDropAction.allCases) {
                             Text($0.rawValue)
                         }

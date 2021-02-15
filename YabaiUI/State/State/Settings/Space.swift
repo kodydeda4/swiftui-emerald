@@ -26,7 +26,7 @@ struct Space {
         }
     }
     enum Action: Equatable {
-        case form(BindingAction<Space.State>)
+        case keyPath(BindingAction<Space.State>)
     }
 }
 
@@ -34,11 +34,11 @@ extension Space {
     static let reducer = Reducer<State, Action, Void> {
         state, action, _ in
         switch action {
-        case .form:
+        case .keyPath:
             return .none
         }
     }
-    .binding(action: /Action.form)
+    .binding(action: /Action.keyPath)
 }
 
 

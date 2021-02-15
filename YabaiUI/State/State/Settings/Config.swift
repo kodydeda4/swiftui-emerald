@@ -81,7 +81,7 @@ struct Config {
     }
     
     enum Action: Equatable {
-        case form(BindingAction<Config.State>)
+        case keyPath(BindingAction<Config.State>)
     }
 }
 
@@ -89,11 +89,11 @@ extension Config {
     static let reducer = Reducer<State, Action, Void> {
         state, action, _ in
         switch action {
-        case .form:
+        case .keyPath:
             return .none
         }
     }
-    .binding(action: /Action.form)
+    .binding(action: /Action.keyPath)
 }
 
 extension Config {

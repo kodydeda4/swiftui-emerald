@@ -12,33 +12,33 @@ struct SpaceView: View {
     let store: Store<Space.State, Space.Action>
     @State var errorMessage: String = ""
     
-    var form = Space.Action.form
+    var keyPath = Space.Action.keyPath
     
     var body: some View {
         WithViewStore(store) { viewStore in
             List {
                 Section(header: Text("Layout & Padding")) {
                     //Text(errorMessage)
-                    Picker("Layout", selection: viewStore.binding(keyPath: \.layout, send: form)) {
+                    Picker("Layout", selection: viewStore.binding(keyPath: \.layout, send: keyPath)) {
                         ForEach(Space.State.Layout.allCases) {
                             Text($0.rawValue)
                         }
                     }
                     HStack {
                         Text("Top Padding")
-                        TextField("", value: viewStore.binding(keyPath: \.paddingTop, send: form), formatter: NumberFormatter())
+                        TextField("", value: viewStore.binding(keyPath: \.paddingTop, send: keyPath), formatter: NumberFormatter())
                     }
                     HStack {
                         Text("Bottom Padding")
-                        TextField("", value: viewStore.binding(keyPath: \.paddingBottom, send: form), formatter: NumberFormatter())
+                        TextField("", value: viewStore.binding(keyPath: \.paddingBottom, send: keyPath), formatter: NumberFormatter())
                     }
                     HStack {
                         Text("Left Padding")
-                        TextField("", value: viewStore.binding(keyPath: \.paddingLeft, send: form), formatter: NumberFormatter())
+                        TextField("", value: viewStore.binding(keyPath: \.paddingLeft, send: keyPath), formatter: NumberFormatter())
                     }
                     HStack {
                         Text("Right Padding")
-                        TextField("", value: viewStore.binding(keyPath: \.paddingRight, send: form), formatter: NumberFormatter())
+                        TextField("", value: viewStore.binding(keyPath: \.paddingRight, send: keyPath), formatter: NumberFormatter())
                     }
                 }
             }
