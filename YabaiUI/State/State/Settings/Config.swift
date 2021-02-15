@@ -83,15 +83,11 @@ struct Config {
     enum Action: Equatable {
         case form(BindingAction<Config.State>)
     }
-    
-    struct Environment {
-        // environment
-    }
 }
 
 extension Config {
-    static let reducer = Reducer<State, Action, Environment> {
-        state, action, environment in
+    static let reducer = Reducer<State, Action, Void> {
+        state, action, _ in
         switch action {
         case .form:
             return .none
@@ -104,7 +100,7 @@ extension Config {
     static let defaultStore = Store(
         initialState: .init(),
         reducer: reducer,
-        environment: .init()
+        environment: ()
     )
 }
 

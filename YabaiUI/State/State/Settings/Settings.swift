@@ -28,12 +28,12 @@ extension Settings {
         Config.reducer.pullback(
             state: \.config,
             action: /Settings.Action.config,
-            environment: { _ in .init() }
+            environment: { _ in () }
         ),
         Space.reducer.pullback(
             state: \.space,
             action: /Action.space,
-            environment: { _ in .init() }
+            environment: { _ in () }
         ),
         Reducer { state, action, environment in
             switch action {                

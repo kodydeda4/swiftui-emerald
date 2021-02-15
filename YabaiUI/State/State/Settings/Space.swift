@@ -25,23 +25,18 @@ struct Space {
             var id: Layout { self }
         }
     }
-    
     enum Action: Equatable {
         case form(BindingAction<Space.State>)
-    }
-    struct Environment {
-        // environment
     }
 }
 
 extension Space {
-    static let reducer = Reducer<State, Action, Environment> {
-        state, action, environment in
+    static let reducer = Reducer<State, Action, Void> {
+        state, action, _ in
         switch action {
         case .form:
             return .none
         }
-        
     }
     .binding(action: /Action.form)
 }
@@ -64,7 +59,7 @@ extension Space {
     static let defaultStore = Store(
         initialState: .init(),
         reducer: reducer,
-        environment: .init()
+        environment: ()
     )
 }
 
