@@ -10,7 +10,6 @@ import ComposableArchitecture
 
 struct SpaceSettingsView: View {
     let store: Store<SpaceSettings.State, SpaceSettings.Action>
-    @State var errorMessage: String = ""
     
     var keyPath = SpaceSettings.Action.keyPath
     
@@ -18,7 +17,6 @@ struct SpaceSettingsView: View {
         WithViewStore(store) { viewStore in
             List {
                 Section(header: Text("Layout & Padding")) {
-                    //Text(errorMessage)
                     Picker("Layout", selection: viewStore.binding(keyPath: \.layout, send: keyPath)) {
                         ForEach(SpaceSettings.State.Layout.allCases) {
                             Text($0.rawValue)
