@@ -18,7 +18,7 @@ struct ConfigView: View {
                 DebugView(store: store)
                 MouseSettingsView(store: store)
                 WindowView(store: store)
-                BordersView(store: store)
+//                BordersView(store: store)
                 SplitRatioView(store: store)
                 MouseModifierView(store: store)
             }
@@ -171,51 +171,51 @@ private struct WindowView: View {
     }
 }
 
-private struct BordersView: View {
-    let store: Store<Config.State, Config.Action>
-    
-    var body: some View {
-        WithViewStore(store) { viewStore in
-            Section(header: Text("Window Borders")) {
-                Toggle("Window Border", isOn: viewStore.binding(
-                        get: \.windowBorder,
-                        send: Config.Action.updateWindowBorder)
-                )
-                HStack {
-                    Text("Window Border Width")
-                    TextField(
-                        "",
-                        value: viewStore.binding(
-                            get: \.windowBorderWidth,
-                            send: Config.Action.updateWindowBorderWidth),
-                        formatter: NumberFormatter()
-                    )
-                }
-                ColorPicker(
-                    "Active Window Border Color",
-                    selection: viewStore.binding(
-                        get: \.activeWindowBorderColor,
-                        send: Config.Action.updateActiveWindowBorderColor
-                    )
-                )
-                ColorPicker(
-                    "Normal Window Border Color",
-                    selection: viewStore.binding(
-                        get: \.normalWindowBorderColor,
-                        send: Config.Action.updateNormalWindowBorderColor
-                    )
-                )
-                ColorPicker(
-                    "Insert Feedback Color",
-                    selection: viewStore.binding(
-                        get: \.insertFeedbackColor,
-                        send: Config.Action.updateInsertFeedbackColor
-                    )
-                )
-            }
-        }
-    }
-}
+//private struct BordersView: View {
+//    let store: Store<Config.State, Config.Action>
+//
+//    var body: some View {
+//        WithViewStore(store) { viewStore in
+//            Section(header: Text("Window Borders")) {
+//                Toggle("Window Border", isOn: viewStore.binding(
+//                        get: \.windowBorder,
+//                        send: Config.Action.updateWindowBorder)
+//                )
+//                HStack {
+//                    Text("Window Border Width")
+//                    TextField(
+//                        "",
+//                        value: viewStore.binding(
+//                            get: \.windowBorderWidth,
+//                            send: Config.Action.updateWindowBorderWidth),
+//                        formatter: NumberFormatter()
+//                    )
+//                }
+//                ColorPicker(
+//                    "Active Window Border Color",
+//                    selection: viewStore.binding(
+//                        get: \.activeWindowBorderColor,
+//                        send: Config.Action.updateActiveWindowBorderColor
+//                    )
+//                )
+//                ColorPicker(
+//                    "Normal Window Border Color",
+//                    selection: viewStore.binding(
+//                        get: \.normalWindowBorderColor,
+//                        send: Config.Action.updateNormalWindowBorderColor
+//                    )
+//                )
+//                ColorPicker(
+//                    "Insert Feedback Color",
+//                    selection: viewStore.binding(
+//                        get: \.insertFeedbackColor,
+//                        send: Config.Action.updateInsertFeedbackColor
+//                    )
+//                )
+//            }
+//        }
+//    }
+//}
 
 private struct SplitRatioView: View {
     let store: Store<Config.State, Config.Action>

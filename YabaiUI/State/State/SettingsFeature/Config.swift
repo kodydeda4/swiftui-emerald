@@ -9,7 +9,7 @@ import SwiftUI
 import ComposableArchitecture
 
 struct Config {
-    struct State: Equatable {
+    struct State: Codable, Equatable {
         var debugOutput             : Bool               = false
         var externalBar             : ExternalBar        = .off
         var mouseFollowsFocus       : Bool               = false
@@ -23,9 +23,9 @@ struct Config {
         var normalWindowOpacity     : Float              = 1
         var windowBorder            : Bool               = false
         var windowBorderWidth       : Int                = 0
-        var activeWindowBorderColor : Color              = .clear
-        var normalWindowBorderColor : Color              = .clear
-        var insertFeedbackColor     : Color              = .clear
+//        var activeWindowBorderColor : Color              = .clear
+//        var normalWindowBorderColor : Color              = .clear
+//        var insertFeedbackColor     : Color              = .clear
         var splitRatio              : Float              = 1
         var autoBalance             : Bool               = false
         var mouseModifier           : MouseModifier      = .cmd
@@ -94,9 +94,9 @@ struct Config {
         case updateNormalWindowOpacity(Float)
         case updateWindowBorder(Bool)
         case updateWindowBorderWidth(Int)
-        case updateActiveWindowBorderColor(Color)
-        case updateNormalWindowBorderColor(Color)
-        case updateInsertFeedbackColor(Color)
+//        case updateActiveWindowBorderColor(Color)
+//        case updateNormalWindowBorderColor(Color)
+//        case updateInsertFeedbackColor(Color)
         case updateSplitRatio(Float)
         case updateAutoBalance(Bool)
         case updateMouseModifier(Config.State.MouseModifier)
@@ -167,17 +167,17 @@ extension Config {
                 state.windowBorderWidth = int
                 return .none
                 
-            case let .updateActiveWindowBorderColor(color):
-                state.activeWindowBorderColor = color
-                return .none
-                
-            case let .updateNormalWindowBorderColor(color):
-                state.normalWindowBorderColor = color
-                return .none
-                
-            case let .updateInsertFeedbackColor(color):
-                state.insertFeedbackColor = color
-                return .none
+//            case let .updateActiveWindowBorderColor(color):
+//                state.activeWindowBorderColor = color
+//                return .none
+//
+//            case let .updateNormalWindowBorderColor(color):
+//                state.normalWindowBorderColor = color
+//                return .none
+//
+//            case let .updateInsertFeedbackColor(color):
+//                state.insertFeedbackColor = color
+//                return .none
                 
             case let .updateSplitRatio(float):
                 state.splitRatio = float

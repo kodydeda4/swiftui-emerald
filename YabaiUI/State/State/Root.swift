@@ -11,21 +11,17 @@ import SwiftShell
 
 struct Root {
     struct State: Equatable {
-        var onboarding = Onboarding.State()
-        
-        // Features.  Currently they just have yabai related stuffs.
-        var space = Space.State()
-        var config = Config.State()
         var errorString: String = ""
-        
+        var onboarding = Onboarding.State()
+        var settings = Settings.State()
         
         var yabaiVersion: String = run("/usr/local/bin/yabai", "-v").stdout
         var skhdVersion: String = run("/usr/local/bin/skhd", "-v").stdout
         var brewVersion: String = run("/usr/local/bin/brew", "-v").stdout
         
-        var yabaiPath: URL {
+        var settingsDataURL: URL {
             yabaiUIApplicationSupportDirectory
-            .appendingPathComponent("yabaiState.json")
+            .appendingPathComponent("settingsData.json")
         }
 
         let yabaiConfigPath = URL(fileURLWithPath: NSHomeDirectory())
@@ -46,8 +42,7 @@ struct Root {
     
     enum Action: Equatable {
         case onboarding(Onboarding.Action)
-        case space(Space.Action)
-        case config(Config.Action)
+        case settings(Settings.Action)
         case save
         case load
         case exportConfigs
@@ -56,18 +51,18 @@ struct Root {
     struct Environment {
         func save(state: State) -> Result<Bool, Error> {
             do {
-                let encodedYabaiState = try JSONEncoder().encode(state.space)
-                try encodedYabaiState.write(to: state.yabaiPath)
+                let encodedState = try JSONEncoder().encode(state.settings)
+                try encodedState.write(to: state.settingsDataURL)
                 return .success(true)
             } catch {
                 return .failure(error)
             }
         }
 
-        func load(state: State) -> Result<(Space.State), Error> {
+        func load(state: State) -> Result<(Settings.State), Error> {
             do {
-                let yabaiData = try Data(contentsOf: state.yabaiPath)
-                let decodedYabaiState = try JSONDecoder().decode(Space.State.self, from: yabaiData)
+                let yabaiData = try Data(contentsOf: state.settingsDataURL)
+                let decodedYabaiState = try JSONDecoder().decode(Settings.State.self, from: yabaiData)
                 return .success(decodedYabaiState)
             }
             catch {
@@ -98,30 +93,25 @@ struct Root {
 
 extension Root {
     static let reducer = Reducer<State, Action, Environment>.combine(
-        Space.reducer.pullback(
-            state: \.space,
-            action: /Action.space,
-            environment: { _ in .init() }
-        ),
         Onboarding.reducer.pullback(
             state: \.onboarding,
             action: /Root.Action.onboarding,
             environment: { _ in .init() }
         ),
-        Config.reducer.pullback(
-            state: \.config,
-            action: /Root.Action.config,
+        Settings.reducer.pullback(
+            state: \.settings,
+            action: /Root.Action.settings,
             environment: { _ in .init() }
         ),
         Reducer { state, action, environment in
             switch action {
         
-            case let .space(subAction):
-                return Effect(value: .save)
-                                
-            case let .config(subAction):
-                return .none
                 
+            case let .settings(subAction):
+                return Effect(value: .save)
+
+            
+
             case let .onboarding(subAction):
                 return .none
                 
@@ -137,7 +127,7 @@ extension Root {
             case .load:
                 switch environment.load(state: state) {
                 case let .success(decodedYabaiState):
-                    state.space = decodedYabaiState
+                    state.settings = decodedYabaiState
                 case let .failure(error):
                     state.errorString = "Failed to load State"
                 }

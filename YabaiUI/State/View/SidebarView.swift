@@ -8,35 +8,46 @@
 import ComposableArchitecture
 import SwiftUI
 
+struct SettingsSectionView: View {
+    let store: Store<Settings.State, Settings.Action>
+    
+    var body: some View {
+        Section(header: Text("Settings")) {
+            
+            NavigationLink(destination: ConfigView(store: store.scope(state: \.config, action: Settings.Action.config))) {
+                Label("Config", systemImage: "rectangle.3.offgrid")
+            }
+            NavigationLink(destination: TemporaryTextView(text: "Display")) {
+                Label("Display", systemImage: "display")
+            }
+            NavigationLink(destination: SpaceView(store: store.scope(state: \.space, action: Settings.Action.space))) {
+                Label("Space", systemImage: "rectangle.3.offgrid")
+            }
+            NavigationLink(destination: TemporaryTextView(text: "Window")) {
+                Label("Window", systemImage: "macwindow")
+            }
+            NavigationLink(destination: TemporaryTextView(text: "Query")) {
+                Label("Query", systemImage: "terminal")
+            }
+            NavigationLink(destination: TemporaryTextView(text: "Rule")) {
+                Label("Rule", systemImage: "keyboard")
+            }
+            NavigationLink(destination: TemporaryTextView(text: "Signal")) {
+                Label("Signal", systemImage: "antenna.radiowaves.left.and.right")
+            }
+            
+            
+        }
+        
+    }
+}
 struct SidebarView: View {
     let store: Store<Root.State, Root.Action>
     
     var body: some View {
         WithViewStore(store) { viewStore in
             List {
-                Section(header: Text("Settings")) {
-                    NavigationLink(destination: ConfigView(store: store.scope(state: \.config, action: Root.Action.config))) {
-                        Label("Config", systemImage: "rectangle.3.offgrid")
-                    }
-                    NavigationLink(destination: TemporaryTextView(text: "Display")) {
-                        Label("Display", systemImage: "display")
-                    }
-                    NavigationLink(destination: SpaceView(store: store.scope(state: \.space, action: Root.Action.space))) {
-                        Label("Space", systemImage: "rectangle.3.offgrid")
-                    }
-                    NavigationLink(destination: TemporaryTextView(text: "Window")) {
-                        Label("Window", systemImage: "macwindow")
-                    }
-                    NavigationLink(destination: TemporaryTextView(text: "Query")) {
-                        Label("Query", systemImage: "terminal")
-                    }
-                    NavigationLink(destination: TemporaryTextView(text: "Rule")) {
-                        Label("Rule", systemImage: "keyboard")
-                    }
-                    NavigationLink(destination: TemporaryTextView(text: "Signal")) {
-                        Label("Signal", systemImage: "antenna.radiowaves.left.and.right")
-                    }
-                }
+                SettingsSectionView(store: store.scope(state: \.settings, action: Root.Action.settings))
                 Divider()
                 NavigationLink(destination: AboutView(store: store)) {
                     Label("About", systemImage: "gear")
