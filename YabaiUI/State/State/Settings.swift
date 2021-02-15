@@ -5,7 +5,6 @@
 //  Created by Kody Deda on 2/15/21.
 //
 
-import SwiftUI
 import ComposableArchitecture
 
 struct Settings {
@@ -15,7 +14,6 @@ struct Settings {
     }
     
     enum Action: Equatable {
-        // action
         case config(Config.Action)
         case space(Space.Action)
     }
@@ -55,22 +53,4 @@ extension Settings {
         reducer: reducer,
         environment: .init()
     )
-}
-
-// MARK:- SettingsView
-
-struct SettingsView: View {
-    let store: Store<Settings.State, Settings.Action>
-    
-    var body: some View {
-        WithViewStore(store) { viewStore in
-            
-        }
-    }
-}
-
-struct SettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingsView(store: Settings.defaultStore)
-    }
 }

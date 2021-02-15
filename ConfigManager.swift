@@ -9,29 +9,22 @@ import SwiftUI
 import ComposableArchitecture
 import SwiftShell
 
-
 struct ConfigManager {
     struct State: Equatable {
         var errorString: String = ""
-
         var yabaiVersion: String = run("/usr/local/bin/yabai", "-v").stdout
         var skhdVersion: String = run("/usr/local/bin/skhd", "-v").stdout
         var brewVersion: String = run("/usr/local/bin/brew", "-v").stdout
         
-
         let yabaiConfigPath = URL(fileURLWithPath: NSHomeDirectory())
             .appendingPathComponent("yabaiConfig")
-        
-
     }
     
     enum Action: Equatable {
-        // action
         case exportConfigs
     }
     
     struct Environment {
-        // environment
         func createYabaiConfig(state: State) -> String {
             return "Yabai's Specialy Formatted Config File"
         }
@@ -76,22 +69,4 @@ extension ConfigManager {
         reducer: reducer,
         environment: .init()
     )
-}
-
-// MARK:- ConfigManagerView
-
-struct ConfigManagerView: View {
-    let store: Store<ConfigManager.State, ConfigManager.Action>
-    
-    var body: some View {
-        WithViewStore(store) { viewStore in
-            
-        }
-    }
-}
-
-struct ConfigManagerView_Previews: PreviewProvider {
-    static var previews: some View {
-        ConfigManagerView(store: ConfigManager.defaultStore)
-    }
 }

@@ -10,16 +10,15 @@ import ComposableArchitecture
 
 struct Root {
     struct State: Equatable {
-        var errorString: String = ""
         var settings = Settings.State()
         var onboarding = Onboarding.State()
         var configManager = ConfigManager.State()
+        var errorString: String = ""
         
         var settingsDataURL: URL {
             yabaiUIApplicationSupportDirectory
             .appendingPathComponent("settingsData.json")
         }
-        
         var yabaiUIApplicationSupportDirectory: URL {
             let path = FileManager.default
                 .urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
@@ -31,9 +30,6 @@ struct Root {
             }
             return path
         }
-
-
-        
     }
     
     enum Action: Equatable {
