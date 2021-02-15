@@ -33,7 +33,7 @@ struct RootView: View {
             .toolbar {
                 ToolbarItem {
                     Button("Export Data") {
-                        viewStore.send(.exportConfigs)
+                        viewStore.send(.configManager(.exportConfigs))
                     }
                 }
                 ToolbarItem {

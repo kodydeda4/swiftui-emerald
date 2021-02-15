@@ -7,25 +7,18 @@
 
 import SwiftUI
 import ComposableArchitecture
-import SwiftShell
 
 struct Root {
     struct State: Equatable {
         var errorString: String = ""
-        var onboarding = Onboarding.State()
         var settings = Settings.State()
-        
-        var yabaiVersion: String = run("/usr/local/bin/yabai", "-v").stdout
-        var skhdVersion: String = run("/usr/local/bin/skhd", "-v").stdout
-        var brewVersion: String = run("/usr/local/bin/brew", "-v").stdout
+        var onboarding = Onboarding.State()
+        var configManager = ConfigManager.State()
         
         var settingsDataURL: URL {
             yabaiUIApplicationSupportDirectory
             .appendingPathComponent("settingsData.json")
         }
-
-        let yabaiConfigPath = URL(fileURLWithPath: NSHomeDirectory())
-            .appendingPathComponent("yabaiConfig")
         
         var yabaiUIApplicationSupportDirectory: URL {
             let path = FileManager.default
@@ -38,14 +31,17 @@ struct Root {
             }
             return path
         }
+
+
+        
     }
     
     enum Action: Equatable {
         case onboarding(Onboarding.Action)
         case settings(Settings.Action)
+        case configManager(ConfigManager.Action)
         case save
         case load
-        case exportConfigs
     }
     
     struct Environment {
@@ -69,25 +65,7 @@ struct Root {
                 return .failure(error)
             }
         }
-        
-        func exportConfigs(state: State) -> Result<Bool, Error> {
-            do {
-                let yabaiConfigData = createYabaiConfig(state: state)
-                try yabaiConfigData.write(to: state.yabaiConfigPath, atomically: true, encoding: .utf8)
-                return .success(true)
-            }
-            catch {
-                return .failure(error)
-            }
-        }
-        
-        func createYabaiConfig(state: State) -> String {
-            return "Yabai's Specialy Formatted Config File"
-        }
-        
-        func createSKHDConfig(state: State) -> String {
-            return "SKHD's Specialy Formatted Config File"
-        }
+
     }
 }
 
@@ -103,16 +81,21 @@ extension Root {
             action: /Root.Action.settings,
             environment: { _ in .init() }
         ),
+        ConfigManager.reducer.pullback(
+            state: \.configManager,
+            action: /Root.Action.configManager,
+            environment: { _ in .init() }
+        ),
         Reducer { state, action, environment in
             switch action {
-        
-                
+                        
             case let .settings(subAction):
                 return Effect(value: .save)
 
-            
-
             case let .onboarding(subAction):
+                return .none
+                
+            case let .configManager(subAction):
                 return .none
                 
             case .save:
@@ -133,14 +116,6 @@ extension Root {
                 }
                 return .none
                 
-            case .exportConfigs:
-                switch environment.exportConfigs(state: state) {
-                case .success:
-                    state.errorString = ""
-                case let .failure(error):
-                    state.errorString = "Failed to export config files."
-                }
-                return .none
             }
         }
     )
