@@ -17,8 +17,8 @@ struct SidebarView: View {
                 Section(header: Text("Settings")) {
                     SettingsNavlinks(
                         store: store.scope(
-                            state: \.yabaiConfiguration,
-                            action: Root.Action.yabaiConfiguration
+                            state: \.settings,
+                            action: Root.Action.settings
                         )
                     )
                 }
@@ -63,13 +63,13 @@ func toggleSidebar() {
 
 
 private struct SettingsNavlinks: View {
-    let store: Store<YabaiConfiguration.State, YabaiConfiguration.Action>
+    let store: Store<Settings.State, Settings.Action>
     
     var body: some View {
-        NavigationLink(destination: GlobalSettingsView(store: store.scope(state: \.globalSettings, action: YabaiConfiguration.Action.globalSettings))) {
+        NavigationLink(destination: GlobalSettingsView(store: store.scope(state: \.globalSettings, action: Settings.Action.globalSettings))) {
             Label("Global", systemImage: "globe")
         }
-        NavigationLink(destination: SpaceSettingsView(store: store.scope(state: \.spaceSettings, action: YabaiConfiguration.Action.spaceSettings))) {
+        NavigationLink(destination: SpaceSettingsView(store: store.scope(state: \.spaceSettings, action: Settings.Action.spaceSettings))) {
             Label("Space", systemImage: "rectangle.3.offgrid")
         }
     }

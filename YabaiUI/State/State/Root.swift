@@ -10,23 +10,23 @@ import ComposableArchitecture
 
 struct Root {
     struct State: Equatable {
-        var yabaiConfiguration = YabaiConfiguration.State()
-        var configFiles = ConfigFileManager.State()
+        var settings = Settings.State()
+        var configFiles = ConfigFiles.State()
         var onboarding = Onboarding.State()
     }
     
     enum Action: Equatable {
-        case yabaiConfiguration(YabaiConfiguration.Action)
+        case settings(Settings.Action)
         case onboarding(Onboarding.Action)
-        case configManager(ConfigFileManager.Action)
+        case configManager(ConfigFiles.Action)
     }
 }
 
 extension Root {
     static let reducer = Reducer<State, Action, Void>.combine(
-        YabaiConfiguration.reducer.pullback(
-            state: \.yabaiConfiguration,
-            action: /Root.Action.yabaiConfiguration,
+        Settings.reducer.pullback(
+            state: \.settings,
+            action: /Root.Action.settings,
             environment: { _ in .init() }
         ),
         Onboarding.reducer.pullback(
@@ -34,7 +34,7 @@ extension Root {
             action: /Root.Action.onboarding,
             environment: { _ in () }
         ),
-        ConfigFileManager.reducer.pullback(
+        ConfigFiles.reducer.pullback(
             state: \.configFiles,
             action: /Root.Action.configManager,
             environment: { _ in .init() }

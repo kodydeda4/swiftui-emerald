@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3315223F25D5786C00C8E46A /* SwiftShell in Frameworks */ = {isa = PBXBuildFile; productRef = 3315223E25D5786C00C8E46A /* SwiftShell */; };
+		3323C69225D7026D00D655DE /* GlobalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3323C69125D7026D00D655DE /* GlobalSettings.swift */; };
 		3323C69525D7173D00D655DE /* GlobalSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3323C69425D7173D00D655DE /* GlobalSettingsView.swift */; };
+		33387D6525D3F64300E76D29 /* SpaceSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33387D6425D3F64300E76D29 /* SpaceSettings.swift */; };
 		335E481125DAAB3800CDE271 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335E481025DAAB3800CDE271 /* Settings.swift */; };
 		3361CDF725D44AEC0086F6A7 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */; };
 		3380D2FF25D05F4200C10913 /* YabaiUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380D2FE25D05F4200C10913 /* YabaiUIApp.swift */; };
@@ -25,11 +27,13 @@
 		339D779A25DAECAE009F3934 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339D779925DAECAE009F3934 /* Color+Extensions.swift */; };
 		339E3C6425DBF14500F8B9AA /* YabaiCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339E3C6325DBF14500F8B9AA /* YabaiCommands.swift */; };
 		33B62D2925D5E31400DD5934 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B62D2825D5E31400DD5934 /* Onboarding.swift */; };
-		33E5538D25DAB0D100241787 /* ConfigFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E5538C25DAB0D100241787 /* ConfigFileManager.swift */; };
+		33E5538D25DAB0D100241787 /* ConfigFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E5538C25DAB0D100241787 /* ConfigFiles.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3323C69125D7026D00D655DE /* GlobalSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSettings.swift; sourceTree = "<group>"; };
 		3323C69425D7173D00D655DE /* GlobalSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSettingsView.swift; sourceTree = "<group>"; };
+		33387D6425D3F64300E76D29 /* SpaceSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceSettings.swift; sourceTree = "<group>"; };
 		335E481025DAAB3800CDE271 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		3380D2FB25D05F4200C10913 /* YabaiUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YabaiUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,7 +52,7 @@
 		339D779925DAECAE009F3934 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		339E3C6325DBF14500F8B9AA /* YabaiCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiCommands.swift; sourceTree = "<group>"; };
 		33B62D2825D5E31400DD5934 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
-		33E5538C25DAB0D100241787 /* ConfigFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigFileManager.swift; sourceTree = "<group>"; };
+		33E5538C25DAB0D100241787 /* ConfigFiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigFiles.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,8 +131,9 @@
 				3380D33625D0723000C10913 /* Root.swift */,
 				335E481025DAAB3800CDE271 /* Settings.swift */,
 				33B62D2825D5E31400DD5934 /* Onboarding.swift */,
-				33E5538C25DAB0D100241787 /* ConfigFileManager.swift */,
-				339E3C6325DBF14500F8B9AA /* YabaiCommands.swift */,
+				33E5538C25DAB0D100241787 /* ConfigFiles.swift */,
+				33387D6425D3F64300E76D29 /* SpaceSettings.swift */,
+				3323C69125D7026D00D655DE /* GlobalSettings.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -137,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				339C453025D6ECCA0079ACA1 /* RootView.swift */,
+				339E3C6325DBF14500F8B9AA /* YabaiCommands.swift */,
 				3385DF6625D6270B00ACDE21 /* SidebarView.swift */,
 				3385DF6925D6279200ACDE21 /* AboutView.swift */,
 				339C453425D6ED0F0079ACA1 /* OnboardingView.swift */,
@@ -227,9 +233,11 @@
 				3361CDF725D44AEC0086F6A7 /* URL+Extensions.swift in Sources */,
 				33B62D2925D5E31400DD5934 /* Onboarding.swift in Sources */,
 				3385DF6D25D628BF00ACDE21 /* SpaceSettingsView.swift in Sources */,
+				33387D6525D3F64300E76D29 /* SpaceSettings.swift in Sources */,
 				3380D2FF25D05F4200C10913 /* YabaiUIApp.swift in Sources */,
+				3323C69225D7026D00D655DE /* GlobalSettings.swift in Sources */,
 				3380D33725D0723000C10913 /* Root.swift in Sources */,
-				33E5538D25DAB0D100241787 /* ConfigFileManager.swift in Sources */,
+				33E5538D25DAB0D100241787 /* ConfigFiles.swift in Sources */,
 				335E481125DAAB3800CDE271 /* Settings.swift in Sources */,
 				3385DF6725D6270B00ACDE21 /* SidebarView.swift in Sources */,
 				339E3C6425DBF14500F8B9AA /* YabaiCommands.swift in Sources */,
