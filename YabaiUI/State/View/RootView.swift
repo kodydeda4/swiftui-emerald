@@ -15,11 +15,15 @@ struct RootView: View {
         WithViewStore(store) { viewStore in
             NavigationView {
                 SidebarView(store: store)
-                VStack {
-                    Text("Welcome Page")
-                        .font(.largeTitle)
-                        .foregroundColor(Color(NSColor.placeholderTextColor))
-                }
+                //                GlobalSettingsView(
+                //                    store: store
+                //                        .scope(state: \.settings, action: Root.Action.globalSettings)
+                //                        .scope(state: \.globalSettings, action: Settings.Action.globalSettings)
+                //                )
+                
+                Text("Welcome Page")
+                    .font(.largeTitle)
+                    .foregroundColor(Color(NSColor.placeholderTextColor))
             }
             
             .onAppear { viewStore.send(.settings(.load)) }

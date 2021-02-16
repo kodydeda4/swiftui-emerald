@@ -7,6 +7,15 @@
 
 import ComposableArchitecture
 
+/*------------------------------------------------------------------------------------------
+ YABAI ascii documentation:
+ ------------------------------------------------------------------------------------------
+ - Section  6.1     - configuring Yabai.
+ - Sections 6.2-6.7 - configuring actions to Yabai.
+
+ https://github.com/koekeishiya/yabai/blob/master/doc/yabai.asciidoc#config
+ ------------------------------------------------------------------------------------------*/
+
 struct Settings {
     struct State: Codable, Equatable {
         var errorString: String = ""
