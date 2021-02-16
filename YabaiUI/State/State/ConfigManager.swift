@@ -11,7 +11,7 @@ import SwiftUI
 import ComposableArchitecture
 import SwiftShell
 
-struct ConfigFileManager {
+struct ConfigManager {
     struct State: Equatable {
         var errorString: String = ""
         
@@ -47,7 +47,7 @@ struct ConfigFileManager {
     }
 }
 
-extension ConfigFileManager {
+extension ConfigManager {
     static let reducer = Reducer<State, Action, Environment>.combine(
         Reducer { state, action, environment in
             switch action {
@@ -65,7 +65,7 @@ extension ConfigFileManager {
     )
 }
 
-extension ConfigFileManager {
+extension ConfigManager {
     static let defaultStore = Store(
         initialState: .init(),
         reducer: reducer,

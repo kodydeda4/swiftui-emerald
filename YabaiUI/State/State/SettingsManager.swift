@@ -7,7 +7,7 @@
 
 import ComposableArchitecture
 
-struct Settings {
+struct SettingsManager {
     struct State: Codable, Equatable {
         var errorString: String = ""
 
@@ -37,7 +37,7 @@ struct Settings {
     }
     
     struct Environment {
-        func save(_ state: Settings.State, to url: URL) -> Result<Bool, Error> {
+        func save(_ state: SettingsManager.State, to url: URL) -> Result<Bool, Error> {
             do {
                 let encoded = try JSONEncoder().encode(state)
                 try encoded.write(to: url)
@@ -46,7 +46,7 @@ struct Settings {
                 return .failure(error)
             }
         }
-        func load(_ state: Settings.State, from url: URL) -> Result<(Settings.State), Error> {
+        func load(_ state: SettingsManager.State, from url: URL) -> Result<(SettingsManager.State), Error> {
             do {
                 let data = try Data(contentsOf: url)
                 let decoded = try JSONDecoder().decode(type(of: state), from: data)
@@ -59,7 +59,7 @@ struct Settings {
     }
 }
 
-extension Settings {
+extension SettingsManager {
     static let reducer = Reducer<State, Action, Environment>.combine(
         YabaiSettings.reducer.pullback(
             state: \.yabaiSettings,
@@ -95,7 +95,7 @@ extension Settings {
     )
 }
 
-extension Settings {
+extension SettingsManager {
     static let defaultStore = Store(
         initialState: .init(),
         reducer: reducer,

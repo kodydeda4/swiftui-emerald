@@ -26,7 +26,7 @@ struct RootView: View {
                     .foregroundColor(Color(NSColor.placeholderTextColor))
             }
             
-            .onAppear { viewStore.send(.settings(.load)) }
+            .onAppear { viewStore.send(.settingsManager(.load)) }
             .sheet(isPresented:
                     viewStore.binding(
                         get: \.onboarding.isOnboaring,

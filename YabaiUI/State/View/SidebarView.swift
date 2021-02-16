@@ -17,8 +17,8 @@ struct SidebarView: View {
                 Section(header: Text("Settings")) {
                     SettingsNavlinks(
                         store: store.scope(
-                            state: \.settings,
-                            action: Root.Action.settings
+                            state: \.settingsManager,
+                            action: Root.Action.settingsManager
                         )
                     )
                 }
@@ -43,10 +43,10 @@ func toggleSidebar() {
 }
 
 private struct SettingsNavlinks: View {
-    let store: Store<Settings.State, Settings.Action>
+    let store: Store<SettingsManager.State, SettingsManager.Action>
     
     var body: some View {
-        NavigationLink(destination: YabaiSettingsView(store: store.scope(state: \.yabaiSettings, action: Settings.Action.yabaiSettings))) {
+        NavigationLink(destination: YabaiSettingsView(store: store.scope(state: \.yabaiSettings, action: SettingsManager.Action.yabaiSettings))) {
             Label("Space", systemImage: "rectangle.3.offgrid")
         }
     }

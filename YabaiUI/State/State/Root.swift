@@ -10,27 +10,27 @@ import ComposableArchitecture
 
 struct Root {
     struct State: Equatable {
-        var settings = Settings.State()
-        var configFileManager = ConfigFileManager.State()
+        var settingsManager = SettingsManager.State()
+        var configManager = ConfigManager.State()
         var onboarding = Onboarding.State()
     }
     
     enum Action: Equatable {
-        case settings(Settings.Action)
+        case settingsManager(SettingsManager.Action)
         case onboarding(Onboarding.Action)
-        case configManager(ConfigFileManager.Action)
+        case configManager(ConfigManager.Action)
     }
 }
 
 extension Root {
     static let reducer = Reducer<State, Action, Void>.combine(
-        Settings.reducer.pullback(
-            state: \.settings,
-            action: /Root.Action.settings,
+        SettingsManager.reducer.pullback(
+            state: \.settingsManager,
+            action: /Root.Action.settingsManager,
             environment: { _ in .init() }
         ),
-        ConfigFileManager.reducer.pullback(
-            state: \.configFileManager,
+        ConfigManager.reducer.pullback(
+            state: \.configManager,
             action: /Root.Action.configManager,
             environment: { _ in .init() }
         ),
@@ -49,3 +49,4 @@ extension Root {
         environment: ()
     )
 }
+
