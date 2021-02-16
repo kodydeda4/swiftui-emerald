@@ -30,19 +30,19 @@ struct AboutView: View {
                 
                 VStack(alignment: .leading) {
                     Text("Yabai Version")
-                    Text(viewStore.configFiles.yabaiVersion)
+                    Text(viewStore.configFileManager.yabaiVersion)
                         .foregroundColor(.gray)
                 }
 
                 VStack(alignment: .leading) {
                     Text("SKHD Version")
-                    Text(viewStore.configFiles.skhdVersion)
+                    Text(viewStore.configFileManager.skhdVersion)
                         .foregroundColor(.gray)
                 }
 
                 VStack(alignment: .leading) {
                     Text("HomeBrew Version")
-                    Text(viewStore.configFiles.brewVersion)
+                    Text(viewStore.configFileManager.brewVersion)
                         .foregroundColor(.gray)
                         .lineLimit(1)
                 }

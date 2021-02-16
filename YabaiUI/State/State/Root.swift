@@ -11,14 +11,14 @@ import ComposableArchitecture
 struct Root {
     struct State: Equatable {
         var settings = Settings.State()
-        var configFiles = ConfigFiles.State()
+        var configFileManager = ConfigFileManager.State()
         var onboarding = Onboarding.State()
     }
     
     enum Action: Equatable {
         case settings(Settings.Action)
         case onboarding(Onboarding.Action)
-        case configManager(ConfigFiles.Action)
+        case configManager(ConfigFileManager.Action)
     }
 }
 
@@ -29,15 +29,15 @@ extension Root {
             action: /Root.Action.settings,
             environment: { _ in .init() }
         ),
+        ConfigFileManager.reducer.pullback(
+            state: \.configFileManager,
+            action: /Root.Action.configManager,
+            environment: { _ in .init() }
+        ),
         Onboarding.reducer.pullback(
             state: \.onboarding,
             action: /Root.Action.onboarding,
             environment: { _ in () }
-        ),
-        ConfigFiles.reducer.pullback(
-            state: \.configFiles,
-            action: /Root.Action.configManager,
-            environment: { _ in .init() }
         )
     )
 }

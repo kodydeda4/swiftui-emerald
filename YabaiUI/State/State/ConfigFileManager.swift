@@ -5,13 +5,13 @@
 //  Created by Kody Deda on 2/15/21.
 //
 
+// Manages creating and exporting Yabai / SKHD config files.
+
 import SwiftUI
 import ComposableArchitecture
 import SwiftShell
 
-// Manages creating and exporting Yabai & SKHD config files.
-
-struct ConfigFiles {
+struct ConfigFileManager {
     struct State: Equatable {
         var errorString: String = ""
         
@@ -31,7 +31,6 @@ struct ConfigFiles {
         func createYabaiConfig(state: State) -> String {
             return "Yabai's Specialy Formatted Config File"
         }
-        
         func createSKHDConfig(state: State) -> String {
             return "SKHD's Specialy Formatted Config File"
         }
@@ -48,7 +47,7 @@ struct ConfigFiles {
     }
 }
 
-extension ConfigFiles {
+extension ConfigFileManager {
     static let reducer = Reducer<State, Action, Environment>.combine(
         Reducer { state, action, environment in
             switch action {
@@ -66,7 +65,7 @@ extension ConfigFiles {
     )
 }
 
-extension ConfigFiles {
+extension ConfigFileManager {
     static let defaultStore = Store(
         initialState: .init(),
         reducer: reducer,

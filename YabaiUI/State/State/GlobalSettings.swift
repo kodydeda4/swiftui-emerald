@@ -23,9 +23,9 @@ struct GlobalSettings {
         var normalWindowOpacity     : Float              = 1
         var windowBorder            : Bool               = false
         var windowBorderWidth       : Int                = 0
-        //        var activeWindowBorderColor : Color              = .clear
-        //        var normalWindowBorderColor : Color              = .clear
-        //        var insertFeedbackColor     : Color              = .clear
+//        var activeWindowBorderColor : Color              = .clear
+//        var normalWindowBorderColor : Color              = .clear
+//        var insertFeedbackColor     : Color              = .clear
         var splitRatio              : Float              = 1
         var autoBalance             : Bool               = false
         var mouseModifier           : MouseModifier      = .cmd
