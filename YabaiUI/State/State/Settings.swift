@@ -14,7 +14,7 @@ struct Settings {
         var globalSettings = GlobalSettings.State()
         var spaceSettings = SpaceSettings.State()
         
-        var settingsDataURL: URL {
+        var settingsURL: URL {
             yabaiUIApplicationSupportDirectory
             .appendingPathComponent("settingsData.json")
         }
@@ -29,30 +29,29 @@ struct Settings {
             }
             return path
         }
-        
     }
     
     enum Action: Equatable {
-        case globalSettings(GlobalSettings.Action)
-        case spaceSettings(SpaceSettings.Action)
         case save
         case load
+        case globalSettings(GlobalSettings.Action)
+        case spaceSettings(SpaceSettings.Action)
     }
     
     struct Environment {
-        func save(state: State) -> Result<Bool, Error> {
+        func save(_ state: Settings.State, to url: URL) -> Result<Bool, Error> {
             do {
                 let encoded = try JSONEncoder().encode(state)
-                try encoded.write(to: state.settingsDataURL)
+                try encoded.write(to: url)
                 return .success(true)
             } catch {
                 return .failure(error)
             }
         }
-        func load(state: State) -> Result<(Settings.State), Error> {
+        func load(_ state: Settings.State, from url: URL) -> Result<(Settings.State), Error> {
             do {
-                let data = try Data(contentsOf: state.settingsDataURL)
-                let decoded = try JSONDecoder().decode(Settings.State.self, from: data)
+                let data = try Data(contentsOf: url)
+                let decoded = try JSONDecoder().decode(type(of: state), from: data)
                 return .success(decoded)
             }
             catch {
@@ -75,32 +74,32 @@ extension Settings {
             environment: { _ in () }
         ),
         Reducer { state, action, environment in
-            switch action {                
+            switch action {
+            
+            case .save:
+                switch environment.save(state, to: state.settingsURL) {
+                case .success:
+                    state.errorString = ""
+                case let .failure(error):
+                    state.errorString = "Error - Failed to save state"
+                }
+                return .none
+                
+            case .load:
+                switch environment.load(state, from: state.settingsURL) {
+                case let .success(decoded):
+                    state = decoded
+                case let .failure(error):
+                    state.errorString = "Error - Failed to load state"
+                }
+                return .none
+                
             case let .globalSettings(subAction):
                 return Effect(value: .save)
                 
             case let .spaceSettings(subAction):
                 return Effect(value: .save)
                 
-            case .save:
-                switch environment.save(state: state) {
-                case .success:
-                    state.errorString = ""
-                case let .failure(error):
-                    state.errorString = "Error - Failed to save State"
-                }
-                return .none
-                
-            case .load:
-                switch environment.load(state: state) {
-                case let .success(decoded):
-                    state = decoded
-                case let .failure(error):
-                    state.errorString = "Error - Failed to load State"
-                }
-                return .none
-                
-
             }
         }
     )

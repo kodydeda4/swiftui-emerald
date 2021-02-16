@@ -11,9 +11,10 @@ import SwiftShell
 
 // Manages creating and exporting Yabai & SKHD config files.
 
-struct ConfigManager {
+struct ConfigFiles {
     struct State: Equatable {
         var errorString: String = ""
+        
         var yabaiVersion: String = run("/usr/local/bin/yabai", "-v").stdout
         var skhdVersion: String = run("/usr/local/bin/skhd", "-v").stdout
         var brewVersion: String = run("/usr/local/bin/brew", "-v").stdout
@@ -47,7 +48,7 @@ struct ConfigManager {
     }
 }
 
-extension ConfigManager {
+extension ConfigFiles {
     static let reducer = Reducer<State, Action, Environment>.combine(
         Reducer { state, action, environment in
             switch action {
@@ -65,7 +66,7 @@ extension ConfigManager {
     )
 }
 
-extension ConfigManager {
+extension ConfigFiles {
     static let defaultStore = Store(
         initialState: .init(),
         reducer: reducer,

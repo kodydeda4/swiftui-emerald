@@ -26,7 +26,7 @@
 		339C453525D6ED0F0079ACA1 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C453425D6ED0F0079ACA1 /* OnboardingView.swift */; };
 		339D779A25DAECAE009F3934 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339D779925DAECAE009F3934 /* Color+Extensions.swift */; };
 		33B62D2925D5E31400DD5934 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B62D2825D5E31400DD5934 /* Onboarding.swift */; };
-		33E5538D25DAB0D100241787 /* ConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E5538C25DAB0D100241787 /* ConfigManager.swift */; };
+		33E5538D25DAB0D100241787 /* ConfigFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E5538C25DAB0D100241787 /* ConfigFiles.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,7 +50,7 @@
 		339C453425D6ED0F0079ACA1 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		339D779925DAECAE009F3934 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		33B62D2825D5E31400DD5934 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
-		33E5538C25DAB0D100241787 /* ConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigManager.swift; sourceTree = "<group>"; };
+		33E5538C25DAB0D100241787 /* ConfigFiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigFiles.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,7 +129,7 @@
 				3380D33625D0723000C10913 /* Root.swift */,
 				335E481025DAAB3800CDE271 /* Settings.swift */,
 				33B62D2825D5E31400DD5934 /* Onboarding.swift */,
-				33E5538C25DAB0D100241787 /* ConfigManager.swift */,
+				33E5538C25DAB0D100241787 /* ConfigFiles.swift */,
 				33387D6425D3F64300E76D29 /* SpaceSettings.swift */,
 				3323C69125D7026D00D655DE /* GlobalSettings.swift */,
 			);
@@ -234,7 +234,7 @@
 				3380D2FF25D05F4200C10913 /* YabaiUIApp.swift in Sources */,
 				3323C69225D7026D00D655DE /* GlobalSettings.swift in Sources */,
 				3380D33725D0723000C10913 /* Root.swift in Sources */,
-				33E5538D25DAB0D100241787 /* ConfigManager.swift in Sources */,
+				33E5538D25DAB0D100241787 /* ConfigFiles.swift in Sources */,
 				335E481125DAAB3800CDE271 /* Settings.swift in Sources */,
 				3385DF6725D6270B00ACDE21 /* SidebarView.swift in Sources */,
 				339D779A25DAECAE009F3934 /* Color+Extensions.swift in Sources */,
