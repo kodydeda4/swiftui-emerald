@@ -11,6 +11,7 @@ enum AppleScript: String {
     case refreshYabai = "refreshYabai"
     case yabaiSetFloating = "yabaiSetFloating"
     case yabaiSetBSP = "yabaiSetBSP"
+    case yabaiSetStacking = "yabaiSetStacking"
 }
 
 extension AppleScript {
