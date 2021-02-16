@@ -1,5 +1,5 @@
 //
-//  Settings.swift
+//  YabaiConfiguration.swift
 //  YabaiUI
 //
 //  Created by Kody Deda on 2/15/21.
@@ -7,7 +7,7 @@
 
 import ComposableArchitecture
 
-struct Settings {
+struct YabaiConfiguration {
     struct State: Codable, Equatable {
         var errorString: String = ""
 
@@ -39,7 +39,7 @@ struct Settings {
     }
     
     struct Environment {
-        func save(_ state: Settings.State, to url: URL) -> Result<Bool, Error> {
+        func save(_ state: YabaiConfiguration.State, to url: URL) -> Result<Bool, Error> {
             do {
                 let encoded = try JSONEncoder().encode(state)
                 try encoded.write(to: url)
@@ -48,7 +48,7 @@ struct Settings {
                 return .failure(error)
             }
         }
-        func load(_ state: Settings.State, from url: URL) -> Result<(Settings.State), Error> {
+        func load(_ state: YabaiConfiguration.State, from url: URL) -> Result<(YabaiConfiguration.State), Error> {
             do {
                 let data = try Data(contentsOf: url)
                 let decoded = try JSONDecoder().decode(type(of: state), from: data)
@@ -61,11 +61,11 @@ struct Settings {
     }
 }
 
-extension Settings {
+extension YabaiConfiguration {
     static let reducer = Reducer<State, Action, Environment>.combine(
         GlobalSettings.reducer.pullback(
             state: \.globalSettings,
-            action: /Settings.Action.globalSettings,
+            action: /YabaiConfiguration.Action.globalSettings,
             environment: { _ in () }
         ),
         SpaceSettings.reducer.pullback(
@@ -105,7 +105,7 @@ extension Settings {
     )
 }
 
-extension Settings {
+extension YabaiConfiguration {
     static let defaultStore = Store(
         initialState: .init(),
         reducer: reducer,
@@ -113,6 +113,152 @@ extension Settings {
     )
 }
 
+// MARK:- SpaceSettings
+struct SpaceSettings {
+    struct State: Equatable, Codable {
+        var layout         : Layout  = .float
+        var paddingTop     : Int     = 0
+        var paddingBottom  : Int     = 0
+        var paddingLeft    : Int     = 0
+        var paddingRight   : Int     = 0
+        var windowGap      : Int     = 0
+        
+        enum Layout: String, Codable, CaseIterable, Identifiable {
+            case bsp
+            case stack
+            case float
+            
+            var id: Layout { self }
+        }
+    }
+    enum Action: Equatable {
+        case keyPath(BindingAction<SpaceSettings.State>)
+    }
+}
+
+extension SpaceSettings {
+    static let reducer = Reducer<State, Action, Void> {
+        state, action, _ in
+        switch action {
+        case .keyPath:
+            return .none
+        }
+    }
+    .binding(action: /Action.keyPath)
+}
+
+extension SpaceSettings {
+    static let defaultStore = Store(
+        initialState: .init(),
+        reducer: reducer,
+        environment: ()
+    )
+}
+
+//case let .updateLayout(layout):
+//state.layout = layout
+//switch layout {
+//case .float:
+//    let _ = AppleScript.yabaiSetFloating.execute()
+//case .bsp:
+//    let _ = AppleScript.yabaiSetBSP.execute()
+//case .stack:
+//    print()
+//}
+//return .none
+
+
+// MARK:- GlobalSettings
+struct GlobalSettings {
+    struct State: Codable, Equatable {
+        var debugOutput             : Bool               = false
+        var externalBar             : ExternalBar        = .off
+        var mouseFollowsFocus       : Bool               = false
+        var focusFollowsMouse       : FocusFollowsMouse  = .off
+        var windowPlacement         : WindowPlacement    = .firstChild
+        var windowTopmost           : Bool               = false
+        var windowShadow            : Bool               = false
+        var windowOpacity           : Bool               = false
+        var windowOpacityDuration   : Float              = 1
+        var activeWindowOpacity     : Float              = 1
+        var normalWindowOpacity     : Float              = 1
+        var windowBorder            : Bool               = false
+        var windowBorderWidth       : Int                = 0
+        //        var activeWindowBorderColor : Color              = .clear
+        //        var normalWindowBorderColor : Color              = .clear
+        //        var insertFeedbackColor     : Color              = .clear
+        var splitRatio              : Float              = 1
+        var autoBalance             : Bool               = false
+        var mouseModifier           : MouseModifier      = .cmd
+        var mouseAction1            : MouseAction        = .move
+        var mouseAction2            : MouseAction        = .move
+        var mouseDropAction         : MouseDropAction    = .swap
+        
+        enum MouseModifier: String, Codable, CaseIterable, Identifiable {
+            var id: MouseModifier { self }
+            case cmd
+            case alt
+            case shift
+            case ctrl
+            case fn
+        }
+        
+        enum MouseAction: String, Codable, CaseIterable, Identifiable  {
+            var id: MouseAction { self }
+            case move
+            case resize
+        }
+        
+        enum MouseDropAction: String, Codable, CaseIterable, Identifiable  {
+            var id: MouseDropAction { self }
+            case swap
+            case stack
+        }
+        
+        enum ExternalBar: String, Codable, CaseIterable, Identifiable  {
+            var id: ExternalBar { self }
+            case main
+            case all
+            case off
+        }
+        
+        enum FocusFollowsMouse: String, Codable, CaseIterable, Identifiable  {
+            var id: FocusFollowsMouse { self }
+            case autoFocus
+            case autoRaise
+            case off
+        }
+        
+        enum WindowPlacement: String, Codable, CaseIterable, Identifiable  {
+            var id: WindowPlacement { self }
+            case firstChild
+            case secondChild
+        }
+    }
+    
+    enum Action: Equatable {
+        case keyPath(BindingAction<GlobalSettings.State>)
+    }
+}
+
+extension GlobalSettings {
+    static let reducer = Reducer<State, Action, Void> {
+        state, action, _ in
+        switch action {
+        case .keyPath:
+            return .none
+        }
+    }
+    .binding(action: /Action.keyPath)
+}
+
+extension GlobalSettings {
+    static let defaultStore = Store(
+        initialState: .init(),
+        reducer: reducer,
+        environment: ()
+    )
+}
 
 /*------------------------------------------------------------------------------------------
  YABAI ascii documentation:
