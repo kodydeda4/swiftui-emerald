@@ -38,6 +38,10 @@ struct SpaceSettingsView: View {
                         Text("Right Padding")
                         TextField("", value: viewStore.binding(keyPath: \.paddingRight, send: keyPath), formatter: NumberFormatter())
                     }
+                    HStack {
+                        Text("Window Gap")
+                        TextField("", value: viewStore.binding(keyPath: \.windowGap, send: keyPath), formatter: NumberFormatter())
+                    }
                 }
             }
         }
