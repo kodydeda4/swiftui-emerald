@@ -23,6 +23,24 @@ struct SidebarView: View {
                     )
                 }
                 Divider()
+                Section(header: Text("Actions")) {
+                    NavigationLink(destination: TemporaryTextView(text: "Display")) {
+                        Label("Display", systemImage: "display")
+                    }
+                    NavigationLink(destination: TemporaryTextView(text: "Window")) {
+                        Label("Window", systemImage: "macwindow")
+                    }
+                    NavigationLink(destination: TemporaryTextView(text: "Query")) {
+                        Label("Query", systemImage: "terminal")
+                    }
+                    NavigationLink(destination: TemporaryTextView(text: "Rule")) {
+                        Label("Rule", systemImage: "keyboard")
+                    }
+                    NavigationLink(destination: TemporaryTextView(text: "Signal")) {
+                        Label("Signal", systemImage: "antenna.radiowaves.left.and.right")
+                    }
+                }
+                Divider()
                 NavigationLink(destination: AboutView(store: store)) {
                     Label("About", systemImage: "gear")
                 }
@@ -41,31 +59,18 @@ func toggleSidebar() {
         )
 }
 
+
+
+
 private struct SettingsNavlinks: View {
     let store: Store<Settings.State, Settings.Action>
     
     var body: some View {
-        NavigationLink(
-            destination: GlobalSettingsView(store: store.scope(state: \.globalSettings, action: Settings.Action.globalSettings))) {
+        NavigationLink(destination: GlobalSettingsView(store: store.scope(state: \.globalSettings, action: Settings.Action.globalSettings))) {
             Label("Global", systemImage: "globe")
-        }
-        NavigationLink(destination: TemporaryTextView(text: "Display")) {
-            Label("Display", systemImage: "display")
         }
         NavigationLink(destination: SpaceSettingsView(store: store.scope(state: \.spaceSettings, action: Settings.Action.spaceSettings))) {
             Label("Space", systemImage: "rectangle.3.offgrid")
-        }
-        NavigationLink(destination: TemporaryTextView(text: "Window")) {
-            Label("Window", systemImage: "macwindow")
-        }
-        NavigationLink(destination: TemporaryTextView(text: "Query")) {
-            Label("Query", systemImage: "terminal")
-        }
-        NavigationLink(destination: TemporaryTextView(text: "Rule")) {
-            Label("Rule", systemImage: "keyboard")
-        }
-        NavigationLink(destination: TemporaryTextView(text: "Signal")) {
-            Label("Signal", systemImage: "antenna.radiowaves.left.and.right")
         }
     }
 }
