@@ -97,7 +97,6 @@ extension DataManager {
                 }
                 return .none
                 
-                
             case .exportYabaiConfig:
                 switch environment.exportYabaiConfig(state.yabaiSettings) {
                 case .success:

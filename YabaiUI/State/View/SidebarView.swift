@@ -18,8 +18,7 @@ struct SidebarView: View {
                     NavigationLink(
                         destination:
                             YabaiSettingsView(
-                                store:
-                                    store
+                                store: store
                                     .scope(state: \.dataManager, action: Root.Action.dataManager)
                                     .scope(state: \.yabaiSettings, action: DataManager.Action.yabaiSettings)
                             )

@@ -18,10 +18,11 @@ struct YabaiSettings {
         var windowGap      : Int     = 0
         
         enum Layout: String, Codable, CaseIterable, Identifiable {
+            var id: Layout { self }
+            
             case float
             case bsp
             case stack
-            var id: Layout { self }
         }
     }
     enum Action: Equatable {
