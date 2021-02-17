@@ -37,6 +37,7 @@ struct RootView: View {
                 ToolbarItem {
                     Button("Export Data") {
                         viewStore.send(.dataManager(.exportYabaiConfig))
+                        viewStore.send(.dataManager(.exportSKHDConfig))
                     }
                 }
                 ToolbarItem {
