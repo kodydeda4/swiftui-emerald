@@ -22,11 +22,11 @@ extension KeyboardShortcuts.Name {
 struct SKHDSettings {
     struct State: Equatable, Codable {
         var togglePaddingShortcut  = KeyboardShortcuts.getShortcut(for: .togglePaddingShortcut)
-        var toggleSplitShortcut    = KeyboardShortcuts.getShortcut(for: .togglePaddingShortcut)
-        var toggleBalanceShortcut  = KeyboardShortcuts.getShortcut(for: .togglePaddingShortcut)
-        var toggleStackingShortcut = KeyboardShortcuts.getShortcut(for: .togglePaddingShortcut)
-        var toggleFloatingShortcut = KeyboardShortcuts.getShortcut(for: .togglePaddingShortcut)
-        var toggleBSPShortcut      = KeyboardShortcuts.getShortcut(for: .togglePaddingShortcut)
+        var toggleSplitShortcut    = KeyboardShortcuts.getShortcut(for: .toggleSplitShortcut)
+        var toggleBalanceShortcut  = KeyboardShortcuts.getShortcut(for: .toggleBalanceShortcut)
+        var toggleStackingShortcut = KeyboardShortcuts.getShortcut(for: .toggleStackingShortcut)
+        var toggleFloatingShortcut = KeyboardShortcuts.getShortcut(for: .toggleFloatingShortcut)
+        var toggleBSPShortcut      = KeyboardShortcuts.getShortcut(for: .toggleBSPShortcut)
 
         var myText: String = "Nothin"
 
