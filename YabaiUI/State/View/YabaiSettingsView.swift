@@ -15,34 +15,35 @@ struct YabaiSettingsView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             VStack(alignment: .leading) {
+                Text("Yabai Configuration")
+                    .font(.title)
+                
                 TextField("", text: .constant(viewStore.asConfig))
                 
-                Section(header: Text("Layout & Padding")) {
-                    Picker("Layout", selection: viewStore.binding(keyPath: \.layout, send: keyPath)) {
-                        ForEach(YabaiSettings.State.Layout.allCases) {
-                            Text($0.rawValue)
-                        }
+                Picker("Layout", selection: viewStore.binding(keyPath: \.layout, send: keyPath)) {
+                    ForEach(YabaiSettings.State.Layout.allCases) {
+                        Text($0.rawValue)
                     }
-                    HStack {
-                        Text("Top Padding")
-                        TextField("", value: viewStore.binding(keyPath: \.paddingTop, send: keyPath), formatter: NumberFormatter())
-                    }
-                    HStack {
-                        Text("Bottom Padding")
-                        TextField("", value: viewStore.binding(keyPath: \.paddingBottom, send: keyPath), formatter: NumberFormatter())
-                    }
-                    HStack {
-                        Text("Left Padding")
-                        TextField("", value: viewStore.binding(keyPath: \.paddingLeft, send: keyPath), formatter: NumberFormatter())
-                    }
-                    HStack {
-                        Text("Right Padding")
-                        TextField("", value: viewStore.binding(keyPath: \.paddingRight, send: keyPath), formatter: NumberFormatter())
-                    }
-                    HStack {
-                        Text("Window Gap")
-                        TextField("", value: viewStore.binding(keyPath: \.windowGap, send: keyPath), formatter: NumberFormatter())
-                    }
+                }
+                HStack {
+                    Text("Top Padding")
+                    TextField("", value: viewStore.binding(keyPath: \.paddingTop, send: keyPath), formatter: NumberFormatter())
+                }
+                HStack {
+                    Text("Bottom Padding")
+                    TextField("", value: viewStore.binding(keyPath: \.paddingBottom, send: keyPath), formatter: NumberFormatter())
+                }
+                HStack {
+                    Text("Left Padding")
+                    TextField("", value: viewStore.binding(keyPath: \.paddingLeft, send: keyPath), formatter: NumberFormatter())
+                }
+                HStack {
+                    Text("Right Padding")
+                    TextField("", value: viewStore.binding(keyPath: \.paddingRight, send: keyPath), formatter: NumberFormatter())
+                }
+                HStack {
+                    Text("Window Gap")
+                    TextField("", value: viewStore.binding(keyPath: \.windowGap, send: keyPath), formatter: NumberFormatter())
                 }
                 Spacer()
             }
@@ -57,3 +58,4 @@ struct YabaiSettingsView_Previews: PreviewProvider {
         YabaiSettingsView(store: YabaiSettings.defaultStore)
     }
 }
+

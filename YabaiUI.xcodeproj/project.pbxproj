@@ -20,6 +20,9 @@
 		3385DF6D25D628BF00ACDE21 /* YabaiSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3385DF6C25D628BF00ACDE21 /* YabaiSettingsView.swift */; };
 		3385DF7025D6361200ACDE21 /* AppleScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3385DF6F25D6361200ACDE21 /* AppleScript.swift */; };
 		3398838825DD6A1F007B9FF5 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398838725DD6A1F007B9FF5 /* DataManager.swift */; };
+		3398838C25DD7A1D007B9FF5 /* SKHDSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398838B25DD7A1D007B9FF5 /* SKHDSettings.swift */; };
+		3398838F25DD7DC3007B9FF5 /* SKHDSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398838E25DD7DC3007B9FF5 /* SKHDSettingsView.swift */; };
+		3398839225DD7E02007B9FF5 /* DataManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398839125DD7E02007B9FF5 /* DataManagerView.swift */; };
 		339C453125D6ECCA0079ACA1 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C453025D6ECCA0079ACA1 /* RootView.swift */; };
 		339C453525D6ED0F0079ACA1 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C453425D6ED0F0079ACA1 /* OnboardingView.swift */; };
 		339D779A25DAECAE009F3934 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339D779925DAECAE009F3934 /* Color+Extensions.swift */; };
@@ -42,6 +45,9 @@
 		3385DF6C25D628BF00ACDE21 /* YabaiSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiSettingsView.swift; sourceTree = "<group>"; };
 		3385DF6F25D6361200ACDE21 /* AppleScript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleScript.swift; sourceTree = "<group>"; };
 		3398838725DD6A1F007B9FF5 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		3398838B25DD7A1D007B9FF5 /* SKHDSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHDSettings.swift; sourceTree = "<group>"; };
+		3398838E25DD7DC3007B9FF5 /* SKHDSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHDSettingsView.swift; sourceTree = "<group>"; };
+		3398839125DD7E02007B9FF5 /* DataManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerView.swift; sourceTree = "<group>"; };
 		339C453025D6ECCA0079ACA1 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		339C453425D6ED0F0079ACA1 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		339D779925DAECAE009F3934 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
@@ -125,6 +131,7 @@
 				3380D33625D0723000C10913 /* Root.swift */,
 				3398838725DD6A1F007B9FF5 /* DataManager.swift */,
 				33387D6425D3F64300E76D29 /* YabaiSettings.swift */,
+				3398838B25DD7A1D007B9FF5 /* SKHDSettings.swift */,
 				33B62D2825D5E31400DD5934 /* Onboarding.swift */,
 			);
 			path = State;
@@ -136,7 +143,9 @@
 				339C453025D6ECCA0079ACA1 /* RootView.swift */,
 				3385DF6625D6270B00ACDE21 /* SidebarView.swift */,
 				3385DF6925D6279200ACDE21 /* AboutView.swift */,
+				3398839125DD7E02007B9FF5 /* DataManagerView.swift */,
 				3385DF6C25D628BF00ACDE21 /* YabaiSettingsView.swift */,
+				3398838E25DD7DC3007B9FF5 /* SKHDSettingsView.swift */,
 				339C453425D6ED0F0079ACA1 /* OnboardingView.swift */,
 				339E3C6325DBF14500F8B9AA /* Commands.swift */,
 			);
@@ -225,7 +234,10 @@
 				33B62D2925D5E31400DD5934 /* Onboarding.swift in Sources */,
 				3385DF6D25D628BF00ACDE21 /* YabaiSettingsView.swift in Sources */,
 				3398838825DD6A1F007B9FF5 /* DataManager.swift in Sources */,
+				3398839225DD7E02007B9FF5 /* DataManagerView.swift in Sources */,
 				33387D6525D3F64300E76D29 /* YabaiSettings.swift in Sources */,
+				3398838C25DD7A1D007B9FF5 /* SKHDSettings.swift in Sources */,
+				3398838F25DD7DC3007B9FF5 /* SKHDSettingsView.swift in Sources */,
 				3380D2FF25D05F4200C10913 /* YabaiUIApp.swift in Sources */,
 				3380D33725D0723000C10913 /* Root.swift in Sources */,
 				3385DF6725D6270B00ACDE21 /* SidebarView.swift in Sources */,

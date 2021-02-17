@@ -17,10 +17,10 @@ struct SidebarView: View {
                 Section(header: Text("Yabai")) {
                     NavigationLink(
                         destination:
-                            YabaiSettingsView(
+                            DataManagerView(
                                 store: store
                                     .scope(state: \.dataManager, action: Root.Action.dataManager)
-                                    .scope(state: \.yabaiSettings, action: DataManager.Action.yabaiSettings)
+                                    //.scope(state: \.yabaiSettings, action: DataManager.Action.yabaiSettings)
                             )
                     ) {
                         Label("Configuration", systemImage: "keyboard")

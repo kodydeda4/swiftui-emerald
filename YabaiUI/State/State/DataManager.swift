@@ -11,12 +11,17 @@ import ComposableArchitecture
 struct DataManager {
     struct State: Equatable {
         var yabaiSettings = YabaiSettings.State()
+        var skhdSettings = SKHDSettings.State()
         var error: Error = .none
         
         enum Error {
-            case saveFile
-            case loadFile
-            case exportFile
+            case saveYabaiSettings
+            case loadYabaiSettings
+            case exportYabaiConfig
+            
+            case saveSKHDSettings
+            case loadSKHDSettings
+            case exportSKHDConfig
             case none
         }
     }
@@ -26,9 +31,16 @@ struct DataManager {
         case saveYabaiSettings
         case loadYabaiSettings
         case exportYabaiConfig
+        
+        case skhdSettings(SKHDSettings.Action)
+        case saveSKHDSettings
+        case loadSKHDSettings
+        case exportSKHDConfig
     }
     
     struct Environment {
+        //MARK:- YABAI
+        
         let yabaiURL = URL(fileURLWithPath: NSHomeDirectory())
             .appendingPathComponent("yabaiConfig")
         
@@ -63,6 +75,43 @@ struct DataManager {
                 return .failure(error)
             }
         }
+        
+        //MARK:- SKHD
+        
+        let skhdURL = URL(fileURLWithPath: NSHomeDirectory())
+            .appendingPathComponent("skhdConfig")
+        
+        func encodeSKHDSettings(_ state: SKHDSettings.State) -> Result<Bool, Error> {
+            do {
+                try JSONEncoder()
+                    .encode(state)
+                    .write(to: skhdURL)
+                return .success(true)
+            } catch {
+                return .failure(error)
+            }
+        }
+        func decodeSKHDSettings(_ state: SKHDSettings.State) -> Result<(SKHDSettings.State), Error> {
+            do {
+                let decoded = try JSONDecoder()
+                    .decode(SKHDSettings.State.self, from: Data(contentsOf: yabaiURL))
+                return .success(decoded)
+            }
+            catch {
+                return .failure(error)
+            }
+        }
+        func exportSKHDConfig(_ skhdSettingsState: SKHDSettings.State) -> Result<Bool, Error> {
+            do {
+                let data: String = skhdSettingsState.asConfig
+                try data.write(to: skhdURL, atomically: true, encoding: .utf8)
+                
+                return .success(true)
+            }
+            catch {
+                return .failure(error)
+            }
+        }
     }
 }
 
@@ -76,15 +125,17 @@ extension DataManager {
         Reducer { state, action, environment in
             switch action {
             
+            // MARK:- YABAI
+            
             case let .yabaiSettings(subAction):
                 return Effect(value: .saveYabaiSettings)
-    
+                    
             case .saveYabaiSettings:
                 switch environment.encodeYabaiSettings(state.yabaiSettings) {
                 case .success:
                     state.error = .none
                 case let .failure(error):
-                    state.error = .saveFile
+                    state.error = .saveYabaiSettings
                 }
                 return .none
                 
@@ -93,7 +144,7 @@ extension DataManager {
                 case let .success(decoded):
                     state.yabaiSettings = decoded
                 case let .failure(error):
-                    state.error = .loadFile
+                    state.error = .loadYabaiSettings
                 }
                 return .none
                 
@@ -102,7 +153,39 @@ extension DataManager {
                 case .success:
                     state.error = .none
                 case let .failure(error):
-                    state.error = .exportFile
+                    state.error = .exportYabaiConfig
+                }
+                return .none
+                
+            // MARK:- SKHD
+            
+            case let .skhdSettings(subAction):
+                return Effect(value: .saveSKHDSettings)
+                    
+            case .saveSKHDSettings:
+                switch environment.encodeSKHDSettings(state.skhdSettings) {
+                case .success:
+                    state.error = .none
+                case let .failure(error):
+                    state.error = .saveSKHDSettings
+                }
+                return .none
+                
+            case .loadSKHDSettings:
+                switch environment.decodeSKHDSettings(state.skhdSettings) {
+                case let .success(decoded):
+                    state.skhdSettings = decoded
+                case let .failure(error):
+                    state.error = .loadSKHDSettings
+                }
+                return .none
+                
+            case .exportSKHDConfig:
+                switch environment.exportSKHDConfig(state.skhdSettings) {
+                case .success:
+                    state.error = .none
+                case let .failure(error):
+                    state.error = .exportSKHDConfig
                 }
                 return .none
             }
