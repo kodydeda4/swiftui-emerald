@@ -8,9 +8,9 @@
 import Foundation
 
 enum AppleScript: String {
-    case refreshYabai = "refreshYabai"
+    case refreshYabai     = "refreshYabai"
     case yabaiSetFloating = "yabaiSetFloating"
-    case yabaiSetBSP = "yabaiSetBSP"
+    case yabaiSetBSP      = "yabaiSetBSP"
     case yabaiSetStacking = "yabaiSetStacking"
 }
 

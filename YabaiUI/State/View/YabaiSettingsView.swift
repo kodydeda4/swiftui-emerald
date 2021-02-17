@@ -10,40 +10,43 @@ import ComposableArchitecture
 
 struct YabaiSettingsView: View {
     let store: Store<YabaiSettings.State, YabaiSettings.Action>
+    let keyPath = YabaiSettings.Action.keyPath
     
     var body: some View {
         WithViewStore(store) { viewStore in
             VStack(alignment: .leading) {
-                TextField("", text: .constant(viewStore.asConfigFile))
+                TextField("", text: .constant(viewStore.asConfig))
+                
                 Section(header: Text("Layout & Padding")) {
-                    Picker("Layout", selection: viewStore.binding(get: \.layout, send: YabaiSettings.Action.updateLayout)) {
+                    Picker("Layout", selection: viewStore.binding(keyPath: \.layout, send: keyPath)) {
                         ForEach(YabaiSettings.State.Layout.allCases) {
                             Text($0.rawValue)
                         }
                     }
                     HStack {
                         Text("Top Padding")
-                        TextField("", value: viewStore.binding(get: \.paddingTop, send: YabaiSettings.Action.updatePaddingTop), formatter: NumberFormatter())
+                        TextField("", value: viewStore.binding(keyPath: \.paddingTop, send: keyPath), formatter: NumberFormatter())
                     }
                     HStack {
                         Text("Bottom Padding")
-                        TextField("", value: viewStore.binding(get: \.paddingBottom, send: YabaiSettings.Action.updatePaddingBottom), formatter: NumberFormatter())
+                        TextField("", value: viewStore.binding(keyPath: \.paddingBottom, send: keyPath), formatter: NumberFormatter())
                     }
                     HStack {
                         Text("Left Padding")
-                        TextField("", value: viewStore.binding(get: \.paddingLeft, send: YabaiSettings.Action.updatePaddingLeft), formatter: NumberFormatter())
+                        TextField("", value: viewStore.binding(keyPath: \.paddingLeft, send: keyPath), formatter: NumberFormatter())
                     }
                     HStack {
                         Text("Right Padding")
-                        TextField("", value: viewStore.binding(get: \.paddingRight, send: YabaiSettings.Action.updatePaddingRight), formatter: NumberFormatter())
+                        TextField("", value: viewStore.binding(keyPath: \.paddingRight, send: keyPath), formatter: NumberFormatter())
                     }
                     HStack {
                         Text("Window Gap")
-                        TextField("", value: viewStore.binding(get: \.windowGap, send: YabaiSettings.Action.updateWindowGap), formatter: NumberFormatter())
+                        TextField("", value: viewStore.binding(keyPath: \.windowGap, send: keyPath), formatter: NumberFormatter())
                     }
                 }
                 Spacer()
             }
+            .padding()
         }
         .navigationTitle("Space")
     }
