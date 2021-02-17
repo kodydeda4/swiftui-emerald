@@ -5,7 +5,6 @@
 //  Created by Kody Deda on 2/10/21.
 //
 
-import SwiftUI
 import ComposableArchitecture
 
 struct YabaiSettings {

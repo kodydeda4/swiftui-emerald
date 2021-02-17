@@ -5,11 +5,11 @@
 //  Created by Kody Deda on 2/17/21.
 //
 
-import SwiftUI
 import ComposableArchitecture
 import KeyboardShortcuts
 
 //  https://github.com/sindresorhus/KeyboardShortcuts
+
 extension KeyboardShortcuts.Name {
     static let togglePaddingShortcut  = Self("togglePaddingShortcut")
     static let toggleSplitShortcut    = Self("toggleSplitShortcut")
