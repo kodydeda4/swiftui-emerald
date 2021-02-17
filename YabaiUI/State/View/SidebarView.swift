@@ -14,17 +14,17 @@ struct SidebarView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             List {
-                Section(header: Text("Settings")) {
+                Section(header: Text("Yabai")) {
                     NavigationLink(
                         destination:
                             YabaiSettingsView(
                                 store:
                                     store
-                                    .scope(state: \.settingsManager, action: Root.Action.settingsManager)
-                                    .scope(state: \.yabaiSettings, action: SettingsManager.Action.yabaiSettings)
+                                    .scope(state: \.dataManager, action: Root.Action.dataManager)
+                                    .scope(state: \.yabaiSettings, action: DataManager.Action.yabaiSettings)
                             )
                     ) {
-                        Label("Space", systemImage: "rectangle.3.offgrid")
+                        Label("Configuration", systemImage: "keyboard")
                     }
                 }
                 Divider()

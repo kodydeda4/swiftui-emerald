@@ -10,28 +10,22 @@ import ComposableArchitecture
 
 struct Root {
     struct State: Equatable {
-        var settingsManager = SettingsManager.State()
-        var configManager = ConfigManager.State()
+        var dataManager = DataManager.State()
         var onboarding = Onboarding.State()
     }
     
     enum Action: Equatable {
-        case settingsManager(SettingsManager.Action)
+        case dataManager(DataManager.Action)
         case onboarding(Onboarding.Action)
-        case configManager(ConfigManager.Action)
+        
     }
 }
 
 extension Root {
     static let reducer = Reducer<State, Action, Void>.combine(
-        SettingsManager.reducer.pullback(
-            state: \.settingsManager,
-            action: /Root.Action.settingsManager,
-            environment: { _ in .init() }
-        ),
-        ConfigManager.reducer.pullback(
-            state: \.configManager,
-            action: /Root.Action.configManager,
+        DataManager.reducer.pullback(
+            state: \.dataManager,
+            action: /Root.Action.dataManager,
             environment: { _ in .init() }
         ),
         Onboarding.reducer.pullback(

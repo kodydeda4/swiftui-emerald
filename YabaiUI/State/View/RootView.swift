@@ -20,7 +20,7 @@ struct RootView: View {
                     .foregroundColor(Color(NSColor.placeholderTextColor))
             }
             
-            .onAppear { viewStore.send(.settingsManager(.loadYabaiSettings)) }
+            .onAppear { viewStore.send(.dataManager(.loadYabaiSettings)) }
             .sheet(isPresented:
                     viewStore.binding(
                         get: \.onboarding.isOnboaring,
@@ -36,7 +36,7 @@ struct RootView: View {
             .toolbar {
                 ToolbarItem {
                     Button("Export Data") {
-                        viewStore.send(.configManager(.exportConfigs))
+                        viewStore.send(.dataManager(.exportConfigs))
                     }
                 }
                 ToolbarItem {

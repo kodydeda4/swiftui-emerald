@@ -6,15 +6,20 @@
 //
 
 import ComposableArchitecture
+import SwiftShell
 
-//https://izziswift.com/how-to-decode-a-nested-json-struct-with-swift-decodable-protocol/
 
-struct SettingsManager {
+struct DataManager {
     struct State: Equatable {
         var errorString: String = ""
+        var exportErrorString: String = ""
+        
+        var yabaiVersion: String = run("/usr/local/bin/yabai", "-v").stdout
+        var skhdVersion: String = run("/usr/local/bin/skhd", "-v").stdout
+        var brewVersion: String = run("/usr/local/bin/brew", "-v").stdout
+
 
         var yabaiSettings = YabaiSettings.State()
-        var yabaiEncodedState: String = ""
         
         var yabaiSettingsURL: URL {
             yabaiUIApplicationSupportDirectory
@@ -36,10 +41,24 @@ struct SettingsManager {
     enum Action: Equatable {
         case saveYabaiSettings
         case loadYabaiSettings
+        case exportConfigs
         case yabaiSettings(YabaiSettings.Action)
     }
     
     struct Environment {
+        func exportConfigs(yabaiState: YabaiSettings.State) -> Result<Bool, Error> {
+            do {
+                let yabaiConfigPath = URL(fileURLWithPath: NSHomeDirectory())
+                    .appendingPathComponent("yabaiConfig")
+
+                try yabaiState.asConfigFile.write(to: yabaiConfigPath, atomically: true, encoding: .utf8)
+                return .success(true)
+            }
+            catch {
+                return .failure(error)
+            }
+        }
+
         func saveYabaiSettings(_ state: YabaiSettings.State, to url: URL) -> Result<Bool, Error> {
             do {
                 let encoded = try JSONEncoder().encode(state)
@@ -63,7 +82,7 @@ struct SettingsManager {
 }
 
 
-extension SettingsManager {
+extension DataManager {
     static let reducer = Reducer<State, Action, Environment>.combine(
         YabaiSettings.reducer.pullback(
             state: \.yabaiSettings,
@@ -93,12 +112,22 @@ extension SettingsManager {
                                 
             case let .yabaiSettings(subAction):
                 return Effect(value: .saveYabaiSettings)
+                
+            case .exportConfigs:
+                switch environment.exportConfigs(yabaiState: state.yabaiSettings) {
+                case .success:
+                    state.exportErrorString = ""
+                case let .failure(error):
+                    state.errorString = "Failed to export config files."
+                }
+                return .none
+
             }
         }
     )
 }
 
-extension SettingsManager {
+extension DataManager {
     static let defaultStore = Store(
         initialState: .init(),
         reducer: reducer,

@@ -13,8 +13,8 @@ struct YabaiSettingsView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            List {
-                Text(viewStore.asConfigFile)
+            VStack(alignment: .leading) {
+                TextField("", text: .constant(viewStore.asConfigFile))
                 Section(header: Text("Layout & Padding")) {
                     Picker("Layout", selection: viewStore.binding(get: \.layout, send: YabaiSettings.Action.updateLayout)) {
                         ForEach(YabaiSettings.State.Layout.allCases) {
@@ -42,6 +42,7 @@ struct YabaiSettingsView: View {
                         TextField("", value: viewStore.binding(get: \.windowGap, send: YabaiSettings.Action.updateWindowGap), formatter: NumberFormatter())
                     }
                 }
+                Spacer()
             }
         }
         .navigationTitle("Space")
