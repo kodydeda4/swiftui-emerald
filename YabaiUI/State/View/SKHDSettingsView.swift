@@ -22,28 +22,28 @@ struct SKHDSettingsView: View {
                 
                 TextField("", text: .constant(viewStore.asConfig))
                 HStack {
-                    Text("togglePaddingShortcut")
+                    Text("Toggle Padding")
                     KeyboardShortcuts.Recorder(for: .togglePaddingShortcut, onChange: { viewStore.send(.updateTogglePaddingShortcut($0)) })
                 }
                 HStack {
-                    Text("toggleSplitShortcut")
+                    Text("Toggle Split")
                     KeyboardShortcuts.Recorder(for: .toggleSplitShortcut, onChange: { viewStore.send(.updateToggleSplitShortcut($0)) })
                 }
                 
                 HStack {
-                    Text("toggleBalanceShortcut")
+                    Text("Toggle Balance")
                     KeyboardShortcuts.Recorder(for: .toggleBalanceShortcut, onChange: { viewStore.send(.updateToggleBalanceShortcut($0)) })
                 }
                 HStack {
-                    Text("toggleStackingShortcut")
+                    Text("Toggle Stacking")
                     KeyboardShortcuts.Recorder(for: .toggleStackingShortcut, onChange: { viewStore.send(.updateToggleStackingShortcut($0)) })
                 }
                 HStack {
-                    Text("toggleFloatingShortcut")
+                    Text("Toggle Floating")
                     KeyboardShortcuts.Recorder(for: .toggleFloatingShortcut, onChange: { viewStore.send(.updateToggleFloatingShortcut($0)) })
                 }
                 HStack {
-                    Text("Toggle Padding")
+                    Text("Toggle BSP")
                     KeyboardShortcuts.Recorder(for: .toggleBSPShortcut, onChange: { viewStore.send(.updateToggleBSPShortcut($0)) })
                 }
                 Spacer()

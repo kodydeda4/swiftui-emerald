@@ -9,6 +9,7 @@ import SwiftUI
 import ComposableArchitecture
 import KeyboardShortcuts
 
+//  https://github.com/sindresorhus/KeyboardShortcuts
 extension KeyboardShortcuts.Name {
     static let togglePaddingShortcut  = Self("togglePaddingShortcut")
     static let toggleSplitShortcut    = Self("toggleSplitShortcut")
@@ -17,7 +18,6 @@ extension KeyboardShortcuts.Name {
     static let toggleFloatingShortcut = Self("toggleFloatingShortcut")
     static let toggleBSPShortcut      = Self("toggleBSPShortcut")
 }
-
 
 struct SKHDSettings {
     struct State: Equatable, Codable {
@@ -86,16 +86,40 @@ extension SKHDSettings {
     )
 }
 
+enum SKHDShortcuts: Character {
+    case shift   = "⇧"
+    case control = "⌃"
+    case option  = "⌥"
+    case command = "⌘"
+    
+    var configFile: String {
+        switch self {
+        
+        case .shift:
+            return "shift"
+        case .control:
+            return "lctrl"
+        case .option:
+            return "alt"
+        case .command:
+            return "cmd"
+        }
+    }
+}
+
 extension SKHDSettings.State {
     var asConfig: String {
+        
         [
-            "\(togglePaddingShortcut)",
-            "\(toggleSplitShortcut)",
-            "\(toggleBalanceShortcut)",
-            "\(toggleStackingShortcut)",
-            "\(toggleFloatingShortcut)",
-            "\(toggleBSPShortcut)",
+            "\((togglePaddingShortcut?.description ?? "UNASSIGNED").compactMap{ SKHDShortcuts(rawValue: $0)?.configFile}.joined(separator: " + ")) : yabai -m space --toggle padding; yabai -m space --toggle gap",
+//            "\(togglePaddingShortcut?.description  ?? "UNNASSIGNED") : yabai -m space --toggle padding; yabai -m space --toggle gap",
+//            "\(toggleSplitShortcut?.description    ?? "UNNASSIGNED") : yabai -m window --toggle split",
+//            "\(toggleBalanceShortcut?.description  ?? "UNNASSIGNED") : yabai -m space --balance",
+//            "\(toggleStackingShortcut?.description ?? "UNNASSIGNED") : yabai -m space --layout stack",
+//            "\(toggleFloatingShortcut?.description ?? "UNNASSIGNED") : yabai -m space --layout float",
+//            "\(toggleBSPShortcut?.description      ?? "UNNASSIGNED") : yabai -m space --layout bsp",
         ]
+        .filter { !$0.contains("UNNASSIGNED") }
         .joined(separator: "\n")
     }
 }
