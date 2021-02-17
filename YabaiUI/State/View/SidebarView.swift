@@ -15,12 +15,13 @@ struct SidebarView: View {
         WithViewStore(store) { viewStore in
             List {
                 Section(header: Text("Settings")) {
-                    NavigationLink(destination:
-                            SettingsManagerView(
+                    NavigationLink(
+                        destination:
+                            YabaiSettingsView(
                                 store:
-                                    store.scope(
-                                        state: \.settingsManager,
-                                        action: Root.Action.settingsManager)
+                                    store
+                                    .scope(state: \.settingsManager, action: Root.Action.settingsManager)
+                                    .scope(state: \.yabaiSettings, action: SettingsManager.Action.yabaiSettings)
                             )
                     ) {
                         Label("Space", systemImage: "rectangle.3.offgrid")

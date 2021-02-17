@@ -8,28 +8,13 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct SettingsManagerView: View {
-    let store: Store<SettingsManager.State, SettingsManager.Action>
-    
-    var body: some View {
-        WithViewStore(store) { viewStore in
-            HStack {
-                YabaiSettingsView(
-                    store: store.scope(state: \.yabaiSettings, action: SettingsManager.Action.yabaiSettings)
-                )
-                TextField("", text: .constant(viewStore.yabaiEncodedState))
-                
-            }
-        }
-    }
-}
-
 struct YabaiSettingsView: View {
     let store: Store<YabaiSettings.State, YabaiSettings.Action>
     
     var body: some View {
         WithViewStore(store) { viewStore in
             List {
+                Text(viewStore.asConfigFile)
                 Section(header: Text("Layout & Padding")) {
                     Picker("Layout", selection: viewStore.binding(get: \.layout, send: YabaiSettings.Action.updateLayout)) {
                         ForEach(YabaiSettings.State.Layout.allCases) {
