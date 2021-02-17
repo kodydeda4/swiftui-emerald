@@ -94,7 +94,7 @@ struct DataManager {
         func decodeSKHDSettings(_ state: SKHDSettings.State) -> Result<(SKHDSettings.State), Error> {
             do {
                 let decoded = try JSONDecoder()
-                    .decode(SKHDSettings.State.self, from: Data(contentsOf: yabaiURL))
+                    .decode(SKHDSettings.State.self, from: Data(contentsOf: skhdURL))
                 return .success(decoded)
             }
             catch {
@@ -122,11 +122,15 @@ extension DataManager {
             action: /DataManager.Action.yabaiSettings,
             environment: { _ in () }
         ),
+        SKHDSettings.reducer.pullback(
+            state: \.skhdSettings,
+            action: /DataManager.Action.skhdSettings,
+            environment: { _ in () }
+        ),
         Reducer { state, action, environment in
             switch action {
             
             // MARK:- YABAI
-            
             case let .yabaiSettings(subAction):
                 return Effect(value: .saveYabaiSettings)
                     

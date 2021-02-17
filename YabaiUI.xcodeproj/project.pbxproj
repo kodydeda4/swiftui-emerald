@@ -23,6 +23,7 @@
 		3398838C25DD7A1D007B9FF5 /* SKHDSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398838B25DD7A1D007B9FF5 /* SKHDSettings.swift */; };
 		3398838F25DD7DC3007B9FF5 /* SKHDSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398838E25DD7DC3007B9FF5 /* SKHDSettingsView.swift */; };
 		3398839225DD7E02007B9FF5 /* DataManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398839125DD7E02007B9FF5 /* DataManagerView.swift */; };
+		3398839925DD9929007B9FF5 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 3398839825DD9929007B9FF5 /* KeyboardShortcuts */; };
 		339C453125D6ECCA0079ACA1 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C453025D6ECCA0079ACA1 /* RootView.swift */; };
 		339C453525D6ED0F0079ACA1 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C453425D6ED0F0079ACA1 /* OnboardingView.swift */; };
 		339D779A25DAECAE009F3934 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339D779925DAECAE009F3934 /* Color+Extensions.swift */; };
@@ -62,6 +63,7 @@
 			files = (
 				3380D31C25D06E1500C10913 /* ComposableArchitecture in Frameworks */,
 				3315223F25D5786C00C8E46A /* SwiftShell in Frameworks */,
+				3398839925DD9929007B9FF5 /* KeyboardShortcuts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +173,7 @@
 			packageProductDependencies = (
 				3380D31B25D06E1500C10913 /* ComposableArchitecture */,
 				3315223E25D5786C00C8E46A /* SwiftShell */,
+				3398839825DD9929007B9FF5 /* KeyboardShortcuts */,
 			);
 			productName = YabaiUI;
 			productReference = 3380D2FB25D05F4200C10913 /* YabaiUI.app */;
@@ -202,6 +205,7 @@
 			packageReferences = (
 				3380D31A25D06E1500C10913 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				3315223D25D5786C00C8E46A /* XCRemoteSwiftPackageReference "SwiftShell" */,
+				3398839725DD9929007B9FF5 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
 			);
 			productRefGroup = 3380D2FC25D05F4200C10913 /* Products */;
 			projectDirPath = "";
@@ -455,6 +459,14 @@
 				minimumVersion = 0.14.0;
 			};
 		};
+		3398839725DD9929007B9FF5 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.7.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -467,6 +479,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3380D31A25D06E1500C10913 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
 			productName = ComposableArchitecture;
+		};
+		3398839825DD9929007B9FF5 /* KeyboardShortcuts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3398839725DD9929007B9FF5 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
+			productName = KeyboardShortcuts;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

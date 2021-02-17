@@ -7,6 +7,8 @@
 
 import SwiftUI
 import ComposableArchitecture
+import KeyboardShortcuts
+
 
 struct SKHDSettingsView: View {
     let store: Store<SKHDSettings.State, SKHDSettings.Action>
@@ -19,30 +21,30 @@ struct SKHDSettingsView: View {
                     .font(.title)
                 
                 TextField("", text: .constant(viewStore.asConfig))
+                HStack {
+                    Text("togglePaddingShortcut")
+                    KeyboardShortcuts.Recorder(for: .togglePaddingShortcut, onChange: { viewStore.send(.updateTogglePaddingShortcut($0)) })
+                }
+                HStack {
+                    Text("toggleSplitShortcut")
+                    KeyboardShortcuts.Recorder(for: .toggleSplitShortcut, onChange: { viewStore.send(.updateToggleSplitShortcut($0)) })
+                }
                 
-                    HStack {
-                        Text("togglePadding")
-                        TextField("", text: .constant(viewStore.togglePadding))
-                    }
-                    HStack {
-                        Text("togglePadding")
-                        TextField("", text: .constant(viewStore.togglePadding))
-                    }
-                    HStack {
-                        Text("toggleBalance")
-                        TextField("", text: .constant(viewStore.toggleBalance))
-                    }
-                    HStack {
-                        Text("toggleStacking")
-                        TextField("", text: .constant(viewStore.toggleStacking))
-                    }
-                    HStack {
-                        Text("toggleFloating")
-                        TextField("", text: .constant(viewStore.toggleFloating))
-                    }
-                    HStack {
-                        Text("toggleBSP")
-                        TextField("", text: .constant(viewStore.toggleBSP))
+                HStack {
+                    Text("toggleBalanceShortcut")
+                    KeyboardShortcuts.Recorder(for: .toggleBalanceShortcut, onChange: { viewStore.send(.updateToggleBalanceShortcut($0)) })
+                }
+                HStack {
+                    Text("toggleStackingShortcut")
+                    KeyboardShortcuts.Recorder(for: .toggleStackingShortcut, onChange: { viewStore.send(.updateToggleStackingShortcut($0)) })
+                }
+                HStack {
+                    Text("toggleFloatingShortcut")
+                    KeyboardShortcuts.Recorder(for: .toggleFloatingShortcut, onChange: { viewStore.send(.updateToggleFloatingShortcut($0)) })
+                }
+                HStack {
+                    Text("Toggle Padding")
+                    KeyboardShortcuts.Recorder(for: .toggleBSPShortcut, onChange: { viewStore.send(.updateToggleBSPShortcut($0)) })
                 }
                 Spacer()
             }
