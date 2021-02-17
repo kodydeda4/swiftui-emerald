@@ -9,7 +9,6 @@ import SwiftUI
 import ComposableArchitecture
 import KeyboardShortcuts
 
-
 struct SKHDSettingsView: View {
     let store: Store<SKHDSettings.State, SKHDSettings.Action>
     let keyPath = SKHDSettings.Action.keyPath

@@ -27,7 +27,6 @@
 		339C453125D6ECCA0079ACA1 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C453025D6ECCA0079ACA1 /* RootView.swift */; };
 		339C453525D6ED0F0079ACA1 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C453425D6ED0F0079ACA1 /* OnboardingView.swift */; };
 		339D779A25DAECAE009F3934 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339D779925DAECAE009F3934 /* Color+Extensions.swift */; };
-		339E3C6425DBF14500F8B9AA /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339E3C6325DBF14500F8B9AA /* Commands.swift */; };
 		33B62D2925D5E31400DD5934 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B62D2825D5E31400DD5934 /* Onboarding.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,7 +51,6 @@
 		339C453025D6ECCA0079ACA1 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		339C453425D6ED0F0079ACA1 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		339D779925DAECAE009F3934 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
-		339E3C6325DBF14500F8B9AA /* Commands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commands.swift; sourceTree = "<group>"; };
 		33B62D2825D5E31400DD5934 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,7 +147,6 @@
 				3385DF6C25D628BF00ACDE21 /* YabaiSettingsView.swift */,
 				3398838E25DD7DC3007B9FF5 /* SKHDSettingsView.swift */,
 				339C453425D6ED0F0079ACA1 /* OnboardingView.swift */,
-				339E3C6325DBF14500F8B9AA /* Commands.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -245,7 +242,6 @@
 				3380D2FF25D05F4200C10913 /* YabaiUIApp.swift in Sources */,
 				3380D33725D0723000C10913 /* Root.swift in Sources */,
 				3385DF6725D6270B00ACDE21 /* SidebarView.swift in Sources */,
-				339E3C6425DBF14500F8B9AA /* Commands.swift in Sources */,
 				339D779A25DAECAE009F3934 /* Color+Extensions.swift in Sources */,
 				339C453525D6ED0F0079ACA1 /* OnboardingView.swift in Sources */,
 				3385DF7025D6361200ACDE21 /* AppleScript.swift in Sources */,
