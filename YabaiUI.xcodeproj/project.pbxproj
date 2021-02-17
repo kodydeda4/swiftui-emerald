@@ -19,6 +19,7 @@
 		3385DF6A25D6279200ACDE21 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3385DF6925D6279200ACDE21 /* AboutView.swift */; };
 		3385DF6D25D628BF00ACDE21 /* YabaiSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3385DF6C25D628BF00ACDE21 /* YabaiSettingsView.swift */; };
 		3385DF7025D6361200ACDE21 /* AppleScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3385DF6F25D6361200ACDE21 /* AppleScript.swift */; };
+		3398838825DD6A1F007B9FF5 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398838725DD6A1F007B9FF5 /* DataManager.swift */; };
 		339C453125D6ECCA0079ACA1 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C453025D6ECCA0079ACA1 /* RootView.swift */; };
 		339C453525D6ED0F0079ACA1 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C453425D6ED0F0079ACA1 /* OnboardingView.swift */; };
 		339D779A25DAECAE009F3934 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339D779925DAECAE009F3934 /* Color+Extensions.swift */; };
@@ -40,6 +41,7 @@
 		3385DF6925D6279200ACDE21 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		3385DF6C25D628BF00ACDE21 /* YabaiSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiSettingsView.swift; sourceTree = "<group>"; };
 		3385DF6F25D6361200ACDE21 /* AppleScript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleScript.swift; sourceTree = "<group>"; };
+		3398838725DD6A1F007B9FF5 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		339C453025D6ECCA0079ACA1 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		339C453425D6ED0F0079ACA1 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		339D779925DAECAE009F3934 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				3380D33625D0723000C10913 /* Root.swift */,
+				3398838725DD6A1F007B9FF5 /* DataManager.swift */,
 				33387D6425D3F64300E76D29 /* YabaiSettings.swift */,
 				33B62D2825D5E31400DD5934 /* Onboarding.swift */,
 			);
@@ -221,6 +224,7 @@
 				3361CDF725D44AEC0086F6A7 /* URL+Extensions.swift in Sources */,
 				33B62D2925D5E31400DD5934 /* Onboarding.swift in Sources */,
 				3385DF6D25D628BF00ACDE21 /* YabaiSettingsView.swift in Sources */,
+				3398838825DD6A1F007B9FF5 /* DataManager.swift in Sources */,
 				33387D6525D3F64300E76D29 /* YabaiSettings.swift in Sources */,
 				3380D2FF25D05F4200C10913 /* YabaiUIApp.swift in Sources */,
 				3380D33725D0723000C10913 /* Root.swift in Sources */,

@@ -24,7 +24,6 @@ struct YabaiSettings {
             var id: Layout { self }
         }
     }
-    
     enum Action: Equatable {
         case keyPath(BindingAction<YabaiSettings.State>)
     }
@@ -62,13 +61,3 @@ extension YabaiSettings.State {
         .joined(separator: "\n")
     }
 }
-
-//            switch layout {
-//            case .float:
-//                let _ = AppleScript.yabaiSetFloating.execute()
-//            case .bsp:
-//                let _ = AppleScript.yabaiSetBSP.execute()
-//            case .stack:
-//                let _ = AppleScript.yabaiSetStacking.execute()
-//            }
-//state.configFile.layout = "yabai -m config layout \(layout)"

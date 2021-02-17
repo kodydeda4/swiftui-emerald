@@ -17,10 +17,11 @@ struct SidebarView: View {
                 Section(header: Text("Yabai")) {
                     NavigationLink(
                         destination:
-                            YabaiSettingsView(store:
+                            YabaiSettingsView(
+                                store:
                                     store
-                                    .scope(state: \.yabaiSettings, action: Root.Action.yabaiSettings)
-                                    
+                                    .scope(state: \.dataManager, action: Root.Action.dataManager)
+                                    .scope(state: \.yabaiSettings, action: DataManager.Action.yabaiSettings)
                             )
                     ) {
                         Label("Configuration", systemImage: "keyboard")
@@ -43,16 +44,6 @@ func toggleSidebar() {
             #selector(NSSplitViewController.toggleSidebar),
             with: nil
         )
-}
-
-struct TemporaryTextView: View {
-    let text: String
-    
-    var body: some View {
-        Text(text)
-            .font(.largeTitle)
-            .foregroundColor(Color(NSColor.placeholderTextColor))
-    }
 }
 
 // MARK:- SwiftUI Previews
