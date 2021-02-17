@@ -38,13 +38,10 @@ extension Root {
         ),
         Reducer { state, action, environment in
             switch action {
-            
             case .dataManager(_):
                 return .none
-                
             case .onboarding(_):
                 return .none
-            
             }
         }        
     )
@@ -57,4 +54,3 @@ extension Root {
         environment: ()
     )
 }
-

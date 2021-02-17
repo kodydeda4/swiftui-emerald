@@ -25,6 +25,10 @@ struct SKHDSettingsView: View {
                     KeyboardShortcuts.Recorder(for: .togglePaddingShortcut, onChange: { viewStore.send(.updateTogglePaddingShortcut($0)) })
                 }
                 HStack {
+                    Text("Toggle Gaps")
+                    KeyboardShortcuts.Recorder(for: .toggleGapsShortcut, onChange: { viewStore.send(.updateToggleGapsShortcut($0)) })
+                }
+                HStack {
                     Text("Toggle Split")
                     KeyboardShortcuts.Recorder(for: .toggleSplitShortcut, onChange: { viewStore.send(.updateToggleSplitShortcut($0)) })
                 }
