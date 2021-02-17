@@ -15,18 +15,12 @@ struct RootView: View {
         WithViewStore(store) { viewStore in
             NavigationView {
                 SidebarView(store: store)
-                //                GlobalSettingsView(
-                //                    store: store
-                //                        .scope(state: \.settings, action: Root.Action.globalSettings)
-                //                        .scope(state: \.globalSettings, action: Settings.Action.globalSettings)
-                //                )
-                
                 Text("Welcome Page")
                     .font(.largeTitle)
                     .foregroundColor(Color(NSColor.placeholderTextColor))
             }
             
-            .onAppear { viewStore.send(.settingsManager(.load)) }
+            .onAppear { viewStore.send(.settingsManager(.loadYabaiSettings)) }
             .sheet(isPresented:
                     viewStore.binding(
                         get: \.onboarding.isOnboaring,

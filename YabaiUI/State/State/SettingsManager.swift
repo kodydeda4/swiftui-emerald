@@ -7,11 +7,14 @@
 
 import ComposableArchitecture
 
+//https://izziswift.com/how-to-decode-a-nested-json-struct-with-swift-decodable-protocol/
+
 struct SettingsManager {
-    struct State: Codable, Equatable {
+    struct State: Equatable {
         var errorString: String = ""
 
         var yabaiSettings = YabaiSettings.State()
+        var yabaiEncodedState: String = ""
         
         var yabaiSettingsURL: URL {
             yabaiUIApplicationSupportDirectory
@@ -31,13 +34,13 @@ struct SettingsManager {
     }
     
     enum Action: Equatable {
-        case save
-        case load
+        case saveYabaiSettings
+        case loadYabaiSettings
         case yabaiSettings(YabaiSettings.Action)
     }
     
     struct Environment {
-        func save(_ state: SettingsManager.State, to url: URL) -> Result<Bool, Error> {
+        func saveYabaiSettings(_ state: YabaiSettings.State, to url: URL) -> Result<Bool, Error> {
             do {
                 let encoded = try JSONEncoder().encode(state)
                 try encoded.write(to: url)
@@ -46,7 +49,7 @@ struct SettingsManager {
                 return .failure(error)
             }
         }
-        func load(_ state: SettingsManager.State, from url: URL) -> Result<(SettingsManager.State), Error> {
+        func loadYabaiSettings(_ state: YabaiSettings.State, from url: URL) -> Result<(YabaiSettings.State), Error> {
             do {
                 let data = try Data(contentsOf: url)
                 let decoded = try JSONDecoder().decode(type(of: state), from: data)
@@ -59,6 +62,7 @@ struct SettingsManager {
     }
 }
 
+
 extension SettingsManager {
     static let reducer = Reducer<State, Action, Environment>.combine(
         YabaiSettings.reducer.pullback(
@@ -69,8 +73,8 @@ extension SettingsManager {
         Reducer { state, action, environment in
             switch action {
             
-            case .save:
-                switch environment.save(state, to: state.yabaiSettingsURL) {
+            case .saveYabaiSettings:
+                switch environment.saveYabaiSettings(state.yabaiSettings, to: state.yabaiSettingsURL) {
                 case .success:
                     state.errorString = ""
                 case let .failure(error):
@@ -78,18 +82,17 @@ extension SettingsManager {
                 }
                 return .none
                 
-            case .load:
-                switch environment.load(state, from: state.yabaiSettingsURL) {
+            case .loadYabaiSettings:
+                switch environment.loadYabaiSettings(state.yabaiSettings, from: state.yabaiSettingsURL) {
                 case let .success(decoded):
-                    state = decoded
+                    state.yabaiSettings = decoded
                 case let .failure(error):
                     state.errorString = "Error - Failed to load state"
                 }
                 return .none
                                 
             case let .yabaiSettings(subAction):
-                return Effect(value: .save)
-                
+                return Effect(value: .saveYabaiSettings)
             }
         }
     )

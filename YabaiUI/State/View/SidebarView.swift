@@ -15,14 +15,17 @@ struct SidebarView: View {
         WithViewStore(store) { viewStore in
             List {
                 Section(header: Text("Settings")) {
-                    SettingsNavlinks(
-                        store: store.scope(
-                            state: \.settingsManager,
-                            action: Root.Action.settingsManager
-                        )
-                    )
+                    NavigationLink(destination:
+                            SettingsManagerView(
+                                store:
+                                    store.scope(
+                                        state: \.settingsManager,
+                                        action: Root.Action.settingsManager)
+                            )
+                    ) {
+                        Label("Space", systemImage: "rectangle.3.offgrid")
+                    }
                 }
-                //Label("Rule", systemImage: "keyboard")
                 Divider()
                 NavigationLink(destination: AboutView(store: store)) {
                     Label("About", systemImage: "gear")
@@ -40,16 +43,6 @@ func toggleSidebar() {
             #selector(NSSplitViewController.toggleSidebar),
             with: nil
         )
-}
-
-private struct SettingsNavlinks: View {
-    let store: Store<SettingsManager.State, SettingsManager.Action>
-    
-    var body: some View {
-        NavigationLink(destination: YabaiSettingsView(store: store.scope(state: \.yabaiSettings, action: SettingsManager.Action.yabaiSettings))) {
-            Label("Space", systemImage: "rectangle.3.offgrid")
-        }
-    }
 }
 
 struct TemporaryTextView: View {
