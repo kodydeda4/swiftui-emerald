@@ -48,7 +48,6 @@ struct SKHDSettingsView: View {
             }
             .padding()
         }
-        .navigationTitle("Space")
     }
 }
 

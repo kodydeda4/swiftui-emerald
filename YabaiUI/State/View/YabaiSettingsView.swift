@@ -49,7 +49,6 @@ struct YabaiSettingsView: View {
             }
             .padding()
         }
-        .navigationTitle("Space")
     }
 }
 
