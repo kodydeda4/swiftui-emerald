@@ -47,7 +47,6 @@ import ComposableArchitecture
 
 struct YabaiSettings {
     struct State: Equatable, Codable {
-        
         var debugOutput             : Bool             = false
         var externalBar             : ExternalBar      = .off
         var mouseFollowsFocus       : Bool             = false
