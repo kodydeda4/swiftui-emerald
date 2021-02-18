@@ -10,16 +10,39 @@ import ComposableArchitecture
 
 /*
  Notes:
- - debugOutput seems to have no effect.
+ - Apply Changes is slow.  Maybe because it's reading/writing all at once?
+
+    [!] debugOutput
  
+    [ ] externalBar
+    [ ] mouseFollowsFocus
+    [ ] focusFollowsMouse
+    [ ] windowPlacement
+    [ ] windowTopmost
+    [ ] windowShadow
+    [ ] windowOpacity
+    [ ] windowOpacityDuration
+    [ ] activeWindowOpacity
+    [ ] normalWindowOpacity
+    [ ] windowBorder
+    [ ] windowBorderWidth
+    [ ] activeWindowBorderColor
+    [ ] normalWindowBorderColor
+    [ ] insertFeedbackColor
+    [ ] splitRatio
+    [ ] autoBalance
+    [ ] mouseModifier
+    [ ] mouseAction1
+    [ ] mouseAction2
+    [ ] mouseDropAction
  
- 
- 
- 
- 
- 
- 
- 
+    [√] layout
+    [√] paddingTop
+    [√] paddingBottom
+    [√] paddingLeft
+    [√] paddingRight
+    [√] windowGap
+  
  */
 
 struct YabaiSettings {
