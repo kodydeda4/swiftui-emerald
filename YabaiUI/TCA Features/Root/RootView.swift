@@ -35,16 +35,15 @@ struct RootView: View {
             }
             .toolbar {
                 ToolbarItem {
-                    Button("Apply Changes") {
-                        //
-                        viewStore.send(.dataManager(.exportYabaiConfig))
-                        viewStore.send(.dataManager(.exportSKHDConfig))
-                        let _ = AppleScript.restartYabai.execute()
+                    Button("Toggle OnboardingView") {
+                        viewStore.send(.onboarding(.toggleIsOnboaring))
                     }
                 }
                 ToolbarItem {
-                    Button("Toggle OnboardingView") {
-                        viewStore.send(.onboarding(.toggleIsOnboaring))
+                    Button("Apply Changes") {
+                        viewStore.send(.dataManager(.exportYabaiConfig))
+                        viewStore.send(.dataManager(.exportSKHDConfig))
+                        let _ = AppleScript.restartYabai.execute()
                     }
                 }
             }

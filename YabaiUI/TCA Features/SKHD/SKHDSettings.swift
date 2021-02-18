@@ -17,38 +17,38 @@ import KeyboardShortcuts
 
 extension KeyboardShortcuts.Name {
     static let restartYabai           = Self("restartYabai")
-    static let togglePaddingShortcut  = Self("togglePadding")
-    static let toggleGapsShortcut     = Self("toggleGaps")
-    static let toggleSplitShortcut    = Self("toggleSplit")
-    static let toggleBalanceShortcut  = Self("toggleBalance")
-    static let toggleStackingShortcut = Self("toggleStacking")
-    static let toggleFloatingShortcut = Self("toggleFloating")
-    static let toggleBSPShortcut      = Self("toggleBSP")
+    static let togglePadding  = Self("togglePadding")
+    static let toggleGaps     = Self("toggleGaps")
+    static let toggleSplit    = Self("toggleSplit")
+    static let toggleBalance  = Self("toggleBalance")
+    static let toggleStacking = Self("toggleStacking")
+    static let toggleFloating = Self("toggleFloating")
+    static let toggleBSP      = Self("toggleBSP")
 }
 
 struct SKHDSettings {
     struct State: Equatable, Codable {
         var restartYabai           = KeyboardShortcuts.getShortcut(for: .restartYabai)
-        var togglePaddingShortcut  = KeyboardShortcuts.getShortcut(for: .togglePaddingShortcut)
-        var toggleGapsShortcut     = KeyboardShortcuts.getShortcut(for: .toggleGapsShortcut)
-        var toggleSplitShortcut    = KeyboardShortcuts.getShortcut(for: .toggleSplitShortcut)
-        var toggleBalanceShortcut  = KeyboardShortcuts.getShortcut(for: .toggleBalanceShortcut)
-        var toggleStackingShortcut = KeyboardShortcuts.getShortcut(for: .toggleStackingShortcut)
-        var toggleFloatingShortcut = KeyboardShortcuts.getShortcut(for: .toggleFloatingShortcut)
-        var toggleBSPShortcut      = KeyboardShortcuts.getShortcut(for: .toggleBSPShortcut)
+        var togglePaddingShortcut  = KeyboardShortcuts.getShortcut(for: .togglePadding)
+        var toggleGapsShortcut     = KeyboardShortcuts.getShortcut(for: .toggleGaps)
+        var toggleSplitShortcut    = KeyboardShortcuts.getShortcut(for: .toggleSplit)
+        var toggleBalanceShortcut  = KeyboardShortcuts.getShortcut(for: .toggleBalance)
+        var toggleStackingShortcut = KeyboardShortcuts.getShortcut(for: .toggleStacking)
+        var toggleFloatingShortcut = KeyboardShortcuts.getShortcut(for: .toggleFloating)
+        var toggleBSPShortcut      = KeyboardShortcuts.getShortcut(for: .toggleBSP)
 
         var myText: String = "Nothin"
 
     }
     enum Action: Equatable {
         case updateRestartYabai(KeyboardShortcuts.Shortcut?)
-        case updateTogglePaddingShortcut(KeyboardShortcuts.Shortcut?)
-        case updateToggleGapsShortcut(KeyboardShortcuts.Shortcut?)
-        case updateToggleSplitShortcut(KeyboardShortcuts.Shortcut?)
-        case updateToggleBalanceShortcut(KeyboardShortcuts.Shortcut?)
-        case updateToggleStackingShortcut(KeyboardShortcuts.Shortcut?)
-        case updateToggleFloatingShortcut(KeyboardShortcuts.Shortcut?)
-        case updateToggleBSPShortcut(KeyboardShortcuts.Shortcut?)
+        case updateTogglePadding(KeyboardShortcuts.Shortcut?)
+        case updateToggleGaps(KeyboardShortcuts.Shortcut?)
+        case updateToggleSplit(KeyboardShortcuts.Shortcut?)
+        case updateToggleBalance(KeyboardShortcuts.Shortcut?)
+        case updateToggleStacking(KeyboardShortcuts.Shortcut?)
+        case updateToggleFloating(KeyboardShortcuts.Shortcut?)
+        case updateToggleBSP(KeyboardShortcuts.Shortcut?)
         case keyPath(BindingAction<SKHDSettings.State>)
     }
 }
@@ -64,31 +64,31 @@ extension SKHDSettings {
             state.restartYabai = shortcut
             return .none
             
-        case let .updateTogglePaddingShortcut(shortcut):
+        case let .updateTogglePadding(shortcut):
             state.togglePaddingShortcut = shortcut
             return .none
             
-        case let .updateToggleGapsShortcut(shortcut):
+        case let .updateToggleGaps(shortcut):
             state.toggleGapsShortcut = shortcut
             return .none
             
-        case let .updateToggleSplitShortcut(shortcut):
+        case let .updateToggleSplit(shortcut):
             state.toggleSplitShortcut = shortcut
             return .none
 
-        case let .updateToggleBalanceShortcut(shortcut):
+        case let .updateToggleBalance(shortcut):
             state.toggleBalanceShortcut = shortcut
             return .none
 
-        case let .updateToggleStackingShortcut(shortcut):
+        case let .updateToggleStacking(shortcut):
             state.toggleStackingShortcut = shortcut
             return .none
 
-        case let .updateToggleFloatingShortcut(shortcut):
+        case let .updateToggleFloating(shortcut):
             state.toggleFloatingShortcut = shortcut
             return .none
 
-        case let .updateToggleBSPShortcut(shortcut):
+        case let .updateToggleBSP(shortcut):
             state.toggleBSPShortcut = shortcut
             return .none
 

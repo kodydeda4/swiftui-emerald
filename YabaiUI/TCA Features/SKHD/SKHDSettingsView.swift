@@ -19,54 +19,21 @@ struct SKHDSettingsView: View {
                 ScrollView {
                     TextField("", text: .constant(viewStore.asConfig))
                 }
+                .padding()
                 
                 ScrollView {
-                    VStack(alignment: .leading) {
-                        Section(header: Text("Section A").fontWeight(.bold)) {
-                            HStack {
-                                Text("Restart Yabai")
-                                KeyboardShortcuts.Recorder(for: .restartYabai, onChange: { viewStore.send(.updateRestartYabai($0)) })
-                            }
-
-                            HStack {
-                                Text("Toggle Padding")
-                                KeyboardShortcuts.Recorder(for: .togglePaddingShortcut, onChange: { viewStore.send(.updateTogglePaddingShortcut($0)) })
-                            }
-                            HStack {
-                                Text("Toggle Gaps")
-                                KeyboardShortcuts.Recorder(for: .toggleGapsShortcut, onChange: { viewStore.send(.updateToggleGapsShortcut($0)) })
-                            }
-                            HStack {
-                                Text("Toggle Split")
-                                KeyboardShortcuts.Recorder(for: .toggleSplitShortcut, onChange: { viewStore.send(.updateToggleSplitShortcut($0)) })
-                            }
-                            
-                            HStack {
-                                Text("Toggle Balance")
-                                KeyboardShortcuts.Recorder(for: .toggleBalanceShortcut, onChange: { viewStore.send(.updateToggleBalanceShortcut($0)) })
-                            }
-                            HStack {
-                                Text("Toggle Stacking")
-                                KeyboardShortcuts.Recorder(for: .toggleStackingShortcut, onChange: { viewStore.send(.updateToggleStackingShortcut($0)) })
-                            }
-                            HStack {
-                                Text("Toggle Floating")
-                                KeyboardShortcuts.Recorder(for: .toggleFloatingShortcut, onChange: { viewStore.send(.updateToggleFloatingShortcut($0)) })
-                            }
-                            HStack {
-                                Text("Toggle BSP")
-                                KeyboardShortcuts.Recorder(for: .toggleBSPShortcut, onChange: { viewStore.send(.updateToggleBSPShortcut($0)) })
-                            }
-                            Picker("", selection: .constant("")) {
-                                ForEach(0..<3) {
-                                    Text($0.description)
-                                }
-                            }
-                        }
+                    SectionView("Section A") {
+                        SpecialKeyboardShortcutView("Restart Yabai",   .restartYabai)   { viewStore.send(.updateRestartYabai(  $0)) }
+                        SpecialKeyboardShortcutView("Toggle Padding",  .togglePadding)  { viewStore.send(.updateTogglePadding( $0)) }
+                        SpecialKeyboardShortcutView("Toggle Gaps",     .toggleGaps)     { viewStore.send(.updateToggleGaps(    $0)) }
+                        SpecialKeyboardShortcutView("Toggle Split",    .toggleSplit)    { viewStore.send(.updateToggleSplit(   $0)) }
+                        SpecialKeyboardShortcutView("Toggle Balance",  .toggleBalance)  { viewStore.send(.updateToggleBalance( $0)) }
+                        SpecialKeyboardShortcutView("Toggle Stacking", .toggleStacking) { viewStore.send(.updateToggleStacking($0)) }
+                        SpecialKeyboardShortcutView("Toggle Floating", .toggleFloating) { viewStore.send(.updateToggleFloating($0)) }
+                        SpecialKeyboardShortcutView("Toggle BSP",      .toggleBSP)      { viewStore.send(.updateToggleBSP(     $0)) }
                     }
                 }
             }
-            .padding()
         }
     }
 }
@@ -77,3 +44,36 @@ struct SKHDSettingsView_Previews: PreviewProvider {
     }
 }
 
+// MARK:- SpecialKeyboardShortcutView
+
+struct SpecialKeyboardShortcutView: View {
+    let title: String
+    let shortcut: KeyboardShortcuts.Name
+    let action: ((KeyboardShortcuts.Shortcut?) -> Void)?
+    
+    init(_ title: String, _ shortcut: KeyboardShortcuts.Name, action: ((KeyboardShortcuts.Shortcut?) -> Void)?) {
+        self.title = title
+        self.shortcut = shortcut
+        self.action = action
+    }
+    
+    var body: some View {
+        HStack {
+            HStack {
+                Text(title)
+                Spacer()
+            }
+            .frame(width: 110)
+                
+                
+            
+            KeyboardShortcuts.Recorder(for: shortcut, onChange: action)
+        }
+    }
+}
+
+struct SpecialKeyboardShortcutView_Previews: PreviewProvider {
+    static var previews: some View {
+        SpecialKeyboardShortcutView("Restart Yabai", .restartYabai) { _ in () }
+    }
+}
