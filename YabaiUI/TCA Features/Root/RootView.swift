@@ -35,9 +35,11 @@ struct RootView: View {
             }
             .toolbar {
                 ToolbarItem {
-                    Button("Export Data") {
+                    Button("Apply Changes") {
+                        //
                         viewStore.send(.dataManager(.exportYabaiConfig))
                         viewStore.send(.dataManager(.exportSKHDConfig))
+                        let _ = AppleScript.restartYabai.execute()
                     }
                 }
                 ToolbarItem {

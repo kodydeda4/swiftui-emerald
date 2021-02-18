@@ -8,6 +8,20 @@
 import SwiftUI
 import ComposableArchitecture
 
+/*
+ Notes:
+ - debugOutput seems to have no effect.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ */
+
 struct YabaiSettings {
     struct State: Equatable, Codable {
         
@@ -122,47 +136,47 @@ extension YabaiSettings.State {
             "# Global",
             "#======================================================",
             "yabai -m config debugOutput \(debugOutput)",
-            "yabai -m config externalBar \(externalBar)",
-            "yabai -m config mouseFollowsFocus \(mouseFollowsFocus)",
-            "yabai -m config focusFollowsMouse \(focusFollowsMouse)",
-            "",
-            "#======================================================",
-            "# Window Misc",
-            "#======================================================",
-            "yabai -m config windowPlacement \(windowPlacement)",
-            "yabai -m config windowTopmost \(windowTopmost)",
-            "yabai -m config windowShadow \(windowShadow)",
-            "",
-            "#======================================================",
-            "# Window Opacity",
-            "#======================================================",
-            "yabai -m config windowOpacity \(windowOpacity)",
-            "yabai -m config windowOpacityDuration \(windowOpacityDuration)",
-            "yabai -m config activeWindowOpacity \(activeWindowOpacity)",
-            "yabai -m config normalWindowOpacity \(normalWindowOpacity)",
-            "",
-            "#======================================================",
-            "# Window Borders",
-            "#======================================================",
-            "yabai -m config windowBorder \(windowBorder)",
-            "yabai -m config windowBorderWidth \(windowBorderWidth)",
-            "yabai -m config activeWindowBorderColor \(activeWindowBorderColor)",
-            "yabai -m config normalWindowBorderColor \(normalWindowBorderColor)",
-            "",
-            "#======================================================",
-            "# Misc",
-            "#======================================================",
-            "yabai -m config insertFeedbackColor \(insertFeedbackColor)",
-            "yabai -m config splitRatio \(splitRatio)",
-            "yabai -m config autoBalance \(autoBalance)",
-            "",
-            "#======================================================",
-            "# Mouse Actions",
-            "#======================================================",
-            "yabai -m config mouseModifier \(mouseModifier)",
-            "yabai -m config mouseAction1 \(mouseAction1)",
-            "yabai -m config mouseAction2 \(mouseAction2)",
-            "yabai -m config mouseDropAction \(mouseDropAction)",
+//            "yabai -m config externalBar \(externalBar)",
+//            "yabai -m config mouseFollowsFocus \(mouseFollowsFocus)",
+//            "yabai -m config focusFollowsMouse \(focusFollowsMouse)",
+//            "",
+//            "#======================================================",
+//            "# Window Misc",
+//            "#======================================================",
+//            "yabai -m config windowPlacement \(windowPlacement)",
+//            "yabai -m config windowTopmost \(windowTopmost)",
+//            "yabai -m config windowShadow \(windowShadow)",
+//            "",
+//            "#======================================================",
+//            "# Window Opacity",
+//            "#======================================================",
+//            "yabai -m config windowOpacity \(windowOpacity)",
+//            "yabai -m config windowOpacityDuration \(windowOpacityDuration)",
+//            "yabai -m config activeWindowOpacity \(activeWindowOpacity)",
+//            "yabai -m config normalWindowOpacity \(normalWindowOpacity)",
+//            "",
+//            "#======================================================",
+//            "# Window Borders",
+//            "#======================================================",
+//            "yabai -m config windowBorder \(windowBorder)",
+//            "yabai -m config windowBorderWidth \(windowBorderWidth)",
+//            "yabai -m config activeWindowBorderColor \(activeWindowBorderColor)",
+//            "yabai -m config normalWindowBorderColor \(normalWindowBorderColor)",
+//            "",
+//            "#======================================================",
+//            "# Misc",
+//            "#======================================================",
+//            "yabai -m config insertFeedbackColor \(insertFeedbackColor)",
+//            "yabai -m config splitRatio \(splitRatio)",
+//            "yabai -m config autoBalance \(autoBalance)",
+//            "",
+//            "#======================================================",
+//            "# Mouse Actions",
+//            "#======================================================",
+//            "yabai -m config mouseModifier \(mouseModifier)",
+//            "yabai -m config mouseAction1 \(mouseAction1)",
+//            "yabai -m config mouseAction2 \(mouseAction2)",
+//            "yabai -m config mouseDropAction \(mouseDropAction)",
             "",
             "#======================================================",
             "# Space Settings",

@@ -10,18 +10,25 @@ import KeyboardShortcuts
 
 //  https://github.com/sindresorhus/KeyboardShortcuts
 
+
+
+//MARK:-  restartYabai
+//        launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+
 extension KeyboardShortcuts.Name {
-    static let togglePaddingShortcut  = Self("togglePaddingShortcut")
-    static let toggleGapsShortcut     = Self("toggleGapsShortcut")
-    static let toggleSplitShortcut    = Self("toggleSplitShortcut")
-    static let toggleBalanceShortcut  = Self("toggleBalanceShortcut")
-    static let toggleStackingShortcut = Self("toggleStackingShortcut")
-    static let toggleFloatingShortcut = Self("toggleFloatingShortcut")
-    static let toggleBSPShortcut      = Self("toggleBSPShortcut")
+    static let restartYabai           = Self("restartYabai")
+    static let togglePaddingShortcut  = Self("togglePadding")
+    static let toggleGapsShortcut     = Self("toggleGaps")
+    static let toggleSplitShortcut    = Self("toggleSplit")
+    static let toggleBalanceShortcut  = Self("toggleBalance")
+    static let toggleStackingShortcut = Self("toggleStacking")
+    static let toggleFloatingShortcut = Self("toggleFloating")
+    static let toggleBSPShortcut      = Self("toggleBSP")
 }
 
 struct SKHDSettings {
     struct State: Equatable, Codable {
+        var restartYabai           = KeyboardShortcuts.getShortcut(for: .restartYabai)
         var togglePaddingShortcut  = KeyboardShortcuts.getShortcut(for: .togglePaddingShortcut)
         var toggleGapsShortcut     = KeyboardShortcuts.getShortcut(for: .toggleGapsShortcut)
         var toggleSplitShortcut    = KeyboardShortcuts.getShortcut(for: .toggleSplitShortcut)
@@ -34,6 +41,7 @@ struct SKHDSettings {
 
     }
     enum Action: Equatable {
+        case updateRestartYabai(KeyboardShortcuts.Shortcut?)
         case updateTogglePaddingShortcut(KeyboardShortcuts.Shortcut?)
         case updateToggleGapsShortcut(KeyboardShortcuts.Shortcut?)
         case updateToggleSplitShortcut(KeyboardShortcuts.Shortcut?)
@@ -50,6 +58,10 @@ extension SKHDSettings {
         state, action, _ in
         switch action {
         case .keyPath:
+            return .none
+            
+        case let .updateRestartYabai(shortcut):
+            state.restartYabai = shortcut
             return .none
             
         case let .updateTogglePaddingShortcut(shortcut):
@@ -108,6 +120,7 @@ extension SKHDSettings.State {
             "# Section A",
             "#======================================================",
             "",
+            "\(skhd(restartYabai)) \"/bin/launchctl kickstart -k \"gui/${UID}/homebrew.mxcl.yabai\"",
             "\(skhd(togglePaddingShortcut)) : yabai -m space --toggle padding",
             "\(skhd(toggleGapsShortcut)) : yabai -m space --toggle gap",
             "\(skhd(toggleSplitShortcut)) : yabai -m window --toggle split",

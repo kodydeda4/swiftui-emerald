@@ -24,6 +24,11 @@ struct SKHDSettingsView: View {
                     VStack(alignment: .leading) {
                         Section(header: Text("Section A").fontWeight(.bold)) {
                             HStack {
+                                Text("Restart Yabai")
+                                KeyboardShortcuts.Recorder(for: .restartYabai, onChange: { viewStore.send(.updateRestartYabai($0)) })
+                            }
+
+                            HStack {
                                 Text("Toggle Padding")
                                 KeyboardShortcuts.Recorder(for: .togglePaddingShortcut, onChange: { viewStore.send(.updateTogglePaddingShortcut($0)) })
                             }

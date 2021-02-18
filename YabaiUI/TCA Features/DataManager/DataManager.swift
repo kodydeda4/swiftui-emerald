@@ -40,14 +40,17 @@ struct DataManager {
     struct Environment {
         //MARK:- YABAI
         
+        let yabaiStateURL = URL(fileURLWithPath: NSHomeDirectory())
+            .appendingPathComponent("YabaiState.json")
+        
         let yabaiURL = URL(fileURLWithPath: NSHomeDirectory())
-            .appendingPathComponent("yabaiConfig")
+            .appendingPathComponent(".yabairc")
         
         func encodeYabaiSettings(_ state: YabaiSettings.State) -> Result<Bool, Error> {
             do {
                 try JSONEncoder()
                     .encode(state)
-                    .write(to: yabaiURL)
+                    .write(to: yabaiStateURL)
                 return .success(true)
             } catch {
                 return .failure(error)
@@ -56,7 +59,7 @@ struct DataManager {
         func decodeYabaiSettings(_ state: YabaiSettings.State) -> Result<(YabaiSettings.State), Error> {
             do {
                 let decoded = try JSONDecoder()
-                    .decode(YabaiSettings.State.self, from: Data(contentsOf: yabaiURL))
+                    .decode(YabaiSettings.State.self, from: Data(contentsOf: yabaiStateURL))
                 return .success(decoded)
             }
             catch {
@@ -77,8 +80,12 @@ struct DataManager {
         
         //MARK:- SKHD
         
+        let skhdStateURL = URL(fileURLWithPath: NSHomeDirectory())
+            .appendingPathComponent("SKHDState.json")
+
+        
         let skhdURL = URL(fileURLWithPath: NSHomeDirectory())
-            .appendingPathComponent("skhdConfig")
+            .appendingPathComponent(".skhdrc")
         
         func encodeSKHDSettings(_ state: SKHDSettings.State) -> Result<Bool, Error> {
             do {
@@ -93,7 +100,7 @@ struct DataManager {
         func decodeSKHDSettings(_ state: SKHDSettings.State) -> Result<(SKHDSettings.State), Error> {
             do {
                 let decoded = try JSONDecoder()
-                    .decode(SKHDSettings.State.self, from: Data(contentsOf: skhdURL))
+                    .decode(SKHDSettings.State.self, from: Data(contentsOf: skhdStateURL))
                 return .success(decoded)
             }
             catch {
