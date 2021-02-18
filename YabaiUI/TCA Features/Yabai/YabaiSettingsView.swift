@@ -90,13 +90,16 @@ struct ConfigFileView: View {
     
     var body: some View {
         ScrollView {
-            Text(text)
-                .font(.system(size: 11, design: .monospaced))
-                .foregroundColor(.accentColor)
+            VStack {
+                Text(text)
+                    .font(.system(size: 11, design: .monospaced))
+                    .foregroundColor(.accentColor)
+            }
+            .padding()
+            .background(Color.black.opacity(0.6))
+            .border(Color.accentColor)
+
         }
-        .padding()
-        .background(Color.black.opacity(0.75))
-        .border(Color.accentColor)
         .padding()
     }
 }

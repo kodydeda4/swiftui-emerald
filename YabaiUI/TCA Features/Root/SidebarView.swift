@@ -19,7 +19,7 @@ struct SidebarView: View {
                                                                     .scope(state: \.dataManager, action: Root.Action.dataManager)
                                                                     .scope(state: \.yabaiSettings, action: DataManager.Action.yabaiSettings)
                     )) {
-                        Label("Yabai Debug", systemImage: "keyboard")
+                        Label("Yabai Debug", systemImage: "terminal")
                     }
                     NavigationLink(destination:SKHDSettingsView(store: store
                                                                     .scope(state: \.dataManager, action: Root.Action.dataManager)
