@@ -20,7 +20,12 @@ struct RootView: View {
                     .foregroundColor(Color(NSColor.placeholderTextColor))
             }
             
-            .onAppear { viewStore.send(.dataManager(.loadYabaiSettings)) }
+            .onAppear {
+                viewStore.send(.dataManager(.loadYabaiSettings))
+                viewStore.send(.dataManager(.loadSKHDSettings))
+                viewStore.send(.dataManager(.loadAnimationSettings))
+                
+            }
             .sheet(isPresented:
                     viewStore.binding(
                         get: \.onboarding.isOnboaring,
@@ -43,7 +48,10 @@ struct RootView: View {
                     Button("Apply Changes") {
                         viewStore.send(.dataManager(.exportYabaiConfig))
                         viewStore.send(.dataManager(.exportSKHDConfig))
+                        viewStore.send(.dataManager(.exportAnimationConfig))
+
                         let _ = AppleScript.restartYabai.execute()
+                        let _ = AppleScript.applyAnimationSettings.execute()
                     }
                 }
             }
@@ -56,5 +64,3 @@ struct RootView_Previews: PreviewProvider {
         RootView(store: Root.defaultStore)
     }
 }
-
-

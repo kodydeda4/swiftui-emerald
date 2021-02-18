@@ -8,10 +8,8 @@
 import Foundation
 
 enum AppleScript: String {
-    case restartYabai     = "restartYabai"
-    //case yabaiSetFloating = "yabaiSetFloating"
-    //case yabaiSetBSP      = "yabaiSetBSP"
-    //case yabaiSetStacking = "yabaiSetStacking"
+    case restartYabai = "restartYabai"
+    case applyAnimationSettings = "applyAnimationSettings"
 }
 
 extension AppleScript {

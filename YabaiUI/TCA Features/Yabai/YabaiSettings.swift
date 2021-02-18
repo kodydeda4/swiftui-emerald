@@ -150,8 +150,6 @@ extension YabaiSettings {
 }
 
 extension YabaiSettings.State {
-
-    
     var asConfig: String {
         [
             "#   ██╗   ██╗ █████╗ ██████╗  █████╗ ██╗",
@@ -217,6 +215,7 @@ extension YabaiSettings.State {
             "yabai -m config left_padding \(paddingLeft)",
             "yabai -m config right_padding \(paddingRight)",
             "yabai -m config window_gap \(windowGap)",
+            "",
         ]
         .joined(separator: "\n")
     }

@@ -11,6 +11,7 @@ struct DataManager {
     struct State: Equatable {
         var yabaiSettings = YabaiSettings.State()
         var skhdSettings = SKHDSettings.State()
+        var animationSettings = AnimationSettings.State()
         var error: Error = .none
         
         enum Error {
@@ -21,6 +22,11 @@ struct DataManager {
             case saveSKHDSettings
             case loadSKHDSettings
             case exportSKHDConfig
+            
+            case saveAnimationSettings
+            case loadAnimationSettings
+            case exportAnimationConfig
+
             case none
         }
     }
@@ -35,6 +41,11 @@ struct DataManager {
         case saveSKHDSettings
         case loadSKHDSettings
         case exportSKHDConfig
+        
+        case animationSettings(AnimationSettings.Action)
+        case saveAnimationSettings
+        case loadAnimationSettings
+        case exportAnimationConfig
     }
     
     struct Environment {
@@ -118,6 +129,46 @@ struct DataManager {
                 return .failure(error)
             }
         }
+        
+        //MARK:- ANIMATIONS
+            
+        let animationStateURL = URL(fileURLWithPath: NSHomeDirectory())
+            .appendingPathComponent("AnimationState.json")
+        
+        let animationURL = URL(fileURLWithPath: NSHomeDirectory())
+            .appendingPathComponent(".animationSettingsRC.sh")
+        
+        func encodeAnimationSettings(_ state: AnimationSettings.State) -> Result<Bool, Error> {
+            do {
+                try JSONEncoder()
+                    .encode(state)
+                    .write(to: animationStateURL)
+                return .success(true)
+            } catch {
+                return .failure(error)
+            }
+        }
+        func decodeAnimationSettings(_ state: AnimationSettings.State) -> Result<(AnimationSettings.State), Error> {
+            do {
+                let decoded = try JSONDecoder()
+                    .decode(AnimationSettings.State.self, from: Data(contentsOf: animationStateURL))
+                return .success(decoded)
+            }
+            catch {
+                return .failure(error)
+            }
+        }
+        func exportAnimationConfig(_ animationSettingsState: AnimationSettings.State) -> Result<Bool, Error> {
+            do {
+                let data: String = animationSettingsState.asConfig
+                try data.write(to: animationURL, atomically: true, encoding: .utf8)
+                
+                return .success(true)
+            }
+            catch {
+                return .failure(error)
+            }
+        }
     }
 }
 
@@ -131,6 +182,11 @@ extension DataManager {
         SKHDSettings.reducer.pullback(
             state: \.skhdSettings,
             action: /DataManager.Action.skhdSettings,
+            environment: { _ in () }
+        ),
+        AnimationSettings.reducer.pullback(
+            state: \.animationSettings,
+            action: /DataManager.Action.animationSettings,
             environment: { _ in () }
         ),
         Reducer { state, action, environment in
@@ -196,6 +252,37 @@ extension DataManager {
                     state.error = .none
                 case let .failure(error):
                     state.error = .exportSKHDConfig
+                }
+                return .none
+            
+            // MARK:- ANIMATIONS
+            case let .animationSettings(subAction):
+                return Effect(value: .saveAnimationSettings)
+                    
+            case .saveAnimationSettings:
+                switch environment.encodeAnimationSettings(state.animationSettings) {
+                case .success:
+                    state.error = .none
+                case let .failure(error):
+                    state.error = .saveAnimationSettings
+                }
+                return .none
+                
+            case .loadAnimationSettings:
+                switch environment.decodeAnimationSettings(state.animationSettings) {
+                case let .success(decoded):
+                    state.animationSettings = decoded
+                case let .failure(error):
+                    state.error = .loadAnimationSettings
+                }
+                return .none
+                
+            case .exportAnimationConfig:
+                switch environment.exportAnimationConfig(state.animationSettings) {
+                case .success:
+                    state.error = .none
+                case let .failure(error):
+                    state.error = .exportAnimationConfig
                 }
                 return .none
             }

@@ -27,6 +27,13 @@ struct SidebarView: View {
                     )) {
                         Label("SKHD Debug", systemImage: "keyboard")
                     }
+                    NavigationLink(destination:AnimationSettingsView(store: store
+                                                                    .scope(state: \.dataManager, action: Root.Action.dataManager)
+                                                                    .scope(state: \.animationSettings, action: DataManager.Action.animationSettings)
+                    )) {
+                        Label("Animations Debug", systemImage: "keyboard")
+                    }
+
                 }
                 Divider()
                 NavigationLink(destination: AboutView(store: store)) {
