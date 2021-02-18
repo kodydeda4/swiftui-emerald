@@ -52,7 +52,10 @@ private struct SpecialKeyboardShortcutView: View {
     let shortcut: KeyboardShortcuts.Name
     let action: ((KeyboardShortcuts.Shortcut?) -> Void)?
     
-    init(_ title: String, _ shortcut: KeyboardShortcuts.Name, action: ((KeyboardShortcuts.Shortcut?) -> Void)?) {
+    init(_ title: String,
+         _ shortcut: KeyboardShortcuts.Name,
+         _ action: ((KeyboardShortcuts.Shortcut?) -> Void)?
+    ) {
         self.title = title
         self.shortcut = shortcut
         self.action = action
@@ -65,9 +68,6 @@ private struct SpecialKeyboardShortcutView: View {
                 Spacer()
             }
             .frame(width: 110)
-                
-                
-            
             KeyboardShortcuts.Recorder(for: shortcut, onChange: action)
         }
     }

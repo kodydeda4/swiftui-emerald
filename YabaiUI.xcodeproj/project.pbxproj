@@ -10,6 +10,7 @@
 		3315223F25D5786C00C8E46A /* SwiftShell in Frameworks */ = {isa = PBXBuildFile; productRef = 3315223E25D5786C00C8E46A /* SwiftShell */; };
 		33387D6525D3F64300E76D29 /* YabaiSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33387D6425D3F64300E76D29 /* YabaiSettings.swift */; };
 		3361CDF725D44AEC0086F6A7 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */; };
+		337F3ABE25DEC897009155CA /* SKHDShortcutCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337F3ABD25DEC897009155CA /* SKHDShortcutCharacter.swift */; };
 		3380D2FF25D05F4200C10913 /* YabaiUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380D2FE25D05F4200C10913 /* YabaiUIApp.swift */; };
 		3380D30325D05F4200C10913 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3380D30225D05F4200C10913 /* Assets.xcassets */; };
 		3380D30625D05F4200C10913 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3380D30525D05F4200C10913 /* Preview Assets.xcassets */; };
@@ -22,7 +23,6 @@
 		3398838825DD6A1F007B9FF5 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398838725DD6A1F007B9FF5 /* DataManager.swift */; };
 		3398838C25DD7A1D007B9FF5 /* SKHDSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398838B25DD7A1D007B9FF5 /* SKHDSettings.swift */; };
 		3398838F25DD7DC3007B9FF5 /* SKHDSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398838E25DD7DC3007B9FF5 /* SKHDSettingsView.swift */; };
-		3398839225DD7E02007B9FF5 /* DataManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398839125DD7E02007B9FF5 /* DataManagerView.swift */; };
 		3398839925DD9929007B9FF5 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 3398839825DD9929007B9FF5 /* KeyboardShortcuts */; };
 		339C453125D6ECCA0079ACA1 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C453025D6ECCA0079ACA1 /* RootView.swift */; };
 		339C453525D6ED0F0079ACA1 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C453425D6ED0F0079ACA1 /* OnboardingView.swift */; };
@@ -32,6 +32,7 @@
 /* Begin PBXFileReference section */
 		33387D6425D3F64300E76D29 /* YabaiSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiSettings.swift; sourceTree = "<group>"; };
 		3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
+		337F3ABD25DEC897009155CA /* SKHDShortcutCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHDShortcutCharacter.swift; sourceTree = "<group>"; };
 		3380D2FB25D05F4200C10913 /* YabaiUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YabaiUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3380D2FE25D05F4200C10913 /* YabaiUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiUIApp.swift; sourceTree = "<group>"; };
 		3380D30225D05F4200C10913 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -46,7 +47,6 @@
 		3398838725DD6A1F007B9FF5 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		3398838B25DD7A1D007B9FF5 /* SKHDSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHDSettings.swift; sourceTree = "<group>"; };
 		3398838E25DD7DC3007B9FF5 /* SKHDSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHDSettingsView.swift; sourceTree = "<group>"; };
-		3398839125DD7E02007B9FF5 /* DataManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerView.swift; sourceTree = "<group>"; };
 		339C453025D6ECCA0079ACA1 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		339C453425D6ED0F0079ACA1 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		33B62D2825D5E31400DD5934 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
@@ -149,7 +149,6 @@
 			isa = PBXGroup;
 			children = (
 				3398838725DD6A1F007B9FF5 /* DataManager.swift */,
-				3398839125DD7E02007B9FF5 /* DataManagerView.swift */,
 			);
 			path = DataManager;
 			sourceTree = "<group>";
@@ -168,6 +167,7 @@
 			children = (
 				3398838B25DD7A1D007B9FF5 /* SKHDSettings.swift */,
 				3398838E25DD7DC3007B9FF5 /* SKHDSettingsView.swift */,
+				337F3ABD25DEC897009155CA /* SKHDShortcutCharacter.swift */,
 			);
 			path = SKHD;
 			sourceTree = "<group>";
@@ -256,7 +256,6 @@
 				33B62D2925D5E31400DD5934 /* Onboarding.swift in Sources */,
 				3385DF6D25D628BF00ACDE21 /* YabaiSettingsView.swift in Sources */,
 				3398838825DD6A1F007B9FF5 /* DataManager.swift in Sources */,
-				3398839225DD7E02007B9FF5 /* DataManagerView.swift in Sources */,
 				33387D6525D3F64300E76D29 /* YabaiSettings.swift in Sources */,
 				3398838C25DD7A1D007B9FF5 /* SKHDSettings.swift in Sources */,
 				3398838F25DD7DC3007B9FF5 /* SKHDSettingsView.swift in Sources */,
@@ -264,6 +263,7 @@
 				3380D33725D0723000C10913 /* Root.swift in Sources */,
 				3385DF6725D6270B00ACDE21 /* SidebarView.swift in Sources */,
 				339C453525D6ED0F0079ACA1 /* OnboardingView.swift in Sources */,
+				337F3ABE25DEC897009155CA /* SKHDShortcutCharacter.swift in Sources */,
 				3385DF7025D6361200ACDE21 /* AppleScript.swift in Sources */,
 				339C453125D6ECCA0079ACA1 /* RootView.swift in Sources */,
 			);
