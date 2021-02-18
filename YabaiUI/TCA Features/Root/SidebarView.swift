@@ -15,15 +15,17 @@ struct SidebarView: View {
         WithViewStore(store) { viewStore in
             List {
                 Section(header: Text("Yabai")) {
-                    NavigationLink(
-                        destination:
-                            DataManagerView(
-                                store: store
-                                    .scope(state: \.dataManager, action: Root.Action.dataManager)
-                                    //.scope(state: \.yabaiSettings, action: DataManager.Action.yabaiSettings)
-                            )
-                    ) {
-                        Label("Configuration", systemImage: "keyboard")
+                    NavigationLink(destination:YabaiSettingsView(store: store
+                                                                    .scope(state: \.dataManager, action: Root.Action.dataManager)
+                                                                    .scope(state: \.yabaiSettings, action: DataManager.Action.yabaiSettings)
+                    )) {
+                        Label("Yabai Debug", systemImage: "keyboard")
+                    }
+                    NavigationLink(destination:SKHDSettingsView(store: store
+                                                                    .scope(state: \.dataManager, action: Root.Action.dataManager)
+                                                                    .scope(state: \.skhdSettings, action: DataManager.Action.skhdSettings)
+                    )) {
+                        Label("SKHD Debug", systemImage: "keyboard")
                     }
                 }
                 Divider()

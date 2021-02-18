@@ -14,7 +14,7 @@ struct YabaiSettings {
         var debugOutput             : Bool             = false
         var externalBar             : ExternalBar      = .off
         var mouseFollowsFocus       : Bool             = false
-        var focusFollowsMouse       : FocusFollusMouse = .off
+        var focusFollowsMouse       : FocusFollowsMouse = .off
         var windowPlacement         : WindowPlacement  = .firstChild
         var windowTopmost           : Bool             = false
         var windowShadow            : Float            = 1
@@ -47,8 +47,8 @@ struct YabaiSettings {
             case off
         }
         
-        enum FocusFollusMouse: String, Codable, CaseIterable, Identifiable {
-            var id: FocusFollusMouse { self }
+        enum FocusFollowsMouse: String, Codable, CaseIterable, Identifiable {
+            var id: FocusFollowsMouse { self }
             case autofocus
             case autoraise
             case off
@@ -117,34 +117,56 @@ extension YabaiSettings.State {
     var asConfig: String {
         [
             "# Yabai Config",
-            
-            "\n# = Global Settings ===================================\n",
-            
+            "",
+            "#======================================================",
+            "# Global",
+            "#======================================================",
             "yabai -m config debugOutput \(debugOutput)",
             "yabai -m config externalBar \(externalBar)",
             "yabai -m config mouseFollowsFocus \(mouseFollowsFocus)",
             "yabai -m config focusFollowsMouse \(focusFollowsMouse)",
+            "",
+            "#======================================================",
+            "# Window Misc",
+            "#======================================================",
             "yabai -m config windowPlacement \(windowPlacement)",
             "yabai -m config windowTopmost \(windowTopmost)",
             "yabai -m config windowShadow \(windowShadow)",
+            "",
+            "#======================================================",
+            "# Window Opacity",
+            "#======================================================",
             "yabai -m config windowOpacity \(windowOpacity)",
             "yabai -m config windowOpacityDuration \(windowOpacityDuration)",
             "yabai -m config activeWindowOpacity \(activeWindowOpacity)",
             "yabai -m config normalWindowOpacity \(normalWindowOpacity)",
+            "",
+            "#======================================================",
+            "# Window Borders",
+            "#======================================================",
             "yabai -m config windowBorder \(windowBorder)",
             "yabai -m config windowBorderWidth \(windowBorderWidth)",
             "yabai -m config activeWindowBorderColor \(activeWindowBorderColor)",
             "yabai -m config normalWindowBorderColor \(normalWindowBorderColor)",
+            "",
+            "#======================================================",
+            "# Misc",
+            "#======================================================",
             "yabai -m config insertFeedbackColor \(insertFeedbackColor)",
             "yabai -m config splitRatio \(splitRatio)",
             "yabai -m config autoBalance \(autoBalance)",
+            "",
+            "#======================================================",
+            "# Mouse Actions",
+            "#======================================================",
             "yabai -m config mouseModifier \(mouseModifier)",
             "yabai -m config mouseAction1 \(mouseAction1)",
             "yabai -m config mouseAction2 \(mouseAction2)",
             "yabai -m config mouseDropAction \(mouseDropAction)",
-            
-            "\n# = Space Settings ===================================\n",
-            
+            "",
+            "#======================================================",
+            "# Space Settings",
+            "#======================================================",
             "yabai -m config layout \(layout)",
             "yabai -m config top_padding \(paddingTop)",
             "yabai -m config bottom_padding \(paddingBottom)",

@@ -13,10 +13,7 @@ struct DataManagerView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            HStack {
-                YabaiSettingsView(store: store.scope(state: \.yabaiSettings, action: DataManager.Action.yabaiSettings))
-                SKHDSettingsView(store: store.scope(state: \.skhdSettings, action: DataManager.Action.skhdSettings))
-            }
+            //
         }
     }
 }

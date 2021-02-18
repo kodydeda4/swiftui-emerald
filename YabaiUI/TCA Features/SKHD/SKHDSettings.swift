@@ -103,9 +103,11 @@ extension SKHDSettings.State {
     var asConfig: String {
         [
             "# SKHD Config",
-            
-            "\n# = Misc ===================================\n",
-            
+            "",
+            "#======================================================",
+            "# Section A",
+            "#======================================================",
+            "",
             "\(skhd(togglePaddingShortcut)) : yabai -m space --toggle padding",
             "\(skhd(toggleGapsShortcut)) : yabai -m space --toggle gap",
             "\(skhd(toggleSplitShortcut)) : yabai -m window --toggle split",
