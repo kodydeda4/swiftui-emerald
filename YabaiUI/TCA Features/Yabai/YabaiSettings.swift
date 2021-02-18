@@ -153,12 +153,12 @@ extension YabaiSettings {
 extension YabaiSettings.State {
     var asConfig: String {
         [
-            "# Yabai Config",
-            "",
-            "#======================================================",
-            "# Global",
-            "#======================================================",
-            "yabai -m config debugOutput \(debugOutput)",
+//            "# Yabai Config",
+//            "",
+//            "#======================================================",
+//            "# Global",
+//            "#======================================================",
+//            "yabai -m config debugOutput \(debugOutput)",
 //            "yabai -m config externalBar \(externalBar)",
 //            "yabai -m config mouseFollowsFocus \(mouseFollowsFocus)",
 //            "yabai -m config focusFollowsMouse \(focusFollowsMouse)",
@@ -200,7 +200,7 @@ extension YabaiSettings.State {
 //            "yabai -m config mouseAction1 \(mouseAction1)",
 //            "yabai -m config mouseAction2 \(mouseAction2)",
 //            "yabai -m config mouseDropAction \(mouseDropAction)",
-            "",
+//            "",
             "#======================================================",
             "# Space Settings",
             "#======================================================",
