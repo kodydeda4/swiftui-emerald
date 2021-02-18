@@ -23,7 +23,6 @@ struct YabaiSettingsView: View {
             HStack {
                 ScrollView {
                     TextField("", text: .constant(viewStore.asConfig))
-                        
                 }
                 .padding()
                 
@@ -74,6 +73,7 @@ struct YabaiSettingsView: View {
                     }
                 }
             }
+            .navigationTitle("Debug Yabai")
         }
     }
 }
@@ -90,7 +90,7 @@ struct YabaiSettingsView_Previews: PreviewProvider {
 // MARK:- SectionView
 
 struct SectionView<Content: View>: View {
-    var title: String
+    let title: String
     let content: Content
     
     init(_ title: String, @ViewBuilder content: () -> Content) {
@@ -106,9 +106,6 @@ struct SectionView<Content: View>: View {
                 content
             }
             .padding()
-//            .background(Color.gray.opacity(0.1))
-//            .border(Color.gray.opacity(0.25))
-//            .clipShape(RoundedRectangle(cornerRadius: 10))
         }
     }
 }
@@ -132,8 +129,8 @@ struct SectionView_Previews: PreviewProvider {
 // MARK:- SpecialTextField
 
 struct SpecialTextField: View {
-    var title: String
-    var formatter: Formatter = NumberFormatter()
+    let title: String
+    let formatter: Formatter = NumberFormatter()
     @Binding var value: Int
     
     var body: some View {
@@ -145,7 +142,7 @@ struct SpecialTextField: View {
 }
 
 struct SpecialTextFieldStrings: View {
-    var title: String
+    let title: String
     @Binding var value: String
     
     var body: some View {
@@ -157,8 +154,8 @@ struct SpecialTextFieldStrings: View {
 }
 
 struct SpecialTextFieldFloats: View {
-    var title: String
-    var formatter: Formatter = NumberFormatter()
+    let title: String
+    let formatter: Formatter = NumberFormatter()
     @Binding var value: Float
     
     var body: some View {
@@ -174,4 +171,3 @@ struct SpecialTextField_Previews: PreviewProvider {
         SpecialTextField(title: "Value", value: .constant(64))
     }
 }
-

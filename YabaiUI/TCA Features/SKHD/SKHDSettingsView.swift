@@ -34,6 +34,7 @@ struct SKHDSettingsView: View {
                     }
                 }
             }
+            .navigationTitle("Debug SKHD")
         }
     }
 }
@@ -46,7 +47,7 @@ struct SKHDSettingsView_Previews: PreviewProvider {
 
 // MARK:- SpecialKeyboardShortcutView
 
-struct SpecialKeyboardShortcutView: View {
+private struct SpecialKeyboardShortcutView: View {
     let title: String
     let shortcut: KeyboardShortcuts.Name
     let action: ((KeyboardShortcuts.Shortcut?) -> Void)?
