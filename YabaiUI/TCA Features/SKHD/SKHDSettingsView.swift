@@ -16,10 +16,7 @@ struct SKHDSettingsView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             HStack {
-                ScrollView {
-                    TextField("", text: .constant(viewStore.asConfig))
-                }
-                .padding()
+                ConfigFileView(text: viewStore.asConfig)
                 
                 ScrollView {
                     SectionView("Section A") {
