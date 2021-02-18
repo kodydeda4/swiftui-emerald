@@ -91,7 +91,7 @@ struct DataManager {
             do {
                 try JSONEncoder()
                     .encode(state)
-                    .write(to: skhdURL)
+                    .write(to: skhdStateURL)
                 return .success(true)
             } catch {
                 return .failure(error)

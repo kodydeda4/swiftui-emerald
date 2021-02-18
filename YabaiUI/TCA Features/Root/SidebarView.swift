@@ -14,7 +14,7 @@ struct SidebarView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             List {
-                Section(header: Text("Yabai")) {
+                Section(header: Text("Debug")) {
                     NavigationLink(destination:YabaiSettingsView(store: store
                                                                     .scope(state: \.dataManager, action: Root.Action.dataManager)
                                                                     .scope(state: \.yabaiSettings, action: DataManager.Action.yabaiSettings)
