@@ -102,6 +102,10 @@ func skhd(_ shortcut: KeyboardShortcuts.Shortcut?) -> String {
 extension SKHDSettings.State {
     var asConfig: String {
         [
+            "# SKHD Config",
+            
+            "\n# = Misc ===================================\n",
+            
             "\(skhd(togglePaddingShortcut)) : yabai -m space --toggle padding",
             "\(skhd(toggleGapsShortcut)) : yabai -m space --toggle gap",
             "\(skhd(toggleSplitShortcut)) : yabai -m window --toggle split",
@@ -113,6 +117,8 @@ extension SKHDSettings.State {
         .joined(separator: "\n")
     }
 }
+
+
 
 
 enum SKHDShortcuts: Character {

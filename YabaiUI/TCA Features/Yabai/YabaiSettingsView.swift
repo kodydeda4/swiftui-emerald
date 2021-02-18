@@ -36,6 +36,7 @@ struct YabaiSettingsView: View {
                 HStack {
                     Text("Left Padding")
                     TextField("", value: viewStore.binding(keyPath: \.paddingLeft, send: keyPath), formatter: NumberFormatter())
+                    
                 }
                 HStack {
                     Text("Right Padding")
