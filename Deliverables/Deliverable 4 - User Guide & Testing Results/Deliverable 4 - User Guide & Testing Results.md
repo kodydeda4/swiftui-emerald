@@ -1,3 +1,0 @@
-# Yabai UI
-
-## Deliverable
