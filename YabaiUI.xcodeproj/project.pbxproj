@@ -12,6 +12,9 @@
 		332D568625DEEF7800C88FEE /* AnimationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D568525DEEF7800C88FEE /* AnimationSettingsView.swift */; };
 		33387D6525D3F64300E76D29 /* YabaiSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33387D6425D3F64300E76D29 /* YabaiSettings.swift */; };
 		3361CDF725D44AEC0086F6A7 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */; };
+		3361CF1125E6EF1300016875 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CF0E25E6EF1300016875 /* SectionView.swift */; };
+		3361CF1225E6EF1300016875 /* ConfigFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CF0F25E6EF1300016875 /* ConfigFileView.swift */; };
+		3361CF1325E6EF1300016875 /* SpecialTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CF1025E6EF1300016875 /* SpecialTextView.swift */; };
 		337F3ABE25DEC897009155CA /* SKHDShortcutCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337F3ABD25DEC897009155CA /* SKHDShortcutCharacter.swift */; };
 		3380D2FF25D05F4200C10913 /* YabaiUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380D2FE25D05F4200C10913 /* YabaiUIApp.swift */; };
 		3380D30325D05F4200C10913 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3380D30225D05F4200C10913 /* Assets.xcassets */; };
@@ -36,6 +39,9 @@
 		332D568525DEEF7800C88FEE /* AnimationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationSettingsView.swift; sourceTree = "<group>"; };
 		33387D6425D3F64300E76D29 /* YabaiSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiSettings.swift; sourceTree = "<group>"; };
 		3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
+		3361CF0E25E6EF1300016875 /* SectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
+		3361CF0F25E6EF1300016875 /* ConfigFileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigFileView.swift; sourceTree = "<group>"; };
+		3361CF1025E6EF1300016875 /* SpecialTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialTextView.swift; sourceTree = "<group>"; };
 		337F3ABD25DEC897009155CA /* SKHDShortcutCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHDShortcutCharacter.swift; sourceTree = "<group>"; };
 		3380D2FB25D05F4200C10913 /* YabaiUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YabaiUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3380D2FE25D05F4200C10913 /* YabaiUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiUIApp.swift; sourceTree = "<group>"; };
@@ -77,6 +83,16 @@
 				332D568525DEEF7800C88FEE /* AnimationSettingsView.swift */,
 			);
 			path = Animations;
+			sourceTree = "<group>";
+		};
+		3361CF1525E6EF1600016875 /* Views (Misc) */ = {
+			isa = PBXGroup;
+			children = (
+				3361CF0F25E6EF1300016875 /* ConfigFileView.swift */,
+				3361CF0E25E6EF1300016875 /* SectionView.swift */,
+				3361CF1025E6EF1300016875 /* SpecialTextView.swift */,
+			);
+			path = "Views (Misc)";
 			sourceTree = "<group>";
 		};
 		3380D2F225D05F4100C10913 = {
@@ -129,6 +145,7 @@
 		3380D32425D06EB300C10913 /* TCA Features */ = {
 			isa = PBXGroup;
 			children = (
+				3361CF1525E6EF1600016875 /* Views (Misc) */,
 				33DEDCB725DDBC2F001582DC /* Root */,
 				33DEDCB925DDBC51001582DC /* Yabai */,
 				33DEDCBA25DDBC67001582DC /* SKHD */,
@@ -266,11 +283,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				3385DF6A25D6279200ACDE21 /* AboutView.swift in Sources */,
+				3361CF1325E6EF1300016875 /* SpecialTextView.swift in Sources */,
 				3361CDF725D44AEC0086F6A7 /* URL+Extensions.swift in Sources */,
+				3361CF1125E6EF1300016875 /* SectionView.swift in Sources */,
 				33B62D2925D5E31400DD5934 /* Onboarding.swift in Sources */,
 				3385DF6D25D628BF00ACDE21 /* YabaiSettingsView.swift in Sources */,
 				3398838825DD6A1F007B9FF5 /* DataManager.swift in Sources */,
 				33387D6525D3F64300E76D29 /* YabaiSettings.swift in Sources */,
+				3361CF1225E6EF1300016875 /* ConfigFileView.swift in Sources */,
 				3398838C25DD7A1D007B9FF5 /* SKHDSettings.swift in Sources */,
 				3398838F25DD7DC3007B9FF5 /* SKHDSettingsView.swift in Sources */,
 				3380D2FF25D05F4200C10913 /* YabaiUIApp.swift in Sources */,
