@@ -15,25 +15,27 @@ struct SidebarView: View {
         WithViewStore(store) { viewStore in
             List {
                 Section(header: Text("Debug")) {
-                    NavigationLink(destination:YabaiSettingsView(store: store
-                                                                    .scope(state: \.dataManager, action: Root.Action.dataManager)
-                                                                    .scope(state: \.yabaiSettings, action: DataManager.Action.yabaiSettings)
+                    NavigationLink(destination: YabaiSettingsView(
+                        store: store
+                            .scope(state: \.dataManager, action: Root.Action.dataManager)
+                            .scope(state: \.yabaiSettings, action: DataManager.Action.yabaiSettings)
                     )) {
                         Label("Yabai Debug", systemImage: "terminal")
                     }
-                    NavigationLink(destination:SKHDSettingsView(store: store
-                                                                    .scope(state: \.dataManager, action: Root.Action.dataManager)
-                                                                    .scope(state: \.skhdSettings, action: DataManager.Action.skhdSettings)
+                    NavigationLink(destination: SKHDSettingsView(
+                        store: store
+                            .scope(state: \.dataManager, action: Root.Action.dataManager)
+                            .scope(state: \.skhdSettings, action: DataManager.Action.skhdSettings)
                     )) {
                         Label("SKHD Debug", systemImage: "keyboard")
                     }
-                    NavigationLink(destination:AnimationSettingsView(store: store
-                                                                    .scope(state: \.dataManager, action: Root.Action.dataManager)
-                                                                    .scope(state: \.animationSettings, action: DataManager.Action.animationSettings)
+                    NavigationLink(destination: AnimationSettingsView(
+                        store: store
+                            .scope(state: \.dataManager, action: Root.Action.dataManager)
+                            .scope(state: \.animationSettings, action: DataManager.Action.animationSettings)
                     )) {
                         Label("Animations Debug", systemImage: "keyboard")
                     }
-
                 }
                 Divider()
                 NavigationLink(destination: AboutView(store: store)) {

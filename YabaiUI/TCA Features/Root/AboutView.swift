@@ -19,13 +19,12 @@ struct AboutView: View {
                     Text("Kody Deda")
                         .foregroundColor(.gray)
                 }
-                
                 VStack(alignment: .leading) {
                     Text("Yabai & SKHD Author")
                     Text("koekeishiya")
                         .foregroundColor(.gray)
                 }
-                
+
                 Divider()
                 
                 VStack(alignment: .leading) {

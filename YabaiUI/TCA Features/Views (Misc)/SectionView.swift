@@ -11,7 +11,9 @@ struct SectionView<Content: View>: View {
     let title: String
     let content: Content
     
-    init(_ title: String, @ViewBuilder content: () -> Content) {
+    init(_ title: String,
+         @ViewBuilder content: () -> Content
+    ) {
         self.title = title
         self.content = content()
     }
