@@ -96,7 +96,7 @@ struct ConfigFileView: View {
                     .foregroundColor(.accentColor)
             }
             .padding()
-            .background(Color.black.opacity(0.6))
+            .background(Color.black)
             .border(Color.accentColor)
 
         }
