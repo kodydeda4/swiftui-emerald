@@ -76,7 +76,6 @@ struct YabaiSettingsView: View {
 }
 
 // MARK:- YabaiSettingsView_Previews
-
 struct YabaiSettingsView_Previews: PreviewProvider {
     static var previews: some View {
         YabaiSettingsView(store: YabaiSettings.defaultStore)

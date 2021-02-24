@@ -7,19 +7,13 @@
 
 import SwiftUI
 
-/*
- TODO:
- 
- Merge into one.
- 
- */
+// TODO: Merge into one.
 
-// MARK:- SwiftUI Previews
+// MARK:- SpecialTextField
 struct SpecialTextField: View {
     let title: String
     @Binding var value: Int
     let formatter: Formatter = NumberFormatter()
-    
     
     var body: some View {
         HStack {
@@ -35,7 +29,7 @@ struct SpecialTextField_Previews: PreviewProvider {
     }
 }
 
-// MARK:- SwiftUI Previews
+// MARK:- SpecialTextFieldStrings
 struct SpecialTextFieldStrings: View {
     let title: String
     @Binding var value: String
@@ -53,7 +47,7 @@ struct SpecialTextFieldStrings_Previews: PreviewProvider {
         SpecialTextFieldStrings(title: "Value", value: .constant("Hello"))
     }
 }
-// MARK:- SwiftUI Previews
+// MARK:- SpecialTextFieldFloats
 struct SpecialTextFieldFloats: View {
     let title: String
     @Binding var value: Float
