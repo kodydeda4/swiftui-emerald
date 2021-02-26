@@ -1,4 +1,4 @@
-# Yabai UI
+# Emerald
 
 ## Description
 
