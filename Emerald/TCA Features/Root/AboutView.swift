@@ -1,6 +1,6 @@
 //
 //  AboutView.swift
-//  YabaiUI
+//  Emerald
 //
 //  Created by Kody Deda on 2/11/21.
 //

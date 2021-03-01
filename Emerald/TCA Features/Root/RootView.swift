@@ -1,6 +1,6 @@
 //
 //  RootView.swift
-//  YabaiUI
+//  Emerald
 //
 //  Created by Kody Deda on 2/12/21.
 //

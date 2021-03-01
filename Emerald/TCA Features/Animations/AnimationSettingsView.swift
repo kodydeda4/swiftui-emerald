@@ -1,6 +1,6 @@
 //
 //  AnimationsView.swift
-//  AnimationUI
+//  Emerald
 //
 //  Created by Kody Deda on 2/18/21.
 //

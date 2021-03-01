@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/kodydeda/Development/swift/YabaiUI/Emerald.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>
