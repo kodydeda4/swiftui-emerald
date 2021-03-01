@@ -2,7 +2,7 @@
 
 ## Description
 
-YabaiUI is a GUI for configuring
+Emerald is a GUI for configuring
 
 * Yabai `tiling window manager`
 * SKHD `hotkey daemon`
@@ -13,10 +13,6 @@ A link to his page can be found [here](https://github.com/koekeishiya).
 > You can find more information about **Yabai**  [here](https://github.com/koekeishiya/yabai/wiki).  
 > You can find more information about **SKHD** [here](https://github.com/koekeishiya/skhd).  
 > You can find more information about **Tiling Window Managers** [here](https://www.youtube.com/watch?v=Lj1IfdKY0CU&ab_channel=DistroTube).  
-
-## Team Members
-
-Team Alpha - Kody Deda, Zane Bernard, Zachary Mitzke, Robin Wood, Paolo Imperio
 
 <img width="1617" alt="Screen Shot 2021-02-26 at 8 37 10 AM" src="https://user-images.githubusercontent.com/45678211/109307060-101ad000-780e-11eb-8001-e55fdff92f04.png">
 
