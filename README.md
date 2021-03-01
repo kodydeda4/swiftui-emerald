@@ -2,7 +2,7 @@
 
 ## Description
 
-YabaiUI is a GUI for configuring
+Emerald is a GUI for configuring
 
 * Yabai `tiling window manager`
 * SKHD `hotkey daemon`
