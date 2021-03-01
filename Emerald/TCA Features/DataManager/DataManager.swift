@@ -55,7 +55,7 @@ struct DataManager {
             .appendingPathComponent("YabaiState.json")
         
         let yabaiURL = URL(fileURLWithPath: NSHomeDirectory())
-            .appendingPathComponent(".yabairc")
+            .appendingPathComponent("yabairc")
         
         func encodeYabaiSettings(_ state: YabaiSettings.State) -> Result<Bool, Error> {
             do {
@@ -96,7 +96,7 @@ struct DataManager {
 
         
         let skhdURL = URL(fileURLWithPath: NSHomeDirectory())
-            .appendingPathComponent(".skhdrc")
+            .appendingPathComponent("skhdrc")
         
         func encodeSKHDSettings(_ state: SKHDSettings.State) -> Result<Bool, Error> {
             do {
