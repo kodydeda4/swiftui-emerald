@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3380D2FA25D05F4200C10913"
-               BuildableName = "YabaiUI.app"
-               BlueprintName = "YabaiUI"
-               ReferencedContainer = "container:YabaiUI.xcodeproj">
+               BuildableName = "Emerald.app"
+               BlueprintName = "Emerald"
+               ReferencedContainer = "container:Emerald.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3380D2FA25D05F4200C10913"
-            BuildableName = "YabaiUI.app"
-            BlueprintName = "YabaiUI"
-            ReferencedContainer = "container:YabaiUI.xcodeproj">
+            BuildableName = "Emerald.app"
+            BlueprintName = "Emerald"
+            ReferencedContainer = "container:Emerald.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3380D2FA25D05F4200C10913"
-            BuildableName = "YabaiUI.app"
-            BlueprintName = "YabaiUI"
-            ReferencedContainer = "container:YabaiUI.xcodeproj">
+            BuildableName = "Emerald.app"
+            BlueprintName = "Emerald"
+            ReferencedContainer = "container:Emerald.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

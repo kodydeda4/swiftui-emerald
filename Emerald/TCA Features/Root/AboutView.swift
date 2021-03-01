@@ -15,7 +15,7 @@ struct AboutView: View {
         WithViewStore(store) { viewStore in
             List {
                 VStack(alignment: .leading) {
-                    Text("YabaiUI Author")
+                    Text("Emerald Author")
                     Text("Kody Deda")
                         .foregroundColor(.gray)
                 }

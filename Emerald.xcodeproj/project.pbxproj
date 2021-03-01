@@ -16,7 +16,7 @@
 		3361CF1225E6EF1300016875 /* ConfigFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CF0F25E6EF1300016875 /* ConfigFileView.swift */; };
 		3361CF1325E6EF1300016875 /* SpecialTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CF1025E6EF1300016875 /* SpecialTextView.swift */; };
 		337F3ABE25DEC897009155CA /* SKHDShortcutCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337F3ABD25DEC897009155CA /* SKHDShortcutCharacter.swift */; };
-		3380D2FF25D05F4200C10913 /* YabaiUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380D2FE25D05F4200C10913 /* YabaiUIApp.swift */; };
+		3380D2FF25D05F4200C10913 /* EmeraldApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380D2FE25D05F4200C10913 /* EmeraldApp.swift */; };
 		3380D30325D05F4200C10913 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3380D30225D05F4200C10913 /* Assets.xcassets */; };
 		3380D30625D05F4200C10913 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3380D30525D05F4200C10913 /* Preview Assets.xcassets */; };
 		3380D31C25D06E1500C10913 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 3380D31B25D06E1500C10913 /* ComposableArchitecture */; };
@@ -43,12 +43,12 @@
 		3361CF0F25E6EF1300016875 /* ConfigFileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigFileView.swift; sourceTree = "<group>"; };
 		3361CF1025E6EF1300016875 /* SpecialTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialTextView.swift; sourceTree = "<group>"; };
 		337F3ABD25DEC897009155CA /* SKHDShortcutCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHDShortcutCharacter.swift; sourceTree = "<group>"; };
-		3380D2FB25D05F4200C10913 /* YabaiUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YabaiUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3380D2FE25D05F4200C10913 /* YabaiUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiUIApp.swift; sourceTree = "<group>"; };
+		3380D2FB25D05F4200C10913 /* Emerald.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emerald.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3380D2FE25D05F4200C10913 /* EmeraldApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmeraldApp.swift; sourceTree = "<group>"; };
 		3380D30225D05F4200C10913 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3380D30525D05F4200C10913 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3380D30725D05F4200C10913 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3380D30825D05F4200C10913 /* YabaiUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YabaiUI.entitlements; sourceTree = "<group>"; };
+		3380D30825D05F4200C10913 /* Emerald.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Emerald.entitlements; sourceTree = "<group>"; };
 		3380D33625D0723000C10913 /* Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Root.swift; sourceTree = "<group>"; };
 		3385DF6625D6270B00ACDE21 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		3385DF6925D6279200ACDE21 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
@@ -98,7 +98,7 @@
 		3380D2F225D05F4100C10913 = {
 			isa = PBXGroup;
 			children = (
-				3380D2FD25D05F4200C10913 /* YabaiUI */,
+				3380D2FD25D05F4200C10913 /* Emerald */,
 				3380D2FC25D05F4200C10913 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -106,23 +106,23 @@
 		3380D2FC25D05F4200C10913 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3380D2FB25D05F4200C10913 /* YabaiUI.app */,
+				3380D2FB25D05F4200C10913 /* Emerald.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3380D2FD25D05F4200C10913 /* YabaiUI */ = {
+		3380D2FD25D05F4200C10913 /* Emerald */ = {
 			isa = PBXGroup;
 			children = (
-				3380D2FE25D05F4200C10913 /* YabaiUIApp.swift */,
+				3380D2FE25D05F4200C10913 /* EmeraldApp.swift */,
 				3380D32425D06EB300C10913 /* TCA Features */,
 				3380D31125D0667100C10913 /* Common */,
 				3380D30225D05F4200C10913 /* Assets.xcassets */,
 				3380D30725D05F4200C10913 /* Info.plist */,
-				3380D30825D05F4200C10913 /* YabaiUI.entitlements */,
+				3380D30825D05F4200C10913 /* Emerald.entitlements */,
 				3380D30425D05F4200C10913 /* Preview Content */,
 			);
-			path = YabaiUI;
+			path = Emerald;
 			sourceTree = "<group>";
 		};
 		3380D30425D05F4200C10913 /* Preview Content */ = {
@@ -206,9 +206,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3380D2FA25D05F4200C10913 /* YabaiUI */ = {
+		3380D2FA25D05F4200C10913 /* Emerald */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3380D30B25D05F4200C10913 /* Build configuration list for PBXNativeTarget "YabaiUI" */;
+			buildConfigurationList = 3380D30B25D05F4200C10913 /* Build configuration list for PBXNativeTarget "Emerald" */;
 			buildPhases = (
 				3380D2F725D05F4200C10913 /* Sources */,
 				3380D2F825D05F4200C10913 /* Frameworks */,
@@ -218,14 +218,14 @@
 			);
 			dependencies = (
 			);
-			name = YabaiUI;
+			name = Emerald;
 			packageProductDependencies = (
 				3380D31B25D06E1500C10913 /* ComposableArchitecture */,
 				3315223E25D5786C00C8E46A /* SwiftShell */,
 				3398839825DD9929007B9FF5 /* KeyboardShortcuts */,
 			);
 			productName = YabaiUI;
-			productReference = 3380D2FB25D05F4200C10913 /* YabaiUI.app */;
+			productReference = 3380D2FB25D05F4200C10913 /* Emerald.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -242,7 +242,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3380D2F625D05F4100C10913 /* Build configuration list for PBXProject "YabaiUI" */;
+			buildConfigurationList = 3380D2F625D05F4100C10913 /* Build configuration list for PBXProject "Emerald" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -260,7 +260,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3380D2FA25D05F4200C10913 /* YabaiUI */,
+				3380D2FA25D05F4200C10913 /* Emerald */,
 			);
 		};
 /* End PBXProject section */
@@ -293,7 +293,7 @@
 				3361CF1225E6EF1300016875 /* ConfigFileView.swift in Sources */,
 				3398838C25DD7A1D007B9FF5 /* SKHDSettings.swift in Sources */,
 				3398838F25DD7DC3007B9FF5 /* SKHDSettingsView.swift in Sources */,
-				3380D2FF25D05F4200C10913 /* YabaiUIApp.swift in Sources */,
+				3380D2FF25D05F4200C10913 /* EmeraldApp.swift in Sources */,
 				332D568625DEEF7800C88FEE /* AnimationSettingsView.swift in Sources */,
 				3380D33725D0723000C10913 /* Root.swift in Sources */,
 				3385DF6725D6270B00ACDE21 /* SidebarView.swift in Sources */,
@@ -428,20 +428,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = YabaiUI/YabaiUI.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Emerald/Emerald.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"YabaiUI/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Emerald/Preview Content\"";
 				DEVELOPMENT_TEAM = W6LQK45783;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = YabaiUI/Info.plist;
+				INFOPLIST_FILE = Emerald/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kswift.YabaiUI;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kswift.Emerald;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -452,20 +452,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = YabaiUI/YabaiUI.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Emerald/Emerald.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"YabaiUI/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Emerald/Preview Content\"";
 				DEVELOPMENT_TEAM = W6LQK45783;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = YabaiUI/Info.plist;
+				INFOPLIST_FILE = Emerald/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kswift.YabaiUI;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kswift.Emerald;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -474,7 +474,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3380D2F625D05F4100C10913 /* Build configuration list for PBXProject "YabaiUI" */ = {
+		3380D2F625D05F4100C10913 /* Build configuration list for PBXProject "Emerald" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3380D30925D05F4200C10913 /* Debug */,
@@ -483,7 +483,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3380D30B25D05F4200C10913 /* Build configuration list for PBXNativeTarget "YabaiUI" */ = {
+		3380D30B25D05F4200C10913 /* Build configuration list for PBXNativeTarget "Emerald" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3380D30C25D05F4200C10913 /* Debug */,
