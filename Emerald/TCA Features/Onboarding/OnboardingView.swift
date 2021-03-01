@@ -19,7 +19,7 @@ struct OnboardingView: View {
                         .resizable()
                         .frame(width: 75, height: 75)
                     
-                    Text("Welcome to YabaiUI")
+                    Text("Welcome to Emerald")
                         .font(.largeTitle)
                         .fontWeight(.medium)
                     
