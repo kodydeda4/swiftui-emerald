@@ -32,6 +32,7 @@ import ComposableArchitecture
  
  Notes:
  - Apply Changes is slow.  Maybe because it's reading/writing all at once?
+ - Textfields for WindowOpacityDuration, ActiveWindowOpacity, NormalWindowOpacity should be limited to 0.0-1.1
  
  √ = Tested & Works
  E = Tested & Doesn't work/improperly implemented
@@ -48,10 +49,10 @@ import ComposableArchitecture
  
     [√] windowTopmost
     [√] windowShadow
-    [ ] windowOpacity
-    [ ] windowOpacityDuration
-    [ ] activeWindowOpacity
-    [ ] normalWindowOpacity
+    [√] windowOpacity
+    [√] windowOpacityDuration
+    [√] activeWindowOpacity
+    [√] normalWindowOpacity
     [ ] windowBorder
     [ ] windowBorderWidth
     [ ] activeWindowBorderColor
@@ -71,7 +72,7 @@ import ComposableArchitecture
     [√] paddingRight
     [√] windowGap
   
- */ 
+ */
 
 struct YabaiSettings {
     struct State: Equatable, Codable {
@@ -246,11 +247,12 @@ extension YabaiSettings.State {
             "#",
             "",
             divStr,
-            "# Global",
-            "sudo yabai --load-sa",
-            "yabai -m signal --add event=dock_did_restart action=\"sudo yabai --load-sa\"",
-
+            "# TEMPORARILY HARDCODED",
+            divStr,
             "yabai -m rule --add label=\"System Preferences\" app=\"^System Preferences$\" manage=off",
+            "",
+            divStr,
+            "# General",
             divStr,
             "yabai -m config debug_output \(debugOutput == true ? "on" : "off")",
             "yabai -m config external_bar \(externalBar):\(topPaddingExternalBar):\(bottomPaddingExternalBar)",
@@ -263,14 +265,14 @@ extension YabaiSettings.State {
             "yabai -m config window_placement \(windowPlacement)",
             "yabai -m config window_shadow \(windowShadow)",
             "",
-//            divStr,
-//            "# Window Opacity",
-//            divStr,
-//            "yabai -m config windowOpacity \(windowOpacity == true ? "on" : "off")",
-//            "yabai -m config windowOpacityDuration \(windowOpacityDuration)",
-//            "yabai -m config activeWindowOpacity \(activeWindowOpacity)",
-//            "yabai -m config normalWindowOpacity \(normalWindowOpacity)",
-//            "",
+            divStr,
+            "# Window Opacity",
+            divStr,
+            "yabai -m config window_opacity \(windowOpacity == true ? "on" : "off")",
+            "yabai -m config window_opacity_duration \(windowOpacityDuration)",
+            "yabai -m config active_window_opacity \(activeWindowOpacity)",
+            "yabai -m config normal_window_opacity \(normalWindowOpacity)",
+            "",
 //            divStr,
 //            "# Window Borders",
 //            divStr,

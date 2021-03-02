@@ -53,18 +53,20 @@ struct SpecialTextFieldStrings_Previews: PreviewProvider {
 struct SpecialTextFieldFloats: View {
     let title: String
     @Binding var value: Float
+    var disabled: Bool
     let formatter: Formatter = NumberFormatter()
     
     var body: some View {
         HStack {
             Text(title)
             TextField("", value: $value, formatter: formatter)
+                .disabled(disabled)
         }
     }
 }
 
 struct SpecialTextFieldFloats_Previews: PreviewProvider {
     static var previews: some View {
-        SpecialTextFieldFloats(title: "Value", value: .constant(64.0))
+        SpecialTextFieldFloats(title: "Value", value: .constant(64.0), disabled: false)
     }
 }

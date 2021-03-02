@@ -45,12 +45,12 @@ struct YabaiSettingsView: View {
                             Toggle("Window Topmost", isOn: viewStore.binding(keyPath: \.windowTopmost, send: keyPath))
                             Picker("Window Shadow", selection: viewStore.binding(keyPath: \.windowShadow, send: keyPath)) { ForEach(YabaiSettings.State.WindowShadow.allCases) { Text($0.rawValue) } }
                         }
-//                        SectionView("Window Opacity") {
-//                            Toggle("Window Opacity", isOn: viewStore.binding(keyPath: \.windowOpacity, send: keyPath))
-//                            SpecialTextFieldFloats(title: "Window Opacity Duration", value: viewStore.binding(keyPath: \.windowOpacityDuration, send: keyPath))
-//                            SpecialTextFieldFloats(title: "Active Window Opacity", value: viewStore.binding(keyPath: \.activeWindowOpacity, send: keyPath))
-//                            SpecialTextFieldFloats(title: "Normal Window Opacity", value: viewStore.binding(keyPath: \.normalWindowOpacity, send: keyPath))
-//                        }
+                        SectionView("Window Opacity") {
+                            Toggle("Window Opacity", isOn: viewStore.binding(keyPath: \.windowOpacity, send: keyPath))
+                            SpecialTextFieldFloats(title: "Window Opacity Duration", value: viewStore.binding(keyPath: \.windowOpacityDuration, send: keyPath), disabled: !viewStore.windowOpacity)
+                            SpecialTextFieldFloats(title: "Active Window Opacity", value: viewStore.binding(keyPath: \.activeWindowOpacity, send: keyPath), disabled: !viewStore.windowOpacity)
+                            SpecialTextFieldFloats(title: "Normal Window Opacity", value: viewStore.binding(keyPath: \.normalWindowOpacity, send: keyPath), disabled: !viewStore.windowOpacity)
+                        }
 //                        SectionView("Window Borders") {
 //                            Toggle("Window Border", isOn: viewStore.binding(keyPath: \.windowBorder, send: keyPath))
 //                            SpecialTextField(title: "Window Border Width", value: viewStore.binding(keyPath: \.windowBorderWidth, send: keyPath), disabled: viewStore.windowBorder)
