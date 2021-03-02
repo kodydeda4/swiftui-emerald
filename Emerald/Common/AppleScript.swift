@@ -10,6 +10,7 @@ import Foundation
 enum AppleScript: String {
     case restartYabai = "restartYabai"
     case applyAnimationSettings = "applyAnimationSettings"
+    case brewServicesStartYabaiVerbose = "brewServicesStartYabai-V"
 }
 
 extension AppleScript {

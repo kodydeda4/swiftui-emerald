@@ -14,7 +14,10 @@ import ComposableArchitecture
 
     [!] debugOutput
  
-    [ ] externalBar
+    [X] externalBar
+    [X] topPaddingExternalBar
+    [X] bottomPaddingExternalBar
+ 
     [ ] mouseFollowsFocus
     [ ] focusFollowsMouse
     [ ] windowPlacement
@@ -48,38 +51,42 @@ import ComposableArchitecture
 
 /*
  
-TODO: Update var names
+TODO:
+ - variable names must be updated to properly reflect .yabairc file
+ - debugOutput seems to capture output when started
  */
 struct YabaiSettings {
     struct State: Equatable, Codable {
-        var debugOutput             : Bool             = false
-        var externalBar             : ExternalBar      = .off
-        var mouseFollowsFocus       : Bool             = false
-        var focusFollowsMouse       : FocusFollowsMouse = .off
-        var windowPlacement         : WindowPlacement  = .firstChild
-        var windowTopmost           : Bool             = false
-        var windowShadow            : Float            = 1
-        var windowOpacity           : Bool             = true
-        var windowOpacityDuration   : Float            = 1
-        var activeWindowOpacity     : Float            = 1
-        var normalWindowOpacity     : Float            = 1
-        var windowBorder            : Bool             = false
-        var windowBorderWidth       : Int              = 0
-        var activeWindowBorderColor : String           = "COLOR" // Color = .clear
-        var normalWindowBorderColor : String           = "COLOR" // Color = .clear
-        var insertFeedbackColor     : String           = "COLOR" // Color = .clear
-        var splitRatio              : Float            = 1
-        var autoBalance             : Bool             = false
-        var mouseModifier           : MouseModifier    = .cmd
-        var mouseAction1            : MouseAction      = .move
-        var mouseAction2            : MouseAction      = .move
-        var mouseDropAction         : MouseDropAction  = .swap
-        var layout                  : Layout           = .float
-        var paddingTop              : Int              = 0
-        var paddingBottom           : Int              = 0
-        var paddingLeft             : Int              = 0
-        var paddingRight            : Int              = 0
-        var windowGap               : Int              = 0
+        var debugOutput              : Bool              = false
+        var externalBar              : ExternalBar       = .off
+        var topPaddingExternalBar    : Int               = 0
+        var bottomPaddingExternalBar : Int               = 0
+        var mouseFollowsFocus        : Bool              = false
+        var focusFollowsMouse        : FocusFollowsMouse = .off
+        var windowPlacement          : WindowPlacement   = .firstChild
+        var windowTopmost            : Bool              = false
+        var windowShadow             : Float             = 1
+        var windowOpacity            : Bool              = true
+        var windowOpacityDuration    : Float             = 1
+        var activeWindowOpacity      : Float             = 1
+        var normalWindowOpacity      : Float             = 1
+        var windowBorder             : Bool              = false
+        var windowBorderWidth        : Int               = 0
+        var activeWindowBorderColor  : String            = "COLOR" // Color = .clear
+        var normalWindowBorderColor  : String            = "COLOR" // Color = .clear
+        var insertFeedbackColor      : String            = "COLOR" // Color = .clear
+        var splitRatio               : Float             = 1
+        var autoBalance              : Bool              = false
+        var mouseModifier            : MouseModifier     = .cmd
+        var mouseAction1             : MouseAction       = .move
+        var mouseAction2             : MouseAction       = .move
+        var mouseDropAction          : MouseDropAction   = .swap
+        var layout                   : Layout            = .float
+        var paddingTop               : Int               = 0
+        var paddingBottom            : Int               = 0
+        var paddingLeft              : Int               = 0
+        var paddingRight             : Int               = 0
+        var windowGap                : Int               = 0
         
         enum ExternalBar: String, Codable, CaseIterable, Identifiable {
             var id: ExternalBar { self }
@@ -171,7 +178,7 @@ extension YabaiSettings.State {
             "# Global",
             divStr,
             "yabai -m config debug_output \(debugOutput == true ? "on" : "off")",
-            "yabai -m config external_bar \(externalBar)",
+            "yabai -m config external_bar \(externalBar):\(topPaddingExternalBar):\(bottomPaddingExternalBar)",
             "yabai -m config mouse_follows_focus \(mouseFollowsFocus == true ? "on" : "off")",
             "yabai -m config focus_follows_mouse \(focusFollowsMouse)",
             "",

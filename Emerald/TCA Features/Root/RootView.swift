@@ -50,8 +50,16 @@ struct RootView: View {
                         let _ = AppleScript.applyAnimationSettings.execute()
                     }
                 }
+//                ToolbarItem {
+//                    Button("brew services start Yabai -v") {
+//                        viewStore.send(.dataManager(.exportYabaiConfig))
+//                        viewStore.send(.dataManager(.exportSKHDConfig))
+//
+//                        let _ = AppleScript.restartYabai.execute()
+//                    }
+//                }
                 ToolbarItem {
-                    Button("Update/Restart Yabai") {
+                    Button("Update/Restart Yabai & SKHD") {
                         viewStore.send(.dataManager(.exportYabaiConfig))
                         viewStore.send(.dataManager(.exportSKHDConfig))
                         

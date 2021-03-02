@@ -28,6 +28,8 @@ struct YabaiSettingsView: View {
                         SectionView("Window Borders") {
                             Toggle("Debug Output", isOn:              viewStore.binding(keyPath: \.debugOutput,       send: keyPath))
                             Picker("External Bar", selection:         viewStore.binding(keyPath: \.externalBar,       send: keyPath)) { ForEach(YabaiSettings.State.ExternalBar.allCases)       { Text($0.rawValue) } }
+                            SpecialTextField(title: "Top Padding External Bar",    value: viewStore.binding(keyPath: \.topPaddingExternalBar,    send: keyPath))
+                            SpecialTextField(title: "Bottom Padding External Bar",    value: viewStore.binding(keyPath: \.bottomPaddingExternalBar,    send: keyPath))
                             Toggle("Mouse Follows Focus", isOn:      viewStore.binding(keyPath: \.mouseFollowsFocus, send: keyPath))
                             Picker("Focus Follows Mouse", selection: viewStore.binding(keyPath: \.focusFollowsMouse, send: keyPath)) { ForEach(YabaiSettings.State.FocusFollowsMouse.allCases) { Text($0.rawValue) } }
                         }
