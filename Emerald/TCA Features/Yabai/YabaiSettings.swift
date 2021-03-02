@@ -11,17 +11,21 @@ import ComposableArchitecture
 /*
  Notes:
  - Apply Changes is slow.  Maybe because it's reading/writing all at once?
-
-    [!] debugOutput
  
-    [X] externalBar
-    [X] topPaddingExternalBar
-    [X] bottomPaddingExternalBar
+ √ = Tested & Works
+ E = Tested & Doesn't work/improperly implemented
+ 
+    [E] debugOutput
+ 
+    [√] externalBar
+    [√] topPaddingExternalBar
+    [√] bottomPaddingExternalBar
  
     [ ] mouseFollowsFocus
-    [X] focusFollowsMouse
-    [ ] windowPlacement
-    [ ] windowTopmost
+    [√] focusFollowsMouse
+    [√] windowPlacement
+ 
+    [E] windowTopmost
     [ ] windowShadow
     [ ] windowOpacity
     [ ] windowOpacityDuration
@@ -64,7 +68,7 @@ struct YabaiSettings {
         var mouseFollowsFocus        : Bool              = false
         var focusFollowsMouse        : FocusFollowsMouse = .off
         var windowPlacement          : WindowPlacement   = .first_child
-        var windowTopmost            : Bool              = false
+        var windowTopmost            : Bool              = false //floating windows are always on top (default: off)
         var windowShadow             : Float             = 1
         var windowOpacity            : Bool              = true
         var windowOpacityDuration    : Float             = 1
@@ -206,6 +210,7 @@ extension YabaiSettings.State {
             "",
             divStr,
             "# Global",
+            //"yabai -m rule --add label=\"System Preferences\" app=\"^System Preferences$\" manage=off",
             divStr,
             "yabai -m config debug_output \(debugOutput == true ? "on" : "off")",
             "yabai -m config external_bar \(externalBar):\(topPaddingExternalBar):\(bottomPaddingExternalBar)",
