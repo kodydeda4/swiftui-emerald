@@ -7,11 +7,6 @@
 
 // Disable OSX Animations: https://apple.stackexchange.com/questions/14001/how-to-turn-off-all-animations-on-os-x
 
-/*
- 
- current issue is that the changes work from the terminal but not through running a file
- */
-
 import SwiftUI
 import ComposableArchitecture
 
@@ -46,6 +41,8 @@ extension AnimationSettings {
 
 extension AnimationSettings.State {
     var asConfig: String {
+        let divStr = "#==================================================================================="
+        
         var header: [String] {
             [
                 "#!/bin/bash",
@@ -64,9 +61,9 @@ extension AnimationSettings.State {
         var body: [String] {
             if allEnabled {
                 return [
-                    "#==================================================================================",
+                    divStr,
                     "# Enabled Animations",
-                    "#==================================================================================",
+                    divStr,
                     "defaults delete -g NSAutomaticWindowAnimationsEnabled",
                     "defaults delete -g NSScrollAnimationEnabled",
                     "defaults delete -g NSWindowResizeTime",
@@ -88,9 +85,9 @@ extension AnimationSettings.State {
                 ]
             } else {
                 return [
-                    "#==================================================================================",
+                    divStr,
                     "# Disabled Animations",
-                    "#==================================================================================",
+                    divStr,
                     "defaults write -g NSAutomaticWindowAnimationsEnabled -bool false",
                     "defaults write -g NSScrollAnimationEnabled -bool false",
                     "defaults write -g NSWindowResizeTime -float 0.001",
