@@ -26,13 +26,13 @@ struct YabaiSettingsView: View {
                 ScrollView {
                     VStack(alignment: .leading) {
                         SectionView("Window Borders") {
-                            Toggle("debugOutput", isOn:              viewStore.binding(keyPath: \.debugOutput,       send: keyPath))
-                            Picker("externalBar", selection:         viewStore.binding(keyPath: \.externalBar,       send: keyPath)) { ForEach(YabaiSettings.State.ExternalBar.allCases)       { Text($0.rawValue) } }
+                            Toggle("Debug Output", isOn:              viewStore.binding(keyPath: \.debugOutput,       send: keyPath))
+                            Picker("External Bar", selection:         viewStore.binding(keyPath: \.externalBar,       send: keyPath)) { ForEach(YabaiSettings.State.ExternalBar.allCases)       { Text($0.rawValue) } }
                             Toggle("Mouse Follows Focus", isOn:      viewStore.binding(keyPath: \.mouseFollowsFocus, send: keyPath))
                             Picker("Focus Follows Mouse", selection: viewStore.binding(keyPath: \.focusFollowsMouse, send: keyPath)) { ForEach(YabaiSettings.State.FocusFollowsMouse.allCases) { Text($0.rawValue) } }
                         }
                         SectionView("Window Misc") {
-                            Picker("WindowPlacement", selection: viewStore.binding(keyPath: \.windowPlacement, send: keyPath)) { ForEach(YabaiSettings.State.WindowPlacement.allCases) { Text($0.rawValue) } }
+                            Picker("Window Placement", selection: viewStore.binding(keyPath: \.windowPlacement, send: keyPath)) { ForEach(YabaiSettings.State.WindowPlacement.allCases) { Text($0.rawValue) } }
                             Toggle("Window Topmost", isOn: viewStore.binding(keyPath: \.windowTopmost, send: keyPath))
                             SpecialTextFieldFloats(title: "Window Shadow", value: viewStore.binding(keyPath: \.windowShadow, send: keyPath))
                         }
@@ -51,13 +51,13 @@ struct YabaiSettingsView: View {
                         SectionView("Misc") {
                             SpecialTextFieldStrings(title: "Insert Feedback Color", value: viewStore.binding(keyPath: \.insertFeedbackColor, send: keyPath))
                             SpecialTextFieldFloats( title: "Split Ratio",           value: viewStore.binding(keyPath: \.splitRatio,          send: keyPath))
-                            Toggle("autoBalance", isOn: viewStore.binding(keyPath: \.autoBalance, send: keyPath))
+                            Toggle("Auto Balance", isOn: viewStore.binding(keyPath: \.autoBalance, send: keyPath))
                         }
                         SectionView("Mouse Actions") {
-                            Picker("mouseModifier",   selection: viewStore.binding(keyPath: \.mouseModifier,   send: keyPath)) { ForEach(YabaiSettings.State.MouseModifier.allCases  ) { Text($0.rawValue) } }
-                            Picker("mouseAction1",    selection: viewStore.binding(keyPath: \.mouseAction1,    send: keyPath)) { ForEach(YabaiSettings.State.MouseAction.allCases    ) { Text($0.rawValue) } }
-                            Picker("mouseAction2",    selection: viewStore.binding(keyPath: \.mouseAction2,    send: keyPath)) { ForEach(YabaiSettings.State.MouseAction.allCases    ) { Text($0.rawValue) } }
-                            Picker("mouseDropAction", selection: viewStore.binding(keyPath: \.mouseDropAction, send: keyPath)) { ForEach(YabaiSettings.State.MouseDropAction.allCases) { Text($0.rawValue) } }
+                            Picker("Mouse Modifier",   selection: viewStore.binding(keyPath: \.mouseModifier,   send: keyPath)) { ForEach(YabaiSettings.State.MouseModifier.allCases  ) { Text($0.rawValue) } }
+                            Picker("Mouse Action 1",    selection: viewStore.binding(keyPath: \.mouseAction1,    send: keyPath)) { ForEach(YabaiSettings.State.MouseAction.allCases    ) { Text($0.rawValue) } }
+                            Picker("Mouse Action 2",    selection: viewStore.binding(keyPath: \.mouseAction2,    send: keyPath)) { ForEach(YabaiSettings.State.MouseAction.allCases    ) { Text($0.rawValue) } }
+                            Picker("Mouse Drop Action", selection: viewStore.binding(keyPath: \.mouseDropAction, send: keyPath)) { ForEach(YabaiSettings.State.MouseDropAction.allCases) { Text($0.rawValue) } }
                         }
                         SectionView("Space Settings") {
                             Picker("Layout", selection: viewStore.binding(keyPath: \.layout, send: keyPath)) { ForEach(YabaiSettings.State.Layout.allCases) { Text($0.rawValue) } }
