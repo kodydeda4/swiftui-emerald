@@ -57,10 +57,10 @@ import ComposableArchitecture
     [√] activeWindowOpacity
     [√] normalWindowOpacity
  
-    [ ] windowBorder
-    [ ] windowBorderWidth
-    [ ] activeWindowBorderColor
-    [ ] normalWindowBorderColor
+    [√] windowBorder
+    [√] windowBorderWidth
+    [√] activeWindowBorderColor
+    [√] normalWindowBorderColor
  
     [√] splitRatio
     [√] autoBalance
@@ -254,8 +254,6 @@ extension YabaiSettings.State {
             "# TEMPORARILY HARDCODED",
             divStr,
             "yabai -m rule --add label=\"System Preferences\" app=\"^System Preferences$\" manage=off",
-            "border_color=\"171717\"",
-
             "",
             divStr,
             "# General",
@@ -284,9 +282,11 @@ extension YabaiSettings.State {
             divStr,
             "yabai -m config window_border \(windowBorder == true ? "on" : "off")",
             "yabai -m config window_border_width \(windowBorderWidth)",
-            "yabai -m config active_window_border_color \(activeWindowBorderColor)",
-            "yabai -m config normal_window_border_color \(normalWindowBorderColor)",
-            "yabai -m config insert_feedback_color \(insertFeedbackColor)",
+            //MARK:- Hardcoded
+            "yabai -m config active_window_border_color \"0xff99cc99\"", //colorString == 0xff + HEXVALUE
+            "yabai -m config normal_window_border_color \"0xffe09ba4\"",
+            "yabai -m config insert_window_border_color \"0xffbf7fbf\"",
+            //MARK:- Hardcoded
             "",
             divStr,
             "# Misc",
