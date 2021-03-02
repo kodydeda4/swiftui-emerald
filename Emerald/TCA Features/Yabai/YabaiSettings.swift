@@ -67,7 +67,7 @@ import ComposableArchitecture
     [ ] mouseModifier
     [ ] mouseAction1
     [ ] mouseAction2
-    [ ] mouseDropAction
+    [√] mouseDropAction
  
     [√] layout
     [√] paddingTop
@@ -293,13 +293,13 @@ extension YabaiSettings.State {
             "yabai -m config auto_balance \(autoBalance == true ? "on" : "off")",
             "",
             divStr,
-//            "# Mouse Actions",
-//            divStr,
-//            "yabai -m config mouseModifier \(mouseModifier)",
-//            "yabai -m config mouseAction1 \(mouseAction1)",
-//            "yabai -m config mouseAction2 \(mouseAction2)",
-//            "yabai -m config mouseDropAction \(mouseDropAction)",
-//            "",
+            "# Mouse Actions",
+            divStr,
+            "yabai -m config mouse_modifier \(mouseModifier)",
+            "yabai -m config mouse_action1 \(mouseAction1)",
+            "yabai -m config mouse_action2 \(mouseAction2)",
+            "yabai -m config mouse_drop_action \(mouseDropAction)",
+            "",
             divStr,
             "# Space Settings",
             divStr,
