@@ -100,9 +100,9 @@ struct YabaiSettings {
         var insertFeedbackColor      : String            = "COLOR" // Color = .clear
         var splitRatio               : Float             = 0.5
         var autoBalance              : Bool              = false // automatically split_ratios so that all windows always occupy the same space independent of how deeply nested they are in the window tree
-        var mouseModifier            : MouseModifier     = .cmd
-        var mouseAction1             : MouseAction       = .move
-        var mouseAction2             : MouseAction       = .move
+        var mouseModifier            : MouseModifier     = .cmd //Keyboard modifier used for moving and resizing windows.
+        var mouseAction1             : MouseAction       = .move // mouseModifier + leftClick performs action
+        var mouseAction2             : MouseAction       = .resize // mouseModifier + rightClick performs action
         var mouseDropAction          : MouseDropAction   = .swap
         var layout                   : Layout            = .float
         var paddingTop               : Int               = 0
