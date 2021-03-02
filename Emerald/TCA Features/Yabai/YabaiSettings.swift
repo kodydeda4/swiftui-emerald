@@ -32,7 +32,10 @@ import ComposableArchitecture
  
  Notes:
  - Apply Changes is slow.  Maybe because it's reading/writing all at once?
- - Textfields for WindowOpacityDuration, ActiveWindowOpacity, NormalWindowOpacity should be limited to 0.0-1.1
+ - Textfields should be limited to 0.0 - 1.0 for
+ WindowOpacityDuration,
+ ActiveWindowOpacity,
+ NormalWindowOpacity
  
  √ = Tested & Works
  E = Tested & Doesn't work/improperly implemented
@@ -53,13 +56,14 @@ import ComposableArchitecture
     [√] windowOpacityDuration
     [√] activeWindowOpacity
     [√] normalWindowOpacity
+ 
     [ ] windowBorder
     [ ] windowBorderWidth
     [ ] activeWindowBorderColor
     [ ] normalWindowBorderColor
-    [ ] insertFeedbackColor
-    [ ] splitRatio
-    [ ] autoBalance
+ 
+    [√] splitRatio
+    [√] autoBalance
     [ ] mouseModifier
     [ ] mouseAction1
     [ ] mouseAction2
@@ -85,7 +89,7 @@ struct YabaiSettings {
         var windowPlacement          : WindowPlacement   = .first_child
         var windowTopmost            : Bool              = false // floating windows are always on top
         var windowShadow             : WindowShadow      = .on
-        var windowOpacity            : Bool              = true
+        var windowOpacity            : Bool              = false
         var windowOpacityDuration    : Float             = 1
         var activeWindowOpacity      : Float             = 1
         var normalWindowOpacity      : Float             = 1
@@ -94,8 +98,8 @@ struct YabaiSettings {
         var activeWindowBorderColor  : String            = "COLOR" // Color = .clear
         var normalWindowBorderColor  : String            = "COLOR" // Color = .clear
         var insertFeedbackColor      : String            = "COLOR" // Color = .clear
-        var splitRatio               : Float             = 1
-        var autoBalance              : Bool              = false
+        var splitRatio               : Float             = 0.5
+        var autoBalance              : Bool              = false // automatically split_ratios so that all windows always occupy the same space independent of how deeply nested they are in the window tree
         var mouseModifier            : MouseModifier     = .cmd
         var mouseAction1             : MouseAction       = .move
         var mouseAction2             : MouseAction       = .move
@@ -280,15 +284,15 @@ extension YabaiSettings.State {
 //            "yabai -m config windowBorderWidth \(windowBorderWidth)",
 //            "yabai -m config activeWindowBorderColor \(activeWindowBorderColor)",
 //            "yabai -m config normalWindowBorderColor \(normalWindowBorderColor)",
-//            "",
-//            divStr,
-//            "# Misc",
-//            divStr,
 //            "yabai -m config insertFeedbackColor \(insertFeedbackColor)",
-//            "yabai -m config splitRatio \(splitRatio)",
-//            "yabai -m config autoBalance \(autoBalance == true ? "on" : "off")",
 //            "",
-//            divStr,
+            divStr,
+            "# Misc",
+            divStr,
+            "yabai -m config split_ratio \(splitRatio)",
+            "yabai -m config auto_balance \(autoBalance == true ? "on" : "off")",
+            "",
+            divStr,
 //            "# Mouse Actions",
 //            divStr,
 //            "yabai -m config mouseModifier \(mouseModifier)",

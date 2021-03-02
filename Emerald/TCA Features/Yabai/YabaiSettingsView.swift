@@ -56,12 +56,13 @@ struct YabaiSettingsView: View {
 //                            SpecialTextField(title: "Window Border Width", value: viewStore.binding(keyPath: \.windowBorderWidth, send: keyPath), disabled: viewStore.windowBorder)
 //                            SpecialTextFieldStrings(title: "Active Window Border Color", value: viewStore.binding(keyPath: \.activeWindowBorderColor, send: keyPath))
 //                            SpecialTextFieldStrings(title: "Normal Window Border Color", value: viewStore.binding(keyPath: \.normalWindowBorderColor, send: keyPath))
+//                        SpecialTextFieldStrings(title: "Insert Feedback Color", value: viewStore.binding(keyPath: \.insertFeedbackColor, send: keyPath))
+
 //                        }
-//                        SectionView("Misc") {
-//                            SpecialTextFieldStrings(title: "Insert Feedback Color", value: viewStore.binding(keyPath: \.insertFeedbackColor, send: keyPath))
-//                            SpecialTextFieldFloats( title: "Split Ratio", value: viewStore.binding(keyPath: \.splitRatio, send: keyPath))
-//                            Toggle("Auto Balance", isOn: viewStore.binding(keyPath: \.autoBalance, send: keyPath))
-//                        }
+                        SectionView("Misc") {
+                            Toggle("Auto Balance", isOn: viewStore.binding(keyPath: \.autoBalance, send: keyPath))
+                            SpecialTextFieldFloats(title: "Split Ratio", value: viewStore.binding(keyPath: \.splitRatio, send: keyPath), disabled: viewStore.autoBalance)
+                        }
 //                        SectionView("Mouse Actions") {
 //                            Picker("Mouse Modifier", selection: viewStore.binding(keyPath: \.mouseModifier, send: keyPath)) { ForEach(YabaiSettings.State.MouseModifier.allCases) { Text($0.rawValue) } }
 //                            Picker("Mouse Action 1", selection: viewStore.binding(keyPath: \.mouseAction1, send: keyPath)) { ForEach(YabaiSettings.State.MouseAction.allCases) { Text($0.rawValue) } }
