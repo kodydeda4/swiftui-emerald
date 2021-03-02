@@ -9,6 +9,21 @@ import SwiftUI
 import ComposableArchitecture
 
 /*
+ 
+ What is System Integrity Protection and why does it need to be disabled?
+ https://github.com/koekeishiya/yabai/wiki/Disabling-System-Integrity-Protection
+ 
+ - focus/create/destroy space without animation
+ - move space (and its windows) left, right or to another display
+ - remove window shadows
+ - enable window transparency
+ - control window layers (make windows appear topmost)
+ - sticky windows (make windows appear on all spaces)
+ - move window by clicking anywhere in its frame
+ - toggle picture-in-picture for any given window
+ - border for focused and inactive windows
+
+ 
  Notes:
  - Apply Changes is slow.  Maybe because it's reading/writing all at once?
  
@@ -68,9 +83,9 @@ struct YabaiSettings {
         var mouseFollowsFocus        : Bool              = false
         var focusFollowsMouse        : FocusFollowsMouse = .off
         var windowPlacement          : WindowPlacement   = .first_child
-        var windowTopmost            : Bool              = false //floating windows are always on top (default: off)
-        var windowShadow             : Float             = 1
-        var windowOpacity            : Bool              = true
+        var windowTopmost            : Bool              = false // floating windows are always on top (default: off) // requires sip disabled?
+        var windowShadow             : Float             = 1     // requires sip disabled?
+        var windowOpacity            : Bool              = true  // requires sip disabled?
         var windowOpacityDuration    : Float             = 1
         var activeWindowOpacity      : Float             = 1
         var normalWindowOpacity      : Float             = 1
@@ -222,7 +237,7 @@ extension YabaiSettings.State {
             divStr,
             "yabai -m config window_placement \(windowPlacement)",
             "yabai -m config window_topmost \(windowTopmost == true ? "on" : "off")",
-            "yabai -m config window_shadow \(windowShadow)",
+//            "yabai -m config window_shadow \(windowShadow)",
             "",
 //            divStr,
 //            "# Window Opacity",
