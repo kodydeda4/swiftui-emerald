@@ -96,7 +96,7 @@ struct DataManager {
 
         
         let skhdURL = URL(fileURLWithPath: NSHomeDirectory())
-            .appendingPathComponent(".skhdrc")
+            .appendingPathComponent("skhdrc")
         
         func encodeSKHDSettings(_ state: SKHDSettings.State) -> Result<Bool, Error> {
             do {

@@ -45,6 +45,12 @@ struct AboutView: View {
                         .foregroundColor(.gray)
                         .lineLimit(1)
                 }
+                VStack(alignment: .leading) {
+                    Text("WhoAmI")
+                    Text(viewStore.whoAmI)
+                        .foregroundColor(.gray)
+                        .lineLimit(1)
+                }
             }
             .navigationTitle("About")
         }

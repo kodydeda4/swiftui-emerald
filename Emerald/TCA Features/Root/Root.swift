@@ -16,6 +16,8 @@ struct Root {
         var yabaiVersion : String = run("/usr/local/bin/yabai", "-v").stdout
         var skhdVersion  : String = run("/usr/local/bin/skhd", "-v").stdout
         var brewVersion  : String = run("/usr/local/bin/brew", "-v").stdout
+        
+        var whoAmI : String = run("/usr/bin/whoami").stdout
     }
 
     enum Action: Equatable {

@@ -9,9 +9,15 @@ import SwiftUI
 import ComposableArchitecture
 
 /*
+ TODO:
+  - variable names must be updated to properly reflect .yabairc file
+  - debugOutput seems to capture output when started
  
  What is System Integrity Protection and why does it need to be disabled?
  https://github.com/koekeishiya/yabai/wiki/Disabling-System-Integrity-Protection
+ 
+ **** For BigSur you have to follow extra steps to automatically load SA.
+ https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#macos-big-sur---automatically-load-scripting-addition-on-startup
  
  - focus/create/destroy space without animation
  - move space (and its windows) left, right or to another display
@@ -36,12 +42,12 @@ import ComposableArchitecture
     [√] topPaddingExternalBar
     [√] bottomPaddingExternalBar
  
-    [ ] mouseFollowsFocus
+    [√] mouseFollowsFocus
     [√] focusFollowsMouse
     [√] windowPlacement
  
-    [E] windowTopmost
-    [ ] windowShadow
+    [√] windowTopmost
+    [√] windowShadow
     [ ] windowOpacity
     [ ] windowOpacityDuration
     [ ] activeWindowOpacity
@@ -65,15 +71,8 @@ import ComposableArchitecture
     [√] paddingRight
     [√] windowGap
   
- */
+ */ 
 
-
-/*
- 
-TODO:
- - variable names must be updated to properly reflect .yabairc file
- - debugOutput seems to capture output when started
- */
 struct YabaiSettings {
     struct State: Equatable, Codable {
         var debugOutput              : Bool              = false
@@ -83,9 +82,9 @@ struct YabaiSettings {
         var mouseFollowsFocus        : Bool              = false
         var focusFollowsMouse        : FocusFollowsMouse = .off
         var windowPlacement          : WindowPlacement   = .first_child
-        var windowTopmost            : Bool              = false // floating windows are always on top (default: off) // requires sip disabled?
-        var windowShadow             : Float             = 1     // requires sip disabled?
-        var windowOpacity            : Bool              = true  // requires sip disabled?
+        var windowTopmost            : Bool              = false // floating windows are always on top
+        var windowShadow             : WindowShadow      = .on
+        var windowOpacity            : Bool              = true
         var windowOpacityDuration    : Float             = 1
         var activeWindowOpacity      : Float             = 1
         var normalWindowOpacity      : Float             = 1
@@ -112,6 +111,29 @@ struct YabaiSettings {
             case main
             case all
             case off
+        }
+        
+        enum WindowShadow: String, Codable, CaseIterable, Identifiable {
+            var id: WindowShadow { self }
+            case on
+            case off
+            case float
+            
+            var rawValue: String {
+                switch self {
+                case .on: return "on"
+                case .off: return "off"
+                case .float: return "floating-only"
+                }
+            }
+            
+            var uiDescription: String {
+                switch self {
+                case .on: return "enable window shadows."
+                case .off: return "disable window shadows."
+                case .float: return "only floating windows will have a shadow."
+                }
+            }
         }
 
         enum FocusFollowsMouse: String, Codable, CaseIterable, Identifiable {
@@ -225,7 +247,10 @@ extension YabaiSettings.State {
             "",
             divStr,
             "# Global",
-            //"yabai -m rule --add label=\"System Preferences\" app=\"^System Preferences$\" manage=off",
+            "sudo yabai --load-sa",
+            "yabai -m signal --add event=dock_did_restart action=\"sudo yabai --load-sa\"",
+
+            "yabai -m rule --add label=\"System Preferences\" app=\"^System Preferences$\" manage=off",
             divStr,
             "yabai -m config debug_output \(debugOutput == true ? "on" : "off")",
             "yabai -m config external_bar \(externalBar):\(topPaddingExternalBar):\(bottomPaddingExternalBar)",
@@ -236,8 +261,7 @@ extension YabaiSettings.State {
             "# Window Misc",
             divStr,
             "yabai -m config window_placement \(windowPlacement)",
-            "yabai -m config window_topmost \(windowTopmost == true ? "on" : "off")",
-//            "yabai -m config window_shadow \(windowShadow)",
+            "yabai -m config window_shadow \(windowShadow)",
             "",
 //            divStr,
 //            "# Window Opacity",
@@ -280,6 +304,18 @@ extension YabaiSettings.State {
             "yabai -m config right_padding \(paddingRight)",
             "yabai -m config window_gap \(windowGap)",
             "",
+            divStr,
+            "# Load Scripting Addition",
+            divStr,
+            "sudo yabai --load-sa",
+            "yabai -m signal --add event=dock_did_restart action=\"sudo yabai --load-sa\"",
+            divStr,
+            "",
+            "# Scripting Addition Options",
+            "yabai -m config window_topmost \(windowTopmost == true ? "on" : "off")",
+            
+            
+
         ]
         .joined(separator: "\n")
     }

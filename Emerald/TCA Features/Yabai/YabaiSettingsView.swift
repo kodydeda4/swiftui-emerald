@@ -43,7 +43,7 @@ struct YabaiSettingsView: View {
                         SectionView("Window Misc") {
                             Picker("Window Placement", selection: viewStore.binding(keyPath: \.windowPlacement, send: keyPath)) { ForEach(YabaiSettings.State.WindowPlacement.allCases) { Text($0.rawValue) } }
                             Toggle("Window Topmost", isOn: viewStore.binding(keyPath: \.windowTopmost, send: keyPath))
-                            SpecialTextFieldFloats(title: "Window Shadow", value: viewStore.binding(keyPath: \.windowShadow, send: keyPath))
+                            Picker("Window Shadow", selection: viewStore.binding(keyPath: \.windowShadow, send: keyPath)) { ForEach(YabaiSettings.State.WindowShadow.allCases) { Text($0.rawValue) } }
                         }
 //                        SectionView("Window Opacity") {
 //                            Toggle("Window Opacity", isOn: viewStore.binding(keyPath: \.windowOpacity, send: keyPath))
