@@ -19,7 +19,7 @@ import ComposableArchitecture
     [X] bottomPaddingExternalBar
  
     [ ] mouseFollowsFocus
-    [ ] focusFollowsMouse
+    [X] focusFollowsMouse
     [ ] windowPlacement
     [ ] windowTopmost
     [ ] windowShadow
@@ -100,12 +100,27 @@ struct YabaiSettings {
             case autofocus
             case autoraise
             case off
+            
+            var uiDescription: String {
+                switch self {
+                case .autofocus: return "auto-focus"
+                case .autoraise: return "auto-raise"
+                case .off: return "off"
+                }
+            }
         }
         
         enum WindowPlacement: String, Codable, CaseIterable, Identifiable {
             var id: WindowPlacement { self }
             case firstChild
             case secondChild
+            
+            var uiDescription: String {
+                switch self {
+                case .firstChild: return "first-child"
+                case .secondChild: return "second-child"
+                }
+            }
         }
         
         enum MouseModifier: String, Codable, CaseIterable, Identifiable {
