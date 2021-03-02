@@ -51,14 +51,13 @@ struct YabaiSettingsView: View {
                             SpecialTextFieldFloats(title: "Active Window Opacity", value: viewStore.binding(keyPath: \.activeWindowOpacity, send: keyPath), disabled: !viewStore.windowOpacity)
                             SpecialTextFieldFloats(title: "Normal Window Opacity", value: viewStore.binding(keyPath: \.normalWindowOpacity, send: keyPath), disabled: !viewStore.windowOpacity)
                         }
-//                        SectionView("Window Borders") {
-//                            Toggle("Window Border", isOn: viewStore.binding(keyPath: \.windowBorder, send: keyPath))
-//                            SpecialTextField(title: "Window Border Width", value: viewStore.binding(keyPath: \.windowBorderWidth, send: keyPath), disabled: viewStore.windowBorder)
+                        SectionView("Window Borders") {
+                            Toggle("Window Border", isOn: viewStore.binding(keyPath: \.windowBorder, send: keyPath))
+                            SpecialTextField(title: "Window Border Width", value: viewStore.binding(keyPath: \.windowBorderWidth, send: keyPath), disabled: !viewStore.windowBorder)
 //                            SpecialTextFieldStrings(title: "Active Window Border Color", value: viewStore.binding(keyPath: \.activeWindowBorderColor, send: keyPath))
 //                            SpecialTextFieldStrings(title: "Normal Window Border Color", value: viewStore.binding(keyPath: \.normalWindowBorderColor, send: keyPath))
 //                        SpecialTextFieldStrings(title: "Insert Feedback Color", value: viewStore.binding(keyPath: \.insertFeedbackColor, send: keyPath))
-
-//                        }
+                        }
                         SectionView("Misc") {
                             Toggle("Auto Balance", isOn: viewStore.binding(keyPath: \.autoBalance, send: keyPath))
                             SpecialTextFieldFloats(title: "Split Ratio", value: viewStore.binding(keyPath: \.splitRatio, send: keyPath), disabled: viewStore.autoBalance)

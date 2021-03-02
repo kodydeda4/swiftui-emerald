@@ -64,9 +64,9 @@ import ComposableArchitecture
  
     [√] splitRatio
     [√] autoBalance
-    [ ] mouseModifier
-    [ ] mouseAction1
-    [ ] mouseAction2
+    [√] mouseModifier
+    [√] mouseAction1
+    [√] mouseAction2
     [√] mouseDropAction
  
     [√] layout
@@ -254,6 +254,8 @@ extension YabaiSettings.State {
             "# TEMPORARILY HARDCODED",
             divStr,
             "yabai -m rule --add label=\"System Preferences\" app=\"^System Preferences$\" manage=off",
+            "border_color=\"171717\"",
+
             "",
             divStr,
             "# General",
@@ -277,15 +279,15 @@ extension YabaiSettings.State {
             "yabai -m config active_window_opacity \(activeWindowOpacity)",
             "yabai -m config normal_window_opacity \(normalWindowOpacity)",
             "",
-//            divStr,
-//            "# Window Borders",
-//            divStr,
-//            "yabai -m config windowBorder \(windowBorder == true ? "on" : "off")",
-//            "yabai -m config windowBorderWidth \(windowBorderWidth)",
-//            "yabai -m config activeWindowBorderColor \(activeWindowBorderColor)",
-//            "yabai -m config normalWindowBorderColor \(normalWindowBorderColor)",
-//            "yabai -m config insertFeedbackColor \(insertFeedbackColor)",
-//            "",
+            divStr,
+            "# Window Borders",
+            divStr,
+            "yabai -m config window_border \(windowBorder == true ? "on" : "off")",
+            "yabai -m config window_border_width \(windowBorderWidth)",
+            "yabai -m config active_window_border_color \(activeWindowBorderColor)",
+            "yabai -m config normal_window_border_color \(normalWindowBorderColor)",
+            "yabai -m config insert_feedback_color \(insertFeedbackColor)",
+            "",
             divStr,
             "# Misc",
             divStr,
