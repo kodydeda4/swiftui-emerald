@@ -45,6 +45,11 @@ import ComposableArchitecture
   
  */
 
+
+/*
+ 
+TODO: Update var names
+ */
 struct YabaiSettings {
     struct State: Equatable, Codable {
         var debugOutput             : Bool             = false
@@ -82,7 +87,7 @@ struct YabaiSettings {
             case all
             case off
         }
-        
+
         enum FocusFollowsMouse: String, Codable, CaseIterable, Identifiable {
             var id: FocusFollowsMouse { self }
             case autofocus
@@ -151,6 +156,8 @@ extension YabaiSettings {
 
 extension YabaiSettings.State {
     var asConfig: String {
+        let divStr = "#========================================================="
+        return
         [
             "#   ██╗   ██╗ █████╗ ██████╗  █████╗ ██╗",
             "#   ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗██║",
@@ -160,55 +167,55 @@ extension YabaiSettings.State {
             "#      ╚═╝   ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝",
             "#",
             "",
-            "#=========================================================================",
+            divStr,
             "# Global",
-            "#=========================================================================",
-            "yabai -m config debugOutput \(debugOutput)",
-            "yabai -m config externalBar \(externalBar)",
-            "yabai -m config mouseFollowsFocus \(mouseFollowsFocus)",
-            "yabai -m config focusFollowsMouse \(focusFollowsMouse)",
+            divStr,
+            "yabai -m config debug_output \(debugOutput == true ? "on" : "off")",
+            "yabai -m config external_bar \(externalBar)",
+            "yabai -m config mouse_follows_focus \(mouseFollowsFocus == true ? "on" : "off")",
+            "yabai -m config focus_follows_mouse \(focusFollowsMouse)",
             "",
-            "#=========================================================================",
-            "# Window Misc",
-            "#=========================================================================",
-            "yabai -m config windowPlacement \(windowPlacement)",
-            "yabai -m config windowTopmost \(windowTopmost)",
-            "yabai -m config windowShadow \(windowShadow)",
-            "",
-            "#=========================================================================",
-            "# Window Opacity",
-            "#=========================================================================",
-            "yabai -m config windowOpacity \(windowOpacity)",
-            "yabai -m config windowOpacityDuration \(windowOpacityDuration)",
-            "yabai -m config activeWindowOpacity \(activeWindowOpacity)",
-            "yabai -m config normalWindowOpacity \(normalWindowOpacity)",
-            "",
-            "#=========================================================================",
-            "# Window Borders",
-            "#=========================================================================",
-            "yabai -m config windowBorder \(windowBorder)",
-            "yabai -m config windowBorderWidth \(windowBorderWidth)",
-            "yabai -m config activeWindowBorderColor \(activeWindowBorderColor)",
-            "yabai -m config normalWindowBorderColor \(normalWindowBorderColor)",
-            "",
-            "#=========================================================================",
-            "# Misc",
-            "#=========================================================================",
-            "yabai -m config insertFeedbackColor \(insertFeedbackColor)",
-            "yabai -m config splitRatio \(splitRatio)",
-            "yabai -m config autoBalance \(autoBalance)",
-            "",
-            "#=========================================================================",
-            "# Mouse Actions",
-            "#=========================================================================",
-            "yabai -m config mouseModifier \(mouseModifier)",
-            "yabai -m config mouseAction1 \(mouseAction1)",
-            "yabai -m config mouseAction2 \(mouseAction2)",
-            "yabai -m config mouseDropAction \(mouseDropAction)",
-            "",
-            "#=========================================================================",
+//            divStr,
+//            "# Window Misc",
+//            divStr,
+//            "yabai -m config windowPlacement \(windowPlacement)",
+//            "yabai -m config windowTopmost \(windowTopmost == true ? "on" : "off")",
+//            "yabai -m config windowShadow \(windowShadow)",
+//            "",
+//            divStr,
+//            "# Window Opacity",
+//            divStr,
+//            "yabai -m config windowOpacity \(windowOpacity == true ? "on" : "off")",
+//            "yabai -m config windowOpacityDuration \(windowOpacityDuration)",
+//            "yabai -m config activeWindowOpacity \(activeWindowOpacity)",
+//            "yabai -m config normalWindowOpacity \(normalWindowOpacity)",
+//            "",
+//            divStr,
+//            "# Window Borders",
+//            divStr,
+//            "yabai -m config windowBorder \(windowBorder == true ? "on" : "off")",
+//            "yabai -m config windowBorderWidth \(windowBorderWidth)",
+//            "yabai -m config activeWindowBorderColor \(activeWindowBorderColor)",
+//            "yabai -m config normalWindowBorderColor \(normalWindowBorderColor)",
+//            "",
+//            divStr,
+//            "# Misc",
+//            divStr,
+//            "yabai -m config insertFeedbackColor \(insertFeedbackColor)",
+//            "yabai -m config splitRatio \(splitRatio)",
+//            "yabai -m config autoBalance \(autoBalance == true ? "on" : "off")",
+//            "",
+//            divStr,
+//            "# Mouse Actions",
+//            divStr,
+//            "yabai -m config mouseModifier \(mouseModifier)",
+//            "yabai -m config mouseAction1 \(mouseAction1)",
+//            "yabai -m config mouseAction2 \(mouseAction2)",
+//            "yabai -m config mouseDropAction \(mouseDropAction)",
+//            "",
+            divStr,
             "# Space Settings",
-            "#=========================================================================",
+            divStr,
             "yabai -m config layout \(layout)",
             "yabai -m config top_padding \(paddingTop)",
             "yabai -m config bottom_padding \(paddingBottom)",

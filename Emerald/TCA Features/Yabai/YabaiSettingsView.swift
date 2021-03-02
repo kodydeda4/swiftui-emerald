@@ -31,34 +31,34 @@ struct YabaiSettingsView: View {
                             Toggle("Mouse Follows Focus", isOn:      viewStore.binding(keyPath: \.mouseFollowsFocus, send: keyPath))
                             Picker("Focus Follows Mouse", selection: viewStore.binding(keyPath: \.focusFollowsMouse, send: keyPath)) { ForEach(YabaiSettings.State.FocusFollowsMouse.allCases) { Text($0.rawValue) } }
                         }
-                        SectionView("Window Misc") {
-                            Picker("Window Placement", selection: viewStore.binding(keyPath: \.windowPlacement, send: keyPath)) { ForEach(YabaiSettings.State.WindowPlacement.allCases) { Text($0.rawValue) } }
-                            Toggle("Window Topmost", isOn: viewStore.binding(keyPath: \.windowTopmost, send: keyPath))
-                            SpecialTextFieldFloats(title: "Window Shadow", value: viewStore.binding(keyPath: \.windowShadow, send: keyPath))
-                        }
-                        SectionView("Window Opacity") {
-                            Toggle("Window Opacity", isOn: viewStore.binding(keyPath: \.windowOpacity, send: keyPath))
-                            SpecialTextFieldFloats(title: "Window Opacity Duration", value: viewStore.binding(keyPath: \.windowOpacityDuration, send: keyPath))
-                            SpecialTextFieldFloats(title: "Active Window Opacity",   value: viewStore.binding(keyPath: \.activeWindowOpacity,   send: keyPath))
-                            SpecialTextFieldFloats(title: "Normal Window Opacity",   value: viewStore.binding(keyPath: \.normalWindowOpacity,   send: keyPath))
-                        }
-                        SectionView("Window Borders") {
-                            Toggle("Window Border", isOn: viewStore.binding(keyPath: \.windowBorder, send: keyPath))
-                            SpecialTextField(       title: "Window Border Width",        value: viewStore.binding(keyPath: \.windowBorderWidth,       send: keyPath))
-                            SpecialTextFieldStrings(title: "Active Window Border Color", value: viewStore.binding(keyPath: \.activeWindowBorderColor, send: keyPath))
-                            SpecialTextFieldStrings(title: "Normal Window Border Color", value: viewStore.binding(keyPath: \.normalWindowBorderColor, send: keyPath))
-                        }
-                        SectionView("Misc") {
-                            SpecialTextFieldStrings(title: "Insert Feedback Color", value: viewStore.binding(keyPath: \.insertFeedbackColor, send: keyPath))
-                            SpecialTextFieldFloats( title: "Split Ratio",           value: viewStore.binding(keyPath: \.splitRatio,          send: keyPath))
-                            Toggle("Auto Balance", isOn: viewStore.binding(keyPath: \.autoBalance, send: keyPath))
-                        }
-                        SectionView("Mouse Actions") {
-                            Picker("Mouse Modifier",   selection: viewStore.binding(keyPath: \.mouseModifier,   send: keyPath)) { ForEach(YabaiSettings.State.MouseModifier.allCases  ) { Text($0.rawValue) } }
-                            Picker("Mouse Action 1",    selection: viewStore.binding(keyPath: \.mouseAction1,    send: keyPath)) { ForEach(YabaiSettings.State.MouseAction.allCases    ) { Text($0.rawValue) } }
-                            Picker("Mouse Action 2",    selection: viewStore.binding(keyPath: \.mouseAction2,    send: keyPath)) { ForEach(YabaiSettings.State.MouseAction.allCases    ) { Text($0.rawValue) } }
-                            Picker("Mouse Drop Action", selection: viewStore.binding(keyPath: \.mouseDropAction, send: keyPath)) { ForEach(YabaiSettings.State.MouseDropAction.allCases) { Text($0.rawValue) } }
-                        }
+//                        SectionView("Window Misc") {
+//                            Picker("Window Placement", selection: viewStore.binding(keyPath: \.windowPlacement, send: keyPath)) { ForEach(YabaiSettings.State.WindowPlacement.allCases) { Text($0.rawValue) } }
+//                            Toggle("Window Topmost", isOn: viewStore.binding(keyPath: \.windowTopmost, send: keyPath))
+//                            SpecialTextFieldFloats(title: "Window Shadow", value: viewStore.binding(keyPath: \.windowShadow, send: keyPath))
+//                        }
+//                        SectionView("Window Opacity") {
+//                            Toggle("Window Opacity", isOn: viewStore.binding(keyPath: \.windowOpacity, send: keyPath))
+//                            SpecialTextFieldFloats(title: "Window Opacity Duration", value: viewStore.binding(keyPath: \.windowOpacityDuration, send: keyPath))
+//                            SpecialTextFieldFloats(title: "Active Window Opacity",   value: viewStore.binding(keyPath: \.activeWindowOpacity,   send: keyPath))
+//                            SpecialTextFieldFloats(title: "Normal Window Opacity",   value: viewStore.binding(keyPath: \.normalWindowOpacity,   send: keyPath))
+//                        }
+//                        SectionView("Window Borders") {
+//                            Toggle("Window Border", isOn: viewStore.binding(keyPath: \.windowBorder, send: keyPath))
+//                            SpecialTextField(       title: "Window Border Width",        value: viewStore.binding(keyPath: \.windowBorderWidth,       send: keyPath))
+//                            SpecialTextFieldStrings(title: "Active Window Border Color", value: viewStore.binding(keyPath: \.activeWindowBorderColor, send: keyPath))
+//                            SpecialTextFieldStrings(title: "Normal Window Border Color", value: viewStore.binding(keyPath: \.normalWindowBorderColor, send: keyPath))
+//                        }
+//                        SectionView("Misc") {
+//                            SpecialTextFieldStrings(title: "Insert Feedback Color", value: viewStore.binding(keyPath: \.insertFeedbackColor, send: keyPath))
+//                            SpecialTextFieldFloats( title: "Split Ratio",           value: viewStore.binding(keyPath: \.splitRatio,          send: keyPath))
+//                            Toggle("Auto Balance", isOn: viewStore.binding(keyPath: \.autoBalance, send: keyPath))
+//                        }
+//                        SectionView("Mouse Actions") {
+//                            Picker("Mouse Modifier",   selection: viewStore.binding(keyPath: \.mouseModifier,   send: keyPath)) { ForEach(YabaiSettings.State.MouseModifier.allCases  ) { Text($0.rawValue) } }
+//                            Picker("Mouse Action 1",    selection: viewStore.binding(keyPath: \.mouseAction1,    send: keyPath)) { ForEach(YabaiSettings.State.MouseAction.allCases    ) { Text($0.rawValue) } }
+//                            Picker("Mouse Action 2",    selection: viewStore.binding(keyPath: \.mouseAction2,    send: keyPath)) { ForEach(YabaiSettings.State.MouseAction.allCases    ) { Text($0.rawValue) } }
+//                            Picker("Mouse Drop Action", selection: viewStore.binding(keyPath: \.mouseDropAction, send: keyPath)) { ForEach(YabaiSettings.State.MouseDropAction.allCases) { Text($0.rawValue) } }
+//                        }
                         SectionView("Space Settings") {
                             Picker("Layout", selection: viewStore.binding(keyPath: \.layout, send: keyPath)) { ForEach(YabaiSettings.State.Layout.allCases) { Text($0.rawValue) } }
                             SpecialTextField(title: "Top Padding",    value: viewStore.binding(keyPath: \.paddingTop,    send: keyPath))
