@@ -101,11 +101,19 @@ struct YabaiSettings {
             case autoraise
             case off
             
-            var uiDescription: String {
+            var rawValue: String {
                 switch self {
                 case .autofocus: return "auto-focus"
                 case .autoraise: return "auto-raise"
                 case .off: return "off"
+                }
+            }
+            
+            var uiDescription: String {
+                switch self {
+                case .autofocus: return "Window gets focused"
+                case .autoraise: return "Window gets focused & raised, as if it was clicked on"
+                case .off: return ""
                 }
             }
         }
