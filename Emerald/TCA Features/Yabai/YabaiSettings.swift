@@ -63,7 +63,7 @@ struct YabaiSettings {
         var bottomPaddingExternalBar : Int               = 0
         var mouseFollowsFocus        : Bool              = false
         var focusFollowsMouse        : FocusFollowsMouse = .off
-        var windowPlacement          : WindowPlacement   = .firstChild
+        var windowPlacement          : WindowPlacement   = .first_child
         var windowTopmost            : Bool              = false
         var windowShadow             : Float             = 1
         var windowOpacity            : Bool              = true
@@ -112,13 +112,20 @@ struct YabaiSettings {
         
         enum WindowPlacement: String, Codable, CaseIterable, Identifiable {
             var id: WindowPlacement { self }
-            case firstChild
-            case secondChild
+            case first_child
+            case second_child
+            
+            var rawValue: String {
+                switch self {
+                case .first_child: return "first-child"
+                case .second_child: return "second-child"
+                }
+            }
             
             var uiDescription: String {
                 switch self {
-                case .firstChild: return "first-child"
-                case .secondChild: return "second-child"
+                case .first_child: return "New window spawns to the left if vertical split, or top if horizontal split"
+                case .second_child: return "New window spawns to the right if vertical split, or bottom if horizontal split"
                 }
             }
         }
@@ -197,13 +204,13 @@ extension YabaiSettings.State {
             "yabai -m config mouse_follows_focus \(mouseFollowsFocus == true ? "on" : "off")",
             "yabai -m config focus_follows_mouse \(focusFollowsMouse)",
             "",
-//            divStr,
-//            "# Window Misc",
-//            divStr,
-//            "yabai -m config windowPlacement \(windowPlacement)",
-//            "yabai -m config windowTopmost \(windowTopmost == true ? "on" : "off")",
-//            "yabai -m config windowShadow \(windowShadow)",
-//            "",
+            divStr,
+            "# Window Misc",
+            divStr,
+            "yabai -m config window_placement \(windowPlacement)",
+            "yabai -m config window_topmost \(windowTopmost == true ? "on" : "off")",
+            "yabai -m config window_shadow \(windowShadow)",
+            "",
 //            divStr,
 //            "# Window Opacity",
 //            divStr,

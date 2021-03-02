@@ -40,11 +40,11 @@ struct YabaiSettingsView: View {
                         }
                         
 //                        //MARK:-
-//                        SectionView("Window Misc") {
-//                            Picker("Window Placement", selection: viewStore.binding(keyPath: \.windowPlacement, send: keyPath)) { ForEach(YabaiSettings.State.WindowPlacement.allCases) { Text($0.rawValue) } }
-//                            Toggle("Window Topmost", isOn: viewStore.binding(keyPath: \.windowTopmost, send: keyPath))
-//                            SpecialTextFieldFloats(title: "Window Shadow", value: viewStore.binding(keyPath: \.windowShadow, send: keyPath))
-//                        }
+                        SectionView("Window Misc") {
+                            Picker("Window Placement", selection: viewStore.binding(keyPath: \.windowPlacement, send: keyPath)) { ForEach(YabaiSettings.State.WindowPlacement.allCases) { Text($0.rawValue) } }
+                            Toggle("Window Topmost", isOn: viewStore.binding(keyPath: \.windowTopmost, send: keyPath))
+                            SpecialTextFieldFloats(title: "Window Shadow", value: viewStore.binding(keyPath: \.windowShadow, send: keyPath))
+                        }
 //                        SectionView("Window Opacity") {
 //                            Toggle("Window Opacity", isOn: viewStore.binding(keyPath: \.windowOpacity, send: keyPath))
 //                            SpecialTextFieldFloats(title: "Window Opacity Duration", value: viewStore.binding(keyPath: \.windowOpacityDuration, send: keyPath))
