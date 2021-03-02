@@ -59,6 +59,15 @@ struct RootView: View {
 //                    }
 //                }
                 ToolbarItem {
+                    Button("Reset Yabai Settings") {
+                        viewStore.send(.dataManager(.resetYabaiSettings))
+                        viewStore.send(.dataManager(.exportYabaiConfig))
+                        viewStore.send(.dataManager(.exportSKHDConfig))
+                        
+                        let _ = AppleScript.restartYabai.execute()
+                    }
+                }
+                ToolbarItem {
                     Button("Update/Restart Yabai & SKHD") {
                         viewStore.send(.dataManager(.exportYabaiConfig))
                         viewStore.send(.dataManager(.exportSKHDConfig))
@@ -66,6 +75,7 @@ struct RootView: View {
                         let _ = AppleScript.restartYabai.execute()
                     }
                 }
+
             }
         }
     }

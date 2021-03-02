@@ -36,6 +36,7 @@ struct DataManager {
         case saveYabaiSettings
         case loadYabaiSettings
         case exportYabaiConfig
+        case resetYabaiSettings
         
         case skhdSettings(SKHDSettings.Action)
         case saveSKHDSettings
@@ -284,6 +285,10 @@ extension DataManager {
                 case let .failure(error):
                     state.error = .exportAnimationConfig
                 }
+                return .none
+                
+            case .resetYabaiSettings:
+                state.yabaiSettings = YabaiSettings.State()
                 return .none
             }
         }

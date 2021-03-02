@@ -282,11 +282,11 @@ extension YabaiSettings.State {
             divStr,
             "yabai -m config window_border \(windowBorder == true ? "on" : "off")",
             "yabai -m config window_border_width \(windowBorderWidth)",
-            //MARK:- Hardcoded
+            //MARK:- Hardcoded Colors
             "yabai -m config active_window_border_color \"0xff99cc99\"", //colorString == 0xff + HEXVALUE
             "yabai -m config normal_window_border_color \"0xffe09ba4\"",
             "yabai -m config insert_window_border_color \"0xffbf7fbf\"",
-            //MARK:- Hardcoded
+            //MARK:- Hardcoded Colors
             "",
             divStr,
             "# Misc",
