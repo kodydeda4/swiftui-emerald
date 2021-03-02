@@ -10,6 +10,7 @@
 		3315223F25D5786C00C8E46A /* SwiftShell in Frameworks */ = {isa = PBXBuildFile; productRef = 3315223E25D5786C00C8E46A /* SwiftShell */; };
 		332D567D25DEED5300C88FEE /* AnimationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D567C25DEED5300C88FEE /* AnimationSettings.swift */; };
 		332D568625DEEF7800C88FEE /* AnimationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D568525DEEF7800C88FEE /* AnimationSettingsView.swift */; };
+		333631F825EEE6B9009FEB32 /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = 333631F725EEE6B9009FEB32 /* DynamicColor */; };
 		33387D6525D3F64300E76D29 /* YabaiSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33387D6425D3F64300E76D29 /* YabaiSettings.swift */; };
 		3361CDF725D44AEC0086F6A7 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */; };
 		3361CF1125E6EF1300016875 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CF0E25E6EF1300016875 /* SectionView.swift */; };
@@ -67,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				333631F825EEE6B9009FEB32 /* DynamicColor in Frameworks */,
 				3380D31C25D06E1500C10913 /* ComposableArchitecture in Frameworks */,
 				3315223F25D5786C00C8E46A /* SwiftShell in Frameworks */,
 				3398839925DD9929007B9FF5 /* KeyboardShortcuts in Frameworks */,
@@ -223,6 +225,7 @@
 				3380D31B25D06E1500C10913 /* ComposableArchitecture */,
 				3315223E25D5786C00C8E46A /* SwiftShell */,
 				3398839825DD9929007B9FF5 /* KeyboardShortcuts */,
+				333631F725EEE6B9009FEB32 /* DynamicColor */,
 			);
 			productName = YabaiUI;
 			productReference = 3380D2FB25D05F4200C10913 /* Emerald.app */;
@@ -255,6 +258,7 @@
 				3380D31A25D06E1500C10913 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				3315223D25D5786C00C8E46A /* XCRemoteSwiftPackageReference "SwiftShell" */,
 				3398839725DD9929007B9FF5 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
+				333631F625EEE6B9009FEB32 /* XCRemoteSwiftPackageReference "DynamicColor" */,
 			);
 			productRefGroup = 3380D2FC25D05F4200C10913 /* Products */;
 			projectDirPath = "";
@@ -503,6 +507,14 @@
 				minimumVersion = 5.1.0;
 			};
 		};
+		333631F625EEE6B9009FEB32 /* XCRemoteSwiftPackageReference "DynamicColor" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yannickl/DynamicColor";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
 		3380D31A25D06E1500C10913 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
@@ -526,6 +538,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3315223D25D5786C00C8E46A /* XCRemoteSwiftPackageReference "SwiftShell" */;
 			productName = SwiftShell;
+		};
+		333631F725EEE6B9009FEB32 /* DynamicColor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 333631F625EEE6B9009FEB32 /* XCRemoteSwiftPackageReference "DynamicColor" */;
+			productName = DynamicColor;
 		};
 		3380D31B25D06E1500C10913 /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;

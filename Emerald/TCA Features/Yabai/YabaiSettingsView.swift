@@ -38,7 +38,6 @@ struct YabaiSettingsView: View {
                             Toggle("Mouse Follows Focus", isOn: viewStore.binding(keyPath: \.mouseFollowsFocus, send: keyPath))
                             Picker("Focus Follows Mouse", selection: viewStore.binding(keyPath: \.focusFollowsMouse, send: keyPath)) { ForEach(YabaiSettings.State.FocusFollowsMouse.allCases) { Text($0.rawValue) } }
                         }
-                        
 //                        //MARK:-
                         SectionView("Window Misc") {
                             Picker("Window Placement", selection: viewStore.binding(keyPath: \.windowPlacement, send: keyPath)) { ForEach(YabaiSettings.State.WindowPlacement.allCases) { Text($0.rawValue) } }
@@ -54,6 +53,11 @@ struct YabaiSettingsView: View {
                         SectionView("Window Borders") {
                             Toggle("Window Border", isOn: viewStore.binding(keyPath: \.windowBorder, send: keyPath))
                             SpecialTextField(title: "Window Border Width", value: viewStore.binding(keyPath: \.windowBorderWidth, send: keyPath), disabled: !viewStore.windowBorder)
+                            
+                            ColorPicker("Active Window Border Color", selection: viewStore.binding(get: \.activeWindowBorderColor.color, send: YabaiSettings.Action.updateActiveWindowBorderColor))
+                            ColorPicker("Normal Window Border Color", selection: viewStore.binding(get: \.normalWindowBorderColor.color, send: YabaiSettings.Action.updateNormalWindowBorderColor))
+                            ColorPicker("Insert Feedback Color", selection: viewStore.binding(get: \.insertWindowBorderColor.color, send: YabaiSettings.Action.updateInsertWindowBorderColor))
+                            
 //                            SpecialTextFieldStrings(title: "Active Window Border Color", value: viewStore.binding(keyPath: \.activeWindowBorderColor, send: keyPath))
 //                            SpecialTextFieldStrings(title: "Normal Window Border Color", value: viewStore.binding(keyPath: \.normalWindowBorderColor, send: keyPath))
 //                        SpecialTextFieldStrings(title: "Insert Feedback Color", value: viewStore.binding(keyPath: \.insertFeedbackColor, send: keyPath))

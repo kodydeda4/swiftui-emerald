@@ -7,6 +7,7 @@
 
 import SwiftUI
 import ComposableArchitecture
+import DynamicColor
 
 /*
  TODO:
@@ -78,6 +79,48 @@ import ComposableArchitecture
   
  */
 
+
+//MARK:-
+
+public struct CodableColor {
+    let color: Color
+}
+
+extension CodableColor: Codable, Equatable {
+    public func encode(to encoder: Encoder) throws {
+        let nsCoder = NSKeyedArchiver(requiringSecureCoding: true)
+        NSColor(color).encode(with: nsCoder)
+        var container = encoder.unkeyedContainer()
+        try container.encode(nsCoder.encodedData)
+    }
+
+    public init(from decoder: Decoder) throws {
+        var container = try decoder.unkeyedContainer()
+        let decodedData = try container.decode(Data.self)
+        let nsCoder = try NSKeyedUnarchiver(forReadingFrom: decodedData)
+        guard let color = NSColor(coder: nsCoder) else {
+            struct UnexpectedlyFoundNilError: Error {}
+            throw UnexpectedlyFoundNilError()
+        }
+        self.color = Color(color)
+    }
+}
+
+extension CodableColor {
+    var asHexString: String {
+        "0xff\(DynamicColor(color).toHexString().dropFirst())"
+    }
+}
+
+public extension NSColor {
+    func codable() -> CodableColor {
+        return CodableColor(color: Color(self))
+    }
+}
+
+
+//MARK:-
+
 struct YabaiSettings {
     struct State: Equatable, Codable {
         var debugOutput              : Bool              = false
@@ -95,9 +138,9 @@ struct YabaiSettings {
         var normalWindowOpacity      : Float             = 1
         var windowBorder             : Bool              = false
         var windowBorderWidth        : Int               = 0
-        var activeWindowBorderColor  : String            = "COLOR" // Color = .clear
-        var normalWindowBorderColor  : String            = "COLOR" // Color = .clear
-        var insertFeedbackColor      : String            = "COLOR" // Color = .clear
+        var activeWindowBorderColor  : CodableColor      = .init(color: .green) // Color = .clear
+        var normalWindowBorderColor  : CodableColor      = .init(color: .red) // Color = .clear
+        var insertWindowBorderColor  : CodableColor      = .init(color: .purple) // Color = .clear
         var splitRatio               : Float             = 0.5
         var autoBalance              : Bool              = false // automatically split_ratios so that all windows always occupy the same space independent of how deeply nested they are in the window tree
         var mouseModifier            : MouseModifier     = .cmd //Keyboard modifier used for moving and resizing windows.
@@ -215,6 +258,9 @@ struct YabaiSettings {
     }
     enum Action: Equatable {
         case keyPath(BindingAction<YabaiSettings.State>)
+        case updateActiveWindowBorderColor(Color)
+        case updateNormalWindowBorderColor(Color)
+        case updateInsertWindowBorderColor(Color)
     }
 }
 
@@ -224,6 +270,19 @@ extension YabaiSettings {
         switch action {
         case .keyPath:
             return .none
+            
+        case let .updateActiveWindowBorderColor(color):
+            state.activeWindowBorderColor = CodableColor(color: color)
+            return .none
+            
+        case let .updateNormalWindowBorderColor(color):
+            state.normalWindowBorderColor = CodableColor(color: color)
+            return .none
+
+        case let .updateInsertWindowBorderColor(color):
+            state.insertWindowBorderColor = CodableColor(color: color)
+            return .none
+
         }
     }
     .binding(action: /Action.keyPath)
@@ -282,11 +341,9 @@ extension YabaiSettings.State {
             divStr,
             "yabai -m config window_border \(windowBorder == true ? "on" : "off")",
             "yabai -m config window_border_width \(windowBorderWidth)",
-            //MARK:- Hardcoded Colors
-            "yabai -m config active_window_border_color \"0xff99cc99\"", //colorString == 0xff + HEXVALUE
-            "yabai -m config normal_window_border_color \"0xffe09ba4\"",
-            "yabai -m config insert_window_border_color \"0xffbf7fbf\"",
-            //MARK:- Hardcoded Colors
+            "yabai -m config active_window_border_color \"\(activeWindowBorderColor.asHexString)\"", //colorString == 0xff + HEXVALUE
+            "yabai -m config normal_window_border_color \"\(normalWindowBorderColor.asHexString)\"",
+            "yabai -m config insert_window_border_color \"\(insertWindowBorderColor.asHexString)\"",
             "",
             divStr,
             "# Misc",
