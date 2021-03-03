@@ -21,6 +21,13 @@ System Integrity Protection is a security feature of macOS that restricts modifi
 - moving spaces
 """
 
+let description2 =
+"""
+1. Turn off your device
+2. Hold down command ⌘R while booting.
+3. In the menu bar, choose Utilities, then Terminal
+"""
+
 //What is System Integrity Protection and why does it need to be disabled?
 //https://github.com/koekeishiya/yabai/wiki/Disabling-System-Integrity-Protection
 //
@@ -36,18 +43,38 @@ struct SipInfoView: View {
                 .font(.largeTitle)
                 .fontWeight(.medium)
                 
-            Text("What is System Integrity Protection?")
+            Text("What is System Integrity Protection and why does it need to be disabled?")
                 .font(.title2)
                 .padding(.vertical)
             
             Text(description)
                 .font(.body)
                 .foregroundColor(.gray)
+            
+            Text("How do I disable System Integrity Protection?")
+                .font(.title2)
+                .padding(.vertical)
+
+            Text(description2)
+                .font(.body)
+                .foregroundColor(.gray)
+            
+            Group {
+            Text("High Sierra")
+            TextField("", text: .constant("csrutil disable"))
+            
+            Text("Mojave & Catalina")
+            TextField("", text: .constant("csrutil enable --without debug --without fs"))
+
+            Text("Big Sur")
+            TextField("", text: .constant("csrutil disable --with kext --with dtrace --with nvram --with basesystem"))
+            }
+
+
+
 
             Spacer()
         }
-        .border(Color.gray)
-        .frame(width: 500)
     }
 }
 
