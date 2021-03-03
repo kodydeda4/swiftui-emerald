@@ -24,7 +24,7 @@ struct OnboardingView: View {
                         .font(.largeTitle)
                         .fontWeight(.medium)
                     
-                    Text("Emerald has some extra features that you might enjoy.\nThey're all free, but require steps to set-up.")//  require a connection to the macOS window server, which can only be established by partially disabling System Integrity Protection.")
+                    Text("Emerald has some extra features that you might enjoy.\nThey're free, but require steps to set-up.")//  require a connection to the macOS window server, which can only be established by partially disabling System Integrity Protection.")
                         .font(.body)
                         .multilineTextAlignment(.center)
                         .foregroundColor(.gray)
