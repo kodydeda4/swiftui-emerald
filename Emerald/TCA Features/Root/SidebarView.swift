@@ -36,6 +36,9 @@ struct SidebarView: View {
                     )) {
                         Label("Animations Debug", systemImage: "keyboard")
                     }
+                    NavigationLink(destination: SipInfoView()) {
+                        Label("System Integrity Protection", systemImage: "keyboard")
+                    }
                 }
                 Divider()
                 NavigationLink(destination: AboutView(store: store)) {

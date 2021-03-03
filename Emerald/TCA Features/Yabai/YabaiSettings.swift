@@ -14,77 +14,13 @@ import DynamicColor
   - variable names must be updated to properly reflect .yabairc file
   - debugOutput seems to capture output when started
  
- What is System Integrity Protection and why does it need to be disabled?
- https://github.com/koekeishiya/yabai/wiki/Disabling-System-Integrity-Protection
- 
- **** For BigSur you have to follow extra steps to automatically load SA.
- https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#macos-big-sur---automatically-load-scripting-addition-on-startup
- 
- - focus/create/destroy space without animation
- - move space (and its windows) left, right or to another display
- - remove window shadows
- - enable window transparency
- - control window layers (make windows appear topmost)
- - sticky windows (make windows appear on all spaces)
- - move window by clicking anywhere in its frame
- - toggle picture-in-picture for any given window
- - border for focused and inactive windows
-
- 
  Notes:
  - Apply Changes is slow.  Maybe because it's reading/writing all at once?
  - Textfields should be limited to 0.0 - 1.0 for
  WindowOpacityDuration,
  ActiveWindowOpacity,
  NormalWindowOpacity
- 
- √ = Tested & Works
- E = Tested & Doesn't work/improperly implemented
- 
-    [E] debugOutput
- 
-    [√] externalBar
-    [√] topPaddingExternalBar
-    [√] bottomPaddingExternalBar
- 
-    [√] mouseFollowsFocus
-    [√] focusFollowsMouse
-    [√] windowPlacement
- 
-    [√] windowTopmost
-    [√] windowShadow
-    [√] windowOpacity
-    [√] windowOpacityDuration
-    [√] activeWindowOpacity
-    [√] normalWindowOpacity
- 
-    [√] windowBorder
-    [√] windowBorderWidth
-    [√] activeWindowBorderColor
-    [√] normalWindowBorderColor
- 
-    [√] splitRatio
-    [√] autoBalance
-    [√] mouseModifier
-    [√] mouseAction1
-    [√] mouseAction2
-    [√] mouseDropAction
- 
-    [√] layout
-    [√] paddingTop
-    [√] paddingBottom
-    [√] paddingLeft
-    [√] paddingRight
-    [√] windowGap
-  
- */
-
-
-//MARK:-
-
-
-
-//MARK:-
+*/
 
 struct YabaiSettings {
     struct State: Equatable, Codable {
