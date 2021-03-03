@@ -72,23 +72,17 @@ struct SipInfoView: View {
             }
             Group {
                 Divider()
-                HStack {
-                    Image(systemName: "sparkles")
-                    Text("Extra Features")
-                        .font(.title3)
-                }
-                
+                Text("Extra Features")
+                    .font(.title3)
+
                 Text(featureList)
                     .foregroundColor(.gray)
             }
             Divider()
             Group {
-                HStack {
-                    Image(systemName: "terminal.fill")
-                    Text("Disabling System Integrity Protection")
-                        .font(.title3)
-                }
-                
+                Text("Disabling System Integrity Protection")
+                    .font(.title3)
+
                 Text(description2)
                     .foregroundColor(.gray)
                 

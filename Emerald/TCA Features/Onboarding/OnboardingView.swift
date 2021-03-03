@@ -7,61 +7,57 @@
 
 import SwiftUI
 import ComposableArchitecture
-import DynamicColor
+
+//  require a connection to the macOS window server, which can only be established by partially disabling System Integrity Protection.")
 
 struct OnboardingView: View {
     let store: Store<Onboarding.State, Onboarding.Action>
+    
+    let description: String =
+    """
+    Emerald has some extra features that you might enjoy.
+    They're free, but require steps to set-up.
+    """
     
     var body: some View {
         WithViewStore(store) { viewStore in
             VStack {
                 VStack {
-                    Image("emerald")
+                    Image("Emerald")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 75, height: 75)
                     
                     Text("Extra Features")
-                        .font(.largeTitle)
+                        .font(.title)
                         .fontWeight(.medium)
                     
-                    Text("Emerald has some extra features that you might enjoy.\nThey're free, but require steps to set-up.")//  require a connection to the macOS window server, which can only be established by partially disabling System Integrity Protection.")
-                        .font(.body)
+                    Text(description)
                         .multilineTextAlignment(.center)
                         .foregroundColor(.gray)
-                        .padding(.top, 4)
+                        
                 }
                 VStack(alignment: .leading) {
-                    FeatureView(
-                        featureName: "Window Shadows",
-                        image: Image(systemName: "sun.max.fill"),
-                        featureDescription: "Toggle shadows on/off"
-                    )
-                    FeatureView(
-                        featureName: "Window Borders",
-                        image: Image(systemName: "paintbrush"),
-                        featureDescription: "Apply colored borders to any app"
-                    )
-                    FeatureView(
-                        featureName: "Window Transparency",
-                        image: Image(systemName: "macwindow"),
-                        featureDescription: "Set active and inactive transparency"
-                    )
-                    FeatureView(
-                        featureName: "Picture-in-Picture",
-                        image: Image(systemName: "play.circle"),
-                        featureDescription: "Enable pip for all windows"
-                    )
-                    FeatureView(
-                        featureName: "Sticky-Windows",
-                        image: Image(systemName: "display.2"),
-                        featureDescription: "Create windows that appear in all spaces"
-                    )
-                    FeatureView(
-                        featureName: "Float Ontop",
-                        image: Image(systemName: "square.3.stack.3d.top.fill"),
-                        featureDescription: "Set floating windows to always-on-top"
-                    )
+                    ForEach(viewStore.features) { feature in
+                        HStack {
+                            feature.image
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 24, height: 24)
+                                .foregroundColor(.accentColor)
+                            
+                            VStack(alignment: .leading) {
+                                Text(feature.featureName)
+                                    .font(.headline)
+                                    .fontWeight(.medium)
+                                
+                                Text(feature.featureDescription)
+                                    .font(.body)
+                                    .foregroundColor(.gray)
+                            }
+                        }
+                        .padding(.vertical, 4)
+                    }
                 }
                 .padding()
                 
@@ -69,33 +65,11 @@ struct OnboardingView: View {
                     .padding(.bottom)
                 
                 HStack {
-                    Button(action: {
-                        viewStore.send(.toggleIsOnboaring)
-                    }, label: {
-                        Text("No Thanks")
-//                            .padding(.vertical, 6)
-//                            .padding(.horizontal, 24)
-                            .shadow(color: Color.gray.opacity(0.5), radius: 0.75, y: 1)
-                            .frame(width: 100, height: 28)
-                            .background(Color(NSColor.placeholderTextColor))
-                            .foregroundColor(Color.white)
-                            .cornerRadius(6)
-                    })
-                    .buttonStyle(PlainButtonStyle())
+                    Button("No Thanks") { viewStore.send(.toggleIsOnboaring) }
+                        .buttonStyle(RoundedRectangleButtonStyle())
                     
-                    Button(action: {
-                        viewStore.send(.toggleIsOnboaring)
-                    }, label: {
-                        Text("Continue")
-                            //.padding(.vertical, 6)
-                            //.padding(.horizontal, 24)
-                            .shadow(color: Color.gray.opacity(0.5), radius: 0.75, y: 1)
-                            .frame(width: 100, height: 28)
-                            .background(Color.accentColor)
-                            .foregroundColor(Color.white)
-                            .cornerRadius(6)
-                    })
-                    .buttonStyle(PlainButtonStyle())
+                    Button("Continue") { viewStore.send(.toggleIsOnboaring) }
+                        .buttonStyle(RoundedRectangleButtonStyle(color: .accentColor))
                 }
             }
             .padding(30)
@@ -104,42 +78,8 @@ struct OnboardingView: View {
 }
 
 
-private struct FeatureView: View {
-    let featureName: String
-    let image: Image
-    let featureDescription: String
-    
-    var body: some View {
-        HStack {
-            image
-                .resizable()
-                .scaledToFit()
-                .frame(width: 24, height: 24)
-                .foregroundColor(.accentColor)
-            
-            VStack(alignment: .leading) {
-                Text(featureName)
-                    .font(.headline)
-                    .fontWeight(.medium)
-                
-                Text(featureDescription)
-                    .font(.body)
-                    .foregroundColor(.gray)
-            }
-        }
-        .padding(.vertical, 4)
-    }
-}
 
-private struct FeatureView_Previews: PreviewProvider {
-    static var previews: some View {
-        FeatureView(
-            featureName: "Feature",
-            image: Image(systemName: "sparkles"),
-            featureDescription: "Description"
-        )
-    }
-}
+
 
 struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {

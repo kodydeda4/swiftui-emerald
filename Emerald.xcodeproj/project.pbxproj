@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3315223F25D5786C00C8E46A /* SwiftShell in Frameworks */ = {isa = PBXBuildFile; productRef = 3315223E25D5786C00C8E46A /* SwiftShell */; };
 		3325BFD125EFCEC4007831C5 /* OmenTextField in Frameworks */ = {isa = PBXBuildFile; productRef = 3325BFD025EFCEC4007831C5 /* OmenTextField */; };
+		3325BFD525F05041007831C5 /* RoundedRectangleButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3325BFD425F05041007831C5 /* RoundedRectangleButtonStyle.swift */; };
 		332D567D25DEED5300C88FEE /* AnimationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D567C25DEED5300C88FEE /* AnimationSettings.swift */; };
 		332D568625DEEF7800C88FEE /* AnimationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D568525DEEF7800C88FEE /* AnimationSettingsView.swift */; };
 		333631F825EEE6B9009FEB32 /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = 333631F725EEE6B9009FEB32 /* DynamicColor */; };
@@ -39,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3325BFD425F05041007831C5 /* RoundedRectangleButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleButtonStyle.swift; sourceTree = "<group>"; };
 		332D567C25DEED5300C88FEE /* AnimationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationSettings.swift; sourceTree = "<group>"; };
 		332D568525DEEF7800C88FEE /* AnimationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationSettingsView.swift; sourceTree = "<group>"; };
 		333631FA25EEF0CD009FEB32 /* CodableColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableColor.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			children = (
 				33B62D2825D5E31400DD5934 /* Onboarding.swift */,
 				339C453425D6ED0F0079ACA1 /* OnboardingView.swift */,
+				3325BFD425F05041007831C5 /* RoundedRectangleButtonStyle.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				3361CF1125E6EF1300016875 /* SectionView.swift in Sources */,
 				33B62D2925D5E31400DD5934 /* Onboarding.swift in Sources */,
 				3385DF6D25D628BF00ACDE21 /* YabaiSettingsView.swift in Sources */,
+				3325BFD525F05041007831C5 /* RoundedRectangleButtonStyle.swift in Sources */,
 				3398838825DD6A1F007B9FF5 /* DataManager.swift in Sources */,
 				33387D6525D3F64300E76D29 /* YabaiSettings.swift in Sources */,
 				3361CF1225E6EF1300016875 /* ConfigFileView.swift in Sources */,
