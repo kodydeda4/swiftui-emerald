@@ -7,6 +7,7 @@
 
 import SwiftUI
 import ComposableArchitecture
+import DynamicColor
 
 struct OnboardingView: View {
     let store: Store<Onboarding.State, Onboarding.Action>
@@ -63,67 +64,33 @@ struct OnboardingView: View {
                 }
                 .padding()
                 
-                Button("Continue") { viewStore.send(.toggleIsOnboaring) }
+                HStack {
+                    Button(action: {
+                        viewStore.send(.toggleIsOnboaring)
+                    }, label: {
+                        Text("No Thanks")
+                            .padding(.vertical, 6)
+                            .padding(.horizontal, 12)
+                            .background(Color(NSColor.placeholderTextColor))
+                            .foregroundColor(Color.white)
+                            .cornerRadius(6)
+                    })
                     .buttonStyle(PlainButtonStyle())
-                    .padding(.vertical, 6)
-                    .padding(.horizontal, 12)
-                    .background(Color.accentColor)
-                    .clipShape(RoundedRectangle(cornerRadius: 6))
-            }
-            .padding()
-            .frame(width: 600, height: 600)
-        }
-    }
-}
-
-struct WelcomeView: View {
-    let store: Store<Onboarding.State, Onboarding.Action>
-    
-    var body: some View {
-        WithViewStore(store) { viewStore in
-            VStack {
-                VStack {
-                    Image("yabaiLogo")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 75, height: 75)
                     
-                    Text("Welcome to Emerald")
-                        .font(.largeTitle)
-                        .fontWeight(.medium)
-                    
-                    Text("Some super neat description.")
-                        .font(.body)
-                        .foregroundColor(.gray)
-                }
-                VStack {
-                    FeatureView(
-                        featureName: "Feature A",
-                        image: Image(systemName: "sparkles"),
-                        featureDescription: "Description about how cool said feature is."
-                    )
-                    FeatureView(
-                        featureName: "Feature B",
-                        image: Image(systemName: "scribble.variable"),
-                        featureDescription: "Description about how cool said feature is."
-                    )
-                    FeatureView(
-                        featureName: "Feature C",
-                        image: Image(systemName: "leaf.fill"),
-                        featureDescription: "Description about how cool said feature is."
-                    )
-                }
-                .padding()
-                
-                Spacer()
-                Button("Continue") { viewStore.send(.toggleIsOnboaring) }
+                    Button(action: {
+                        viewStore.send(.toggleIsOnboaring)
+                    }, label: {
+                        Text("Continue")
+                            .padding(.vertical, 6)
+                            .padding(.horizontal, 12)
+                            .background(Color.accentColor)
+                            .foregroundColor(Color.white)
+                            .cornerRadius(6)
+                    })
                     .buttonStyle(PlainButtonStyle())
-                    .padding(.vertical, 6)
-                    .padding(.horizontal, 12)
-                    .background(Color.accentColor)
-                    .clipShape(RoundedRectangle(cornerRadius: 6))
+                }
             }
-            .padding()
+            .padding(20)
         }
     }
 }
@@ -144,8 +111,8 @@ private struct FeatureView: View {
             
             VStack(alignment: .leading) {
                 Text(featureName)
-                    .font(.title3)
-                    //.fontWeight(.medium)
+                    .font(.headline)
+                    .fontWeight(.medium)
                 
                 Text(featureDescription)
                     .font(.body)

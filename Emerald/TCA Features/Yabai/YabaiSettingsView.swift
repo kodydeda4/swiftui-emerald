@@ -24,6 +24,7 @@ struct YabaiSettingsView: View {
                 ConfigFileView(text: viewStore.asConfig)
                 
                 ScrollView {
+                    // Eventually move towards GroupBox!
                     VStack(alignment: .leading) {
                         SectionView("Section TITLE") {
                             Toggle("Debug Output", isOn: viewStore.binding(keyPath: \.debugOutput, send: keyPath))
