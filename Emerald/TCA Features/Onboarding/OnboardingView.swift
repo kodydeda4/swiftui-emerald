@@ -123,6 +123,7 @@ private struct FeatureView: View {
                     .foregroundColor(.gray)
             }
         }
+        .padding(.vertical, 4)
     }
 }
 
