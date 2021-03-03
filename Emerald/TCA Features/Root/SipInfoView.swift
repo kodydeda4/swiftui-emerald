@@ -9,7 +9,7 @@ import SwiftUI
 import OmenTextField
 
 let sectionA =
-"""
+    """
 System Integrity Protection is a security feature of macOS that restricts the modification of certain
 files and directories even to root users or those with root privileges (sudo).
 """
@@ -28,7 +28,7 @@ The following features require partially disabling System Integrity Protection:
 """
 
 let description2 =
-"""
+    """
 1. Boot into recovery mode by restarting your Mac while holding Command-R.
 2. Open a Terminal from the menubar (Utilities > Terminal).
 3. Run the specific command for your version of macOS.
@@ -36,7 +36,7 @@ let description2 =
 """
 
 let installAndLoadCommands =
-"""
+    """
 sudo yabai --load-sa
 """
 
@@ -50,12 +50,12 @@ sudo yabai --load-sa
 
 
 struct SipInfoView: View {
-    
     var body: some View {
         List {
             Group {
                 Text("What is System Integrity Protection?")
                     .font(.title3)
+                
                 Text(sectionA)
                     .foregroundColor(.gray)
                 
@@ -65,6 +65,7 @@ struct SipInfoView: View {
             Group {
                 Text("Why disable it?")
                     .font(.title3)
+                
                 Text(a2)
                     .foregroundColor(.gray)
             }
@@ -75,25 +76,31 @@ struct SipInfoView: View {
                 
                 Text(description2)
                     .foregroundColor(.gray)
-            
+                
                 Text("High Sierra")
+                    .foregroundColor(.gray)
+                
                 TextField("", text: .constant("csrutil disable"))
                     .foregroundColor(.gray)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 
                 Text("Mojave & Catalina")
+                    .foregroundColor(.gray)
+                
                 TextField("", text: .constant("csrutil enable --without debug --without fs"))
                     .foregroundColor(.gray)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 
                 Text("Big Sur")
+                    .foregroundColor(.gray)
+                
                 TextField("", text: .constant("csrutil disable --with kext --with dtrace --with nvram --with basesystem"))
                     .foregroundColor(.gray)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
             }
             Divider()
             Group {
-                Text("Installing Yabai Scripting Addition")
+                Text("Installing the Yabai Scripting Additions")
                     .font(.title3)
                 
                 Text("After disabling System Integrity Protection, you need to install and load the scripting additions.")
@@ -101,57 +108,59 @@ struct SipInfoView: View {
                 
                 Text("Open Terminal and run the following command:")
                     .foregroundColor(.gray)
-            
+                
                 TextField("", text: .constant("sudo yabai --install-sa"))
                     .foregroundColor(.gray)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-
             }
             Divider()
             Group {
-                Text("Extra Steps for macOS 11.01 BigSur and above")
+                Text("Extra Steps for macOS 11.01 BigSur or later")
                     .font(.title3)
                 
                 HStack {
-                    Text("If you're running macOS 11.01+ you'll have to edit a file with root priviledges to load the scripting additions automatically.")
-                    .foregroundColor(.gray)
+                    Text("If you're running macOS 11.01 or later, you'll need to follow these steps to enable the scripting additions.")
+                        .foregroundColor(.gray)
                     
                     Link("Learn more", destination: URL(string: "https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#macos-big-sur---automatically-load-scripting-addition-on-startup")!)
                 }
                 
                 Text("Open Terminal and run the following commands:")
-                
-                Text("1. Find your username")
-                    .foregroundColor(.gray)
-                
-                TextField("", text: .constant("whoami"))
-                    .foregroundColor(.gray)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                                
-                Text("2. Open the file with visudo")
                     .foregroundColor(.gray)
                 
                 Group {
-                
-                TextField("", text: .constant("sudo visudo -f /private/etc/sudoers.d/yabai"))
-                    .foregroundColor(.gray)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                
-                Text("3. Press enter to switch to Insertion Mode")
-                    .foregroundColor(.gray)
-                
-                Text("4. Write the following, replacing 'user' with your username")
-                    .foregroundColor(.gray)
-
-                TextField("", text: .constant("user ALL = (root) NOPASSWD: /usr/local/bin/yabai --load-sa"))
-                    .foregroundColor(.gray)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    Text("1. Find your username")
+                        .foregroundColor(.gray)
                     
-                Text("5. Press esc to exit Insertion Mode")
-                    .foregroundColor(.gray)
+                    TextField("", text: .constant("whoami"))
+                        .foregroundColor(.gray)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
                     
-                Text("6. Type :wq to save changes and exit visudo")
-                    .foregroundColor(.gray)
+                    Text("2. Open the automation script with visudo")
+                        .foregroundColor(.gray)
+                    
+                    TextField("", text: .constant("sudo visudo -f /private/etc/sudoers.d/yabai"))
+                        .foregroundColor(.gray)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    
+                    Text("3. Press enter to switch to Insertion Mode")
+                        .foregroundColor(.gray)
+                    
+                    Text("4. Paste the following")
+                        .foregroundColor(.gray)
+                    
+                    TextField("", text: .constant("user ALL = (root) NOPASSWD: /usr/local/bin/yabai --load-sa"))
+                        .foregroundColor(.gray)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    
+                    Text("5. Replace 'user' with your username")
+                        .foregroundColor(.gray)
+                    
+                    Text("5. Press esc to exit Insertion Mode")
+                        .foregroundColor(.gray)
+                    
+                    Text("6. Type :wq to save changes and exit visudo")
+                        .foregroundColor(.gray)
                     
                 }
             }
