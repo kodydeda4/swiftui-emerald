@@ -66,18 +66,21 @@ struct SipInfoView: View {
                 Text(description2)
                     .foregroundColor(.gray)
             }
-            Divider()
-            Form {
+            
+            Group {
                 Text("High Sierra")
                 TextField("", text: .constant("csrutil disable"))
+                    .foregroundColor(.gray)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 
                 Text("Mojave & Catalina")
                 TextField("", text: .constant("csrutil enable --without debug --without fs"))
+                    .foregroundColor(.gray)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 
                 Text("Big Sur")
                 TextField("", text: .constant("csrutil disable --with kext --with dtrace --with nvram --with basesystem"))
+                    .foregroundColor(.gray)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
             }
         }
