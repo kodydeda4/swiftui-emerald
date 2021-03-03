@@ -44,7 +44,7 @@ struct SipInfoView: View {
                 .fontWeight(.medium)
                 
             Text("What is System Integrity Protection and why does it need to be disabled?")
-                .font(.title2)
+                .font(.title)
                 .padding(.vertical)
             
             Text(description)
@@ -52,7 +52,7 @@ struct SipInfoView: View {
                 .foregroundColor(.gray)
             
             Text("How do I disable System Integrity Protection?")
-                .font(.title2)
+                .font(.title)
                 .padding(.vertical)
 
             Text(description2)
