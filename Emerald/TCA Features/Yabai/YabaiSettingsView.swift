@@ -23,7 +23,7 @@ struct YabaiSettingsView: View {
             HStack {
                 ConfigFileView(text: viewStore.asConfig)
                 
-                List {
+                ScrollView {
                     // Eventually move towards GroupBox!
                     VStack(alignment: .leading) {
                         SectionView("Section TITLE") {

@@ -13,7 +13,7 @@ struct SidebarView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            ScrollView {
+            List {
                 Section(header: Text("Debug")) {
                     NavigationLink(destination: YabaiSettingsView(
                         store: store
