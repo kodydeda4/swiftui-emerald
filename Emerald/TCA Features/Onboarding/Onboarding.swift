@@ -8,51 +8,50 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct OnboardingFeatures: Identifiable, Equatable {
+struct Feature: Identifiable, Equatable {
     var id = UUID()
-    let featureName: String
+    let name: String
     let image: Image
-    let featureDescription: String
+    let description: String
 }
 
 struct Onboarding {
     struct State: Equatable {
         var isOnboaring = false
         
-        let features: [OnboardingFeatures] = [
-            OnboardingFeatures(
-                featureName: "Window Shadows",
+        let features: [Feature] = [
+            Feature(
+                name: "Window Shadows",
                 image: Image(systemName: "sun.max.fill"),
-                featureDescription: "Toggle shadows on/off"
+                description: "Toggle shadows on/off"
             ),
-            OnboardingFeatures(
-                featureName: "Window Borders",
+            Feature(
+                name: "Window Borders",
                 image: Image(systemName: "paintbrush"),
-                featureDescription: "Apply colored borders to any app"
+                description: "Apply colored borders to any app"
             ),
-            OnboardingFeatures(
-                featureName: "Window Transparency",
+            Feature(
+                name: "Window Transparency",
                 image: Image(systemName: "macwindow"),
-                featureDescription: "Set active and inactive transparency"
+                description: "Set active and inactive transparency"
             ),
-            OnboardingFeatures(
-                featureName: "Picture-in-Picture",
+            Feature(
+                name: "Picture-in-Picture",
                 image: Image(systemName: "play.circle"),
-                featureDescription: "Enable pip for all windows"
+                description: "Enable pip for all windows"
             ),
-            OnboardingFeatures(
-                featureName: "Sticky-Windows",
+            Feature(
+                name: "Sticky-Windows",
                 image: Image(systemName: "display.2"),
-                featureDescription: "Create windows that appear in all spaces"
+                description: "Create windows that appear in all spaces"
             ),
-            OnboardingFeatures(
-                featureName: "Float Ontop",
+            Feature(
+                name: "Float Ontop",
                 image: Image(systemName: "square.3.stack.3d.top.fill"),
-                featureDescription: "Set floating windows to always-on-top"
+                description: "Set floating windows to always-on-top"
             ),
         ]
     }
-    
     enum Action: Equatable {
         case toggleIsOnboaring
     }

@@ -8,50 +8,45 @@
 import SwiftUI
 import ComposableArchitecture
 
-//  require a connection to the macOS window server, which can only be established by partially disabling System Integrity Protection.")
-
 struct OnboardingView: View {
     let store: Store<Onboarding.State, Onboarding.Action>
-    
-    let description: String =
-    """
-    Emerald has some extra features that you might enjoy.
-    They're free, but require steps to set-up.
-    """
     
     var body: some View {
         WithViewStore(store) { viewStore in
             VStack {
-                VStack {
-                    Image("Emerald")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 75, height: 75)
-                    
-                    Text("Extra Features")
-                        .font(.title)
-                        .fontWeight(.medium)
-                    
-                    Text(description)
-                        .multilineTextAlignment(.center)
-                        .foregroundColor(.gray)
-                        
-                }
+                Image("Emerald")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 75, height: 75)
+                
+                Text("Extra Features")
+                    .font(.title)
+                    .fontWeight(.medium)
+                
+                Text(
+                    """
+                    Emerald has some extra features that you might enjoy.
+                    They're free, but require some set-up.
+                    """
+                )
+                .multilineTextAlignment(.center)
+                .foregroundColor(.gray)
+                
                 VStack(alignment: .leading) {
                     ForEach(viewStore.features) { feature in
                         HStack {
                             feature.image
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 24, height: 24)
                                 .foregroundColor(.accentColor)
-                            
+                                .frame(width: 24, height: 24)
+                                
                             VStack(alignment: .leading) {
-                                Text(feature.featureName)
+                                Text(feature.name)
                                     .font(.headline)
                                     .fontWeight(.medium)
                                 
-                                Text(feature.featureDescription)
+                                Text(feature.description)
                                     .font(.body)
                                     .foregroundColor(.gray)
                             }
@@ -76,10 +71,6 @@ struct OnboardingView: View {
         }
     }
 }
-
-
-
-
 
 struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
