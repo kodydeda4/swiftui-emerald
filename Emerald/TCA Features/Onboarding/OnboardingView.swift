@@ -17,17 +17,17 @@ struct OnboardingView: View {
                 VStack {
                     Image("yabaiLogo")
                         .resizable()
+                        .scaledToFit()
                         .frame(width: 75, height: 75)
                     
                     Text("Extra Features")
                         .font(.largeTitle)
                         .fontWeight(.medium)
                     
-                    Text("Some features require a connection to the macOS window server, which can only be established by partially disabling System Integrity Protection.")
+                    Text("Emerald has some extra features that you might enjoy.\nThey're all free, but require steps to set-up.")//  require a connection to the macOS window server, which can only be established by partially disabling System Integrity Protection.")
                         .font(.body)
                         .multilineTextAlignment(.center)
                         .foregroundColor(.gray)
-                        .frame(width: 500)
                 }
                 VStack(alignment: .leading) {
                     FeatureView(
@@ -58,12 +58,11 @@ struct OnboardingView: View {
                     FeatureView(
                         featureName: "Float Ontop",
                         image: Image(systemName: "square.3.stack.3d.top.fill"),
-                        featureDescription: "Set all floating windows to always-on-top"
+                        featureDescription: "Set floating windows to always-on-top"
                     )
                 }
                 .padding()
                 
-                Spacer()
                 Button("Continue") { viewStore.send(.toggleIsOnboaring) }
                     .buttonStyle(PlainButtonStyle())
                     .padding(.vertical, 6)
@@ -72,6 +71,7 @@ struct OnboardingView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 6))
             }
             .padding()
+            .frame(width: 600, height: 600)
         }
     }
 }
@@ -85,6 +85,7 @@ struct WelcomeView: View {
                 VStack {
                     Image("yabaiLogo")
                         .resizable()
+                        .scaledToFit()
                         .frame(width: 75, height: 75)
                     
                     Text("Welcome to Emerald")
@@ -137,14 +138,14 @@ private struct FeatureView: View {
         HStack {
             image
                 .resizable()
-                .frame(width: 24, height: 24)
                 .scaledToFit()
+                .frame(width: 24, height: 24)
                 .foregroundColor(.accentColor)
             
             VStack(alignment: .leading) {
                 Text(featureName)
                     .font(.title3)
-                    .fontWeight(.medium)
+                    //.fontWeight(.medium)
                 
                 Text(featureDescription)
                     .font(.body)
