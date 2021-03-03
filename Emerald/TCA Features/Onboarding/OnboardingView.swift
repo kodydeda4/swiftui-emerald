@@ -16,7 +16,7 @@ struct OnboardingView: View {
         WithViewStore(store) { viewStore in
             VStack {
                 VStack {
-                    Image("yabaiLogo")
+                    Image("emerald")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 75, height: 75)
@@ -29,6 +29,7 @@ struct OnboardingView: View {
                         .font(.body)
                         .multilineTextAlignment(.center)
                         .foregroundColor(.gray)
+                        .padding(.top, 4)
                 }
                 VStack(alignment: .leading) {
                     FeatureView(
@@ -64,6 +65,9 @@ struct OnboardingView: View {
                 }
                 .padding()
                 
+                Toggle("Don't show me this again", isOn: .constant(true))
+                    .padding(.bottom)
+                
                 HStack {
                     Button(action: {
                         viewStore.send(.toggleIsOnboaring)
@@ -94,7 +98,7 @@ struct OnboardingView: View {
                     .buttonStyle(PlainButtonStyle())
                 }
             }
-            .padding(20)
+            .padding(30)
         }
     }
 }
