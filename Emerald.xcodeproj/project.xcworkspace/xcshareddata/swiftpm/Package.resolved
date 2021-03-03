@@ -29,6 +29,15 @@
         }
       },
       {
+        "package": "OmenTextField",
+        "repositoryURL": "https://github.com/kitlangton/OmenTextField",
+        "state": {
+          "branch": null,
+          "revision": "da87c6568700aa633639e85e159e6fbba73ce28a",
+          "version": "0.0.6"
+        }
+      },
+      {
         "package": "swift-case-paths",
         "repositoryURL": "https://github.com/pointfreeco/swift-case-paths",
         "state": {
