@@ -9,26 +9,19 @@ import SwiftUI
 import OmenTextField
 
 let sectionA =
-    """
+"""
 System Integrity Protection is a security feature of macOS that restricts the modification of certain
 files and directories even to root users or those with root privileges (sudo).
 """
 
 let a2 =
 """
-System Integrity Protection must be partially disabled to establish a connection with the macOS window server.
-The following features require partially disabling System Integrity Protection:
-
-• Window Shadows
-• Window Transparency
-• Window Borders
-• Sticky-Windows that appear in all spaces
-• Picture-in-Picture mode for all windows
-• Always-on-top for Floating Windows
+Some features require a connection to the macOS window server, which can only be established by
+partially disabling System Integrity Protection.
 """
 
 let description2 =
-    """
+"""
 1. Boot into recovery mode by restarting your Mac while holding Command-R.
 2. Open a Terminal from the menubar (Utilities > Terminal).
 3. Run the specific command for your version of macOS.
@@ -40,7 +33,15 @@ let installAndLoadCommands =
 sudo yabai --load-sa
 """
 
-
+let featureList =
+"""
+• Window Shadows
+• Window Transparency
+• Window Borders
+• Sticky-Windows that appear in all spaces
+• Picture-in-Picture mode for all windows
+• Always-on-top for Floating Windows
+"""
 
 //What is System Integrity Protection and why does it need to be disabled?
 //https://github.com/koekeishiya/yabai/wiki/Disabling-System-Integrity-Protection
@@ -69,10 +70,24 @@ struct SipInfoView: View {
                 Text(a2)
                     .foregroundColor(.gray)
             }
+            Group {
+                Divider()
+                HStack {
+                    Image(systemName: "sparkles")
+                    Text("Extra Features")
+                        .font(.title3)
+                }
+                
+                Text(featureList)
+                    .foregroundColor(.gray)
+            }
             Divider()
             Group {
-                Text("Disabling System Integrity Protection")
-                    .font(.title3)
+                HStack {
+                    Image(systemName: "terminal.fill")
+                    Text("Disabling System Integrity Protection")
+                        .font(.title3)
+                }
                 
                 Text(description2)
                     .foregroundColor(.gray)
