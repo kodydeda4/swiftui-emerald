@@ -93,7 +93,7 @@ struct SipInfoView: View {
             }
             Divider()
             Group {
-                Text("Final Steps")
+                Text("Installing Yabai Scripting Addition")
                     .font(.title3)
                 
                 Text("After disabling System Integrity Protection, you need to install and load the scripting additions.")
