@@ -34,22 +34,22 @@ struct OnboardingView: View {
                 VStack(alignment: .leading) {
                     FeatureView(
                         featureName: "Window Shadows",
-                        image: Image(systemName: "rectangle.fill.on.rectangle.fill"),
+                        image: Image(systemName: "sun.max.fill"),
                         featureDescription: "Toggle shadows on/off"
                     )
                     FeatureView(
                         featureName: "Window Borders",
-                        image: Image(systemName: "macwindow"),
+                        image: Image(systemName: "paintbrush"),
                         featureDescription: "Apply colored borders to any app"
                     )
                     FeatureView(
                         featureName: "Window Transparency",
-                        image: Image(systemName: "wand.and.stars"),
+                        image: Image(systemName: "macwindow"),
                         featureDescription: "Set active and inactive transparency"
                     )
                     FeatureView(
                         featureName: "Picture-in-Picture",
-                        image: Image(systemName: "play.rectangle.fill"),
+                        image: Image(systemName: "play.circle"),
                         featureDescription: "Enable pip for all windows"
                     )
                     FeatureView(
