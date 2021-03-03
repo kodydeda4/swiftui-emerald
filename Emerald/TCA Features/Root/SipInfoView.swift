@@ -9,11 +9,14 @@ import SwiftUI
 
 let sectionA =
 """
-System Integrity Protection is a security feature of macOS. It restricts the modification of certain
+System Integrity Protection is a security feature of macOS that restricts the modification of certain
 files and directories even to root users or those with root privileges (sudo).
+"""
 
-The following features require (partially) disabling System Integrity Protection to
-establish a connection to the macOS window server:
+let a2 =
+"""
+System Integrity Protection must be partially disabled to establish a connection with the macOS window server.
+The following features require SIP to be partially disabled to work:
 
 • Window Shadows
 • Window Transparency
@@ -26,8 +29,8 @@ establish a connection to the macOS window server:
 let description2 =
 """
 1. Restart your Mac while holding Command-R to boot into recovery mode.
-2. Open a Terminal from the menubar (Utilities > Terminal)
-4. Follow the instructions specific to your macOS version.
+2. Open a Terminal from the menubar (Utilities > Terminal).
+3. Run the command specific to your version of macOS:
 """
 
 //What is System Integrity Protection and why does it need to be disabled?
@@ -41,27 +44,41 @@ struct SipInfoView: View {
     
     var body: some View {
         List {
-            Text("What is it, and why does it need to be disabled?")
-                .bold()
-            Text(sectionA)
-                .foregroundColor(.gray)
-
+            Group {
+                Text("What is System Integrity Protection?")
+                    .bold()
+                Text(sectionA)
+                    .foregroundColor(.gray)
+                
+                Link("Learn more", destination: URL(string: "https://en.wikipedia.org/wiki/System_Integrity_Protection")!)
+            }
             Divider()
-            
-            Text("How To Disable System Integrity Protection")
-                .bold()
-            Text(description2)
-                .foregroundColor(.gray)
-            
+            Group {
+                Text("Why disable it?")
+                    .bold()
+                Text(a2)
+                    .foregroundColor(.gray)
+            }
+            Divider()
+            Group {
+                Text("Disabling System Integrity Protection")
+                    .bold()
+                Text(description2)
+                    .foregroundColor(.gray)
+            }
+            Divider()
             Form {
                 Text("High Sierra")
                 TextField("", text: .constant("csrutil disable"))
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
                 
                 Text("Mojave & Catalina")
                 TextField("", text: .constant("csrutil enable --without debug --without fs"))
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
                 
                 Text("Big Sur")
                 TextField("", text: .constant("csrutil disable --with kext --with dtrace --with nvram --with basesystem"))
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
             }
         }
         .navigationTitle("System Integrity Protection")
