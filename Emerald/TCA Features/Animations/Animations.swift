@@ -16,8 +16,8 @@ struct Animations {
         var animationSettings = AnimationSettings.State()
         var error: DataManagerError = .none
         var dataManager = DataManager<AnimationSettings.State>(
-            stateURLFilename: "AnimationState.json",
-            configURLFilename: ".animationSettingsRC.sh"
+            stateFilename: "AnimationState.json",
+            configFilename: ".animationSettingsRC.sh"
         )
     }
     enum Action: Equatable {

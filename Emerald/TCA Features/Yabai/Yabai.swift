@@ -17,8 +17,8 @@ struct Yabai {
         var version = run("/usr/local/bin/yabai", "-v").stdout
         var error: DataManagerError  = .none
         var dataManager = DataManager<YabaiSettings.State>(
-            stateURLFilename: "YabaiState.json",
-            configURLFilename: ".yabairc"
+            stateFilename: "YabaiState.json",
+            configFilename: ".yabairc"
         )
     }
     enum Action: Equatable {

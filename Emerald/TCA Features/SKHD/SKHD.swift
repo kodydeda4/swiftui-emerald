@@ -17,8 +17,8 @@ struct SKHD {
         var version = run("/usr/local/bin/skhd", "-v").stdout
         var error: DataManagerError  = .none
         var dataManager = DataManager<SKHDSettings.State>(
-            stateURLFilename: "SKHDState.json",
-            configURLFilename: "skhdrc"
+            stateFilename: "SKHDState.json",
+            configFilename: "skhdrc"
         )
     }
     enum Action: Equatable {

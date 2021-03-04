@@ -17,10 +17,10 @@ public enum DataManagerError: Error {
 
 public struct DataManager<State> where State: Codable {
     let homeURL = URL(fileURLWithPath: NSHomeDirectory())
-    let stateURLFilename: String
-    let configURLFilename: String
-    var stateURL : URL { homeURL.appendingPathComponent(stateURLFilename) }
-    var configURL: URL { homeURL.appendingPathComponent(configURLFilename) }
+    let stateFilename: String
+    let configFilename: String
+    var stateURL : URL { homeURL.appendingPathComponent(stateFilename) }
+    var configURL: URL { homeURL.appendingPathComponent(configFilename) }
     
     func encodeState<State>(_ state: State) -> Result<Bool, DataManagerError> where State : Encodable {
         do {
