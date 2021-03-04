@@ -21,9 +21,9 @@ struct RootView: View {
                     .foregroundColor(Color(NSColor.placeholderTextColor))
             }
             .onAppear {
-                viewStore.send(.yabai(.loadSettings))
-                viewStore.send(.skhd(.loadSettings))
-                viewStore.send(.animations(.loadSettings))
+                viewStore.send(.yabai(.loadState))
+                viewStore.send(.skhd(.loadState))
+                viewStore.send(.animations(.loadState))
             }
             .sheet(
                 isPresented:

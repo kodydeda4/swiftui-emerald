@@ -14,24 +14,16 @@ import SwiftShell
 struct Animations {
     struct State: Equatable {
         var animationSettings = AnimationSettings.State()
+        var error: DataManagerError = .none
         var dataManager = DataManager<AnimationSettings.State>(
             stateURLFilename: "AnimationState.json",
             configURLFilename: ".animationSettingsRC.sh"
         )
-        
-        var error: Error = .none
-        enum Error {
-            case saveSettings
-            case loadSettings
-            case exportConfig
-            case none
-        }
     }
-    
     enum Action: Equatable {
         case animationSettings(AnimationSettings.Action)
-        case saveSettings
-        case loadSettings
+        case saveState
+        case loadState
         case exportConfig
     }
 }
@@ -46,25 +38,23 @@ extension Animations {
         Reducer { state, action, _ in
             switch action {
             case let .animationSettings(subAction):
-                return Effect(value: .saveSettings)
+                return Effect(value: .saveState)
                     
-            case .saveSettings:
-                switch state.dataManager.encodeState(
-                    state.animationSettings
-                ) {
+            case .saveState:
+                switch state.dataManager.encodeState(state.animationSettings) {
                 case .success:
                     state.error = .none
                 case let .failure(error):
-                    state.error = .saveSettings
+                    state.error = .encodeState
                 }
                 return .none
                 
-            case .loadSettings:
+            case .loadState:
                 switch state.dataManager.decodeState(state.animationSettings) {
                 case let .success(decoded):
                     state.animationSettings = decoded
                 case let .failure(error):
-                    state.error = .loadSettings
+                    state.error = .decodeState
                 }
                 return .none
                 

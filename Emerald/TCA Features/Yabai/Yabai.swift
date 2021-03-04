@@ -14,26 +14,18 @@ import SwiftShell
 struct Yabai {
     struct State: Equatable {
         var yabaiSettings = YabaiSettings.State()
+        var version = run("/usr/local/bin/yabai", "-v").stdout
+        var error: DataManagerError  = .none
         var dataManager = DataManager<YabaiSettings.State>(
             stateURLFilename: "YabaiState.json",
             configURLFilename: ".yabairc"
         )
-        var version       = run("/usr/local/bin/yabai", "-v").stdout
-        
-        var error: Error  = .none        
-        enum Error {
-            case saveSettings
-            case loadSettings
-            case exportConfig
-            case none
-        }
     }
-    
     enum Action: Equatable {
         case yabaiSettings(YabaiSettings.Action)
-        case saveSettings
-        case loadSettings
-        case resetSettings
+        case saveState
+        case loadState
+        case resetState
         case exportConfig
     }
 }
@@ -49,27 +41,27 @@ extension Yabai {
             switch action {
             
             case let .yabaiSettings(subAction):
-                return Effect(value: .saveSettings)
+                return Effect(value: .saveState)
                 
-            case .saveSettings:
+            case .saveState:
                 switch state.dataManager.encodeState(state.yabaiSettings) {
                 case .success:
                     state.error = .none
                 case let .failure(error):
-                    state.error = .saveSettings
+                    state.error = .encodeState
                 }
                 return .none
                 
-            case .loadSettings:
+            case .loadState:
                 switch state.dataManager.decodeState(state.yabaiSettings) {
                 case let .success(decoded):
                     state.yabaiSettings = decoded
                 case let .failure(error):
-                    state.error = .loadSettings
+                    state.error = .decodeState
                 }
                 return .none
                 
-            case .resetSettings:
+            case .resetState:
                 state.yabaiSettings = YabaiSettings.State()
                 return .none
                 

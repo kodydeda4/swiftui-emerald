@@ -14,25 +14,17 @@ import SwiftShell
 struct SKHD {
     struct State: Equatable {
         var skhdSettings = SKHDSettings.State()
+        var version = run("/usr/local/bin/skhd", "-v").stdout
+        var error: DataManagerError  = .none
         var dataManager = DataManager<SKHDSettings.State>(
             stateURLFilename: "SKHDState.json",
             configURLFilename: "skhdrc"
         )
-        var version      = run("/usr/local/bin/skhd", "-v").stdout
-        
-        var error: Error = .none
-        enum Error {
-            case saveSKHDSettings
-            case loadSKHDSettings
-            case exportSKHDConfig
-            case none
-        }
     }
-    
     enum Action: Equatable {
         case skhdSettings(SKHDSettings.Action)
-        case saveSettings
-        case loadSettings
+        case saveState
+        case loadState
         case exportConfig
     }
 }
@@ -49,23 +41,23 @@ extension SKHD {
             switch action {
             
             case let .skhdSettings(subAction):
-                return Effect(value: .saveSettings)
+                return Effect(value: .saveState)
                     
-            case .saveSettings:
+            case .saveState:
                 switch state.dataManager.encodeState(state.skhdSettings) {
                 case .success:
                     state.error = .none
                 case let .failure(error):
-                    state.error = .saveSKHDSettings
+                    state.error = .encodeState
                 }
                 return .none
                 
-            case .loadSettings:
+            case .loadState:
                 switch state.dataManager.decodeState(state.skhdSettings) {
                 case let .success(decoded):
                     state.skhdSettings = decoded
                 case let .failure(error):
-                    state.error = .loadSKHDSettings
+                    state.error = .decodeState
                 }
                 return .none
                 
@@ -74,7 +66,7 @@ extension SKHD {
                 case .success:
                     state.error = .none
                 case let .failure(error):
-                    state.error = .exportSKHDConfig
+                    state.error = .exportConfig
                 }
                 return .none            
             }
