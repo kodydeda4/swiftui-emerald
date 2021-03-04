@@ -5,8 +5,6 @@
 //  Created by Kody Deda on 3/3/21.
 //
 
-import Foundation
-
 import SwiftUI
 import ComposableArchitecture
 import SwiftShell
@@ -14,7 +12,7 @@ import SwiftShell
 struct SKHD {
     struct State: Equatable {
         var skhdSettings = SKHDSettings.State()
-        var skhdVersion  : String = run("/usr/local/bin/skhd", "-v").stdout
+        var version      = run("/usr/local/bin/skhd", "-v").stdout
         var error: Error = .none
         
         enum Error {
@@ -27,24 +25,23 @@ struct SKHD {
     
     enum Action: Equatable {
         case skhdSettings(SKHDSettings.Action)
-        case saveSKHDSettings
-        case loadSKHDSettings
-        case exportSKHDConfig
+        case saveSettings
+        case loadSettings
+        case exportConfig
     }
     
     struct Environment {
-        let skhdStateURL = URL(fileURLWithPath: NSHomeDirectory())
+        let stateURL = URL(fileURLWithPath: NSHomeDirectory())
             .appendingPathComponent("SKHDState.json")
-
         
-        let skhdURL = URL(fileURLWithPath: NSHomeDirectory())
+        let configURL = URL(fileURLWithPath: NSHomeDirectory())
             .appendingPathComponent("skhdrc")
         
         func encodeSKHDSettings(_ state: SKHDSettings.State) -> Result<Bool, Error> {
             do {
                 try JSONEncoder()
                     .encode(state)
-                    .write(to: skhdStateURL)
+                    .write(to: stateURL)
                 return .success(true)
             } catch {
                 return .failure(error)
@@ -53,7 +50,7 @@ struct SKHD {
         func decodeSKHDSettings(_ state: SKHDSettings.State) -> Result<(SKHDSettings.State), Error> {
             do {
                 let decoded = try JSONDecoder()
-                    .decode(SKHDSettings.State.self, from: Data(contentsOf: skhdStateURL))
+                    .decode(SKHDSettings.State.self, from: Data(contentsOf: stateURL))
                 return .success(decoded)
             }
             catch {
@@ -63,7 +60,7 @@ struct SKHD {
         func exportSKHDConfig(_ skhdSettingsState: SKHDSettings.State) -> Result<Bool, Error> {
             do {
                 let data: String = skhdSettingsState.asConfig
-                try data.write(to: skhdURL, atomically: true, encoding: .utf8)
+                try data.write(to: configURL, atomically: true, encoding: .utf8)
                 
                 return .success(true)
             }
@@ -78,7 +75,7 @@ extension SKHD {
     static let reducer = Reducer<State, Action, Environment>.combine(
         SKHDSettings.reducer.pullback(
             state: \.skhdSettings,
-            action: /SKHD.Action.skhdSettings,
+            action: /Action.skhdSettings,
             environment: { _ in () }
         ),
 
@@ -86,9 +83,9 @@ extension SKHD {
             switch action {
             
             case let .skhdSettings(subAction):
-                return Effect(value: .saveSKHDSettings)
+                return Effect(value: .saveSettings)
                     
-            case .saveSKHDSettings:
+            case .saveSettings:
                 switch environment.encodeSKHDSettings(state.skhdSettings) {
                 case .success:
                     state.error = .none
@@ -97,7 +94,7 @@ extension SKHD {
                 }
                 return .none
                 
-            case .loadSKHDSettings:
+            case .loadSettings:
                 switch environment.decodeSKHDSettings(state.skhdSettings) {
                 case let .success(decoded):
                     state.skhdSettings = decoded
@@ -106,7 +103,7 @@ extension SKHD {
                 }
                 return .none
                 
-            case .exportSKHDConfig:
+            case .exportConfig:
                 switch environment.exportSKHDConfig(state.skhdSettings) {
                 case .success:
                     state.error = .none

@@ -8,14 +8,8 @@
 import ComposableArchitecture
 import KeyboardShortcuts
 
-//  https://github.com/sindresorhus/KeyboardShortcuts
-
-
-//MARK:-  restartYabai
-//        launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
-
 extension KeyboardShortcuts.Name {
-    static let restartYabai    = Self("restartYabai")
+    static let restartYabai   = Self("restartYabai")
     static let togglePadding  = Self("togglePadding")
     static let toggleGaps     = Self("toggleGaps")
     static let toggleSplit    = Self("toggleSplit")

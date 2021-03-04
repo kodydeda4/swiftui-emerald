@@ -5,13 +5,14 @@
 //  Created by Kody Deda on 2/17/21.
 //
 
+import SwiftUI
 import ComposableArchitecture
 import SwiftShell
 
 struct Animations {
     struct State: Equatable {
         var animationSettings = AnimationSettings.State()
-        var error: Error = .none
+        var error: Error      = .none
         
         enum Error {
             case saveSettings
@@ -29,36 +30,36 @@ struct Animations {
     }
     
     struct Environment {
-        let animationStateURL = URL(fileURLWithPath: NSHomeDirectory())
+        let stateURL = URL(fileURLWithPath: NSHomeDirectory())
             .appendingPathComponent("AnimationState.json")
         
-        let animationURL = URL(fileURLWithPath: NSHomeDirectory())
+        let configURL = URL(fileURLWithPath: NSHomeDirectory())
             .appendingPathComponent(".animationSettingsRC.sh")
         
-        func encodeAnimationSettings(_ state: AnimationSettings.State) -> Result<Bool, Error> {
+        func encodeSettings(_ state: AnimationSettings.State) -> Result<Bool, Error> {
             do {
                 try JSONEncoder()
                     .encode(state)
-                    .write(to: animationStateURL)
+                    .write(to: stateURL)
                 return .success(true)
             } catch {
                 return .failure(error)
             }
         }
-        func decodeAnimationSettings(_ state: AnimationSettings.State) -> Result<(AnimationSettings.State), Error> {
+        func decodeSettings(_ state: AnimationSettings.State) -> Result<(AnimationSettings.State), Error> {
             do {
                 let decoded = try JSONDecoder()
-                    .decode(AnimationSettings.State.self, from: Data(contentsOf: animationStateURL))
+                    .decode(AnimationSettings.State.self, from: Data(contentsOf: stateURL))
                 return .success(decoded)
             }
             catch {
                 return .failure(error)
             }
         }
-        func exportAnimationConfig(_ animationSettingsState: AnimationSettings.State) -> Result<Bool, Error> {
+        func exportConfig(_ animationSettingsState: AnimationSettings.State) -> Result<Bool, Error> {
             do {
                 let data: String = animationSettingsState.asConfig
-                try data.write(to: animationURL, atomically: true, encoding: .utf8)
+                try data.write(to: configURL, atomically: true, encoding: .utf8)
                 
                 return .success(true)
             }
@@ -73,7 +74,7 @@ extension Animations {
     static let reducer = Reducer<State, Action, Environment>.combine(
         AnimationSettings.reducer.pullback(
             state: \.animationSettings,
-            action: /Animations.Action.animationSettings,
+            action: /Action.animationSettings,
             environment: { _ in () }
         ),
         Reducer { state, action, environment in
@@ -82,7 +83,7 @@ extension Animations {
                 return Effect(value: .saveSettings)
                     
             case .saveSettings:
-                switch environment.encodeAnimationSettings(state.animationSettings) {
+                switch environment.encodeSettings(state.animationSettings) {
                 case .success:
                     state.error = .none
                 case let .failure(error):
@@ -91,7 +92,7 @@ extension Animations {
                 return .none
                 
             case .loadSettings:
-                switch environment.decodeAnimationSettings(state.animationSettings) {
+                switch environment.decodeSettings(state.animationSettings) {
                 case let .success(decoded):
                     state.animationSettings = decoded
                 case let .failure(error):
@@ -100,7 +101,7 @@ extension Animations {
                 return .none
                 
             case .loadConfig:
-                switch environment.exportAnimationConfig(state.animationSettings) {
+                switch environment.exportConfig(state.animationSettings) {
                 case .success:
                     state.error = .none
                 case let .failure(error):

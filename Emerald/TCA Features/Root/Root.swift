@@ -26,22 +26,22 @@ extension Root {
     static let reducer = Reducer<State, Action, Void>.combine(
         Yabai.reducer.pullback(
             state: \.yabai,
-            action: /Root.Action.yabai,
+            action: /Action.yabai,
             environment: { _ in .init() }
         ),
         SKHD.reducer.pullback(
             state: \.skhd,
-            action: /Root.Action.skhd,
+            action: /Action.skhd,
             environment: { _ in .init() }
         ),
         Animations.reducer.pullback(
             state: \.animations,
-            action: /Root.Action.animations,
+            action: /Action.animations,
             environment: { _ in .init() }
         ),
         Onboarding.reducer.pullback(
             state: \.onboarding,
-            action: /Root.Action.onboarding,
+            action: /Action.onboarding,
             environment: { _ in () }
         )
     )

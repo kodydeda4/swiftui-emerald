@@ -142,6 +142,7 @@
 			children = (
 				3380D2FE25D05F4200C10913 /* EmeraldApp.swift */,
 				3380D32425D06EB300C10913 /* TCA Features */,
+				3361CF1525E6EF1600016875 /* Views (Misc) */,
 				3380D31125D0667100C10913 /* Common */,
 				3380D30225D05F4200C10913 /* Assets.xcassets */,
 				3380D30725D05F4200C10913 /* Info.plist */,
@@ -173,7 +174,6 @@
 		3380D32425D06EB300C10913 /* TCA Features */ = {
 			isa = PBXGroup;
 			children = (
-				3361CF1525E6EF1600016875 /* Views (Misc) */,
 				33DEDCB725DDBC2F001582DC /* Root */,
 				33DEDCB925DDBC51001582DC /* Yabai */,
 				33DEDCBA25DDBC67001582DC /* SKHD */,
