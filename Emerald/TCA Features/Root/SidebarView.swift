@@ -31,8 +31,7 @@ struct SidebarView: View {
                     }
                     NavigationLink(destination: AnimationSettingsView(
                         store: store
-                            .scope(state: \.animations, action: Root.Action.animations)
-                            .scope(state: \.animationSettings, action: Animations.Action.animationSettings)
+                            .scope(state: \.animationSettings, action: Root.Action.animationSettings)
                     )) {
                         Label("Debug Animations", systemImage: "arrowtriangle.forward")
                     }

@@ -23,7 +23,7 @@ struct RootView: View {
             .onAppear {
                 viewStore.send(.yabai(.loadState))
                 viewStore.send(.skhd(.loadState))
-                viewStore.send(.animations(.loadState))
+                viewStore.send(.loadState)
             }
             .sheet(
                 isPresented:
