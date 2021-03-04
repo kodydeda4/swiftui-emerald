@@ -21,9 +21,9 @@ struct RootView: View {
                     .foregroundColor(Color(NSColor.placeholderTextColor))
             }
             .onAppear {
-                viewStore.send(.dataManager(.loadYabaiSettings))
-                viewStore.send(.dataManager(.loadSKHDSettings))
-                viewStore.send(.dataManager(.loadAnimationSettings))
+                viewStore.send(.yabai(.loadYabaiSettings))
+                viewStore.send(.skhd(.loadSKHDSettings))
+                viewStore.send(.animations(.loadSettings))
             }
             .sheet(
                 isPresented:
@@ -66,8 +66,8 @@ struct RootView: View {
 //                }
                 ToolbarItem {
                     Button("Apply Changes") {
-                        viewStore.send(.dataManager(.exportYabaiConfig))
-                        viewStore.send(.dataManager(.exportSKHDConfig))
+                        viewStore.send(.yabai(.exportYabaiConfig))
+                        viewStore.send(.skhd(.exportSKHDConfig))
                         
                         let _ = AppleScript.restartYabai.execute()
                     }

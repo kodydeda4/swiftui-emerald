@@ -9,20 +9,34 @@ import ComposableArchitecture
 
 struct Root {
     struct State: Equatable {
-        var dataManager = DataManager.State()
+        var yabai = Yabai.State()
+        var skhd = SKHD.State()
+        var animations = Animations.State()
         var onboarding  = Onboarding.State()
     }
     enum Action: Equatable {
-        case dataManager(DataManager.Action)
+        case yabai(Yabai.Action)
+        case skhd(SKHD.Action)
+        case animations(Animations.Action)
         case onboarding(Onboarding.Action)
     }
 }
 
 extension Root {
     static let reducer = Reducer<State, Action, Void>.combine(
-        DataManager.reducer.pullback(
-            state: \.dataManager,
-            action: /Root.Action.dataManager,
+        Yabai.reducer.pullback(
+            state: \.yabai,
+            action: /Root.Action.yabai,
+            environment: { _ in .init() }
+        ),
+        SKHD.reducer.pullback(
+            state: \.skhd,
+            action: /Root.Action.skhd,
+            environment: { _ in .init() }
+        ),
+        Animations.reducer.pullback(
+            state: \.animations,
+            action: /Root.Action.animations,
             environment: { _ in .init() }
         ),
         Onboarding.reducer.pullback(
