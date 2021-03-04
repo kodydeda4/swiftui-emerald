@@ -9,9 +9,9 @@ import ComposableArchitecture
 
 struct Root {
     struct State: Equatable {
-        var yabai = Yabai.State()
-        var skhd = SKHD.State()
-        var animations = Animations.State()
+        var yabai       = Yabai.State()
+        var skhd        = SKHD.State()
+        var animations  = Animations.State()
         var onboarding  = Onboarding.State()
     }
     enum Action: Equatable {
