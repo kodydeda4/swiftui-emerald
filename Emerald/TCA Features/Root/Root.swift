@@ -9,7 +9,8 @@ import ComposableArchitecture
 import SwiftShell
 import SwiftUI
 
-// Optimal Solution ??? modifier on the reducer - if state is codable, it saves/loads state automatically
+// Optimal Solution ???
+// modifier on the reducer - if state is codable, it saves/loads state automatically
 
 struct Root {
     struct State: Equatable {
@@ -17,7 +18,7 @@ struct Root {
         var skhd             = SKHD.State()
         var macOSAnimations  = MacOSAnimations.State()
         var onboarding       = Onboarding.State()
-        //var error: Error?    = nil
+        var error: String    = ""
     }
     enum Action: Equatable {
         case yabai(Yabai.Action)
@@ -68,20 +69,35 @@ extension Root {
                 
             case let .macOSAnimations(subAction):
                 return Effect(value: .saveState(.macOSAnimations))
-
+                
             case .onboarding(_):
                 return .none
-
+                
             case let .saveState(codableState):
                 let url = codableState.configURL
                 
                 switch codableState {
                 case .yabai:
-                    let _ = JSONEncoder().writeState(state.yabai, to: url)
+                    switch JSONEncoder().writeState(state.yabai, to: url) {
+                    case .success(_):
+                        state.error = ""
+                    case let .failure(error):
+                        state.error = error.localizedDescription
+                    }
                 case .skhd:
-                    let _ = JSONEncoder().writeState(state.skhd, to: url)
+                    switch JSONEncoder().writeState(state.skhd, to: url) {
+                    case .success(_):
+                        state.error = ""
+                    case let .failure(error):
+                        state.error = error.localizedDescription
+                    }
                 case .macOSAnimations:
-                    let _ = JSONEncoder().writeState(state.macOSAnimations, to: url)
+                    switch JSONEncoder().writeState(state.macOSAnimations, to: url) {
+                    case .success(_):
+                        state.error = ""
+                    case let .failure(error):
+                        state.error = error.localizedDescription
+                    }
                 }
                 return .none
                 
@@ -90,28 +106,56 @@ extension Root {
                 
                 switch codableState {
                 case .yabai:
-                    let _ = JSONDecoder().loadState(Yabai.State.self, from: url)
+                    switch JSONDecoder().loadState(Yabai.State.self, from: url) {
+                    case let .success(decodedState):
+                        state.yabai = decodedState
+                    case let .failure(error):
+                        state.error = error.localizedDescription
+                    }
                 case .skhd:
-                    let _ = JSONDecoder().loadState(SKHD.State.self, from: url)
+                    switch JSONDecoder().loadState(SKHD.State.self, from: url) {
+                    case let .success(decodedState):
+                        state.skhd = decodedState
+                    case let .failure(error):
+                        state.error = error.localizedDescription
+                    }
                 case .macOSAnimations:
-                    let _ = JSONDecoder().loadState(MacOSAnimations.State.self, from: url)
+                    switch JSONDecoder().loadState(MacOSAnimations.State.self, from: url) {
+                    case let .success(decodedState):
+                        state.macOSAnimations = decodedState
+                    case let .failure(error):
+                        state.error = error.localizedDescription
+                    }
                 }
                 return .none
-
+                
             case let .exportConfig(codableState):
                 let url = codableState.configURL
-
+                
                 switch codableState {
                 case .yabai:
-                    let _ = JSONDecoder().writeConfig(state.yabai.asConfig, to: url)
+                    switch JSONDecoder().writeConfig(state.yabai.asConfig, to: url) {
+                    case .success(_):
+                        state.error = ""
+                    case let .failure(error):
+                        state.error = error.localizedDescription
+                    }
                 case .skhd:
-                    let _ = JSONDecoder().writeConfig(state.skhd.asConfig, to: url)
+                    switch JSONDecoder().writeConfig(state.skhd.asConfig, to: url) {
+                    case .success(_):
+                        state.error = ""
+                    case let .failure(error):
+                        state.error = error.localizedDescription
+                    }
                 case .macOSAnimations:
-                    let _ = JSONDecoder().writeConfig(state.macOSAnimations.asConfig, to: url)
+                    switch JSONDecoder().writeConfig(state.macOSAnimations.asConfig, to: url) {
+                    case .success(_):
+                        state.error = ""
+                    case let .failure(error):
+                        state.error = error.localizedDescription
+                    }
                 }
                 return .none
-
-
             }
         }
     )
@@ -133,7 +177,7 @@ enum CodableState {
     var stateURL: URL {
         let homeURL = URL(fileURLWithPath: NSHomeDirectory())
         switch self {
-            
+        
         case .yabai:
             return homeURL.appendingPathComponent("YabaiState.json")
         case .skhd:
