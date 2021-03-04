@@ -36,7 +36,6 @@
 		3385DF6A25D6279200ACDE21 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3385DF6925D6279200ACDE21 /* AboutView.swift */; };
 		3385DF6D25D628BF00ACDE21 /* YabaiSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3385DF6C25D628BF00ACDE21 /* YabaiSettingsView.swift */; };
 		3385DF7025D6361200ACDE21 /* AppleScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3385DF6F25D6361200ACDE21 /* AppleScript.swift */; };
-		3398838825DD6A1F007B9FF5 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398838725DD6A1F007B9FF5 /* Animations.swift */; };
 		3398838C25DD7A1D007B9FF5 /* SKHDSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398838B25DD7A1D007B9FF5 /* SKHDSettings.swift */; };
 		3398838F25DD7DC3007B9FF5 /* SKHDSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398838E25DD7DC3007B9FF5 /* SKHDSettingsView.swift */; };
 		3398839925DD9929007B9FF5 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 3398839825DD9929007B9FF5 /* KeyboardShortcuts */; };
@@ -74,7 +73,6 @@
 		3385DF6925D6279200ACDE21 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		3385DF6C25D628BF00ACDE21 /* YabaiSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiSettingsView.swift; sourceTree = "<group>"; };
 		3385DF6F25D6361200ACDE21 /* AppleScript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleScript.swift; sourceTree = "<group>"; };
-		3398838725DD6A1F007B9FF5 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		3398838B25DD7A1D007B9FF5 /* SKHDSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHDSettings.swift; sourceTree = "<group>"; };
 		3398838E25DD7DC3007B9FF5 /* SKHDSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHDSettingsView.swift; sourceTree = "<group>"; };
 		339C453025D6ECCA0079ACA1 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -101,7 +99,6 @@
 		332D567F25DEED5700C88FEE /* Animations */ = {
 			isa = PBXGroup;
 			children = (
-				3398838725DD6A1F007B9FF5 /* Animations.swift */,
 				332D567C25DEED5300C88FEE /* AnimationSettings.swift */,
 				332D568525DEEF7800C88FEE /* AnimationSettingsView.swift */,
 				3341B01625F0702C00833B56 /* AnimationSettingsConfigFile.swift */,
@@ -328,7 +325,6 @@
 				33B62D2925D5E31400DD5934 /* Onboarding.swift in Sources */,
 				3385DF6D25D628BF00ACDE21 /* YabaiSettingsView.swift in Sources */,
 				3325BFD525F05041007831C5 /* RoundedRectangleButtonStyle.swift in Sources */,
-				3398838825DD6A1F007B9FF5 /* Animations.swift in Sources */,
 				33387D6525D3F64300E76D29 /* YabaiSettings.swift in Sources */,
 				3361CF1225E6EF1300016875 /* DebugConfigFileView.swift in Sources */,
 				3398838C25DD7A1D007B9FF5 /* SKHDSettings.swift in Sources */,

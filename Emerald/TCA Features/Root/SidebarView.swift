@@ -18,20 +18,18 @@ struct SidebarView: View {
                     NavigationLink(destination: YabaiSettingsView(
                         store: store
                             .scope(state: \.yabai, action: Root.Action.yabai)
-                            .scope(state: \.yabaiSettings, action: Yabai.Action.yabaiSettings)
                     )) {
                         Label("Debug Yabai", systemImage: "terminal")
                     }
                     NavigationLink(destination: SKHDSettingsView(
                         store: store
                             .scope(state: \.skhd, action: Root.Action.skhd)
-                            .scope(state: \.skhdSettings, action: SKHD.Action.skhdSettings)
                     )) {
                         Label("Debug SKHD", systemImage: "keyboard")
                     }
                     NavigationLink(destination: AnimationSettingsView(
                         store: store
-                            .scope(state: \.animationSettings, action: Root.Action.animationSettings)
+                            .scope(state: \.animations, action: Root.Action.animations)
                     )) {
                         Label("Debug Animations", systemImage: "arrowtriangle.forward")
                     }
