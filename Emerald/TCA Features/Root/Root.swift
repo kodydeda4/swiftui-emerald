@@ -34,6 +34,38 @@ struct Root {
         let homeURL = URL(fileURLWithPath: NSHomeDirectory())
         var yabaiversion = run("/usr/local/bin/yabai", "-v").stdout
         var skhdversion  = run("/usr/local/bin/skhd", "-v").stdout
+        
+        func encodeState<State>(_ state: State, stateURL: URL) -> Result<Bool, Error> where State : Encodable {
+            do {
+                try JSONEncoder()
+                    .encode(state)
+                    .write(to: stateURL)
+                return .success(true)
+            } catch {
+                return .failure(error)
+            }
+        }
+        func decodeState<State>(_ state: State, stateURL: URL) -> Result<State, Error> where State : Decodable {
+            do {
+                let decoded = try JSONDecoder()
+                    .decode(type(of: state), from: Data(contentsOf: stateURL))
+                return .success(decoded)
+            }
+            catch {
+                return .failure(error)
+            }
+        }
+        func exportConfig(_ data: String, configURL: URL) -> Result<Bool, Error> {
+            do {
+                let data: String = data
+                try data.write(to: configURL, atomically: true, encoding: .utf8)
+                
+                return .success(true)
+            }
+            catch {
+                return .failure(error)
+            }
+        }
     }
 }
 
@@ -76,33 +108,33 @@ extension Root {
             case let .saveState(codableState):
                 switch codableState {
                 case .yabai:
-                    let _ = DataManager<Yabai.State>().encodeState(state.yabai, stateURL: CodableState.yabai.stateURL)
+                    let _ = environment.encodeState(state.yabai, stateURL: CodableState.yabai.stateURL)
                 case .skhd:
-                    let _ = DataManager<SKHD.State>().encodeState(state.skhd, stateURL: CodableState.yabai.stateURL)
+                    let _ = environment.encodeState(state.skhd, stateURL: CodableState.yabai.stateURL)
                 case .animations:
-                    let _ = DataManager<MacOSAnimations.State>().encodeState(state.animations, stateURL: CodableState.yabai.stateURL)
+                    let _ = environment.encodeState(state.animations, stateURL: CodableState.yabai.stateURL)
                 }
                 return .none
                 
             case let .loadState(codableState):
                 switch codableState {
                 case .yabai:
-                    let _ = DataManager<Yabai.State>().decodeState(state.yabai, stateURL: CodableState.yabai.stateURL)
+                    let _ = environment.decodeState(state.yabai, stateURL: CodableState.yabai.stateURL)
                 case .skhd:
-                    let _ = DataManager<SKHD.State>().decodeState(state.skhd, stateURL: CodableState.yabai.stateURL)
+                    let _ = environment.decodeState(state.skhd, stateURL: CodableState.yabai.stateURL)
                 case .animations:
-                    let _ = DataManager<MacOSAnimations.State>().decodeState(state.animations, stateURL: CodableState.yabai.stateURL)
+                    let _ = environment.decodeState(state.animations, stateURL: CodableState.yabai.stateURL)
                 }
                 return .none
 
             case let .exportConfig(codableState):
                 switch codableState {
                 case .yabai:
-                    let _ = DataManager<Yabai.State>().exportConfig(state.yabai.asConfig, configURL: CodableState.yabai.configURL)
+                    let _ = environment.exportConfig(state.yabai.asConfig, configURL: CodableState.yabai.configURL)
                 case .skhd:
-                    let _ = DataManager<SKHD.State>().exportConfig(state.skhd.asConfig, configURL: CodableState.skhd.configURL)
+                    let _ = environment.exportConfig(state.skhd.asConfig, configURL: CodableState.skhd.configURL)
                 case .animations:
-                    let _ = DataManager<MacOSAnimations.State>().exportConfig(state.animations.asConfig, configURL: CodableState.animations.configURL)
+                    let _ = environment.exportConfig(state.animations.asConfig, configURL: CodableState.animations.configURL)
                 }
                 return .none
 
