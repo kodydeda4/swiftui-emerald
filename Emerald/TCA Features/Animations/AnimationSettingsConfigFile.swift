@@ -9,8 +9,6 @@ import Foundation
 
 extension AnimationSettings.State {
     var asConfig: String {
-        let divStr = "#==================================================================================="
-        
         var header: [String] {
             [
                 "#!/bin/bash",
@@ -29,9 +27,9 @@ extension AnimationSettings.State {
         var body: [String] {
             if allEnabled {
                 return [
-                    divStr,
+                    "#=========================================================================================",
                     "# Enabled Animations",
-                    divStr,
+                    "#=========================================================================================",
                     "defaults delete -g NSAutomaticWindowAnimationsEnabled",
                     "defaults delete -g NSScrollAnimationEnabled",
                     "defaults delete -g NSWindowResizeTime",
@@ -53,9 +51,9 @@ extension AnimationSettings.State {
                 ]
             } else {
                 return [
-                    divStr,
+                    "#=========================================================================================",
                     "# Disabled Animations",
-                    divStr,
+                    "#=========================================================================================",
                     "defaults write -g NSAutomaticWindowAnimationsEnabled -bool false",
                     "defaults write -g NSScrollAnimationEnabled -bool false",
                     "defaults write -g NSWindowResizeTime -float 0.001",

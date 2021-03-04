@@ -9,9 +9,7 @@ import Foundation
 
 extension SKHDSettings.State {
     var asConfig: String {
-        let divStr = "#========================================================="
-        
-        return [
+        [
 
             "#   ███████╗██╗  ██╗██╗  ██╗██████╗ ",
             "#   ██╔════╝██║ ██╔╝██║  ██║██╔══██╗",
@@ -23,9 +21,9 @@ extension SKHDSettings.State {
             "",
             ".blacklist [\"YabaiUI\"]",
             "",
-            divStr,
+            "#=========================================================================================",
             "# Section A",
-            divStr,
+            "#=========================================================================================",
             "",
             "\(skhd(restartYabai)) \"/bin/launchctl kickstart -k \"gui/${UID}/homebrew.mxcl.yabai\"",
             "\(skhd(togglePaddingShortcut)) : yabai -m space --toggle padding",

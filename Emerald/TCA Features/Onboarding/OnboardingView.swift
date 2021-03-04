@@ -25,8 +25,8 @@ struct OnboardingView: View {
                 
                 Text(
                     """
-                    Emerald has some extra features that you might enjoy.
-                    They're free, but require some set-up.
+                    Emerald has some more features you might enjoy.
+                    They're free, but require extra set-up.
                     """
                 )
                 .multilineTextAlignment(.center)

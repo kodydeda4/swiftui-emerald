@@ -19,6 +19,7 @@
 		3341B01125F06FF300833B56 /* YabaiSettingsConfigFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B01025F06FF300833B56 /* YabaiSettingsConfigFile.swift */; };
 		3341B01425F0700B00833B56 /* SKHDSettingsConfigFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B01325F0700B00833B56 /* SKHDSettingsConfigFile.swift */; };
 		3341B01725F0702C00833B56 /* AnimationSettingsConfigFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B01625F0702C00833B56 /* AnimationSettingsConfigFile.swift */; };
+		3341B01D25F072B600833B56 /* YabaiSettings+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B01C25F072B600833B56 /* YabaiSettings+Extensions.swift */; };
 		3361CDF725D44AEC0086F6A7 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */; };
 		3361CF1125E6EF1300016875 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CF0E25E6EF1300016875 /* SectionView.swift */; };
 		3361CF1225E6EF1300016875 /* DebugConfigFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CF0F25E6EF1300016875 /* DebugConfigFileView.swift */; };
@@ -52,6 +53,7 @@
 		3341B01025F06FF300833B56 /* YabaiSettingsConfigFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiSettingsConfigFile.swift; sourceTree = "<group>"; };
 		3341B01325F0700B00833B56 /* SKHDSettingsConfigFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHDSettingsConfigFile.swift; sourceTree = "<group>"; };
 		3341B01625F0702C00833B56 /* AnimationSettingsConfigFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationSettingsConfigFile.swift; sourceTree = "<group>"; };
+		3341B01C25F072B600833B56 /* YabaiSettings+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YabaiSettings+Extensions.swift"; sourceTree = "<group>"; };
 		3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		3361CF0E25E6EF1300016875 /* SectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		3361CF0F25E6EF1300016875 /* DebugConfigFileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugConfigFileView.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				3361CF0E25E6EF1300016875 /* SectionView.swift */,
 				3361CF1025E6EF1300016875 /* SpecialTextView.swift */,
 				333631FF25EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift */,
+				3325BFD425F05041007831C5 /* RoundedRectangleButtonStyle.swift */,
 			);
 			path = "Views (Misc)";
 			sourceTree = "<group>";
@@ -181,7 +184,6 @@
 			children = (
 				33B62D2825D5E31400DD5934 /* Onboarding.swift */,
 				339C453425D6ED0F0079ACA1 /* OnboardingView.swift */,
-				3325BFD425F05041007831C5 /* RoundedRectangleButtonStyle.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -209,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				33387D6425D3F64300E76D29 /* YabaiSettings.swift */,
+				3341B01C25F072B600833B56 /* YabaiSettings+Extensions.swift */,
 				3385DF6C25D628BF00ACDE21 /* YabaiSettingsView.swift */,
 				3341B01025F06FF300833B56 /* YabaiSettingsConfigFile.swift */,
 			);
@@ -317,6 +320,7 @@
 				3385DF6D25D628BF00ACDE21 /* YabaiSettingsView.swift in Sources */,
 				3325BFD525F05041007831C5 /* RoundedRectangleButtonStyle.swift in Sources */,
 				3398838825DD6A1F007B9FF5 /* DataManager.swift in Sources */,
+				3341B01D25F072B600833B56 /* YabaiSettings+Extensions.swift in Sources */,
 				33387D6525D3F64300E76D29 /* YabaiSettings.swift in Sources */,
 				3361CF1225E6EF1300016875 /* DebugConfigFileView.swift in Sources */,
 				3398838C25DD7A1D007B9FF5 /* SKHDSettings.swift in Sources */,

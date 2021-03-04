@@ -20,21 +20,21 @@ struct SidebarView: View {
                             .scope(state: \.dataManager, action: Root.Action.dataManager)
                             .scope(state: \.yabaiSettings, action: DataManager.Action.yabaiSettings)
                     )) {
-                        Label("Yabai Debug", systemImage: "terminal")
+                        Label("Debug Yabai", systemImage: "terminal")
                     }
                     NavigationLink(destination: SKHDSettingsView(
                         store: store
                             .scope(state: \.dataManager, action: Root.Action.dataManager)
                             .scope(state: \.skhdSettings, action: DataManager.Action.skhdSettings)
                     )) {
-                        Label("SKHD Debug", systemImage: "keyboard")
+                        Label("Debug SKHD", systemImage: "keyboard")
                     }
                     NavigationLink(destination: AnimationSettingsView(
                         store: store
                             .scope(state: \.dataManager, action: Root.Action.dataManager)
                             .scope(state: \.animationSettings, action: DataManager.Action.animationSettings)
                     )) {
-                        Label("Animations Debug", systemImage: "arrowtriangle.forward")
+                        Label("Debug Animations", systemImage: "arrowtriangle.forward")
                     }
                     NavigationLink(destination: SystemIntegrityProtectionView()) {
                         Label("System Integrity Protection", systemImage: "lock.circle")
