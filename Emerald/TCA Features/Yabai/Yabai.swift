@@ -11,6 +11,8 @@ import SwiftShell
 
 // Saves, Loads, & Exports Yabai Settings.
 
+// Optimal Solution ??? modifier on the reducer - if state is codable, it saves/loads state automatically
+
 struct Yabai {
     struct State: Equatable {
         var yabaiSettings = YabaiSettings.State()
