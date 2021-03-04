@@ -31,9 +31,8 @@ struct Root {
     }
     
     struct Environment {
-        let homeURL = URL(fileURLWithPath: NSHomeDirectory())
-        var yabaiversion = run("/usr/local/bin/yabai", "-v").stdout
-        var skhdversion  = run("/usr/local/bin/skhd", "-v").stdout
+        var yabaiVersion = run("/usr/local/bin/yabai", "-v").stdout
+        var skhdVersion  = run("/usr/local/bin/skhd", "-v").stdout
         
         func encodeState<State>(_ state: State, stateURL: URL) -> Result<Bool, Error> where State : Encodable {
             do {
