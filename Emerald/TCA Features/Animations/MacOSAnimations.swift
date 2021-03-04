@@ -10,17 +10,17 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct AnimationSettings {
+struct MacOSAnimations {
     struct State: Equatable, Codable {
         var allEnabled: Bool = true
         
     }
     enum Action: Equatable {
-        case keyPath(BindingAction<AnimationSettings.State>)
+        case keyPath(BindingAction<MacOSAnimations.State>)
     }
 }
 
-extension AnimationSettings {
+extension MacOSAnimations {
     static let reducer = Reducer<State, Action, Void> {
         state, action, _ in
         switch action {
@@ -31,7 +31,7 @@ extension AnimationSettings {
     .binding(action: /Action.keyPath)
 }
 
-extension AnimationSettings {
+extension MacOSAnimations {
     static let defaultStore = Store(
         initialState: .init(),
         reducer: reducer,

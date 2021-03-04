@@ -19,7 +19,7 @@ extension KeyboardShortcuts.Name {
     static let toggleBSP      = Self("toggleBSP")
 }
 
-struct SKHDSettings {
+struct SKHD {
     struct State: Equatable, Codable {
         var restartYabai           = KeyboardShortcuts.getShortcut(for: .restartYabai)
         var togglePaddingShortcut  = KeyboardShortcuts.getShortcut(for: .togglePadding)
@@ -42,11 +42,11 @@ struct SKHDSettings {
         case updateToggleStacking(KeyboardShortcuts.Shortcut?)
         case updateToggleFloating(KeyboardShortcuts.Shortcut?)
         case updateToggleBSP(KeyboardShortcuts.Shortcut?)
-        case keyPath(BindingAction<SKHDSettings.State>)
+        case keyPath(BindingAction<SKHD.State>)
     }
 }
 
-extension SKHDSettings {
+extension SKHD {
     static let reducer = Reducer<State, Action, Void> {
         state, action, _ in
         switch action {
@@ -90,7 +90,7 @@ extension SKHDSettings {
     .binding(action: /Action.keyPath)
 }
 
-extension SKHDSettings {
+extension SKHD {
     static let defaultStore = Store(
         initialState: .init(),
         reducer: reducer,

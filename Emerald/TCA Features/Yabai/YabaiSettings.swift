@@ -9,7 +9,7 @@ import SwiftUI
 import ComposableArchitecture
 import DynamicColor
 
-struct YabaiSettings {
+struct Yabai {
     struct State: Equatable, Codable {
         var debugOutput              : Bool              = false
         var externalBar              : ExternalBar       = .off
@@ -92,14 +92,14 @@ struct YabaiSettings {
     }
     
     enum Action: Equatable {
-        case keyPath(BindingAction<YabaiSettings.State>)
+        case keyPath(BindingAction<Yabai.State>)
         case updateActiveWindowBorderColor(Color)
         case updateNormalWindowBorderColor(Color)
         case updateInsertWindowBorderColor(Color)
     }
 }
 
-extension YabaiSettings {
+extension Yabai {
     static let reducer = Reducer<State, Action, Void> {
         state, action, _ in
         switch action {
@@ -122,7 +122,7 @@ extension YabaiSettings {
     .binding(action: /Action.keyPath)
 }
 
-extension YabaiSettings {
+extension Yabai {
     static let defaultStore = Store(
         initialState: .init(),
         reducer: reducer,

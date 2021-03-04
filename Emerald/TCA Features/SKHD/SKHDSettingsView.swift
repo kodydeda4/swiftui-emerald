@@ -10,8 +10,8 @@ import ComposableArchitecture
 import KeyboardShortcuts
 
 struct SKHDSettingsView: View {
-    let store: Store<SKHDSettings.State, SKHDSettings.Action>
-    let keyPath = SKHDSettings.Action.keyPath
+    let store: Store<SKHD.State, SKHD.Action>
+    let keyPath = SKHD.Action.keyPath
     
     var body: some View {
         WithViewStore(store) { viewStore in
@@ -38,7 +38,7 @@ struct SKHDSettingsView: View {
 
 struct SKHDSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SKHDSettingsView(store: SKHDSettings.defaultStore)
+        SKHDSettingsView(store: SKHD.defaultStore)
     }
 }
 

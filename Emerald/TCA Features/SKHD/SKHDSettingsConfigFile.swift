@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension SKHDSettings.State {
+extension SKHD.State {
     var asConfig: String {
         [
 

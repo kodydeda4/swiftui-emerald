@@ -8,7 +8,7 @@
 import Foundation
 import SwiftShell
 
-extension YabaiSettings.State {
+extension Yabai.State {
     var asConfig: String {
         [
             "#   ██╗   ██╗ █████╗ ██████╗  █████╗ ██╗",

@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension AnimationSettings.State {
+extension MacOSAnimations.State {
     var asConfig: String {
         var header: [String] {
             [

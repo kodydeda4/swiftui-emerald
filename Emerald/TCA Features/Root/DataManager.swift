@@ -16,13 +16,8 @@ public enum DataManagerError: Error {
 }
 
 public struct DataManager<State> where State: Codable {
-    let homeURL = URL(fileURLWithPath: NSHomeDirectory())
-    let stateFilename: String
-    let configFilename: String
-    var stateURL : URL { homeURL.appendingPathComponent(stateFilename) }
-    var configURL: URL { homeURL.appendingPathComponent(configFilename) }
-    
-    func encodeState<State>(_ state: State) -> Result<Bool, DataManagerError> where State : Encodable {
+
+    func encodeState<State>(_ state: State, stateURL: URL) -> Result<Bool, DataManagerError> where State : Encodable {
         do {
             try JSONEncoder()
                 .encode(state)
@@ -32,7 +27,7 @@ public struct DataManager<State> where State: Codable {
             return .failure(.encodeState)
         }
     }
-    func decodeState<State>(_ state: State) -> Result<State, DataManagerError> where State : Decodable {
+    func decodeState<State>(_ state: State, stateURL: URL) -> Result<State, DataManagerError> where State : Decodable {
         do {
             let decoded = try JSONDecoder()
                 .decode(type(of: state), from: Data(contentsOf: stateURL))
@@ -42,7 +37,7 @@ public struct DataManager<State> where State: Codable {
             return .failure(.decodeState)
         }
     }
-    func exportConfig(_ data: String) -> Result<Bool, DataManagerError> {
+    func exportConfig(_ data: String, configURL: URL) -> Result<Bool, DataManagerError> {
         do {
             let data: String = data
             try data.write(to: configURL, atomically: true, encoding: .utf8)
