@@ -9,10 +9,10 @@ import Foundation
 import ComposableArchitecture
 
 extension JSONEncoder {
-    func store<T>(_ value: T, to url: URL) -> Result<Bool, Error> where T: Codable {
+    func writeState<T>(_ state: T, to url: URL) -> Result<Bool, Error> where T: Codable {
         do {
             try self
-                .encode(value)
+                .encode(state)
                 .write(to: url)
             return .success(true)
         } catch {
@@ -22,7 +22,7 @@ extension JSONEncoder {
 }
 
 extension JSONDecoder {
-    func load<T>(_ type: T.Type, from url: URL) -> Result<T, Error> where T: Codable {
+    func loadState<T>(_ type: T.Type, from url: URL) -> Result<T, Error> where T: Codable {
         do {
             let decoded = try self
                 .decode(type.self, from: Data(contentsOf: url))
@@ -35,9 +35,9 @@ extension JSONDecoder {
 }
 
 extension JSONDecoder {
-    func exportConfig(_ data: String, from url: URL) -> Result<Bool, Error> {
+    func writeConfig(_ config: String, to url: URL) -> Result<Bool, Error> {
         do {
-            let data: String = data
+            let data: String = config
             try data.write(to: url, atomically: true, encoding: .utf8)
             
             return .success(true)

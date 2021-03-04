@@ -33,18 +33,6 @@ struct Root {
     struct Environment {
         var yabaiVersion = run("/usr/local/bin/yabai", "-v").stdout
         var skhdVersion  = run("/usr/local/bin/skhd", "-v").stdout
-        
-        func encodeState<State>(_ state: State, url: URL) -> Result<Bool, Error> where State : Codable {
-            JSONEncoder().store(state, to: url)
-        }
-        
-        func decodeState<State>(_ state: State, url: URL) -> Result<State, Error> where State : Codable {
-            JSONDecoder().load(State.self, from: url)
-        }
-        
-        func exportConfig(_ data: String, url: URL) -> Result<Bool, Error> {
-            JSONDecoder().exportConfig("ConfigData", from: url)
-        }
     }
 }
 
@@ -85,35 +73,41 @@ extension Root {
                 return .none
 
             case let .saveState(codableState):
+                let url = codableState.configURL
+                
                 switch codableState {
                 case .yabai:
-                    let _ = environment.encodeState(state.yabai, url: CodableState.yabai.stateURL)
+                    let _ = JSONEncoder().writeState(state.yabai, to: url)
                 case .skhd:
-                    let _ = environment.encodeState(state.skhd, url: CodableState.skhd.stateURL)
+                    let _ = JSONEncoder().writeState(state.skhd, to: url)
                 case .macOSAnimations:
-                    let _ = environment.encodeState(state.macOSAnimations, url: CodableState.macOSAnimations.stateURL)
+                    let _ = JSONEncoder().writeState(state.macOSAnimations, to: url)
                 }
                 return .none
                 
             case let .loadState(codableState):
+                let url = codableState.configURL
+                
                 switch codableState {
                 case .yabai:
-                    let _ = environment.decodeState(state.yabai, url: CodableState.yabai.stateURL)
+                    let _ = JSONDecoder().loadState(Yabai.State.self, from: url)
                 case .skhd:
-                    let _ = environment.decodeState(state.skhd, url: CodableState.skhd.stateURL)
+                    let _ = JSONDecoder().loadState(SKHD.State.self, from: url)
                 case .macOSAnimations:
-                    let _ = environment.decodeState(state.macOSAnimations, url: CodableState.yabai.stateURL)
+                    let _ = JSONDecoder().loadState(MacOSAnimations.State.self, from: url)
                 }
                 return .none
 
             case let .exportConfig(codableState):
+                let url = codableState.configURL
+
                 switch codableState {
                 case .yabai:
-                    let _ = environment.exportConfig(state.yabai.asConfig, url: CodableState.yabai.configURL)
+                    let _ = JSONDecoder().writeConfig(state.yabai.asConfig, to: url)
                 case .skhd:
-                    let _ = environment.exportConfig(state.skhd.asConfig, url: CodableState.skhd.configURL)
+                    let _ = JSONDecoder().writeConfig(state.skhd.asConfig, to: url)
                 case .macOSAnimations:
-                    let _ = environment.exportConfig(state.macOSAnimations.asConfig, url: CodableState.macOSAnimations.configURL)
+                    let _ = JSONDecoder().writeConfig(state.macOSAnimations.asConfig, to: url)
                 }
                 return .none
 
