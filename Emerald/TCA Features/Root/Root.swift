@@ -27,17 +27,17 @@ extension Root {
         Yabai.reducer.pullback(
             state: \.yabai,
             action: /Action.yabai,
-            environment: { _ in .init() }
+            environment: { _ in () }
         ),
         SKHD.reducer.pullback(
             state: \.skhd,
             action: /Action.skhd,
-            environment: { _ in .init() }
+            environment: { _ in () }
         ),
         Animations.reducer.pullback(
             state: \.animations,
             action: /Action.animations,
-            environment: { _ in .init() }
+            environment: { _ in () }
         ),
         Onboarding.reducer.pullback(
             state: \.onboarding,

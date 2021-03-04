@@ -14,9 +14,12 @@ import SwiftShell
 struct Animations {
     struct State: Equatable {
         var animationSettings = AnimationSettings.State()
-        var encoder           = DataManager<AnimationSettings.State>()
-        var error: Error      = .none
+        var encoder       = DataManager<AnimationSettings.State>(
+            stateURLFilename: "AnimationState.json",
+            configURLFilename: ".animationSettingsRC.sh"
+        )
         
+        var error: Error = .none
         enum Error {
             case saveSettings
             case loadSettings
@@ -31,32 +34,23 @@ struct Animations {
         case loadSettings
         case exportConfig
     }
-    
-    struct Environment {
-        let stateURL = URL(fileURLWithPath: NSHomeDirectory())
-            .appendingPathComponent("AnimationState.json")
-        
-        let configURL = URL(fileURLWithPath: NSHomeDirectory())
-            .appendingPathComponent(".animationSettingsRC.sh")
-    }
 }
 
 extension Animations {
-    static let reducer = Reducer<State, Action, Environment>.combine(
+    static let reducer = Reducer<State, Action, Void>.combine(
         AnimationSettings.reducer.pullback(
             state: \.animationSettings,
             action: /Action.animationSettings,
             environment: { _ in () }
         ),
-        Reducer { state, action, environment in
+        Reducer { state, action, _ in
             switch action {
             case let .animationSettings(subAction):
                 return Effect(value: .saveSettings)
                     
             case .saveSettings:
                 switch state.encoder.genericEncodeState(
-                    state.animationSettings,
-                    url: environment.stateURL
+                    state.animationSettings
                 ) {
                 case .success:
                     state.error = .none
@@ -66,10 +60,7 @@ extension Animations {
                 return .none
                 
             case .loadSettings:
-                switch state.encoder.genericDecodeSettings(
-                    state.animationSettings,
-                    url: environment.stateURL
-                ) {
+                switch state.encoder.genericDecodeSettings(state.animationSettings) {
                 case let .success(decoded):
                     state.animationSettings = decoded
                 case let .failure(error):
@@ -78,10 +69,7 @@ extension Animations {
                 return .none
                 
             case .exportConfig:
-                switch state.encoder.genericExportConfig(
-                    state.animationSettings.asConfig,
-                    url: environment.configURL
-                ) {
+                switch state.encoder.genericExportConfig(state.animationSettings.asConfig) {
                 case .success:
                     state.error = .none
                 case let .failure(error):
@@ -98,6 +86,6 @@ extension Animations {
     static let defaultStore = Store(
         initialState: .init(),
         reducer: reducer,
-        environment: .init()
+        environment: ()
     )
 }

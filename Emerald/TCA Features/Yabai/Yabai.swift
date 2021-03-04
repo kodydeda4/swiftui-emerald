@@ -14,7 +14,10 @@ import SwiftShell
 struct Yabai {
     struct State: Equatable {
         var yabaiSettings = YabaiSettings.State()
-        var encoder       = DataManager<YabaiSettings.State>()
+        var encoder       = DataManager<YabaiSettings.State>(
+            stateURLFilename: "YabaiState.json",
+            configURLFilename: ".yabairc"
+        )
         var version       = run("/usr/local/bin/yabai", "-v").stdout
         var error: Error  = .none
         
@@ -33,24 +36,16 @@ struct Yabai {
         case resetSettings
         case exportConfig
     }
-    
-    struct Environment {
-        let stateURL = URL(fileURLWithPath: NSHomeDirectory())
-            .appendingPathComponent("YabaiState.json")
-        
-        let configURL = URL(fileURLWithPath: NSHomeDirectory())
-            .appendingPathComponent(".yabairc")
-    }
 }
 
 extension Yabai {
-    static let reducer = Reducer<State, Action, Environment>.combine(
+    static let reducer = Reducer<State, Action, Void>.combine(
         YabaiSettings.reducer.pullback(
             state: \.yabaiSettings,
             action: /Action.yabaiSettings,
             environment: { _ in () }
         ),
-        Reducer { state, action, environment in
+        Reducer { state, action, _ in
             switch action {
             
             case let .yabaiSettings(subAction):
@@ -58,8 +53,7 @@ extension Yabai {
                 
             case .saveSettings:
                 switch state.encoder.genericEncodeState(
-                    state.yabaiSettings,
-                    url: environment.stateURL
+                    state.yabaiSettings
                 ) {
                 case .success:
                     state.error = .none
@@ -70,8 +64,7 @@ extension Yabai {
                 
             case .loadSettings:
                 switch state.encoder.genericDecodeSettings(
-                    state.yabaiSettings,
-                    url: environment.stateURL
+                    state.yabaiSettings
                 ) {
                 case let .success(decoded):
                     state.yabaiSettings = decoded
@@ -86,8 +79,7 @@ extension Yabai {
                 
             case .exportConfig:
                 switch state.encoder.genericExportConfig(
-                    state.yabaiSettings.asConfig,
-                    url: environment.configURL
+                    state.yabaiSettings.asConfig
                 ) {
                 case .success:
                     state.error = .none
@@ -104,6 +96,6 @@ extension Yabai {
     static let defaultStore = Store(
         initialState: .init(),
         reducer: reducer,
-        environment: .init()
+        environment: ()
     )
 }
