@@ -14,6 +14,7 @@ import SwiftShell
 struct SKHD {
     struct State: Equatable {
         var skhdSettings = SKHDSettings.State()
+        var encoder       = StateCoder<SKHDSettings.State>()
         var version      = run("/usr/local/bin/skhd", "-v").stdout
         var error: Error = .none
         
@@ -38,38 +39,6 @@ struct SKHD {
         
         let configURL = URL(fileURLWithPath: NSHomeDirectory())
             .appendingPathComponent("skhdrc")
-        
-        func encodeSKHDSettings(_ state: SKHDSettings.State) -> Result<Bool, Error> {
-            do {
-                try JSONEncoder()
-                    .encode(state)
-                    .write(to: stateURL)
-                return .success(true)
-            } catch {
-                return .failure(error)
-            }
-        }
-        func decodeSKHDSettings(_ state: SKHDSettings.State) -> Result<(SKHDSettings.State), Error> {
-            do {
-                let decoded = try JSONDecoder()
-                    .decode(SKHDSettings.State.self, from: Data(contentsOf: stateURL))
-                return .success(decoded)
-            }
-            catch {
-                return .failure(error)
-            }
-        }
-        func exportSKHDConfig(_ skhdSettingsState: SKHDSettings.State) -> Result<Bool, Error> {
-            do {
-                let data: String = skhdSettingsState.asConfig
-                try data.write(to: configURL, atomically: true, encoding: .utf8)
-                
-                return .success(true)
-            }
-            catch {
-                return .failure(error)
-            }
-        }
     }
 }
 
@@ -88,7 +57,7 @@ extension SKHD {
                 return Effect(value: .saveSettings)
                     
             case .saveSettings:
-                switch environment.encodeSKHDSettings(state.skhdSettings) {
+                switch state.encoder.genericEncodeState(state.skhdSettings, url: environment.stateURL) {
                 case .success:
                     state.error = .none
                 case let .failure(error):
@@ -97,7 +66,7 @@ extension SKHD {
                 return .none
                 
             case .loadSettings:
-                switch environment.decodeSKHDSettings(state.skhdSettings) {
+                switch state.encoder.genericDecodeSettings(state.skhdSettings, url: environment.stateURL) {
                 case let .success(decoded):
                     state.skhdSettings = decoded
                 case let .failure(error):
@@ -106,7 +75,7 @@ extension SKHD {
                 return .none
                 
             case .exportConfig:
-                switch environment.exportSKHDConfig(state.skhdSettings) {
+                switch state.encoder.genericExportConfig(state.skhdSettings.asConfig, url: environment.configURL) {
                 case .success:
                     state.error = .none
                 case let .failure(error):

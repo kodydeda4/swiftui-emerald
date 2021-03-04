@@ -14,6 +14,7 @@ import SwiftShell
 struct Animations {
     struct State: Equatable {
         var animationSettings = AnimationSettings.State()
+        var encoder           = StateCoder<AnimationSettings.State>()
         var error: Error      = .none
         
         enum Error {
@@ -37,38 +38,6 @@ struct Animations {
         
         let configURL = URL(fileURLWithPath: NSHomeDirectory())
             .appendingPathComponent(".animationSettingsRC.sh")
-        
-        func encodeSettings(_ state: AnimationSettings.State) -> Result<Bool, Error> {
-            do {
-                try JSONEncoder()
-                    .encode(state)
-                    .write(to: stateURL)
-                return .success(true)
-            } catch {
-                return .failure(error)
-            }
-        }
-        func decodeSettings(_ state: AnimationSettings.State) -> Result<(AnimationSettings.State), Error> {
-            do {
-                let decoded = try JSONDecoder()
-                    .decode(AnimationSettings.State.self, from: Data(contentsOf: stateURL))
-                return .success(decoded)
-            }
-            catch {
-                return .failure(error)
-            }
-        }
-        func exportConfig(_ animationSettingsState: AnimationSettings.State) -> Result<Bool, Error> {
-            do {
-                let data: String = animationSettingsState.asConfig
-                try data.write(to: configURL, atomically: true, encoding: .utf8)
-                
-                return .success(true)
-            }
-            catch {
-                return .failure(error)
-            }
-        }
     }
 }
 
@@ -85,7 +54,7 @@ extension Animations {
                 return Effect(value: .saveSettings)
                     
             case .saveSettings:
-                switch environment.encodeSettings(state.animationSettings) {
+                switch state.encoder.genericEncodeState(state.animationSettings, url: environment.stateURL) {
                 case .success:
                     state.error = .none
                 case let .failure(error):
@@ -94,7 +63,7 @@ extension Animations {
                 return .none
                 
             case .loadSettings:
-                switch environment.decodeSettings(state.animationSettings) {
+                switch state.encoder.genericDecodeSettings(state.animationSettings, url: environment.stateURL) {
                 case let .success(decoded):
                     state.animationSettings = decoded
                 case let .failure(error):
@@ -103,7 +72,7 @@ extension Animations {
                 return .none
                 
             case .exportConfig:
-                switch environment.exportConfig(state.animationSettings) {
+                switch state.encoder.genericExportConfig(state.animationSettings.asConfig, url: environment.configURL) {
                 case .success:
                     state.error = .none
                 case let .failure(error):

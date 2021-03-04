@@ -9,9 +9,7 @@ import SwiftUI
 import ComposableArchitecture
 import SwiftShell
 
-
 public struct StateCoder<State> where State: Encodable {
-    
     func genericEncodeState<State>(_ state: State, url: URL) -> Result<Bool, Error> where State : Encodable {
         do {
             try JSONEncoder()
@@ -22,7 +20,6 @@ public struct StateCoder<State> where State: Encodable {
             return .failure(error)
         }
     }
-    
     func genericDecodeSettings<State>(_ state: State, url: URL) -> Result<State, Error> where State : Decodable {
         do {
             let decoded = try JSONDecoder()
@@ -33,7 +30,6 @@ public struct StateCoder<State> where State: Encodable {
             return .failure(error)
         }
     }
-    
     func genericExportConfig(_ data: String, url: URL) -> Result<Bool, Error> {
         do {
             let data: String = data
@@ -45,14 +41,16 @@ public struct StateCoder<State> where State: Encodable {
             return .failure(error)
         }
     }
-    
-    
 }
+
+extension StateCoder: Equatable {}
+
 // Saves, Loads, & Exports Yabai Settings.
 
 struct Yabai {
     struct State: Equatable {
         var yabaiSettings = YabaiSettings.State()
+        var encoder       = StateCoder<YabaiSettings.State>()
         var version       = run("/usr/local/bin/yabai", "-v").stdout
         var error: Error  = .none
         
@@ -95,7 +93,7 @@ extension Yabai {
                 return Effect(value: .saveSettings)
                 
             case .saveSettings:
-                switch StateCoder<YabaiSettings.State>().genericEncodeState(state.yabaiSettings, url: environment.stateURL) {
+                switch state.encoder.genericEncodeState(state.yabaiSettings, url: environment.stateURL) {
                 case .success:
                     state.error = .none
                 case let .failure(error):
@@ -104,7 +102,7 @@ extension Yabai {
                 return .none
                 
             case .loadSettings:
-                switch StateCoder<YabaiSettings.State>().genericDecodeSettings(state.yabaiSettings, url: environment.stateURL) {
+                switch state.encoder.genericDecodeSettings(state.yabaiSettings, url: environment.stateURL) {
                 case let .success(decoded):
                     state.yabaiSettings = decoded
                 case let .failure(error):
@@ -117,7 +115,7 @@ extension Yabai {
                 return .none
                 
             case .exportConfig:
-                switch StateCoder<YabaiSettings.State>().genericExportConfig(state.yabaiSettings.asConfig, url: environment.configURL) {
+                switch state.encoder.genericExportConfig(state.yabaiSettings.asConfig, url: environment.configURL) {
                 case .success:
                     state.error = .none
                 case let .failure(error):
