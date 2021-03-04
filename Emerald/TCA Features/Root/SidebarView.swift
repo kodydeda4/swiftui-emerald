@@ -29,7 +29,7 @@ struct SidebarView: View {
                     }
                     NavigationLink(destination: MacOSAnimationSettingsView(
                         store: store
-                            .scope(state: \.animations, action: Root.Action.animations)
+                            .scope(state: \.macOSAnimations, action: Root.Action.macOSAnimations)
                     )) {
                         Label("Debug Animations", systemImage: "arrowtriangle.forward")
                     }

@@ -13,16 +13,16 @@ import SwiftUI
 
 struct Root {
     struct State: Equatable {
-        var yabai       = Yabai.State()
-        var skhd        = SKHD.State()
-        var animations  = MacOSAnimations.State()
-        var onboarding  = Onboarding.State()
-        var error       = DataManagerError.none
+        var yabai            = Yabai.State()
+        var skhd             = SKHD.State()
+        var macOSAnimations  = MacOSAnimations.State()
+        var onboarding       = Onboarding.State()
+        //var error: Error?    = nil
     }
     enum Action: Equatable {
         case yabai(Yabai.Action)
         case skhd(SKHD.Action)
-        case animations(MacOSAnimations.Action)
+        case macOSAnimations(MacOSAnimations.Action)
         case onboarding(Onboarding.Action)
         
         case saveState(CodableState)
@@ -34,36 +34,16 @@ struct Root {
         var yabaiVersion = run("/usr/local/bin/yabai", "-v").stdout
         var skhdVersion  = run("/usr/local/bin/skhd", "-v").stdout
         
-        func encodeState<State>(_ state: State, stateURL: URL) -> Result<Bool, Error> where State : Encodable {
-            do {
-                try JSONEncoder()
-                    .encode(state)
-                    .write(to: stateURL)
-                return .success(true)
-            } catch {
-                return .failure(error)
-            }
+        func encodeState<State>(_ state: State, url: URL) -> Result<Bool, Error> where State : Codable {
+            JSONEncoder().store(state, to: url)
         }
-        func decodeState<State>(_ state: State, stateURL: URL) -> Result<State, Error> where State : Decodable {
-            do {
-                let decoded = try JSONDecoder()
-                    .decode(type(of: state), from: Data(contentsOf: stateURL))
-                return .success(decoded)
-            }
-            catch {
-                return .failure(error)
-            }
+        
+        func decodeState<State>(_ state: State, url: URL) -> Result<State, Error> where State : Codable {
+            JSONDecoder().load(State.self, from: url)
         }
-        func exportConfig(_ data: String, configURL: URL) -> Result<Bool, Error> {
-            do {
-                let data: String = data
-                try data.write(to: configURL, atomically: true, encoding: .utf8)
-                
-                return .success(true)
-            }
-            catch {
-                return .failure(error)
-            }
+        
+        func exportConfig(_ data: String, url: URL) -> Result<Bool, Error> {
+            JSONDecoder().exportConfig("ConfigData", from: url)
         }
     }
 }
@@ -81,8 +61,8 @@ extension Root {
             environment: { _ in () }
         ),
         MacOSAnimations.reducer.pullback(
-            state: \.animations,
-            action: /Action.animations,
+            state: \.macOSAnimations,
+            action: /Action.macOSAnimations,
             environment: { _ in () }
         ),
         Onboarding.reducer.pullback(
@@ -98,8 +78,8 @@ extension Root {
             case let .skhd(subAction):
                 return Effect(value: .saveState(.skhd))
                 
-            case let .animations(subAction):
-                return Effect(value: .saveState(.animations))
+            case let .macOSAnimations(subAction):
+                return Effect(value: .saveState(.macOSAnimations))
 
             case .onboarding(_):
                 return .none
@@ -107,33 +87,33 @@ extension Root {
             case let .saveState(codableState):
                 switch codableState {
                 case .yabai:
-                    let _ = environment.encodeState(state.yabai, stateURL: CodableState.yabai.stateURL)
+                    let _ = environment.encodeState(state.yabai, url: CodableState.yabai.stateURL)
                 case .skhd:
-                    let _ = environment.encodeState(state.skhd, stateURL: CodableState.yabai.stateURL)
-                case .animations:
-                    let _ = environment.encodeState(state.animations, stateURL: CodableState.yabai.stateURL)
+                    let _ = environment.encodeState(state.skhd, url: CodableState.skhd.stateURL)
+                case .macOSAnimations:
+                    let _ = environment.encodeState(state.macOSAnimations, url: CodableState.macOSAnimations.stateURL)
                 }
                 return .none
                 
             case let .loadState(codableState):
                 switch codableState {
                 case .yabai:
-                    let _ = environment.decodeState(state.yabai, stateURL: CodableState.yabai.stateURL)
+                    let _ = environment.decodeState(state.yabai, url: CodableState.yabai.stateURL)
                 case .skhd:
-                    let _ = environment.decodeState(state.skhd, stateURL: CodableState.yabai.stateURL)
-                case .animations:
-                    let _ = environment.decodeState(state.animations, stateURL: CodableState.yabai.stateURL)
+                    let _ = environment.decodeState(state.skhd, url: CodableState.skhd.stateURL)
+                case .macOSAnimations:
+                    let _ = environment.decodeState(state.macOSAnimations, url: CodableState.yabai.stateURL)
                 }
                 return .none
 
             case let .exportConfig(codableState):
                 switch codableState {
                 case .yabai:
-                    let _ = environment.exportConfig(state.yabai.asConfig, configURL: CodableState.yabai.configURL)
+                    let _ = environment.exportConfig(state.yabai.asConfig, url: CodableState.yabai.configURL)
                 case .skhd:
-                    let _ = environment.exportConfig(state.skhd.asConfig, configURL: CodableState.skhd.configURL)
-                case .animations:
-                    let _ = environment.exportConfig(state.animations.asConfig, configURL: CodableState.animations.configURL)
+                    let _ = environment.exportConfig(state.skhd.asConfig, url: CodableState.skhd.configURL)
+                case .macOSAnimations:
+                    let _ = environment.exportConfig(state.macOSAnimations.asConfig, url: CodableState.macOSAnimations.configURL)
                 }
                 return .none
 
@@ -154,7 +134,7 @@ extension Root {
 enum CodableState {
     case yabai
     case skhd
-    case animations
+    case macOSAnimations
     
     var stateURL: URL {
         let homeURL = URL(fileURLWithPath: NSHomeDirectory())
@@ -164,7 +144,7 @@ enum CodableState {
             return homeURL.appendingPathComponent("YabaiState.json")
         case .skhd:
             return homeURL.appendingPathComponent("SKHDState.json")
-        case .animations:
+        case .macOSAnimations:
             return homeURL.appendingPathComponent("AnimationsState.json")
         }
     }
@@ -175,7 +155,7 @@ enum CodableState {
             return homeURL.appendingPathComponent("yabai")
         case .skhd:
             return homeURL.appendingPathComponent("skhd")
-        case .animations:
+        case .macOSAnimations:
             return homeURL.appendingPathComponent("animations")
         }
     }
