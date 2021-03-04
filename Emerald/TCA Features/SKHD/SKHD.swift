@@ -52,9 +52,7 @@ extension SKHD {
                 return Effect(value: .saveSettings)
                     
             case .saveSettings:
-                switch state.encoder.genericEncodeState(
-                    state.skhdSettings
-                ) {
+                switch state.encoder.genericEncodeState(state.skhdSettings) {
                 case .success:
                     state.error = .none
                 case let .failure(error):
@@ -63,9 +61,7 @@ extension SKHD {
                 return .none
                 
             case .loadSettings:
-                switch state.encoder.genericDecodeSettings(
-                    state.skhdSettings
-                ) {
+                switch state.encoder.genericDecodeSettings(state.skhdSettings) {
                 case let .success(decoded):
                     state.skhdSettings = decoded
                 case let .failure(error):
@@ -74,9 +70,7 @@ extension SKHD {
                 return .none
                 
             case .exportConfig:
-                switch state.encoder.genericExportConfig(
-                    state.skhdSettings.asConfig
-                ) {
+                switch state.encoder.genericExportConfig(state.skhdSettings.asConfig) {
                 case .success:
                     state.error = .none
                 case let .failure(error):

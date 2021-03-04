@@ -19,8 +19,8 @@ struct Yabai {
             configURLFilename: ".yabairc"
         )
         var version       = run("/usr/local/bin/yabai", "-v").stdout
-        var error: Error  = .none
         
+        var error: Error  = .none        
         enum Error {
             case saveSettings
             case loadSettings
@@ -52,9 +52,7 @@ extension Yabai {
                 return Effect(value: .saveSettings)
                 
             case .saveSettings:
-                switch state.encoder.genericEncodeState(
-                    state.yabaiSettings
-                ) {
+                switch state.encoder.genericEncodeState(state.yabaiSettings) {
                 case .success:
                     state.error = .none
                 case let .failure(error):
@@ -63,9 +61,7 @@ extension Yabai {
                 return .none
                 
             case .loadSettings:
-                switch state.encoder.genericDecodeSettings(
-                    state.yabaiSettings
-                ) {
+                switch state.encoder.genericDecodeSettings(state.yabaiSettings) {
                 case let .success(decoded):
                     state.yabaiSettings = decoded
                 case let .failure(error):
@@ -78,9 +74,7 @@ extension Yabai {
                 return .none
                 
             case .exportConfig:
-                switch state.encoder.genericExportConfig(
-                    state.yabaiSettings.asConfig
-                ) {
+                switch state.encoder.genericExportConfig(state.yabaiSettings.asConfig) {
                 case .success:
                     state.error = .none
                 case let .failure(error):
