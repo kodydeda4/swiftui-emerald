@@ -6,12 +6,18 @@
 //
 
 import ComposableArchitecture
+import SwiftShell
 
 struct DataManager {
     struct State: Equatable {
         var yabaiSettings = YabaiSettings.State()
         var skhdSettings = SKHDSettings.State()
         var animationSettings = AnimationSettings.State()
+        
+        var yabaiVersion : String = run("/usr/local/bin/yabai", "-v").stdout
+        var skhdVersion  : String = run("/usr/local/bin/skhd", "-v").stdout
+        var brewVersion  : String = run("/usr/local/bin/brew", "-v").stdout
+        
         var error: Error = .none
         
         enum Error {

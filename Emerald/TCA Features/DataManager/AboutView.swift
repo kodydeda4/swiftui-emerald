@@ -9,7 +9,7 @@ import SwiftUI
 import ComposableArchitecture
 
 struct AboutView: View {
-    let store: Store<Root.State, Root.Action>
+    let store: Store<DataManager.State, DataManager.Action>
     
     var body: some View {
         WithViewStore(store) { viewStore in
@@ -45,12 +45,6 @@ struct AboutView: View {
                         .foregroundColor(.gray)
                         .lineLimit(1)
                 }
-                VStack(alignment: .leading) {
-                    Text("WhoAmI")
-                    Text(viewStore.whoAmI)
-                        .foregroundColor(.gray)
-                        .lineLimit(1)
-                }
             }
             .navigationTitle("About")
         }
@@ -59,6 +53,6 @@ struct AboutView: View {
 
 struct AboutView_Previews: PreviewProvider {
     static var previews: some View {
-        AboutView(store: Root.defaultStore)
+        AboutView(store: DataManager.defaultStore)
     }
 }

@@ -6,20 +6,12 @@
 //
 
 import ComposableArchitecture
-import SwiftShell
 
 struct Root {
     struct State: Equatable {
-        var dataManager   = DataManager.State()
-        var onboarding    = Onboarding.State()
-
-        var yabaiVersion : String = run("/usr/local/bin/yabai", "-v").stdout
-        var skhdVersion  : String = run("/usr/local/bin/skhd", "-v").stdout
-        var brewVersion  : String = run("/usr/local/bin/brew", "-v").stdout
-        
-        var whoAmI : String = run("/usr/bin/whoami").stdout
+        var dataManager = DataManager.State()
+        var onboarding  = Onboarding.State()
     }
-
     enum Action: Equatable {
         case dataManager(DataManager.Action)
         case onboarding(Onboarding.Action)
@@ -37,15 +29,7 @@ extension Root {
             state: \.onboarding,
             action: /Root.Action.onboarding,
             environment: { _ in () }
-        ),
-        Reducer { state, action, environment in
-            switch action {
-            case .dataManager(_):
-                return .none
-            case .onboarding(_):
-                return .none
-            }
-        }        
+        )
     )
 }
 

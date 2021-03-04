@@ -10,7 +10,7 @@ import ComposableArchitecture
 
 struct SidebarView: View {
     let store: Store<Root.State, Root.Action>
-    
+
     var body: some View {
         WithViewStore(store) { viewStore in
             List {
@@ -34,29 +34,23 @@ struct SidebarView: View {
                             .scope(state: \.dataManager, action: Root.Action.dataManager)
                             .scope(state: \.animationSettings, action: DataManager.Action.animationSettings)
                     )) {
-                        Label("Animations Debug", systemImage: "keyboard")
+                        Label("Animations Debug", systemImage: "arrowtriangle.forward")
                     }
-                    NavigationLink(destination: SipInfoView()) {
-                        Label("System Integrity Protection", systemImage: "keyboard")
+                    NavigationLink(destination: SystemIntegrityProtectionView()) {
+                        Label("System Integrity Protection", systemImage: "lock.circle")
                     }
                 }
                 Divider()
-                NavigationLink(destination: AboutView(store: store)) {
+                NavigationLink(destination: AboutView(
+                    store: store
+                        .scope(state: \.dataManager, action: Root.Action.dataManager)
+                )) {
                     Label("About", systemImage: "gear")
                 }
             }
         }
         .listStyle(SidebarListStyle())
     }
-}
-
-func toggleSidebar() {
-    NSApp.keyWindow?
-        .firstResponder?
-        .tryToPerform(
-            #selector(NSSplitViewController.toggleSidebar),
-            with: nil
-        )
 }
 
 // MARK:- SwiftUI Previews

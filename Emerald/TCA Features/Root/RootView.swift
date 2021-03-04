@@ -15,27 +15,24 @@ struct RootView: View {
         WithViewStore(store) { viewStore in
             NavigationView {
                 SidebarView(store: store)
+                
                 Text("Welcome Page")
                     .font(.largeTitle)
                     .foregroundColor(Color(NSColor.placeholderTextColor))
             }
-            
             .onAppear {
                 viewStore.send(.dataManager(.loadYabaiSettings))
                 viewStore.send(.dataManager(.loadSKHDSettings))
                 viewStore.send(.dataManager(.loadAnimationSettings))
-                
             }
-            .sheet(isPresented:
+            .sheet(
+                isPresented:
                     viewStore.binding(
                         get: \.onboarding.isOnboaring,
                         send: Root.Action.onboarding(.toggleIsOnboaring))
             ) {
                 OnboardingView(
-                    store: store.scope(
-                        state: \.onboarding,
-                        action: Root.Action.onboarding
-                    )
+                    store: store.scope(state: \.onboarding, action: Root.Action.onboarding)
                 )
             }
             .toolbar {

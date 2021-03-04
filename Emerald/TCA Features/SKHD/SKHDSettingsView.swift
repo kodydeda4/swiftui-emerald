@@ -16,7 +16,7 @@ struct SKHDSettingsView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             HStack {
-                ConfigFileView(text: viewStore.asConfig)
+                DebugConfigFileView(text: viewStore.asConfig)
                 
                 ScrollView {
                     SectionView("Section A") {
