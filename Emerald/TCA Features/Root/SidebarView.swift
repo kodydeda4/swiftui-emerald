@@ -27,7 +27,7 @@ struct SidebarView: View {
                     )) {
                         Label("Debug SKHD", systemImage: "keyboard")
                     }
-                    NavigationLink(destination: AnimationSettingsView(
+                    NavigationLink(destination: MacOSAnimationSettingsView(
                         store: store
                             .scope(state: \.animations, action: Root.Action.animations)
                     )) {

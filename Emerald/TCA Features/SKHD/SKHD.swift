@@ -1,76 +1,109 @@
 //
-//  SKHD.swift
+//  SKHDSettings.swift
 //  Emerald
 //
-//  Created by Kody Deda on 3/3/21.
+//  Created by Kody Deda on 2/17/21.
 //
 
-import SwiftUI
 import ComposableArchitecture
-import SwiftShell
+import KeyboardShortcuts
 
-// Saves, Loads, & Exports SKHD Settings.
-//
-//struct SKHD {
-//    struct State: Equatable {
-//        var error: DataManagerError  = .none
-//        var dataManager = DataManager<SKHDSettings.State>(
-//            stateFilename: "SKHDState.json",
-//            configFilename: "skhdrc"
-//        )
-//    }
-//    enum Action: Equatable {
-//        case skhdSettings(SKHDSettings.Action)
-//        case saveState
-//        case loadState
-//        case exportConfig
-//    }
-//}
-//
-//extension SKHD {
-//    static let reducer = Reducer<State, Action, Void>.combine(
-//
-//        Reducer { state, action, environment in
-//            switch action {
-//            
-//            case let .skhdSettings(subAction):
-//                return Effect(value: .saveState)
-//                    
-//            case .saveState:
-//                switch state.dataManager.encodeState(state.skhdSettings) {
-//                case .success:
-//                    state.error = .none
-//                case let .failure(error):
-//                    state.error = .encodeState
-//                }
-//                return .none
-//                
-//            case .loadState:
-//                switch state.dataManager.decodeState(state.skhdSettings) {
-//                case let .success(decoded):
-//                    state.skhdSettings = decoded
-//                case let .failure(error):
-//                    state.error = .decodeState
-//                }
-//                return .none
-//                
-//            case .exportConfig:
-//                switch state.dataManager.exportConfig(state.skhdSettings.asConfig) {
-//                case .success:
-//                    state.error = .none
-//                case let .failure(error):
-//                    state.error = .exportConfig
-//                }
-//                return .none            
-//            }
-//        }
-//    )
-//}
-//
-//extension SKHD {
-//    static let defaultStore = Store(
-//        initialState: .init(),
-//        reducer: reducer,
-//        environment: ()
-//    )
-//}
+extension KeyboardShortcuts.Name {
+    static let restartYabai   = Self("restartYabai")
+    static let togglePadding  = Self("togglePadding")
+    static let toggleGaps     = Self("toggleGaps")
+    static let toggleSplit    = Self("toggleSplit")
+    static let toggleBalance  = Self("toggleBalance")
+    static let toggleStacking = Self("toggleStacking")
+    static let toggleFloating = Self("toggleFloating")
+    static let toggleBSP      = Self("toggleBSP")
+}
+
+struct SKHD {
+    struct State: Equatable, Codable {
+        var restartYabai           = KeyboardShortcuts.getShortcut(for: .restartYabai)
+        var togglePaddingShortcut  = KeyboardShortcuts.getShortcut(for: .togglePadding)
+        var toggleGapsShortcut     = KeyboardShortcuts.getShortcut(for: .toggleGaps)
+        var toggleSplitShortcut    = KeyboardShortcuts.getShortcut(for: .toggleSplit)
+        var toggleBalanceShortcut  = KeyboardShortcuts.getShortcut(for: .toggleBalance)
+        var toggleStackingShortcut = KeyboardShortcuts.getShortcut(for: .toggleStacking)
+        var toggleFloatingShortcut = KeyboardShortcuts.getShortcut(for: .toggleFloating)
+        var toggleBSPShortcut      = KeyboardShortcuts.getShortcut(for: .toggleBSP)
+
+        var myText: String = "Nothin"
+
+    }
+    enum Action: Equatable {
+        case updateRestartYabai(KeyboardShortcuts.Shortcut?)
+        case updateTogglePadding(KeyboardShortcuts.Shortcut?)
+        case updateToggleGaps(KeyboardShortcuts.Shortcut?)
+        case updateToggleSplit(KeyboardShortcuts.Shortcut?)
+        case updateToggleBalance(KeyboardShortcuts.Shortcut?)
+        case updateToggleStacking(KeyboardShortcuts.Shortcut?)
+        case updateToggleFloating(KeyboardShortcuts.Shortcut?)
+        case updateToggleBSP(KeyboardShortcuts.Shortcut?)
+        case keyPath(BindingAction<SKHD.State>)
+    }
+}
+
+extension SKHD {
+    static let reducer = Reducer<State, Action, Void> {
+        state, action, _ in
+        switch action {
+        case .keyPath:
+            return .none
+            
+        case let .updateRestartYabai(shortcut):
+            state.restartYabai = shortcut
+            return .none
+            
+        case let .updateTogglePadding(shortcut):
+            state.togglePaddingShortcut = shortcut
+            return .none
+            
+        case let .updateToggleGaps(shortcut):
+            state.toggleGapsShortcut = shortcut
+            return .none
+            
+        case let .updateToggleSplit(shortcut):
+            state.toggleSplitShortcut = shortcut
+            return .none
+
+        case let .updateToggleBalance(shortcut):
+            state.toggleBalanceShortcut = shortcut
+            return .none
+
+        case let .updateToggleStacking(shortcut):
+            state.toggleStackingShortcut = shortcut
+            return .none
+
+        case let .updateToggleFloating(shortcut):
+            state.toggleFloatingShortcut = shortcut
+            return .none
+
+        case let .updateToggleBSP(shortcut):
+            state.toggleBSPShortcut = shortcut
+            return .none
+
+        }
+    }
+    .binding(action: /Action.keyPath)
+}
+
+extension SKHD {
+    static let defaultStore = Store(
+        initialState: .init(),
+        reducer: reducer,
+        environment: ()
+    )
+}
+
+func skhd(_ shortcut: KeyboardShortcuts.Shortcut?) -> String {
+    shortcut?.description
+        .compactMap { SKHDShortcutCharacter(rawValue: $0)!.configFile }
+        .joined(separator: " + ") ?? "# UNASSIGNED"
+}
+
+
+
+

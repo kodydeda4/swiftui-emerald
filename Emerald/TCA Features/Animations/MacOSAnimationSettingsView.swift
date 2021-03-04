@@ -9,7 +9,7 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct AnimationSettingsView: View {
+struct MacOSAnimationSettingsView: View {
     let store: Store<MacOSAnimations.State, MacOSAnimations.Action>
     let keyPath = MacOSAnimations.Action.keyPath
     
@@ -31,10 +31,10 @@ struct AnimationSettingsView: View {
     }
 }
 
-// MARK:- AnimationSettingsView_Previews
+// MARK:- SwiftUI Previews
 
-struct AnimationSettingsView_Previews: PreviewProvider {
+struct MacOSAnimationSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        AnimationSettingsView(store: MacOSAnimations.defaultStore)
+        MacOSAnimationSettingsView(store: MacOSAnimations.defaultStore)
     }
 }

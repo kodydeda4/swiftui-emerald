@@ -11,16 +11,14 @@
 		3325BFD125EFCEC4007831C5 /* OmenTextField in Frameworks */ = {isa = PBXBuildFile; productRef = 3325BFD025EFCEC4007831C5 /* OmenTextField */; };
 		3325BFD525F05041007831C5 /* RoundedRectangleButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3325BFD425F05041007831C5 /* RoundedRectangleButtonStyle.swift */; };
 		332D567D25DEED5300C88FEE /* MacOSAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D567C25DEED5300C88FEE /* MacOSAnimations.swift */; };
-		332D568625DEEF7800C88FEE /* AnimationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D568525DEEF7800C88FEE /* AnimationSettingsView.swift */; };
+		332D568625DEEF7800C88FEE /* MacOSAnimationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D568525DEEF7800C88FEE /* MacOSAnimationSettingsView.swift */; };
 		333631F825EEE6B9009FEB32 /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = 333631F725EEE6B9009FEB32 /* DynamicColor */; };
 		333631FB25EEF0CD009FEB32 /* CodableColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333631FA25EEF0CD009FEB32 /* CodableColor.swift */; };
 		3336320025EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333631FF25EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift */; };
-		33387D6525D3F64300E76D29 /* YabaiSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33387D6425D3F64300E76D29 /* YabaiSettings.swift */; };
-		3341B01125F06FF300833B56 /* YabaiSettingsConfigFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B01025F06FF300833B56 /* YabaiSettingsConfigFile.swift */; };
-		3341B01425F0700B00833B56 /* SKHDSettingsConfigFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B01325F0700B00833B56 /* SKHDSettingsConfigFile.swift */; };
-		3341B01725F0702C00833B56 /* AnimationSettingsConfigFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B01625F0702C00833B56 /* AnimationSettingsConfigFile.swift */; };
-		3341B02125F077F600833B56 /* Yabai.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B02025F077F600833B56 /* Yabai.swift */; };
-		3341B02425F0796200833B56 /* SKHD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B02325F0796200833B56 /* SKHD.swift */; };
+		33387D6525D3F64300E76D29 /* Yabai.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33387D6425D3F64300E76D29 /* Yabai.swift */; };
+		3341B01125F06FF300833B56 /* YabaiConfigFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B01025F06FF300833B56 /* YabaiConfigFile.swift */; };
+		3341B01425F0700B00833B56 /* SKHDConfigFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B01325F0700B00833B56 /* SKHDConfigFile.swift */; };
+		3341B01725F0702C00833B56 /* MacOSAnimationSettingsConfigFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B01625F0702C00833B56 /* MacOSAnimationSettingsConfigFile.swift */; };
 		335E78D625F117D700C8839B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335E78D525F117D700C8839B /* DataManager.swift */; };
 		3361CDF725D44AEC0086F6A7 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */; };
 		3361CF1125E6EF1300016875 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CF0E25E6EF1300016875 /* SectionView.swift */; };
@@ -34,10 +32,10 @@
 		3380D33725D0723000C10913 /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380D33625D0723000C10913 /* Root.swift */; };
 		3385DF6725D6270B00ACDE21 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3385DF6625D6270B00ACDE21 /* SidebarView.swift */; };
 		3385DF6A25D6279200ACDE21 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3385DF6925D6279200ACDE21 /* AboutView.swift */; };
-		3385DF6D25D628BF00ACDE21 /* YabaiSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3385DF6C25D628BF00ACDE21 /* YabaiSettingsView.swift */; };
+		3385DF6D25D628BF00ACDE21 /* YabaiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3385DF6C25D628BF00ACDE21 /* YabaiView.swift */; };
 		3385DF7025D6361200ACDE21 /* AppleScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3385DF6F25D6361200ACDE21 /* AppleScript.swift */; };
-		3398838C25DD7A1D007B9FF5 /* SKHDSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398838B25DD7A1D007B9FF5 /* SKHDSettings.swift */; };
-		3398838F25DD7DC3007B9FF5 /* SKHDSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398838E25DD7DC3007B9FF5 /* SKHDSettingsView.swift */; };
+		3398838C25DD7A1D007B9FF5 /* SKHD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398838B25DD7A1D007B9FF5 /* SKHD.swift */; };
+		3398838F25DD7DC3007B9FF5 /* SKHDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398838E25DD7DC3007B9FF5 /* SKHDView.swift */; };
 		3398839925DD9929007B9FF5 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 3398839825DD9929007B9FF5 /* KeyboardShortcuts */; };
 		339C453125D6ECCA0079ACA1 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C453025D6ECCA0079ACA1 /* RootView.swift */; };
 		339C453525D6ED0F0079ACA1 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C453425D6ED0F0079ACA1 /* OnboardingView.swift */; };
@@ -47,15 +45,13 @@
 /* Begin PBXFileReference section */
 		3325BFD425F05041007831C5 /* RoundedRectangleButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleButtonStyle.swift; sourceTree = "<group>"; };
 		332D567C25DEED5300C88FEE /* MacOSAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSAnimations.swift; sourceTree = "<group>"; };
-		332D568525DEEF7800C88FEE /* AnimationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationSettingsView.swift; sourceTree = "<group>"; };
+		332D568525DEEF7800C88FEE /* MacOSAnimationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSAnimationSettingsView.swift; sourceTree = "<group>"; };
 		333631FA25EEF0CD009FEB32 /* CodableColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableColor.swift; sourceTree = "<group>"; };
 		333631FF25EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemIntegrityProtectionView.swift; sourceTree = "<group>"; };
-		33387D6425D3F64300E76D29 /* YabaiSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiSettings.swift; sourceTree = "<group>"; };
-		3341B01025F06FF300833B56 /* YabaiSettingsConfigFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiSettingsConfigFile.swift; sourceTree = "<group>"; };
-		3341B01325F0700B00833B56 /* SKHDSettingsConfigFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHDSettingsConfigFile.swift; sourceTree = "<group>"; };
-		3341B01625F0702C00833B56 /* AnimationSettingsConfigFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationSettingsConfigFile.swift; sourceTree = "<group>"; };
-		3341B02025F077F600833B56 /* Yabai.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yabai.swift; sourceTree = "<group>"; };
-		3341B02325F0796200833B56 /* SKHD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHD.swift; sourceTree = "<group>"; };
+		33387D6425D3F64300E76D29 /* Yabai.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yabai.swift; sourceTree = "<group>"; };
+		3341B01025F06FF300833B56 /* YabaiConfigFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiConfigFile.swift; sourceTree = "<group>"; };
+		3341B01325F0700B00833B56 /* SKHDConfigFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHDConfigFile.swift; sourceTree = "<group>"; };
+		3341B01625F0702C00833B56 /* MacOSAnimationSettingsConfigFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSAnimationSettingsConfigFile.swift; sourceTree = "<group>"; };
 		335E78D525F117D700C8839B /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		3361CF0E25E6EF1300016875 /* SectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
@@ -71,10 +67,10 @@
 		3380D33625D0723000C10913 /* Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Root.swift; sourceTree = "<group>"; };
 		3385DF6625D6270B00ACDE21 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		3385DF6925D6279200ACDE21 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
-		3385DF6C25D628BF00ACDE21 /* YabaiSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiSettingsView.swift; sourceTree = "<group>"; };
+		3385DF6C25D628BF00ACDE21 /* YabaiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiView.swift; sourceTree = "<group>"; };
 		3385DF6F25D6361200ACDE21 /* AppleScript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleScript.swift; sourceTree = "<group>"; };
-		3398838B25DD7A1D007B9FF5 /* SKHDSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHDSettings.swift; sourceTree = "<group>"; };
-		3398838E25DD7DC3007B9FF5 /* SKHDSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHDSettingsView.swift; sourceTree = "<group>"; };
+		3398838B25DD7A1D007B9FF5 /* SKHD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHD.swift; sourceTree = "<group>"; };
+		3398838E25DD7DC3007B9FF5 /* SKHDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHDView.swift; sourceTree = "<group>"; };
 		339C453025D6ECCA0079ACA1 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		339C453425D6ED0F0079ACA1 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		33B62D2825D5E31400DD5934 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
@@ -100,8 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				332D567C25DEED5300C88FEE /* MacOSAnimations.swift */,
-				332D568525DEEF7800C88FEE /* AnimationSettingsView.swift */,
-				3341B01625F0702C00833B56 /* AnimationSettingsConfigFile.swift */,
+				332D568525DEEF7800C88FEE /* MacOSAnimationSettingsView.swift */,
+				3341B01625F0702C00833B56 /* MacOSAnimationSettingsConfigFile.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -212,10 +208,9 @@
 		33DEDCB925DDBC51001582DC /* Yabai */ = {
 			isa = PBXGroup;
 			children = (
-				3341B02025F077F600833B56 /* Yabai.swift */,
-				33387D6425D3F64300E76D29 /* YabaiSettings.swift */,
-				3385DF6C25D628BF00ACDE21 /* YabaiSettingsView.swift */,
-				3341B01025F06FF300833B56 /* YabaiSettingsConfigFile.swift */,
+				33387D6425D3F64300E76D29 /* Yabai.swift */,
+				3385DF6C25D628BF00ACDE21 /* YabaiView.swift */,
+				3341B01025F06FF300833B56 /* YabaiConfigFile.swift */,
 			);
 			path = Yabai;
 			sourceTree = "<group>";
@@ -223,10 +218,9 @@
 		33DEDCBA25DDBC67001582DC /* SKHD */ = {
 			isa = PBXGroup;
 			children = (
-				3341B02325F0796200833B56 /* SKHD.swift */,
-				3398838B25DD7A1D007B9FF5 /* SKHDSettings.swift */,
-				3398838E25DD7DC3007B9FF5 /* SKHDSettingsView.swift */,
-				3341B01325F0700B00833B56 /* SKHDSettingsConfigFile.swift */,
+				3398838B25DD7A1D007B9FF5 /* SKHD.swift */,
+				3398838E25DD7DC3007B9FF5 /* SKHDView.swift */,
+				3341B01325F0700B00833B56 /* SKHDConfigFile.swift */,
 			);
 			path = SKHD;
 			sourceTree = "<group>";
@@ -316,30 +310,28 @@
 			files = (
 				335E78D625F117D700C8839B /* DataManager.swift in Sources */,
 				3385DF6A25D6279200ACDE21 /* AboutView.swift in Sources */,
-				3341B02425F0796200833B56 /* SKHD.swift in Sources */,
 				3361CF1325E6EF1300016875 /* SpecialTextView.swift in Sources */,
 				3361CDF725D44AEC0086F6A7 /* URL+Extensions.swift in Sources */,
 				3361CF1125E6EF1300016875 /* SectionView.swift in Sources */,
-				3341B02125F077F600833B56 /* Yabai.swift in Sources */,
-				3341B01125F06FF300833B56 /* YabaiSettingsConfigFile.swift in Sources */,
+				3341B01125F06FF300833B56 /* YabaiConfigFile.swift in Sources */,
 				33B62D2925D5E31400DD5934 /* Onboarding.swift in Sources */,
-				3385DF6D25D628BF00ACDE21 /* YabaiSettingsView.swift in Sources */,
+				3385DF6D25D628BF00ACDE21 /* YabaiView.swift in Sources */,
 				3325BFD525F05041007831C5 /* RoundedRectangleButtonStyle.swift in Sources */,
-				33387D6525D3F64300E76D29 /* YabaiSettings.swift in Sources */,
+				33387D6525D3F64300E76D29 /* Yabai.swift in Sources */,
 				3361CF1225E6EF1300016875 /* DebugConfigFileView.swift in Sources */,
-				3398838C25DD7A1D007B9FF5 /* SKHDSettings.swift in Sources */,
-				3398838F25DD7DC3007B9FF5 /* SKHDSettingsView.swift in Sources */,
+				3398838C25DD7A1D007B9FF5 /* SKHD.swift in Sources */,
+				3398838F25DD7DC3007B9FF5 /* SKHDView.swift in Sources */,
 				3380D2FF25D05F4200C10913 /* EmeraldApp.swift in Sources */,
-				332D568625DEEF7800C88FEE /* AnimationSettingsView.swift in Sources */,
+				332D568625DEEF7800C88FEE /* MacOSAnimationSettingsView.swift in Sources */,
 				3380D33725D0723000C10913 /* Root.swift in Sources */,
 				3385DF6725D6270B00ACDE21 /* SidebarView.swift in Sources */,
 				339C453525D6ED0F0079ACA1 /* OnboardingView.swift in Sources */,
 				337F3ABE25DEC897009155CA /* SKHDShortcutCharacter.swift in Sources */,
-				3341B01725F0702C00833B56 /* AnimationSettingsConfigFile.swift in Sources */,
+				3341B01725F0702C00833B56 /* MacOSAnimationSettingsConfigFile.swift in Sources */,
 				333631FB25EEF0CD009FEB32 /* CodableColor.swift in Sources */,
 				3385DF7025D6361200ACDE21 /* AppleScript.swift in Sources */,
 				3336320025EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift in Sources */,
-				3341B01425F0700B00833B56 /* SKHDSettingsConfigFile.swift in Sources */,
+				3341B01425F0700B00833B56 /* SKHDConfigFile.swift in Sources */,
 				332D567D25DEED5300C88FEE /* MacOSAnimations.swift in Sources */,
 				339C453125D6ECCA0079ACA1 /* RootView.swift in Sources */,
 			);
