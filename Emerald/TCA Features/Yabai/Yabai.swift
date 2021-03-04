@@ -9,6 +9,45 @@ import SwiftUI
 import ComposableArchitecture
 import SwiftShell
 
+
+public struct StateCoder<State> where State: Encodable {
+    
+    func genericEncodeState<State>(_ state: State, url: URL) -> Result<Bool, Error> where State : Encodable {
+        do {
+            try JSONEncoder()
+                .encode(state)
+                .write(to: url)
+            return .success(true)
+        } catch {
+            return .failure(error)
+        }
+    }
+    
+    func genericDecodeSettings<State>(_ state: State, url: URL) -> Result<State, Error> where State : Decodable {
+        do {
+            let decoded = try JSONDecoder()
+                .decode(type(of: state), from: Data(contentsOf: url))
+            return .success(decoded)
+        }
+        catch {
+            return .failure(error)
+        }
+    }
+    
+    func genericExportConfig(_ data: String, url: URL) -> Result<Bool, Error> {
+        do {
+            let data: String = data
+            try data.write(to: url, atomically: true, encoding: .utf8)
+            
+            return .success(true)
+        }
+        catch {
+            return .failure(error)
+        }
+    }
+    
+    
+}
 // Saves, Loads, & Exports Yabai Settings.
 
 struct Yabai {
@@ -39,38 +78,6 @@ struct Yabai {
         
         let configURL = URL(fileURLWithPath: NSHomeDirectory())
             .appendingPathComponent(".yabairc")
-        
-        func encodeSettings(_ state: YabaiSettings.State) -> Result<Bool, Error> {
-            do {
-                try JSONEncoder()
-                    .encode(state)
-                    .write(to: stateURL)
-                return .success(true)
-            } catch {
-                return .failure(error)
-            }
-        }
-        func decodeSettings(_ state: YabaiSettings.State) -> Result<(YabaiSettings.State), Error> {
-            do {
-                let decoded = try JSONDecoder()
-                    .decode(YabaiSettings.State.self, from: Data(contentsOf: stateURL))
-                return .success(decoded)
-            }
-            catch {
-                return .failure(error)
-            }
-        }
-        func exportConfig(_ yabaiSettingsState: YabaiSettings.State) -> Result<Bool, Error> {
-            do {
-                let data: String = yabaiSettingsState.asConfig
-                try data.write(to: configURL, atomically: true, encoding: .utf8)
-                
-                return .success(true)
-            }
-            catch {
-                return .failure(error)
-            }
-        }
     }
 }
 
@@ -88,7 +95,7 @@ extension Yabai {
                 return Effect(value: .saveSettings)
                 
             case .saveSettings:
-                switch environment.encodeSettings(state.yabaiSettings) {
+                switch StateCoder<YabaiSettings.State>().genericEncodeState(state.yabaiSettings, url: environment.stateURL) {
                 case .success:
                     state.error = .none
                 case let .failure(error):
@@ -97,7 +104,7 @@ extension Yabai {
                 return .none
                 
             case .loadSettings:
-                switch environment.decodeSettings(state.yabaiSettings) {
+                switch StateCoder<YabaiSettings.State>().genericDecodeSettings(state.yabaiSettings, url: environment.stateURL) {
                 case let .success(decoded):
                     state.yabaiSettings = decoded
                 case let .failure(error):
@@ -110,7 +117,7 @@ extension Yabai {
                 return .none
                 
             case .exportConfig:
-                switch environment.exportConfig(state.yabaiSettings) {
+                switch StateCoder<YabaiSettings.State>().genericExportConfig(state.yabaiSettings.asConfig, url: environment.configURL) {
                 case .success:
                     state.error = .none
                 case let .failure(error):
