@@ -44,17 +44,17 @@ struct Root {
             var stateURL: URL {
                 let homeURL = URL(fileURLWithPath: NSHomeDirectory())
                 switch self {
-                case .yabai           : return homeURL.appendingPathComponent("YabaiState.json")
-                case .skhd            : return homeURL.appendingPathComponent("SKHDState.json")
-                case .macOSAnimations : return homeURL.appendingPathComponent("AnimationsState.json")
+                    case .yabai           : return homeURL.appendingPathComponent("YabaiState.json")
+                    case .skhd            : return homeURL.appendingPathComponent("SKHDState.json")
+                    case .macOSAnimations : return homeURL.appendingPathComponent("AnimationsState.json")
                 }
             }
             var configURL: URL {
                 let homeURL = URL(fileURLWithPath: NSHomeDirectory())
                 switch self {
-                case .yabai           : return homeURL.appendingPathComponent(".yabairc")
-                case .skhd            : return homeURL.appendingPathComponent(".skhdrc")
-                case .macOSAnimations : return homeURL.appendingPathComponent(".macOSAnimationsRC.sh")
+                    case .yabai           : return homeURL.appendingPathComponent(".yabairc")
+                    case .skhd            : return homeURL.appendingPathComponent(".skhdrc")
+                    case .macOSAnimations : return homeURL.appendingPathComponent(".macOSAnimationsRC.sh")
                 }
             }
         }
