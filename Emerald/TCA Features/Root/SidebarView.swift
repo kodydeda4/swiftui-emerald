@@ -10,37 +10,53 @@ import ComposableArchitecture
 
 struct SidebarView: View {
     let store: Store<Root.State, Root.Action>
-
+    
     var body: some View {
         WithViewStore(store) { viewStore in
             List {
                 Section(header: Text("Debug")) {
-                    NavigationLink(destination: YabaiSettingsView(
-                        store: store
-                            .scope(state: \.yabai, action: Root.Action.yabai)
-                    )) {
+                    NavigationLink(
+                        destination: YabaiSettingsView(
+                            store: store.scope(
+                                state: \.yabai,
+                                action: Root.Action.yabai
+                            )
+                        )
+                    ) {
                         Label("Debug Yabai", systemImage: "terminal")
                     }
-                    NavigationLink(destination: SKHDSettingsView(
-                        store: store
-                            .scope(state: \.skhd, action: Root.Action.skhd)
-                    )) {
+                    NavigationLink(
+                        destination: SKHDSettingsView(
+                            store: store.scope(
+                                state: \.skhd,
+                                action: Root.Action.skhd
+                            )
+                        )
+                    ) {
                         Label("Debug SKHD", systemImage: "keyboard")
                     }
-                    NavigationLink(destination: MacOSAnimationSettingsView(
-                        store: store
-                            .scope(state: \.macOSAnimations, action: Root.Action.macOSAnimations)
-                    )) {
+                    NavigationLink(
+                        destination: MacOSAnimationSettingsView(
+                            store: store.scope(
+                                state: \.macOSAnimations,
+                                action: Root.Action.macOSAnimations
+                            )
+                        )
+                    ) {
                         Label("Debug Animations", systemImage: "arrowtriangle.forward")
                     }
-                    NavigationLink(destination: SystemIntegrityProtectionView()) {
+                    NavigationLink(
+                        destination: SystemIntegrityProtectionView()
+                    ) {
                         Label("System Integrity Protection", systemImage: "lock.circle")
                     }
                 }
                 Divider()
-                NavigationLink(destination: AboutView(
-                    store: store
-                )) {
+                NavigationLink(
+                    destination: AboutView(
+                        store: store
+                    )
+                ) {
                     Label("About", systemImage: "gear")
                 }
             }

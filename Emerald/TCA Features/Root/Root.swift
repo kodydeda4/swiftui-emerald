@@ -5,12 +5,9 @@
 //  Created by Kody Deda on 2/7/21.
 //
 
-import ComposableArchitecture
 import SwiftShell
 import SwiftUI
-
-// Optimal Solution ???
-// modifier on the reducer - if state is codable, it saves/loads state automatically
+import ComposableArchitecture
 
 struct Root {
     struct State: Equatable {
@@ -18,10 +15,11 @@ struct Root {
         var skhd             = SKHD.State()
         var macOSAnimations  = MacOSAnimations.State()
         var onboarding       = Onboarding.State()
-        var error            = ""
+        
         var yabaiVersion     = run("/usr/local/bin/yabai", "-v").stdout
         var skhdVersion      = run("/usr/local/bin/skhd", "-v").stdout
         var homebrewVersion  = run("/usr/local/bin/brew", "-v").stdout
+        var error            = ""
         
     }
     enum Action: Equatable {
@@ -31,8 +29,9 @@ struct Root {
         case onboarding(Onboarding.Action)
         case save(Environment.CodableState)
         case load(Environment.CodableState)
-        case exportConfig(Environment.CodableState)
         case reset(Environment.CodableState)
+        case export(Environment.CodableState)
+        
     }
     
     struct Environment {
@@ -153,7 +152,7 @@ extension Root {
                 }
                 return .none
                 
-            case let .exportConfig(codableState):
+            case let .export(codableState):
                 let url = codableState.configURL
                 
                 switch codableState {

@@ -43,7 +43,7 @@ struct RootView: View {
                 }
                 ToolbarItem {
                     Button("Apply Animation Changes") {
-                        viewStore.send(.exportConfig(.macOSAnimations))
+                        viewStore.send(.export(.macOSAnimations))
                         let _ = AppleScript.applyAnimationSettings.execute()
                     }
                 }
@@ -54,8 +54,8 @@ struct RootView: View {
                 }
                 ToolbarItem {
                     Button("Apply Changes") {
-                        viewStore.send(.exportConfig(.yabai))
-                        viewStore.send(.exportConfig(.skhd))
+                        viewStore.send(.export(.yabai))
+                        viewStore.send(.export(.skhd))
                         
                         let _ = AppleScript.restartYabai.execute()
                     }
