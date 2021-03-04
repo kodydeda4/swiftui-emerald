@@ -14,7 +14,7 @@ import SwiftShell
 struct SKHD {
     struct State: Equatable {
         var skhdSettings = SKHDSettings.State()
-        var encoder       = StateCoder<SKHDSettings.State>()
+        var encoder       = DataManager<SKHDSettings.State>()
         var version      = run("/usr/local/bin/skhd", "-v").stdout
         var error: Error = .none
         
