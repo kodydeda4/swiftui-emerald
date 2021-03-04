@@ -140,7 +140,6 @@
 			children = (
 				3380D2FE25D05F4200C10913 /* EmeraldApp.swift */,
 				3380D32425D06EB300C10913 /* TCA Features */,
-				3361CF1525E6EF1600016875 /* Views (Misc) */,
 				3380D31125D0667100C10913 /* Common */,
 				3380D30225D05F4200C10913 /* Assets.xcassets */,
 				3380D30725D05F4200C10913 /* Info.plist */,
@@ -161,10 +160,8 @@
 		3380D31125D0667100C10913 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				337F3ABD25DEC897009155CA /* SKHDShortcutCharacter.swift */,
-				3385DF6F25D6361200ACDE21 /* AppleScript.swift */,
-				333631FA25EEF0CD009FEB32 /* CodableColor.swift */,
-				3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */,
+				338B45FB25F10BEE00EA177D /* Models */,
+				3361CF1525E6EF1600016875 /* Views (Misc) */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -179,6 +176,17 @@
 				339C452D25D6ECA30079ACA1 /* Onboarding */,
 			);
 			path = "TCA Features";
+			sourceTree = "<group>";
+		};
+		338B45FB25F10BEE00EA177D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				337F3ABD25DEC897009155CA /* SKHDShortcutCharacter.swift */,
+				3385DF6F25D6361200ACDE21 /* AppleScript.swift */,
+				333631FA25EEF0CD009FEB32 /* CodableColor.swift */,
+				3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		339C452D25D6ECA30079ACA1 /* Onboarding */ = {

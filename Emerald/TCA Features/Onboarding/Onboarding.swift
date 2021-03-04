@@ -18,6 +18,13 @@ struct Feature: Identifiable, Equatable {
 struct Onboarding {
     struct State: Equatable {
         var isOnboaring = false
+        var currentPage: onboardingPage = .first
+        
+        enum onboardingPage {
+            case first
+            case second
+            case third
+        }
         
         let features: [Feature] = [
             Feature(

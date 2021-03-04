@@ -17,7 +17,7 @@ struct YabaiSettingsView: View {
             HStack {
                 DebugConfigFileView(text: viewStore.asConfig)
                 
-                ScrollView {
+                List {
                     VStack(alignment: .leading) {
                         SectionView("Section TITLE") {
                             Toggle("Debug Output", isOn: viewStore.binding(keyPath: \.debugOutput, send: keyPath))

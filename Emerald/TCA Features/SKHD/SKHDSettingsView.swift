@@ -18,7 +18,7 @@ struct SKHDSettingsView: View {
             HStack {
                 DebugConfigFileView(text: viewStore.asConfig)
                 
-                ScrollView {
+                List {
                     SectionView("Section A") {
                         SpecialKeyboardShortcutView("Restart Yabai",   .restartYabai)   { viewStore.send(.updateRestartYabai(  $0)) }
                         SpecialKeyboardShortcutView("Toggle Padding",  .togglePadding)  { viewStore.send(.updateTogglePadding( $0)) }
