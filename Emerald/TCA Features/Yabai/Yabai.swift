@@ -14,7 +14,7 @@ import SwiftShell
 struct Yabai {
     struct State: Equatable {
         var yabaiSettings = YabaiSettings.State()
-        var encoder       = DataManager<YabaiSettings.State>(
+        var dataManager = DataManager<YabaiSettings.State>(
             stateURLFilename: "YabaiState.json",
             configURLFilename: ".yabairc"
         )
@@ -52,7 +52,7 @@ extension Yabai {
                 return Effect(value: .saveSettings)
                 
             case .saveSettings:
-                switch state.encoder.genericEncodeState(state.yabaiSettings) {
+                switch state.dataManager.encodeState(state.yabaiSettings) {
                 case .success:
                     state.error = .none
                 case let .failure(error):
@@ -61,7 +61,7 @@ extension Yabai {
                 return .none
                 
             case .loadSettings:
-                switch state.encoder.genericDecodeSettings(state.yabaiSettings) {
+                switch state.dataManager.decodeState(state.yabaiSettings) {
                 case let .success(decoded):
                     state.yabaiSettings = decoded
                 case let .failure(error):
@@ -74,7 +74,7 @@ extension Yabai {
                 return .none
                 
             case .exportConfig:
-                switch state.encoder.genericExportConfig(state.yabaiSettings.asConfig) {
+                switch state.dataManager.exportConfig(state.yabaiSettings.asConfig) {
                 case .success:
                     state.error = .none
                 case let .failure(error):

@@ -14,7 +14,7 @@ import SwiftShell
 struct Animations {
     struct State: Equatable {
         var animationSettings = AnimationSettings.State()
-        var encoder       = DataManager<AnimationSettings.State>(
+        var dataManager = DataManager<AnimationSettings.State>(
             stateURLFilename: "AnimationState.json",
             configURLFilename: ".animationSettingsRC.sh"
         )
@@ -49,7 +49,7 @@ extension Animations {
                 return Effect(value: .saveSettings)
                     
             case .saveSettings:
-                switch state.encoder.genericEncodeState(
+                switch state.dataManager.encodeState(
                     state.animationSettings
                 ) {
                 case .success:
@@ -60,7 +60,7 @@ extension Animations {
                 return .none
                 
             case .loadSettings:
-                switch state.encoder.genericDecodeSettings(state.animationSettings) {
+                switch state.dataManager.decodeState(state.animationSettings) {
                 case let .success(decoded):
                     state.animationSettings = decoded
                 case let .failure(error):
@@ -69,7 +69,7 @@ extension Animations {
                 return .none
                 
             case .exportConfig:
-                switch state.encoder.genericExportConfig(state.animationSettings.asConfig) {
+                switch state.dataManager.exportConfig(state.animationSettings.asConfig) {
                 case .success:
                     state.error = .none
                 case let .failure(error):

@@ -14,7 +14,7 @@ import SwiftShell
 struct SKHD {
     struct State: Equatable {
         var skhdSettings = SKHDSettings.State()
-        var encoder       = DataManager<SKHDSettings.State>(
+        var dataManager = DataManager<SKHDSettings.State>(
             stateURLFilename: "SKHDState.json",
             configURLFilename: "skhdrc"
         )
@@ -52,7 +52,7 @@ extension SKHD {
                 return Effect(value: .saveSettings)
                     
             case .saveSettings:
-                switch state.encoder.genericEncodeState(state.skhdSettings) {
+                switch state.dataManager.encodeState(state.skhdSettings) {
                 case .success:
                     state.error = .none
                 case let .failure(error):
@@ -61,7 +61,7 @@ extension SKHD {
                 return .none
                 
             case .loadSettings:
-                switch state.encoder.genericDecodeSettings(state.skhdSettings) {
+                switch state.dataManager.decodeState(state.skhdSettings) {
                 case let .success(decoded):
                     state.skhdSettings = decoded
                 case let .failure(error):
@@ -70,7 +70,7 @@ extension SKHD {
                 return .none
                 
             case .exportConfig:
-                switch state.encoder.genericExportConfig(state.skhdSettings.asConfig) {
+                switch state.dataManager.exportConfig(state.skhdSettings.asConfig) {
                 case .success:
                     state.error = .none
                 case let .failure(error):

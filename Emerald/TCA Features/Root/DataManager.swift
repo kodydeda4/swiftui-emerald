@@ -15,8 +15,7 @@ public struct DataManager<State> where State: Codable {
     var stateURL : URL { homeURL.appendingPathComponent(stateURLFilename) }
     var configURL: URL { homeURL.appendingPathComponent(configURLFilename) }
     
-    
-    func genericEncodeState<State>(_ state: State) -> Result<Bool, Error> where State : Encodable {
+    func encodeState<State>(_ state: State) -> Result<Bool, Error> where State : Encodable {
         do {
             try JSONEncoder()
                 .encode(state)
@@ -26,7 +25,7 @@ public struct DataManager<State> where State: Codable {
             return .failure(error)
         }
     }
-    func genericDecodeSettings<State>(_ state: State) -> Result<State, Error> where State : Decodable {
+    func decodeState<State>(_ state: State) -> Result<State, Error> where State : Decodable {
         do {
             let decoded = try JSONDecoder()
                 .decode(type(of: state), from: Data(contentsOf: stateURL))
@@ -36,7 +35,7 @@ public struct DataManager<State> where State: Codable {
             return .failure(error)
         }
     }
-    func genericExportConfig(_ data: String) -> Result<Bool, Error> {
+    func exportConfig(_ data: String) -> Result<Bool, Error> {
         do {
             let data: String = data
             try data.write(to: configURL, atomically: true, encoding: .utf8)
