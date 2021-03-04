@@ -29,24 +29,24 @@ struct AboutView: View {
 
                 Divider()
                 
-//                VStack(alignment: .leading) {
-//                    Text("Yabai Version")
-//                    Text(viewStore.yabaiVersion)
-//                        .foregroundColor(.gray)
-//                }
-//
-//                VStack(alignment: .leading) {
-//                    Text("SKHD Version")
-//                    Text(viewStore.skhdVersion)
-//                        .foregroundColor(.gray)
-//                }
-//
-//                VStack(alignment: .leading) {
-//                    Text("HomeBrew Version")
-//                    Text(viewStore.brewVersion)
-//                        .foregroundColor(.gray)
-//                        .lineLimit(1)
-//                }
+                VStack(alignment: .leading) {
+                    Text("Yabai Version")
+                    Text(viewStore.yabaiVersion)
+                        .foregroundColor(.gray)
+                }
+
+                VStack(alignment: .leading) {
+                    Text("SKHD Version")
+                    Text(viewStore.skhdVersion)
+                        .foregroundColor(.gray)
+                }
+
+                VStack(alignment: .leading) {
+                    Text("HomeBrew Version")
+                    Text(viewStore.homebrewVersion)
+                        .foregroundColor(.gray)
+                        .lineLimit(1)
+                }
             }
             .navigationTitle("About")
         }

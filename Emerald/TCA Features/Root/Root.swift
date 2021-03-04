@@ -18,22 +18,46 @@ struct Root {
         var skhd             = SKHD.State()
         var macOSAnimations  = MacOSAnimations.State()
         var onboarding       = Onboarding.State()
-        var error: String    = ""
+        var error            = ""
+        var yabaiVersion     = run("/usr/local/bin/yabai", "-v").stdout
+        var skhdVersion      = run("/usr/local/bin/skhd", "-v").stdout
+        var homebrewVersion  = run("/usr/local/bin/brew", "-v").stdout
+        
     }
     enum Action: Equatable {
         case yabai(Yabai.Action)
         case skhd(SKHD.Action)
         case macOSAnimations(MacOSAnimations.Action)
         case onboarding(Onboarding.Action)
-        
-        case saveState(CodableState)
-        case loadState(CodableState)
-        case exportConfig(CodableState)
+        case save(Environment.CodableState)
+        case load(Environment.CodableState)
+        case exportConfig(Environment.CodableState)
+        case reset(Environment.CodableState)
     }
     
     struct Environment {
-        var yabaiVersion = run("/usr/local/bin/yabai", "-v").stdout
-        var skhdVersion  = run("/usr/local/bin/skhd", "-v").stdout
+        enum CodableState {
+            case yabai
+            case skhd
+            case macOSAnimations
+            
+            var stateURL: URL {
+                let homeURL = URL(fileURLWithPath: NSHomeDirectory())
+                switch self {
+                case .yabai           : return homeURL.appendingPathComponent("YabaiState.json")
+                case .skhd            : return homeURL.appendingPathComponent("SKHDState.json")
+                case .macOSAnimations : return homeURL.appendingPathComponent("AnimationsState.json")
+                }
+            }
+            var configURL: URL {
+                let homeURL = URL(fileURLWithPath: NSHomeDirectory())
+                switch self {
+                case .yabai           : return homeURL.appendingPathComponent(".yabairc")
+                case .skhd            : return homeURL.appendingPathComponent(".skhdrc")
+                case .macOSAnimations : return homeURL.appendingPathComponent(".macOSAnimationsRC.sh")
+                }
+            }
+        }
     }
 }
 
@@ -62,18 +86,18 @@ extension Root {
         Reducer { state, action, environment in
             switch action {
             case let .yabai(subAction):
-                return Effect(value: .saveState(.yabai))
+                return Effect(value: .save(.yabai))
                 
             case let .skhd(subAction):
-                return Effect(value: .saveState(.skhd))
+                return Effect(value: .save(.skhd))
                 
             case let .macOSAnimations(subAction):
-                return Effect(value: .saveState(.macOSAnimations))
+                return Effect(value: .save(.macOSAnimations))
                 
             case .onboarding(_):
                 return .none
                 
-            case let .saveState(codableState):
+            case let .save(codableState):
                 let url = codableState.configURL
                 
                 switch codableState {
@@ -101,7 +125,7 @@ extension Root {
                 }
                 return .none
                 
-            case let .loadState(codableState):
+            case let .load(codableState):
                 let url = codableState.configURL
                 
                 switch codableState {
@@ -156,6 +180,17 @@ extension Root {
                     }
                 }
                 return .none
+                
+            case let .reset(codableState):
+                switch codableState {
+                case .yabai:
+                    state.yabai = Yabai.State()
+                case .skhd:
+                    state.skhd = SKHD.State()
+                case .macOSAnimations:
+                    state.macOSAnimations = MacOSAnimations.State()
+                }
+                return .none
             }
         }
     )
@@ -169,32 +204,3 @@ extension Root {
     )
 }
 
-enum CodableState {
-    case yabai
-    case skhd
-    case macOSAnimations
-    
-    var stateURL: URL {
-        let homeURL = URL(fileURLWithPath: NSHomeDirectory())
-        switch self {
-        
-        case .yabai:
-            return homeURL.appendingPathComponent("YabaiState.json")
-        case .skhd:
-            return homeURL.appendingPathComponent("SKHDState.json")
-        case .macOSAnimations:
-            return homeURL.appendingPathComponent("AnimationsState.json")
-        }
-    }
-    var configURL: URL {
-        let homeURL = URL(fileURLWithPath: NSHomeDirectory())
-        switch self {
-        case .yabai:
-            return homeURL.appendingPathComponent("yabai")
-        case .skhd:
-            return homeURL.appendingPathComponent("skhd")
-        case .macOSAnimations:
-            return homeURL.appendingPathComponent("animations")
-        }
-    }
-}

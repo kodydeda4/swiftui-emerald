@@ -21,9 +21,9 @@ struct RootView: View {
                     .foregroundColor(Color(NSColor.placeholderTextColor))
             }
             .onAppear {
-                viewStore.send(.loadState(.yabai))
-                viewStore.send(.loadState(.skhd))
-                viewStore.send(.loadState(.macOSAnimations))
+                viewStore.send(.load(.yabai))
+                viewStore.send(.load(.skhd))
+                viewStore.send(.load(.macOSAnimations))
             }
             .sheet(
                 isPresented:
@@ -41,29 +41,17 @@ struct RootView: View {
                         viewStore.send(.onboarding(.toggleIsOnboaring))
                     }
                 }
-//                ToolbarItem {
-//                    Button("Apply Animation Changes") {
-//                        viewStore.send(.dataManager(.exportAnimationConfig))
-//                        let _ = AppleScript.applyAnimationSettings.execute()
-//                    }
-//                }
-//                ToolbarItem {
-//                    Button("brew services start Yabai -v") {
-//                        viewStore.send(.dataManager(.exportYabaiConfig))
-//                        viewStore.send(.dataManager(.exportSKHDConfig))
-//
-//                        let _ = AppleScript.restartYabai.execute()
-//                    }
-//                }
-//                ToolbarItem {
-//                    Button("Reset Yabai Settings") {
-//                        viewStore.send(.dataManager(.resetYabaiSettings))
-//                        viewStore.send(.dataManager(.exportYabaiConfig))
-//                        viewStore.send(.dataManager(.exportSKHDConfig))
-//
-//                        let _ = AppleScript.restartYabai.execute()
-//                    }
-//                }
+                ToolbarItem {
+                    Button("Apply Animation Changes") {
+                        viewStore.send(.exportConfig(.macOSAnimations))
+                        let _ = AppleScript.applyAnimationSettings.execute()
+                    }
+                }
+                ToolbarItem {
+                    Button("Reset Yabai Settings") {
+                        viewStore.send(.reset(.yabai))
+                    }
+                }
                 ToolbarItem {
                     Button("Apply Changes") {
                         viewStore.send(.exportConfig(.yabai))
