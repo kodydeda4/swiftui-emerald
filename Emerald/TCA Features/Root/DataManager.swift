@@ -9,7 +9,7 @@ import Foundation
 import ComposableArchitecture
 
 extension JSONEncoder {
-    func writeState<T>(_ state: T, to url: URL) -> Result<Bool, Error> where T: Codable {
+    func writeState<State>(_ state: State, to url: URL) -> Result<Bool, Error> where State: Codable {
         do {
             try self
                 .encode(state)
@@ -39,7 +39,6 @@ extension JSONDecoder {
         do {
             let data: String = config
             try data.write(to: url, atomically: true, encoding: .utf8)
-            
             return .success(true)
         }
         catch {
