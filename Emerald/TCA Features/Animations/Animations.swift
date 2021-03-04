@@ -26,7 +26,7 @@ struct Animations {
         case animationSettings(AnimationSettings.Action)
         case saveSettings
         case loadSettings
-        case loadConfig
+        case exportConfig
     }
     
     struct Environment {
@@ -100,7 +100,7 @@ extension Animations {
                 }
                 return .none
                 
-            case .loadConfig:
+            case .exportConfig:
                 switch environment.exportConfig(state.animationSettings) {
                 case .success:
                     state.error = .none
