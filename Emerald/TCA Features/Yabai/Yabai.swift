@@ -9,6 +9,8 @@ import SwiftUI
 import ComposableArchitecture
 import SwiftShell
 
+// Saves, Loads, & Exports Yabai Settings.
+
 struct Yabai {
     struct State: Equatable {
         var yabaiSettings = YabaiSettings.State()

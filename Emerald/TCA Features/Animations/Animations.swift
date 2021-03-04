@@ -9,6 +9,8 @@ import SwiftUI
 import ComposableArchitecture
 import SwiftShell
 
+// Saves, Loads, & Exports Animation Settings.
+
 struct Animations {
     struct State: Equatable {
         var animationSettings = AnimationSettings.State()

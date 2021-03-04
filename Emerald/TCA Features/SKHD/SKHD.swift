@@ -9,6 +9,8 @@ import SwiftUI
 import ComposableArchitecture
 import SwiftShell
 
+// Saves, Loads, & Exports SKHD Settings.
+
 struct SKHD {
     struct State: Equatable {
         var skhdSettings = SKHDSettings.State()
