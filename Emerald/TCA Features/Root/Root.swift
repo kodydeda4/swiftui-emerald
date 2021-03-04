@@ -17,9 +17,7 @@ struct Root {
         var skhd        = SKHD.State()
         var animations  = MacOSAnimations.State()
         var onboarding  = Onboarding.State()
-        
-        
-        var error: DataManagerError = .none
+        var error       = DataManagerError.none
     }
     enum Action: Equatable {
         case yabai(Yabai.Action)
