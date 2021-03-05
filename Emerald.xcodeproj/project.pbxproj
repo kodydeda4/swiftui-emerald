@@ -16,9 +16,13 @@
 		333631FB25EEF0CD009FEB32 /* CodableColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333631FA25EEF0CD009FEB32 /* CodableColor.swift */; };
 		3336320025EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333631FF25EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift */; };
 		33387D6525D3F64300E76D29 /* Yabai.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33387D6425D3F64300E76D29 /* Yabai.swift */; };
-		3341B01125F06FF300833B56 /* YabaiConfigFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B01025F06FF300833B56 /* YabaiConfigFile.swift */; };
+		3341B01125F06FF300833B56 /* asConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B01025F06FF300833B56 /* asConfig.swift */; };
 		3341B01425F0700B00833B56 /* SKHDConfigFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B01325F0700B00833B56 /* SKHDConfigFile.swift */; };
 		3341B01725F0702C00833B56 /* MacOSAnimationSettingsConfigFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B01625F0702C00833B56 /* MacOSAnimationSettingsConfigFile.swift */; };
+		3356BCA325F28746006EB641 /* SpaceSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3356BCA225F28746006EB641 /* SpaceSettingsView.swift */; };
+		3356BCA625F28782006EB641 /* ExternalBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3356BCA525F28782006EB641 /* ExternalBarView.swift */; };
+		3356BCA925F287B1006EB641 /* MouseSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3356BCA825F287B1006EB641 /* MouseSettingsView.swift */; };
+		3356BCAD25F287D9006EB641 /* WindowSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3356BCAC25F287D9006EB641 /* WindowSettingsView.swift */; };
 		335E78D625F117D700C8839B /* JSONDecoder+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335E78D525F117D700C8839B /* JSONDecoder+Extensions.swift */; };
 		3361CDF725D44AEC0086F6A7 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */; };
 		3361CF1125E6EF1300016875 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CF0E25E6EF1300016875 /* SectionView.swift */; };
@@ -51,9 +55,13 @@
 		333631FA25EEF0CD009FEB32 /* CodableColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableColor.swift; sourceTree = "<group>"; };
 		333631FF25EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemIntegrityProtectionView.swift; sourceTree = "<group>"; };
 		33387D6425D3F64300E76D29 /* Yabai.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yabai.swift; sourceTree = "<group>"; };
-		3341B01025F06FF300833B56 /* YabaiConfigFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiConfigFile.swift; sourceTree = "<group>"; };
+		3341B01025F06FF300833B56 /* asConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = asConfig.swift; sourceTree = "<group>"; };
 		3341B01325F0700B00833B56 /* SKHDConfigFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHDConfigFile.swift; sourceTree = "<group>"; };
 		3341B01625F0702C00833B56 /* MacOSAnimationSettingsConfigFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSAnimationSettingsConfigFile.swift; sourceTree = "<group>"; };
+		3356BCA225F28746006EB641 /* SpaceSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceSettingsView.swift; sourceTree = "<group>"; };
+		3356BCA525F28782006EB641 /* ExternalBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalBarView.swift; sourceTree = "<group>"; };
+		3356BCA825F287B1006EB641 /* MouseSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseSettingsView.swift; sourceTree = "<group>"; };
+		3356BCAC25F287D9006EB641 /* WindowSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowSettingsView.swift; sourceTree = "<group>"; };
 		335E78D525F117D700C8839B /* JSONDecoder+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Extensions.swift"; sourceTree = "<group>"; };
 		3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		3361CF0E25E6EF1300016875 /* SectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
@@ -104,6 +112,18 @@
 				3341B01625F0702C00833B56 /* MacOSAnimationSettingsConfigFile.swift */,
 			);
 			path = MacOSAnimations;
+			sourceTree = "<group>";
+		};
+		3356BCB125F288BC006EB641 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3385DF6C25D628BF00ACDE21 /* YabaiView.swift */,
+				3356BCAC25F287D9006EB641 /* WindowSettingsView.swift */,
+				3356BCA825F287B1006EB641 /* MouseSettingsView.swift */,
+				3356BCA225F28746006EB641 /* SpaceSettingsView.swift */,
+				3356BCA525F28782006EB641 /* ExternalBarView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		3361CF1525E6EF1600016875 /* Views (Misc) */ = {
@@ -214,8 +234,8 @@
 			isa = PBXGroup;
 			children = (
 				33387D6425D3F64300E76D29 /* Yabai.swift */,
-				3385DF6C25D628BF00ACDE21 /* YabaiView.swift */,
-				3341B01025F06FF300833B56 /* YabaiConfigFile.swift */,
+				3341B01025F06FF300833B56 /* asConfig.swift */,
+				3356BCB125F288BC006EB641 /* Views */,
 			);
 			path = Yabai;
 			sourceTree = "<group>";
@@ -315,21 +335,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3356BCA925F287B1006EB641 /* MouseSettingsView.swift in Sources */,
 				335E78D625F117D700C8839B /* JSONDecoder+Extensions.swift in Sources */,
 				3385DF6A25D6279200ACDE21 /* AboutView.swift in Sources */,
 				3361CF1325E6EF1300016875 /* SpecialTextView.swift in Sources */,
 				3361CDF725D44AEC0086F6A7 /* URL+Extensions.swift in Sources */,
 				3361CF1125E6EF1300016875 /* SectionView.swift in Sources */,
-				3341B01125F06FF300833B56 /* YabaiConfigFile.swift in Sources */,
+				3356BCA625F28782006EB641 /* ExternalBarView.swift in Sources */,
+				3341B01125F06FF300833B56 /* asConfig.swift in Sources */,
 				33B62D2925D5E31400DD5934 /* Onboarding.swift in Sources */,
 				3385DF6D25D628BF00ACDE21 /* YabaiView.swift in Sources */,
 				3325BFD525F05041007831C5 /* RoundedRectangleButtonStyle.swift in Sources */,
+				3356BCA325F28746006EB641 /* SpaceSettingsView.swift in Sources */,
 				33387D6525D3F64300E76D29 /* Yabai.swift in Sources */,
 				3361CF1225E6EF1300016875 /* DebugConfigFileView.swift in Sources */,
 				3398838C25DD7A1D007B9FF5 /* SKHD.swift in Sources */,
 				3398838F25DD7DC3007B9FF5 /* SKHDView.swift in Sources */,
 				3380D2FF25D05F4200C10913 /* EmeraldApp.swift in Sources */,
 				332D568625DEEF7800C88FEE /* MacOSAnimationSettingsView.swift in Sources */,
+				3356BCAD25F287D9006EB641 /* WindowSettingsView.swift in Sources */,
 				3380D33725D0723000C10913 /* Root.swift in Sources */,
 				3385DF6725D6270B00ACDE21 /* SidebarView.swift in Sources */,
 				339C453525D6ED0F0079ACA1 /* OnboardingView.swift in Sources */,

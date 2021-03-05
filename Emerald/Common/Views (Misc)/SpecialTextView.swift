@@ -16,7 +16,7 @@ struct SpecialTextField: View {
     let formatter: Formatter = NumberFormatter()
     
     var body: some View {
-        HStack {
+        VStack(alignment: .leading) {
             Text(title)
             TextField("", value: $value, formatter: formatter)
         }
@@ -35,7 +35,7 @@ struct SpecialTextFieldStrings: View {
     @Binding var value: String
     
     var body: some View {
-        HStack {
+        VStack(alignment: .leading) {
             Text(title)
             TextField("", text: $value)
         }
@@ -54,7 +54,7 @@ struct SpecialTextFieldFloats: View {
     let formatter: Formatter = NumberFormatter()
     
     var body: some View {
-        HStack {
+        VStack(alignment: .leading) {
             Text(title)
             TextField("", value: $value, formatter: formatter)
         }
