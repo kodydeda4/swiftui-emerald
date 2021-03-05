@@ -31,10 +31,17 @@ struct WindowSettingsView: View {
                             Text("Opacity Effects")
                         }
                 ) {
-                    HStack {
+                    VStack {
                         SpecialTextFieldFloats(title: "Animation Duration", value: viewStore.binding(keyPath: \.windowOpacityDuration, send: keyPath))
-                        SpecialTextFieldFloats(title: "Focused", value: viewStore.binding(keyPath: \.activeWindowOpacity, send: keyPath))
-                        SpecialTextFieldFloats(title: "Normal", value: viewStore.binding(keyPath: \.normalWindowOpacity, send: keyPath))
+                        
+                        VStack(alignment: .leading) {
+                            Text("Focused Window Opacity \(viewStore.activeWindowOpacity)")
+                            Slider(value: viewStore.binding(keyPath: \.activeWindowOpacity, send: keyPath), in: 0.0...1.0)//, step: 0.1)
+                        }
+                        VStack(alignment: .leading) {
+                            Text("Normal Window Opacity \(viewStore.activeWindowOpacity)")
+                            Slider(value: viewStore.binding(keyPath: \.normalWindowOpacity, send: keyPath), in: 0.0...1.0)//, step: 0.1)
+                        }
                     }.disabled(!viewStore.windowOpacity)
                     
                 }
