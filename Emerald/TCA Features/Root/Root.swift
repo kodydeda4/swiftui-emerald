@@ -26,6 +26,7 @@ struct Root {
         case homebrew(Homebrew.Action)
         case onboarding(Onboarding.Action)
         
+        case restartYabai
         case save(Environment.CodableState)
         case load(Environment.CodableState)
         case reset(Environment.CodableState)
@@ -202,6 +203,11 @@ extension Root {
                     state.macOSAnimations = MacOSAnimations.State()
                 }
                 return .none
+                
+            case .restartYabai:
+                state.error = AppleScript.restartYabai.execute()
+                return .none
+
             }
         }
     )

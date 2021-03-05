@@ -22,10 +22,9 @@ extension KeyboardShortcuts.Name {
 
 struct SKHD {
     struct State: Equatable, Codable {
-        var stateURL          = URL(fileURLWithPath: "SKHDState.json", relativeTo: .HomeDirectory)
-        var configURL         = URL(fileURLWithPath: ".skhdrc", relativeTo: .HomeDirectory)
+        var stateURL               = URL(fileURLWithPath: "SKHDState.json", relativeTo: .HomeDirectory)
+        var configURL              = URL(fileURLWithPath: ".skhdrc", relativeTo: .HomeDirectory)
         var version                = run("/usr/local/bin/skhd", "-v").stdout
-        
         var restartYabai           = KeyboardShortcuts.getShortcut(for: .restartYabai)
         var togglePaddingShortcut  = KeyboardShortcuts.getShortcut(for: .togglePadding)
         var toggleGapsShortcut     = KeyboardShortcuts.getShortcut(for: .toggleGaps)
@@ -34,9 +33,6 @@ struct SKHD {
         var toggleStackingShortcut = KeyboardShortcuts.getShortcut(for: .toggleStacking)
         var toggleFloatingShortcut = KeyboardShortcuts.getShortcut(for: .toggleFloating)
         var toggleBSPShortcut      = KeyboardShortcuts.getShortcut(for: .toggleBSP)
-
-        var myText: String = "Nothin"
-
     }
     enum Action: Equatable {
         case updateRestartYabai(KeyboardShortcuts.Shortcut?)

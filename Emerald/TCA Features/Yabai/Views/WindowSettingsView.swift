@@ -41,11 +41,13 @@ struct WindowSettingsView: View {
                             Toggle("Opacity Effects", isOn: viewStore.binding(keyPath: \.windowOpacity, send: keyPath)).labelsHidden()
                             Text("Enabled")
                         }
+                        Group {
+                        MySliderView(text: "Animation Duration", value: viewStore.binding(keyPath: \.windowOpacityDuration, send: keyPath))
+                        MySliderView(text: "Focused Window", value: viewStore.binding(keyPath: \.activeWindowOpacity, send: keyPath))
+                        MySliderView(text: "Normal Windows", value: viewStore.binding(keyPath: \.normalWindowOpacity, send: keyPath))
+                        }.disabled(!viewStore.windowOpacity)
                     }
                 }
-                MySliderView(text: "Animation Duration", value: viewStore.binding(keyPath: \.windowOpacityDuration, send: keyPath))
-                MySliderView(text: "Focused Window", value: viewStore.binding(keyPath: \.activeWindowOpacity, send: keyPath))
-                MySliderView(text: "Normal Windows", value: viewStore.binding(keyPath: \.normalWindowOpacity, send: keyPath))
                 Group {
                     Divider()
                     Section(header: Text("Borders").bold()) {
@@ -76,14 +78,18 @@ struct WindowSettingsView: View {
                             }
                         }
                         Divider()
+                        Toggle("Auto Balance", isOn: viewStore.binding(keyPath: \.autoBalance, send: keyPath))
+
                         MySliderView(text: "Split Ratio", value: viewStore.binding(keyPath: \.splitRatio, send: keyPath))
                             .disabled(viewStore.autoBalance)
                         
                         Divider()
-                        Section(header: Text("Misc.").bold()) {
+                        Section(header: Text("Floating Windows Stay-On-Top").bold()) {
                             VStack(alignment: .leading) {
-                                Toggle("Floating Windows Stay-On-Top", isOn: viewStore.binding(keyPath: \.windowTopmost, send: keyPath))
-                                Toggle("Auto Balance", isOn: viewStore.binding(keyPath: \.autoBalance, send: keyPath))
+                                HStack {
+                                    Text("Enabled")
+                                    Toggle("Floating Windows Stay-On-Top", isOn: viewStore.binding(keyPath: \.windowTopmost, send: keyPath)).labelsHidden()
+                                }
                             }
                         }
                     }

@@ -12,10 +12,9 @@ import SwiftShell
 
 struct Yabai {
     struct State: Equatable, Codable {
-        var stateURL            = URL(fileURLWithPath: "YabaiState.json", relativeTo: .HomeDirectory)
-        var configURL           = URL(fileURLWithPath: ".yabairc", relativeTo: .HomeDirectory)
+        var stateURL                 = URL(fileURLWithPath: "YabaiState.json", relativeTo: .HomeDirectory)
+        var configURL                = URL(fileURLWithPath: ".yabairc", relativeTo: .HomeDirectory)
         var version                  = run("/usr/local/bin/yabai", "-v").stdout
-
         var debugOutput              : Bool              = false
         var externalBar              : ExternalBar       = .off
         var topPaddingExternalBar    : Int               = 0

@@ -48,16 +48,17 @@ struct RootView: View {
                     }
                 }
                 ToolbarItem {
-                    Button("Reset Yabai Settings") {
+                    Button("Reset") {
                         viewStore.send(.reset(.yabai))
+                        viewStore.send(.reset(.skhd))
+                        viewStore.send(.reset(.macOSAnimations))
                     }
                 }
                 ToolbarItem {
                     Button("Apply Changes") {
                         viewStore.send(.export(.yabai))
                         viewStore.send(.export(.skhd))
-                        
-                        let _ = AppleScript.restartYabai.execute()
+                        viewStore.send(.restartYabai)
                     }
                 }
             }
