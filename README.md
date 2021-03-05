@@ -4,8 +4,9 @@
 
 A Tiling Window Wanager for macOS. 
 
-> Emerald uses Yabai & SKHD to do it's magic.  They're both open source projects created by `koekeishiya` on Github.  
-> A link to his page can be found [here](https://github.com/koekeishiya).  
+> Emerald uses Yabai & SKHD to do it's magic.  
+> They're both open source projects created by `koekeishiya` on Github.  
+> Here's a link to his [page](https://github.com/koekeishiya).  
 >> You can find more information about **Yabai**  [here](https://github.com/koekeishiya/yabai/wiki).  
 >> You can find more information about **SKHD** [here](https://github.com/koekeishiya/skhd).  
 >> You can find more information about **Tiling Window Managers** [here](https://www.youtube.com/watch?v=Lj1IfdKY0CU&ab_channel=DistroTube).  
