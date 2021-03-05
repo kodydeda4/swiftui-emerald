@@ -15,13 +15,18 @@ struct WindowSettingsView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             SectionView("Window") {
-                VStack(alignment: .leading) {
-                    Text("Shadows")
-                    Picker("Shadows", selection: viewStore.binding(keyPath: \.windowShadow, send: keyPath)) {
-                        ForEach(Yabai.State.WindowShadow.allCases) {
-                            Text($0.rawValue)
+                Section(header: Text("Shadows").bold()) {
+                    HStack {
+                        Button("Normal") {
+                            viewStore.send(.updateWindowShadows(.on))
                         }
-                    }.labelsHidden()
+                        Button("Disabled") {
+                            viewStore.send(.updateWindowShadows(.off))
+                        }
+                        Button("Floating-Only") {
+                            viewStore.send(.updateWindowShadows(.float))
+                        }
+                    }
                 }
                 Divider()
                 Section(header: Text("Opacity Effects").bold()) {
@@ -65,7 +70,7 @@ struct WindowSettingsView: View {
                                 .frame(width: 60)
                                 .background(Color.black.opacity(0.25))
                                 .clipShape(RoundedRectangle(cornerRadius: 8))
-
+                                
                                 Text("Width")
                             }
                             VStack {
@@ -83,18 +88,32 @@ struct WindowSettingsView: View {
                         }
                         .disabled(!viewStore.windowBorder)
                     }
-                    
-                    VStack(alignment: .leading) {
-                        Text("Placement")
-                        Picker("Placement", selection: viewStore.binding(keyPath: \.windowPlacement, send: keyPath)) {
-                            ForEach(Yabai.State.WindowPlacement.allCases) {
-                                Text($0.rawValue)
+                    Divider()
+                    Section(header: Text("Placement").bold()) {
+                        HStack {
+                            Button("First Child") {
+                                viewStore.send(.updateWindowPlacement(.first_child))
                             }
-                        }.labelsHidden()
+                            Button("Second Child") {
+                                viewStore.send(.updateWindowPlacement(.second_child))
+                            }
+                        }
                     }
-                    Toggle("Floating Windows Stay-On-Top", isOn: viewStore.binding(keyPath: \.windowTopmost, send: keyPath))
-                    Toggle("Auto Balance", isOn: viewStore.binding(keyPath: \.autoBalance, send: keyPath))
-                    SpecialTextFieldFloats(title: "Split Ratio", value: viewStore.binding(keyPath: \.splitRatio, send: keyPath)).disabled(viewStore.autoBalance)
+                    Divider()
+                    Section(header: Text("Split Ratio").bold()) {
+                        VStack(alignment: .leading) {
+                            Slider(value: viewStore.binding(keyPath: \.splitRatio, send: keyPath), in: 0.01...0.99)
+                            Text("\(Int(viewStore.splitRatio * 100))%")
+                        }
+                        .disabled(viewStore.autoBalance)
+                    }
+                    Divider()
+                    Section(header: Text("Misc.").bold()) {
+                        VStack(alignment: .leading) {
+                            Toggle("Floating Windows Stay-On-Top", isOn: viewStore.binding(keyPath: \.windowTopmost, send: keyPath))
+                            Toggle("Auto Balance", isOn: viewStore.binding(keyPath: \.autoBalance, send: keyPath))
+                        }
+                    }
                 }
             }
         }

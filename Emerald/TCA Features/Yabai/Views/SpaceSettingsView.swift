@@ -15,12 +15,19 @@ struct SpaceSettingsView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             SectionView("Space") {
-                Picker("Layout", selection: viewStore.binding(keyPath: \.layout, send: keyPath)) {
-                    ForEach(Yabai.State.Layout.allCases) {
-                        Text($0.rawValue)
+                Section(header: Text("Layout").bold()) {
+                    HStack {
+                        Button("Floating (Normal)") {
+                            viewStore.send(.updateLayout(.float))
+                        }
+                        Button("Tiling") {
+                            viewStore.send(.updateLayout(.bsp))
+                        }
+                        Button("Stacking") {
+                            viewStore.send(.updateLayout(.stack))
+                        }
                     }
-                }.labelsHidden()
-                
+                }
                 Section(header: Text("Padding").bold()) {
                     HStack {
                         Stepper("Top \(viewStore.paddingTop)", value: viewStore.binding(keyPath: \.paddingTop, send: keyPath), in: 0...10)

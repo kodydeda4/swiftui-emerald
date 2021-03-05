@@ -96,9 +96,13 @@ struct Yabai {
     
     enum Action: Equatable {
         case keyPath(BindingAction<Yabai.State>)
+        case updateWindowShadows(Yabai.State.WindowShadow)
+        case updateWindowPlacement(Yabai.State.WindowPlacement)
+        case updateLayout(Yabai.State.Layout)
         case updateActiveWindowBorderColor(Color)
         case updateNormalWindowBorderColor(Color)
         case updateInsertWindowBorderColor(Color)
+        
     }
 }
 
@@ -119,6 +123,18 @@ extension Yabai {
 
         case let .updateInsertWindowBorderColor(color):
             state.insertWindowBorderColor = CodableColor(color: color)
+            return .none
+            
+        case let .updateWindowShadows(windowShadow):
+            state.windowShadow = windowShadow
+            return .none
+            
+        case let .updateWindowPlacement(windowPlacement):
+            state.windowPlacement = windowPlacement
+            return .none
+            
+        case let .updateLayout(layout):
+            state.layout = layout
             return .none
         }
     }
