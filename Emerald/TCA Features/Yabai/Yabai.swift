@@ -10,7 +10,6 @@ import ComposableArchitecture
 import DynamicColor
 import SwiftShell
 
-
 struct Yabai {
     struct State: Equatable, Codable {
         var version                  = run("/usr/local/bin/yabai", "-v").stdout

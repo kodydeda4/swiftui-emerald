@@ -21,7 +21,7 @@
 		33387D6525D3F64300E76D29 /* Yabai.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33387D6425D3F64300E76D29 /* Yabai.swift */; };
 		3341B01125F06FF300833B56 /* Yabai+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B01025F06FF300833B56 /* Yabai+Extensions.swift */; };
 		3341B01425F0700B00833B56 /* SKHD+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B01325F0700B00833B56 /* SKHD+Extensions.swift */; };
-		3341B01725F0702C00833B56 /* MacOSAnimationSettingsConfigFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B01625F0702C00833B56 /* MacOSAnimationSettingsConfigFile.swift */; };
+		3341B01725F0702C00833B56 /* MacOSAnimations+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B01625F0702C00833B56 /* MacOSAnimations+Extensions.swift */; };
 		3356BCA325F28746006EB641 /* SpaceSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3356BCA225F28746006EB641 /* SpaceSettingsView.swift */; };
 		3356BCA625F28782006EB641 /* ExternalBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3356BCA525F28782006EB641 /* ExternalBarView.swift */; };
 		3356BCA925F287B1006EB641 /* MouseSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3356BCA825F287B1006EB641 /* MouseSettingsView.swift */; };
@@ -63,7 +63,7 @@
 		33387D6425D3F64300E76D29 /* Yabai.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yabai.swift; sourceTree = "<group>"; };
 		3341B01025F06FF300833B56 /* Yabai+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Yabai+Extensions.swift"; sourceTree = "<group>"; };
 		3341B01325F0700B00833B56 /* SKHD+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKHD+Extensions.swift"; sourceTree = "<group>"; };
-		3341B01625F0702C00833B56 /* MacOSAnimationSettingsConfigFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSAnimationSettingsConfigFile.swift; sourceTree = "<group>"; };
+		3341B01625F0702C00833B56 /* MacOSAnimations+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MacOSAnimations+Extensions.swift"; sourceTree = "<group>"; };
 		3356BCA225F28746006EB641 /* SpaceSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceSettingsView.swift; sourceTree = "<group>"; };
 		3356BCA525F28782006EB641 /* ExternalBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalBarView.swift; sourceTree = "<group>"; };
 		3356BCA825F287B1006EB641 /* MouseSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseSettingsView.swift; sourceTree = "<group>"; };
@@ -115,7 +115,7 @@
 			children = (
 				332D567C25DEED5300C88FEE /* MacOSAnimations.swift */,
 				332D568525DEEF7800C88FEE /* MacOSAnimationSettingsView.swift */,
-				3341B01625F0702C00833B56 /* MacOSAnimationSettingsConfigFile.swift */,
+				3341B01625F0702C00833B56 /* MacOSAnimations+Extensions.swift */,
 			);
 			path = MacOSAnimations;
 			sourceTree = "<group>";
@@ -370,7 +370,7 @@
 				3385DF6725D6270B00ACDE21 /* SidebarView.swift in Sources */,
 				339C453525D6ED0F0079ACA1 /* OnboardingView.swift in Sources */,
 				337F3ABE25DEC897009155CA /* SKHDShortcutCharacter.swift in Sources */,
-				3341B01725F0702C00833B56 /* MacOSAnimationSettingsConfigFile.swift in Sources */,
+				3341B01725F0702C00833B56 /* MacOSAnimations+Extensions.swift in Sources */,
 				333631FB25EEF0CD009FEB32 /* CodableColor.swift in Sources */,
 				3385DF7025D6361200ACDE21 /* AppleScript.swift in Sources */,
 				3336320025EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift in Sources */,
