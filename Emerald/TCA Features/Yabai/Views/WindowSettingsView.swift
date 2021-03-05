@@ -89,7 +89,7 @@ struct WindowSettingsView: View {
                         .disabled(!viewStore.windowBorder)
                     }
                     Divider()
-                    Section(header: Text("Placement").bold()) {
+                    Section(header: Text("New Window Placement").bold()) {
                         HStack {
                             Button("First Child") {
                                 viewStore.send(.updateWindowPlacement(.first_child))

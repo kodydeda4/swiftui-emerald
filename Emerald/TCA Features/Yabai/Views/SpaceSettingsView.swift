@@ -28,6 +28,7 @@ struct SpaceSettingsView: View {
                         }
                     }
                 }
+                Divider()
                 Section(header: Text("Padding").bold()) {
                     HStack {
                         Stepper("Top \(viewStore.paddingTop)", value: viewStore.binding(keyPath: \.paddingTop, send: keyPath), in: 0...10)

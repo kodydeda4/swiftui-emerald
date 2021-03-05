@@ -15,51 +15,79 @@ struct MouseSettingsView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             SectionView("Mouse") {
-                Toggle("Mouse Follows Focus", isOn: viewStore.binding(keyPath: \.mouseFollowsFocus, send: keyPath))
-                
-                VStack(alignment: .leading) {
-                    Text("Focus Follows Mouse")
-                    Picker("Focus Follows Mouse", selection: viewStore.binding(keyPath: \.focusFollowsMouse, send: keyPath)) {
-                        ForEach(Yabai.State.FocusFollowsMouse.allCases) {
-                            Text($0.rawValue)
-                        }
-                    }.labelsHidden()
+                Section(header: Text("Mouse Follows Focus").bold()) {
+                    Toggle("Enabled", isOn: viewStore.binding(keyPath: \.mouseFollowsFocus, send: keyPath))
                 }
-                
-                VStack(alignment: .leading) {
-                    Text("Mouse Modifier")
-                    Picker("Mouse Modifier", selection: viewStore.binding(keyPath: \.mouseModifier, send: keyPath)) {
-                        ForEach(Yabai.State.MouseModifier.allCases) {
-                            Text($0.rawValue)
+                Divider()
+                Section(header: Text("Focus Follows Focus").bold()) {
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Button("Off (Normal)") {
+                                viewStore.send(.updateFocusFollowsMouse(.off))
+                            }
+                            Button("Autofocus") {
+                                viewStore.send(.updateFocusFollowsMouse(.autofocus))
+                            }
+                            Button("Autoraise") {
+                                viewStore.send(.updateFocusFollowsMouse(.autoraise))
+                            }
                         }
-                    }.labelsHidden()
+                    }
                 }
-                
-                VStack(alignment: .leading) {
-                    Text("Mouse Action 1")
-                    Picker("Mouse Action 1", selection: viewStore.binding(keyPath: \.mouseAction1, send: keyPath)) {
-                        ForEach(Yabai.State.MouseAction.allCases) {
-                            Text($0.rawValue)
+                Divider()
+                Section(header: Text("Mouse Modifier").bold()) {
+                    HStack {
+                        Button("cmd") {
+                            viewStore.send(.updateMouseModifier(.cmd))
                         }
-                    }.labelsHidden()
+                        Button("alt") {
+                            viewStore.send(.updateMouseModifier(.alt))
+                        }
+                        Button("shift") {
+                            viewStore.send(.updateMouseModifier(.shift))
+                        }
+                        Button("ctrl") {
+                            viewStore.send(.updateMouseModifier(.ctrl))
+                        }
+                        Button("fn") {
+                            viewStore.send(.updateMouseModifier(.fn))
+                        }
+                    }
                 }
-                
-                VStack(alignment: .leading) {
-                    Text("Mouse Action 2")
-                    Picker("Mouse Action 2", selection: viewStore.binding(keyPath: \.mouseAction2, send: keyPath)) {
-                        ForEach(Yabai.State.MouseAction.allCases) {
-                            Text($0.rawValue)
+                Section {
+                    Divider()
+                    Section(header: Text("Left Click + Mouse Modifier Action").bold()) {
+                        HStack {
+                            Button("Move") {
+                                viewStore.send(.updateMouseAction1(.move))
+                            }
+                            Button("Resize") {
+                                viewStore.send(.updateMouseAction1(.resize))
+                            }
                         }
-                    }.labelsHidden()
-                }
-                
-                VStack(alignment: .leading) {
-                    Text("Mouse Drop Action")
-                    Picker("Mouse Drop Action", selection: viewStore.binding(keyPath: \.mouseDropAction, send: keyPath)) {
-                        ForEach(Yabai.State.MouseDropAction.allCases) {
-                            Text($0.rawValue)
+                    }
+                    Divider()
+                    Section(header: Text("Right Click + Mouse Modifier Action").bold()) {
+                        HStack {
+                            Button("Move") {
+                                viewStore.send(.updateMouseAction2(.move))
+                            }
+                            Button("Resize") {
+                                viewStore.send(.updateMouseAction2(.resize))
+                            }
                         }
-                    }.labelsHidden()
+                    }
+                    Divider()
+                    Section(header: Text("Drop Action").bold()) {
+                        HStack {
+                            Button("Swap") {
+                                viewStore.send(.updateMouseDropAction(.swap))
+                            }
+                            Button("Stack") {
+                                viewStore.send(.updateMouseDropAction(.stack))
+                            }
+                        }
+                    }
                 }
             }
         }

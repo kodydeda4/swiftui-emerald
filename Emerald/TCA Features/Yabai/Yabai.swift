@@ -99,10 +99,15 @@ struct Yabai {
         case updateWindowShadows(Yabai.State.WindowShadow)
         case updateWindowPlacement(Yabai.State.WindowPlacement)
         case updateLayout(Yabai.State.Layout)
+        case updateFocusFollowsMouse(Yabai.State.FocusFollowsMouse)
+        case updateMouseAction1(Yabai.State.MouseAction)
+        case updateMouseAction2(Yabai.State.MouseAction)
+        case updateMouseDropAction(Yabai.State.MouseDropAction)
+        case updateMouseModifier(Yabai.State.MouseModifier)
+        case updateExternalBar(Yabai.State.ExternalBar)
         case updateActiveWindowBorderColor(Color)
         case updateNormalWindowBorderColor(Color)
         case updateInsertWindowBorderColor(Color)
-        
     }
 }
 
@@ -135,6 +140,30 @@ extension Yabai {
             
         case let .updateLayout(layout):
             state.layout = layout
+            return .none
+            
+        case let .updateFocusFollowsMouse(focusFollowsMouse):
+            state.focusFollowsMouse = focusFollowsMouse
+            return .none
+            
+        case let .updateMouseAction1(mouseAction1):
+            state.mouseAction1 = mouseAction1
+            return .none
+            
+        case let .updateMouseAction2(mouseAction2):
+            state.mouseAction2 = mouseAction2
+            return .none
+            
+        case let .updateMouseDropAction(mouseDropAction):
+            state.mouseDropAction = mouseDropAction
+            return .none
+            
+        case let .updateMouseModifier(mouseModifier):
+            state.mouseModifier = mouseModifier
+            return .none
+            
+        case let .updateExternalBar(externalBar):
+            state.externalBar = externalBar
             return .none
         }
     }

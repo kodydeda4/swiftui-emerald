@@ -15,23 +15,27 @@ struct ExternalBarSettingsView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             SectionView("External Bar") {
-                VStack(alignment: .leading) {
-                    Text("External Bar")
-                    Picker("External Bar", selection: viewStore.binding(keyPath: \.externalBar, send: keyPath)) {
-                        ForEach(Yabai.State.ExternalBar.allCases) {
-                            Text($0.rawValue)
+                Section(header: Text("External Bar").bold()) {
+                    HStack {
+                        Button("off") {
+                            viewStore.send(.updateExternalBar(.off))
                         }
-                    }.labelsHidden()
+                        Button("all") {
+                            viewStore.send(.updateExternalBar(.all))
+                        }
+                        Button("main") {
+                            viewStore.send(.updateExternalBar(.main))
+                        }
+                    }
                 }
-                
                 Section(header: Text("Padding").bold()) {
                     HStack {
-                        Stepper("Top \(viewStore.paddingTop)", value: viewStore.binding(keyPath: \.topPaddingExternalBar, send: keyPath), in: 0...10)
+                        Stepper("Top \(viewStore.topPaddingExternalBar)", value: viewStore.binding(keyPath: \.topPaddingExternalBar, send: keyPath), in: 0...10)
                             .padding(6)
                             .background(Color.black.opacity(0.25))
                             .clipShape(RoundedRectangle(cornerRadius: 8))
                         
-                        Stepper("Bottom \(viewStore.paddingTop)", value: viewStore.binding(keyPath: \.bottomPaddingExternalBar, send: keyPath), in: 0...10)
+                        Stepper("Bottom \(viewStore.bottomPaddingExternalBar)", value: viewStore.binding(keyPath: \.bottomPaddingExternalBar, send: keyPath), in: 0...10)
                             .padding(6)
                             .background(Color.black.opacity(0.25))
                             .clipShape(RoundedRectangle(cornerRadius: 8))
