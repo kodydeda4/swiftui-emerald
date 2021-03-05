@@ -19,7 +19,7 @@
 		3341B01125F06FF300833B56 /* YabaiConfigFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B01025F06FF300833B56 /* YabaiConfigFile.swift */; };
 		3341B01425F0700B00833B56 /* SKHDConfigFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B01325F0700B00833B56 /* SKHDConfigFile.swift */; };
 		3341B01725F0702C00833B56 /* MacOSAnimationSettingsConfigFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B01625F0702C00833B56 /* MacOSAnimationSettingsConfigFile.swift */; };
-		335E78D625F117D700C8839B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335E78D525F117D700C8839B /* DataManager.swift */; };
+		335E78D625F117D700C8839B /* JSONDecoder+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335E78D525F117D700C8839B /* JSONDecoder+Extensions.swift */; };
 		3361CDF725D44AEC0086F6A7 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */; };
 		3361CF1125E6EF1300016875 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CF0E25E6EF1300016875 /* SectionView.swift */; };
 		3361CF1225E6EF1300016875 /* DebugConfigFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CF0F25E6EF1300016875 /* DebugConfigFileView.swift */; };
@@ -52,7 +52,7 @@
 		3341B01025F06FF300833B56 /* YabaiConfigFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiConfigFile.swift; sourceTree = "<group>"; };
 		3341B01325F0700B00833B56 /* SKHDConfigFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHDConfigFile.swift; sourceTree = "<group>"; };
 		3341B01625F0702C00833B56 /* MacOSAnimationSettingsConfigFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSAnimationSettingsConfigFile.swift; sourceTree = "<group>"; };
-		335E78D525F117D700C8839B /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		335E78D525F117D700C8839B /* JSONDecoder+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Extensions.swift"; sourceTree = "<group>"; };
 		3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		3361CF0E25E6EF1300016875 /* SectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		3361CF0F25E6EF1300016875 /* DebugConfigFileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugConfigFileView.swift; sourceTree = "<group>"; };
@@ -92,14 +92,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		332D567F25DEED5700C88FEE /* Animations */ = {
+		332D567F25DEED5700C88FEE /* MacOSAnimations */ = {
 			isa = PBXGroup;
 			children = (
 				332D567C25DEED5300C88FEE /* MacOSAnimations.swift */,
 				332D568525DEEF7800C88FEE /* MacOSAnimationSettingsView.swift */,
 				3341B01625F0702C00833B56 /* MacOSAnimationSettingsConfigFile.swift */,
 			);
-			path = Animations;
+			path = MacOSAnimations;
 			sourceTree = "<group>";
 		};
 		3361CF1525E6EF1600016875 /* Views (Misc) */ = {
@@ -155,7 +155,7 @@
 		3380D31125D0667100C10913 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				335E78D525F117D700C8839B /* DataManager.swift */,
+				335E78D525F117D700C8839B /* JSONDecoder+Extensions.swift */,
 				337F3ABD25DEC897009155CA /* SKHDShortcutCharacter.swift */,
 				3385DF6F25D6361200ACDE21 /* AppleScript.swift */,
 				333631FA25EEF0CD009FEB32 /* CodableColor.swift */,
@@ -171,7 +171,7 @@
 				33DEDCB725DDBC2F001582DC /* Root */,
 				33DEDCB925DDBC51001582DC /* Yabai */,
 				33DEDCBA25DDBC67001582DC /* SKHD */,
-				332D567F25DEED5700C88FEE /* Animations */,
+				332D567F25DEED5700C88FEE /* MacOSAnimations */,
 				339C452D25D6ECA30079ACA1 /* Onboarding */,
 			);
 			path = "TCA Features";
@@ -300,7 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				335E78D625F117D700C8839B /* DataManager.swift in Sources */,
+				335E78D625F117D700C8839B /* JSONDecoder+Extensions.swift in Sources */,
 				3385DF6A25D6279200ACDE21 /* AboutView.swift in Sources */,
 				3361CF1325E6EF1300016875 /* SpecialTextView.swift in Sources */,
 				3361CDF725D44AEC0086F6A7 /* URL+Extensions.swift in Sources */,

@@ -5,10 +5,10 @@
 //  Created by Kody Deda on 2/18/21.
 //
 
-// Disable OSX Animations: https://apple.stackexchange.com/questions/14001/how-to-turn-off-all-animations-on-os-x
-
 import SwiftUI
 import ComposableArchitecture
+
+// Disable OSX Animations: https://apple.stackexchange.com/questions/14001/how-to-turn-off-all-animations-on-os-x
 
 struct MacOSAnimations {
     struct State: Equatable, Codable {
