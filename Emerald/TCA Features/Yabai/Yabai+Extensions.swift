@@ -20,7 +20,7 @@ extension Yabai.State {
 #      ██║   ██║  ██║██████╔╝██║  ██║██║
 #      ╚═╝   ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝
 #
-#   ~/\(configFilename.relativePath)
+#   ~/\(configURL.relativePath)
 #   \(version)
 #
 

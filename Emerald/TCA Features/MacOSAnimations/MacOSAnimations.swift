@@ -12,8 +12,8 @@ import ComposableArchitecture
 
 struct MacOSAnimations {
     struct State: Equatable, Codable {
-        var stateFilename  = URL(fileURLWithPath: "AnimationsState.json",  relativeTo: .HomeDirectory)
-        var configFilename = URL(fileURLWithPath: ".macOSAnimationsRC.sh", relativeTo: .HomeDirectory)
+        var stateURL  = URL(fileURLWithPath: "AnimationsState.json",  relativeTo: .HomeDirectory)
+        var configURL = URL(fileURLWithPath: ".macOSAnimationsRC.sh", relativeTo: .HomeDirectory)
         
         var allEnabled: Bool = true
     }
