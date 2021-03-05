@@ -7,6 +7,7 @@
 
 import SwiftUI
 import ComposableArchitecture
+import Overture
 
 struct Root {
     struct State: Equatable {
@@ -31,6 +32,7 @@ struct Root {
     }
     
     struct Environment {
+
         enum CodableState {
             case yabai
             case skhd
@@ -38,23 +40,25 @@ struct Root {
             
             var stateURL: URL {
                 switch self {
-                case .yabai           : return URL(fileURLWithPath: "YabaiState.json",      relativeTo: .HomeDirectory)
-                case .skhd            : return URL(fileURLWithPath: "SKHDState.json",       relativeTo: .HomeDirectory)
-                case .macOSAnimations : return URL(fileURLWithPath: "AnimationsState.json", relativeTo: .HomeDirectory)
+                case .yabai           : return homeURL("YabaiState.json")
+                case .skhd            : return homeURL("SKHDState.json")
+                case .macOSAnimations : return homeURL("AnimationsState.json")
                 }
             }
             
             var configURL: URL {
                 switch self {
-                case .yabai           : return URL(fileURLWithPath: ".yabairc",              relativeTo: .HomeDirectory)
-                case .skhd            : return URL(fileURLWithPath: ".skhdrc",               relativeTo: .HomeDirectory)
-                case .macOSAnimations : return URL(fileURLWithPath: ".macOSAnimationsRC.sh", relativeTo: .HomeDirectory)
+                case .yabai           : return homeURL(".yabairc")
+                case .skhd            : return homeURL(".skhdrc")
+                case .macOSAnimations : return homeURL(".macOSAnimationsRC.sh")
                     
                 }
             }
         }
     }
 }
+
+let homeURL = flip(curry(URL.init(fileURLWithPath:relativeTo:)))(.HomeDirectory)
 
 extension Root {
     static let reducer = Reducer<State, Action, Environment>.combine(
