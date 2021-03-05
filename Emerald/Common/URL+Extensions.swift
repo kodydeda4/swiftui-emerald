@@ -7,13 +7,8 @@
 
 import Foundation
 
-public func getDocumentsDirectory() -> URL {
-    let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-    return paths[0]
+extension URL {
+    static let HomeDirectory               = URL(fileURLWithPath: NSHomeDirectory())
+    static let ApplicationSupportDirectory = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
+    static let UserDocumentsDirectory      = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
 }
-
-public func getApplicationSupportDirectory() -> URL {
-    let paths = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
-    return paths[0]
-}
-
