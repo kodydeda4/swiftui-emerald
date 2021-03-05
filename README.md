@@ -8,7 +8,6 @@ A Tiling Window Wanager for macOS.
 > Both open source projects started by [koekeishiya](https://github.com/koekeishiya).
 >> Learn more about [Yabai](https://github.com/koekeishiya/yabai/wiki).  
 >> Learn more about [SKHD](https://github.com/koekeishiya/skhd).  
->> Learn more about [Tiling Window Managers](https://www.youtube.com/watch?v=Lj1IfdKY0CU&ab_channel=DistroTube).  
 
 <img width="1617" alt="Screen Shot 2021-02-26 at 8 37 10 AM" src="https://user-images.githubusercontent.com/45678211/109307060-101ad000-780e-11eb-8001-e55fdff92f04.png">
 
