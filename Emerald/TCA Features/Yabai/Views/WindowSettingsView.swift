@@ -8,18 +8,21 @@
 import SwiftUI
 import ComposableArchitecture
 
+
+
+
+
+
 struct WindowSettingsView: View {
     let store: Store<Yabai.State, Yabai.Action>
     let keyPath = Yabai.Action.keyPath
-    
-    let sliderWidth: CGFloat = 300
-    
+        
     var body: some View {
         WithViewStore(store) { viewStore in
             SectionView("Window") {
                 Section(header: Text("Shadow Effects").bold()) {
                     HStack {
-                        // ** you'll need to have an inverse toggle") {
+                        // ** do an inverse toggle") {
                         Button("Off (Normal)") {
                             viewStore.send(.updateWindowShadows(.on))
                         }
@@ -40,30 +43,9 @@ struct WindowSettingsView: View {
                         }
                     }
                 }
-                Divider()
-                Section(header: Text("Animation Duration").bold()) {
-                    HStack {
-                        Slider(value: viewStore.binding(keyPath: \.windowOpacityDuration, send: keyPath), in: 0.0...1.0)
-                            .frame(width: sliderWidth)
-                        Text("\(Int(viewStore.windowOpacityDuration * 100))%")
-                    }
-                }
-                Divider()
-                Section(header: Text("Focused Window").bold()) {
-                    HStack {
-                        Slider(value: viewStore.binding(keyPath: \.activeWindowOpacity, send: keyPath), in: 0.0...1.0)
-                            .frame(width: sliderWidth)
-                        Text("\(Int(viewStore.activeWindowOpacity * 100))%")
-                    }
-                }
-                Divider()
-                Section(header: Text("Normal Windows").bold()) {
-                    HStack {
-                        Slider(value: viewStore.binding(keyPath: \.normalWindowOpacity, send: keyPath), in: 0.0...1.0)
-                            .frame(width: sliderWidth)
-                        Text("\(Int(viewStore.normalWindowOpacity * 100))%")
-                    }
-                }
+                MySliderView(text: "Animation Duration", value: viewStore.binding(keyPath: \.windowOpacityDuration, send: keyPath))
+                MySliderView(text: "Focused Window", value: viewStore.binding(keyPath: \.activeWindowOpacity, send: keyPath))
+                MySliderView(text: "Normal Windows", value: viewStore.binding(keyPath: \.normalWindowOpacity, send: keyPath))
                 Group {
                     Divider()
                     Section(header: Text("Borders").bold()) {
@@ -74,28 +56,11 @@ struct WindowSettingsView: View {
                             }
                             Group {
                                 VStack {
-                                    HStack {
-                                        Text("\(viewStore.windowBorderWidth)")
-                                        Spacer()
-                                        Stepper("", value: viewStore.binding(keyPath: \.windowBorderWidth, send: keyPath), in: 0...10)
-                                    }
-                                    .frame(width: 60)
-                                    .background(Color.black.opacity(0.25))
-                                    .clipShape(RoundedRectangle(cornerRadius: 8))
-                                    Text("Width")
+                                    MyStepperView("Width", value: viewStore.binding(keyPath: \.windowBorderWidth, send: keyPath))
                                 }
-                                VStack {
-                                    ColorPicker("Focused", selection: viewStore.binding(get: \.activeWindowBorderColor.color, send: Yabai.Action.updateActiveWindowBorderColor)).labelsHidden()
-                                    Text("Focused")
-                                }
-                                VStack {
-                                    ColorPicker("Normal", selection: viewStore.binding(get: \.normalWindowBorderColor.color, send: Yabai.Action.updateNormalWindowBorderColor)).labelsHidden()
-                                    Text("Normal")
-                                }
-                                VStack {
-                                    ColorPicker("Insert", selection: viewStore.binding(get: \.insertWindowBorderColor.color, send: Yabai.Action.updateInsertWindowBorderColor)).labelsHidden()
-                                    Text("Insert")
-                                }
+                                MyColorPickerView(text: "Focused", selection: viewStore.binding(get: \.activeWindowBorderColor.color, send: Yabai.Action.updateActiveWindowBorderColor))
+                                MyColorPickerView(text: "Normal", selection: viewStore.binding(get: \.normalWindowBorderColor.color, send: Yabai.Action.updateNormalWindowBorderColor))
+                                MyColorPickerView(text: "Insert", selection: viewStore.binding(get: \.insertWindowBorderColor.color, send: Yabai.Action.updateInsertWindowBorderColor))
                             }
                             .disabled(!viewStore.windowBorder)
                         }
@@ -111,14 +76,9 @@ struct WindowSettingsView: View {
                             }
                         }
                         Divider()
-                        Section(header: Text("Split Ratio").bold()) {
-                            HStack {
-                                Slider(value: viewStore.binding(keyPath: \.splitRatio, send: keyPath), in: 0.01...0.99)
-                                    .frame(width: sliderWidth)
-                                Text("\(Int(viewStore.splitRatio * 100))%")
-                            }
+                        MySliderView(text: "Split Ratio", value: viewStore.binding(keyPath: \.splitRatio, send: keyPath))
                             .disabled(viewStore.autoBalance)
-                        }
+                        
                         Divider()
                         Section(header: Text("Misc.").bold()) {
                             VStack(alignment: .leading) {

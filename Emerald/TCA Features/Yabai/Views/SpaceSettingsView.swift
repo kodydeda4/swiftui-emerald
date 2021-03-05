@@ -8,6 +8,9 @@
 import SwiftUI
 import ComposableArchitecture
 
+
+
+
 struct SpaceSettingsView: View {
     let store: Store<Yabai.State, Yabai.Action>
     let keyPath = Yabai.Action.keyPath
@@ -31,31 +34,11 @@ struct SpaceSettingsView: View {
                 Divider()
                 Section(header: Text("Padding").bold()) {
                     HStack {
-                        Stepper("Top \(viewStore.paddingTop)", value: viewStore.binding(keyPath: \.paddingTop, send: keyPath), in: 0...10)
-                            .padding(6)
-                            .background(Color.black.opacity(0.25))
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
-                        
-                        Stepper("Bottom \(viewStore.paddingBottom)", value: viewStore.binding(keyPath: \.paddingBottom, send: keyPath), in: 0...10)
-                            .padding(6)
-                            .background(Color.black.opacity(0.25))
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
-                        
-                        
-                        Stepper("Left \(viewStore.paddingLeft)", value: viewStore.binding(keyPath: \.paddingLeft, send: keyPath), in: 0...10)
-                            .padding(6)
-                            .background(Color.black.opacity(0.25))
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
-                        
-                        Stepper("Right \(viewStore.paddingRight)", value: viewStore.binding(keyPath: \.paddingRight, send: keyPath), in: 0...10)
-                            .padding(6)
-                            .background(Color.black.opacity(0.25))
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
-                        
-                        Stepper("Gap \(viewStore.windowGap)", value: viewStore.binding(keyPath: \.windowGap, send: keyPath), in: 0...10)
-                            .padding(6)
-                            .background(Color.black.opacity(0.25))
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                        MyStepperView("Top", value: viewStore.binding(keyPath: \.paddingTop, send: keyPath))
+                        MyStepperView("Bottom", value: viewStore.binding(keyPath: \.paddingBottom, send: keyPath))
+                        MyStepperView("Left", value: viewStore.binding(keyPath: \.paddingLeft, send: keyPath))
+                        MyStepperView("Right", value: viewStore.binding(keyPath: \.paddingRight, send: keyPath))
+                        MyStepperView("Gaps", value: viewStore.binding(keyPath: \.windowGap, send: keyPath))
                     }
                 }
             }
