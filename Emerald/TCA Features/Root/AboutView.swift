@@ -10,40 +10,17 @@ import ComposableArchitecture
 
 struct AboutView: View {
     let store: Store<Root.State, Root.Action>
-        
+    
     var body: some View {
         WithViewStore(store) { viewStore in
             List {
-                VStack(alignment: .leading) {
-                    Text("Emerald Author")
-                    Text("Kody Deda")
+                SectionView("Emerald") {
+                    Text(viewStore.yabai.version)
                         .foregroundColor(.gray)
-                }
-                VStack(alignment: .leading) {
-                    Text("Yabai & SKHD Author")
-                    Text("koekeishiya")
+                    Text(viewStore.skhd.version)
                         .foregroundColor(.gray)
-                }
-
-                Divider()
-                
-                VStack(alignment: .leading) {
-                    Text("Yabai Version")
-                    Text(viewStore.yabaiVersion)
+                    Text(viewStore.homebrew.version.split(separator: "\n").first ?? "")
                         .foregroundColor(.gray)
-                }
-
-                VStack(alignment: .leading) {
-                    Text("SKHD Version")
-                    Text(viewStore.skhdVersion)
-                        .foregroundColor(.gray)
-                }
-
-                VStack(alignment: .leading) {
-                    Text("HomeBrew Version")
-                    Text(viewStore.homebrewVersion)
-                        .foregroundColor(.gray)
-                        .lineLimit(1)
                 }
             }
             .navigationTitle("About")

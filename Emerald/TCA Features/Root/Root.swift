@@ -5,7 +5,6 @@
 //  Created by Kody Deda on 2/7/21.
 //
 
-import SwiftShell
 import SwiftUI
 import ComposableArchitecture
 
@@ -14,11 +13,8 @@ struct Root {
         var yabai            = Yabai.State()
         var skhd             = SKHD.State()
         var macOSAnimations  = MacOSAnimations.State()
+        var homebrew         = Homebrew.State()
         var onboarding       = Onboarding.State()
-        
-        var yabaiVersion     = run("/usr/local/bin/yabai", "-v").stdout
-        var skhdVersion      = run("/usr/local/bin/skhd", "-v").stdout
-        var homebrewVersion  = run("/usr/local/bin/brew", "-v").stdout
         var error            = ""
     }
     
@@ -26,6 +22,7 @@ struct Root {
         case yabai(Yabai.Action)
         case skhd(SKHD.Action)
         case macOSAnimations(MacOSAnimations.Action)
+        case homebrew(Homebrew.Action)
         case onboarding(Onboarding.Action)
         case save(Environment.CodableState)
         case load(Environment.CodableState)
@@ -76,6 +73,11 @@ extension Root {
             action: /Action.macOSAnimations,
             environment: { _ in () }
         ),
+        Homebrew.reducer.pullback(
+            state: \.homebrew,
+            action: /Action.homebrew,
+            environment: { _ in () }
+        ),
         Onboarding.reducer.pullback(
             state: \.onboarding,
             action: /Action.onboarding,
@@ -91,6 +93,9 @@ extension Root {
                 
             case let .macOSAnimations(subAction):
                 return Effect(value: .save(.macOSAnimations))
+                
+            case .homebrew(_):
+                return .none
                 
             case .onboarding(_):
                 return .none

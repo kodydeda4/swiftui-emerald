@@ -8,9 +8,12 @@
 import SwiftUI
 import ComposableArchitecture
 import DynamicColor
+import SwiftShell
+
 
 struct Yabai {
     struct State: Equatable, Codable {
+        var version                  = run("/usr/local/bin/yabai", "-v").stdout
         var debugOutput              : Bool              = false
         var externalBar              : ExternalBar       = .off
         var topPaddingExternalBar    : Int               = 0

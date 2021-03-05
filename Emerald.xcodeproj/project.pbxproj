@@ -39,6 +39,7 @@
 		3398839925DD9929007B9FF5 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 3398839825DD9929007B9FF5 /* KeyboardShortcuts */; };
 		339C453125D6ECCA0079ACA1 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C453025D6ECCA0079ACA1 /* RootView.swift */; };
 		339C453525D6ED0F0079ACA1 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C453425D6ED0F0079ACA1 /* OnboardingView.swift */; };
+		33AD2F7D25F254ED0018875E /* Homebrew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AD2F7C25F254ED0018875E /* Homebrew.swift */; };
 		33B62D2925D5E31400DD5934 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B62D2825D5E31400DD5934 /* Onboarding.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		3398838E25DD7DC3007B9FF5 /* SKHDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHDView.swift; sourceTree = "<group>"; };
 		339C453025D6ECCA0079ACA1 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		339C453425D6ED0F0079ACA1 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		33AD2F7C25F254ED0018875E /* Homebrew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homebrew.swift; sourceTree = "<group>"; };
 		33B62D2825D5E31400DD5934 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -172,6 +174,7 @@
 				33DEDCB925DDBC51001582DC /* Yabai */,
 				33DEDCBA25DDBC67001582DC /* SKHD */,
 				332D567F25DEED5700C88FEE /* MacOSAnimations */,
+				33AD2F7B25F254E50018875E /* Homebrew */,
 				339C452D25D6ECA30079ACA1 /* Onboarding */,
 			);
 			path = "TCA Features";
@@ -184,6 +187,14 @@
 				339C453425D6ED0F0079ACA1 /* OnboardingView.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		33AD2F7B25F254E50018875E /* Homebrew */ = {
+			isa = PBXGroup;
+			children = (
+				33AD2F7C25F254ED0018875E /* Homebrew.swift */,
+			);
+			path = Homebrew;
 			sourceTree = "<group>";
 		};
 		33DEDCB725DDBC2F001582DC /* Root */ = {
@@ -325,6 +336,7 @@
 				3336320025EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift in Sources */,
 				3341B01425F0700B00833B56 /* SKHDConfigFile.swift in Sources */,
 				332D567D25DEED5300C88FEE /* MacOSAnimations.swift in Sources */,
+				33AD2F7D25F254ED0018875E /* Homebrew.swift in Sources */,
 				339C453125D6ECCA0079ACA1 /* RootView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
