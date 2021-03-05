@@ -22,7 +22,7 @@ struct SectionView<Content: View>: View {
         GroupBox {
             VStack(alignment: .leading) {
                     Text(title)
-                        .font(.title3)
+                        .font(.title)
                         .bold()
                     Divider()
                     content

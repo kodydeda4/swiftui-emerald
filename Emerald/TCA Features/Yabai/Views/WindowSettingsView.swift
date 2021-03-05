@@ -12,12 +12,15 @@ struct WindowSettingsView: View {
     let store: Store<Yabai.State, Yabai.Action>
     let keyPath = Yabai.Action.keyPath
     
+    let sliderWidth: CGFloat = 300
+    
     var body: some View {
         WithViewStore(store) { viewStore in
             SectionView("Window") {
-                Section(header: Text("Shadows").bold()) {
+                Section(header: Text("Shadow Effects").bold()) {
                     HStack {
-                        Button("Normal") {
+                        // ** you'll need to have an inverse toggle") {
+                        Button("Off (Normal)") {
                             viewStore.send(.updateWindowShadows(.on))
                         }
                         Button("Disabled") {
@@ -30,88 +33,98 @@ struct WindowSettingsView: View {
                 }
                 Divider()
                 Section(header: Text("Opacity Effects").bold()) {
-                    HStack {
-                        VStack {
+                    VStack(alignment: .leading) {
+                        HStack {
                             Toggle("Opacity Effects", isOn: viewStore.binding(keyPath: \.windowOpacity, send: keyPath)).labelsHidden()
-                            Text("")
+                            Text("Enabled")
                         }
-                        Group {
-                            VStack(alignment: .leading) {
-                                Slider(value: viewStore.binding(keyPath: \.windowOpacityDuration, send: keyPath), in: 0.0...1.0)
-                                Text("Animation Duration \(Int(viewStore.windowOpacityDuration * 100))%")
-                            }
-                            
-                            VStack(alignment: .leading) {
-                                Slider(value: viewStore.binding(keyPath: \.activeWindowOpacity, send: keyPath), in: 0.0...1.0)
-                                Text("Focused Window \(Int(viewStore.activeWindowOpacity * 100))%")
-                            }
-                            VStack(alignment: .leading) {
-                                Slider(value: viewStore.binding(keyPath: \.normalWindowOpacity, send: keyPath), in: 0.0...1.0)
-                                Text("Normal Windows \(Int(viewStore.normalWindowOpacity * 100))%")
-                            }
-                        }.disabled(!viewStore.windowOpacity)
                     }
                 }
                 Divider()
-                Section(header: Text("Borders").bold()) {
+                Section(header: Text("Animation Duration").bold()) {
                     HStack {
-                        VStack {
-                            Toggle("Borders", isOn: viewStore.binding(keyPath: \.windowBorder, send: keyPath)).labelsHidden()
-                            Text("")
-                        }
-                        
-                        Group {
-                            VStack {
-                                HStack {
-                                    Text("\(viewStore.windowBorderWidth)")
-                                    Spacer()
-                                    Stepper("", value: viewStore.binding(keyPath: \.windowBorderWidth, send: keyPath), in: 0...10)
-                                }
-                                .frame(width: 60)
-                                .background(Color.black.opacity(0.25))
-                                .clipShape(RoundedRectangle(cornerRadius: 8))
-                                
-                                Text("Width")
-                            }
-                            VStack {
-                                ColorPicker("Focused", selection: viewStore.binding(get: \.activeWindowBorderColor.color, send: Yabai.Action.updateActiveWindowBorderColor)).labelsHidden()
-                                Text("Focused")
-                            }
-                            VStack {
-                                ColorPicker("Normal", selection: viewStore.binding(get: \.normalWindowBorderColor.color, send: Yabai.Action.updateNormalWindowBorderColor)).labelsHidden()
-                                Text("Normal")
-                            }
-                            VStack {
-                                ColorPicker("Insert", selection: viewStore.binding(get: \.insertWindowBorderColor.color, send: Yabai.Action.updateInsertWindowBorderColor)).labelsHidden()
-                                Text("Insert")
-                            }
-                        }
-                        .disabled(!viewStore.windowBorder)
+                        Slider(value: viewStore.binding(keyPath: \.windowOpacityDuration, send: keyPath), in: 0.0...1.0)
+                            .frame(width: sliderWidth)
+                        Text("\(Int(viewStore.windowOpacityDuration * 100))%")
                     }
+                }
+                Divider()
+                Section(header: Text("Focused Window").bold()) {
+                    HStack {
+                        Slider(value: viewStore.binding(keyPath: \.activeWindowOpacity, send: keyPath), in: 0.0...1.0)
+                            .frame(width: sliderWidth)
+                        Text("\(Int(viewStore.activeWindowOpacity * 100))%")
+                    }
+                }
+                Divider()
+                Section(header: Text("Normal Windows").bold()) {
+                    HStack {
+                        Slider(value: viewStore.binding(keyPath: \.normalWindowOpacity, send: keyPath), in: 0.0...1.0)
+                            .frame(width: sliderWidth)
+                        Text("\(Int(viewStore.normalWindowOpacity * 100))%")
+                    }
+                }
+                Group {
                     Divider()
-                    Section(header: Text("New Window Placement").bold()) {
+                    Section(header: Text("Borders").bold()) {
                         HStack {
-                            Button("First Child") {
-                                viewStore.send(.updateWindowPlacement(.first_child))
+                            VStack {
+                                Toggle("Borders", isOn: viewStore.binding(keyPath: \.windowBorder, send: keyPath)).labelsHidden()
+                                Text("")
                             }
-                            Button("Second Child") {
-                                viewStore.send(.updateWindowPlacement(.second_child))
+                            Group {
+                                VStack {
+                                    HStack {
+                                        Text("\(viewStore.windowBorderWidth)")
+                                        Spacer()
+                                        Stepper("", value: viewStore.binding(keyPath: \.windowBorderWidth, send: keyPath), in: 0...10)
+                                    }
+                                    .frame(width: 60)
+                                    .background(Color.black.opacity(0.25))
+                                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                                    Text("Width")
+                                }
+                                VStack {
+                                    ColorPicker("Focused", selection: viewStore.binding(get: \.activeWindowBorderColor.color, send: Yabai.Action.updateActiveWindowBorderColor)).labelsHidden()
+                                    Text("Focused")
+                                }
+                                VStack {
+                                    ColorPicker("Normal", selection: viewStore.binding(get: \.normalWindowBorderColor.color, send: Yabai.Action.updateNormalWindowBorderColor)).labelsHidden()
+                                    Text("Normal")
+                                }
+                                VStack {
+                                    ColorPicker("Insert", selection: viewStore.binding(get: \.insertWindowBorderColor.color, send: Yabai.Action.updateInsertWindowBorderColor)).labelsHidden()
+                                    Text("Insert")
+                                }
+                            }
+                            .disabled(!viewStore.windowBorder)
+                        }
+                        Divider()
+                        Section(header: Text("New Window Placement").bold()) {
+                            HStack {
+                                Button("First Child") {
+                                    viewStore.send(.updateWindowPlacement(.first_child))
+                                }
+                                Button("Second Child") {
+                                    viewStore.send(.updateWindowPlacement(.second_child))
+                                }
                             }
                         }
-                    }
-                    Divider()
-                    Section(header: Text("Split Ratio").bold()) {
-                        VStack(alignment: .leading) {
-                            Slider(value: viewStore.binding(keyPath: \.splitRatio, send: keyPath), in: 0.01...0.99)
-                            Text("\(Int(viewStore.splitRatio * 100))%")
+                        Divider()
+                        Section(header: Text("Split Ratio").bold()) {
+                            HStack {
+                                Slider(value: viewStore.binding(keyPath: \.splitRatio, send: keyPath), in: 0.01...0.99)
+                                    .frame(width: sliderWidth)
+                                Text("\(Int(viewStore.splitRatio * 100))%")
+                            }
+                            .disabled(viewStore.autoBalance)
                         }
-                        .disabled(viewStore.autoBalance)
-                    }
-                    Divider()
-                    Section(header: Text("Misc.").bold()) {
-                        VStack(alignment: .leading) {
-                            Toggle("Floating Windows Stay-On-Top", isOn: viewStore.binding(keyPath: \.windowTopmost, send: keyPath))
-                            Toggle("Auto Balance", isOn: viewStore.binding(keyPath: \.autoBalance, send: keyPath))
+                        Divider()
+                        Section(header: Text("Misc.").bold()) {
+                            VStack(alignment: .leading) {
+                                Toggle("Floating Windows Stay-On-Top", isOn: viewStore.binding(keyPath: \.windowTopmost, send: keyPath))
+                                Toggle("Auto Balance", isOn: viewStore.binding(keyPath: \.autoBalance, send: keyPath))
+                            }
                         }
                     }
                 }

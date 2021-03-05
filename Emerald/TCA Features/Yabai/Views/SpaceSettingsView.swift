@@ -41,6 +41,7 @@ struct SpaceSettingsView: View {
                             .background(Color.black.opacity(0.25))
                             .clipShape(RoundedRectangle(cornerRadius: 8))
                         
+                        
                         Stepper("Left \(viewStore.paddingLeft)", value: viewStore.binding(keyPath: \.paddingLeft, send: keyPath), in: 0...10)
                             .padding(6)
                             .background(Color.black.opacity(0.25))
