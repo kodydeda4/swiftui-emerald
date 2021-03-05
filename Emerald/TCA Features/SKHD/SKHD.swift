@@ -22,7 +22,10 @@ extension KeyboardShortcuts.Name {
 
 struct SKHD {
     struct State: Equatable, Codable {
+        var stateFilename          = URL(fileURLWithPath: "SKHDState.json", relativeTo: .HomeDirectory)
+        var configFilename         = URL(fileURLWithPath: ".skhdrc", relativeTo: .HomeDirectory)
         var version                = run("/usr/local/bin/skhd", "-v").stdout
+        
         var restartYabai           = KeyboardShortcuts.getShortcut(for: .restartYabai)
         var togglePaddingShortcut  = KeyboardShortcuts.getShortcut(for: .togglePadding)
         var toggleGapsShortcut     = KeyboardShortcuts.getShortcut(for: .toggleGaps)

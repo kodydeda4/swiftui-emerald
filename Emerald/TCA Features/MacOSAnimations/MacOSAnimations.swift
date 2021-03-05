@@ -12,8 +12,10 @@ import ComposableArchitecture
 
 struct MacOSAnimations {
     struct State: Equatable, Codable {
-        var allEnabled: Bool = true
+        var stateFilename  = URL(fileURLWithPath: "AnimationsState.json",  relativeTo: .HomeDirectory)
+        var configFilename = URL(fileURLWithPath: ".macOSAnimationsRC.sh", relativeTo: .HomeDirectory)
         
+        var allEnabled: Bool = true
     }
     enum Action: Equatable {
         case keyPath(BindingAction<MacOSAnimations.State>)

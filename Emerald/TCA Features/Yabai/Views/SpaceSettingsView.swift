@@ -8,9 +8,6 @@
 import SwiftUI
 import ComposableArchitecture
 
-
-
-
 struct SpaceSettingsView: View {
     let store: Store<Yabai.State, Yabai.Action>
     let keyPath = Yabai.Action.keyPath

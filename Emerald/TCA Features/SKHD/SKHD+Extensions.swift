@@ -19,6 +19,7 @@ extension SKHD.State {
 #   ███████║██║  ██╗██║  ██║██████╔╝
 #   ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝
 #
+#   ~/\(configFilename.relativePath)
 #   \(version)
 #
 
