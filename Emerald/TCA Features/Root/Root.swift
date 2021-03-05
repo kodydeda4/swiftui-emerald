@@ -38,17 +38,18 @@ struct Root {
             
             var stateURL: URL {
                 switch self {
-                    case .yabai           : return URL.HomeDirectory.appendingPathComponent("YabaiState.json")
-                    case .skhd            : return URL.HomeDirectory.appendingPathComponent("SKHDState.json")
-                    case .macOSAnimations : return URL.HomeDirectory.appendingPathComponent("AnimationsState.json")
+                case .yabai           : return URL(fileURLWithPath: "YabaiState.json",      relativeTo: .HomeDirectory)
+                case .skhd            : return URL(fileURLWithPath: "SKHDState.json",       relativeTo: .HomeDirectory)
+                case .macOSAnimations : return URL(fileURLWithPath: "AnimationsState.json", relativeTo: .HomeDirectory)
                 }
             }
             
             var configURL: URL {
                 switch self {
-                    case .yabai           : return URL.HomeDirectory.appendingPathComponent(".yabairc")
-                    case .skhd            : return URL.HomeDirectory.appendingPathComponent(".skhdrc")
-                    case .macOSAnimations : return URL.HomeDirectory.appendingPathComponent(".macOSAnimationsRC.sh")
+                case .yabai           : return URL(fileURLWithPath: ".yabairc",              relativeTo: .HomeDirectory)
+                case .skhd            : return URL(fileURLWithPath: ".skhdrc",               relativeTo: .HomeDirectory)
+                case .macOSAnimations : return URL(fileURLWithPath: ".macOSAnimationsRC.sh", relativeTo: .HomeDirectory)
+                    
                 }
             }
         }

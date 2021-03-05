@@ -40,6 +40,7 @@
 		339C453125D6ECCA0079ACA1 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C453025D6ECCA0079ACA1 /* RootView.swift */; };
 		339C453525D6ED0F0079ACA1 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C453425D6ED0F0079ACA1 /* OnboardingView.swift */; };
 		33AD2F7D25F254ED0018875E /* Homebrew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AD2F7C25F254ED0018875E /* Homebrew.swift */; };
+		33AD2F8225F25D330018875E /* Overture in Frameworks */ = {isa = PBXBuildFile; productRef = 33AD2F8125F25D330018875E /* Overture */; };
 		33B62D2925D5E31400DD5934 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B62D2825D5E31400DD5934 /* Onboarding.swift */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +86,7 @@
 			files = (
 				333631F825EEE6B9009FEB32 /* DynamicColor in Frameworks */,
 				3325BFD125EFCEC4007831C5 /* OmenTextField in Frameworks */,
+				33AD2F8225F25D330018875E /* Overture in Frameworks */,
 				3380D31C25D06E1500C10913 /* ComposableArchitecture in Frameworks */,
 				3315223F25D5786C00C8E46A /* SwiftShell in Frameworks */,
 				3398839925DD9929007B9FF5 /* KeyboardShortcuts in Frameworks */,
@@ -250,6 +252,7 @@
 				3398839825DD9929007B9FF5 /* KeyboardShortcuts */,
 				333631F725EEE6B9009FEB32 /* DynamicColor */,
 				3325BFD025EFCEC4007831C5 /* OmenTextField */,
+				33AD2F8125F25D330018875E /* Overture */,
 			);
 			productName = YabaiUI;
 			productReference = 3380D2FB25D05F4200C10913 /* Emerald.app */;
@@ -284,6 +287,7 @@
 				3398839725DD9929007B9FF5 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
 				333631F625EEE6B9009FEB32 /* XCRemoteSwiftPackageReference "DynamicColor" */,
 				3325BFCF25EFCEC4007831C5 /* XCRemoteSwiftPackageReference "OmenTextField" */,
+				33AD2F8025F25D330018875E /* XCRemoteSwiftPackageReference "swift-overture" */,
 			);
 			productRefGroup = 3380D2FC25D05F4200C10913 /* Products */;
 			projectDirPath = "";
@@ -573,6 +577,14 @@
 				minimumVersion = 0.7.0;
 			};
 		};
+		33AD2F8025F25D330018875E /* XCRemoteSwiftPackageReference "swift-overture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-overture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -600,6 +612,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3398839725DD9929007B9FF5 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
 			productName = KeyboardShortcuts;
+		};
+		33AD2F8125F25D330018875E /* Overture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 33AD2F8025F25D330018875E /* XCRemoteSwiftPackageReference "swift-overture" */;
+			productName = Overture;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
