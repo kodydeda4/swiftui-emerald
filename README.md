@@ -5,7 +5,7 @@
 A Tiling Window Wanager for macOS. 
 
 > Emerald uses Yabai & SKHD to do it's magic.  
-> Both open source projects started by [koekeishiya](https://github.com/koekeishiya).
+> Both are open source projects created by [koekeishiya](https://github.com/koekeishiya).
 >> Learn more about [Yabai](https://github.com/koekeishiya/yabai/wiki).  
 >> Learn more about [SKHD](https://github.com/koekeishiya/skhd).  
 
