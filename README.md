@@ -2,7 +2,7 @@
 
 ## Description
 
-A tiling window manager for macOS. 
+A Tiling Window Wanager for macOS. 
 
 > Emerald uses Yabai & SKHD to do it's magic.  They're both open source projects created by `koekeishiya` on Github.  
 > A link to his page can be found [here](https://github.com/koekeishiya).  
