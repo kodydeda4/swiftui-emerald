@@ -10,9 +10,7 @@ import ComposableArchitecture
 
 struct AboutView: View {
     let store: Store<Root.State, Root.Action>
-    
-    //var brewVersion  : String = run("/usr/local/bin/brew", "-v").stdout
-    
+        
     var body: some View {
         WithViewStore(store) { viewStore in
             List {

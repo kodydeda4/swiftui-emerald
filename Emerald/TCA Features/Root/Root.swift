@@ -20,8 +20,8 @@ struct Root {
         var skhdVersion      = run("/usr/local/bin/skhd", "-v").stdout
         var homebrewVersion  = run("/usr/local/bin/brew", "-v").stdout
         var error            = ""
-        
     }
+    
     enum Action: Equatable {
         case yabai(Yabai.Action)
         case skhd(SKHD.Action)
@@ -31,7 +31,6 @@ struct Root {
         case load(Environment.CodableState)
         case reset(Environment.CodableState)
         case export(Environment.CodableState)
-        
     }
     
     struct Environment {
