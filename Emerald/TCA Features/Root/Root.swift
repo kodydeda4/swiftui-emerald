@@ -86,7 +86,9 @@ struct Root {
 
             // TODO
             // this will cause the debounce to not work ....
-            let foo = Just(result)
+            let foo = Just(
+                result
+            )
                 .map(Action.saveResult)
                 .eraseToEffect()
             return foo
@@ -135,6 +137,7 @@ extension Root {
                     return environment
                         .save(state.yabai, to: state.yabai.stateURL)
                         .debounce(id: SaveID(), for: 1.0, scheduler: DispatchQueue.main.eraseToAnyScheduler())
+                    
                 default:
                     return environment.save(state.yabai, to: state.yabai.stateURL)
                 }

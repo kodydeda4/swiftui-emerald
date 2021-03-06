@@ -27,7 +27,7 @@ extension JSONEncoder {
 }
 
 extension JSONDecoder {
-    func loadState<T>(_ type: T.Type, from url: URL) -> Result<T, CacheError> where T: Codable {
+    func loadState<State>(_ type: State.Type, from url: URL) -> Result<State, CacheError> where State: Codable {
         do {
             let decoded = try self
                 .decode(type.self, from: Data(contentsOf: url))
