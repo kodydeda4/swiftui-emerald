@@ -23,7 +23,7 @@ struct SidebarView: View {
                             )
                         )
                     ) {
-                        Label("Debug Yabai", systemImage: "rectangle.3.offgrid")
+                        Label("Debug Yabai", systemImage: "macwindow")
                     }
                     NavigationLink(
                         destination: SKHDSettingsView(
