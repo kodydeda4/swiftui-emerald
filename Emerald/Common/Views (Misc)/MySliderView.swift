@@ -13,25 +13,40 @@ struct MySliderView: View {
     @Binding var value: Int
     var width: CGFloat = 160
     
+    var isEnabled: Bool
+    
+    @State var range = 0...10
+    
     var body: some View {
         HStack {
             Text(text)
-            .lineLimit(1)
+                .foregroundColor(isEnabled ? Color.primary : Color(NSColor.darkGray))
+                .lineLimit(1)
                 .frame(width: width*0.75)
-            
+
             ValueSlider(value: $value, in: 0...100, step: 1)
+                .disabled(!isEnabled)
                 .valueSliderStyle(
                     HorizontalValueSliderStyle(
+                        track:
+                            HorizontalValueTrack(
+                                view: Capsule().foregroundColor(isEnabled ? Color.accentColor : Color(NSColor.darkGray))
+                            )
+                            .background(Capsule().foregroundColor(Color.gray.opacity(0.25)))
+                            .frame(height: 4),
+                        
                         thumbSize: CGSize(width: 12, height: 12)
                     )
                 )
                 .frame(width: width)
             
             Text("\(value)%")
+                .foregroundColor(isEnabled ? Color.primary : Color(NSColor.darkGray))
                 .padding(6)
                 .frame(width: 50)
                 .background(Color.black.opacity(0.25))
                 .clipShape(RoundedRectangle(cornerRadius: 6))
+            
             Spacer()
         }
     }
@@ -40,6 +55,6 @@ struct MySliderView: View {
 // MARK:- SwiftUI_Previews
 struct MySliderView_Previews: PreviewProvider {
     static var previews: some View {
-        MySliderView(text: "Description", value: .constant(25))
+        MySliderView(text: "Description", value: .constant(25), isEnabled: true)
     }
 }
