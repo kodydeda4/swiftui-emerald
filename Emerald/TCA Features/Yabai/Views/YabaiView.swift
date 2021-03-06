@@ -10,7 +10,7 @@ import ComposableArchitecture
 
 struct YabaiSettingsView: View {
     let store: Store<Yabai.State, Yabai.Action>
-    let keyPath = Yabai.Action.keyPath
+    let k = Yabai.Action.keyPath
     
     var body: some View {
         WithViewStore(store) { viewStore in
@@ -20,7 +20,7 @@ struct YabaiSettingsView: View {
                 List {
                     VStack(alignment: .leading) {
                         SectionView("Debug") {
-                            Toggle("Enabled", isOn: viewStore.binding(keyPath: \.debugOutput, send: keyPath))
+                            Toggle("Enabled", isOn: viewStore.binding(keyPath: \.debugOutput, send: k))
                         }
                         SpaceSettingsView(store: store)
                         WindowSettingsView(store: store)

@@ -8,29 +8,24 @@
 import SwiftUI
 import ComposableArchitecture
 
-
-
-
-
-
 struct WindowSettingsView: View {
     let store: Store<Yabai.State, Yabai.Action>
-    let keyPath = Yabai.Action.keyPath
+    let k = Yabai.Action.keyPath
         
     var body: some View {
-        WithViewStore(store) { viewStore in
+        WithViewStore(store) { vs in
             SectionView("Window") {
                 Section(header: Text("Shadow Effects").bold()) {
                     HStack {
                         // ** do an inverse toggle") {
                         Button("Off (Normal)") {
-                            viewStore.send(.updateWindowShadows(.on))
+                            vs.send(.updateWindowShadows(.on))
                         }
                         Button("Disabled") {
-                            viewStore.send(.updateWindowShadows(.off))
+                            vs.send(.updateWindowShadows(.off))
                         }
                         Button("Floating-Only") {
-                            viewStore.send(.updateWindowShadows(.float))
+                            vs.send(.updateWindowShadows(.float))
                         }
                     }
                 }
@@ -38,14 +33,14 @@ struct WindowSettingsView: View {
                 Section(header: Text("Opacity Effects").bold()) {
                     VStack(alignment: .leading) {
                         HStack {
-                            Toggle("Opacity Effects", isOn: viewStore.binding(keyPath: \.windowOpacity, send: keyPath)).labelsHidden()
+                            Toggle("Opacity Effects", isOn: vs.binding(keyPath: \.windowOpacity, send: k)).labelsHidden()
                             Text("Enabled")
                         }
                         Group {
-                        MySliderView(text: "Animation Duration", value: viewStore.binding(keyPath: \.windowOpacityDuration, send: keyPath))
-                        MySliderView(text: "Focused Window", value: viewStore.binding(keyPath: \.activeWindowOpacity, send: keyPath))
-                        MySliderView(text: "Normal Windows", value: viewStore.binding(keyPath: \.normalWindowOpacity, send: keyPath))
-                        }.disabled(!viewStore.windowOpacity)
+                        MySliderView(text: "Animation Duration", value: vs.binding(keyPath: \.windowOpacityDuration, send: k))
+                        MySliderView(text: "Focused Window", value: vs.binding(keyPath: \.activeWindowOpacity, send: k))
+                        MySliderView(text: "Normal Windows", value: vs.binding(keyPath: \.normalWindowOpacity, send: k))
+                        }.disabled(!vs.windowOpacity)
                     }
                 }
                 Group {
@@ -53,42 +48,42 @@ struct WindowSettingsView: View {
                     Section(header: Text("Borders").bold()) {
                         HStack {
                             VStack {
-                                Toggle("Borders", isOn: viewStore.binding(keyPath: \.windowBorder, send: keyPath)).labelsHidden()
+                                Toggle("Borders", isOn: vs.binding(keyPath: \.windowBorder, send: k)).labelsHidden()
                                 Text("")
                             }
                             Group {
                                 VStack {
-                                    MyStepperView("Width", value: viewStore.binding(keyPath: \.windowBorderWidth, send: keyPath))
+                                    MyStepperView("Width", value: vs.binding(keyPath: \.windowBorderWidth, send: k))
                                 }
-                                MyColorPickerView(text: "Focused", selection: viewStore.binding(get: \.activeWindowBorderColor.color, send: Yabai.Action.updateActiveWindowBorderColor))
-                                MyColorPickerView(text: "Normal", selection: viewStore.binding(get: \.normalWindowBorderColor.color, send: Yabai.Action.updateNormalWindowBorderColor))
-                                MyColorPickerView(text: "Insert", selection: viewStore.binding(get: \.insertWindowBorderColor.color, send: Yabai.Action.updateInsertWindowBorderColor))
+                                MyColorPickerView(text: "Focused", selection: vs.binding(get: \.activeWindowBorderColor.color, send: Yabai.Action.updateActiveWindowBorderColor))
+                                MyColorPickerView(text: "Normal", selection: vs.binding(get: \.normalWindowBorderColor.color, send: Yabai.Action.updateNormalWindowBorderColor))
+                                MyColorPickerView(text: "Insert", selection: vs.binding(get: \.insertWindowBorderColor.color, send: Yabai.Action.updateInsertWindowBorderColor))
                             }
-                            .disabled(!viewStore.windowBorder)
+                            .disabled(!vs.windowBorder)
                         }
                         Divider()
                         Section(header: Text("New Window Placement").bold()) {
                             HStack {
                                 Button("First Child") {
-                                    viewStore.send(.updateWindowPlacement(.first_child))
+                                    vs.send(.updateWindowPlacement(.first_child))
                                 }
                                 Button("Second Child") {
-                                    viewStore.send(.updateWindowPlacement(.second_child))
+                                    vs.send(.updateWindowPlacement(.second_child))
                                 }
                             }
                         }
                         Divider()
-                        Toggle("Auto Balance", isOn: viewStore.binding(keyPath: \.autoBalance, send: keyPath))
+                        Toggle("Auto Balance", isOn: vs.binding(keyPath: \.autoBalance, send: k))
 
-                        MySliderView(text: "Split Ratio", value: viewStore.binding(keyPath: \.splitRatio, send: keyPath))
-                            .disabled(viewStore.autoBalance)
+                        MySliderView(text: "Split Ratio", value: vs.binding(keyPath: \.splitRatio, send: k))
+                            .disabled(vs.autoBalance)
                         
                         Divider()
                         Section(header: Text("Floating Windows Stay-On-Top").bold()) {
                             VStack(alignment: .leading) {
                                 HStack {
                                     Text("Enabled")
-                                    Toggle("Floating Windows Stay-On-Top", isOn: viewStore.binding(keyPath: \.windowTopmost, send: keyPath)).labelsHidden()
+                                    Toggle("Floating Windows Stay-On-Top", isOn: vs.binding(keyPath: \.windowTopmost, send: k)).labelsHidden()
                                 }
                             }
                         }

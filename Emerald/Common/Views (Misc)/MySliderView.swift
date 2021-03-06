@@ -6,20 +6,24 @@
 //
 
 import SwiftUI
+import Sliders
 
 struct MySliderView: View {
     var text: String
     @Binding var value: Float
-    var width: CGFloat = 300
+    var width: CGFloat = 160
+    
     
     var body: some View {
         VStack {
             HStack {
-                Slider(value: $value, in: 0.01...0.99)
+                Text(text)
+                ValueSlider(value: $value)
+                    .valueSliderStyle(HorizontalValueSliderStyle(thumbSize: CGSize(width: 12, height: 12)))
                     .frame(width: width)
+                
                 Text("\(Int(value * 100))%")
             }
-            Text(text)
         }
     }
 }

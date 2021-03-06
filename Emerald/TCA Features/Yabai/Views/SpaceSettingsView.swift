@@ -10,32 +10,32 @@ import ComposableArchitecture
 
 struct SpaceSettingsView: View {
     let store: Store<Yabai.State, Yabai.Action>
-    let keyPath = Yabai.Action.keyPath
+    let k = Yabai.Action.keyPath
     
     var body: some View {
-        WithViewStore(store) { viewStore in
+        WithViewStore(store) { vs in
             SectionView("Space") {
                 Section(header: Text("Layout").bold()) {
                     HStack {
                         Button("Floating (Normal)") {
-                            viewStore.send(.updateLayout(.float))
+                            vs.send(.updateLayout(.float))
                         }
                         Button("Tiling") {
-                            viewStore.send(.updateLayout(.bsp))
+                            vs.send(.updateLayout(.bsp))
                         }
                         Button("Stacking") {
-                            viewStore.send(.updateLayout(.stack))
+                            vs.send(.updateLayout(.stack))
                         }
                     }
                 }
                 Divider()
                 Section(header: Text("Padding").bold()) {
                     HStack {
-                        MyStepperView("Top", value: viewStore.binding(keyPath: \.paddingTop, send: keyPath))
-                        MyStepperView("Bottom", value: viewStore.binding(keyPath: \.paddingBottom, send: keyPath))
-                        MyStepperView("Left", value: viewStore.binding(keyPath: \.paddingLeft, send: keyPath))
-                        MyStepperView("Right", value: viewStore.binding(keyPath: \.paddingRight, send: keyPath))
-                        MyStepperView("Gaps", value: viewStore.binding(keyPath: \.windowGap, send: keyPath))
+                        MyStepperView("Top",    value: vs.binding(keyPath: \.paddingTop,    send: k))
+                        MyStepperView("Bottom", value: vs.binding(keyPath: \.paddingBottom, send: k))
+                        MyStepperView("Left",   value: vs.binding(keyPath: \.paddingLeft,   send: k))
+                        MyStepperView("Right",  value: vs.binding(keyPath: \.paddingRight,  send: k))
+                        MyStepperView("Gaps",   value: vs.binding(keyPath: \.windowGap,     send: k))
                     }
                 }
             }

@@ -11,23 +11,23 @@ import KeyboardShortcuts
 
 struct SKHDSettingsView: View {
     let store: Store<SKHD.State, SKHD.Action>
-    let keyPath = SKHD.Action.keyPath
+    let k = SKHD.Action.keyPath
     
     var body: some View {
-        WithViewStore(store) { viewStore in
+        WithViewStore(store) { vs in
             HStack {
-                DebugConfigFileView(text: viewStore.asConfig)
+                DebugConfigFileView(text: vs.asConfig)
                 
                 List {
                     SectionView("Section A") {
-                        SpecialKeyboardShortcutView("Restart Yabai",   .restartYabai)   { viewStore.send(.updateRestartYabai(  $0)) }
-                        SpecialKeyboardShortcutView("Toggle Padding",  .togglePadding)  { viewStore.send(.updateTogglePadding( $0)) }
-                        SpecialKeyboardShortcutView("Toggle Gaps",     .toggleGaps)     { viewStore.send(.updateToggleGaps(    $0)) }
-                        SpecialKeyboardShortcutView("Toggle Split",    .toggleSplit)    { viewStore.send(.updateToggleSplit(   $0)) }
-                        SpecialKeyboardShortcutView("Toggle Balance",  .toggleBalance)  { viewStore.send(.updateToggleBalance( $0)) }
-                        SpecialKeyboardShortcutView("Toggle Stacking", .toggleStacking) { viewStore.send(.updateToggleStacking($0)) }
-                        SpecialKeyboardShortcutView("Toggle Floating", .toggleFloating) { viewStore.send(.updateToggleFloating($0)) }
-                        SpecialKeyboardShortcutView("Toggle BSP",      .toggleBSP)      { viewStore.send(.updateToggleBSP(     $0)) }
+                        MyKeyboardShortcutsView("Restart Yabai",   .restartYabai)   { vs.send(.updateRestartYabai(  $0)) }
+                        MyKeyboardShortcutsView("Toggle Padding",  .togglePadding)  { vs.send(.updateTogglePadding( $0)) }
+                        MyKeyboardShortcutsView("Toggle Gaps",     .toggleGaps)     { vs.send(.updateToggleGaps(    $0)) }
+                        MyKeyboardShortcutsView("Toggle Split",    .toggleSplit)    { vs.send(.updateToggleSplit(   $0)) }
+                        MyKeyboardShortcutsView("Toggle Balance",  .toggleBalance)  { vs.send(.updateToggleBalance( $0)) }
+                        MyKeyboardShortcutsView("Toggle Stacking", .toggleStacking) { vs.send(.updateToggleStacking($0)) }
+                        MyKeyboardShortcutsView("Toggle Floating", .toggleFloating) { vs.send(.updateToggleFloating($0)) }
+                        MyKeyboardShortcutsView("Toggle BSP",      .toggleBSP)      { vs.send(.updateToggleBSP(     $0)) }
                     }
                 }
             }
@@ -42,36 +42,3 @@ struct SKHDSettingsView_Previews: PreviewProvider {
     }
 }
 
-// MARK:- SpecialKeyboardShortcutView
-
-private struct SpecialKeyboardShortcutView: View {
-    let title: String
-    let shortcut: KeyboardShortcuts.Name
-    let action: ((KeyboardShortcuts.Shortcut?) -> Void)?
-    
-    init(_ title: String,
-         _ shortcut: KeyboardShortcuts.Name,
-         _ action: ((KeyboardShortcuts.Shortcut?) -> Void)?
-    ) {
-        self.title = title
-        self.shortcut = shortcut
-        self.action = action
-    }
-    
-    var body: some View {
-        HStack {
-            HStack {
-                Text(title)
-                Spacer()
-            }
-            .frame(width: 110)
-            KeyboardShortcuts.Recorder(for: shortcut, onChange: action)
-        }
-    }
-}
-
-struct SpecialKeyboardShortcutView_Previews: PreviewProvider {
-    static var previews: some View {
-        SpecialKeyboardShortcutView("Restart Yabai", .restartYabai) { _ in () }
-    }
-}

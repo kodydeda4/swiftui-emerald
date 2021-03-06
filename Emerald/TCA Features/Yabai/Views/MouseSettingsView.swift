@@ -10,26 +10,26 @@ import ComposableArchitecture
 
 struct MouseSettingsView: View {
     let store: Store<Yabai.State, Yabai.Action>
-    let keyPath = Yabai.Action.keyPath
+    let k = Yabai.Action.keyPath
     
     var body: some View {
-        WithViewStore(store) { viewStore in
+        WithViewStore(store) { vs in
             SectionView("Mouse") {
                 Section(header: Text("Mouse Follows Focus").bold()) {
-                    Toggle("Enabled", isOn: viewStore.binding(keyPath: \.mouseFollowsFocus, send: keyPath))
+                    Toggle("Enabled", isOn: vs.binding(keyPath: \.mouseFollowsFocus, send: k))
                 }
                 Divider()
                 Section(header: Text("Focus Follows Focus").bold()) {
                     VStack(alignment: .leading) {
                         HStack {
                             Button("Off (Normal)") {
-                                viewStore.send(.updateFocusFollowsMouse(.off))
+                                vs.send(.updateFocusFollowsMouse(.off))
                             }
                             Button("Autofocus") {
-                                viewStore.send(.updateFocusFollowsMouse(.autofocus))
+                                vs.send(.updateFocusFollowsMouse(.autofocus))
                             }
                             Button("Autoraise") {
-                                viewStore.send(.updateFocusFollowsMouse(.autoraise))
+                                vs.send(.updateFocusFollowsMouse(.autoraise))
                             }
                         }
                     }
@@ -38,19 +38,19 @@ struct MouseSettingsView: View {
                 Section(header: Text("Mouse Modifier").bold()) {
                     HStack {
                         Button("cmd") {
-                            viewStore.send(.updateMouseModifier(.cmd))
+                            vs.send(.updateMouseModifier(.cmd))
                         }
                         Button("alt") {
-                            viewStore.send(.updateMouseModifier(.alt))
+                            vs.send(.updateMouseModifier(.alt))
                         }
                         Button("shift") {
-                            viewStore.send(.updateMouseModifier(.shift))
+                            vs.send(.updateMouseModifier(.shift))
                         }
                         Button("ctrl") {
-                            viewStore.send(.updateMouseModifier(.ctrl))
+                            vs.send(.updateMouseModifier(.ctrl))
                         }
                         Button("fn") {
-                            viewStore.send(.updateMouseModifier(.fn))
+                            vs.send(.updateMouseModifier(.fn))
                         }
                     }
                 }
@@ -59,10 +59,10 @@ struct MouseSettingsView: View {
                     Section(header: Text("Left Click + Mouse Modifier Action").bold()) {
                         HStack {
                             Button("Move") {
-                                viewStore.send(.updateMouseAction1(.move))
+                                vs.send(.updateMouseAction1(.move))
                             }
                             Button("Resize") {
-                                viewStore.send(.updateMouseAction1(.resize))
+                                vs.send(.updateMouseAction1(.resize))
                             }
                         }
                     }
@@ -70,10 +70,10 @@ struct MouseSettingsView: View {
                     Section(header: Text("Right Click + Mouse Modifier Action").bold()) {
                         HStack {
                             Button("Move") {
-                                viewStore.send(.updateMouseAction2(.move))
+                                vs.send(.updateMouseAction2(.move))
                             }
                             Button("Resize") {
-                                viewStore.send(.updateMouseAction2(.resize))
+                                vs.send(.updateMouseAction2(.resize))
                             }
                         }
                     }
@@ -81,10 +81,10 @@ struct MouseSettingsView: View {
                     Section(header: Text("Drop Action").bold()) {
                         HStack {
                             Button("Swap") {
-                                viewStore.send(.updateMouseDropAction(.swap))
+                                vs.send(.updateMouseDropAction(.swap))
                             }
                             Button("Stack") {
-                                viewStore.send(.updateMouseDropAction(.stack))
+                                vs.send(.updateMouseDropAction(.stack))
                             }
                         }
                     }
