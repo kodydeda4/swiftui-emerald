@@ -35,6 +35,7 @@ struct MySliderView: View {
                             .background(Capsule().foregroundColor(Color.gray.opacity(0.25)))
                             .frame(height: 4),
                         
+                        thumb: Circle().foregroundColor( isEnabled ? .white : .gray),
                         thumbSize: CGSize(width: 12, height: 12)
                     )
                 )
