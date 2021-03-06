@@ -13,22 +13,31 @@ struct YabaiSettingsView: View {
     let k = Yabai.Action.keyPath
     
     var body: some View {
-        WithViewStore(store) { viewStore in
-            HStack {
-                DebugConfigFileView(text: viewStore.asConfig)
-                
-                List {
-                    VStack(alignment: .leading) {
-                        SectionView("Debug") {
-                            Toggle("Enabled", isOn: viewStore.binding(keyPath: \.debugOutput, send: k))
-                        }
-                        SpaceSettingsView(store: store)
-                        WindowSettingsView(store: store)
-                        MouseSettingsView(store: store)
-                        ExternalBarSettingsView(store: store)
-                    }
-                }.navigationTitle("Debug Yabai")
-            }
+        WithViewStore(store) { vs in
+            MySliderView(
+                text: "Animation Duration",
+                value: vs.binding(
+                    get: \.windowOpacityDuration,
+                    send: Yabai.Action.updateWindowOpacityDuration),
+                isEnabled: vs.windowOpacity
+            )
+            
+            //            HStack {
+            //                DebugConfigFileView(text: viewStore.asConfig)
+            //
+            //                List {
+            //                    VStack(alignment: .leading) {
+            //                        SectionView("Debug") {
+            //                            Toggle("Enabled", isOn: viewStore.binding(keyPath: \.debugOutput, send: k))
+            //                        }
+            //                        SpaceSettingsView(store: store)
+            //                        WindowSettingsView(store: store)
+            //                        MouseSettingsView(store: store)
+            //                        ExternalBarSettingsView(store: store)
+            //                    }
+            //                }
+            //                .navigationTitle("Debug Yabai")
+            //            }
         }
     }
 }

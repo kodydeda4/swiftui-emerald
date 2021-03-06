@@ -14,11 +14,15 @@ enum CacheError: Equatable, LocalizedError {
 
 extension JSONEncoder {
     func writeState<State>(_ state: State, to url: URL) -> Result<Bool, CacheError> where State: Codable {
+        let startDate = Date()
+        
         print("writeState: to: '\(url.path)'")
         do {
             try self
                 .encode(state)
                 .write(to: url)
+
+            print("\(Date()) elapsed: '\(startDate.timeIntervalSinceNow * -1000) ms'")
             return .success(true)
         } catch {
             return .failure(.writeError(error.localizedDescription))

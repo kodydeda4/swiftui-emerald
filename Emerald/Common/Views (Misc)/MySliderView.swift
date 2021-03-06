@@ -17,6 +17,7 @@ struct MySliderView: View {
     
     @State var range = 0...10
     
+    
     var body: some View {
         HStack {
             Text(text)
@@ -24,9 +25,12 @@ struct MySliderView: View {
                 .foregroundColor(isEnabled ? Color.primary : Color(NSColor.darkGray))
                 .lineLimit(1)
                 .frame(width: width*0.75)
-
+            
+//            Slider(value: $v, in: 0...100)
             ValueSlider(value: $value, in: 0...100, step: 1)
                 .disabled(!isEnabled)
+                .drawingGroup()
+
                 .valueSliderStyle(
                     HorizontalValueSliderStyle(
                         track:
@@ -35,7 +39,7 @@ struct MySliderView: View {
                             )
                             .background(Capsule().foregroundColor(Color.gray.opacity(0.25)))
                             .frame(height: 4),
-                        
+
                         thumb: Circle().foregroundColor( isEnabled ? .white : .gray),
                         thumbSize: CGSize(width: 12, height: 12)
                     )
@@ -52,6 +56,7 @@ struct MySliderView: View {
             
             Spacer()
         }
+
     }
 }
 

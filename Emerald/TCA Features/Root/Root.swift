@@ -30,6 +30,7 @@ struct Root {
         case restartYabai
         case saveResult(Result<Bool, CacheError>)
 //        case save(Environment.CodableState)
+        
         case load(Environment.CodableState)
         case reset(Environment.CodableState)
         case export(Environment.CodableState)
@@ -42,55 +43,24 @@ struct Root {
             case macOSAnimations
         }
         
-//        func savePublisher<Value>(_ value: Value, to url: URL) -> AnyPublisher<(Value, URL), CacheError> where Value: Codable {
-//            let foo = Just((value, url))
-//                .setFailureType(to: CacheError.self)
-//                .eraseToAnyPublisher()
-//            return foo
-//        }
-//
-//        func save<Value>(_ value: Value, to url: URL) -> Effect<Action, Never> where Value: Codable {
-//            //            let result = JSONEncoder().writeState(
-//            //                value,
-//            //                to: url
-//            //            )
-//
-//            // TODO
-//            // slight cheat ...
-//            let foo11 = savePublisher(value, to: url)
-//                .map { (tuple) -> Result<Bool, CacheError> in
-//                    let rv = JSONEncoder().writeState(
-//                        tuple.0,
-//                        to: tuple.1
-//                    )
-//                    return rv
-//                }
-//                .eraseToAnyPublisher()
-////                .eraseToEffect()
-////
-////                .map(Action.saveResult)
-//
-//            //
-//            //                .map { _ in
-//            //                }
-//            //                .eraseToEffect()
-//
-////            return foo
-//        }
+        func savePublisher<Value>(_ value: Value, to url: URL) -> AnyPublisher<(Value, URL), Never> where Value: Codable {
+            let foo = Just((value, url))
+                .eraseToAnyPublisher()
+            return foo
+        }
 
         func save<Value>(_ value: Value, to url: URL) -> Effect<Action, Never> where Value: Codable {
-            let result = JSONEncoder().writeState(
-                value,
-                to: url
-            )
-
-            // TODO
-            // this will cause the debounce to not work ....
-            let foo = Just(
-                result
-            )
-                .map(Action.saveResult)
+            let foo = savePublisher(value, to: url)
+                .map { (tuple) -> Result<Bool, CacheError> in
+                    let rv = JSONEncoder().writeState(
+                        tuple.0,
+                        to: tuple.1
+                    )
+                    return rv
+                }
+                .eraseToAnyPublisher()
                 .eraseToEffect()
+                .map(Action.saveResult)
             return foo
         }
     }
@@ -126,17 +96,17 @@ extension Root {
         ),
         Reducer { state, action, environment in
             struct SaveID: Hashable {}
-            
+
             switch action {
             case let .yabai(subAction):
                 switch subAction {
                 case .updateWindowOpacityDuration,
                      .updatetActiveWindowOpacity,
                      .updateNormalWindowOpacity:
-                    print("Debounce this ... \(subAction)")
+                    print("\(Date()) Debounce this ... \(subAction)")
                     return environment
                         .save(state.yabai, to: state.yabai.stateURL)
-                        .debounce(id: SaveID(), for: 1.0, scheduler: DispatchQueue.main.eraseToAnyScheduler())
+//                        .debounce(id: SaveID(), for: 0.1, scheduler: DispatchQueue.main.eraseToAnyScheduler())
                     
                 default:
                     return environment.save(state.yabai, to: state.yabai.stateURL)

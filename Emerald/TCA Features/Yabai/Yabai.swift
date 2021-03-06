@@ -47,7 +47,7 @@ struct Yabai {
         var paddingLeft              : Int               = 0
         var paddingRight             : Int               = 0
         var windowGap                : Int               = 0
-        
+
         enum ExternalBar: String, Codable, CaseIterable, Identifiable {
             var id: ExternalBar { self }
             case main

@@ -23,7 +23,6 @@ struct OpacitySettings: View {
             ) {
                 VStack(alignment: .leading) {
                     Group {
-                        // Lag issue - Root saves state after every Yabai.Action, fix w/debounce?
                         MySliderView(text: "Animation Duration", value: vs.binding(get: \.windowOpacityDuration, send: Yabai.Action.updateWindowOpacityDuration), isEnabled: vs.windowOpacity)
                         MySliderView(text: "Focused Window", value: vs.binding(get: \.activeWindowOpacity, send: Yabai.Action.updatetActiveWindowOpacity), isEnabled: vs.windowOpacity)
                         MySliderView(text: "Normal Windows", value: vs.binding(get: \.normalWindowOpacity, send: Yabai.Action.updateNormalWindowOpacity), isEnabled: vs.windowOpacity)
