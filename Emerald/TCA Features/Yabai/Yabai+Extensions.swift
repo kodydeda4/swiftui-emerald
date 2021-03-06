@@ -33,7 +33,7 @@ yabai -m rule --add label=\"System Preferences\" app=\"^System Preferences$\" ma
 # General
 #=========================================================================================
 yabai -m config debug_output \(debugOutput == true ? "on" : "off")
-yabai -m config external_bar \(externalBar):\(topPaddingExternalBar):\(bottomPaddingExternalBar)
+yabai -m config external_bar \(externalBar):\(externalBarPaddingTop):\(externalBarPaddingBottom)
 yabai -m config mouse_follows_focus \(mouseFollowsFocus == true ? "on" : "off")
 yabai -m config focus_follows_mouse \(focusFollowsMouse)
 
@@ -47,7 +47,7 @@ yabai -m config window_shadow \(windowShadow)
 # Window Opacity
 #=========================================================================================
 yabai -m config window_opacity \(windowOpacity == true ? "on" : "off")
-yabai -m config window_opacity_duration \(Float(windowOpacityDuration / 100))
+yabai -m config window_opacity_duration \(Float(windowOpacityDuration)/100)
 yabai -m config active_window_opacity \(Float(activeWindowOpacity)/100)
 yabai -m config normal_window_opacity \(Float(normalWindowOpacity)/100)
 

@@ -83,7 +83,8 @@ extension Root {
                 default:
                     print("")
                 }
-                return Effect(value: .save(.yabai))
+                return .none
+                //return Effect(value: .save(.yabai))
                 
             case let .skhd(subAction):
                 return Effect(value: .save(.skhd))
@@ -98,7 +99,6 @@ extension Root {
                 return .none
                 
             case let .save(codableState):
-                
                 switch codableState {
                 case .yabai:
                     switch JSONEncoder().writeState(
@@ -217,7 +217,6 @@ extension Root {
             case .restartYabai:
                 state.error = AppleScript.restartYabai.execute()
                 return .none
-
             }
         }
     )

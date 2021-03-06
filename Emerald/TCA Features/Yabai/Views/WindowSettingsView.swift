@@ -37,7 +37,6 @@ struct WindowSettingsView: View {
                             Text("Enabled")
                         }
                         Group {
-                            
                             // Lag issue - Root saves state after every Yabai.Action, fix w/debounce?
                             MySliderView(text: "Animation Duration", value: vs.binding(get: \.windowOpacityDuration, send: Yabai.Action.updateWindowOpacityDuration))
                             MySliderView(text: "Focused Window", value: vs.binding(get: \.activeWindowOpacity, send: Yabai.Action.updatetActiveWindowOpacity))

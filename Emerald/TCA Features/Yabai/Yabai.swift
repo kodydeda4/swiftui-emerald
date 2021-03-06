@@ -17,23 +17,25 @@ struct Yabai {
         var version                  = run("/usr/local/bin/yabai", "-v").stdout
         var debugOutput              : Bool              = false
         var externalBar              : ExternalBar       = .off
-        var topPaddingExternalBar    : Int               = 0
-        var bottomPaddingExternalBar : Int               = 0
+        var externalBarPaddingTop    : Int               = 0
+        var externalBarPaddingBottom : Int               = 0
         var mouseFollowsFocus        : Bool              = false
         var focusFollowsMouse        : FocusFollowsMouse = .off
         var windowPlacement          : WindowPlacement   = .first_child
         var windowTopmost            : Bool              = false
         var windowShadow             : WindowShadow      = .on
         var windowOpacity            : Bool              = false
+        
         var windowOpacityDuration    : Int               = 100
         var activeWindowOpacity      : Int               = 100
         var normalWindowOpacity      : Int               = 100
+        var splitRatio               : Int               = 50
+        
         var windowBorder             : Bool              = false
         var windowBorderWidth        : Int               = 0
         var activeWindowBorderColor  : CodableColor      = .init(color: .green)
         var normalWindowBorderColor  : CodableColor      = .init(color: .red)
         var insertWindowBorderColor  : CodableColor      = .init(color: .purple)
-        var splitRatio               : Int               = 50
         var autoBalance              : Bool              = false
         var mouseModifier            : MouseModifier     = .fn
         var mouseAction1             : MouseAction       = .move
@@ -109,8 +111,6 @@ struct Yabai {
         case updateActiveWindowBorderColor(Color)
         case updateNormalWindowBorderColor(Color)
         case updateInsertWindowBorderColor(Color)
-        
-        
         case updateWindowOpacityDuration(Int)
         case updatetActiveWindowOpacity(Int)
         case updateNormalWindowOpacity(Int)
