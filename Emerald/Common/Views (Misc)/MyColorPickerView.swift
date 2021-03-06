@@ -15,6 +15,7 @@ struct MyColorPickerView: View {
         VStack {
             ColorPicker("", selection: $selection).labelsHidden()
             Text(text)
+                .font(.system(size: systemFontSize))
         }
     }
 }

@@ -20,6 +20,7 @@ struct MySliderView: View {
     var body: some View {
         HStack {
             Text(text)
+                //.font(.system(size: systemFontSize))
                 .foregroundColor(isEnabled ? Color.primary : Color(NSColor.darkGray))
                 .lineLimit(1)
                 .frame(width: width*0.75)
@@ -42,6 +43,7 @@ struct MySliderView: View {
                 .frame(width: width)
             
             Text("\(value)%")
+                .font(.system(size: systemFontSize))
                 .foregroundColor(isEnabled ? Color.primary : Color(NSColor.darkGray))
                 .padding(6)
                 .frame(width: 50)

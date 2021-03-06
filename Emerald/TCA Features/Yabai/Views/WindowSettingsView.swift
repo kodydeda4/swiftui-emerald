@@ -15,12 +15,13 @@ struct OpacitySettings: View {
     
     var body: some View {
         WithViewStore(store) { vs in
-            Section(header: Text("Opacity Effects").bold()) {
+            Section(header:
+                        HStack {
+                            Toggle("Opacity Effects", isOn: vs.binding(keyPath: \.windowOpacity, send: k)).labelsHidden()
+                            Text("Opacity Effects").bold()
+                        }
+            ) {
                 VStack(alignment: .leading) {
-                    HStack {
-                        Toggle("Opacity Effects", isOn: vs.binding(keyPath: \.windowOpacity, send: k)).labelsHidden()
-                        Text("Enabled")
-                    }
                     Group {
                         // Lag issue - Root saves state after every Yabai.Action, fix w/debounce?
                         MySliderView(text: "Animation Duration", value: vs.binding(get: \.windowOpacityDuration, send: Yabai.Action.updateWindowOpacityDuration), isEnabled: vs.windowOpacity)
@@ -48,7 +49,7 @@ struct BorderSettings: View {
                         Text("")
                     }
                     Group {
-                        MyStepperView("Width", value: vs.binding(keyPath: \.windowBorderWidth, send: k))
+                        MyStepperView("Width", value: vs.binding(keyPath: \.windowBorderWidth, send: k), isEnabled: vs.windowBorder)
 
                         MyColorPickerView(text: "Focused", selection: vs.binding(get: \.activeWindowBorderColor.color, send: Yabai.Action.updateActiveWindowBorderColor))
                         MyColorPickerView(text: "Normal", selection: vs.binding(get: \.normalWindowBorderColor.color, send: Yabai.Action.updateNormalWindowBorderColor))
@@ -77,8 +78,8 @@ struct BorderSettings: View {
                 Section(header: Text("Floating Windows Stay-On-Top").bold()) {
                     VStack(alignment: .leading) {
                         HStack {
-                            Text("Enabled")
                             Toggle("Floating Windows Stay-On-Top", isOn: vs.binding(keyPath: \.windowTopmost, send: k)).labelsHidden()
+                            Text("Enabled")
                         }
                     }
                 }

@@ -31,11 +31,11 @@ struct SpaceSettingsView: View {
                 Divider()
                 Section(header: Text("Padding").bold()) {
                     HStack {
-                        MyStepperView("Top",    value: vs.binding(keyPath: \.paddingTop,    send: k))
-                        MyStepperView("Bottom", value: vs.binding(keyPath: \.paddingBottom, send: k))
-                        MyStepperView("Left",   value: vs.binding(keyPath: \.paddingLeft,   send: k))
-                        MyStepperView("Right",  value: vs.binding(keyPath: \.paddingRight,  send: k))
-                        MyStepperView("Gaps",   value: vs.binding(keyPath: \.windowGap,     send: k))
+                        MyStepperView("Top",    value: vs.binding(keyPath: \.paddingTop,    send: k), isEnabled: true)
+                        MyStepperView("Bottom", value: vs.binding(keyPath: \.paddingBottom, send: k), isEnabled: true)
+                        MyStepperView("Left",   value: vs.binding(keyPath: \.paddingLeft,   send: k), isEnabled: true)
+                        MyStepperView("Right",  value: vs.binding(keyPath: \.paddingRight,  send: k), isEnabled: true)
+                        MyStepperView("Gaps",   value: vs.binding(keyPath: \.windowGap,     send: k), isEnabled: true)
                     }
                 }
             }
