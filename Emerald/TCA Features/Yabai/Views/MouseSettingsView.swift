@@ -37,20 +37,20 @@ struct MouseSettingsView: View {
                 Divider()
                 Section(header: Text("Mouse Modifier").bold()) {
                     HStack {
-                        Button("cmd") {
-                            vs.send(.updateMouseModifier(.cmd))
-                        }
-                        Button("alt") {
-                            vs.send(.updateMouseModifier(.alt))
-                        }
-                        Button("shift") {
-                            vs.send(.updateMouseModifier(.shift))
-                        }
-                        Button("ctrl") {
-                            vs.send(.updateMouseModifier(.ctrl))
-                        }
                         Button("fn") {
                             vs.send(.updateMouseModifier(.fn))
+                        }
+                        Button("shift ⇧") {
+                            vs.send(.updateMouseModifier(.shift))
+                        }
+                        Button("control ⌃") {
+                            vs.send(.updateMouseModifier(.ctrl))
+                        }
+                        Button("option ⌥") {
+                            vs.send(.updateMouseModifier(.alt))
+                        }
+                        Button("command ⌘") {
+                            vs.send(.updateMouseModifier(.cmd))
                         }
                     }
                 }

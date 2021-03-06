@@ -13,17 +13,26 @@ struct MySliderView: View {
     @Binding var value: Float
     var width: CGFloat = 160
     
-    
     var body: some View {
-        VStack {
-            HStack {
-                Text(text)
-                ValueSlider(value: $value)
-                    .valueSliderStyle(HorizontalValueSliderStyle(thumbSize: CGSize(width: 12, height: 12)))
-                    .frame(width: width)
-                
-                Text("\(Int(value * 100))%")
-            }
+        HStack {
+            Text(text)
+            .lineLimit(1)
+                .frame(width: width*0.75)
+            
+            ValueSlider(value: $value)
+                .valueSliderStyle(
+                    HorizontalValueSliderStyle(
+                        thumbSize: CGSize(width: 12, height: 12)
+                    )
+                )
+                .frame(width: width)
+            
+            Text("\(Int(value * 100))%")
+                .padding(6)
+                .frame(width: 50)
+                .background(Color.black.opacity(0.25))
+                .clipShape(RoundedRectangle(cornerRadius: 6))
+            Spacer()
         }
     }
 }
