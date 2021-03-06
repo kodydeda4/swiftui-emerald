@@ -73,6 +73,16 @@ extension Root {
         Reducer { state, action, environment in
             switch action {
             case let .yabai(subAction):
+                switch subAction {
+                case .updateWindowOpacityDuration(_):
+                    print("Debounce")
+                case .updatetActiveWindowOpacity(_):
+                    print("Debounce")
+                case .updateNormalWindowOpacity(_):
+                    print("Debounce")
+                default:
+                    print("")
+                }
                 return Effect(value: .save(.yabai))
                 
             case let .skhd(subAction):

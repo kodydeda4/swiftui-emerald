@@ -47,9 +47,9 @@ yabai -m config window_shadow \(windowShadow)
 # Window Opacity
 #=========================================================================================
 yabai -m config window_opacity \(windowOpacity == true ? "on" : "off")
-yabai -m config window_opacity_duration \(windowOpacityDuration)
-yabai -m config active_window_opacity \(activeWindowOpacity)
-yabai -m config normal_window_opacity \(normalWindowOpacity)
+yabai -m config window_opacity_duration \(Float(windowOpacityDuration / 100))
+yabai -m config active_window_opacity \(Float(activeWindowOpacity)/100)
+yabai -m config normal_window_opacity \(Float(normalWindowOpacity)/100)
 
 #=========================================================================================
 # Window Borders
@@ -63,12 +63,12 @@ yabai -m config insert_window_border_color \"\(insertWindowBorderColor.asHexStri
 #=========================================================================================
 # Misc
 #=========================================================================================
-yabai -m config split_ratio \(splitRatio)
+yabai -m config split_ratio \(Float(splitRatio/100))
 yabai -m config auto_balance \(autoBalance == true ? "on" : "off")
 
-#=========================================================================================",
+#=========================================================================================
 # Mouse Actions",
-#=========================================================================================",
+#=========================================================================================
 yabai -m config mouse_modifier \(mouseModifier)
 yabai -m config mouse_action1 \(mouseAction1)
 yabai -m config mouse_action2 \(mouseAction2)

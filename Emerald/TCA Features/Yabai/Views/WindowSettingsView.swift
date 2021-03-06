@@ -11,7 +11,7 @@ import ComposableArchitecture
 struct WindowSettingsView: View {
     let store: Store<Yabai.State, Yabai.Action>
     let k = Yabai.Action.keyPath
-        
+    
     var body: some View {
         WithViewStore(store) { vs in
             SectionView("Window") {
@@ -37,10 +37,13 @@ struct WindowSettingsView: View {
                             Text("Enabled")
                         }
                         Group {
-                        MySliderView(text: "Animation Duration", value: vs.binding(keyPath: \.windowOpacityDuration, send: k))
-                        MySliderView(text: "Focused Window", value: vs.binding(keyPath: \.activeWindowOpacity, send: k))
-                        MySliderView(text: "Normal Windows", value: vs.binding(keyPath: \.normalWindowOpacity, send: k))
-                        }.disabled(!vs.windowOpacity)
+                            
+                            // Lag issue - Root saves state after every Yabai.Action, fix w/debounce?
+                            MySliderView(text: "Animation Duration", value: vs.binding(get: \.windowOpacityDuration, send: Yabai.Action.updateWindowOpacityDuration))
+                            MySliderView(text: "Focused Window", value: vs.binding(get: \.activeWindowOpacity, send: Yabai.Action.updatetActiveWindowOpacity))
+                            MySliderView(text: "Normal Windows", value: vs.binding(get: \.normalWindowOpacity, send: Yabai.Action.updateNormalWindowOpacity))
+                        }
+                        .disabled(!vs.windowOpacity)
                     }
                 }
                 Group {
@@ -52,9 +55,8 @@ struct WindowSettingsView: View {
                                 Text("")
                             }
                             Group {
-                                VStack {
-                                    MyStepperView("Width", value: vs.binding(keyPath: \.windowBorderWidth, send: k))
-                                }
+                                MyStepperView("Width", value: vs.binding(keyPath: \.windowBorderWidth, send: k))
+                                
                                 MyColorPickerView(text: "Focused", selection: vs.binding(get: \.activeWindowBorderColor.color, send: Yabai.Action.updateActiveWindowBorderColor))
                                 MyColorPickerView(text: "Normal", selection: vs.binding(get: \.normalWindowBorderColor.color, send: Yabai.Action.updateNormalWindowBorderColor))
                                 MyColorPickerView(text: "Insert", selection: vs.binding(get: \.insertWindowBorderColor.color, send: Yabai.Action.updateInsertWindowBorderColor))
@@ -74,7 +76,7 @@ struct WindowSettingsView: View {
                         }
                         Divider()
                         Toggle("Auto Balance", isOn: vs.binding(keyPath: \.autoBalance, send: k))
-
+                        
                         MySliderView(text: "Split Ratio", value: vs.binding(keyPath: \.splitRatio, send: k))
                             .disabled(vs.autoBalance)
                         

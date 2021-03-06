@@ -10,7 +10,7 @@ import Sliders
 
 struct MySliderView: View {
     var text: String
-    @Binding var value: Float
+    @Binding var value: Int
     var width: CGFloat = 160
     
     var body: some View {
@@ -19,7 +19,7 @@ struct MySliderView: View {
             .lineLimit(1)
                 .frame(width: width*0.75)
             
-            ValueSlider(value: $value)
+            ValueSlider(value: $value, in: 0...100, step: 1)
                 .valueSliderStyle(
                     HorizontalValueSliderStyle(
                         thumbSize: CGSize(width: 12, height: 12)
@@ -27,7 +27,7 @@ struct MySliderView: View {
                 )
                 .frame(width: width)
             
-            Text("\(Int(value * 100))%")
+            Text("\(value)%")
                 .padding(6)
                 .frame(width: 50)
                 .background(Color.black.opacity(0.25))

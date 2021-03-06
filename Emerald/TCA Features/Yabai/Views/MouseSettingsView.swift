@@ -40,9 +40,6 @@ struct MouseSettingsView: View {
                         Button("fn") {
                             vs.send(.updateMouseModifier(.fn))
                         }
-                        Button("shift ⇧") {
-                            vs.send(.updateMouseModifier(.shift))
-                        }
                         Button("control ⌃") {
                             vs.send(.updateMouseModifier(.ctrl))
                         }
@@ -51,6 +48,9 @@ struct MouseSettingsView: View {
                         }
                         Button("command ⌘") {
                             vs.send(.updateMouseModifier(.cmd))
+                        }
+                        Button("shift ⇧") {
+                            vs.send(.updateMouseModifier(.shift))
                         }
                     }
                 }

@@ -25,15 +25,15 @@ struct Yabai {
         var windowTopmost            : Bool              = false
         var windowShadow             : WindowShadow      = .on
         var windowOpacity            : Bool              = false
-        var windowOpacityDuration    : Float             = 1
-        var activeWindowOpacity      : Float             = 1
-        var normalWindowOpacity      : Float             = 1
+        var windowOpacityDuration    : Int               = 100
+        var activeWindowOpacity      : Int               = 100
+        var normalWindowOpacity      : Int               = 100
         var windowBorder             : Bool              = false
         var windowBorderWidth        : Int               = 0
         var activeWindowBorderColor  : CodableColor      = .init(color: .green)
         var normalWindowBorderColor  : CodableColor      = .init(color: .red)
         var insertWindowBorderColor  : CodableColor      = .init(color: .purple)
-        var splitRatio               : Float             = 0.5
+        var splitRatio               : Int               = 50
         var autoBalance              : Bool              = false
         var mouseModifier            : MouseModifier     = .fn
         var mouseAction1             : MouseAction       = .move
@@ -109,6 +109,12 @@ struct Yabai {
         case updateActiveWindowBorderColor(Color)
         case updateNormalWindowBorderColor(Color)
         case updateInsertWindowBorderColor(Color)
+        
+        
+        case updateWindowOpacityDuration(Int)
+        case updatetActiveWindowOpacity(Int)
+        case updateNormalWindowOpacity(Int)
+        case updateSplitRatio(Int)
     }
 }
 
@@ -165,6 +171,22 @@ extension Yabai {
             
         case let .updateExternalBar(externalBar):
             state.externalBar = externalBar
+            return .none
+            
+        case let .updateWindowOpacityDuration(windowOpacityDuration):
+            state.windowOpacityDuration = windowOpacityDuration
+            return .none
+            
+        case let .updatetActiveWindowOpacity(activeWindowOpacity):
+            state.activeWindowOpacity = activeWindowOpacity
+            return .none
+            
+        case let .updateNormalWindowOpacity(normalWindowOpacity):
+            state.normalWindowOpacity = normalWindowOpacity
+            return .none
+            
+        case let .updateSplitRatio(splitRatio):
+            state.splitRatio = splitRatio
             return .none
         }
     }

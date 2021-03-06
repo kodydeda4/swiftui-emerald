@@ -23,7 +23,7 @@ struct SidebarView: View {
                             )
                         )
                     ) {
-                        Label("Debug Yabai", systemImage: "terminal")
+                        Label("Debug Yabai", systemImage: "rectangle.3.offgrid")
                     }
                     NavigationLink(
                         destination: SKHDSettingsView(
@@ -43,12 +43,12 @@ struct SidebarView: View {
                             )
                         )
                     ) {
-                        Label("Debug Animations", systemImage: "arrowtriangle.forward")
+                        Label("Debug Animations", systemImage: "stopwatch")
                     }
                     NavigationLink(
                         destination: SystemIntegrityProtectionView()
                     ) {
-                        Label("System Integrity Protection", systemImage: "lock.circle")
+                        Label("System Integrity Protection", systemImage: "lock")
                     }
                 }
                 Divider()
