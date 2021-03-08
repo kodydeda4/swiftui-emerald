@@ -13,17 +13,15 @@ struct SliderView: View {
     @Binding var value: Int
     var width: CGFloat = 160
     var isEnabled: Bool
-    @State var range = 0...10
     
     
     var body: some View {
         HStack {
             Text(text)
-                //.font(.system(size: systemFontSize))
-                .foregroundColor(isEnabled ? Color.primary : Color(NSColor.darkGray))
+                .foregroundColor(isEnabled ? Color.primary : Color(.disabledControlTextColor))
                 .lineLimit(1)
-                .frame(width: width*0.75)
-            
+                .frame(width: width*0.8)
+                
             ValueSlider(
                 value: $value,
                 in: 0...100,
@@ -36,21 +34,14 @@ struct SliderView: View {
                 HorizontalValueSliderStyle(
                     track:
                         HorizontalValueTrack(
-                            view: Capsule().foregroundColor(
-                                isEnabled
-                                    ? Color.accentColor
-                                    : Color(.darkGray)
-                            )
+                            view: Capsule().foregroundColor(isEnabled ? Color.accentColor : Color(.disabledControlTextColor))
                         )
-                        .background(Capsule().foregroundColor(Color.gray.opacity(0.25)))
+                        .background(Capsule().foregroundColor(Color(.windowBackgroundColor)))
                         .frame(height: 4),
                     
                     thumb: Circle()
-                        .foregroundColor(
-                            isEnabled
-                                ? .white
-                                : .gray
-                        ),
+                        .shadow(radius: 0.25)
+                        .foregroundColor(.white),
                     thumbSize: CGSize(width: 12, height: 12)
                 )
             )
@@ -58,15 +49,13 @@ struct SliderView: View {
             
             Text("\(value)%")
                 .font(.system(size: systemFontSize))
-                .foregroundColor(isEnabled ? Color.primary : Color(NSColor.darkGray))
+                .foregroundColor(isEnabled ? Color.primary : Color(.disabledControlTextColor))
                 .padding(6)
                 .frame(width: 50)
                 .background(Color(NSColor.windowBackgroundColor))
                 .clipShape(RoundedRectangle(cornerRadius: 6))
-            
             Spacer()
         }
-        
     }
 }
 
