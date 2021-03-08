@@ -15,6 +15,8 @@ struct StepperView: View {
     let range: ClosedRange<Int>
     var isEnabled: Bool
     
+    @State var hovering = false
+    
     init(text: String,
          value: Binding<Int>,
          range: ClosedRange<Int> = 0...10,
@@ -31,27 +33,27 @@ struct StepperView: View {
             HStack {
                 Text("\(value)")
                     .offset(x: 6)
-                    .foregroundColor(isEnabled ? Color(.textColor) : Color(.disabledControlTextColor))
+                    .foregroundColor(isEnabled ? Color(.textColor).opacity(0.75) : Color(.disabledControlTextColor).opacity(0.75))
                     
                 Spacer()
+                
                 Stepper("", value: $value, in: range)
                     .disabled(!isEnabled)
-                    //.padding(1)
-                    //.padding(.leading, 20)
-                    //.frame(width: 53)
-
+                    .opacity(hovering ? 1:0)
             }
             .frame(width: 44)
             .background(Color(.windowBackgroundColor))
             .clipShape(RoundedRectangle(cornerRadius: 6))
+            .onHover { isHovered in
+                if isEnabled {
+                    hovering.toggle()
+                }
+            }
 
-            //.frame(width: 53)
-                
             Text("\(text)")
                 .font(.system(size: systemFontSize))
                 .foregroundColor(isEnabled ? Color(.textColor) : Color(.disabledControlTextColor))
         }
-        //.frame(width: 53)
     }
 }
 
