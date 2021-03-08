@@ -7,7 +7,47 @@
 
 import SwiftUI
 import ComposableArchitecture
+struct WindowSettingsView: View {
+    let store: Store<Yabai.State, Yabai.Action>
+    let k = Yabai.Action.keyPath
+    
+    var body: some View {
+        WithViewStore(store) { vs in
+            SectionView("Window") {
+                Section(header: Text("Disable Shadows").bold()) {
+                    HStack {
+                        Toggle("Enabled", isOn: vs.binding(keyPath: \.disableShadows, send: k)).labelsHidden()
 
+                        Picker("", selection: vs.binding(keyPath: \.windowShadow, send: k)) {
+                            ForEach(Yabai.State.WindowShadow.allCases) {
+                                Text($0.uiDescription.lowercased())
+                            }
+                        }
+                        .labelsHidden()
+                        .pickerStyle(SegmentedPickerStyle())
+                        .frame(width: 150)
+                        .disabled(!vs.disableShadows)
+                    }
+                }
+                Divider()
+                OpacitySettings(store: store)
+                Group {
+                    Divider()
+                    BorderSettings(store: store)
+                }
+            }
+        }
+    }
+}
+
+// MARK:- SwiftUI_Previews
+struct WindowSettingsView_Previews: PreviewProvider {
+    static var previews: some View {
+        WindowSettingsView(store: Yabai.defaultStore)
+    }
+}
+
+//MARK:--
 struct OpacitySettings: View {
     let store: Store<Yabai.State, Yabai.Action>
     let k = Yabai.Action.keyPath
@@ -157,41 +197,3 @@ struct BorderSettings: View {
 }
 
 
-struct WindowSettingsView: View {
-    let store: Store<Yabai.State, Yabai.Action>
-    let k = Yabai.Action.keyPath
-    
-    var body: some View {
-        WithViewStore(store) { vs in
-            SectionView("Window") {
-                Section(header: Text("Disable Shadows").bold()) {
-                    HStack {
-                        Toggle("Enabled", isOn: vs.binding(keyPath: \.disableShadows, send: k)).labelsHidden()
-
-                        Picker("", selection: vs.binding(keyPath: \.windowShadow, send: k)) {
-                            ForEach(Yabai.State.WindowShadow.allCases) {
-                                Text($0.uiDescription.lowercased())
-                            }
-                        }
-                        .labelsHidden()
-                        .pickerStyle(SegmentedPickerStyle())
-                        .frame(width: 150)
-                        .disabled(!vs.disableShadows)
-                    }
-                }
-                Divider()
-                OpacitySettings(store: store)
-                Group {
-                    Divider()
-                    BorderSettings(store: store)
-                }
-            }
-        }
-    }
-}
-// MARK:- SwiftUI_Previews
-struct WindowSettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        WindowSettingsView(store: Yabai.defaultStore)
-    }
-}

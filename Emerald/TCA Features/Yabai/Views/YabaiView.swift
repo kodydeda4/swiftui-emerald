@@ -14,16 +14,6 @@ struct YabaiSettingsView: View {
     
     var body: some View {
         WithViewStore(store) { vs in
-            //                List {
-            //                    MySliderView(
-            //                        text: "Animation Duration",
-            //                        value: vs.binding(
-            //                            get: \.windowOpacityDuration,
-            //                            send: Yabai.Action.updateWindowOpacityDuration),
-            //                        isEnabled: vs.windowOpacity
-            //                    )
-            //                }
-            //            }
             HStack {
                 DebugConfigFileView(text: vs.asConfig)
                 
@@ -38,7 +28,6 @@ struct YabaiSettingsView: View {
                         ExternalBarSettingsView(store: store)
                     }
                 }
-                .frame(width: 600)
                 .navigationTitle("Debug Yabai")
             }
         }

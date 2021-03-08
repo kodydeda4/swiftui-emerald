@@ -30,17 +30,6 @@ struct ExternalBarSettingsView: View {
                         .frame(width: 100)
                         .disabled(!vs.externalBarEnabled)
                     }
-//                    HStack {
-//                        Button("off") {
-//                            vs.send(.updateExternalBar(.off))
-//                        }
-//                        Button("all") {
-//                            vs.send(.updateExternalBar(.all))
-//                        }
-//                        Button("main") {
-//                            vs.send(.updateExternalBar(.main))
-//                        }
-//                    }
                 }
                 Divider()
                 Section(header: Text("Padding").bold()) {
