@@ -16,11 +16,13 @@ struct Yabai {
         var configURL                = URL(fileURLWithPath: ".yabairc", relativeTo: .HomeDirectory)
         var version                  = run("/usr/local/bin/yabai", "-v").stdout
         var debugOutput              : Bool              = false
-        var externalBar              : ExternalBar       = .off
+        var externalBar              : ExternalBar       = .all
+        var externalBarEnabled       : Bool              = false
         var externalBarPaddingTop    : Int               = 0
         var externalBarPaddingBottom : Int               = 0
         var mouseFollowsFocus        : Bool              = false
-        var focusFollowsMouse        : FocusFollowsMouse = .off
+        var focusFollowsMouse        : FocusFollowsMouse = .autofocus
+        var focusFollowsMouseEnabled : Bool              = false
         var windowPlacement          : WindowPlacement   = .first_child
         var windowTopmost            : Bool              = false
         var windowShadow             : WindowShadow      = .on
@@ -50,21 +52,30 @@ struct Yabai {
 
         enum ExternalBar: String, Codable, CaseIterable, Identifiable {
             var id: ExternalBar { self }
-            case main
+            //case off
             case all
-            case off
+            case main
         }
         enum WindowShadow: String, Codable, CaseIterable, Identifiable {
             var id: WindowShadow { self }
             case on
             case off
             case float
+            
+            var uiDescription: String {
+                switch self {
+                case .on    : return "On"
+                case .off   : return "Off"
+                case .float : return "Floating"
+                }
+            }
+
         }
         enum FocusFollowsMouse: String, Codable, CaseIterable, Identifiable {
             var id: FocusFollowsMouse { self }
+            //case off
             case autofocus
             case autoraise
-            case off
         }
         enum WindowPlacement: String, Codable, CaseIterable, Identifiable {
             var id: WindowPlacement { self }
@@ -73,8 +84,8 @@ struct Yabai {
             
             var uiDescription: String {
                 switch self {
-                case .first_child  : return "First"
-                case .second_child : return "Second"
+                case .first_child  : return "First Child"
+                case .second_child : return "Second Child"
                 }
             }
         }
@@ -111,6 +122,14 @@ struct Yabai {
             case float
             case bsp
             case stack
+            
+            var uiDescription: String {
+                switch self {
+                case .float : return "Normal"
+                case .bsp   : return "Tiling"
+                case .stack : return "Stacking"
+                }
+            }
         }
     }
     
@@ -132,6 +151,7 @@ struct Yabai {
         case updatetActiveWindowOpacity(Int)
         case updateNormalWindowOpacity(Int)
         case updateSplitRatio(Int)
+        case toggleExternalBarIsDisabled
     }
 }
 
@@ -204,6 +224,10 @@ extension Yabai {
             
         case let .updateSplitRatio(splitRatio):
             state.splitRatio = splitRatio
+            return .none
+            
+        case .toggleExternalBarIsDisabled:
+            state.externalBarEnabled.toggle()
             return .none
         }
     }

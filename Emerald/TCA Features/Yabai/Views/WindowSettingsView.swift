@@ -105,15 +105,15 @@ struct BorderSettings: View {
                     .disabled(!vs.windowBorder)
                 }
                 Divider()
-                Section(header: Text("New Window Placement").bold()) {
+                Section(header: Text("New Window").bold()) {
                     Picker("", selection: vs.binding(keyPath: \.windowPlacement, send: k)) {
                         ForEach(Yabai.State.WindowPlacement.allCases) {
-                            Text($0.uiDescription)
+                            Text($0.uiDescription.lowercased())
                         }
                     }
                     .labelsHidden()
                     .pickerStyle(SegmentedPickerStyle())
-                    .frame(width: 100)
+                    .frame(width: 200)
                 }
                 Divider()
                 Toggle(
@@ -154,29 +154,15 @@ struct WindowSettingsView: View {
     var body: some View {
         WithViewStore(store) { vs in
             SectionView("Window") {
-                Section(header: Text("Shadow Effects").bold()) {
+                Section(header: Text("Shadows").bold()) {
                     Picker("", selection: vs.binding(keyPath: \.windowShadow, send: k)) {
                         ForEach(Yabai.State.WindowShadow.allCases) {
-                            //Image(systemName: "rectangle.grid.2x2.fill")
-                            Text($0.rawValue)
+                            Text($0.uiDescription.lowercased())
                         }
                     }
                     .labelsHidden()
                     .pickerStyle(SegmentedPickerStyle())
                     .frame(width: 200)
-
-//                    HStack {
-//                        // ** do an inverse toggle") {
-//                        Button("Off (Normal)") {
-//                            vs.send(.updateWindowShadows(.on))
-//                        }
-//                        Button("Disabled") {
-//                            vs.send(.updateWindowShadows(.off))
-//                        }
-//                        Button("Floating-Only") {
-//                            vs.send(.updateWindowShadows(.float))
-//                        }
-//                    }
                 }
                 Divider()
                 OpacitySettings(store: store)

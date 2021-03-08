@@ -45,7 +45,7 @@ yabai -m config window_gap \(windowGap)
 #=========================================================================================
 # Window
 #=========================================================================================
-# Shadows Effects
+# Shadows
 yabai -m config window_shadow \(windowShadow)
 
 # Opacity Effects
@@ -80,7 +80,7 @@ yabai -m config window_topmost \(windowTopmost == true ? "on" : "off") #SA
 yabai -m config mouse_follows_focus \(mouseFollowsFocus == true ? "on" : "off")
 
 # Focus Follows Mouse
-yabai -m config focus_follows_mouse \(focusFollowsMouse)
+yabai -m config focus_follows_mouse \(!focusFollowsMouseEnabled ? "off" : "\(focusFollowsMouse)")
 
 # Modifier Key
 yabai -m config mouse_modifier \(mouseModifier)
@@ -98,7 +98,7 @@ yabai -m config mouse_drop_action \(mouseDropAction)
 # External Bar
 #=========================================================================================
 # External Bar top:bottom
-yabai -m config external_bar \(externalBar):\(externalBarPaddingTop):\(externalBarPaddingBottom)
+yabai -m config external_bar \(!externalBarEnabled ? "off" : "\(externalBar):\(externalBarPaddingTop):\(externalBarPaddingBottom)")
 
 #=========================================================================================
 # Misc

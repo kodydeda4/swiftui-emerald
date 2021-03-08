@@ -13,13 +13,14 @@ struct RootView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            NavigationView {
-                SidebarView(store: store)
-                
-                Text("Welcome Page")
-                    .font(.largeTitle)
-                    .foregroundColor(Color(NSColor.placeholderTextColor))
-            }
+            YabaiSettingsView(store: store.scope(state: \.yabai, action: Root.Action.yabai))
+//            NavigationView {
+//                SidebarView(store: store)
+//
+//                Text("Welcome Page")
+//                    .font(.largeTitle)
+//                    .foregroundColor(Color(NSColor.placeholderTextColor))
+//            }
             .onAppear {
                 viewStore.send(.load(.yabai))
                 viewStore.send(.load(.skhd))

@@ -20,14 +20,19 @@ struct MouseSettingsView: View {
                 }
                 Divider()
                 Section(header: Text("Focus Follows Focus").bold()) {
-                    Picker("", selection: vs.binding(keyPath: \.focusFollowsMouse, send: k)) {
-                        ForEach(Yabai.State.FocusFollowsMouse.allCases) {
-                            Text($0.rawValue)
+                    HStack {
+                        Toggle("", isOn: vs.binding(keyPath: \.focusFollowsMouseEnabled, send: k)).labelsHidden()
+                        
+                        Picker("", selection: vs.binding(keyPath: \.focusFollowsMouse, send: k)) {
+                            ForEach(Yabai.State.FocusFollowsMouse.allCases) {
+                                Text($0.rawValue)
+                            }
                         }
+                        .labelsHidden()
+                        .pickerStyle(SegmentedPickerStyle())
+                        .frame(width: 150)
+                        .disabled(!vs.focusFollowsMouseEnabled)
                     }
-                    .labelsHidden()
-                    .pickerStyle(SegmentedPickerStyle())
-                    .frame(width: 150)
                 }
                 Divider()
                 Section(header: Text("Modifier Key").bold()) {
@@ -39,7 +44,7 @@ struct MouseSettingsView: View {
                     }
                     .labelsHidden()
                     .pickerStyle(SegmentedPickerStyle())
-                    .frame(width: 300)
+                    .frame(width: 350)
                 }
                 Section {
                     Divider()
