@@ -20,11 +20,11 @@ struct Homebrew {
 
 extension Homebrew {
     static let reducer = Reducer<State, Action, Void>.combine(
-        Reducer { state, action, _ in
-            switch action {
-            
-            }
-        }
+//        Reducer { state, action, _ in
+//            switch action {
+//            
+//            }
+//        }
     )
 }
 

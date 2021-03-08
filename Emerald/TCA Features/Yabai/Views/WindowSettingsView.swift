@@ -8,7 +8,6 @@
 import SwiftUI
 import ComposableArchitecture
 
-
 struct OpacitySettings: View {
     let store: Store<Yabai.State, Yabai.Action>
     let k = Yabai.Action.keyPath

@@ -12,9 +12,7 @@ struct SliderView: View {
     var text: String
     @Binding var value: Int
     var width: CGFloat = 160
-    
     var isEnabled: Bool
-    
     @State var range = 0...10
     
     
@@ -26,39 +24,56 @@ struct SliderView: View {
                 .lineLimit(1)
                 .frame(width: width*0.75)
             
-//            Slider(value: $v, in: 0...100)
-            ValueSlider(value: $value, in: 0...100, step: 1)
-                .disabled(!isEnabled)
-                .drawingGroup()
-
-                .valueSliderStyle(
-                    HorizontalValueSliderStyle(
-                        track:
-                            HorizontalValueTrack(
-                                view: Capsule().foregroundColor(isEnabled ? Color.accentColor : Color(NSColor.darkGray))
+            ValueSlider(
+                value: $value,
+                in: 0...100,
+                step: 1
+            )
+            .disabled(!isEnabled)
+            .drawingGroup()
+            
+            .valueSliderStyle(
+                HorizontalValueSliderStyle(
+                    track:
+                        HorizontalValueTrack(
+                            view: Capsule().foregroundColor(
+                                isEnabled
+                                    ? Color.accentColor
+                                    : Color(.darkGray)
                             )
-                            .background(Capsule().foregroundColor(Color.gray.opacity(0.25)))
-                            .frame(height: 4),
-
-                        thumb: Circle().foregroundColor( isEnabled ? .white : .gray),
-                        thumbSize: CGSize(width: 12, height: 12)
-                    )
+                        )
+                        .background(Capsule().foregroundColor(Color.gray.opacity(0.25)))
+                        .frame(height: 4),
+                    
+                    thumb: Circle()
+                        .foregroundColor(
+                            isEnabled
+                                ? .white
+                                : .gray
+                        ),
+                    thumbSize: CGSize(width: 12, height: 12)
                 )
-                .frame(width: width)
+            )
+            .frame(width: width)
             
             Text("\(value)%")
                 .font(.system(size: systemFontSize))
                 .foregroundColor(isEnabled ? Color.primary : Color(NSColor.darkGray))
                 .padding(6)
                 .frame(width: 50)
-                .background(Color.black.opacity(0.25))
+                .background(Color(NSColor.windowBackgroundColor))
                 .clipShape(RoundedRectangle(cornerRadius: 6))
             
             Spacer()
         }
-
+        
     }
 }
+
+
+
+
+
 
 // MARK:- SwiftUI_Previews
 struct MySliderView_Previews: PreviewProvider {

@@ -34,7 +34,7 @@ struct StepperView: View {
                 .padding(1)
                 .padding(.leading)
                 //.frame(width: 100)
-                .background(Color.black.opacity(0.25))
+                .background(Color(NSColor.windowBackgroundColor))
                 .clipShape(RoundedRectangle(cornerRadius: 6))
                 
             Text("\(text)")
