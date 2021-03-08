@@ -18,7 +18,7 @@ struct SliderView: View {
     var body: some View {
         HStack {
             Text(text)
-                .foregroundColor(isEnabled ? Color.primary : Color(.disabledControlTextColor))
+                .foregroundColor(isEnabled ? Color(.controlTextColor) : Color(.disabledControlTextColor))
                 .lineLimit(1)
                 .frame(width: width*0.8)
                 
@@ -49,7 +49,7 @@ struct SliderView: View {
             
             Text("\(value)%")
                 .font(.system(size: systemFontSize))
-                .foregroundColor(isEnabled ? Color.primary : Color(.disabledControlTextColor))
+                .foregroundColor(isEnabled ? Color(.controlTextColor) : Color(.disabledControlTextColor))
                 .padding(6)
                 .frame(width: 50)
                 .background(Color(NSColor.windowBackgroundColor))

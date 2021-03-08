@@ -28,19 +28,30 @@ struct StepperView: View {
     
     var body: some View {
         VStack {
-            Stepper("\(value)", value: $value, in: range)
-                .disabled(!isEnabled)
-                .foregroundColor(isEnabled ? Color(NSColor.textColor) : Color(NSColor.disabledControlTextColor))
-                .padding(1)
-                .padding(.leading)
-                //.frame(width: 100)
-                .background(Color(NSColor.windowBackgroundColor))
-                .clipShape(RoundedRectangle(cornerRadius: 6))
+            HStack {
+                Text("\(value)")
+                    .offset(x: 6)
+                    .foregroundColor(isEnabled ? Color(.textColor) : Color(.disabledControlTextColor))
+                    
+                Spacer()
+                Stepper("", value: $value, in: range)
+                    .disabled(!isEnabled)
+                    //.padding(1)
+                    //.padding(.leading, 20)
+                    //.frame(width: 53)
+
+            }
+            .frame(width: 44)
+            .background(Color(.windowBackgroundColor))
+            .clipShape(RoundedRectangle(cornerRadius: 6))
+
+            //.frame(width: 53)
                 
             Text("\(text)")
                 .font(.system(size: systemFontSize))
-                .foregroundColor(isEnabled ? Color(NSColor.textColor) : Color(NSColor.disabledControlTextColor))
+                .foregroundColor(isEnabled ? Color(.textColor) : Color(.disabledControlTextColor))
         }
+        //.frame(width: 53)
     }
 }
 
