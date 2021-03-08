@@ -25,18 +25,18 @@ struct Yabai {
         var focusFollowsMouseEnabled : Bool              = false
         var windowPlacement          : WindowPlacement   = .first_child
         var windowTopmost            : Bool              = false
-        var windowShadow             : WindowShadow      = .on
+        
+        var disableShadows           : Bool              = false
+        var windowShadow             : WindowShadow      = .off
         var windowOpacity            : Bool              = false
         
         var windowOpacityDuration    : Int               = 100
         var activeWindowOpacity      : Int               = 100
         var normalWindowOpacity      : Int               = 100
         
-        //MARK:- Still implementing
         var windowBalance            : WindowBalance     = .normal
         var splitRatio               : Int               = 50
         var autoBalance              : Bool              = false
-        //MARK:----------------------------------------------------
 
         
         var windowBorder             : Bool              = false
@@ -63,15 +63,15 @@ struct Yabai {
         }
         enum WindowShadow: String, Codable, CaseIterable, Identifiable {
             var id: WindowShadow { self }
-            case on
+            //case on
             case off
             case float
             
             var uiDescription: String {
                 switch self {
-                case .on    : return "On"
-                case .off   : return "Off"
-                case .float : return "Floating"
+                //case .on    : return "On"
+                case .off   : return "All"
+                case .float : return "NonFloating"
                 }
             }
         }

@@ -46,7 +46,7 @@ yabai -m config window_gap \(windowGap)
 # Window
 #=========================================================================================
 # Shadows
-yabai -m config window_shadow \(windowShadow)
+yabai -m config window_shadow \(!disableShadows ? "on" : windowShadow.rawValue)
 
 # Opacity Effects
 yabai -m config window_opacity \(windowOpacity == true ? "on" : "off")
@@ -65,10 +65,10 @@ yabai -m config insert_window_border_color \"\(insertWindowBorderColor.asHexStri
 yabai -m config window_placement \(windowPlacement)
 
 # Auto Balance
-yabai -m config auto_balance \(autoBalance == true ? "on" : "off")
+yabai -m config auto_balance \(windowBalance == .auto ? "on" : "off")
 
 # Split Ratio
-yabai -m config split_ratio \(Float(splitRatio/100))
+\(windowBalance == .auto ? "#" : "")yabai -m config split_ratio \(windowBalance == .custom ? Float(splitRatio)/100 : 0.50)
 
 # Floating Windows Stay-On-Top
 yabai -m config window_topmost \(windowTopmost == true ? "on" : "off") #SA

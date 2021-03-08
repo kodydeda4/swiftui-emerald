@@ -57,6 +57,7 @@ struct SliderView: View {
                 .frame(width: 50)
                 .background(Color(NSColor.windowBackgroundColor))
                 .clipShape(RoundedRectangle(cornerRadius: 6))
+            
             Spacer()
         }
     }

@@ -116,29 +116,27 @@ struct BorderSettings: View {
                     .frame(width: 200)
                 }
                 Divider()
-                Section(header: Text("Balance").bold()) {
+                Section(header: Text("Split Ratio").bold()) {
                     HStack {
-                    Picker("", selection: vs.binding(keyPath: \.windowBalance, send: k)) {
-                        ForEach(Yabai.State.WindowBalance.allCases) {
-                            Text($0.uiDescription.lowercased())
+                        Picker("", selection: vs.binding(keyPath: \.windowBalance, send: k)) {
+                            ForEach(Yabai.State.WindowBalance.allCases) {
+                                Text($0.uiDescription.lowercased())
+                            }
                         }
-                    }
-                    .labelsHidden()
-                    .pickerStyle(SegmentedPickerStyle())
-                    .frame(width: 200)
-
-                    
-                    SliderView(
-                        text: "Custom",
-                        value: vs.binding(keyPath: \.splitRatio, send: k),
-                        isEnabled: vs.windowBalance == .custom,
-                        hideLabel: true
-                        
-                    )
+                        .labelsHidden()
+                        .pickerStyle(SegmentedPickerStyle())
+                        .frame(width: 200)
+                                                
+                        SliderView(
+                            text: "Custom",
+                            value: vs.binding(keyPath: \.splitRatio, send: k),
+                            isEnabled: vs.windowBalance == .custom,
+                            hideLabel: true
+                        )
                     }
                 }
                 Divider()
-                Section(header: Text("Floating Windows Stay-On-Top").bold()) {
+                Section(header: Text("Float-On-Top").bold()) {
                     VStack(alignment: .leading) {
                         HStack {
                             Toggle(
@@ -166,15 +164,20 @@ struct WindowSettingsView: View {
     var body: some View {
         WithViewStore(store) { vs in
             SectionView("Window") {
-                Section(header: Text("Shadows").bold()) {
-                    Picker("", selection: vs.binding(keyPath: \.windowShadow, send: k)) {
-                        ForEach(Yabai.State.WindowShadow.allCases) {
-                            Text($0.uiDescription.lowercased())
+                Section(header: Text("Disable Shadows").bold()) {
+                    HStack {
+                        Toggle("Enabled", isOn: vs.binding(keyPath: \.disableShadows, send: k)).labelsHidden()
+
+                        Picker("", selection: vs.binding(keyPath: \.windowShadow, send: k)) {
+                            ForEach(Yabai.State.WindowShadow.allCases) {
+                                Text($0.uiDescription.lowercased())
+                            }
                         }
+                        .labelsHidden()
+                        .pickerStyle(SegmentedPickerStyle())
+                        .frame(width: 150)
+                        .disabled(!vs.disableShadows)
                     }
-                    .labelsHidden()
-                    .pickerStyle(SegmentedPickerStyle())
-                    .frame(width: 200)
                 }
                 Divider()
                 OpacitySettings(store: store)
