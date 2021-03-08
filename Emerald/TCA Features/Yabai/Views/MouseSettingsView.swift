@@ -20,39 +20,26 @@ struct MouseSettingsView: View {
                 }
                 Divider()
                 Section(header: Text("Focus Follows Focus").bold()) {
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Button("Off (Normal)") {
-                                vs.send(.updateFocusFollowsMouse(.off))
-                            }
-                            Button("Autofocus") {
-                                vs.send(.updateFocusFollowsMouse(.autofocus))
-                            }
-                            Button("Autoraise") {
-                                vs.send(.updateFocusFollowsMouse(.autoraise))
-                            }
+                    Picker("", selection: vs.binding(keyPath: \.focusFollowsMouse, send: k)) {
+                        ForEach(Yabai.State.FocusFollowsMouse.allCases) {
+                            Text($0.rawValue)
                         }
                     }
+                    .labelsHidden()
+                    .pickerStyle(SegmentedPickerStyle())
+                    .frame(width: 150)
                 }
                 Divider()
                 Section(header: Text("Modifier Key").bold()) {
-                    HStack {
-                        Button("fn") {
-                            vs.send(.updateMouseModifier(.fn))
-                        }
-                        Button("control ⌃") {
-                            vs.send(.updateMouseModifier(.ctrl))
-                        }
-                        Button("option ⌥") {
-                            vs.send(.updateMouseModifier(.alt))
-                        }
-                        Button("command ⌘") {
-                            vs.send(.updateMouseModifier(.cmd))
-                        }
-                        Button("shift ⇧") {
-                            vs.send(.updateMouseModifier(.shift))
+                    Picker("", selection: vs.binding(keyPath: \.mouseModifier, send: k)) {
+                        ForEach(Yabai.State.MouseModifier.allCases) {
+                            //Image(systemName: "rectangle.grid.2x2.fill")
+                            Text($0.uiDescription.lowercased())
                         }
                     }
+                    .labelsHidden()
+                    .pickerStyle(SegmentedPickerStyle())
+                    .frame(width: 300)
                 }
                 Section {
                     Divider()

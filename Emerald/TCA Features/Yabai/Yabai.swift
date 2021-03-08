@@ -70,14 +70,31 @@ struct Yabai {
             var id: WindowPlacement { self }
             case first_child
             case second_child
+            
+            var uiDescription: String {
+                switch self {
+                case .first_child  : return "First"
+                case .second_child : return "Second"
+                }
+            }
         }
         enum MouseModifier: String, Codable, CaseIterable, Identifiable {
             var id: MouseModifier { self }
-            case cmd
-            case alt
+            case fn
             case shift
             case ctrl
-            case fn
+            case alt
+            case cmd
+            
+            var uiDescription: String {
+                switch self {
+                case .fn    : return "Fn"
+                case .shift : return "⇧ Shift"
+                case .ctrl  : return "⌃ Control"
+                case .alt   : return "⌥ Option"
+                case .cmd   : return "⌘ Command"
+                }
+            }
         }
         enum MouseAction: String, Codable, CaseIterable, Identifiable {
             var id: MouseAction { self }

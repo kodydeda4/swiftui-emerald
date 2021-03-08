@@ -106,14 +106,14 @@ struct BorderSettings: View {
                 }
                 Divider()
                 Section(header: Text("New Window Placement").bold()) {
-                    HStack {
-                        Button("First Child") {
-                            vs.send(.updateWindowPlacement(.first_child))
-                        }
-                        Button("Second Child") {
-                            vs.send(.updateWindowPlacement(.second_child))
+                    Picker("", selection: vs.binding(keyPath: \.windowPlacement, send: k)) {
+                        ForEach(Yabai.State.WindowPlacement.allCases) {
+                            Text($0.uiDescription)
                         }
                     }
+                    .labelsHidden()
+                    .pickerStyle(SegmentedPickerStyle())
+                    .frame(width: 100)
                 }
                 Divider()
                 Toggle(

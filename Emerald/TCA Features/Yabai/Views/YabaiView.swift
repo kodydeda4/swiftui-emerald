@@ -38,6 +38,7 @@ struct YabaiSettingsView: View {
                         ExternalBarSettingsView(store: store)
                     }
                 }
+                .frame(width: 600)
                 .navigationTitle("Debug Yabai")
             }
         }

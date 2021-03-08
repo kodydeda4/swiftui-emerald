@@ -66,11 +66,11 @@ struct SpaceSettingsView: View {
                 Divider()
                 Section(header: Text("Padding").bold()) {
                     HStack {
-                        StepperView(text: "Top",    value: vs.binding(keyPath: \.paddingTop,    send: k), isEnabled: true)
-                        StepperView(text: "Bottom", value: vs.binding(keyPath: \.paddingBottom, send: k), isEnabled: true)
-                        StepperView(text: "Left",   value: vs.binding(keyPath: \.paddingLeft,   send: k), isEnabled: true)
-                        StepperView(text: "Right",  value: vs.binding(keyPath: \.paddingRight,  send: k), isEnabled: true)
-                        StepperView(text: "Gaps",   value: vs.binding(keyPath: \.windowGap,     send: k), isEnabled: true)
+                        StepperView(text: "Top",    value: vs.binding(keyPath: \.paddingTop,    send: k), isEnabled: vs.layout != .float)
+                        StepperView(text: "Bottom", value: vs.binding(keyPath: \.paddingBottom, send: k), isEnabled: vs.layout != .float)
+                        StepperView(text: "Left",   value: vs.binding(keyPath: \.paddingLeft,   send: k), isEnabled: vs.layout != .float)
+                        StepperView(text: "Right",  value: vs.binding(keyPath: \.paddingRight,  send: k), isEnabled: vs.layout != .float)
+                        StepperView(text: "Gaps",   value: vs.binding(keyPath: \.windowGap,     send: k), isEnabled: vs.layout != .float)
                     }
                 }
             }
