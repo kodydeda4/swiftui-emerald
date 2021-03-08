@@ -71,7 +71,7 @@ struct Yabai {
                 switch self {
                 //case .on    : return "On"
                 case .off   : return "All"
-                case .float : return "NonFloating"
+                case .float : return "Non-Floating"
                 }
             }
         }
