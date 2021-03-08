@@ -155,18 +155,28 @@ struct WindowSettingsView: View {
         WithViewStore(store) { vs in
             SectionView("Window") {
                 Section(header: Text("Shadow Effects").bold()) {
-                    HStack {
-                        // ** do an inverse toggle") {
-                        Button("Off (Normal)") {
-                            vs.send(.updateWindowShadows(.on))
-                        }
-                        Button("Disabled") {
-                            vs.send(.updateWindowShadows(.off))
-                        }
-                        Button("Floating-Only") {
-                            vs.send(.updateWindowShadows(.float))
+                    Picker("", selection: vs.binding(keyPath: \.windowShadow, send: k)) {
+                        ForEach(Yabai.State.WindowShadow.allCases) { v in
+                            //Image(systemName: "rectangle.grid.2x2.fill")
+                            Text(v.rawValue)
                         }
                     }
+                    .labelsHidden()
+                    .pickerStyle(SegmentedPickerStyle())
+                    .frame(width: 200)
+
+//                    HStack {
+//                        // ** do an inverse toggle") {
+//                        Button("Off (Normal)") {
+//                            vs.send(.updateWindowShadows(.on))
+//                        }
+//                        Button("Disabled") {
+//                            vs.send(.updateWindowShadows(.off))
+//                        }
+//                        Button("Floating-Only") {
+//                            vs.send(.updateWindowShadows(.float))
+//                        }
+//                    }
                 }
                 Divider()
                 OpacitySettings(store: store)
