@@ -9,13 +9,13 @@ import SwiftUI
 
 public let systemFontSize: CGFloat = 10
 
-struct MyStepperView: View {
+struct StepperView: View {
     let text: String
     @Binding var value: Int
     let range: ClosedRange<Int>
     var isEnabled: Bool
     
-    init(_ text: String,
+    init(text: String,
          value: Binding<Int>,
          range: ClosedRange<Int> = 0...10,
          isEnabled: Bool
@@ -47,6 +47,6 @@ struct MyStepperView: View {
 // MARK:- SwiftUI_Previews
 struct MyStepperView_Previews: PreviewProvider {
     static var previews: some View {
-        MyStepperView("Value", value: .constant(6), isEnabled: true)
+        StepperView(text: "Value", value: .constant(6), isEnabled: true)
     }
 }

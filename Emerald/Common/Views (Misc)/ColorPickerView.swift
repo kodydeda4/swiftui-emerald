@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MyColorPickerView: View {
+struct ColorPickerView: View {
     var text: String
     @Binding var selection: Color
     
@@ -23,6 +23,6 @@ struct MyColorPickerView: View {
 // MARK:- SwiftUI_Previews
 struct MyColorPickerView_Previews: PreviewProvider {
     static var previews: some View {
-        MyColorPickerView(text: "Description", selection: .constant(.accentColor))
+        ColorPickerView(text: "Description", selection: .constant(.accentColor))
     }
 }

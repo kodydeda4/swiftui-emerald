@@ -17,17 +17,41 @@ struct OpacitySettings: View {
         WithViewStore(store) { vs in
             Section(header:
                         HStack {
-                            Toggle("Opacity Effects", isOn: vs.binding(keyPath: \.windowOpacity, send: k)).labelsHidden()
+                            Toggle(
+                                "Opacity Effects",
+                                isOn: vs.binding(keyPath: \.windowOpacity, send: k)
+                            )
+                            .labelsHidden()
                             Text("Opacity Effects").bold()
                         }
             ) {
                 VStack(alignment: .leading) {
                     Group {
-                        MySliderView(text: "Animation Duration", value: vs.binding(get: \.windowOpacityDuration, send: Yabai.Action.updateWindowOpacityDuration), isEnabled: vs.windowOpacity)
-                        MySliderView(text: "Focused Window", value: vs.binding(get: \.activeWindowOpacity, send: Yabai.Action.updatetActiveWindowOpacity), isEnabled: vs.windowOpacity)
-                        MySliderView(text: "Normal Windows", value: vs.binding(get: \.normalWindowOpacity, send: Yabai.Action.updateNormalWindowOpacity), isEnabled: vs.windowOpacity)
+                        SliderView(
+                            text: "Animation Duration",
+                            value: vs.binding(
+                                get: \.windowOpacityDuration,
+                                send: Yabai.Action.updateWindowOpacityDuration
+                            ),
+                            isEnabled: vs.windowOpacity
+                        )
+                        SliderView(
+                            text: "Focused Window",
+                            value: vs.binding(
+                                get: \.activeWindowOpacity,
+                                send: Yabai.Action.updatetActiveWindowOpacity
+                            ),
+                            isEnabled: vs.windowOpacity
+                        )
+                        SliderView(
+                            text: "Normal Windows",
+                            value: vs.binding(
+                                get: \.normalWindowOpacity,
+                                send: Yabai.Action.updateNormalWindowOpacity
+                            ),
+                            isEnabled: vs.windowOpacity
+                        )
                     }
-                    //.disabled(!vs.windowOpacity)
                 }
             }
         }
@@ -44,15 +68,40 @@ struct BorderSettings: View {
             Section(header: Text("Borders").bold()) {
                 HStack {
                     VStack {
-                        Toggle("Borders", isOn: vs.binding(keyPath: \.windowBorder, send: k)).labelsHidden()
+                        Toggle(
+                            "Borders",
+                            isOn: vs.binding(keyPath: \.windowBorder, send: k)
+                        )
+                        .labelsHidden()
                         Text("")
                     }
                     Group {
-                        MyStepperView("Width", value: vs.binding(keyPath: \.windowBorderWidth, send: k), isEnabled: vs.windowBorder)
-
-                        MyColorPickerView(text: "Focused", selection: vs.binding(get: \.activeWindowBorderColor.color, send: Yabai.Action.updateActiveWindowBorderColor))
-                        MyColorPickerView(text: "Normal", selection: vs.binding(get: \.normalWindowBorderColor.color, send: Yabai.Action.updateNormalWindowBorderColor))
-                        MyColorPickerView(text: "Insert", selection: vs.binding(get: \.insertWindowBorderColor.color, send: Yabai.Action.updateInsertWindowBorderColor))
+                        StepperView(
+                            text: "Width",
+                            value: vs.binding(keyPath: \.windowBorderWidth, send: k),
+                            isEnabled: vs.windowBorder
+                        )
+                        ColorPickerView(
+                            text: "Focused",
+                            selection: vs.binding(
+                                get: \.activeWindowBorderColor.color,
+                                send: Yabai.Action.updateActiveWindowBorderColor
+                            )
+                        )
+                        ColorPickerView(
+                            text: "Normal",
+                            selection: vs.binding(
+                                get: \.normalWindowBorderColor.color,
+                                send: Yabai.Action.updateNormalWindowBorderColor
+                            )
+                        )
+                        ColorPickerView(
+                            text: "Insert",
+                            selection: vs.binding(
+                                get: \.insertWindowBorderColor.color,
+                                send: Yabai.Action.updateInsertWindowBorderColor
+                            )
+                        )
                     }
                     .disabled(!vs.windowBorder)
                 }
@@ -68,16 +117,27 @@ struct BorderSettings: View {
                     }
                 }
                 Divider()
-                Toggle("Auto Balance", isOn: vs.binding(keyPath: \.autoBalance, send: k))
-
-                MySliderView(text: "Split Ratio", value: vs.binding(keyPath: \.splitRatio, send: k), isEnabled: !vs.autoBalance)
-                    //.disabled(vs.autoBalance)
-
+                Toggle(
+                    "Auto Balance",
+                    isOn: vs.binding(keyPath: \.autoBalance, send: k)
+                )
+                SliderView(
+                    text: "Split Ratio",
+                    value: vs.binding(keyPath: \.splitRatio, send: k),
+                    isEnabled: !vs.autoBalance
+                )
                 Divider()
                 Section(header: Text("Floating Windows Stay-On-Top").bold()) {
                     VStack(alignment: .leading) {
                         HStack {
-                            Toggle("Floating Windows Stay-On-Top", isOn: vs.binding(keyPath: \.windowTopmost, send: k)).labelsHidden()
+                            Toggle(
+                                "Floating Windows Stay-On-Top",
+                                isOn: vs.binding(
+                                    keyPath: \.windowTopmost,
+                                    send: k
+                                )
+                            )
+                            .labelsHidden()
                             Text("Enabled")
                         }
                     }

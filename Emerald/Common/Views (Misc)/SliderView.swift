@@ -8,7 +8,7 @@
 import SwiftUI
 import Sliders
 
-struct MySliderView: View {
+struct SliderView: View {
     var text: String
     @Binding var value: Int
     var width: CGFloat = 160
@@ -63,6 +63,6 @@ struct MySliderView: View {
 // MARK:- SwiftUI_Previews
 struct MySliderView_Previews: PreviewProvider {
     static var previews: some View {
-        MySliderView(text: "Description", value: .constant(25), isEnabled: true)
+        SliderView(text: "Description", value: .constant(25), isEnabled: true)
     }
 }
