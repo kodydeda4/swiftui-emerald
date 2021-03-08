@@ -58,8 +58,8 @@ struct MouseSettingsView: View {
                     Divider()
                     Section(header: Text("Left Click + Modifier").bold()) {
                         Picker("", selection: vs.binding(keyPath: \.mouseAction1, send: k)) {
-                            ForEach(Yabai.State.MouseAction.allCases) { v in
-                                Text(v.rawValue)
+                            ForEach(Yabai.State.MouseAction.allCases) {
+                                Text($0.rawValue)
                             }
                         }
                         .labelsHidden()
@@ -69,8 +69,8 @@ struct MouseSettingsView: View {
                     Divider()
                     Section(header: Text("Right Click + Modifier").bold()) {
                         Picker("", selection: vs.binding(keyPath: \.mouseAction2, send: k)) {
-                            ForEach(Yabai.State.MouseAction.allCases) { v in
-                                Text(v.rawValue)
+                            ForEach(Yabai.State.MouseAction.allCases) {
+                                Text($0.rawValue)
                             }
                         }
                         .labelsHidden()
@@ -80,8 +80,8 @@ struct MouseSettingsView: View {
                     Divider()
                     Section(header: Text("Drop Action").bold()) {
                         Picker("", selection: vs.binding(keyPath: \.mouseDropAction, send: k)) {
-                            ForEach(Yabai.State.MouseDropAction.allCases) { v in
-                                Text(v.rawValue)
+                            ForEach(Yabai.State.MouseDropAction.allCases) {
+                                Text($0.rawValue)
                             }
                         }
                         .labelsHidden()

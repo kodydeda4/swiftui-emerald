@@ -35,10 +35,10 @@ struct SpaceSettingsView: View {
         WithViewStore(store) { vs in
             SectionView("Space") {
                 Section(header: Text("Layout").bold()) {
-                    Picker(selection: vs.binding(keyPath: \.layout, send: k), label: Text("My Vegetables")) {
-                        ForEach(Yabai.State.Layout.allCases) { v in
+                    Picker("", selection: vs.binding(keyPath: \.layout, send: k)) {
+                        ForEach(Yabai.State.Layout.allCases) {
                             //Image(systemName: "rectangle.grid.2x2.fill")
-                            Text(v.rawValue)
+                            Text($0.rawValue)
                         }
                     }
                     .labelsHidden()

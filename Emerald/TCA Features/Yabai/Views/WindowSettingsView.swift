@@ -156,9 +156,9 @@ struct WindowSettingsView: View {
             SectionView("Window") {
                 Section(header: Text("Shadow Effects").bold()) {
                     Picker("", selection: vs.binding(keyPath: \.windowShadow, send: k)) {
-                        ForEach(Yabai.State.WindowShadow.allCases) { v in
+                        ForEach(Yabai.State.WindowShadow.allCases) {
                             //Image(systemName: "rectangle.grid.2x2.fill")
-                            Text(v.rawValue)
+                            Text($0.rawValue)
                         }
                     }
                     .labelsHidden()
