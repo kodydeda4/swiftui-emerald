@@ -8,6 +8,25 @@
 import SwiftUI
 import ComposableArchitecture
 
+
+struct ImageButton: View {
+    var text: String
+    var action: () -> Void
+    var image: Image
+    var isEnabled: Bool
+    
+    var body: some View {
+        VStack {
+            Button(action: { action() }) {
+                image
+            }
+            
+            Text(text)
+                //.font(.system(size: systemFontSize))
+                .foregroundColor(isEnabled ? Color(.textColor) : Color(.disabledControlTextColor))
+        }
+    }
+}
 struct SpaceSettingsView: View {
     let store: Store<Yabai.State, Yabai.Action>
     let k = Yabai.Action.keyPath
@@ -16,17 +35,32 @@ struct SpaceSettingsView: View {
         WithViewStore(store) { vs in
             SectionView("Space") {
                 Section(header: Text("Layout").bold()) {
-                    HStack {
-                        Button("Floating (Normal)") {
-                            vs.send(.updateLayout(.float))
-                        }
-                        Button("Tiling") {
-                            vs.send(.updateLayout(.bsp))
-                        }
-                        Button("Stacking") {
-                            vs.send(.updateLayout(.stack))
+                    Picker(selection: vs.binding(keyPath: \.layout, send: k), label: Text("My Vegetables")) {
+                        ForEach(Yabai.State.Layout.allCases) { v in
+                            Text(v.rawValue)
                         }
                     }
+                    .labelsHidden()
+                    .pickerStyle(SegmentedPickerStyle())
+                    .frame(width: 200)
+//                    HStack {
+//                        ImageButton(text: "Floating",
+//                                    action: { vs.send(.updateLayout(.float)) },
+//                                    image: Image(systemName: "rectangle.3.offgrid.fill"),
+//                                    isEnabled: vs.layout == .float
+//                        )
+//                        ImageButton(text: "Tiling",
+//                                    action: { vs.send(.updateLayout(.bsp)) },
+//                                    image: Image(systemName: "rectangle.grid.2x2.fill"),
+//                                    isEnabled: vs.layout == .bsp
+//                        )
+//
+//                        ImageButton(text: "Stacking",
+//                                    action: { vs.send(.updateLayout(.stack)) },
+//                                    image: Image(systemName: "rectangle.stack.fill"),
+//                                    isEnabled: vs.layout == .stack
+//                        )
+//                    }
                 }
                 Divider()
                 Section(header: Text("Padding").bold()) {

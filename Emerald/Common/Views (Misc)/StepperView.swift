@@ -44,7 +44,7 @@ struct StepperView: View {
             .frame(width: 44)
             .background(Color(.windowBackgroundColor))
             .clipShape(RoundedRectangle(cornerRadius: 6))
-            .onHover { isHovered in
+            .onHover { isHovered in            
                 if isEnabled {
                     hovering.toggle()
                 }

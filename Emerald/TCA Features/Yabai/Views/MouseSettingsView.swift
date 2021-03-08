@@ -35,7 +35,7 @@ struct MouseSettingsView: View {
                     }
                 }
                 Divider()
-                Section(header: Text("Mouse Modifier").bold()) {
+                Section(header: Text("Modifier Key").bold()) {
                     HStack {
                         Button("fn") {
                             vs.send(.updateMouseModifier(.fn))
@@ -56,37 +56,37 @@ struct MouseSettingsView: View {
                 }
                 Section {
                     Divider()
-                    Section(header: Text("Left Click + Mouse Modifier Action").bold()) {
-                        HStack {
-                            Button("Move") {
-                                vs.send(.updateMouseAction1(.move))
-                            }
-                            Button("Resize") {
-                                vs.send(.updateMouseAction1(.resize))
+                    Section(header: Text("Left Click + Modifier").bold()) {
+                        Picker("", selection: vs.binding(keyPath: \.mouseAction1, send: k)) {
+                            ForEach(Yabai.State.MouseAction.allCases) { v in
+                                Text(v.rawValue)
                             }
                         }
+                        .labelsHidden()
+                        .pickerStyle(SegmentedPickerStyle())
+                        .frame(width: 100)
                     }
                     Divider()
-                    Section(header: Text("Right Click + Mouse Modifier Action").bold()) {
-                        HStack {
-                            Button("Move") {
-                                vs.send(.updateMouseAction2(.move))
-                            }
-                            Button("Resize") {
-                                vs.send(.updateMouseAction2(.resize))
+                    Section(header: Text("Right Click + Modifier").bold()) {
+                        Picker("", selection: vs.binding(keyPath: \.mouseAction2, send: k)) {
+                            ForEach(Yabai.State.MouseAction.allCases) { v in
+                                Text(v.rawValue)
                             }
                         }
+                        .labelsHidden()
+                        .pickerStyle(SegmentedPickerStyle())
+                        .frame(width: 100)
                     }
                     Divider()
                     Section(header: Text("Drop Action").bold()) {
-                        HStack {
-                            Button("Swap") {
-                                vs.send(.updateMouseDropAction(.swap))
-                            }
-                            Button("Stack") {
-                                vs.send(.updateMouseDropAction(.stack))
+                        Picker("", selection: vs.binding(keyPath: \.mouseDropAction, send: k)) {
+                            ForEach(Yabai.State.MouseDropAction.allCases) { v in
+                                Text(v.rawValue)
                             }
                         }
+                        .labelsHidden()
+                        .pickerStyle(SegmentedPickerStyle())
+                        .frame(width: 100)
                     }
                 }
             }
