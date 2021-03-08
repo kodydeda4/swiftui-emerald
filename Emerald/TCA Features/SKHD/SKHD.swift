@@ -7,15 +7,10 @@
 
 import ComposableArchitecture
 import KeyboardShortcuts
-
-//  https://github.com/sindresorhus/KeyboardShortcuts
-
-
-//MARK:-  restartYabai
-//        launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+import SwiftShell
 
 extension KeyboardShortcuts.Name {
-    static let restartYabai    = Self("restartYabai")
+    static let restartYabai   = Self("restartYabai")
     static let togglePadding  = Self("togglePadding")
     static let toggleGaps     = Self("toggleGaps")
     static let toggleSplit    = Self("toggleSplit")
@@ -25,8 +20,11 @@ extension KeyboardShortcuts.Name {
     static let toggleBSP      = Self("toggleBSP")
 }
 
-struct SKHDSettings {
+struct SKHD {
     struct State: Equatable, Codable {
+        var stateURL               = URL(fileURLWithPath: "SKHDState.json", relativeTo: .HomeDirectory)
+        var configURL              = URL(fileURLWithPath: ".skhdrc", relativeTo: .HomeDirectory)
+        var version                = run("/usr/local/bin/skhd", "-v").stdout
         var restartYabai           = KeyboardShortcuts.getShortcut(for: .restartYabai)
         var togglePaddingShortcut  = KeyboardShortcuts.getShortcut(for: .togglePadding)
         var toggleGapsShortcut     = KeyboardShortcuts.getShortcut(for: .toggleGaps)
@@ -35,9 +33,6 @@ struct SKHDSettings {
         var toggleStackingShortcut = KeyboardShortcuts.getShortcut(for: .toggleStacking)
         var toggleFloatingShortcut = KeyboardShortcuts.getShortcut(for: .toggleFloating)
         var toggleBSPShortcut      = KeyboardShortcuts.getShortcut(for: .toggleBSP)
-
-        var myText: String = "Nothin"
-
     }
     enum Action: Equatable {
         case updateRestartYabai(KeyboardShortcuts.Shortcut?)
@@ -48,11 +43,11 @@ struct SKHDSettings {
         case updateToggleStacking(KeyboardShortcuts.Shortcut?)
         case updateToggleFloating(KeyboardShortcuts.Shortcut?)
         case updateToggleBSP(KeyboardShortcuts.Shortcut?)
-        case keyPath(BindingAction<SKHDSettings.State>)
+        case keyPath(BindingAction<SKHD.State>)
     }
 }
 
-extension SKHDSettings {
+extension SKHD {
     static let reducer = Reducer<State, Action, Void> {
         state, action, _ in
         switch action {
@@ -96,7 +91,7 @@ extension SKHDSettings {
     .binding(action: /Action.keyPath)
 }
 
-extension SKHDSettings {
+extension SKHD {
     static let defaultStore = Store(
         initialState: .init(),
         reducer: reducer,
@@ -110,37 +105,6 @@ func skhd(_ shortcut: KeyboardShortcuts.Shortcut?) -> String {
         .joined(separator: " + ") ?? "# UNASSIGNED"
 }
 
-extension SKHDSettings.State {
-    var asConfig: String {
-        let divStr = "#========================================================="
-        
-        return [
 
-            "#   ███████╗██╗  ██╗██╗  ██╗██████╗ ",
-            "#   ██╔════╝██║ ██╔╝██║  ██║██╔══██╗",
-            "#   ███████╗█████╔╝ ███████║██║  ██║",
-            "#   ╚════██║██╔═██╗ ██╔══██║██║  ██║",
-            "#   ███████║██║  ██╗██║  ██║██████╔╝",
-            "#   ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ",
-            "#",
-            "",
-            ".blacklist [\"YabaiUI\"]",
-            "",
-            divStr,
-            "# Section A",
-            divStr,
-            "",
-            "\(skhd(restartYabai)) \"/bin/launchctl kickstart -k \"gui/${UID}/homebrew.mxcl.yabai\"",
-            "\(skhd(togglePaddingShortcut)) : yabai -m space --toggle padding",
-            "\(skhd(toggleGapsShortcut)) : yabai -m space --toggle gap",
-            "\(skhd(toggleSplitShortcut)) : yabai -m window --toggle split",
-            "\(skhd(toggleBalanceShortcut)) : yabai -m space --balance",
-            "\(skhd(toggleStackingShortcut)) : yabai -m space --layout stack",
-            "\(skhd(toggleFloatingShortcut)) : yabai -m space --layout float",
-            "\(skhd(toggleBSPShortcut)) : yabai -m space --layout bsp",
-        ]
-        .joined(separator: "\n")
-    }
-}
 
 

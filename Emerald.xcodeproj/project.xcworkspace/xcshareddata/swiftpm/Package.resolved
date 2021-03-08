@@ -29,6 +29,15 @@
         }
       },
       {
+        "package": "OmenTextField",
+        "repositoryURL": "https://github.com/kitlangton/OmenTextField",
+        "state": {
+          "branch": null,
+          "revision": "da87c6568700aa633639e85e159e6fbba73ce28a",
+          "version": "0.0.6"
+        }
+      },
+      {
         "package": "swift-case-paths",
         "repositoryURL": "https://github.com/pointfreeco/swift-case-paths",
         "state": {
@@ -47,12 +56,30 @@
         }
       },
       {
+        "package": "Overture",
+        "repositoryURL": "https://github.com/pointfreeco/swift-overture",
+        "state": {
+          "branch": null,
+          "revision": "7977acd7597f413717058acc1e080731249a1d7e",
+          "version": "0.5.0"
+        }
+      },
+      {
         "package": "SwiftShell",
         "repositoryURL": "https://github.com/kareman/SwiftShell",
         "state": {
           "branch": null,
           "revision": "99680b2efc7c7dbcace1da0b3979d266f02e213c",
           "version": "5.1.0"
+        }
+      },
+      {
+        "package": "Sliders",
+        "repositoryURL": "https://github.com/spacenation/swiftui-sliders",
+        "state": {
+          "branch": null,
+          "revision": "5109792d45a53c3c41680b8bdb0602b5dde39c9a",
+          "version": "1.0.0"
         }
       }
     ]

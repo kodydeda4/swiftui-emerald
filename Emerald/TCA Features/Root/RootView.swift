@@ -15,30 +15,31 @@ struct RootView: View {
         WithViewStore(store) { viewStore in
             NavigationView {
                 SidebarView(store: store)
-                Text("Welcome Page")
-                    .font(.largeTitle)
-                    .foregroundColor(Color(NSColor.placeholderTextColor))
-            }
-            
-            .onAppear {
-                viewStore.send(.dataManager(.loadYabaiSettings))
-                viewStore.send(.dataManager(.loadSKHDSettings))
-                viewStore.send(.dataManager(.loadAnimationSettings))
+                
+                YabaiSettingsView(store: store.scope(state: \.yabai, action: Root.Action.yabai))
                 
             }
-            .sheet(isPresented:
+            .onAppear {
+                viewStore.send(.load(.yabai))
+                viewStore.send(.load(.skhd))
+                viewStore.send(.load(.macOSAnimations))
+            }
+            .sheet(
+                isPresented:
                     viewStore.binding(
                         get: \.onboarding.isOnboaring,
                         send: Root.Action.onboarding(.toggleIsOnboaring))
             ) {
                 OnboardingView(
-                    store: store.scope(
-                        state: \.onboarding,
-                        action: Root.Action.onboarding
-                    )
+                    store: store.scope(state: \.onboarding, action: Root.Action.onboarding)
                 )
             }
             .toolbar {
+                ToolbarItem(placement: .navigation) {
+                    Button(action: toggleSidebar) {
+                        Image(systemName: "sidebar.left")
+                    }
+                }
                 ToolbarItem {
                     Button("Toggle OnboardingView") {
                         viewStore.send(.onboarding(.toggleIsOnboaring))
@@ -46,36 +47,24 @@ struct RootView: View {
                 }
                 ToolbarItem {
                     Button("Apply Animation Changes") {
-                        viewStore.send(.dataManager(.exportAnimationConfig))
+                        viewStore.send(.export(.macOSAnimations))
                         let _ = AppleScript.applyAnimationSettings.execute()
                     }
                 }
-//                ToolbarItem {
-//                    Button("brew services start Yabai -v") {
-//                        viewStore.send(.dataManager(.exportYabaiConfig))
-//                        viewStore.send(.dataManager(.exportSKHDConfig))
-//
-//                        let _ = AppleScript.restartYabai.execute()
-//                    }
-//                }
                 ToolbarItem {
-                    Button("Reset Yabai Settings") {
-                        viewStore.send(.dataManager(.resetYabaiSettings))
-                        viewStore.send(.dataManager(.exportYabaiConfig))
-                        viewStore.send(.dataManager(.exportSKHDConfig))
-                        
-                        let _ = AppleScript.restartYabai.execute()
+                    Button("Reset") {
+                        viewStore.send(.reset(.yabai))
+                        viewStore.send(.reset(.skhd))
+                        viewStore.send(.reset(.macOSAnimations))
                     }
                 }
                 ToolbarItem {
-                    Button("Update/Restart Yabai & SKHD") {
-                        viewStore.send(.dataManager(.exportYabaiConfig))
-                        viewStore.send(.dataManager(.exportSKHDConfig))
-                        
-                        let _ = AppleScript.restartYabai.execute()
+                    Button("Apply Changes") {
+                        viewStore.send(.export(.yabai))
+                        viewStore.send(.export(.skhd))
+                        viewStore.send(.appleScript(.restartYabai))
                     }
                 }
-
             }
         }
     }

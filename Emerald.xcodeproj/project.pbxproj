@@ -7,15 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		330E144A25F2AFEE00E61969 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330E144925F2AFEE00E61969 /* SliderView.swift */; };
+		330E144E25F2B12600E61969 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330E144D25F2B12600E61969 /* ColorPickerView.swift */; };
 		3315223F25D5786C00C8E46A /* SwiftShell in Frameworks */ = {isa = PBXBuildFile; productRef = 3315223E25D5786C00C8E46A /* SwiftShell */; };
-		332D567D25DEED5300C88FEE /* AnimationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D567C25DEED5300C88FEE /* AnimationSettings.swift */; };
-		332D568625DEEF7800C88FEE /* AnimationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D568525DEEF7800C88FEE /* AnimationSettingsView.swift */; };
+		3325BFD125EFCEC4007831C5 /* OmenTextField in Frameworks */ = {isa = PBXBuildFile; productRef = 3325BFD025EFCEC4007831C5 /* OmenTextField */; };
+		3325BFD525F05041007831C5 /* RoundedRectangleButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3325BFD425F05041007831C5 /* RoundedRectangleButtonStyle.swift */; };
+		332D567D25DEED5300C88FEE /* MacOSAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D567C25DEED5300C88FEE /* MacOSAnimations.swift */; };
+		332D568625DEEF7800C88FEE /* MacOSAnimationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D568525DEEF7800C88FEE /* MacOSAnimationSettingsView.swift */; };
+		33318F3325F2AD3500231233 /* StepperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33318F3225F2AD3500231233 /* StepperView.swift */; };
 		333631F825EEE6B9009FEB32 /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = 333631F725EEE6B9009FEB32 /* DynamicColor */; };
 		333631FB25EEF0CD009FEB32 /* CodableColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333631FA25EEF0CD009FEB32 /* CodableColor.swift */; };
-		33387D6525D3F64300E76D29 /* YabaiSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33387D6425D3F64300E76D29 /* YabaiSettings.swift */; };
+		3336320025EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333631FF25EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift */; };
+		33387D6525D3F64300E76D29 /* Yabai.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33387D6425D3F64300E76D29 /* Yabai.swift */; };
+		3341B01125F06FF300833B56 /* Yabai+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B01025F06FF300833B56 /* Yabai+Extensions.swift */; };
+		3341B01425F0700B00833B56 /* SKHD+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B01325F0700B00833B56 /* SKHD+Extensions.swift */; };
+		3341B01725F0702C00833B56 /* MacOSAnimations+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B01625F0702C00833B56 /* MacOSAnimations+Extensions.swift */; };
+		3356BCA325F28746006EB641 /* SpaceSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3356BCA225F28746006EB641 /* SpaceSettingsView.swift */; };
+		3356BCA625F28782006EB641 /* ExternalBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3356BCA525F28782006EB641 /* ExternalBarView.swift */; };
+		3356BCA925F287B1006EB641 /* MouseSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3356BCA825F287B1006EB641 /* MouseSettingsView.swift */; };
+		3356BCAD25F287D9006EB641 /* WindowSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3356BCAC25F287D9006EB641 /* WindowSettingsView.swift */; };
+		335E78D625F117D700C8839B /* JSONDecoder+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335E78D525F117D700C8839B /* JSONDecoder+Extensions.swift */; };
 		3361CDF725D44AEC0086F6A7 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */; };
 		3361CF1125E6EF1300016875 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CF0E25E6EF1300016875 /* SectionView.swift */; };
-		3361CF1225E6EF1300016875 /* ConfigFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CF0F25E6EF1300016875 /* ConfigFileView.swift */; };
+		3361CF1225E6EF1300016875 /* DebugConfigFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CF0F25E6EF1300016875 /* DebugConfigFileView.swift */; };
 		3361CF1325E6EF1300016875 /* SpecialTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CF1025E6EF1300016875 /* SpecialTextView.swift */; };
 		337F3ABE25DEC897009155CA /* SKHDShortcutCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337F3ABD25DEC897009155CA /* SKHDShortcutCharacter.swift */; };
 		3380D2FF25D05F4200C10913 /* EmeraldApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380D2FE25D05F4200C10913 /* EmeraldApp.swift */; };
@@ -23,27 +37,43 @@
 		3380D30625D05F4200C10913 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3380D30525D05F4200C10913 /* Preview Assets.xcassets */; };
 		3380D31C25D06E1500C10913 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 3380D31B25D06E1500C10913 /* ComposableArchitecture */; };
 		3380D33725D0723000C10913 /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380D33625D0723000C10913 /* Root.swift */; };
+		33812A7225F2FE31001D42EA /* MyKeyboardShortcutsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33812A7125F2FE31001D42EA /* MyKeyboardShortcutsView.swift */; };
+		33812A7725F30121001D42EA /* Sliders in Frameworks */ = {isa = PBXBuildFile; productRef = 33812A7625F30121001D42EA /* Sliders */; };
 		3385DF6725D6270B00ACDE21 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3385DF6625D6270B00ACDE21 /* SidebarView.swift */; };
 		3385DF6A25D6279200ACDE21 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3385DF6925D6279200ACDE21 /* AboutView.swift */; };
-		3385DF6D25D628BF00ACDE21 /* YabaiSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3385DF6C25D628BF00ACDE21 /* YabaiSettingsView.swift */; };
+		3385DF6D25D628BF00ACDE21 /* YabaiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3385DF6C25D628BF00ACDE21 /* YabaiView.swift */; };
 		3385DF7025D6361200ACDE21 /* AppleScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3385DF6F25D6361200ACDE21 /* AppleScript.swift */; };
-		3398838825DD6A1F007B9FF5 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398838725DD6A1F007B9FF5 /* DataManager.swift */; };
-		3398838C25DD7A1D007B9FF5 /* SKHDSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398838B25DD7A1D007B9FF5 /* SKHDSettings.swift */; };
-		3398838F25DD7DC3007B9FF5 /* SKHDSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398838E25DD7DC3007B9FF5 /* SKHDSettingsView.swift */; };
+		3398838C25DD7A1D007B9FF5 /* SKHD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398838B25DD7A1D007B9FF5 /* SKHD.swift */; };
+		3398838F25DD7DC3007B9FF5 /* SKHDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398838E25DD7DC3007B9FF5 /* SKHDView.swift */; };
 		3398839925DD9929007B9FF5 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 3398839825DD9929007B9FF5 /* KeyboardShortcuts */; };
 		339C453125D6ECCA0079ACA1 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C453025D6ECCA0079ACA1 /* RootView.swift */; };
 		339C453525D6ED0F0079ACA1 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C453425D6ED0F0079ACA1 /* OnboardingView.swift */; };
+		33AD2F7D25F254ED0018875E /* Homebrew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AD2F7C25F254ED0018875E /* Homebrew.swift */; };
+		33AD2F8225F25D330018875E /* Overture in Frameworks */ = {isa = PBXBuildFile; productRef = 33AD2F8125F25D330018875E /* Overture */; };
 		33B62D2925D5E31400DD5934 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B62D2825D5E31400DD5934 /* Onboarding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		332D567C25DEED5300C88FEE /* AnimationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationSettings.swift; sourceTree = "<group>"; };
-		332D568525DEEF7800C88FEE /* AnimationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationSettingsView.swift; sourceTree = "<group>"; };
+		330E144925F2AFEE00E61969 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
+		330E144D25F2B12600E61969 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
+		3325BFD425F05041007831C5 /* RoundedRectangleButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleButtonStyle.swift; sourceTree = "<group>"; };
+		332D567C25DEED5300C88FEE /* MacOSAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSAnimations.swift; sourceTree = "<group>"; };
+		332D568525DEEF7800C88FEE /* MacOSAnimationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSAnimationSettingsView.swift; sourceTree = "<group>"; };
+		33318F3225F2AD3500231233 /* StepperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperView.swift; sourceTree = "<group>"; };
 		333631FA25EEF0CD009FEB32 /* CodableColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableColor.swift; sourceTree = "<group>"; };
-		33387D6425D3F64300E76D29 /* YabaiSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiSettings.swift; sourceTree = "<group>"; };
+		333631FF25EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemIntegrityProtectionView.swift; sourceTree = "<group>"; };
+		33387D6425D3F64300E76D29 /* Yabai.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yabai.swift; sourceTree = "<group>"; };
+		3341B01025F06FF300833B56 /* Yabai+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Yabai+Extensions.swift"; sourceTree = "<group>"; };
+		3341B01325F0700B00833B56 /* SKHD+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKHD+Extensions.swift"; sourceTree = "<group>"; };
+		3341B01625F0702C00833B56 /* MacOSAnimations+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MacOSAnimations+Extensions.swift"; sourceTree = "<group>"; };
+		3356BCA225F28746006EB641 /* SpaceSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceSettingsView.swift; sourceTree = "<group>"; };
+		3356BCA525F28782006EB641 /* ExternalBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalBarView.swift; sourceTree = "<group>"; };
+		3356BCA825F287B1006EB641 /* MouseSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseSettingsView.swift; sourceTree = "<group>"; };
+		3356BCAC25F287D9006EB641 /* WindowSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowSettingsView.swift; sourceTree = "<group>"; };
+		335E78D525F117D700C8839B /* JSONDecoder+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Extensions.swift"; sourceTree = "<group>"; };
 		3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		3361CF0E25E6EF1300016875 /* SectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
-		3361CF0F25E6EF1300016875 /* ConfigFileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigFileView.swift; sourceTree = "<group>"; };
+		3361CF0F25E6EF1300016875 /* DebugConfigFileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugConfigFileView.swift; sourceTree = "<group>"; };
 		3361CF1025E6EF1300016875 /* SpecialTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialTextView.swift; sourceTree = "<group>"; };
 		337F3ABD25DEC897009155CA /* SKHDShortcutCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHDShortcutCharacter.swift; sourceTree = "<group>"; };
 		3380D2FB25D05F4200C10913 /* Emerald.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emerald.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,15 +83,16 @@
 		3380D30725D05F4200C10913 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3380D30825D05F4200C10913 /* Emerald.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Emerald.entitlements; sourceTree = "<group>"; };
 		3380D33625D0723000C10913 /* Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Root.swift; sourceTree = "<group>"; };
+		33812A7125F2FE31001D42EA /* MyKeyboardShortcutsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyKeyboardShortcutsView.swift; sourceTree = "<group>"; };
 		3385DF6625D6270B00ACDE21 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		3385DF6925D6279200ACDE21 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
-		3385DF6C25D628BF00ACDE21 /* YabaiSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiSettingsView.swift; sourceTree = "<group>"; };
+		3385DF6C25D628BF00ACDE21 /* YabaiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiView.swift; sourceTree = "<group>"; };
 		3385DF6F25D6361200ACDE21 /* AppleScript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleScript.swift; sourceTree = "<group>"; };
-		3398838725DD6A1F007B9FF5 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		3398838B25DD7A1D007B9FF5 /* SKHDSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHDSettings.swift; sourceTree = "<group>"; };
-		3398838E25DD7DC3007B9FF5 /* SKHDSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHDSettingsView.swift; sourceTree = "<group>"; };
+		3398838B25DD7A1D007B9FF5 /* SKHD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHD.swift; sourceTree = "<group>"; };
+		3398838E25DD7DC3007B9FF5 /* SKHDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHDView.swift; sourceTree = "<group>"; };
 		339C453025D6ECCA0079ACA1 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		339C453425D6ED0F0079ACA1 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		33AD2F7C25F254ED0018875E /* Homebrew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homebrew.swift; sourceTree = "<group>"; };
 		33B62D2825D5E31400DD5934 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,6 +102,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				333631F825EEE6B9009FEB32 /* DynamicColor in Frameworks */,
+				3325BFD125EFCEC4007831C5 /* OmenTextField in Frameworks */,
+				33812A7725F30121001D42EA /* Sliders in Frameworks */,
+				33AD2F8225F25D330018875E /* Overture in Frameworks */,
 				3380D31C25D06E1500C10913 /* ComposableArchitecture in Frameworks */,
 				3315223F25D5786C00C8E46A /* SwiftShell in Frameworks */,
 				3398839925DD9929007B9FF5 /* KeyboardShortcuts in Frameworks */,
@@ -80,21 +114,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		332D567F25DEED5700C88FEE /* Animations */ = {
+		332D567F25DEED5700C88FEE /* MacOSAnimations */ = {
 			isa = PBXGroup;
 			children = (
-				332D567C25DEED5300C88FEE /* AnimationSettings.swift */,
-				332D568525DEEF7800C88FEE /* AnimationSettingsView.swift */,
+				332D567C25DEED5300C88FEE /* MacOSAnimations.swift */,
+				332D568525DEEF7800C88FEE /* MacOSAnimationSettingsView.swift */,
+				3341B01625F0702C00833B56 /* MacOSAnimations+Extensions.swift */,
 			);
-			path = Animations;
+			path = MacOSAnimations;
+			sourceTree = "<group>";
+		};
+		3356BCB125F288BC006EB641 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3385DF6C25D628BF00ACDE21 /* YabaiView.swift */,
+				3356BCA225F28746006EB641 /* SpaceSettingsView.swift */,
+				3356BCAC25F287D9006EB641 /* WindowSettingsView.swift */,
+				3356BCA825F287B1006EB641 /* MouseSettingsView.swift */,
+				3356BCA525F28782006EB641 /* ExternalBarView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		3361CF1525E6EF1600016875 /* Views (Misc) */ = {
 			isa = PBXGroup;
 			children = (
-				3361CF0F25E6EF1300016875 /* ConfigFileView.swift */,
+				330E144925F2AFEE00E61969 /* SliderView.swift */,
+				33318F3225F2AD3500231233 /* StepperView.swift */,
+				330E144D25F2B12600E61969 /* ColorPickerView.swift */,
+				3361CF0F25E6EF1300016875 /* DebugConfigFileView.swift */,
 				3361CF0E25E6EF1300016875 /* SectionView.swift */,
 				3361CF1025E6EF1300016875 /* SpecialTextView.swift */,
+				333631FF25EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift */,
+				3325BFD425F05041007831C5 /* RoundedRectangleButtonStyle.swift */,
 			);
 			path = "Views (Misc)";
 			sourceTree = "<group>";
@@ -140,9 +192,12 @@
 		3380D31125D0667100C10913 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				335E78D525F117D700C8839B /* JSONDecoder+Extensions.swift */,
+				337F3ABD25DEC897009155CA /* SKHDShortcutCharacter.swift */,
 				3385DF6F25D6361200ACDE21 /* AppleScript.swift */,
 				333631FA25EEF0CD009FEB32 /* CodableColor.swift */,
 				3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */,
+				3361CF1525E6EF1600016875 /* Views (Misc) */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -150,12 +205,11 @@
 		3380D32425D06EB300C10913 /* TCA Features */ = {
 			isa = PBXGroup;
 			children = (
-				3361CF1525E6EF1600016875 /* Views (Misc) */,
 				33DEDCB725DDBC2F001582DC /* Root */,
 				33DEDCB925DDBC51001582DC /* Yabai */,
 				33DEDCBA25DDBC67001582DC /* SKHD */,
-				332D567F25DEED5700C88FEE /* Animations */,
-				33DEDCB825DDBC3D001582DC /* DataManager */,
+				332D567F25DEED5700C88FEE /* MacOSAnimations */,
+				33AD2F7B25F254E50018875E /* Homebrew */,
 				339C452D25D6ECA30079ACA1 /* Onboarding */,
 			);
 			path = "TCA Features";
@@ -170,6 +224,14 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		33AD2F7B25F254E50018875E /* Homebrew */ = {
+			isa = PBXGroup;
+			children = (
+				33AD2F7C25F254ED0018875E /* Homebrew.swift */,
+			);
+			path = Homebrew;
+			sourceTree = "<group>";
+		};
 		33DEDCB725DDBC2F001582DC /* Root */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,19 +243,12 @@
 			path = Root;
 			sourceTree = "<group>";
 		};
-		33DEDCB825DDBC3D001582DC /* DataManager */ = {
-			isa = PBXGroup;
-			children = (
-				3398838725DD6A1F007B9FF5 /* DataManager.swift */,
-			);
-			path = DataManager;
-			sourceTree = "<group>";
-		};
 		33DEDCB925DDBC51001582DC /* Yabai */ = {
 			isa = PBXGroup;
 			children = (
-				33387D6425D3F64300E76D29 /* YabaiSettings.swift */,
-				3385DF6C25D628BF00ACDE21 /* YabaiSettingsView.swift */,
+				33387D6425D3F64300E76D29 /* Yabai.swift */,
+				3341B01025F06FF300833B56 /* Yabai+Extensions.swift */,
+				3356BCB125F288BC006EB641 /* Views */,
 			);
 			path = Yabai;
 			sourceTree = "<group>";
@@ -201,9 +256,10 @@
 		33DEDCBA25DDBC67001582DC /* SKHD */ = {
 			isa = PBXGroup;
 			children = (
-				3398838B25DD7A1D007B9FF5 /* SKHDSettings.swift */,
-				3398838E25DD7DC3007B9FF5 /* SKHDSettingsView.swift */,
-				337F3ABD25DEC897009155CA /* SKHDShortcutCharacter.swift */,
+				3398838B25DD7A1D007B9FF5 /* SKHD.swift */,
+				3398838E25DD7DC3007B9FF5 /* SKHDView.swift */,
+				33812A7125F2FE31001D42EA /* MyKeyboardShortcutsView.swift */,
+				3341B01325F0700B00833B56 /* SKHD+Extensions.swift */,
 			);
 			path = SKHD;
 			sourceTree = "<group>";
@@ -229,6 +285,9 @@
 				3315223E25D5786C00C8E46A /* SwiftShell */,
 				3398839825DD9929007B9FF5 /* KeyboardShortcuts */,
 				333631F725EEE6B9009FEB32 /* DynamicColor */,
+				3325BFD025EFCEC4007831C5 /* OmenTextField */,
+				33AD2F8125F25D330018875E /* Overture */,
+				33812A7625F30121001D42EA /* Sliders */,
 			);
 			productName = YabaiUI;
 			productReference = 3380D2FB25D05F4200C10913 /* Emerald.app */;
@@ -262,6 +321,9 @@
 				3315223D25D5786C00C8E46A /* XCRemoteSwiftPackageReference "SwiftShell" */,
 				3398839725DD9929007B9FF5 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
 				333631F625EEE6B9009FEB32 /* XCRemoteSwiftPackageReference "DynamicColor" */,
+				3325BFCF25EFCEC4007831C5 /* XCRemoteSwiftPackageReference "OmenTextField" */,
+				33AD2F8025F25D330018875E /* XCRemoteSwiftPackageReference "swift-overture" */,
+				33812A7525F30121001D42EA /* XCRemoteSwiftPackageReference "swiftui-sliders" */,
 			);
 			productRefGroup = 3380D2FC25D05F4200C10913 /* Products */;
 			projectDirPath = "";
@@ -289,26 +351,40 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3356BCA925F287B1006EB641 /* MouseSettingsView.swift in Sources */,
+				335E78D625F117D700C8839B /* JSONDecoder+Extensions.swift in Sources */,
 				3385DF6A25D6279200ACDE21 /* AboutView.swift in Sources */,
 				3361CF1325E6EF1300016875 /* SpecialTextView.swift in Sources */,
 				3361CDF725D44AEC0086F6A7 /* URL+Extensions.swift in Sources */,
 				3361CF1125E6EF1300016875 /* SectionView.swift in Sources */,
+				3356BCA625F28782006EB641 /* ExternalBarView.swift in Sources */,
+				33812A7225F2FE31001D42EA /* MyKeyboardShortcutsView.swift in Sources */,
+				3341B01125F06FF300833B56 /* Yabai+Extensions.swift in Sources */,
 				33B62D2925D5E31400DD5934 /* Onboarding.swift in Sources */,
-				3385DF6D25D628BF00ACDE21 /* YabaiSettingsView.swift in Sources */,
-				3398838825DD6A1F007B9FF5 /* DataManager.swift in Sources */,
-				33387D6525D3F64300E76D29 /* YabaiSettings.swift in Sources */,
-				3361CF1225E6EF1300016875 /* ConfigFileView.swift in Sources */,
-				3398838C25DD7A1D007B9FF5 /* SKHDSettings.swift in Sources */,
-				3398838F25DD7DC3007B9FF5 /* SKHDSettingsView.swift in Sources */,
+				330E144A25F2AFEE00E61969 /* SliderView.swift in Sources */,
+				3385DF6D25D628BF00ACDE21 /* YabaiView.swift in Sources */,
+				3325BFD525F05041007831C5 /* RoundedRectangleButtonStyle.swift in Sources */,
+				3356BCA325F28746006EB641 /* SpaceSettingsView.swift in Sources */,
+				33387D6525D3F64300E76D29 /* Yabai.swift in Sources */,
+				3361CF1225E6EF1300016875 /* DebugConfigFileView.swift in Sources */,
+				3398838C25DD7A1D007B9FF5 /* SKHD.swift in Sources */,
+				3398838F25DD7DC3007B9FF5 /* SKHDView.swift in Sources */,
 				3380D2FF25D05F4200C10913 /* EmeraldApp.swift in Sources */,
-				332D568625DEEF7800C88FEE /* AnimationSettingsView.swift in Sources */,
+				332D568625DEEF7800C88FEE /* MacOSAnimationSettingsView.swift in Sources */,
+				33318F3325F2AD3500231233 /* StepperView.swift in Sources */,
+				330E144E25F2B12600E61969 /* ColorPickerView.swift in Sources */,
+				3356BCAD25F287D9006EB641 /* WindowSettingsView.swift in Sources */,
 				3380D33725D0723000C10913 /* Root.swift in Sources */,
 				3385DF6725D6270B00ACDE21 /* SidebarView.swift in Sources */,
 				339C453525D6ED0F0079ACA1 /* OnboardingView.swift in Sources */,
 				337F3ABE25DEC897009155CA /* SKHDShortcutCharacter.swift in Sources */,
+				3341B01725F0702C00833B56 /* MacOSAnimations+Extensions.swift in Sources */,
 				333631FB25EEF0CD009FEB32 /* CodableColor.swift in Sources */,
 				3385DF7025D6361200ACDE21 /* AppleScript.swift in Sources */,
-				332D567D25DEED5300C88FEE /* AnimationSettings.swift in Sources */,
+				3336320025EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift in Sources */,
+				3341B01425F0700B00833B56 /* SKHD+Extensions.swift in Sources */,
+				332D567D25DEED5300C88FEE /* MacOSAnimations.swift in Sources */,
+				33AD2F7D25F254ED0018875E /* Homebrew.swift in Sources */,
 				339C453125D6ECCA0079ACA1 /* RootView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -437,6 +513,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Emerald/Emerald.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Emerald/Preview Content\"";
@@ -461,6 +538,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Emerald/Emerald.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Emerald/Preview Content\"";
@@ -511,6 +589,14 @@
 				minimumVersion = 5.1.0;
 			};
 		};
+		3325BFCF25EFCEC4007831C5 /* XCRemoteSwiftPackageReference "OmenTextField" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kitlangton/OmenTextField";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.6;
+			};
+		};
 		333631F625EEE6B9009FEB32 /* XCRemoteSwiftPackageReference "DynamicColor" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/yannickl/DynamicColor";
@@ -527,12 +613,28 @@
 				minimumVersion = 0.14.0;
 			};
 		};
+		33812A7525F30121001D42EA /* XCRemoteSwiftPackageReference "swiftui-sliders" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/spacenation/swiftui-sliders";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		3398839725DD9929007B9FF5 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.7.0;
+			};
+		};
+		33AD2F8025F25D330018875E /* XCRemoteSwiftPackageReference "swift-overture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-overture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -542,6 +644,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3315223D25D5786C00C8E46A /* XCRemoteSwiftPackageReference "SwiftShell" */;
 			productName = SwiftShell;
+		};
+		3325BFD025EFCEC4007831C5 /* OmenTextField */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3325BFCF25EFCEC4007831C5 /* XCRemoteSwiftPackageReference "OmenTextField" */;
+			productName = OmenTextField;
 		};
 		333631F725EEE6B9009FEB32 /* DynamicColor */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -553,10 +660,20 @@
 			package = 3380D31A25D06E1500C10913 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
 			productName = ComposableArchitecture;
 		};
+		33812A7625F30121001D42EA /* Sliders */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 33812A7525F30121001D42EA /* XCRemoteSwiftPackageReference "swiftui-sliders" */;
+			productName = Sliders;
+		};
 		3398839825DD9929007B9FF5 /* KeyboardShortcuts */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3398839725DD9929007B9FF5 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
 			productName = KeyboardShortcuts;
+		};
+		33AD2F8125F25D330018875E /* Overture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 33AD2F8025F25D330018875E /* XCRemoteSwiftPackageReference "swift-overture" */;
+			productName = Overture;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
