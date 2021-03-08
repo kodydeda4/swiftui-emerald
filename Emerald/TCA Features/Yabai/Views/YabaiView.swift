@@ -14,30 +14,36 @@ struct YabaiSettingsView: View {
     
     var body: some View {
         WithViewStore(store) { vs in
-            MySliderView(
-                text: "Animation Duration",
-                value: vs.binding(
-                    get: \.windowOpacityDuration,
-                    send: Yabai.Action.updateWindowOpacityDuration),
-                isEnabled: vs.windowOpacity
-            )
-            
-            //            HStack {
-            //                DebugConfigFileView(text: viewStore.asConfig)
-            //
-            //                List {
-            //                    VStack(alignment: .leading) {
-            //                        SectionView("Debug") {
-            //                            Toggle("Enabled", isOn: viewStore.binding(keyPath: \.debugOutput, send: k))
-            //                        }
-            //                        SpaceSettingsView(store: store)
-            //                        WindowSettingsView(store: store)
-            //                        MouseSettingsView(store: store)
-            //                        ExternalBarSettingsView(store: store)
-            //                    }
-            //                }
-            //                .navigationTitle("Debug Yabai")
-            //            }
+            HStack {
+//                DebugConfigFileView(text: vs.asConfig)
+                
+                List {
+                    MySliderView(
+                        text: "Animation Duration",
+                        value: vs.binding(
+                            get: \.windowOpacityDuration,
+                            send: Yabai.Action.updateWindowOpacityDuration),
+                        isEnabled: vs.windowOpacity
+                    )
+                }
+                
+                //            HStack {
+                //                DebugConfigFileView(text: viewStore.asConfig)
+                //
+                //                List {
+                //                    VStack(alignment: .leading) {
+                //                        SectionView("Debug") {
+                //                            Toggle("Enabled", isOn: viewStore.binding(keyPath: \.debugOutput, send: k))
+                //                        }
+                //                        SpaceSettingsView(store: store)
+                //                        WindowSettingsView(store: store)
+                //                        MouseSettingsView(store: store)
+                //                        ExternalBarSettingsView(store: store)
+                //                    }
+                //                }
+                //                .navigationTitle("Debug Yabai")
+                //            }
+            }
         }
     }
 }
