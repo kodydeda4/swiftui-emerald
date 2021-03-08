@@ -13,14 +13,12 @@ struct RootView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            YabaiSettingsView(store: store.scope(state: \.yabai, action: Root.Action.yabai))
-//            NavigationView {
-//                SidebarView(store: store)
-//
-//                Text("Welcome Page")
-//                    .font(.largeTitle)
-//                    .foregroundColor(Color(NSColor.placeholderTextColor))
-//            }
+            NavigationView {
+                SidebarView(store: store)
+                
+                YabaiSettingsView(store: store.scope(state: \.yabai, action: Root.Action.yabai))
+                
+            }
             .onAppear {
                 viewStore.send(.load(.yabai))
                 viewStore.send(.load(.skhd))
@@ -37,6 +35,11 @@ struct RootView: View {
                 )
             }
             .toolbar {
+                ToolbarItem(placement: .navigation) {
+                    Button(action: toggleSidebar) {
+                        Image(systemName: "sidebar.left")
+                    }
+                }
                 ToolbarItem {
                     Button("Toggle OnboardingView") {
                         viewStore.send(.onboarding(.toggleIsOnboaring))

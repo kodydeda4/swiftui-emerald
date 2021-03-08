@@ -65,8 +65,13 @@ struct SidebarView: View {
     }
 }
 
-// MARK:- SwiftUI Previews
+func toggleSidebar() {
+    NSApp.keyWindow?.firstResponder?.tryToPerform(#selector(NSSplitViewController.toggleSidebar), with: nil)
+}
 
+
+
+// MARK:- SwiftUI Previews
 struct Sidebar_Previews: PreviewProvider {
     static var previews: some View {
         SidebarView(store: Root.defaultStore)
