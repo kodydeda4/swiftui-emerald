@@ -31,14 +31,19 @@ struct Yabai {
         var windowOpacityDuration    : Int               = 100
         var activeWindowOpacity      : Int               = 100
         var normalWindowOpacity      : Int               = 100
+        
+        //MARK:- Still implementing
+        var windowBalance            : WindowBalance     = .normal
         var splitRatio               : Int               = 50
+        var autoBalance              : Bool              = false
+        //MARK:----------------------------------------------------
+
         
         var windowBorder             : Bool              = false
         var windowBorderWidth        : Int               = 0
         var activeWindowBorderColor  : CodableColor      = .init(color: .green)
         var normalWindowBorderColor  : CodableColor      = .init(color: .red)
         var insertWindowBorderColor  : CodableColor      = .init(color: .purple)
-        var autoBalance              : Bool              = false
         var mouseModifier            : MouseModifier     = .fn
         var mouseAction1             : MouseAction       = .move
         var mouseAction2             : MouseAction       = .resize
@@ -69,7 +74,6 @@ struct Yabai {
                 case .float : return "Floating"
                 }
             }
-
         }
         enum FocusFollowsMouse: String, Codable, CaseIterable, Identifiable {
             var id: FocusFollowsMouse { self }
@@ -128,6 +132,20 @@ struct Yabai {
                 case .float : return "Normal"
                 case .bsp   : return "Tiling"
                 case .stack : return "Stacking"
+                }
+            }
+        }
+        enum WindowBalance: String, Codable, CaseIterable, Identifiable {
+            var id: WindowBalance { self }
+            case normal
+            case auto
+            case custom
+            
+            var uiDescription: String {
+                switch self {
+                case .normal : return "Normal"
+                case .auto   : return "Auto"
+                case .custom : return "Custom"
                 }
             }
         }

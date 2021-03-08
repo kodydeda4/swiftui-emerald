@@ -13,14 +13,17 @@ struct SliderView: View {
     @Binding var value: Int
     var width: CGFloat = 160
     var isEnabled: Bool
+    var hideLabel = false
     
     
     var body: some View {
         HStack {
+            if !hideLabel {
             Text(text)
                 .foregroundColor(isEnabled ? Color(.controlTextColor) : Color(.disabledControlTextColor))
                 .lineLimit(1)
                 .frame(width: width*0.8)
+            }
                 
             ValueSlider(
                 value: $value,

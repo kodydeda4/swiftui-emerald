@@ -116,15 +116,27 @@ struct BorderSettings: View {
                     .frame(width: 200)
                 }
                 Divider()
-                Toggle(
-                    "Auto Balance",
-                    isOn: vs.binding(keyPath: \.autoBalance, send: k)
-                )
-                SliderView(
-                    text: "Split Ratio",
-                    value: vs.binding(keyPath: \.splitRatio, send: k),
-                    isEnabled: !vs.autoBalance
-                )
+                Section(header: Text("Balance").bold()) {
+                    HStack {
+                    Picker("", selection: vs.binding(keyPath: \.windowBalance, send: k)) {
+                        ForEach(Yabai.State.WindowBalance.allCases) {
+                            Text($0.uiDescription.lowercased())
+                        }
+                    }
+                    .labelsHidden()
+                    .pickerStyle(SegmentedPickerStyle())
+                    .frame(width: 200)
+
+                    
+                    SliderView(
+                        text: "Custom",
+                        value: vs.binding(keyPath: \.splitRatio, send: k),
+                        isEnabled: vs.windowBalance == .custom,
+                        hideLabel: true
+                        
+                    )
+                    }
+                }
                 Divider()
                 Section(header: Text("Floating Windows Stay-On-Top").bold()) {
                     VStack(alignment: .leading) {
