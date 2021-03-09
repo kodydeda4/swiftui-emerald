@@ -30,77 +30,13 @@ extension WindowSettingsView {
     var settings: some View {
         WithViewStore(store) { vs in
             VStack(alignment: .leading, spacing: 20) {
-                // Disable Shadows
-                VStack(alignment: .leading) {
-                    HStack {
-                        Toggle("Enabled", isOn: vs.binding(keyPath: \.disableShadows, send: k)).labelsHidden()
-                        Text("Disable Shadows").bold().font(.title3)
-                    }
-                    
-                    HStack {
-                        Picker("", selection: vs.binding(keyPath: \.windowShadow, send: k)) {
-                            ForEach(Yabai.State.WindowShadow.allCases) {
-                                Text($0.uiDescription.lowercased())
-                            }
-                        }
-                        .labelsHidden()
-                        .pickerStyle(SegmentedPickerStyle())
-                        .frame(width: 150)
-                        .disabled(!vs.disableShadows)
-                    }
-                    Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
-                        .foregroundColor(Color(.gray))
-                }
-                Divider()
-                // Opacity Effects
-                VStack(alignment: .leading) {
-                    HStack {
-                        Toggle("Opacity Effects", isOn: vs.binding(keyPath: \.windowOpacity, send: k))
-                            .labelsHidden()
-                        Text("Opacity Effects").bold().font(.title3)
-                    }
-                    VStack(alignment: .leading) {
-                        VStack(alignment: .leading) {
-                            Text("Animation Duration").foregroundColor(Color(.gray))
-                            Slider(
-                                value: vs.binding(
-                                    keyPath: \.windowOpacityDuration,
-                                    send: k
-                                )
-                            )
-                        }
-                        VStack(alignment: .leading) {
-                            Text("Active Windows").foregroundColor(Color(.gray))
-                            Slider(
-                                value: vs.binding(
-                                    keyPath: \.activeWindowOpacity,
-                                    send: k
-                                )
-                            )
-                        }
-                        VStack(alignment: .leading) {
-                            Text("Normal Windows").foregroundColor(Color(.gray))
-                            Slider(
-                                value: vs.binding(
-                                    keyPath: \.normalWindowOpacity,
-                                    send: k
-                                )
-                            )
-                        }
-                    }
-                    Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
-                        .foregroundColor(Color(.gray))
-                }
-                Divider()
                 // Borders
                 VStack(alignment: .leading) {
                     HStack {
-                        Toggle("Borders", isOn: vs.binding(keyPath: \.windowBorder, send: k))
+                        Toggle("", isOn: vs.binding(keyPath: \.windowBorder, send: k))
                             .labelsHidden()
                         Text("Borders").bold().font(.title3)
                     }
-                    
-                    
                     HStack {
                         StepperView(
                             text: "Width",
@@ -135,16 +71,69 @@ extension WindowSettingsView {
                         .foregroundColor(Color(.gray))
                 }
                 Divider()
-                // Float-On-Top
+                // Disable Shadows
                 VStack(alignment: .leading) {
+                    Text("Shadows").bold().font(.title3)
                     HStack {
-                        Toggle("Floating Windows Stay-On-Top", isOn: vs.binding(keyPath: \.windowTopmost, send: k))
-                            .labelsHidden()
-                        Text("Float-On-Top").bold().font(.title3)
+                        Toggle("", isOn: vs.binding(keyPath: \.disableShadows, send: k)).labelsHidden()
+                        Text("Disable Shadows")
+                    }
+                    
+                    HStack {
+                        Picker("", selection: vs.binding(keyPath: \.windowShadow, send: k)) {
+                            ForEach(Yabai.State.WindowShadow.allCases) {
+                                Text($0.uiDescription.lowercased())
+                            }
+                        }
+                        .labelsHidden()
+                        .pickerStyle(SegmentedPickerStyle())
+                        .frame(width: 150)
+                        .disabled(!vs.disableShadows)
                     }
                     Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
                         .foregroundColor(Color(.gray))
-                    
+                }
+                Divider()
+                // Opacity Effects
+                VStack(alignment: .leading) {
+                    Text("Opacity").bold().font(.title3)
+
+                    HStack {
+                        Toggle("", isOn: vs.binding(keyPath: \.windowOpacity, send: k))
+                            .labelsHidden()
+                        Text("Change Opacity")
+                    }
+                    VStack(alignment: .leading) {
+                        VStack(alignment: .leading) {
+                            Text("Animation Duration").foregroundColor(Color(.gray))
+                            Slider(
+                                value: vs.binding(
+                                    keyPath: \.windowOpacityDuration,
+                                    send: k
+                                )
+                            )
+                        }
+                        VStack(alignment: .leading) {
+                            Text("Active Windows").foregroundColor(Color(.gray))
+                            Slider(
+                                value: vs.binding(
+                                    keyPath: \.activeWindowOpacity,
+                                    send: k
+                                )
+                            )
+                        }
+                        VStack(alignment: .leading) {
+                            Text("Normal Windows").foregroundColor(Color(.gray))
+                            Slider(
+                                value: vs.binding(
+                                    keyPath: \.normalWindowOpacity,
+                                    send: k
+                                )
+                            )
+                        }
+                    }
+                    Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
+                        .foregroundColor(Color(.gray))
                 }
                 Spacer()
             }

@@ -57,6 +57,16 @@ struct SidebarView: View {
                         Label("Mouse", systemImage: "cursorarrow")
                     }
                     NavigationLink(
+                        destination: FocusSettingsView(
+                            store: store.scope(
+                                state: \.yabai,
+                                action: Root.Action.yabai
+                            )
+                        )
+                    ) {
+                        Label("Focus", systemImage: "cursorarrow.motionlines")
+                    }
+                    NavigationLink(
                         destination: ExternalBarSettingsView(
                             store: store.scope(
                                 state: \.yabai,

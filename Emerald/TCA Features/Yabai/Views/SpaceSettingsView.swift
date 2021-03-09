@@ -18,7 +18,7 @@ struct SpaceSettingsView: View {
                 settings
                     .padding()
                     .navigationTitle("Space")
-
+                
                 Rectangle()
                     .foregroundColor(.black)
             }
@@ -77,7 +77,29 @@ extension SpaceSettingsView {
                         )
                     }
                 }
-                
+                Divider()
+                // Float-On-Top
+                VStack(alignment: .leading) {
+                    HStack {
+                            Toggle("", isOn: vs.binding(keyPath: \.windowTopmost, send: k))
+                                .labelsHidden()
+                        
+                        Text("Float-On-Top").bold().font(.title3)
+                        Spacer()
+                        Button(action: {}) {
+                            HStack {
+                                Image(systemName: "lock.fill")
+                                Text("SIP Enabled")
+                            }
+                            .foregroundColor(.accentColor)
+                        }
+                        .buttonStyle(PlainButtonStyle())
+
+                    }
+                    Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
+                        .foregroundColor(Color(.gray))
+                    
+                }
                 Spacer()
             }
         }

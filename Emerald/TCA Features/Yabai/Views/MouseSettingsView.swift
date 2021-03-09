@@ -31,39 +31,6 @@ extension MouseSettingsView {
         WithViewStore(store) { vs in
             VStack(alignment: .leading, spacing: 20) {
                 VStack(alignment: .leading) {
-                    HStack {
-                        Toggle("", isOn: vs.binding(keyPath: \.focusFollowsMouseEnabled, send: k)).labelsHidden()
-                        Text("Auto Focus").bold().font(.title3)
-                    }
-                    
-                    Picker("", selection: vs.binding(keyPath: \.focusFollowsMouse, send: k)) {
-                        ForEach(Yabai.State.FocusFollowsMouse.allCases) {
-                            Text($0.rawValue)
-                        }
-                    }
-                    .labelsHidden()
-                    .pickerStyle(SegmentedPickerStyle())
-                    .frame(width: 150)
-                    .disabled(!vs.focusFollowsMouseEnabled)
-                    
-                    Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
-                        .foregroundColor(Color(.gray))
-                    
-                }
-                Divider()
-                VStack(alignment: .leading) {
-                    HStack {
-                        Toggle("Enabled", isOn: vs.binding(keyPath: \.mouseFollowsFocus, send: k)).labelsHidden()
-                        Text("Follow Focus").bold().font(.title3)
-                        
-                    }
-                    
-                    Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
-                        .foregroundColor(Color(.gray))
-                    
-                }
-                Divider()
-                VStack(alignment: .leading) {
                     Text("Modifier Key").bold().font(.title3)
                     Picker("", selection: vs.binding(keyPath: \.mouseModifier, send: k)) {
                         ForEach(Yabai.State.MouseModifier.allCases) {
