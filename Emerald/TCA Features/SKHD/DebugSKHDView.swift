@@ -17,7 +17,7 @@ struct DebugSKHDSettingsView: View {
             HStack {
                 DebugConfigFileView(text: vs.asConfig)
                 
-                VStack {
+                ScrollView {
                     Text("Click Apply Changes to refresh Config")
                     KBShortcut(for: .restartYabai)
                     KBShortcut(for: .togglePadding)

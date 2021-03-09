@@ -14,6 +14,17 @@ struct MouseSettingsView: View {
     
     var body: some View {
         WithViewStore(store) { vs in
+            HStack {
+                settings
+                Rectangle()
+            }
+        }
+    }
+}
+
+extension MouseSettingsView {
+    var settings: some View {
+        WithViewStore(store) { vs in
             VStack {
                 Text("Mouse").font(.title)
                 VStack {

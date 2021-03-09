@@ -26,9 +26,9 @@ extension SKHD.State {
 
 .blacklist [\"YabaiUI\"]
             
-#=========================================================================================
+#============================================
 # Section A
-#=========================================================================================
+#============================================
 \(KeyboardShortcuts.getShortcut(for: .restartYabai)?.description   ?? "#<UNASSIGNED>") \"/bin/launchctl kickstart -k \"gui/${UID}/homebrew.mxcl.yabai\"
 \(KeyboardShortcuts.getShortcut(for: .togglePadding)?.description  ?? "#<UNASSIGNED>") : yabai -m space --toggle padding
 \(KeyboardShortcuts.getShortcut(for: .toggleGaps)?.description     ?? "#<UNASSIGNED>") : yabai -m space --toggle gap

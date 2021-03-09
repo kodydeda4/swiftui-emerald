@@ -14,6 +14,17 @@ struct ExternalBarSettingsView: View {
     
     var body: some View {
         WithViewStore(store) { vs in
+            HStack {
+                settings
+                Rectangle()
+            }
+        }
+    }
+}
+
+extension ExternalBarSettingsView {
+    var settings: some View {
+        WithViewStore(store) { vs in
             VStack {
                 Text("ExternalBar").font(.title)
                 VStack {
@@ -51,7 +62,6 @@ struct ExternalBarSettingsView: View {
         }
     }
 }
-
 
 
 // MARK:- SwiftUI_Previews

@@ -17,13 +17,17 @@ struct DebugYabaiView: View {
             HStack {
                 DebugConfigFileView(text: vs.asConfig)
                 
-                VStack {
+                ScrollView {
                     Text("Debug").font(.title)
                     Toggle("Enabled", isOn: vs.binding(keyPath: \.debugOutput, send: k))
-                    SpaceSettingsView(store: store)
-                    WindowSettingsView(store: store)
-                    MouseSettingsView(store: store)
-                    ExternalBarSettingsView(store: store)
+                    Divider()
+                    SpaceSettingsView(store: store).settings
+                    Divider()
+                    WindowSettingsView(store: store).settings
+                    Divider()
+                    MouseSettingsView(store: store).settings
+                    Divider()
+                    ExternalBarSettingsView(store: store).settings
                 }
             }
             .navigationTitle("Debug Yabai")

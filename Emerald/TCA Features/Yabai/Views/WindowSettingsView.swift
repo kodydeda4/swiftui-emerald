@@ -14,6 +14,18 @@ struct WindowSettingsView: View {
     
     var body: some View {
         WithViewStore(store) { vs in
+            HStack {
+                settings
+                Rectangle()
+            }
+        }
+    }
+}
+
+extension WindowSettingsView {
+    
+    var settings: some View {
+        WithViewStore(store) { vs in
             VStack {
                 Text("Window").font(.title)
                 

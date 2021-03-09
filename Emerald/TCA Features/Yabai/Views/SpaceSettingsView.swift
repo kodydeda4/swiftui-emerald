@@ -14,6 +14,18 @@ struct SpaceSettingsView: View {
     
     var body: some View {
         WithViewStore(store) { vs in
+            HStack {
+                settings
+                Rectangle()
+            }
+        }
+    }
+}
+
+extension SpaceSettingsView {
+    var settings: some View {
+        WithViewStore(store) { vs in
+            
             VStack {
                 Text("Space").font(.title)
                 
@@ -107,7 +119,6 @@ struct SpaceSettingsView: View {
         }
     }
 }
-
 
 // MARK:- SwiftUI_Previews
 struct SpaceSettingsView_Previews: PreviewProvider {

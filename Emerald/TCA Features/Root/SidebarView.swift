@@ -23,7 +23,7 @@ struct SidebarView: View {
                             )
                         )
                     ) {
-                        Label("SpaceSettingsView", systemImage: "macwindow")
+                        Label("Space", systemImage: "rectangle.3.offgrid")
                     }
                     NavigationLink(
                         destination: WindowSettingsView(
@@ -33,7 +33,7 @@ struct SidebarView: View {
                             )
                         )
                     ) {
-                        Label("WindowSettingsView", systemImage: "macwindow")
+                        Label("Window", systemImage: "macwindow.on.rectangle")
                     }
                     NavigationLink(
                         destination: MouseSettingsView(
@@ -43,7 +43,7 @@ struct SidebarView: View {
                             )
                         )
                     ) {
-                        Label("MouseSettingsView", systemImage: "macwindow")
+                        Label("Mouse", systemImage: "cursorarrow")
                     }
                     NavigationLink(
                         destination: ExternalBarSettingsView(
@@ -53,7 +53,7 @@ struct SidebarView: View {
                             )
                         )
                     ) {
-                        Label("ExternalBarSettingsView", systemImage: "macwindow")
+                        Label("Menu Bar", systemImage: "rectangle.topthird.inset")
                     }
                 }
                 Divider()                
