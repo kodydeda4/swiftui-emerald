@@ -27,6 +27,7 @@ struct SKHD {
         var stateURL               = URL(fileURLWithPath: "SKHDState.json", relativeTo: .HomeDirectory)
         var configURL              = URL(fileURLWithPath: ".skhdrc", relativeTo: .HomeDirectory)
         var version                = run("/usr/local/bin/skhd", "-v").stdout
+        
         var restartYabai           = KeyboardShortcuts.getShortcut(for: .restartYabai)
         var togglePaddingShortcut  = KeyboardShortcuts.getShortcut(for: .togglePadding)
         var toggleGapsShortcut     = KeyboardShortcuts.getShortcut(for: .toggleGaps)

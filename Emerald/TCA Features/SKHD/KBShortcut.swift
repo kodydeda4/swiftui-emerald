@@ -8,7 +8,7 @@
 import SwiftUI
 import KeyboardShortcuts
 
-struct KeyboardShortcutView: View {
+struct KBShortcut: View {
     let shortcut: KeyboardShortcuts.Name
     let action: ((KeyboardShortcuts.Shortcut?) -> Void)?
     
@@ -36,6 +36,6 @@ struct KeyboardShortcutView: View {
 // MARK:- SwiftUI_Previews
 struct KeyboardShortcutView_Previews: PreviewProvider {
     static var previews: some View {
-        KeyboardShortcutView(.restartYabai) { _ in () }
+        KBShortcut(.restartYabai) { _ in () }
     }
 }

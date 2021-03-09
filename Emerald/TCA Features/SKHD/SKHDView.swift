@@ -20,28 +20,28 @@ struct SKHDSettingsView: View {
                 
                 List {
                     SectionView("Section A") {
-                        KeyboardShortcutView(.restartYabai) {
+                        KBShortcut(.restartYabai) {
                             vs.send(.updateRestartYabai($0))
                         }
-                        KeyboardShortcutView(.togglePadding) {
+                        KBShortcut(.togglePadding) {
                             vs.send(.updateTogglePadding($0))
                         }
-                        KeyboardShortcutView(.toggleGaps) {
+                        KBShortcut(.toggleGaps) {
                             vs.send(.updateToggleGaps($0))
                         }
-                        KeyboardShortcutView(.toggleSplit) {
+                        KBShortcut(.toggleSplit) {
                             vs.send(.updateToggleSplit($0))
                         }
-                        KeyboardShortcutView(.toggleBalance) {
+                        KBShortcut(.toggleBalance) {
                             vs.send(.updateToggleBalance($0))
                         }
-                        KeyboardShortcutView(.toggleStacking) {
+                        KBShortcut(.toggleStacking) {
                             vs.send(.updateToggleStacking($0))
                         }
-                        KeyboardShortcutView(.toggleFloating) {
+                        KBShortcut(.toggleFloating) {
                             vs.send(.updateToggleFloating($0))
                         }
-                        KeyboardShortcutView(.toggleBSP) {
+                        KBShortcut(.toggleBSP) {
                             vs.send(.updateToggleBSP($0))
                         }
                     }
