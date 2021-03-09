@@ -16,25 +16,28 @@ struct WindowSettingsView: View {
         WithViewStore(store) { vs in
             HStack {
                 settings
+                    .padding()
+                    .navigationSubtitle("Window")
+
                 Rectangle()
+                    .foregroundColor(.black)
             }
         }
     }
 }
 
 extension WindowSettingsView {
-    
     var settings: some View {
         WithViewStore(store) { vs in
-            VStack {
-                Text("Window").font(.title)
-                
+            VStack(alignment: .leading) {
                 // Disable Shadows
-                VStack {
-                    Text("Disable Shadows").bold()
+                VStack(alignment: .leading) {
                     HStack {
                         Toggle("Enabled", isOn: vs.binding(keyPath: \.disableShadows, send: k)).labelsHidden()
-                        
+                        Text("Disable Shadows").bold()
+                    }
+                    
+                    HStack {
                         Picker("", selection: vs.binding(keyPath: \.windowShadow, send: k)) {
                             ForEach(Yabai.State.WindowShadow.allCases) {
                                 Text($0.uiDescription.lowercased())
@@ -45,10 +48,12 @@ extension WindowSettingsView {
                         .frame(width: 150)
                         .disabled(!vs.disableShadows)
                     }
+                    Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
+                        .foregroundColor(Color(.gray))
                 }
-                
+                Divider()
                 // Opacity Effects
-                VStack {
+                VStack(alignment: .leading) {
                     HStack {
                         Toggle("Opacity Effects", isOn: vs.binding(keyPath: \.windowOpacity, send: k))
                             .labelsHidden()
@@ -75,14 +80,18 @@ extension WindowSettingsView {
                             )
                         )
                     }
+                    Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
+                        .foregroundColor(Color(.gray))
                 }
-                
+                Divider()
                 // Borders
-                VStack {
-                    Text("Borders").bold()
+                VStack(alignment: .leading) {
                     HStack {
                         Toggle("Borders", isOn: vs.binding(keyPath: \.windowBorder, send: k))
                             .labelsHidden()
+                        Text("Borders").bold()
+                    }
+
                         
                         HStack {
                             StepperView(
@@ -113,8 +122,23 @@ extension WindowSettingsView {
                             )
                         }
                         .disabled(!vs.windowBorder)
-                    }
+
+                    Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
+                        .foregroundColor(Color(.gray))
                 }
+                Divider()
+                // Float-On-Top
+                VStack(alignment: .leading) {
+                    HStack {
+                        Toggle("Floating Windows Stay-On-Top", isOn: vs.binding(keyPath: \.windowTopmost, send: k))
+                            .labelsHidden()
+                        Text("Float-On-Top").bold()
+                    }
+                    Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
+                        .foregroundColor(Color(.gray))
+
+                }
+                Spacer()
             }
         }
     }

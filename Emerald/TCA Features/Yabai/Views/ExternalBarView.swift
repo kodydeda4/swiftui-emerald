@@ -16,7 +16,11 @@ struct ExternalBarSettingsView: View {
         WithViewStore(store) { vs in
             HStack {
                 settings
+                    .padding()
+                    .navigationSubtitle("External Bar")
+                
                 Rectangle()
+                    .foregroundColor(.black)
             }
         }
     }
@@ -25,25 +29,29 @@ struct ExternalBarSettingsView: View {
 extension ExternalBarSettingsView {
     var settings: some View {
         WithViewStore(store) { vs in
-            VStack {
-                Text("ExternalBar").font(.title)
-                VStack {
-                    Text("External Bar").bold()
+            VStack(alignment: .leading) {
+                VStack(alignment: .leading) {
                     HStack {
-                        Toggle("Enabled", isOn: vs.binding(keyPath: \.externalBarEnabled, send: k)).labelsHidden()
-                        
-                        Picker("", selection: vs.binding(keyPath: \.externalBar, send: k)) {
-                            ForEach(Yabai.State.ExternalBar.allCases) {
-                                Text($0.rawValue)
-                            }
-                        }
-                        .labelsHidden()
-                        .pickerStyle(SegmentedPickerStyle())
-                        .frame(width: 100)
-                        .disabled(!vs.externalBarEnabled)
+                        Toggle("", isOn: vs.binding(keyPath: \.externalBarEnabled, send: k)).labelsHidden()
+                        Text("External Bar").bold()
                     }
+                    
+                    Picker("", selection: vs.binding(keyPath: \.externalBar, send: k)) {
+                        ForEach(Yabai.State.ExternalBar.allCases) {
+                            Text($0.rawValue)
+                        }
+                    }
+                    .labelsHidden()
+                    .pickerStyle(SegmentedPickerStyle())
+                    .frame(width: 100)
+                    .disabled(!vs.externalBarEnabled)
+                    
+                    Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
+                        .foregroundColor(Color(.gray))
+                    
                 }
-                VStack {
+                Divider()
+                VStack(alignment: .leading) {
                     Text("Padding").bold()
                     HStack {
                         StepperView(
@@ -58,6 +66,8 @@ extension ExternalBarSettingsView {
                         )
                     }
                 }
+                
+                Spacer()
             }
         }
     }

@@ -31,6 +31,7 @@
 		3361CF1125E6EF1300016875 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CF0E25E6EF1300016875 /* SectionView.swift */; };
 		3361CF1225E6EF1300016875 /* DebugConfigFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CF0F25E6EF1300016875 /* DebugConfigFileView.swift */; };
 		3361CF1325E6EF1300016875 /* SpecialTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CF1025E6EF1300016875 /* SpecialTextView.swift */; };
+		336BC3A925F7FA5500BE3EBA /* NewWindowSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336BC3A825F7FA5500BE3EBA /* NewWindowSettings.swift */; };
 		337F3ABE25DEC897009155CA /* SKHDShortcutCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337F3ABD25DEC897009155CA /* SKHDShortcutCharacter.swift */; };
 		3380D2FF25D05F4200C10913 /* EmeraldApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380D2FE25D05F4200C10913 /* EmeraldApp.swift */; };
 		3380D30325D05F4200C10913 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3380D30225D05F4200C10913 /* Assets.xcassets */; };
@@ -76,6 +77,7 @@
 		3361CF0E25E6EF1300016875 /* SectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		3361CF0F25E6EF1300016875 /* DebugConfigFileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugConfigFileView.swift; sourceTree = "<group>"; };
 		3361CF1025E6EF1300016875 /* SpecialTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialTextView.swift; sourceTree = "<group>"; };
+		336BC3A825F7FA5500BE3EBA /* NewWindowSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWindowSettings.swift; sourceTree = "<group>"; };
 		337F3ABD25DEC897009155CA /* SKHDShortcutCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHDShortcutCharacter.swift; sourceTree = "<group>"; };
 		3380D2FB25D05F4200C10913 /* Emerald.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emerald.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3380D2FE25D05F4200C10913 /* EmeraldApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmeraldApp.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				3385DF6C25D628BF00ACDE21 /* DebugYabaiView.swift */,
 				3356BCA225F28746006EB641 /* SpaceSettingsView.swift */,
 				3356BCAC25F287D9006EB641 /* WindowSettingsView.swift */,
+				336BC3A825F7FA5500BE3EBA /* NewWindowSettings.swift */,
 				3356BCA825F287B1006EB641 /* MouseSettingsView.swift */,
 				3356BCA525F28782006EB641 /* ExternalBarView.swift */,
 			);
@@ -361,6 +364,7 @@
 				3361CF1325E6EF1300016875 /* SpecialTextView.swift in Sources */,
 				3361CDF725D44AEC0086F6A7 /* URL+Extensions.swift in Sources */,
 				3361CF1125E6EF1300016875 /* SectionView.swift in Sources */,
+				336BC3A925F7FA5500BE3EBA /* NewWindowSettings.swift in Sources */,
 				3356BCA625F28782006EB641 /* ExternalBarView.swift in Sources */,
 				3341B01125F06FF300833B56 /* Yabai+Extensions.swift in Sources */,
 				33B62D2925D5E31400DD5934 /* Onboarding.swift in Sources */,

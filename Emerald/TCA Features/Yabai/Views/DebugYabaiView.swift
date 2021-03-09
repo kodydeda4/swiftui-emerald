@@ -21,13 +21,20 @@ struct DebugYabaiView: View {
                     Text("Debug").font(.title)
                     Toggle("Enabled", isOn: vs.binding(keyPath: \.debugOutput, send: k))
                     Divider()
+                    Text("Space").font(.title)
                     SpaceSettingsView(store: store).settings
                     Divider()
-                    WindowSettingsView(store: store).settings
-                    Divider()
-                    MouseSettingsView(store: store).settings
-                    Divider()
-                    ExternalBarSettingsView(store: store).settings
+                    
+                    Group {
+                        Text("Window").font(.title)
+                        WindowSettingsView(store: store).settings
+                        Divider()
+                        Text("Mouse").font(.title)
+                        MouseSettingsView(store: store).settings
+                        Divider()
+                        Text("Bar").font(.title)
+                        ExternalBarSettingsView(store: store).settings
+                    }
                 }
             }
             .navigationTitle("Debug Yabai")

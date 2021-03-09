@@ -14,7 +14,7 @@ struct SidebarView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             List {
-                Section(header: Text("Yabai")) {
+                Section(header: Text("Settings")) {
                     NavigationLink(
                         destination: SpaceSettingsView(
                             store: store.scope(
@@ -36,6 +36,17 @@ struct SidebarView: View {
                         Label("Window", systemImage: "macwindow.on.rectangle")
                     }
                     NavigationLink(
+                        destination: NewWindowSettings(
+                            store: store.scope(
+                                state: \.yabai,
+                                action: Root.Action.yabai
+                            )
+                        )
+                    ) {
+                        Label("New Window", systemImage: "macwindow.badge.plus")
+                    }
+
+                    NavigationLink(
                         destination: MouseSettingsView(
                             store: store.scope(
                                 state: \.yabai,
@@ -56,55 +67,58 @@ struct SidebarView: View {
                         Label("Menu Bar", systemImage: "rectangle.topthird.inset")
                     }
                 }
-                Divider()                
-                Section(header: Text("Debug")) {
+                Spacer()
+                //                Section(header: Text("Debug")) {
+                //                    NavigationLink(
+                //                        destination: DebugYabaiView(
+                //                            store: store.scope(
+                //                                state: \.yabai,
+                //                                action: Root.Action.yabai
+                //                            )
+                //                        )
+                //                    ) {
+                //                        Label("Debug Yabai", systemImage: "macwindow")
+                //                    }
+                //                    NavigationLink(
+                //                        destination: DebugSKHDSettingsView(
+                //                                                        store: store.scope(
+                //                                                            state: \.skhd,
+                //                                                            action: Root.Action.skhd
+                //                                                        )
+                //                        )
+                //                    ) {
+                //                        Label("Debug SKHD", systemImage: "keyboard")
+                //                    }
+                //                    NavigationLink(
+                //                        destination: MacOSAnimationSettingsView(
+                //                            store: store.scope(
+                //                                state: \.macOSAnimations,
+                //                                action: Root.Action.macOSAnimations
+                //                            )
+                //                        )
+                //                    ) {
+                //                        Label("Debug Animations", systemImage: "stopwatch")
+                //                    }
+                //                    NavigationLink(
+                //                        destination: SystemIntegrityProtectionView()
+                //                    ) {
+                //                        Label("System Integrity Protection", systemImage: "lock")
+                //                    }
+                //                }
+                //                Divider()
+                Section(header: Text("Other")) {
                     NavigationLink(
-                        destination: DebugYabaiView(
-                            store: store.scope(
-                                state: \.yabai,
-                                action: Root.Action.yabai
-                            )
+                        destination: AboutView(
+                            store: store
                         )
                     ) {
-                        Label("Debug Yabai", systemImage: "macwindow")
-                    }
-                    NavigationLink(
-                        destination: DebugSKHDSettingsView(
-                                                        store: store.scope(
-                                                            state: \.skhd,
-                                                            action: Root.Action.skhd
-                                                        )
-                        )
-                    ) {
-                        Label("Debug SKHD", systemImage: "keyboard")
-                    }
-                    NavigationLink(
-                        destination: MacOSAnimationSettingsView(
-                            store: store.scope(
-                                state: \.macOSAnimations,
-                                action: Root.Action.macOSAnimations
-                            )
-                        )
-                    ) {
-                        Label("Debug Animations", systemImage: "stopwatch")
-                    }
-                    NavigationLink(
-                        destination: SystemIntegrityProtectionView()
-                    ) {
-                        Label("System Integrity Protection", systemImage: "lock")
+                        Label("About", systemImage: "gear")
                     }
                 }
-                Divider()
-                NavigationLink(
-                    destination: AboutView(
-                        store: store
-                    )
-                ) {
-                    Label("About", systemImage: "gear")
-                }
+                Spacer()
             }
+            .listStyle(SidebarListStyle())
         }
-        .listStyle(SidebarListStyle())
     }
 }
 

@@ -16,7 +16,11 @@ struct SpaceSettingsView: View {
         WithViewStore(store) { vs in
             HStack {
                 settings
+                    .padding()
+                    .navigationSubtitle("Space")
+
                 Rectangle()
+                    .foregroundColor(.black)
             }
         }
     }
@@ -25,12 +29,9 @@ struct SpaceSettingsView: View {
 extension SpaceSettingsView {
     var settings: some View {
         WithViewStore(store) { vs in
-            
-            VStack {
-                Text("Space").font(.title)
-                
+            VStack(alignment: .leading) {
                 // Layout
-                VStack {
+                VStack(alignment: .leading) {
                     Text("Layout").bold()
                     Picker("", selection: vs.binding(keyPath: \.layout, send: k)) {
                         ForEach(Yabai.State.Layout.allCases) {
@@ -40,10 +41,13 @@ extension SpaceSettingsView {
                     .labelsHidden()
                     .pickerStyle(SegmentedPickerStyle())
                     .frame(width: 200)
+                    
+                    Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
+                        .foregroundColor(Color(.gray))
                 }
-                
+                Divider()
                 // Padding
-                VStack {
+                VStack(alignment: .leading) {
                     Text("Padding").bold()
                     HStack {
                         StepperView(
@@ -74,47 +78,7 @@ extension SpaceSettingsView {
                     }
                 }
                 
-                // New Window
-                VStack {
-                    Text("New Window").bold()
-                    Picker("", selection: vs.binding(keyPath: \.windowPlacement, send: k)) {
-                        ForEach(Yabai.State.WindowPlacement.allCases) {
-                            Text($0.uiDescription.lowercased())
-                        }
-                    }
-                    .labelsHidden()
-                    .pickerStyle(SegmentedPickerStyle())
-                    .frame(width: 200)
-                }
-                
-                // Split Ratio
-                VStack {
-                    Text("Split Ratio").bold()
-                    HStack {
-                        Picker("", selection: vs.binding(keyPath: \.windowBalance, send: k)) {
-                            ForEach(Yabai.State.WindowBalance.allCases) {
-                                Text($0.uiDescription.lowercased())
-                            }
-                        }
-                        .labelsHidden()
-                        .pickerStyle(SegmentedPickerStyle())
-                        .frame(width: 200)
-                        
-                        Slider(value: vs.binding(keyPath: \.splitRatio, send: k))
-                    }
-                }
-                
-                // Float-On-Top
-                VStack {
-                    Text("Float-On-Top").bold()
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Toggle("Floating Windows Stay-On-Top", isOn: vs.binding(keyPath: \.windowTopmost, send: k))
-                                .labelsHidden()
-                            Text("Enabled")
-                        }
-                    }
-                }
+                Spacer()
             }
         }
     }
@@ -126,3 +90,5 @@ struct SpaceSettingsView_Previews: PreviewProvider {
         SpaceSettingsView(store: Yabai.defaultStore)
     }
 }
+
+

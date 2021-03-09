@@ -16,7 +16,11 @@ struct MouseSettingsView: View {
         WithViewStore(store) { vs in
             HStack {
                 settings
+                    .padding()
+                    .navigationSubtitle("Mouse")
+                
                 Rectangle()
+                    .foregroundColor(.black)
             }
         }
     }
@@ -25,16 +29,25 @@ struct MouseSettingsView: View {
 extension MouseSettingsView {
     var settings: some View {
         WithViewStore(store) { vs in
-            VStack {
-                Text("Mouse").font(.title)
-                VStack {
-                    Text("Mouse Follows Focus").bold()
-                    Toggle("Enabled", isOn: vs.binding(keyPath: \.mouseFollowsFocus, send: k))
+            VStack(alignment: .leading) {
+                VStack(alignment: .leading) {
+                    HStack {
+                        Toggle("Enabled", isOn: vs.binding(keyPath: \.mouseFollowsFocus, send: k)).labelsHidden()
+                        Text("Mouse Follows Focus").bold()
+                        
+                    }
+                    
+                    Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
+                        .foregroundColor(Color(.gray))
+                    
                 }
-                VStack {
-                    Text("Focus Follows Focus").bold()
+                Divider()
+                VStack(alignment: .leading) {
+                    
                     HStack {
                         Toggle("", isOn: vs.binding(keyPath: \.focusFollowsMouseEnabled, send: k)).labelsHidden()
+                        Text("Focus Follows Focus").bold()
+                    }
                         
                         Picker("", selection: vs.binding(keyPath: \.focusFollowsMouse, send: k)) {
                             ForEach(Yabai.State.FocusFollowsMouse.allCases) {
@@ -45,9 +58,13 @@ extension MouseSettingsView {
                         .pickerStyle(SegmentedPickerStyle())
                         .frame(width: 150)
                         .disabled(!vs.focusFollowsMouseEnabled)
-                    }
+                    
+                    Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
+                        .foregroundColor(Color(.gray))
+                    
                 }
-                VStack {
+                Divider()
+                VStack(alignment: .leading) {
                     Text("Modifier Key").bold()
                     Picker("", selection: vs.binding(keyPath: \.mouseModifier, send: k)) {
                         ForEach(Yabai.State.MouseModifier.allCases) {
@@ -58,40 +75,53 @@ extension MouseSettingsView {
                     .labelsHidden()
                     .pickerStyle(SegmentedPickerStyle())
                     .frame(width: 350)
+                    
+                    Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
+                        .foregroundColor(Color(.gray))
+                    
                 }
-                VStack {
-                    Text("Left Click + Modifier").bold()
-                    Picker("", selection: vs.binding(keyPath: \.mouseAction1, send: k)) {
-                        ForEach(Yabai.State.MouseAction.allCases) {
-                            Text($0.rawValue)
+                Section {
+                    Divider()
+                    VStack(alignment: .leading) {
+                        Text("Left Click + Modifier").bold()
+                        Picker("", selection: vs.binding(keyPath: \.mouseAction1, send: k)) {
+                            ForEach(Yabai.State.MouseAction.allCases) {
+                                Text($0.rawValue)
+                            }
                         }
+                        .labelsHidden()
+                        .pickerStyle(SegmentedPickerStyle())
+                        .frame(width: 100)
                     }
-                    .labelsHidden()
-                    .pickerStyle(SegmentedPickerStyle())
-                    .frame(width: 100)
-                }
-                VStack {
-                    Text("Right Click + Modifier").bold()
-                    Picker("", selection: vs.binding(keyPath: \.mouseAction2, send: k)) {
-                        ForEach(Yabai.State.MouseAction.allCases) {
-                            Text($0.rawValue)
+                    Divider()
+                    VStack(alignment: .leading) {
+                        Text("Right Click + Modifier").bold()
+                        Picker("", selection: vs.binding(keyPath: \.mouseAction2, send: k)) {
+                            ForEach(Yabai.State.MouseAction.allCases) {
+                                Text($0.rawValue)
+                            }
                         }
+                        .labelsHidden()
+                        .pickerStyle(SegmentedPickerStyle())
+                        .frame(width: 100)
                     }
-                    .labelsHidden()
-                    .pickerStyle(SegmentedPickerStyle())
-                    .frame(width: 100)
-                }
-                VStack {
-                    Text("Drop Action").bold()
-                    Picker("", selection: vs.binding(keyPath: \.mouseDropAction, send: k)) {
-                        ForEach(Yabai.State.MouseDropAction.allCases) {
-                            Text($0.rawValue)
+                    Divider()
+                    VStack(alignment: .leading) {
+                        Text("Drop Action").bold()
+                        Picker("", selection: vs.binding(keyPath: \.mouseDropAction, send: k)) {
+                            ForEach(Yabai.State.MouseDropAction.allCases) {
+                                Text($0.rawValue)
+                            }
                         }
+                        .labelsHidden()
+                        .pickerStyle(SegmentedPickerStyle())
+                        .frame(width: 100)
+                        
+                        Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
+                            .foregroundColor(Color(.gray))
                     }
-                    .labelsHidden()
-                    .pickerStyle(SegmentedPickerStyle())
-                    .frame(width: 100)
                 }
+                Spacer()
             }
         }
     }
