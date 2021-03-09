@@ -18,7 +18,7 @@ struct WindowSettingsView: View {
                 settings
                     .padding()
                     .navigationSubtitle("Window")
-
+                
                 Rectangle()
                     .foregroundColor(.black)
             }
@@ -60,25 +60,33 @@ extension WindowSettingsView {
                         Text("Opacity Effects").bold()
                     }
                     VStack(alignment: .leading) {
-                        Slider(
-                            value: vs.binding(
-                                keyPath: \.windowOpacityDuration,
-                                send: k
+                        VStack(alignment: .leading) {
+                            Text("Animation Duration").foregroundColor(Color(.gray))
+                            Slider(
+                                value: vs.binding(
+                                    keyPath: \.windowOpacityDuration,
+                                    send: k
+                                )
                             )
-                        )
-                        Slider(
-                            value: vs.binding(
-                                keyPath: \.activeWindowOpacity,
-                                send: k
+                        }
+                        VStack(alignment: .leading) {
+                            Text("Active Windows").foregroundColor(Color(.gray))
+                            Slider(
+                                value: vs.binding(
+                                    keyPath: \.activeWindowOpacity,
+                                    send: k
+                                )
                             )
-                        )
-
-                        Slider(
-                            value: vs.binding(
-                                keyPath: \.normalWindowOpacity,
-                                send: k
+                        }
+                        VStack(alignment: .leading) {
+                            Text("Normal Windows").foregroundColor(Color(.gray))
+                            Slider(
+                                value: vs.binding(
+                                    keyPath: \.normalWindowOpacity,
+                                    send: k
+                                )
                             )
-                        )
+                        }
                     }
                     Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
                         .foregroundColor(Color(.gray))
@@ -91,38 +99,38 @@ extension WindowSettingsView {
                             .labelsHidden()
                         Text("Borders").bold()
                     }
-
-                        
-                        HStack {
-                            StepperView(
-                                text: "Width",
-                                value: vs.binding(keyPath: \.windowBorderWidth, send: k),
-                                isEnabled: vs.windowBorder
+                    
+                    
+                    HStack {
+                        StepperView(
+                            text: "Width",
+                            value: vs.binding(keyPath: \.windowBorderWidth, send: k),
+                            isEnabled: vs.windowBorder
+                        )
+                        ColorPickerView(
+                            text: "Focused",
+                            selection: vs.binding(
+                                get: \.activeWindowBorderColor.color,
+                                send: Yabai.Action.updateActiveWindowBorderColor
                             )
-                            ColorPickerView(
-                                text: "Focused",
-                                selection: vs.binding(
-                                    get: \.activeWindowBorderColor.color,
-                                    send: Yabai.Action.updateActiveWindowBorderColor
-                                )
+                        )
+                        ColorPickerView(
+                            text: "Normal",
+                            selection: vs.binding(
+                                get: \.normalWindowBorderColor.color,
+                                send: Yabai.Action.updateNormalWindowBorderColor
                             )
-                            ColorPickerView(
-                                text: "Normal",
-                                selection: vs.binding(
-                                    get: \.normalWindowBorderColor.color,
-                                    send: Yabai.Action.updateNormalWindowBorderColor
-                                )
+                        )
+                        ColorPickerView(
+                            text: "Insert",
+                            selection: vs.binding(
+                                get: \.insertWindowBorderColor.color,
+                                send: Yabai.Action.updateInsertWindowBorderColor
                             )
-                            ColorPickerView(
-                                text: "Insert",
-                                selection: vs.binding(
-                                    get: \.insertWindowBorderColor.color,
-                                    send: Yabai.Action.updateInsertWindowBorderColor
-                                )
-                            )
-                        }
-                        .disabled(!vs.windowBorder)
-
+                        )
+                    }
+                    .disabled(!vs.windowBorder)
+                    
                     Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
                         .foregroundColor(Color(.gray))
                 }
@@ -136,7 +144,7 @@ extension WindowSettingsView {
                     }
                     Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
                         .foregroundColor(Color(.gray))
-
+                    
                 }
                 Spacer()
             }
