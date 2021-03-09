@@ -64,7 +64,7 @@ struct SystemIntegrityProtectionView: View {
                 grayText("If you're running macOS 11.01 or later, you'll need to follow these steps to enable the scripting additions.")
                 Link("How come?", destination: URL(string: "https://tinyurl.com/4mzr6bf5")!)
                 grayText("Open Terminal and run the following commands:")
-                Group {
+                Section {
                     grayText("1. Find your username")
                     grayTextField("whoami")
                     grayText("2. Open the automation script with visudo")

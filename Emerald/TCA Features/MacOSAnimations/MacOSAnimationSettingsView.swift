@@ -18,7 +18,7 @@ struct MacOSAnimationSettingsView: View {
             HStack {
                 DebugConfigFileView(text: vs.asConfig)
                 
-                ScrollView {
+                VStack {
                     VStack(alignment: .leading) {
                         SectionView("Animations") {
                             Toggle("Enable All", isOn: vs.binding(keyPath: \.allEnabled, send: k))

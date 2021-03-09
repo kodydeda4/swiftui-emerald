@@ -15,8 +15,7 @@ struct RootView: View {
         WithViewStore(store) { viewStore in
             NavigationView {
                 SidebarView(store: store)
-                
-                YabaiSettingsView(store: store.scope(state: \.yabai, action: Root.Action.yabai))
+                DebugYabaiView(store: store.scope(state: \.yabai, action: Root.Action.yabai))
                 
             }
             .onAppear {

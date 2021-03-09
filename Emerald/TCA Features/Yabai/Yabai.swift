@@ -30,12 +30,12 @@ struct Yabai {
         var windowShadow             : WindowShadow      = .off
         var windowOpacity            : Bool              = false
         
-        var windowOpacityDuration    : Int               = 100
-        var activeWindowOpacity      : Int               = 100
-        var normalWindowOpacity      : Int               = 100
+        var windowOpacityDuration    : Float             = 100
+        var activeWindowOpacity      : Float             = 100
+        var normalWindowOpacity      : Float             = 100
         
         var windowBalance            : WindowBalance     = .normal
-        var splitRatio               : Int               = 50
+        var splitRatio               : Float             = 50
         var autoBalance              : Bool              = false
 
         
@@ -165,10 +165,6 @@ struct Yabai {
         case updateActiveWindowBorderColor(Color)
         case updateNormalWindowBorderColor(Color)
         case updateInsertWindowBorderColor(Color)
-        case updateWindowOpacityDuration(Int)
-        case updatetActiveWindowOpacity(Int)
-        case updateNormalWindowOpacity(Int)
-        case updateSplitRatio(Int)
         case toggleExternalBarIsDisabled
     }
 }
@@ -227,23 +223,7 @@ extension Yabai {
         case let .updateExternalBar(externalBar):
             state.externalBar = externalBar
             return .none
-            
-        case let .updateWindowOpacityDuration(windowOpacityDuration):
-            state.windowOpacityDuration = windowOpacityDuration
-            return .none
-            
-        case let .updatetActiveWindowOpacity(activeWindowOpacity):
-            state.activeWindowOpacity = activeWindowOpacity
-            return .none
-            
-        case let .updateNormalWindowOpacity(normalWindowOpacity):
-            state.normalWindowOpacity = normalWindowOpacity
-            return .none
-            
-        case let .updateSplitRatio(splitRatio):
-            state.splitRatio = splitRatio
-            return .none
-            
+                        
         case .toggleExternalBarIsDisabled:
             state.externalBarEnabled.toggle()
             return .none

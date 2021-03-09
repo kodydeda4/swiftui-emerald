@@ -50,9 +50,9 @@ yabai -m config window_shadow \(!disableShadows ? "on" : windowShadow.rawValue)
 
 # Opacity Effects
 yabai -m config window_opacity \(windowOpacity == true ? "on" : "off")
-yabai -m config window_opacity_duration \(Float(windowOpacityDuration)/100)
-yabai -m config active_window_opacity \(Float(activeWindowOpacity)/100)
-yabai -m config normal_window_opacity \(Float(normalWindowOpacity)/100)
+yabai -m config window_opacity_duration \(windowOpacityDuration)
+yabai -m config active_window_opacity \(activeWindowOpacity)
+yabai -m config normal_window_opacity \(normalWindowOpacity)
 
 # Borders
 yabai -m config window_border \(windowBorder == true ? "on" : "off")
@@ -68,7 +68,7 @@ yabai -m config window_placement \(windowPlacement)
 yabai -m config auto_balance \(windowBalance == .auto ? "on" : "off")
 
 # Split Ratio
-\(windowBalance == .auto ? "#" : "")yabai -m config split_ratio \(windowBalance == .custom ? Float(splitRatio)/100 : 0.50)
+\(windowBalance == .auto ? "#" : "")yabai -m config split_ratio \(windowBalance == .custom ? splitRatio : 0.50)
 
 # Floating Windows Stay-On-Top
 yabai -m config window_topmost \(windowTopmost == true ? "on" : "off") #SA

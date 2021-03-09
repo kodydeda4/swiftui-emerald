@@ -14,8 +14,12 @@ struct SpaceSettingsView: View {
     
     var body: some View {
         WithViewStore(store) { vs in
-            SectionView("Space") {
-                Section(header: Text("Layout").bold()) {
+            VStack {
+                Text("Space").font(.title)
+                
+                // Layout
+                VStack {
+                    Text("Layout").bold()
                     Picker("", selection: vs.binding(keyPath: \.layout, send: k)) {
                         ForEach(Yabai.State.Layout.allCases) {
                             Text($0.uiDescription.lowercased())
@@ -25,8 +29,10 @@ struct SpaceSettingsView: View {
                     .pickerStyle(SegmentedPickerStyle())
                     .frame(width: 200)
                 }
-                Divider()
-                Section(header: Text("Padding").bold()) {
+                
+                // Padding
+                VStack {
+                    Text("Padding").bold()
                     HStack {
                         StepperView(
                             text: "Top",
@@ -55,10 +61,53 @@ struct SpaceSettingsView: View {
                         )
                     }
                 }
+                
+                // New Window
+                VStack {
+                    Text("New Window").bold()
+                    Picker("", selection: vs.binding(keyPath: \.windowPlacement, send: k)) {
+                        ForEach(Yabai.State.WindowPlacement.allCases) {
+                            Text($0.uiDescription.lowercased())
+                        }
+                    }
+                    .labelsHidden()
+                    .pickerStyle(SegmentedPickerStyle())
+                    .frame(width: 200)
+                }
+                
+                // Split Ratio
+                VStack {
+                    Text("Split Ratio").bold()
+                    HStack {
+                        Picker("", selection: vs.binding(keyPath: \.windowBalance, send: k)) {
+                            ForEach(Yabai.State.WindowBalance.allCases) {
+                                Text($0.uiDescription.lowercased())
+                            }
+                        }
+                        .labelsHidden()
+                        .pickerStyle(SegmentedPickerStyle())
+                        .frame(width: 200)
+                        
+                        Slider(value: vs.binding(keyPath: \.splitRatio, send: k))
+                    }
+                }
+                
+                // Float-On-Top
+                VStack {
+                    Text("Float-On-Top").bold()
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Toggle("Floating Windows Stay-On-Top", isOn: vs.binding(keyPath: \.windowTopmost, send: k))
+                                .labelsHidden()
+                            Text("Enabled")
+                        }
+                    }
+                }
             }
         }
     }
 }
+
 
 // MARK:- SwiftUI_Previews
 struct SpaceSettingsView_Previews: PreviewProvider {

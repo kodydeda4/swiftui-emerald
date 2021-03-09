@@ -9,6 +9,7 @@ import SwiftUI
 import ComposableArchitecture
 import Overture
 import Combine
+import KeyboardShortcuts
 
 struct Root {
     struct State: Equatable {
@@ -96,18 +97,20 @@ extension Root {
 
             switch action {
             case let .yabai(subAction):
-                switch subAction {
-                case .updateWindowOpacityDuration,
-                     .updatetActiveWindowOpacity,
-                     .updateNormalWindowOpacity:
-                    print("\(Date()) Debounce this ... \(subAction)")
-                    return environment
-                        .save(state.yabai, to: state.yabai.stateURL)
-//                        .debounce(id: SaveID(), for: 0.1, scheduler: DispatchQueue.main.eraseToAnyScheduler())
-                    
-                default:
-                    return environment.save(state.yabai, to: state.yabai.stateURL)
-                }
+//                switch subAction {
+//                case .updateWindowOpacityDuration,
+//                     .updatetActiveWindowOpacity,
+//                     .updateNormalWindowOpacity:
+//                    print("\(Date()) Debounce this ... \(subAction)")
+//                    return environment
+//                        .save(state.yabai, to: state.yabai.stateURL)
+////                        .debounce(id: SaveID(), for: 0.1, scheduler: DispatchQueue.main.eraseToAnyScheduler())
+//
+//                default:
+//                    return environment.save(state.yabai, to: state.yabai.stateURL)
+//                }
+                
+            return environment.save(state.yabai, to: state.yabai.stateURL)
                 
             case .skhd:
                 return environment.save(state.skhd, to: state.skhd.stateURL)
@@ -205,6 +208,8 @@ extension Root {
                 case .yabai:
                     state.yabai = Yabai.State()
                 case .skhd:
+                    KeyboardShortcuts.reset(KeyboardShortcuts.Name.allCases)
+
                     state.skhd = SKHD.State()
                 case .macOSAnimations:
                     state.macOSAnimations = MacOSAnimations.State()
@@ -226,4 +231,3 @@ extension Root {
         environment: .init()
     )
 }
-

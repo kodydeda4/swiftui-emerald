@@ -19,7 +19,7 @@ struct SectionView<Content: View>: View {
     }
     
     var body: some View {
-        GroupBox {
+//        GroupBox {
             VStack(alignment: .leading) {
                     Text(title)
                         .font(.title)
@@ -28,8 +28,8 @@ struct SectionView<Content: View>: View {
                     content
             }
             .padding()
-        }
-        .padding()
+//        }
+//        .padding()
     }
 }
 

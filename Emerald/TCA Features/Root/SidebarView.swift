@@ -14,9 +14,52 @@ struct SidebarView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             List {
+                Section(header: Text("Yabai")) {
+                    NavigationLink(
+                        destination: SpaceSettingsView(
+                            store: store.scope(
+                                state: \.yabai,
+                                action: Root.Action.yabai
+                            )
+                        )
+                    ) {
+                        Label("SpaceSettingsView", systemImage: "macwindow")
+                    }
+                    NavigationLink(
+                        destination: WindowSettingsView(
+                            store: store.scope(
+                                state: \.yabai,
+                                action: Root.Action.yabai
+                            )
+                        )
+                    ) {
+                        Label("WindowSettingsView", systemImage: "macwindow")
+                    }
+                    NavigationLink(
+                        destination: MouseSettingsView(
+                            store: store.scope(
+                                state: \.yabai,
+                                action: Root.Action.yabai
+                            )
+                        )
+                    ) {
+                        Label("MouseSettingsView", systemImage: "macwindow")
+                    }
+                    NavigationLink(
+                        destination: ExternalBarSettingsView(
+                            store: store.scope(
+                                state: \.yabai,
+                                action: Root.Action.yabai
+                            )
+                        )
+                    ) {
+                        Label("ExternalBarSettingsView", systemImage: "macwindow")
+                    }
+                }
+                Divider()                
                 Section(header: Text("Debug")) {
                     NavigationLink(
-                        destination: YabaiSettingsView(
+                        destination: DebugYabaiView(
                             store: store.scope(
                                 state: \.yabai,
                                 action: Root.Action.yabai
@@ -26,11 +69,11 @@ struct SidebarView: View {
                         Label("Debug Yabai", systemImage: "macwindow")
                     }
                     NavigationLink(
-                        destination: SKHDSettingsView(
-                            store: store.scope(
-                                state: \.skhd,
-                                action: Root.Action.skhd
-                            )
+                        destination: DebugSKHDSettingsView(
+                                                        store: store.scope(
+                                                            state: \.skhd,
+                                                            action: Root.Action.skhd
+                                                        )
                         )
                     ) {
                         Label("Debug SKHD", systemImage: "keyboard")

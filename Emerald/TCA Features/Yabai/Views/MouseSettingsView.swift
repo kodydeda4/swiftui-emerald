@@ -14,12 +14,14 @@ struct MouseSettingsView: View {
     
     var body: some View {
         WithViewStore(store) { vs in
-            SectionView("Mouse") {
-                Section(header: Text("Mouse Follows Focus").bold()) {
+            VStack {
+                Text("Mouse").font(.title)
+                VStack {
+                    Text("Mouse Follows Focus").bold()
                     Toggle("Enabled", isOn: vs.binding(keyPath: \.mouseFollowsFocus, send: k))
                 }
-                Divider()
-                Section(header: Text("Focus Follows Focus").bold()) {
+                VStack {
+                    Text("Focus Follows Focus").bold()
                     HStack {
                         Toggle("", isOn: vs.binding(keyPath: \.focusFollowsMouseEnabled, send: k)).labelsHidden()
                         
@@ -34,8 +36,8 @@ struct MouseSettingsView: View {
                         .disabled(!vs.focusFollowsMouseEnabled)
                     }
                 }
-                Divider()
-                Section(header: Text("Modifier Key").bold()) {
+                VStack {
+                    Text("Modifier Key").bold()
                     Picker("", selection: vs.binding(keyPath: \.mouseModifier, send: k)) {
                         ForEach(Yabai.State.MouseModifier.allCases) {
                             //Image(systemName: "rectangle.grid.2x2.fill")
@@ -46,45 +48,44 @@ struct MouseSettingsView: View {
                     .pickerStyle(SegmentedPickerStyle())
                     .frame(width: 350)
                 }
-                Section {
-                    Divider()
-                    Section(header: Text("Left Click + Modifier").bold()) {
-                        Picker("", selection: vs.binding(keyPath: \.mouseAction1, send: k)) {
-                            ForEach(Yabai.State.MouseAction.allCases) {
-                                Text($0.rawValue)
-                            }
+                VStack {
+                    Text("Left Click + Modifier").bold()
+                    Picker("", selection: vs.binding(keyPath: \.mouseAction1, send: k)) {
+                        ForEach(Yabai.State.MouseAction.allCases) {
+                            Text($0.rawValue)
                         }
-                        .labelsHidden()
-                        .pickerStyle(SegmentedPickerStyle())
-                        .frame(width: 100)
                     }
-                    Divider()
-                    Section(header: Text("Right Click + Modifier").bold()) {
-                        Picker("", selection: vs.binding(keyPath: \.mouseAction2, send: k)) {
-                            ForEach(Yabai.State.MouseAction.allCases) {
-                                Text($0.rawValue)
-                            }
+                    .labelsHidden()
+                    .pickerStyle(SegmentedPickerStyle())
+                    .frame(width: 100)
+                }
+                VStack {
+                    Text("Right Click + Modifier").bold()
+                    Picker("", selection: vs.binding(keyPath: \.mouseAction2, send: k)) {
+                        ForEach(Yabai.State.MouseAction.allCases) {
+                            Text($0.rawValue)
                         }
-                        .labelsHidden()
-                        .pickerStyle(SegmentedPickerStyle())
-                        .frame(width: 100)
                     }
-                    Divider()
-                    Section(header: Text("Drop Action").bold()) {
-                        Picker("", selection: vs.binding(keyPath: \.mouseDropAction, send: k)) {
-                            ForEach(Yabai.State.MouseDropAction.allCases) {
-                                Text($0.rawValue)
-                            }
+                    .labelsHidden()
+                    .pickerStyle(SegmentedPickerStyle())
+                    .frame(width: 100)
+                }
+                VStack {
+                    Text("Drop Action").bold()
+                    Picker("", selection: vs.binding(keyPath: \.mouseDropAction, send: k)) {
+                        ForEach(Yabai.State.MouseDropAction.allCases) {
+                            Text($0.rawValue)
                         }
-                        .labelsHidden()
-                        .pickerStyle(SegmentedPickerStyle())
-                        .frame(width: 100)
                     }
+                    .labelsHidden()
+                    .pickerStyle(SegmentedPickerStyle())
+                    .frame(width: 100)
                 }
             }
         }
     }
 }
+
 
 // MARK:- SwiftUI_Previews
 struct MouseSettingsView_Previews: PreviewProvider {

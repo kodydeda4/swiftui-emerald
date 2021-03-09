@@ -31,7 +31,6 @@ struct SliderView: View {
                 step: 1
             )
             .disabled(!isEnabled)
-            .drawingGroup()
             
             .valueSliderStyle(
                 HorizontalValueSliderStyle(

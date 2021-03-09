@@ -13,7 +13,7 @@ struct AboutView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            List {
+            VStack {
                 SectionView("Emerald") {
                     Text(viewStore.yabai.version)
                         .foregroundColor(.gray)

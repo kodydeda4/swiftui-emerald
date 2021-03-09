@@ -14,9 +14,10 @@ struct ExternalBarSettingsView: View {
     
     var body: some View {
         WithViewStore(store) { vs in
-            SectionView("External Bar") {
-                Section(header: Text("External Bar").bold()) {
-                    
+            VStack {
+                Text("ExternalBar").font(.title)
+                VStack {
+                    Text("External Bar").bold()
                     HStack {
                         Toggle("Enabled", isOn: vs.binding(keyPath: \.externalBarEnabled, send: k)).labelsHidden()
                         
@@ -31,8 +32,8 @@ struct ExternalBarSettingsView: View {
                         .disabled(!vs.externalBarEnabled)
                     }
                 }
-                Divider()
-                Section(header: Text("Padding").bold()) {
+                VStack {
+                    Text("Padding").bold()
                     HStack {
                         StepperView(
                             text: "Top",
@@ -50,6 +51,8 @@ struct ExternalBarSettingsView: View {
         }
     }
 }
+
+
 
 // MARK:- SwiftUI_Previews
 struct ExternalBarSettingsView_Previews: PreviewProvider {
