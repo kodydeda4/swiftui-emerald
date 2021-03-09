@@ -17,7 +17,7 @@ struct NewWindowSettings: View {
             HStack {
                 settings
                     .padding()
-                    .navigationSubtitle("New Window")
+                    .navigationTitle("New Window")
 
                 Rectangle()
                     .foregroundColor(.black)
@@ -30,9 +30,9 @@ struct NewWindowSettings: View {
 extension NewWindowSettings {
     var settings: some View {
         WithViewStore(store) { vs in
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 20) {
                 VStack(alignment: .leading) {
-                    Text("New Window").bold()
+                    Text("Placement").bold().font(.title3)
                     Picker("", selection: vs.binding(keyPath: \.windowPlacement, send: k)) {
                         ForEach(Yabai.State.WindowPlacement.allCases) {
                             Text($0.uiDescription.lowercased())
@@ -49,7 +49,7 @@ extension NewWindowSettings {
                 Divider()
                 // Split Ratio
                 VStack(alignment: .leading) {
-                    Text("Split Ratio").bold()
+                    Text("Split Ratio").bold().font(.title3)
                     Picker("", selection: vs.binding(keyPath: \.windowBalance, send: k)) {
                         ForEach(Yabai.State.WindowBalance.allCases) {
                             Text($0.uiDescription.lowercased())

@@ -17,7 +17,7 @@ struct SpaceSettingsView: View {
             HStack {
                 settings
                     .padding()
-                    .navigationSubtitle("Space")
+                    .navigationTitle("Space")
 
                 Rectangle()
                     .foregroundColor(.black)
@@ -29,10 +29,10 @@ struct SpaceSettingsView: View {
 extension SpaceSettingsView {
     var settings: some View {
         WithViewStore(store) { vs in
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 20) {
                 // Layout
                 VStack(alignment: .leading) {
-                    Text("Layout").bold()
+                    Text("Layout").bold().font(.title3)
                     Picker("", selection: vs.binding(keyPath: \.layout, send: k)) {
                         ForEach(Yabai.State.Layout.allCases) {
                             Text($0.uiDescription.lowercased())
@@ -48,7 +48,7 @@ extension SpaceSettingsView {
                 Divider()
                 // Padding
                 VStack(alignment: .leading) {
-                    Text("Padding").bold()
+                    Text("Padding").bold().font(.title3)
                     HStack {
                         StepperView(
                             text: "Top",

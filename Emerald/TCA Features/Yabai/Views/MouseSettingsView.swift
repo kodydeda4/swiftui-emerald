@@ -17,7 +17,7 @@ struct MouseSettingsView: View {
             HStack {
                 settings
                     .padding()
-                    .navigationSubtitle("Mouse")
+                    .navigationTitle("Mouse")
                 
                 Rectangle()
                     .foregroundColor(.black)
@@ -29,11 +29,32 @@ struct MouseSettingsView: View {
 extension MouseSettingsView {
     var settings: some View {
         WithViewStore(store) { vs in
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 20) {
+                VStack(alignment: .leading) {
+                    HStack {
+                        Toggle("", isOn: vs.binding(keyPath: \.focusFollowsMouseEnabled, send: k)).labelsHidden()
+                        Text("Auto Focus").bold().font(.title3)
+                    }
+                    
+                    Picker("", selection: vs.binding(keyPath: \.focusFollowsMouse, send: k)) {
+                        ForEach(Yabai.State.FocusFollowsMouse.allCases) {
+                            Text($0.rawValue)
+                        }
+                    }
+                    .labelsHidden()
+                    .pickerStyle(SegmentedPickerStyle())
+                    .frame(width: 150)
+                    .disabled(!vs.focusFollowsMouseEnabled)
+                    
+                    Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
+                        .foregroundColor(Color(.gray))
+                    
+                }
+                Divider()
                 VStack(alignment: .leading) {
                     HStack {
                         Toggle("Enabled", isOn: vs.binding(keyPath: \.mouseFollowsFocus, send: k)).labelsHidden()
-                        Text("Mouse Follows Focus").bold()
+                        Text("Follow Focus").bold().font(.title3)
                         
                     }
                     
@@ -43,29 +64,7 @@ extension MouseSettingsView {
                 }
                 Divider()
                 VStack(alignment: .leading) {
-                    
-                    HStack {
-                        Toggle("", isOn: vs.binding(keyPath: \.focusFollowsMouseEnabled, send: k)).labelsHidden()
-                        Text("Focus Follows Focus").bold()
-                    }
-                        
-                        Picker("", selection: vs.binding(keyPath: \.focusFollowsMouse, send: k)) {
-                            ForEach(Yabai.State.FocusFollowsMouse.allCases) {
-                                Text($0.rawValue)
-                            }
-                        }
-                        .labelsHidden()
-                        .pickerStyle(SegmentedPickerStyle())
-                        .frame(width: 150)
-                        .disabled(!vs.focusFollowsMouseEnabled)
-                    
-                    Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
-                        .foregroundColor(Color(.gray))
-                    
-                }
-                Divider()
-                VStack(alignment: .leading) {
-                    Text("Modifier Key").bold()
+                    Text("Modifier Key").bold().font(.title3)
                     Picker("", selection: vs.binding(keyPath: \.mouseModifier, send: k)) {
                         ForEach(Yabai.State.MouseModifier.allCases) {
                             //Image(systemName: "rectangle.grid.2x2.fill")
@@ -83,7 +82,7 @@ extension MouseSettingsView {
                 Section {
                     Divider()
                     VStack(alignment: .leading) {
-                        Text("Left Click + Modifier").bold()
+                        Text("Left Click + Modifier").bold().font(.title3)
                         Picker("", selection: vs.binding(keyPath: \.mouseAction1, send: k)) {
                             ForEach(Yabai.State.MouseAction.allCases) {
                                 Text($0.rawValue)
@@ -95,7 +94,7 @@ extension MouseSettingsView {
                     }
                     Divider()
                     VStack(alignment: .leading) {
-                        Text("Right Click + Modifier").bold()
+                        Text("Right Click + Modifier").bold().font(.title3)
                         Picker("", selection: vs.binding(keyPath: \.mouseAction2, send: k)) {
                             ForEach(Yabai.State.MouseAction.allCases) {
                                 Text($0.rawValue)
@@ -107,7 +106,7 @@ extension MouseSettingsView {
                     }
                     Divider()
                     VStack(alignment: .leading) {
-                        Text("Drop Action").bold()
+                        Text("Drop Action").bold().font(.title3)
                         Picker("", selection: vs.binding(keyPath: \.mouseDropAction, send: k)) {
                             ForEach(Yabai.State.MouseDropAction.allCases) {
                                 Text($0.rawValue)

@@ -17,7 +17,7 @@ struct ExternalBarSettingsView: View {
             HStack {
                 settings
                     .padding()
-                    .navigationSubtitle("External Bar")
+                    .navigationTitle("External Bar")
                 
                 Rectangle()
                     .foregroundColor(.black)
@@ -29,11 +29,11 @@ struct ExternalBarSettingsView: View {
 extension ExternalBarSettingsView {
     var settings: some View {
         WithViewStore(store) { vs in
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 20) {
                 VStack(alignment: .leading) {
                     HStack {
                         Toggle("", isOn: vs.binding(keyPath: \.externalBarEnabled, send: k)).labelsHidden()
-                        Text("External Bar").bold()
+                        Text("External Bar").bold().font(.title3)
                     }
                     
                     Picker("", selection: vs.binding(keyPath: \.externalBar, send: k)) {
@@ -48,11 +48,10 @@ extension ExternalBarSettingsView {
                     
                     Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
                         .foregroundColor(Color(.gray))
-                    
                 }
                 Divider()
                 VStack(alignment: .leading) {
-                    Text("Padding").bold()
+                    Text("Padding").bold().font(.title3)
                     HStack {
                         StepperView(
                             text: "Top",

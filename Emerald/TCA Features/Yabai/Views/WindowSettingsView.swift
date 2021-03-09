@@ -17,7 +17,7 @@ struct WindowSettingsView: View {
             HStack {
                 settings
                     .padding()
-                    .navigationSubtitle("Window")
+                    .navigationTitle("Window")
                 
                 Rectangle()
                     .foregroundColor(.black)
@@ -29,12 +29,12 @@ struct WindowSettingsView: View {
 extension WindowSettingsView {
     var settings: some View {
         WithViewStore(store) { vs in
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 20) {
                 // Disable Shadows
                 VStack(alignment: .leading) {
                     HStack {
                         Toggle("Enabled", isOn: vs.binding(keyPath: \.disableShadows, send: k)).labelsHidden()
-                        Text("Disable Shadows").bold()
+                        Text("Disable Shadows").bold().font(.title3)
                     }
                     
                     HStack {
@@ -57,7 +57,7 @@ extension WindowSettingsView {
                     HStack {
                         Toggle("Opacity Effects", isOn: vs.binding(keyPath: \.windowOpacity, send: k))
                             .labelsHidden()
-                        Text("Opacity Effects").bold()
+                        Text("Opacity Effects").bold().font(.title3)
                     }
                     VStack(alignment: .leading) {
                         VStack(alignment: .leading) {
@@ -97,7 +97,7 @@ extension WindowSettingsView {
                     HStack {
                         Toggle("Borders", isOn: vs.binding(keyPath: \.windowBorder, send: k))
                             .labelsHidden()
-                        Text("Borders").bold()
+                        Text("Borders").bold().font(.title3)
                     }
                     
                     
@@ -140,7 +140,7 @@ extension WindowSettingsView {
                     HStack {
                         Toggle("Floating Windows Stay-On-Top", isOn: vs.binding(keyPath: \.windowTopmost, send: k))
                             .labelsHidden()
-                        Text("Float-On-Top").bold()
+                        Text("Float-On-Top").bold().font(.title3)
                     }
                     Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
                         .foregroundColor(Color(.gray))
