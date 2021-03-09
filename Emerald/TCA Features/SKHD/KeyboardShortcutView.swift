@@ -1,5 +1,5 @@
 //
-//  MyKeyboardShortcutsView.swift
+//  KeyboardShortcutView.swift
 //  Emerald
 //
 //  Created by Kody Deda on 3/5/21.
@@ -8,16 +8,13 @@
 import SwiftUI
 import KeyboardShortcuts
 
-struct MyKeyboardShortcutsView: View {
-    let title: String
+struct KeyboardShortcutView: View {
     let shortcut: KeyboardShortcuts.Name
     let action: ((KeyboardShortcuts.Shortcut?) -> Void)?
     
-    init(_ title: String,
-         _ shortcut: KeyboardShortcuts.Name,
+    init(_ shortcut: KeyboardShortcuts.Name,
          _ action: ((KeyboardShortcuts.Shortcut?) -> Void)?
     ) {
-        self.title = title
         self.shortcut = shortcut
         self.action = action
     }
@@ -25,7 +22,7 @@ struct MyKeyboardShortcutsView: View {
     var body: some View {
         HStack {
             HStack {
-                Text(title)
+                Text(shortcut.rawValue)
                 Spacer()
             }
             .frame(width: 110)
@@ -37,8 +34,8 @@ struct MyKeyboardShortcutsView: View {
 
 
 // MARK:- SwiftUI_Previews
-struct MyKeyboardShortcutsView_Previews: PreviewProvider {
+struct KeyboardShortcutView_Previews: PreviewProvider {
     static var previews: some View {
-        MyKeyboardShortcutsView("Restart Yabai", .restartYabai) { _ in () }
+        KeyboardShortcutView(.restartYabai) { _ in () }
     }
 }

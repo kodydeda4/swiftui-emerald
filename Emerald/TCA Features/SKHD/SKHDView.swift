@@ -20,15 +20,39 @@ struct SKHDSettingsView: View {
                 
                 List {
                     SectionView("Section A") {
-                        MyKeyboardShortcutsView("Restart Yabai",   .restartYabai)   { vs.send(.updateRestartYabai(  $0)) }
-                        MyKeyboardShortcutsView("Toggle Padding",  .togglePadding)  { vs.send(.updateTogglePadding( $0)) }
-                        MyKeyboardShortcutsView("Toggle Gaps",     .toggleGaps)     { vs.send(.updateToggleGaps(    $0)) }
-                        MyKeyboardShortcutsView("Toggle Split",    .toggleSplit)    { vs.send(.updateToggleSplit(   $0)) }
-                        MyKeyboardShortcutsView("Toggle Balance",  .toggleBalance)  { vs.send(.updateToggleBalance( $0)) }
-                        MyKeyboardShortcutsView("Toggle Stacking", .toggleStacking) { vs.send(.updateToggleStacking($0)) }
-                        MyKeyboardShortcutsView("Toggle Floating", .toggleFloating) { vs.send(.updateToggleFloating($0)) }
-                        MyKeyboardShortcutsView("Toggle BSP",      .toggleBSP)      { vs.send(.updateToggleBSP(     $0)) }
+                        KeyboardShortcutView(.restartYabai) {
+                            vs.send(.updateRestartYabai($0))
+                        }
+                        KeyboardShortcutView(.togglePadding) {
+                            vs.send(.updateTogglePadding($0))
+                        }
+                        KeyboardShortcutView(.toggleGaps) {
+                            vs.send(.updateToggleGaps($0))
+                        }
+                        KeyboardShortcutView(.toggleSplit) {
+                            vs.send(.updateToggleSplit($0))
+                        }
+                        KeyboardShortcutView(.toggleBalance) {
+                            vs.send(.updateToggleBalance($0))
+                        }
+                        KeyboardShortcutView(.toggleStacking) {
+                            vs.send(.updateToggleStacking($0))
+                        }
+                        KeyboardShortcutView(.toggleFloating) {
+                            vs.send(.updateToggleFloating($0))
+                        }
+                        KeyboardShortcutView(.toggleBSP) {
+                            vs.send(.updateToggleBSP($0))
+                        }
                     }
+//                    HStack {
+//                        HStack {
+//                            Text("nonSKHD")
+//                            Spacer()
+//                        }
+//                        .frame(width: 110)
+//                        KeyboardShortcuts.Recorder(for: .nonSKHD)
+//                    }
                 }
             }
             .navigationTitle("Debug SKHD")

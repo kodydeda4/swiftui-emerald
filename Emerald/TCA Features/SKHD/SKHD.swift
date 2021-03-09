@@ -10,15 +10,17 @@ import KeyboardShortcuts
 import SwiftShell
 
 extension KeyboardShortcuts.Name {
-    static let restartYabai   = Self("restartYabai")
-    static let togglePadding  = Self("togglePadding")
-    static let toggleGaps     = Self("toggleGaps")
-    static let toggleSplit    = Self("toggleSplit")
-    static let toggleBalance  = Self("toggleBalance")
-    static let toggleStacking = Self("toggleStacking")
-    static let toggleFloating = Self("toggleFloating")
-    static let toggleBSP      = Self("toggleBSP")
+    static let restartYabai   = Self("Restart Yabai")
+    static let togglePadding  = Self("Toggle Padding")
+    static let toggleGaps     = Self("Toggle Gaps")
+    static let toggleSplit    = Self("Toggle Split")
+    static let toggleBalance  = Self("Toggle Balance")
+    static let toggleStacking = Self("Toggle Stacking")
+    static let toggleFloating = Self("Toggle Floating")
+    static let toggleBSP      = Self("Toggle BSP")
+    static let nonSKHD        = Self("Non-SKHD Test")
 }
+
 
 struct SKHD {
     struct State: Equatable, Codable {
@@ -101,7 +103,7 @@ extension SKHD {
 
 func skhd(_ shortcut: KeyboardShortcuts.Shortcut?) -> String {
     shortcut?.description
-        .compactMap { SKHDShortcutCharacter(rawValue: $0)!.configFile }
+        .compactMap { SKHDShortcutCharacter(rawValue: $0)?.configFile }
         .joined(separator: " + ") ?? "# UNASSIGNED"
 }
 
