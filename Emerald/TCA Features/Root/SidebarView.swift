@@ -15,79 +15,30 @@ struct SidebarView: View {
         WithViewStore(store) { viewStore in
             List {
                 Section(header: Text("Settings")) {
-                    NavigationLink(
-                        destination: SpaceSettingsView(
-                            store: store.scope(
-                                state: \.yabai,
-                                action: Root.Action.yabai
-                            )
-                        )
-                    ) {
+                    NavigationLink(destination: SpaceSettingsView(store: yabaiStore)) {
                         Label("Space", systemImage: "rectangle.3.offgrid")
                     }
-                    NavigationLink(
-                        destination: WindowSettingsView(
-                            store: store.scope(
-                                state: \.yabai,
-                                action: Root.Action.yabai
-                            )
-                        )
-                    ) {
+                    NavigationLink(destination: WindowSettingsView(store: yabaiStore)) {
                         Label("Window", systemImage: "macwindow.on.rectangle")
                     }
-                    NavigationLink(
-                        destination: NewWindowSettings(
-                            store: store.scope(
-                                state: \.yabai,
-                                action: Root.Action.yabai
-                            )
-                        )
-                    ) {
+                    NavigationLink(destination: NewWindowSettings(store: yabaiStore)) {
                         Label("Placement", systemImage: "macwindow.badge.plus")
                     }
-
-                    NavigationLink(
-                        destination: MouseSettingsView(
-                            store: store.scope(
-                                state: \.yabai,
-                                action: Root.Action.yabai
-                            )
-                        )
-                    ) {
+                    NavigationLink(destination: MouseSettingsView(store: yabaiStore)) {
                         Label("Mouse", systemImage: "cursorarrow")
                     }
-                    NavigationLink(
-                        destination: FocusSettingsView(
-                            store: store.scope(
-                                state: \.yabai,
-                                action: Root.Action.yabai
-                            )
-                        )
-                    ) {
+                    NavigationLink(destination: FocusSettingsView(store: yabaiStore)) {
                         Label("Focus", systemImage: "cursorarrow.motionlines")
                     }
-                    NavigationLink(
-                        destination: ExternalBarSettingsView(
-                            store: store.scope(
-                                state: \.yabai,
-                                action: Root.Action.yabai
-                            )
-                        )
-                    ) {
+                    NavigationLink(destination: ExternalBarSettingsView(store: yabaiStore)) {
                         Label("Menu Bar", systemImage: "rectangle.topthird.inset")
                     }
                 }
-                
                 Section(header: Text("Other")) {
                     NavigationLink(destination: SystemIntegrityProtectionView()) {
                         Label("SIP", systemImage: "lock.fill")
                     }
-                    
-                    NavigationLink(
-                        destination: AboutView(
-                            store: store
-                        )
-                    ) {
+                    NavigationLink(destination: AboutView(store: store)) {
                         Label("About", systemImage: "gear")
                     }
                 }
@@ -96,6 +47,8 @@ struct SidebarView: View {
             .listStyle(SidebarListStyle())
         }
     }
+    
+    var yabaiStore: Store<Yabai.State, Yabai.Action> { store.scope(state: \.yabai, action: Root.Action.yabai) }
 }
 
 func toggleSidebar() {
