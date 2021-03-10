@@ -43,29 +43,29 @@ struct WindowSettingsView: View {
                     
                     Text("STATIC Description about Borders")
                         .foregroundColor(Color(.gray))
+                        .disabled(!vs.windowBorder || vs.sipEnabled)
+                        .opacity( !vs.windowBorder || vs.sipEnabled ? 0.5 : 1.0)
                 }
                 
                 // Disable Shadows
                 Divider()
                 VStack(alignment: .leading) {
                     HStack {
-                        Text("Shadows")
-                            .bold().font(.title3)
-                            .disabled(vs.sipEnabled)
-                            .opacity( vs.sipEnabled ? 0.5 : 1.0)
+                        Group {
+                            Toggle("", isOn: vs.binding(\.disableShadows, k))
+                                .labelsHidden()
+                            
+                            Text("Disable Shadows")
+                                .bold().font(.title3)
+                                .disabled(vs.sipEnabled)
+                                .opacity( vs.sipEnabled ? 0.5 : 1.0)
+                        }
+                        .disabled(vs.sipEnabled)
+                        .opacity( vs.sipEnabled ? 0.5 : 1.0)
                         
                         Spacer()
                         SIPButton(store: Root.defaultStore)
                     }
-                    HStack {
-                        Toggle("", isOn: vs.binding(\.disableShadows, k))
-                            .labelsHidden()
-                        
-                        Text("Disable Shadows")
-                    }
-                    .disabled(vs.sipEnabled)
-                    .opacity( vs.sipEnabled ? 0.5 : 1.0)
-                    
                     HStack {
                         Picker("", selection: vs.binding(\.windowShadow, k)) {
                             ForEach(Yabai.State.WindowShadow.allCases) {
@@ -77,35 +77,32 @@ struct WindowSettingsView: View {
                         .frame(width: 150)
                         .disabled(!vs.disableShadows)
                     }
-                    .disabled(vs.sipEnabled)
-                    .opacity( vs.sipEnabled ? 0.5 : 1.0)
+                    .disabled(!vs.disableShadows || vs.sipEnabled)
+                    .opacity( !vs.disableShadows || vs.sipEnabled ? 0.5 : 1.0)
                     
                     Text(vs.windowShadow.caseDescription)
                         .foregroundColor(Color(.gray))
-                        .disabled(vs.sipEnabled)
-                        .opacity( vs.sipEnabled ? 0.5 : 1.0)
+                        .disabled(!vs.disableShadows || vs.sipEnabled)
+                        .opacity( !vs.disableShadows || vs.sipEnabled ? 0.5 : 1.0)
                 }
                 
                 // Opacity Effects
                 Divider()
                 VStack(alignment: .leading) {
                     HStack {
-                        Text("Opacity")
-                            .bold().font(.title3)
-                            .disabled(vs.sipEnabled)
-                            .opacity( vs.sipEnabled ? 0.5 : 1.0)
+                        Group {
+                            Toggle("", isOn: vs.binding(\.windowOpacity, k))
+                                .labelsHidden()
+                            
+                            Text("Opacity Effects")
+                                .bold().font(.title3)
+                        }
+                        .disabled(vs.sipEnabled)
+                        .opacity( vs.sipEnabled ? 0.5 : 1.0)
                         
                         Spacer()
                         SIPButton(store: Root.defaultStore)
                     }
-                    HStack {
-                        Toggle("", isOn: vs.binding(\.windowOpacity, k))
-                            .labelsHidden()
-                        
-                        Text("Change Opacity")
-                    }
-                    .disabled(vs.sipEnabled)
-                    .opacity( vs.sipEnabled ? 0.5 : 1.0)
                     
                     VStack(alignment: .leading) {
                         VStack(alignment: .leading) {
@@ -122,9 +119,10 @@ struct WindowSettingsView: View {
                         }
                         Text("STATIC Description about Opacity")
                             .foregroundColor(Color(.gray))
+                            .opacity( vs.sipEnabled ? 0.5 : 1.0)
                     }
-                    .disabled(vs.sipEnabled)
-                    .opacity( vs.sipEnabled ? 0.5 : 1.0)
+                    .disabled(!vs.windowOpacity || vs.sipEnabled)
+                    .opacity( !vs.windowOpacity || vs.sipEnabled ? 0.5 : 1.0)
                 }
                 Spacer()
             }

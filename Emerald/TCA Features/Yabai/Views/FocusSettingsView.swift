@@ -45,8 +45,8 @@ struct FocusSettingsView: View {
 
                     Text(vs.focusFollowsMouse.caseDescription)
                         .foregroundColor(Color(.gray))
-                        .disabled(vs.sipEnabled)
-                        .opacity( vs.sipEnabled ? 0.5 : 1.0)
+                        .disabled(!vs.focusFollowsMouseEnabled || vs.sipEnabled)
+                        .opacity( !vs.focusFollowsMouseEnabled || vs.sipEnabled ? 0.5 : 1.0)
                 }
                 
                 // Follow Focus
@@ -69,8 +69,8 @@ struct FocusSettingsView: View {
                     
                     Text("STATIC Description of mouse follows focus")
                         .foregroundColor(Color(.gray))
-                        .disabled(vs.sipEnabled)
-                        .opacity( vs.sipEnabled ? 0.5 : 1.0)
+                        .disabled(!vs.mouseFollowsFocus || vs.sipEnabled)
+                        .opacity( !vs.mouseFollowsFocus || vs.sipEnabled ? 0.5 : 1.0)
                 }
                 Spacer()
             }

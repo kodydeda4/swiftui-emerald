@@ -34,9 +34,11 @@ struct ExternalBarSettingsView: View {
                     .pickerStyle(SegmentedPickerStyle())
                     .frame(width: 100)
                     .disabled(!vs.externalBarEnabled)
+                    .opacity(!vs.externalBarEnabled ? 0.5 : 1.0)
                     
                     Text(vs.externalBar.caseDescription)
                         .foregroundColor(Color(.gray))
+                        .opacity(!vs.externalBarEnabled ? 0.5 : 1.0)
                 }
                 
                 // Padding
