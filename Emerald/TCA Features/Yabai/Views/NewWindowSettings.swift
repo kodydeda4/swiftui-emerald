@@ -15,8 +15,12 @@ struct NewWindowSettings: View {
     var body: some View {
         WithViewStore(store) { vs in
             VStack(alignment: .leading, spacing: 20) {
+                
+                // Placement
                 VStack(alignment: .leading) {
-                    Text("Placement").bold().font(.title3)
+                    Text("Placement")
+                        .bold().font(.title3)
+                    
                     Picker("", selection: vs.binding(keyPath: \.windowPlacement, send: k)) {
                         ForEach(Yabai.State.WindowPlacement.allCases) {
                             Text($0.uiDescription.lowercased())
@@ -30,10 +34,14 @@ struct NewWindowSettings: View {
                         .foregroundColor(Color(.gray))
                     
                 }
-                Divider()
+
                 // Split Ratio
                 VStack(alignment: .leading) {
-                    Text("Split Ratio").bold().font(.title3)
+                    Divider()
+                    
+                    Text("Split Ratio")
+                        .bold().font(.title3)
+                    
                     Picker("", selection: vs.binding(keyPath: \.windowBalance, send: k)) {
                         ForEach(Yabai.State.WindowBalance.allCases) {
                             Text($0.uiDescription.lowercased())

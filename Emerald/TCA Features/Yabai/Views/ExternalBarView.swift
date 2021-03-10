@@ -15,10 +15,15 @@ struct ExternalBarSettingsView: View {
     var body: some View {
         WithViewStore(store) { vs in
             VStack(alignment: .leading, spacing: 20) {
+                
+                // External Bar
                 VStack(alignment: .leading) {
                     HStack {
-                        Toggle("", isOn: vs.binding(keyPath: \.externalBarEnabled, send: k)).labelsHidden()
-                        Text("External Bar").bold().font(.title3)
+                        Toggle("", isOn: vs.binding(keyPath: \.externalBarEnabled, send: k))
+                            .labelsHidden()
+                        
+                        Text("External Bar")
+                            .bold().font(.title3)
                     }
                     Picker("", selection: vs.binding(keyPath: \.externalBar, send: k)) {
                         ForEach(Yabai.State.ExternalBar.allCases) {
@@ -33,9 +38,13 @@ struct ExternalBarSettingsView: View {
                     Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
                         .foregroundColor(Color(.gray))
                 }
-                Divider()
+                
+                // Padding
                 VStack(alignment: .leading) {
-                    Text("Padding").bold().font(.title3)
+                    Divider()
+                    Text("Padding")
+                        .bold().font(.title3)
+                    
                     HStack {
                         StepperView("Top", vs.binding(keyPath: \.externalBarPaddingTop, send: k))
                         StepperView("Bottom", vs.binding(keyPath: \.externalBarPaddingBottom, send: k))

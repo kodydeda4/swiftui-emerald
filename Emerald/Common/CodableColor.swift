@@ -9,7 +9,7 @@ import SwiftUI
 import DynamicColor
 
 public struct CodableColor {
-    let color: Color
+    var color: Color
 }
 
 extension CodableColor: Codable, Equatable {

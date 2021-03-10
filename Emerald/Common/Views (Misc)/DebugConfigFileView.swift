@@ -16,7 +16,7 @@ struct DebugConfigFileView: View {
                 Text(text)
                     .font(.system(size: 11, design: .monospaced))
                     .foregroundColor(.accentColor)
-                    .frame(width: 380, alignment: .leading)
+                    .frame(minWidth: 380, alignment: .leading)
 
             }
             .padding()

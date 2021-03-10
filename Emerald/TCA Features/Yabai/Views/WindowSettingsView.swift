@@ -14,16 +14,6 @@ struct WindowSettingsView: View {
     
     var body: some View {
         WithViewStore(store) { vs in
-            settings
-                .padding()
-                .navigationTitle("Space")
-        }
-    }
-}
-
-extension WindowSettingsView {
-    var settings: some View {
-        WithViewStore(store) { vs in
             VStack(alignment: .leading, spacing: 20) {
                 
                 // Borders
@@ -32,39 +22,25 @@ extension WindowSettingsView {
                         Group {
                             Toggle("", isOn: vs.binding(keyPath: \.windowBorder, send: k))
                                 .labelsHidden()
-                            Text("Borders").bold().font(.title3)
+                            
+                            Text("Borders")
+                                .bold().font(.title3)
                         }
                         .disabled(vs.sipEnabled)
-                        .opacity(vs.sipEnabled ? 0.5 : 1.0)
+                        .opacity( vs.sipEnabled ? 0.5 : 1.0)
                         
                         Spacer()
                         SIPButton(store: Root.defaultStore)
                     }
                     HStack {
                         StepperView("Width", vs.binding(keyPath: \.windowBorderWidth, send: k))
-                            
-                        ColorPickerView(text: "Focused",
-                            selection: vs.binding(
-                                get: \.activeWindowBorderColor.color,
-                                send: Yabai.Action.updateActiveWindowBorderColor
-                            )
-                        )
-                        ColorPickerView(text: "Normal",
-                            selection: vs.binding(
-                                get: \.normalWindowBorderColor.color,
-                                send: Yabai.Action.updateNormalWindowBorderColor
-                            )
-                        )
-                        ColorPickerView(text: "Insert",
-                            selection: vs.binding(
-                                get: \.insertWindowBorderColor.color,
-                                send: Yabai.Action.updateInsertWindowBorderColor
-                            )
-                        )
+                        ColorPickerView("Focused", vs.binding(keyPath: \.activeWindowBorderColor, send: k))
+                        ColorPickerView("Normal",  vs.binding(keyPath: \.normalWindowBorderColor, send: k))
+                        ColorPickerView("Insert",  vs.binding(keyPath: \.insertWindowBorderColor, send: k))
                     }
                     .disabled(!vs.windowBorder || vs.sipEnabled)
-                    .opacity(!vs.windowBorder || vs.sipEnabled ? 0.5 : 1.0)
-
+                    .opacity( !vs.windowBorder || vs.sipEnabled ? 0.5 : 1.0)
+                    
                     Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
                         .foregroundColor(Color(.gray))
                 }
@@ -73,19 +49,22 @@ extension WindowSettingsView {
                 Divider()
                 VStack(alignment: .leading) {
                     HStack {
-                        Text("Shadows").bold().font(.title3)
+                        Text("Shadows")
+                            .bold().font(.title3)
                             .disabled(vs.sipEnabled)
-                            .opacity(vs.sipEnabled ? 0.5 : 1.0)
+                            .opacity( vs.sipEnabled ? 0.5 : 1.0)
                         
                         Spacer()
                         SIPButton(store: Root.defaultStore)
                     }
                     HStack {
-                        Toggle("", isOn: vs.binding(keyPath: \.disableShadows, send: k)).labelsHidden()
+                        Toggle("", isOn: vs.binding(keyPath: \.disableShadows, send: k))
+                            .labelsHidden()
+                        
                         Text("Disable Shadows")
                     }
                     .disabled(vs.sipEnabled)
-                    .opacity(vs.sipEnabled ? 0.5 : 1.0)
+                    .opacity( vs.sipEnabled ? 0.5 : 1.0)
                     
                     HStack {
                         Picker("", selection: vs.binding(keyPath: \.windowShadow, send: k)) {
@@ -99,21 +78,22 @@ extension WindowSettingsView {
                         .disabled(!vs.disableShadows)
                     }
                     .disabled(vs.sipEnabled)
-                    .opacity(vs.sipEnabled ? 0.5 : 1.0)
+                    .opacity( vs.sipEnabled ? 0.5 : 1.0)
                     
                     Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
                         .foregroundColor(Color(.gray))
                         .disabled(vs.sipEnabled)
-                        .opacity(vs.sipEnabled ? 0.5 : 1.0)
+                        .opacity( vs.sipEnabled ? 0.5 : 1.0)
                 }
                 
                 // Opacity Effects
                 Divider()
                 VStack(alignment: .leading) {
                     HStack {
-                        Text("Opacity").bold().font(.title3)
+                        Text("Opacity")
+                            .bold().font(.title3)
                             .disabled(vs.sipEnabled)
-                            .opacity(vs.sipEnabled ? 0.5 : 1.0)
+                            .opacity( vs.sipEnabled ? 0.5 : 1.0)
                         
                         Spacer()
                         SIPButton(store: Root.defaultStore)
@@ -121,48 +101,35 @@ extension WindowSettingsView {
                     HStack {
                         Toggle("", isOn: vs.binding(keyPath: \.windowOpacity, send: k))
                             .labelsHidden()
-                        Text("Change Opacity")
                         
+                        Text("Change Opacity")
                     }
                     .disabled(vs.sipEnabled)
-                    .opacity(vs.sipEnabled ? 0.5 : 1.0)
+                    .opacity( vs.sipEnabled ? 0.5 : 1.0)
                     
                     VStack(alignment: .leading) {
                         VStack(alignment: .leading) {
                             Text("Animation Duration").foregroundColor(Color(.gray))
-                            Slider(
-                                value: vs.binding(
-                                    keyPath: \.windowOpacityDuration,
-                                    send: k
-                                )
-                            )
+                            Slider(value: vs.binding(keyPath: \.windowOpacityDuration, send: k))
                         }
                         VStack(alignment: .leading) {
                             Text("Active Windows").foregroundColor(Color(.gray))
-                            Slider(
-                                value: vs.binding(
-                                    keyPath: \.activeWindowOpacity,
-                                    send: k
-                                )
-                            )
+                            Slider(value: vs.binding(keyPath: \.activeWindowOpacity, send: k))
                         }
                         VStack(alignment: .leading) {
                             Text("Normal Windows").foregroundColor(Color(.gray))
-                            Slider(
-                                value: vs.binding(
-                                    keyPath: \.normalWindowOpacity,
-                                    send: k
-                                )
-                            )
+                            Slider(value: vs.binding(keyPath: \.normalWindowOpacity, send: k))
                         }
                         Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
                             .foregroundColor(Color(.gray))
                     }
                     .disabled(vs.sipEnabled)
-                    .opacity(vs.sipEnabled ? 0.5 : 1.0)
+                    .opacity( vs.sipEnabled ? 0.5 : 1.0)
                 }
                 Spacer()
             }
+            .padding()
+            .navigationTitle("Space")
         }
     }
 }

@@ -9,11 +9,21 @@ import SwiftUI
 
 struct ColorPickerView: View {
     var text: String
-    @Binding var selection: Color
+    @Binding var selection: CodableColor
+     
+    init(
+        _ text: String,
+        _ selection: Binding<CodableColor>
+    ) {
+        self.text = text
+        self._selection = selection
+    }
     
     var body: some View {
         VStack {
-            ColorPicker("", selection: $selection).labelsHidden()
+            ColorPicker("", selection: $selection.color)
+                .labelsHidden()
+            
             Text(text)
                 .font(.system(size: systemFontSize))
         }
@@ -23,6 +33,6 @@ struct ColorPickerView: View {
 // MARK:- SwiftUI_Previews
 struct MyColorPickerView_Previews: PreviewProvider {
     static var previews: some View {
-        ColorPickerView(text: "Description", selection: .constant(.accentColor))
+        ColorPickerView("Description", .constant(CodableColor(color: .accentColor)))
     }
 }

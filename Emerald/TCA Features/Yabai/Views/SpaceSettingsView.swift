@@ -18,7 +18,9 @@ struct SpaceSettingsView: View {
                 
                 // Layout
                 VStack(alignment: .leading) {
-                    Text("Layout").bold().font(.title3)
+                    Text("Layout")
+                        .bold().font(.title3)
+                    
                     Picker("", selection: vs.binding(keyPath: \.layout, send: k)) {
                         ForEach(Yabai.State.Layout.allCases) {
                             Text($0.uiDescription.lowercased())
@@ -33,9 +35,11 @@ struct SpaceSettingsView: View {
                 }
                 
                 // Padding
-                Divider()
                 VStack(alignment: .leading) {
-                    Text("Padding").bold().font(.title3)
+                    Divider()
+                    Text("Padding")
+                        .bold().font(.title3)
+                    
                     HStack {
                         StepperView("Top",    vs.binding(keyPath: \.paddingTop,    send: k))
                         StepperView("Bottom", vs.binding(keyPath: \.paddingBottom, send: k))
@@ -49,30 +53,29 @@ struct SpaceSettingsView: View {
                 
                 
                 // Float-On-Top
-                Divider()
                 VStack(alignment: .leading) {
+                    Divider()
                     HStack {
                         Group {
                             Toggle("", isOn: vs.binding(keyPath: \.windowTopmost, send: k))
                                 .labelsHidden()
                             
-                            Text("Float-On-Top").bold().font(.title3)
+                            Text("Float-On-Top")
+                                .bold().font(.title3)
                         }
                         .disabled(vs.sipEnabled || vs.layout == .float)
-                        .opacity(vs.sipEnabled || vs.layout == .float ? 0.5 : 1.0)
+                        .opacity( vs.sipEnabled || vs.layout == .float ? 0.5 : 1.0)
 
                         Spacer()
                         SIPButton(store: Root.defaultStore)
                     }
-                    
                     Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
                         .foregroundColor(Color(.gray))
                         .disabled(vs.sipEnabled || vs.layout == .float)
-                        .opacity(vs.sipEnabled || vs.layout == .float ? 0.5 : 1.0)
+                        .opacity( vs.sipEnabled || vs.layout == .float ? 0.5 : 1.0)
                 }
                 Spacer()
             }
-            
             .padding()
             .navigationTitle("Space")
         }
