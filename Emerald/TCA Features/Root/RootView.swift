@@ -54,17 +54,21 @@ struct RootView: View {
                         Image(systemName: "sidebar.left")
                     }
                 }
-                ToolbarItem {
-                    Button("Toggle OnboardingView") {
-                        viewStore.send(.onboarding(.toggleIsOnboaring))
-                    }
-                }
+//                ToolbarItem {
+//                    Button("Toggle OnboardingView") {
+//                        viewStore.send(.onboarding(.toggleIsOnboaring))
+//                    }
+//                }
                 //                ToolbarItem {
                 //                    Button("Apply Animation Changes") {
                 //                        viewStore.send(.export(.macOSAnimations))
                 //                        let _ = AppleScript.applyAnimationSettings.execute()
                 //                    }
                 //                }
+                ToolbarItem {
+                    Text("SIP Enabled: \(viewStore.yabai.sipEnabled.description)")
+                }
+
                 ToolbarItem {
                     Button("Reset") {
                         viewStore.send(.reset(.yabai))

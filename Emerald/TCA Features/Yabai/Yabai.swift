@@ -15,6 +15,7 @@ struct Yabai {
         var stateURL                 = URL(fileURLWithPath: "YabaiState.json", relativeTo: .HomeDirectory)
         var configURL                = URL(fileURLWithPath: ".yabairc", relativeTo: .HomeDirectory)
         var version                  = run("/usr/local/bin/yabai", "-v").stdout
+        var sipEnabled               : Bool              = true
         var debugOutput              : Bool              = false
         var externalBar              : ExternalBar       = .all
         var externalBarEnabled       : Bool              = false
@@ -25,20 +26,15 @@ struct Yabai {
         var focusFollowsMouseEnabled : Bool              = false
         var windowPlacement          : WindowPlacement   = .first_child
         var windowTopmost            : Bool              = false
-        
         var disableShadows           : Bool              = false
         var windowShadow             : WindowShadow      = .off
         var windowOpacity            : Bool              = false
-        
         var windowOpacityDuration    : Float             = 100
         var activeWindowOpacity      : Float             = 100
         var normalWindowOpacity      : Float             = 100
-        
         var windowBalance            : WindowBalance     = .normal
         var splitRatio               : Float             = 50
         var autoBalance              : Bool              = false
-
-        
         var windowBorder             : Bool              = false
         var windowBorderWidth        : Int               = 0
         var activeWindowBorderColor  : CodableColor      = .init(color: .green)

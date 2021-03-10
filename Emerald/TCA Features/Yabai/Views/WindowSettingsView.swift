@@ -36,8 +36,8 @@ extension WindowSettingsView {
                     HStack {
                         StepperView(
                             text: "Width",
-                            value: vs.binding(keyPath: \.windowBorderWidth, send: k),
-                            isEnabled: vs.windowBorder
+                            value: vs.binding(keyPath: \.windowBorderWidth, send: k)//,
+                            //isEnabled: vs.windowBorder
                         )
                         ColorPickerView(
                             text: "Focused",

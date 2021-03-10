@@ -40,13 +40,13 @@ struct ExternalBarSettingsView: View {
                     HStack {
                         StepperView(
                             text: "Top",
-                            value: vs.binding(keyPath: \.externalBarPaddingTop, send: k),
-                            isEnabled: vs.externalBarEnabled
+                            value: vs.binding(keyPath: \.externalBarPaddingTop, send: k)//,
+                            //isEnabled: vs.externalBarEnabled
                         )
                         StepperView(
                             text: "Bottom",
-                            value: vs.binding(keyPath: \.externalBarPaddingBottom, send: k),
-                            isEnabled: vs.externalBarEnabled
+                            value: vs.binding(keyPath: \.externalBarPaddingBottom, send: k)//,
+                            //isEnabled: vs.externalBarEnabled
                         )
                     }
                 }

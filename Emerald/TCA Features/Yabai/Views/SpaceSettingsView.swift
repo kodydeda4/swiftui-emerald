@@ -30,57 +30,74 @@ struct SpaceSettingsView: View {
                     
                     Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
                         .foregroundColor(Color(.gray))
+                    
                 }
                 
                 // Padding
                 Divider()
-                VStack(alignment: .leading) {
+                Group {
                     Text("Padding").bold().font(.title3)
                     HStack {
                         StepperView(
                             text: "Top",
-                            value: vs.binding(keyPath: \.paddingTop, send: k),
-                            isEnabled: vs.layout != .float
+                            value: vs.binding(keyPath: \.paddingTop, send: k)
                         )
                         StepperView(
                             text: "Bottom",
-                            value: vs.binding(keyPath: \.paddingBottom, send: k),
-                            isEnabled: vs.layout != .float
+                            value: vs.binding(keyPath: \.paddingBottom, send: k)
                         )
                         StepperView(
                             text: "Left",
-                            value: vs.binding(keyPath: \.paddingLeft, send: k),
-                            isEnabled: vs.layout != .float
+                            value: vs.binding(keyPath: \.paddingLeft, send: k)
                         )
                         StepperView(
                             text: "Right",
-                            value: vs.binding(keyPath: \.paddingRight, send: k),
-                            isEnabled: vs.layout != .float
+                            value: vs.binding(keyPath: \.paddingRight, send: k)
                         )
                         StepperView(
                             text: "Gaps",
-                            value: vs.binding(keyPath: \.windowGap, send: k),
-                            isEnabled: vs.layout != .float
+                            value: vs.binding(keyPath: \.windowGap, send: k)
                         )
                     }
                 }
+                .disabled(vs.layout == .float)
+                .opacity(vs.layout == .float ? 0.5 : 1.0)
+
                 
                 // Float-On-Top
                 Divider()
-                VStack(alignment: .leading) {
+                Group {
                     HStack {
-                        Toggle("", isOn: vs.binding(keyPath: \.windowTopmost, send: k))
-                            .labelsHidden()
-                        
+                        HStack {
+                            Toggle("", isOn: vs.binding(keyPath: \.windowTopmost, send: k))
+                                .labelsHidden()
+                                .disabled(vs.sipEnabled)
+                            
                         Text("Float-On-Top").bold().font(.title3)
+                        }
+                        .disabled(vs.sipEnabled)
+                        .opacity(vs.layout == .float ? 0.5 : 1.0)
+                        
                         Spacer()
                         
                         SIPButton(store: Root.defaultStore)
                     }
+                    
                     Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
                         .foregroundColor(Color(.gray))
-                    
+                        .disabled(vs.sipEnabled)
+                        .opacity(vs.layout == .float ? 0.5 : 1.0)
                 }
+                
+                
+                
+                // Shortcuts
+//                VStack(alignment: .trailing) {
+//                    KBShortcut(for: .togglePadding)
+//                    KBShortcut(for: .toggleStacking)
+//                    KBShortcut(for: .toggleFloating)
+//                    KBShortcut(for: .toggleBSP)
+//                }
                 Spacer()
             }
             
