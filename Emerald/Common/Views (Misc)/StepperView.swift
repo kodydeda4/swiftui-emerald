@@ -17,8 +17,8 @@ struct StepperView: View {
     
     @State var hovering = false
     
-    init(text: String,
-         value: Binding<Int>,
+    init(_ text: String,
+         _ value: Binding<Int>,
          range: ClosedRange<Int> = 0...10//,
          //isEnabled: Bool
     ) {
@@ -63,6 +63,6 @@ struct StepperView: View {
 // MARK:- SwiftUI_Previews
 struct MyStepperView_Previews: PreviewProvider {
     static var previews: some View {
-        StepperView(text: "Value", value: .constant(6))//, isEnabled: true)
+        StepperView("Value", .constant(6))//, isEnabled: true)
     }
 }

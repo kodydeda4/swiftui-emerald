@@ -44,7 +44,9 @@ struct NewWindowSettings: View {
                     .frame(width: 200)
                     
                     Slider(value: vs.binding(keyPath: \.splitRatio, send: k))
-                    
+                        .disabled(vs.windowBalance != .custom)
+                        .opacity(vs.windowBalance != .custom ? 0.5 : 1.0)
+
                     Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
                         .foregroundColor(Color(.gray))
                     

@@ -19,7 +19,6 @@ struct MouseSettingsView: View {
                     Text("Modifier Key").bold().font(.title3)
                     Picker("", selection: vs.binding(keyPath: \.mouseModifier, send: k)) {
                         ForEach(Yabai.State.MouseModifier.allCases) {
-                            //Image(systemName: "rectangle.grid.2x2.fill")
                             Text($0.uiDescription.lowercased())
                         }
                     }

@@ -30,7 +30,6 @@ struct SpaceSettingsView: View {
                     
                     Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
                         .foregroundColor(Color(.gray))
-                    
                 }
                 
                 // Padding
@@ -38,26 +37,11 @@ struct SpaceSettingsView: View {
                 VStack(alignment: .leading) {
                     Text("Padding").bold().font(.title3)
                     HStack {
-                        StepperView(
-                            text: "Top",
-                            value: vs.binding(keyPath: \.paddingTop, send: k)
-                        )
-                        StepperView(
-                            text: "Bottom",
-                            value: vs.binding(keyPath: \.paddingBottom, send: k)
-                        )
-                        StepperView(
-                            text: "Left",
-                            value: vs.binding(keyPath: \.paddingLeft, send: k)
-                        )
-                        StepperView(
-                            text: "Right",
-                            value: vs.binding(keyPath: \.paddingRight, send: k)
-                        )
-                        StepperView(
-                            text: "Gaps",
-                            value: vs.binding(keyPath: \.windowGap, send: k)
-                        )
+                        StepperView("Top",    vs.binding(keyPath: \.paddingTop,    send: k))
+                        StepperView("Bottom", vs.binding(keyPath: \.paddingBottom, send: k))
+                        StepperView("Left",   vs.binding(keyPath: \.paddingLeft,   send: k))
+                        StepperView("Right",  vs.binding(keyPath: \.paddingRight,  send: k))
+                        StepperView("Gaps",   vs.binding(keyPath: \.windowGap,     send: k))
                     }
                 }
                 .disabled(vs.layout == .float)
@@ -74,8 +58,8 @@ struct SpaceSettingsView: View {
                             
                             Text("Float-On-Top").bold().font(.title3)
                         }
-                        .disabled(vs.sipEnabled)
-                        .opacity(vs.layout == .float ? 0.5 : 1.0)
+                        .disabled(vs.sipEnabled || vs.layout == .float)
+                        .opacity(vs.sipEnabled || vs.layout == .float ? 0.5 : 1.0)
 
                         Spacer()
                         SIPButton(store: Root.defaultStore)
@@ -83,16 +67,9 @@ struct SpaceSettingsView: View {
                     
                     Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
                         .foregroundColor(Color(.gray))
-                        .disabled(vs.sipEnabled)
-                        .opacity(vs.layout == .float ? 0.5 : 1.0)
+                        .disabled(vs.sipEnabled || vs.layout == .float)
+                        .opacity(vs.sipEnabled || vs.layout == .float ? 0.5 : 1.0)
                 }
-                // Shortcuts
-                //                VStack(alignment: .trailing) {
-                //                    KBShortcut(for: .togglePadding)
-                //                    KBShortcut(for: .toggleStacking)
-                //                    KBShortcut(for: .toggleFloating)
-                //                    KBShortcut(for: .toggleBSP)
-                //                }
                 Spacer()
             }
             

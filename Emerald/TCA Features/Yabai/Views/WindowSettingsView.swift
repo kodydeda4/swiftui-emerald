@@ -41,27 +41,21 @@ extension WindowSettingsView {
                         SIPButton(store: Root.defaultStore)
                     }
                     HStack {
-                        StepperView(
-                            text: "Width",
-                            value: vs.binding(keyPath: \.windowBorderWidth, send: k)//,
-                            //isEnabled: vs.windowBorder
-                        )
-                        ColorPickerView(
-                            text: "Focused",
+                        StepperView("Width", vs.binding(keyPath: \.windowBorderWidth, send: k))
+                            
+                        ColorPickerView(text: "Focused",
                             selection: vs.binding(
                                 get: \.activeWindowBorderColor.color,
                                 send: Yabai.Action.updateActiveWindowBorderColor
                             )
                         )
-                        ColorPickerView(
-                            text: "Normal",
+                        ColorPickerView(text: "Normal",
                             selection: vs.binding(
                                 get: \.normalWindowBorderColor.color,
                                 send: Yabai.Action.updateNormalWindowBorderColor
                             )
                         )
-                        ColorPickerView(
-                            text: "Insert",
+                        ColorPickerView(text: "Insert",
                             selection: vs.binding(
                                 get: \.insertWindowBorderColor.color,
                                 send: Yabai.Action.updateInsertWindowBorderColor
@@ -74,7 +68,6 @@ extension WindowSettingsView {
                     Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
                         .foregroundColor(Color(.gray))
                 }
-                
                 
                 // Disable Shadows
                 Divider()
@@ -114,7 +107,6 @@ extension WindowSettingsView {
                         .opacity(vs.sipEnabled ? 0.5 : 1.0)
                 }
                 
-                
                 // Opacity Effects
                 Divider()
                 VStack(alignment: .leading) {
@@ -126,7 +118,6 @@ extension WindowSettingsView {
                         Spacer()
                         SIPButton(store: Root.defaultStore)
                     }
-                    
                     HStack {
                         Toggle("", isOn: vs.binding(keyPath: \.windowOpacity, send: k))
                             .labelsHidden()
@@ -164,16 +155,12 @@ extension WindowSettingsView {
                                 )
                             )
                         }
-                        
                         Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
                             .foregroundColor(Color(.gray))
                     }
                     .disabled(vs.sipEnabled)
                     .opacity(vs.sipEnabled ? 0.5 : 1.0)
-
-                    
                 }
-                
                 Spacer()
             }
         }

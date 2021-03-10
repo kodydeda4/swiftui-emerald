@@ -21,6 +21,7 @@ struct SIPButton: View {
                 .foregroundColor(.accentColor)
             }
             .buttonStyle(PlainButtonStyle())
+            .opacity(viewStore.yabai.sipEnabled ? 1 : 0)
         }
     }
 }
