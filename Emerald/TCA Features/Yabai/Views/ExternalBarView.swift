@@ -14,21 +14,6 @@ struct ExternalBarSettingsView: View {
     
     var body: some View {
         WithViewStore(store) { vs in
-            HStack {
-                settings
-                    .padding()
-                    .navigationTitle("External Bar")
-                
-                Rectangle()
-                    .foregroundColor(.black)
-            }
-        }
-    }
-}
-
-extension ExternalBarSettingsView {
-    var settings: some View {
-        WithViewStore(store) { vs in
             VStack(alignment: .leading, spacing: 20) {
                 VStack(alignment: .leading) {
                     HStack {
@@ -68,10 +53,11 @@ extension ExternalBarSettingsView {
                 
                 Spacer()
             }
+            .padding()
+            .navigationTitle("Space")
         }
     }
 }
-
 
 // MARK:- SwiftUI_Previews
 struct ExternalBarSettingsView_Previews: PreviewProvider {

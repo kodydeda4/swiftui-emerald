@@ -33,6 +33,7 @@
 		3361CF1325E6EF1300016875 /* SpecialTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CF1025E6EF1300016875 /* SpecialTextView.swift */; };
 		336BC3A925F7FA5500BE3EBA /* NewWindowSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336BC3A825F7FA5500BE3EBA /* NewWindowSettings.swift */; };
 		336BC3B025F8069700BE3EBA /* FocusSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336BC3AF25F8069700BE3EBA /* FocusSettingsView.swift */; };
+		336BC3B425F8517100BE3EBA /* YabaiPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336BC3B325F8517100BE3EBA /* YabaiPreviewView.swift */; };
 		337F3ABE25DEC897009155CA /* SKHDShortcutCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337F3ABD25DEC897009155CA /* SKHDShortcutCharacter.swift */; };
 		3380D2FF25D05F4200C10913 /* EmeraldApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380D2FE25D05F4200C10913 /* EmeraldApp.swift */; };
 		3380D30325D05F4200C10913 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3380D30225D05F4200C10913 /* Assets.xcassets */; };
@@ -42,7 +43,6 @@
 		33812A7725F30121001D42EA /* Sliders in Frameworks */ = {isa = PBXBuildFile; productRef = 33812A7625F30121001D42EA /* Sliders */; };
 		3385DF6725D6270B00ACDE21 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3385DF6625D6270B00ACDE21 /* SidebarView.swift */; };
 		3385DF6A25D6279200ACDE21 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3385DF6925D6279200ACDE21 /* AboutView.swift */; };
-		3385DF6D25D628BF00ACDE21 /* DebugYabaiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3385DF6C25D628BF00ACDE21 /* DebugYabaiView.swift */; };
 		3385DF7025D6361200ACDE21 /* AppleScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3385DF6F25D6361200ACDE21 /* AppleScript.swift */; };
 		3398838C25DD7A1D007B9FF5 /* SKHD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398838B25DD7A1D007B9FF5 /* SKHD.swift */; };
 		3398838F25DD7DC3007B9FF5 /* DebugSKHDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398838E25DD7DC3007B9FF5 /* DebugSKHDView.swift */; };
@@ -80,6 +80,7 @@
 		3361CF1025E6EF1300016875 /* SpecialTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialTextView.swift; sourceTree = "<group>"; };
 		336BC3A825F7FA5500BE3EBA /* NewWindowSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWindowSettings.swift; sourceTree = "<group>"; };
 		336BC3AF25F8069700BE3EBA /* FocusSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusSettingsView.swift; sourceTree = "<group>"; };
+		336BC3B325F8517100BE3EBA /* YabaiPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiPreviewView.swift; sourceTree = "<group>"; };
 		337F3ABD25DEC897009155CA /* SKHDShortcutCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHDShortcutCharacter.swift; sourceTree = "<group>"; };
 		3380D2FB25D05F4200C10913 /* Emerald.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emerald.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3380D2FE25D05F4200C10913 /* EmeraldApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmeraldApp.swift; sourceTree = "<group>"; };
@@ -90,7 +91,6 @@
 		3380D33625D0723000C10913 /* Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Root.swift; sourceTree = "<group>"; };
 		3385DF6625D6270B00ACDE21 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		3385DF6925D6279200ACDE21 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
-		3385DF6C25D628BF00ACDE21 /* DebugYabaiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugYabaiView.swift; sourceTree = "<group>"; };
 		3385DF6F25D6361200ACDE21 /* AppleScript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleScript.swift; sourceTree = "<group>"; };
 		3398838B25DD7A1D007B9FF5 /* SKHD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHD.swift; sourceTree = "<group>"; };
 		3398838E25DD7DC3007B9FF5 /* DebugSKHDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugSKHDView.swift; sourceTree = "<group>"; };
@@ -133,7 +133,7 @@
 		3356BCB125F288BC006EB641 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3385DF6C25D628BF00ACDE21 /* DebugYabaiView.swift */,
+				336BC3B325F8517100BE3EBA /* YabaiPreviewView.swift */,
 				3356BCA225F28746006EB641 /* SpaceSettingsView.swift */,
 				3356BCAC25F287D9006EB641 /* WindowSettingsView.swift */,
 				336BC3A825F7FA5500BE3EBA /* NewWindowSettings.swift */,
@@ -372,7 +372,6 @@
 				3341B01125F06FF300833B56 /* Yabai+Extensions.swift in Sources */,
 				33B62D2925D5E31400DD5934 /* Onboarding.swift in Sources */,
 				330E144A25F2AFEE00E61969 /* SliderView.swift in Sources */,
-				3385DF6D25D628BF00ACDE21 /* DebugYabaiView.swift in Sources */,
 				3325BFD525F05041007831C5 /* RoundedRectangleButtonStyle.swift in Sources */,
 				3356BCA325F28746006EB641 /* SpaceSettingsView.swift in Sources */,
 				33387D6525D3F64300E76D29 /* Yabai.swift in Sources */,
@@ -398,6 +397,7 @@
 				332D567D25DEED5300C88FEE /* MacOSAnimations.swift in Sources */,
 				33AD2F7D25F254ED0018875E /* Homebrew.swift in Sources */,
 				339C453125D6ECCA0079ACA1 /* RootView.swift in Sources */,
+				336BC3B425F8517100BE3EBA /* YabaiPreviewView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

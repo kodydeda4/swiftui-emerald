@@ -14,22 +14,6 @@ struct NewWindowSettings: View {
     
     var body: some View {
         WithViewStore(store) { vs in
-            HStack {
-                settings
-                    .padding()
-                    .navigationTitle("New Window")
-
-                Rectangle()
-                    .foregroundColor(.black)
-            }
-        }
-    }
-}
-
-
-extension NewWindowSettings {
-    var settings: some View {
-        WithViewStore(store) { vs in
             VStack(alignment: .leading, spacing: 20) {
                 VStack(alignment: .leading) {
                     Text("Placement").bold().font(.title3)
@@ -63,15 +47,17 @@ extension NewWindowSettings {
                     
                     Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
                         .foregroundColor(Color(.gray))
-
+                    
                 }
                 Spacer()
             }
+            .padding()
+            .navigationTitle("Space")
         }
     }
 }
 
-
+// MARK:- SwiftUI_Previews
 struct NewWindowSettings_Previews: PreviewProvider {
     static var previews: some View {
         NewWindowSettings(store: Yabai.defaultStore)

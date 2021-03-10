@@ -14,22 +14,8 @@ struct SpaceSettingsView: View {
     
     var body: some View {
         WithViewStore(store) { vs in
-            HStack {
-                settings
-                    .padding()
-                    .navigationTitle("Space")
-                
-                Rectangle()
-                    .foregroundColor(.black)
-            }
-        }
-    }
-}
-
-extension SpaceSettingsView {
-    var settings: some View {
-        WithViewStore(store) { vs in
             VStack(alignment: .leading, spacing: 20) {
+                
                 // Layout
                 VStack(alignment: .leading) {
                     Text("Layout").bold().font(.title3)
@@ -45,8 +31,9 @@ extension SpaceSettingsView {
                     Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
                         .foregroundColor(Color(.gray))
                 }
-                Divider()
+                
                 // Padding
+                Divider()
                 VStack(alignment: .leading) {
                     Text("Padding").bold().font(.title3)
                     HStack {
@@ -77,12 +64,13 @@ extension SpaceSettingsView {
                         )
                     }
                 }
-                Divider()
+                
                 // Float-On-Top
+                Divider()
                 VStack(alignment: .leading) {
                     HStack {
-                            Toggle("", isOn: vs.binding(keyPath: \.windowTopmost, send: k))
-                                .labelsHidden()
+                        Toggle("", isOn: vs.binding(keyPath: \.windowTopmost, send: k))
+                            .labelsHidden()
                         
                         Text("Float-On-Top").bold().font(.title3)
                         Spacer()
@@ -94,7 +82,7 @@ extension SpaceSettingsView {
                             .foregroundColor(.accentColor)
                         }
                         .buttonStyle(PlainButtonStyle())
-
+                        
                     }
                     Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
                         .foregroundColor(Color(.gray))
@@ -102,9 +90,13 @@ extension SpaceSettingsView {
                 }
                 Spacer()
             }
+            
+            .padding()
+            .navigationTitle("Space")
         }
     }
 }
+
 
 // MARK:- SwiftUI_Previews
 struct SpaceSettingsView_Previews: PreviewProvider {

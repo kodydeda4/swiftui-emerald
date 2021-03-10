@@ -14,21 +14,6 @@ struct MouseSettingsView: View {
     
     var body: some View {
         WithViewStore(store) { vs in
-            HStack {
-                settings
-                    .padding()
-                    .navigationTitle("Mouse")
-                
-                Rectangle()
-                    .foregroundColor(.black)
-            }
-        }
-    }
-}
-
-extension MouseSettingsView {
-    var settings: some View {
-        WithViewStore(store) { vs in
             VStack(alignment: .leading, spacing: 20) {
                 VStack(alignment: .leading) {
                     Text("Modifier Key").bold().font(.title3)
@@ -89,10 +74,11 @@ extension MouseSettingsView {
                 }
                 Spacer()
             }
+            .padding()
+            .navigationTitle("Space")
         }
     }
 }
-
 
 // MARK:- SwiftUI_Previews
 struct MouseSettingsView_Previews: PreviewProvider {

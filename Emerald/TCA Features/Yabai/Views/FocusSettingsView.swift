@@ -14,21 +14,6 @@ struct FocusSettingsView: View {
     
     var body: some View {
         WithViewStore(store) { vs in
-            HStack {
-                settings
-                    .padding()
-                    .navigationTitle("Mouse")
-                
-                Rectangle()
-                    .foregroundColor(.black)
-            }
-        }
-    }
-}
-
-extension FocusSettingsView {
-    var settings: some View {
-        WithViewStore(store) { vs in
             VStack(alignment: .leading, spacing: 20) {
                 VStack(alignment: .leading) {
                     HStack {
@@ -64,6 +49,8 @@ extension FocusSettingsView {
                 }
                 Spacer()
             }
+            .padding()
+            .navigationTitle("Space")
         }
     }
 }

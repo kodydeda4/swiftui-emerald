@@ -8,6 +8,8 @@
 import SwiftUI
 import ComposableArchitecture
 
+
+
 struct RootView: View {
     let store: Store<Root.State, Root.Action>
 
@@ -15,7 +17,22 @@ struct RootView: View {
         WithViewStore(store) { viewStore in
             NavigationView {
                 SidebarView(store: store)
-                DebugYabaiView(store: store.scope(state: \.yabai, action: Root.Action.yabai))
+                SpaceSettingsView(store: store.scope(state: \.yabai, action: Root.Action.yabai))
+                
+                TabView {
+                    DebugConfigFileView(text: viewStore.yabai.asConfig)
+                        .tabItem { Label("Yabai", systemImage: "square.and.pencil") }
+                    
+                    DebugConfigFileView(text: viewStore.skhd.asConfig)
+                        .tabItem { Label("SKHD", systemImage: "square.and.pencil") }
+                    
+                    DebugConfigFileView(text: viewStore.macOSAnimations.asConfig)
+                        .tabItem { Label("Animations", systemImage: "square.and.pencil") }
+
+
+                }
+                .padding()
+                
                 
             }
             .onAppear {

@@ -14,14 +14,9 @@ struct WindowSettingsView: View {
     
     var body: some View {
         WithViewStore(store) { vs in
-            HStack {
-                settings
-                    .padding()
-                    .navigationTitle("Window")
-                
-                Rectangle()
-                    .foregroundColor(.black)
-            }
+            settings
+                .padding()
+                .navigationTitle("Space")
         }
     }
 }
@@ -30,6 +25,7 @@ extension WindowSettingsView {
     var settings: some View {
         WithViewStore(store) { vs in
             VStack(alignment: .leading, spacing: 20) {
+                
                 // Borders
                 VStack(alignment: .leading) {
                     HStack {
@@ -70,8 +66,9 @@ extension WindowSettingsView {
                     Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
                         .foregroundColor(Color(.gray))
                 }
-                Divider()
+                
                 // Disable Shadows
+                Divider()
                 VStack(alignment: .leading) {
                     Text("Shadows").bold().font(.title3)
                     HStack {
@@ -93,8 +90,9 @@ extension WindowSettingsView {
                     Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
                         .foregroundColor(Color(.gray))
                 }
-                Divider()
+                
                 // Opacity Effects
+                Divider()
                 VStack(alignment: .leading) {
                     Text("Opacity").bold().font(.title3)
 
