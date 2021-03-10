@@ -63,7 +63,7 @@ struct Yabai {
             case off
             case float
             
-            var uiDescription: String {
+            var labelDescription: String {
                 switch self {
                 //case .on    : return "On"
                 case .off   : return "All"

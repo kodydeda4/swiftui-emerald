@@ -69,7 +69,7 @@ struct WindowSettingsView: View {
                     HStack {
                         Picker("", selection: vs.binding(\.windowShadow, k)) {
                             ForEach(Yabai.State.WindowShadow.allCases) {
-                                Text($0.uiDescription.lowercased())
+                                Text($0.labelDescription.lowercased())
                             }
                         }
                         .labelsHidden()
