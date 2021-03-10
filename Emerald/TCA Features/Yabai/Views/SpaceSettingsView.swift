@@ -32,8 +32,7 @@ struct SpaceSettingsView: View {
                     .pickerStyle(SegmentedPickerStyle())
                     .frame(width: 200)
                     
-                    Text(vs.layout.desc)
-                    //Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
+                    Text(vs.layout.caseDescription)
                         .foregroundColor(Color(.gray))
                 }
                 
@@ -71,7 +70,8 @@ struct SpaceSettingsView: View {
                         Spacer()
                         SIPButton(store: Root.defaultStore)
                     }
-                    Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
+                    
+                    Text("STATIC Description about Float-On-Top")
                         .foregroundColor(Color(.gray))
                         .disabled(vs.sipEnabled || vs.layout == .float)
                         .opacity( vs.sipEnabled || vs.layout == .float ? 0.5 : 1.0)

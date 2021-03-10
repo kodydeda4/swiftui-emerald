@@ -30,7 +30,7 @@ struct NewWindowSettings: View {
                     .pickerStyle(SegmentedPickerStyle())
                     .frame(width: 200)
                     
-                    Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
+                    Text(vs.windowPlacement.caseDescription)
                         .foregroundColor(Color(.gray))
                     
                 }
@@ -55,7 +55,7 @@ struct NewWindowSettings: View {
                         .disabled(vs.windowBalance != .custom)
                         .opacity(vs.windowBalance != .custom ? 0.5 : 1.0)
 
-                    Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
+                    Text(vs.windowBalance.caseDescription)
                         .foregroundColor(Color(.gray))
                     
                 }

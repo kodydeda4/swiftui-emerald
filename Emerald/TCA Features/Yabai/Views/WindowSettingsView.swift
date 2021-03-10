@@ -41,7 +41,7 @@ struct WindowSettingsView: View {
                     .disabled(!vs.windowBorder || vs.sipEnabled)
                     .opacity( !vs.windowBorder || vs.sipEnabled ? 0.5 : 1.0)
                     
-                    Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
+                    Text("STATIC Description about Borders")
                         .foregroundColor(Color(.gray))
                 }
                 
@@ -80,7 +80,7 @@ struct WindowSettingsView: View {
                     .disabled(vs.sipEnabled)
                     .opacity( vs.sipEnabled ? 0.5 : 1.0)
                     
-                    Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
+                    Text(vs.windowShadow.caseDescription)
                         .foregroundColor(Color(.gray))
                         .disabled(vs.sipEnabled)
                         .opacity( vs.sipEnabled ? 0.5 : 1.0)
@@ -120,7 +120,7 @@ struct WindowSettingsView: View {
                             Text("Normal Windows").foregroundColor(Color(.gray))
                             Slider(value: vs.binding(\.normalWindowOpacity, k))
                         }
-                        Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
+                        Text("STATIC Description about Opacity")
                             .foregroundColor(Color(.gray))
                     }
                     .disabled(vs.sipEnabled)

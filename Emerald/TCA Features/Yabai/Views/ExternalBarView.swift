@@ -35,7 +35,7 @@ struct ExternalBarSettingsView: View {
                     .frame(width: 100)
                     .disabled(!vs.externalBarEnabled)
                     
-                    Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
+                    Text(vs.externalBar.caseDescription)
                         .foregroundColor(Color(.gray))
                 }
                 

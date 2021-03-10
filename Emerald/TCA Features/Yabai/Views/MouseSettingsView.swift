@@ -30,7 +30,7 @@ struct MouseSettingsView: View {
                     .pickerStyle(SegmentedPickerStyle())
                     .frame(width: 350)
                     
-                    Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
+                    Text("STATIC Description about Mouse Modifier")
                         .foregroundColor(Color(.gray))
                 }
                 
@@ -49,6 +49,9 @@ struct MouseSettingsView: View {
                     .labelsHidden()
                     .pickerStyle(SegmentedPickerStyle())
                     .frame(width: 100)
+                    
+                    Text(vs.mouseAction1.caseDescription)
+                        .foregroundColor(Color(.gray))
                 }
                 
                 // Right Click + Modifier
@@ -66,6 +69,9 @@ struct MouseSettingsView: View {
                     .labelsHidden()
                     .pickerStyle(SegmentedPickerStyle())
                     .frame(width: 100)
+                    
+                    Text(vs.mouseAction2.caseDescription)
+                        .foregroundColor(Color(.gray))
                 }
                 
                 // Drop Action
@@ -84,7 +90,7 @@ struct MouseSettingsView: View {
                     .pickerStyle(SegmentedPickerStyle())
                     .frame(width: 100)
                     
-                    Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
+                    Text(vs.mouseDropAction.caseDescription)
                         .foregroundColor(Color(.gray))
                 }
                 Spacer()

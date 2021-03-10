@@ -43,7 +43,7 @@ struct FocusSettingsView: View {
                     .disabled(!vs.focusFollowsMouseEnabled || vs.sipEnabled)
                     .opacity( !vs.focusFollowsMouseEnabled || vs.sipEnabled ? 0.5 : 1.0)
 
-                    Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
+                    Text(vs.focusFollowsMouse.caseDescription)
                         .foregroundColor(Color(.gray))
                         .disabled(vs.sipEnabled)
                         .opacity( vs.sipEnabled ? 0.5 : 1.0)
@@ -66,7 +66,8 @@ struct FocusSettingsView: View {
                         Spacer()
                         SIPButton(store: Root.defaultStore)
                     }
-                    Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
+                    
+                    Text("STATIC Description of mouse follows focus")
                         .foregroundColor(Color(.gray))
                         .disabled(vs.sipEnabled)
                         .opacity( vs.sipEnabled ? 0.5 : 1.0)

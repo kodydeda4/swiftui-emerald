@@ -56,6 +56,13 @@ struct Yabai {
             //case off
             case all
             case main
+            
+            var caseDescription: String {
+                switch self {
+                case .all  : return "Description about all"
+                case .main : return "Description about main"
+                }
+            }
         }
         enum WindowShadow: String, Codable, CaseIterable, Identifiable {
             var id: WindowShadow { self }
@@ -70,12 +77,25 @@ struct Yabai {
                 case .float : return "Non-Floating"
                 }
             }
+            var caseDescription: String {
+                switch self {
+                case .off   : return "Description about off"
+                case .float : return "Description about float"
+                }
+            }
         }
         enum FocusFollowsMouse: String, Codable, CaseIterable, Identifiable {
             var id: FocusFollowsMouse { self }
             //case off
             case autofocus
             case autoraise
+            
+            var caseDescription: String {
+                switch self {
+                case .autofocus : return "Description about autofocus"
+                case .autoraise : return "Description about autoraise"
+                }
+            }
         }
         enum WindowPlacement: String, Codable, CaseIterable, Identifiable {
             var id: WindowPlacement { self }
@@ -86,6 +106,12 @@ struct Yabai {
                 switch self {
                 case .first_child  : return "First Child"
                 case .second_child : return "Second Child"
+                }
+            }
+            var caseDescription: String {
+                switch self {
+                case .first_child  : return "Description about first_child"
+                case .second_child : return "Description about second_child"
                 }
             }
         }
@@ -111,11 +137,25 @@ struct Yabai {
             var id: MouseAction { self }
             case move
             case resize
+            
+            var caseDescription: String {
+                switch self {
+                case .move   : return "Description about move"
+                case .resize : return "Description about resize"
+                }
+            }
         }
         enum MouseDropAction: String, Codable, CaseIterable, Identifiable {
             var id: MouseDropAction { self }
             case swap
             case stack
+            
+            var caseDescription: String {
+                switch self {
+                case .swap  : return "Description about swap"
+                case .stack : return "Description about stack"
+                }
+            }
         }
         enum Layout: String, Codable, CaseIterable, Identifiable {
             var id: Layout { self }
@@ -130,9 +170,12 @@ struct Yabai {
                 case .stack : return "Stacking"
                 }
             }
-            
-            var desc: String {
-                "foo"
+            var caseDescription: String {
+                switch self {
+                case .float : return "Description about floating"
+                case .bsp   : return "Description about bsp"
+                case .stack : return "Description about stacking"
+                }
             }
         }
         enum WindowBalance: String, Codable, CaseIterable, Identifiable {
@@ -146,6 +189,13 @@ struct Yabai {
                 case .normal : return "Normal"
                 case .auto   : return "Auto"
                 case .custom : return "Custom"
+                }
+            }
+            var caseDescription: String {
+                switch self {
+                case .normal : return "Description about normal"
+                case .auto   : return "Description about auto"
+                case .custom : return "Description about custom"
                 }
             }
         }
