@@ -8,6 +8,8 @@
 import SwiftUI
 import ComposableArchitecture
 
+
+
 struct SpaceSettingsView: View {
     let store: Store<Yabai.State, Yabai.Action>
     let k = Yabai.Action.keyPath
@@ -21,7 +23,7 @@ struct SpaceSettingsView: View {
                     Text("Layout")
                         .bold().font(.title3)
                     
-                    Picker("", selection: vs.binding(keyPath: \.layout, send: k)) {
+                    Picker("", selection: vs.binding(\.layout, k)) {
                         ForEach(Yabai.State.Layout.allCases) {
                             Text($0.uiDescription.lowercased())
                         }
@@ -41,23 +43,22 @@ struct SpaceSettingsView: View {
                         .bold().font(.title3)
                     
                     HStack {
-                        StepperView("Top",    vs.binding(keyPath: \.paddingTop,    send: k))
-                        StepperView("Bottom", vs.binding(keyPath: \.paddingBottom, send: k))
-                        StepperView("Left",   vs.binding(keyPath: \.paddingLeft,   send: k))
-                        StepperView("Right",  vs.binding(keyPath: \.paddingRight,  send: k))
-                        StepperView("Gaps",   vs.binding(keyPath: \.windowGap,     send: k))
+                        StepperView("Top",    vs.binding(\.paddingTop, k))
+                        StepperView("Bottom", vs.binding(\.paddingBottom, k))
+                        StepperView("Left",   vs.binding(\.paddingLeft, k))
+                        StepperView("Right",  vs.binding(\.paddingRight, k))
+                        StepperView("Gaps",   vs.binding(\.windowGap, k))
                     }
                 }
                 .disabled(vs.layout == .float)
                 .opacity(vs.layout == .float ? 0.5 : 1.0)
-                
                 
                 // Float-On-Top
                 VStack(alignment: .leading) {
                     Divider()
                     HStack {
                         Group {
-                            Toggle("", isOn: vs.binding(keyPath: \.windowTopmost, send: k))
+                            Toggle("", isOn: vs.binding(\.windowTopmost, k))
                                 .labelsHidden()
                             
                             Text("Float-On-Top")

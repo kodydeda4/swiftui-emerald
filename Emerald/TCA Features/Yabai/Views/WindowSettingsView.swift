@@ -20,7 +20,7 @@ struct WindowSettingsView: View {
                 VStack(alignment: .leading) {
                     HStack {
                         Group {
-                            Toggle("", isOn: vs.binding(keyPath: \.windowBorder, send: k))
+                            Toggle("", isOn: vs.binding(\.windowBorder, k))
                                 .labelsHidden()
                             
                             Text("Borders")
@@ -33,10 +33,10 @@ struct WindowSettingsView: View {
                         SIPButton(store: Root.defaultStore)
                     }
                     HStack {
-                        StepperView("Width", vs.binding(keyPath: \.windowBorderWidth, send: k))
-                        ColorPickerView("Focused", vs.binding(keyPath: \.activeWindowBorderColor, send: k))
-                        ColorPickerView("Normal",  vs.binding(keyPath: \.normalWindowBorderColor, send: k))
-                        ColorPickerView("Insert",  vs.binding(keyPath: \.insertWindowBorderColor, send: k))
+                        StepperView("Width", vs.binding(\.windowBorderWidth, k))
+                        ColorPickerView("Focused", vs.binding(\.activeWindowBorderColor, k))
+                        ColorPickerView("Normal",  vs.binding(\.normalWindowBorderColor, k))
+                        ColorPickerView("Insert",  vs.binding(\.insertWindowBorderColor, k))
                     }
                     .disabled(!vs.windowBorder || vs.sipEnabled)
                     .opacity( !vs.windowBorder || vs.sipEnabled ? 0.5 : 1.0)
@@ -58,7 +58,7 @@ struct WindowSettingsView: View {
                         SIPButton(store: Root.defaultStore)
                     }
                     HStack {
-                        Toggle("", isOn: vs.binding(keyPath: \.disableShadows, send: k))
+                        Toggle("", isOn: vs.binding(\.disableShadows, k))
                             .labelsHidden()
                         
                         Text("Disable Shadows")
@@ -67,7 +67,7 @@ struct WindowSettingsView: View {
                     .opacity( vs.sipEnabled ? 0.5 : 1.0)
                     
                     HStack {
-                        Picker("", selection: vs.binding(keyPath: \.windowShadow, send: k)) {
+                        Picker("", selection: vs.binding(\.windowShadow, k)) {
                             ForEach(Yabai.State.WindowShadow.allCases) {
                                 Text($0.uiDescription.lowercased())
                             }
@@ -99,7 +99,7 @@ struct WindowSettingsView: View {
                         SIPButton(store: Root.defaultStore)
                     }
                     HStack {
-                        Toggle("", isOn: vs.binding(keyPath: \.windowOpacity, send: k))
+                        Toggle("", isOn: vs.binding(\.windowOpacity, k))
                             .labelsHidden()
                         
                         Text("Change Opacity")
@@ -110,15 +110,15 @@ struct WindowSettingsView: View {
                     VStack(alignment: .leading) {
                         VStack(alignment: .leading) {
                             Text("Animation Duration").foregroundColor(Color(.gray))
-                            Slider(value: vs.binding(keyPath: \.windowOpacityDuration, send: k))
+                            Slider(value: vs.binding(\.windowOpacityDuration, k))
                         }
                         VStack(alignment: .leading) {
                             Text("Active Windows").foregroundColor(Color(.gray))
-                            Slider(value: vs.binding(keyPath: \.activeWindowOpacity, send: k))
+                            Slider(value: vs.binding(\.activeWindowOpacity, k))
                         }
                         VStack(alignment: .leading) {
                             Text("Normal Windows").foregroundColor(Color(.gray))
-                            Slider(value: vs.binding(keyPath: \.normalWindowOpacity, send: k))
+                            Slider(value: vs.binding(\.normalWindowOpacity, k))
                         }
                         Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
                             .foregroundColor(Color(.gray))

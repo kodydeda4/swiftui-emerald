@@ -21,7 +21,7 @@ struct NewWindowSettings: View {
                     Text("Placement")
                         .bold().font(.title3)
                     
-                    Picker("", selection: vs.binding(keyPath: \.windowPlacement, send: k)) {
+                    Picker("", selection: vs.binding(\.windowPlacement, k)) {
                         ForEach(Yabai.State.WindowPlacement.allCases) {
                             Text($0.uiDescription.lowercased())
                         }
@@ -42,7 +42,7 @@ struct NewWindowSettings: View {
                     Text("Split Ratio")
                         .bold().font(.title3)
                     
-                    Picker("", selection: vs.binding(keyPath: \.windowBalance, send: k)) {
+                    Picker("", selection: vs.binding(\.windowBalance, k)) {
                         ForEach(Yabai.State.WindowBalance.allCases) {
                             Text($0.uiDescription.lowercased())
                         }
@@ -51,7 +51,7 @@ struct NewWindowSettings: View {
                     .pickerStyle(SegmentedPickerStyle())
                     .frame(width: 200)
                     
-                    Slider(value: vs.binding(keyPath: \.splitRatio, send: k))
+                    Slider(value: vs.binding(\.splitRatio, k))
                         .disabled(vs.windowBalance != .custom)
                         .opacity(vs.windowBalance != .custom ? 0.5 : 1.0)
 

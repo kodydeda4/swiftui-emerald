@@ -19,13 +19,13 @@ struct ExternalBarSettingsView: View {
                 // External Bar
                 VStack(alignment: .leading) {
                     HStack {
-                        Toggle("", isOn: vs.binding(keyPath: \.externalBarEnabled, send: k))
+                        Toggle("", isOn: vs.binding(\.externalBarEnabled, k))
                             .labelsHidden()
                         
                         Text("External Bar")
                             .bold().font(.title3)
                     }
-                    Picker("", selection: vs.binding(keyPath: \.externalBar, send: k)) {
+                    Picker("", selection: vs.binding(\.externalBar, k)) {
                         ForEach(Yabai.State.ExternalBar.allCases) {
                             Text($0.rawValue)
                         }
@@ -46,8 +46,8 @@ struct ExternalBarSettingsView: View {
                         .bold().font(.title3)
                     
                     HStack {
-                        StepperView("Top", vs.binding(keyPath: \.externalBarPaddingTop, send: k))
-                        StepperView("Bottom", vs.binding(keyPath: \.externalBarPaddingBottom, send: k))
+                        StepperView("Top", vs.binding(\.externalBarPaddingTop, k))
+                        StepperView("Bottom", vs.binding(\.externalBarPaddingBottom, k))
                     }
                 }
                 .disabled(!vs.externalBarEnabled)

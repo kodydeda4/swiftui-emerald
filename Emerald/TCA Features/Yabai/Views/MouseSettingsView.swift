@@ -21,7 +21,7 @@ struct MouseSettingsView: View {
                     Text("Modifier Key")
                         .bold().font(.title3)
                     
-                    Picker("", selection: vs.binding(keyPath: \.mouseModifier, send: k)) {
+                    Picker("", selection: vs.binding(\.mouseModifier, k)) {
                         ForEach(Yabai.State.MouseModifier.allCases) {
                             Text($0.uiDescription.lowercased())
                         }
@@ -41,7 +41,7 @@ struct MouseSettingsView: View {
                     Text("Left Click + Modifier")
                         .bold().font(.title3)
                     
-                    Picker("", selection: vs.binding(keyPath: \.mouseAction1, send: k)) {
+                    Picker("", selection: vs.binding(\.mouseAction1, k)) {
                         ForEach(Yabai.State.MouseAction.allCases) {
                             Text($0.rawValue)
                         }
@@ -58,7 +58,7 @@ struct MouseSettingsView: View {
                     Text("Right Click + Modifier")
                         .bold().font(.title3)
                     
-                    Picker("", selection: vs.binding(keyPath: \.mouseAction2, send: k)) {
+                    Picker("", selection: vs.binding(\.mouseAction2, k)) {
                         ForEach(Yabai.State.MouseAction.allCases) {
                             Text($0.rawValue)
                         }
@@ -75,7 +75,7 @@ struct MouseSettingsView: View {
                     Text("Drop Action")
                         .bold().font(.title3)
                     
-                    Picker("", selection: vs.binding(keyPath: \.mouseDropAction, send: k)) {
+                    Picker("", selection: vs.binding(\.mouseDropAction, k)) {
                         ForEach(Yabai.State.MouseDropAction.allCases) {
                             Text($0.rawValue)
                         }

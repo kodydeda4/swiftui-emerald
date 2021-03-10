@@ -20,7 +20,7 @@ struct FocusSettingsView: View {
                 VStack(alignment: .leading) {
                     HStack {
                         Group {
-                            Toggle("", isOn: vs.binding(keyPath: \.focusFollowsMouseEnabled, send: k))
+                            Toggle("", isOn: vs.binding(\.focusFollowsMouseEnabled, k))
                                 .labelsHidden()
                             
                             Text("Auto Focus")
@@ -32,7 +32,7 @@ struct FocusSettingsView: View {
                         Spacer()
                         SIPButton(store: Root.defaultStore)
                     }
-                    Picker("", selection: vs.binding(keyPath: \.focusFollowsMouse, send: k)) {
+                    Picker("", selection: vs.binding(\.focusFollowsMouse, k)) {
                         ForEach(Yabai.State.FocusFollowsMouse.allCases) {
                             Text($0.rawValue)
                         }
@@ -54,7 +54,7 @@ struct FocusSettingsView: View {
                     Divider()
                     HStack {
                         Group {
-                            Toggle("Enabled", isOn: vs.binding(keyPath: \.mouseFollowsFocus, send: k))
+                            Toggle("Enabled", isOn: vs.binding(\.mouseFollowsFocus, k))
                                 .labelsHidden()
                             
                             Text("Follow Focus")

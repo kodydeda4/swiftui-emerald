@@ -150,19 +150,6 @@ struct Yabai {
     enum Action: Equatable {
         case keyPath(BindingAction<Yabai.State>)
         case toggleSIP
-        case updateWindowShadows(Yabai.State.WindowShadow)
-        case updateWindowPlacement(Yabai.State.WindowPlacement)
-        case updateLayout(Yabai.State.Layout)
-        case updateFocusFollowsMouse(Yabai.State.FocusFollowsMouse)
-        case updateMouseAction1(Yabai.State.MouseAction)
-        case updateMouseAction2(Yabai.State.MouseAction)
-        case updateMouseDropAction(Yabai.State.MouseDropAction)
-        case updateMouseModifier(Yabai.State.MouseModifier)
-        case updateExternalBar(Yabai.State.ExternalBar)
-        case updateActiveWindowBorderColor(Color)
-        case updateNormalWindowBorderColor(Color)
-        case updateInsertWindowBorderColor(Color)
-        case toggleExternalBarIsDisabled
     }
 }
 
@@ -172,59 +159,7 @@ extension Yabai {
         switch action {
         case .keyPath:
             return .none
-            
-        case let .updateActiveWindowBorderColor(color):
-            state.activeWindowBorderColor = CodableColor(color: color)
-            return .none
 
-        case let .updateNormalWindowBorderColor(color):
-            state.normalWindowBorderColor = CodableColor(color: color)
-            return .none
-
-        case let .updateInsertWindowBorderColor(color):
-            state.insertWindowBorderColor = CodableColor(color: color)
-            return .none
-            
-        case let .updateWindowShadows(windowShadow):
-            state.windowShadow = windowShadow
-            return .none
-            
-        case let .updateWindowPlacement(windowPlacement):
-            state.windowPlacement = windowPlacement
-            return .none
-            
-        case let .updateLayout(layout):
-            state.layout = layout
-            return .none
-            
-        case let .updateFocusFollowsMouse(focusFollowsMouse):
-            state.focusFollowsMouse = focusFollowsMouse
-            return .none
-            
-        case let .updateMouseAction1(mouseAction1):
-            state.mouseAction1 = mouseAction1
-            return .none
-            
-        case let .updateMouseAction2(mouseAction2):
-            state.mouseAction2 = mouseAction2
-            return .none
-            
-        case let .updateMouseDropAction(mouseDropAction):
-            state.mouseDropAction = mouseDropAction
-            return .none
-            
-        case let .updateMouseModifier(mouseModifier):
-            state.mouseModifier = mouseModifier
-            return .none
-            
-        case let .updateExternalBar(externalBar):
-            state.externalBar = externalBar
-            return .none
-                        
-        case .toggleExternalBarIsDisabled:
-            state.externalBarEnabled.toggle()
-            return .none
-            
         case .toggleSIP:
             state.sipEnabled.toggle()
             return .none
