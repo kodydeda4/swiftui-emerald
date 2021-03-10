@@ -74,15 +74,8 @@ struct SpaceSettingsView: View {
                         
                         Text("Float-On-Top").bold().font(.title3)
                         Spacer()
-                        Button(action: {}) {
-                            HStack {
-                                Image(systemName: "lock.fill")
-                                Text("SIP Enabled")
-                            }
-                            .foregroundColor(.accentColor)
-                        }
-                        .buttonStyle(PlainButtonStyle())
                         
+                        SIPButton(store: Root.defaultStore)
                     }
                     Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
                         .foregroundColor(Color(.gray))
@@ -96,6 +89,7 @@ struct SpaceSettingsView: View {
         }
     }
 }
+
 
 
 // MARK:- SwiftUI_Previews

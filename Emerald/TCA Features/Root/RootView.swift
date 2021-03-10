@@ -12,7 +12,7 @@ import ComposableArchitecture
 
 struct RootView: View {
     let store: Store<Root.State, Root.Action>
-
+    
     var body: some View {
         WithViewStore(store) { viewStore in
             NavigationView {
@@ -28,8 +28,6 @@ struct RootView: View {
                     
                     DebugConfigFileView(text: viewStore.macOSAnimations.asConfig)
                         .tabItem { Label("Animations", systemImage: "square.and.pencil") }
-
-
                 }
                 .padding()
                 
@@ -51,22 +49,22 @@ struct RootView: View {
                 )
             }
             .toolbar {
-//                ToolbarItem(placement: .navigation) {
-//                    Button(action: toggleSidebar) {
-//                        Image(systemName: "sidebar.left")
-//                    }
-//                }
-//                ToolbarItem {
-//                    Button("Toggle OnboardingView") {
-//                        viewStore.send(.onboarding(.toggleIsOnboaring))
-//                    }
-//                }
-//                ToolbarItem {
-//                    Button("Apply Animation Changes") {
-//                        viewStore.send(.export(.macOSAnimations))
-//                        let _ = AppleScript.applyAnimationSettings.execute()
-//                    }
-//                }
+                ToolbarItem(placement: .navigation) {
+                    Button(action: toggleSidebar) {
+                        Image(systemName: "sidebar.left")
+                    }
+                }
+                ToolbarItem {
+                    Button("Toggle OnboardingView") {
+                        viewStore.send(.onboarding(.toggleIsOnboaring))
+                    }
+                }
+                //                ToolbarItem {
+                //                    Button("Apply Animation Changes") {
+                //                        viewStore.send(.export(.macOSAnimations))
+                //                        let _ = AppleScript.applyAnimationSettings.execute()
+                //                    }
+                //                }
                 ToolbarItem {
                     Button("Reset") {
                         viewStore.send(.reset(.yabai))

@@ -109,7 +109,6 @@ extension Root {
 //                default:
 //                    return environment.save(state.yabai, to: state.yabai.stateURL)
 //                }
-                
             return environment.save(state.yabai, to: state.yabai.stateURL)
                 
             case .skhd:

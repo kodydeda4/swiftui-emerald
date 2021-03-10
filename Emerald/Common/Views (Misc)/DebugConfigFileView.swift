@@ -16,11 +16,12 @@ struct DebugConfigFileView: View {
                 Text(text)
                     .font(.system(size: 11, design: .monospaced))
                     .foregroundColor(.accentColor)
+                    .frame(width: 380, alignment: .leading)
+
             }
             .padding()
             .background(Color.black)
             .border(Color.accentColor)
-            
         }
         .padding()
     }

@@ -13,15 +13,13 @@ struct AboutView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            VStack {
-                SectionView("Emerald") {
-                    Text(viewStore.yabai.version)
-                        .foregroundColor(.gray)
-                    Text(viewStore.skhd.version)
-                        .foregroundColor(.gray)
-                    Text(viewStore.homebrew.version.split(separator: "\n").first ?? "")
-                        .foregroundColor(.gray)
-                }
+            Section(header: Text("Emerald")) {
+                Text(viewStore.yabai.version)
+                    .foregroundColor(.gray)
+                Text(viewStore.skhd.version)
+                    .foregroundColor(.gray)
+                Text(viewStore.homebrew.version.split(separator: "\n").first ?? "")
+                    .foregroundColor(.gray)
             }
             .navigationTitle("About")
         }
