@@ -23,7 +23,7 @@ struct NewWindowSettings: View {
                     
                     Picker("", selection: vs.binding(\.windowPlacement, k)) {
                         ForEach(Yabai.State.WindowPlacement.allCases) {
-                            Text($0.uiDescription.lowercased())
+                            Text($0.labelDescription.lowercased())
                         }
                     }
                     .labelsHidden()
@@ -44,7 +44,7 @@ struct NewWindowSettings: View {
                     
                     Picker("", selection: vs.binding(\.windowBalance, k)) {
                         ForEach(Yabai.State.WindowBalance.allCases) {
-                            Text($0.uiDescription.lowercased())
+                            Text($0.labelDescription.lowercased())
                         }
                     }
                     .labelsHidden()

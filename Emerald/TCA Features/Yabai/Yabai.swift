@@ -82,7 +82,7 @@ struct Yabai {
             case first_child
             case second_child
             
-            var uiDescription: String {
+            var labelDescription: String {
                 switch self {
                 case .first_child  : return "First Child"
                 case .second_child : return "Second Child"
@@ -97,7 +97,7 @@ struct Yabai {
             case alt
             case cmd
             
-            var uiDescription: String {
+            var labelDescription: String {
                 switch self {
                 case .fn    : return "Fn"
                 case .shift : return "⇧ Shift"
@@ -123,12 +123,16 @@ struct Yabai {
             case bsp
             case stack
             
-            var uiDescription: String {
+            var labelDescription: String {
                 switch self {
                 case .float : return "Normal"
                 case .bsp   : return "Tiling"
                 case .stack : return "Stacking"
                 }
+            }
+            
+            var desc: String {
+                "foo"
             }
         }
         enum WindowBalance: String, Codable, CaseIterable, Identifiable {
@@ -137,7 +141,7 @@ struct Yabai {
             case auto
             case custom
             
-            var uiDescription: String {
+            var labelDescription: String {
                 switch self {
                 case .normal : return "Normal"
                 case .auto   : return "Auto"

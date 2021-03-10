@@ -25,14 +25,15 @@ struct SpaceSettingsView: View {
                     
                     Picker("", selection: vs.binding(\.layout, k)) {
                         ForEach(Yabai.State.Layout.allCases) {
-                            Text($0.uiDescription.lowercased())
+                            Text($0.labelDescription.lowercased())
                         }
                     }
                     .labelsHidden()
                     .pickerStyle(SegmentedPickerStyle())
                     .frame(width: 200)
                     
-                    Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
+                    Text(vs.layout.desc)
+                    //Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
                         .foregroundColor(Color(.gray))
                 }
                 

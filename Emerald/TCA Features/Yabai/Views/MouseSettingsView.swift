@@ -23,7 +23,7 @@ struct MouseSettingsView: View {
                     
                     Picker("", selection: vs.binding(\.mouseModifier, k)) {
                         ForEach(Yabai.State.MouseModifier.allCases) {
-                            Text($0.uiDescription.lowercased())
+                            Text($0.labelDescription.lowercased())
                         }
                     }
                     .labelsHidden()
