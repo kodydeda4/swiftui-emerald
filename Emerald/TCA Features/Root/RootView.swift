@@ -66,7 +66,8 @@ struct RootView: View {
                 //                    }
                 //                }
                 ToolbarItem {
-                    Text("SIP Enabled: \(viewStore.yabai.sipEnabled.description)")
+                    Toggle("Toggle SIP", isOn: viewStore.binding(get: \.yabai.sipEnabled, send: Root.Action.yabai(.toggleSIP)))
+                    //Text("SIP Enabled: \(viewStore.yabai.sipEnabled.description)")
                 }
 
                 ToolbarItem {

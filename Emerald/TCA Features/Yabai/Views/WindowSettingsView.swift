@@ -29,9 +29,16 @@ extension WindowSettingsView {
                 // Borders
                 VStack(alignment: .leading) {
                     HStack {
-                        Toggle("", isOn: vs.binding(keyPath: \.windowBorder, send: k))
-                            .labelsHidden()
-                        Text("Borders").bold().font(.title3)
+                        Group {
+                            Toggle("", isOn: vs.binding(keyPath: \.windowBorder, send: k))
+                                .labelsHidden()
+                            Text("Borders").bold().font(.title3)
+                        }
+                        .disabled(vs.sipEnabled)
+                        .opacity(vs.sipEnabled ? 0.5 : 1.0)
+                        
+                        Spacer()
+                        SIPButton(store: Root.defaultStore)
                     }
                     HStack {
                         StepperView(
@@ -61,20 +68,31 @@ extension WindowSettingsView {
                             )
                         )
                     }
-                    .disabled(!vs.windowBorder)
-                    
+                    .disabled(!vs.windowBorder || vs.sipEnabled)
+                    .opacity(!vs.windowBorder || vs.sipEnabled ? 0.5 : 1.0)
+
                     Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
                         .foregroundColor(Color(.gray))
                 }
                 
+                
                 // Disable Shadows
                 Divider()
                 VStack(alignment: .leading) {
-                    Text("Shadows").bold().font(.title3)
+                    HStack {
+                        Text("Shadows").bold().font(.title3)
+                            .disabled(vs.sipEnabled)
+                            .opacity(vs.sipEnabled ? 0.5 : 1.0)
+                        
+                        Spacer()
+                        SIPButton(store: Root.defaultStore)
+                    }
                     HStack {
                         Toggle("", isOn: vs.binding(keyPath: \.disableShadows, send: k)).labelsHidden()
                         Text("Disable Shadows")
                     }
+                    .disabled(vs.sipEnabled)
+                    .opacity(vs.sipEnabled ? 0.5 : 1.0)
                     
                     HStack {
                         Picker("", selection: vs.binding(keyPath: \.windowShadow, send: k)) {
@@ -87,20 +105,37 @@ extension WindowSettingsView {
                         .frame(width: 150)
                         .disabled(!vs.disableShadows)
                     }
+                    .disabled(vs.sipEnabled)
+                    .opacity(vs.sipEnabled ? 0.5 : 1.0)
+                    
                     Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
                         .foregroundColor(Color(.gray))
+                        .disabled(vs.sipEnabled)
+                        .opacity(vs.sipEnabled ? 0.5 : 1.0)
                 }
+                
                 
                 // Opacity Effects
                 Divider()
                 VStack(alignment: .leading) {
-                    Text("Opacity").bold().font(.title3)
-
+                    HStack {
+                        Text("Opacity").bold().font(.title3)
+                            .disabled(vs.sipEnabled)
+                            .opacity(vs.sipEnabled ? 0.5 : 1.0)
+                        
+                        Spacer()
+                        SIPButton(store: Root.defaultStore)
+                    }
+                    
                     HStack {
                         Toggle("", isOn: vs.binding(keyPath: \.windowOpacity, send: k))
                             .labelsHidden()
                         Text("Change Opacity")
+                        
                     }
+                    .disabled(vs.sipEnabled)
+                    .opacity(vs.sipEnabled ? 0.5 : 1.0)
+                    
                     VStack(alignment: .leading) {
                         VStack(alignment: .leading) {
                             Text("Animation Duration").foregroundColor(Color(.gray))
@@ -129,10 +164,16 @@ extension WindowSettingsView {
                                 )
                             )
                         }
+                        
+                        Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
+                            .foregroundColor(Color(.gray))
                     }
-                    Text("Repellendus est dicta facere aut. Et quisquam dicta voluptatum laboriosam amet reiciendis earum. Quaerat autem tenetur dolores optio consequatur.")
-                        .foregroundColor(Color(.gray))
+                    .disabled(vs.sipEnabled)
+                    .opacity(vs.sipEnabled ? 0.5 : 1.0)
+
+                    
                 }
+                
                 Spacer()
             }
         }

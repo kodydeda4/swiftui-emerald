@@ -35,7 +35,7 @@ struct SpaceSettingsView: View {
                 
                 // Padding
                 Divider()
-                Group {
+                VStack(alignment: .leading) {
                     Text("Padding").bold().font(.title3)
                     HStack {
                         StepperView(
@@ -62,24 +62,22 @@ struct SpaceSettingsView: View {
                 }
                 .disabled(vs.layout == .float)
                 .opacity(vs.layout == .float ? 0.5 : 1.0)
-
+                
                 
                 // Float-On-Top
                 Divider()
-                Group {
+                VStack(alignment: .leading) {
                     HStack {
-                        HStack {
+                        Group {
                             Toggle("", isOn: vs.binding(keyPath: \.windowTopmost, send: k))
                                 .labelsHidden()
-                                .disabled(vs.sipEnabled)
                             
-                        Text("Float-On-Top").bold().font(.title3)
+                            Text("Float-On-Top").bold().font(.title3)
                         }
                         .disabled(vs.sipEnabled)
                         .opacity(vs.layout == .float ? 0.5 : 1.0)
-                        
+
                         Spacer()
-                        
                         SIPButton(store: Root.defaultStore)
                     }
                     
@@ -88,16 +86,13 @@ struct SpaceSettingsView: View {
                         .disabled(vs.sipEnabled)
                         .opacity(vs.layout == .float ? 0.5 : 1.0)
                 }
-                
-                
-                
                 // Shortcuts
-//                VStack(alignment: .trailing) {
-//                    KBShortcut(for: .togglePadding)
-//                    KBShortcut(for: .toggleStacking)
-//                    KBShortcut(for: .toggleFloating)
-//                    KBShortcut(for: .toggleBSP)
-//                }
+                //                VStack(alignment: .trailing) {
+                //                    KBShortcut(for: .togglePadding)
+                //                    KBShortcut(for: .toggleStacking)
+                //                    KBShortcut(for: .toggleFloating)
+                //                    KBShortcut(for: .toggleBSP)
+                //                }
                 Spacer()
             }
             

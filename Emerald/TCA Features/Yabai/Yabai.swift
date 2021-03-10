@@ -149,6 +149,7 @@ struct Yabai {
     
     enum Action: Equatable {
         case keyPath(BindingAction<Yabai.State>)
+        case toggleSIP
         case updateWindowShadows(Yabai.State.WindowShadow)
         case updateWindowPlacement(Yabai.State.WindowPlacement)
         case updateLayout(Yabai.State.Layout)
@@ -222,6 +223,10 @@ extension Yabai {
                         
         case .toggleExternalBarIsDisabled:
             state.externalBarEnabled.toggle()
+            return .none
+            
+        case .toggleSIP:
+            state.sipEnabled.toggle()
             return .none
         }
     }
