@@ -67,7 +67,7 @@ struct FocusSettingsView: View {
                         SIPButton(store: Root.defaultStore)
                     }
                     
-                    Text("STATIC Description of mouse follows focus")
+                    Text("Mouse will automatically reposition itself to center of focused window")
                         .foregroundColor(Color(.gray))
                         .disabled(!vs.mouseFollowsFocus || vs.sipEnabled)
                         .opacity( !vs.mouseFollowsFocus || vs.sipEnabled ? 0.5 : 1.0)

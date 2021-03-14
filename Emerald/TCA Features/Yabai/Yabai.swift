@@ -59,8 +59,8 @@ struct Yabai {
             
             var caseDescription: String {
                 switch self {
-                case .all  : return "Description about all"
-                case .main : return "Description about main"
+                case .all  : return "Use an external statusbar on all screens"
+                case .main : return "Only use an external statusbar on the main screen"
                 }
             }
         }
@@ -79,8 +79,8 @@ struct Yabai {
             }
             var caseDescription: String {
                 switch self {
-                case .off   : return "Description about off"
-                case .float : return "Description about float"
+                case .off   : return "Disable shadows for all windows"
+                case .float : return "Disable shadows for non-floating windows"
                 }
             }
         }
@@ -92,8 +92,8 @@ struct Yabai {
             
             var caseDescription: String {
                 switch self {
-                case .autofocus : return "Description about autofocus"
-                case .autoraise : return "Description about autoraise"
+                case .autofocus : return "Mouse will focus window on hover"
+                case .autoraise : return "Mouse will focus & raise window on hover"
                 }
             }
         }
@@ -110,8 +110,8 @@ struct Yabai {
             }
             var caseDescription: String {
                 switch self {
-                case .first_child  : return "Description about first_child"
-                case .second_child : return "Description about second_child"
+                case .first_child  : return "Split horizontally on new window split"
+                case .second_child : return "Split vertically on new window split"
                 }
             }
         }
@@ -140,8 +140,8 @@ struct Yabai {
             
             var caseDescription: String {
                 switch self {
-                case .move   : return "Description about move"
-                case .resize : return "Description about resize"
+                case .move   : return "Move windows with mouse button & modifier"
+                case .resize : return "Resize windows with mouse button & modifier"
                 }
             }
         }
@@ -152,8 +152,8 @@ struct Yabai {
             
             var caseDescription: String {
                 switch self {
-                case .swap  : return "Description about swap"
-                case .stack : return "Description about stack"
+                case .swap  : return "Swap windows when dropping ontop of one another"
+                case .stack : return "Stack windows when dropping ontop of one another"
                 }
             }
         }
@@ -172,9 +172,9 @@ struct Yabai {
             }
             var caseDescription: String {
                 switch self {
-                case .float : return "Description about floating"
-                case .bsp   : return "Description about bsp"
-                case .stack : return "Description about stacking"
+                case .float : return "Default macOS window behavior"
+                case .bsp   : return "Windows automatically resize to maximize screen real-estate"
+                case .stack : return "Windows stack ontop of each other"
                 }
             }
         }
@@ -193,9 +193,9 @@ struct Yabai {
             }
             var caseDescription: String {
                 switch self {
-                case .normal : return "Description about normal"
-                case .auto   : return "Description about auto"
-                case .custom : return "Description about custom"
+                case .normal : return "New window occupies 50% of total space"
+                case .auto   : return "All windows will occuopy the same amount of space"
+                case .custom : return "New windows will occupy a specific percentage of the total space"
                 }
             }
         }

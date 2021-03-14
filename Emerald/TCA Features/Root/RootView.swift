@@ -30,8 +30,6 @@ struct RootView: View {
                         .tabItem { Label("Animations", systemImage: "square.and.pencil") }
                 }
                 .padding()
-                
-                
             }
             .onAppear {
                 viewStore.send(.load(.yabai))
@@ -54,11 +52,11 @@ struct RootView: View {
                         Image(systemName: "sidebar.left")
                     }
                 }
-//                ToolbarItem {
-//                    Button("Toggle OnboardingView") {
-//                        viewStore.send(.onboarding(.toggleIsOnboaring))
-//                    }
-//                }
+                //                ToolbarItem {
+                //                    Button("Toggle OnboardingView") {
+                //                        viewStore.send(.onboarding(.toggleIsOnboaring))
+                //                    }
+                //                }
                 //                ToolbarItem {
                 //                    Button("Apply Animation Changes") {
                 //                        viewStore.send(.export(.macOSAnimations))
@@ -69,20 +67,26 @@ struct RootView: View {
                     Toggle("Toggle SIP", isOn: viewStore.binding(get: \.yabai.sipEnabled, send: Root.Action.yabai(.toggleSIP)))
                     //Text("SIP Enabled: \(viewStore.yabai.sipEnabled.description)")
                 }
-
+                
                 ToolbarItem {
-                    Button("Reset") {
+                    Button(action: {
                         viewStore.send(.reset(.yabai))
                         viewStore.send(.reset(.skhd))
                         viewStore.send(.reset(.macOSAnimations))
+                    }) {
+                        Text("Reset (cmd+shift+r)")
                     }
+                    .keyboardShortcut("r", modifiers: [.command, .shift])
                 }
                 ToolbarItem {
-                    Button("Apply Changes") {
+                    Button(action: {
                         viewStore.send(.export(.yabai))
                         viewStore.send(.export(.skhd))
                         viewStore.send(.appleScript(.restartYabai))
+                    }) {
+                        Text("Apply Changes (cmd+shift+a)")
                     }
+                    .keyboardShortcut("a", modifiers: [.command, .shift])
                 }
             }
         }

@@ -30,7 +30,7 @@ struct MouseSettingsView: View {
                     .pickerStyle(SegmentedPickerStyle())
                     .frame(width: 350)
                     
-                    Text("STATIC Description about Mouse Modifier")
+                    Text("Press & hold for mouse actions")
                         .foregroundColor(Color(.gray))
                 }
                 

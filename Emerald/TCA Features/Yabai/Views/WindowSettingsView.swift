@@ -41,7 +41,7 @@ struct WindowSettingsView: View {
                     .disabled(!vs.windowBorder || vs.sipEnabled)
                     .opacity( !vs.windowBorder || vs.sipEnabled ? 0.5 : 1.0)
                     
-                    Text("STATIC Description about Borders")
+                    Text("Draw a border around windows")
                         .foregroundColor(Color(.gray))
                         .disabled(!vs.windowBorder || vs.sipEnabled)
                         .opacity( !vs.windowBorder || vs.sipEnabled ? 0.5 : 1.0)
@@ -117,7 +117,7 @@ struct WindowSettingsView: View {
                             Text("Normal Windows").foregroundColor(Color(.gray))
                             Slider(value: vs.binding(\.normalWindowOpacity, k))
                         }
-                        Text("STATIC Description about Opacity")
+                        Text("Change window opacity")
                             .foregroundColor(Color(.gray))
                             .opacity( vs.sipEnabled ? 0.5 : 1.0)
                     }

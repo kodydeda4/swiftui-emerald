@@ -71,7 +71,7 @@ struct SpaceSettingsView: View {
                         SIPButton(store: Root.defaultStore)
                     }
                     
-                    Text("STATIC Description about Float-On-Top")
+                    Text("Force floating windows to stay ontop of tiled/stacked windows")
                         .foregroundColor(Color(.gray))
                         .disabled(vs.sipEnabled || vs.layout == .float)
                         .opacity( vs.sipEnabled || vs.layout == .float ? 0.5 : 1.0)

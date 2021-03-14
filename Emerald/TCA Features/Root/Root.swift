@@ -218,6 +218,7 @@ extension Root {
             case let .appleScript(appleScript):
                 state.error = appleScript.execute()
                 return .none
+                
             }
         }
     )
