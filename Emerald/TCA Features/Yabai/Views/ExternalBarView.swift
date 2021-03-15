@@ -14,8 +14,7 @@ struct ExternalBarSettingsView: View {
     
     var body: some View {
         WithViewStore(store) { vs in
-            VStack(alignment: .leading, spacing: 20) {
-                
+            ScrollView {
                 // External Bar
                 VStack(alignment: .leading) {
                     HStack {
@@ -41,12 +40,7 @@ struct ExternalBarSettingsView: View {
                         .opacity(!vs.externalBarEnabled ? 0.5 : 1.0)
                 }
                 
-                // Padding
-                VStack(alignment: .leading) {
-                    Divider()
-                    Text("Padding")
-                        .bold().font(.title3)
-                    
+                SectionView("Padding") {
                     HStack {
                         StepperView("Top", vs.binding(\.externalBarPaddingTop, k))
                         StepperView("Bottom", vs.binding(\.externalBarPaddingBottom, k))
@@ -54,10 +48,7 @@ struct ExternalBarSettingsView: View {
                 }
                 .disabled(!vs.externalBarEnabled)
                 .opacity(!vs.externalBarEnabled ? 0.5 : 1.0)
-
-                Spacer()
             }
-            .padding()
             .navigationTitle("Space")
         }
     }

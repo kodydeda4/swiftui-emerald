@@ -212,12 +212,10 @@ extension Root {
                     
                     KeyboardShortcuts.set(.restartYabai,   [.option, .shift           ], .r)
                     
-                    
                     KeyboardShortcuts.set(.togglePadding,  [.option,                  ], .seven)
                     KeyboardShortcuts.set(.toggleGaps,     [.option,                  ], .eight)
                     KeyboardShortcuts.set(.toggleSplit,    [.option,                  ], .nine)
                     KeyboardShortcuts.set(.toggleBalance,  [.option,                  ], .zero)
-
                     
                     KeyboardShortcuts.set(.toggleFloating, [.option, .shift           ], .one)
                     KeyboardShortcuts.set(.toggleBSP,      [.option, .shift           ], .two)

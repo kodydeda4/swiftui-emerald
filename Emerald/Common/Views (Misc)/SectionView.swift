@@ -19,17 +19,14 @@ struct SectionView<Content: View>: View {
     }
     
     var body: some View {
-//        GroupBox {
-            VStack(alignment: .leading) {
-                    Text(title)
-                        .font(.title)
-                        .bold()
-                    Divider()
-                    content
-            }
-            .padding()
-//        }
-//        .padding()
+        VStack(alignment: .leading) {
+            Text(title)
+                .font(.title)
+                .bold()
+            Divider()
+            content
+        }
+        .padding()
     }
 }
 

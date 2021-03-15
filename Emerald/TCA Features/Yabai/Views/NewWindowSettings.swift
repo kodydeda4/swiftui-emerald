@@ -14,13 +14,8 @@ struct NewWindowSettings: View {
     
     var body: some View {
         WithViewStore(store) { vs in
-            VStack(alignment: .leading, spacing: 20) {
-                
-                // Placement
-                VStack(alignment: .leading) {
-                    Text("Placement")
-                        .bold().font(.title3)
-                    
+            ScrollView {
+                SectionView("Placement") {
                     Picker("", selection: vs.binding(\.windowPlacement, k)) {
                         ForEach(Yabai.State.WindowPlacement.allCases) {
                             Text($0.labelDescription.lowercased())
@@ -32,16 +27,8 @@ struct NewWindowSettings: View {
                     
                     Text(vs.windowPlacement.caseDescription)
                         .foregroundColor(Color(.gray))
-                    
                 }
-
-                // Split Ratio
-                VStack(alignment: .leading) {
-                    Divider()
-                    
-                    Text("Split Ratio")
-                        .bold().font(.title3)
-                    
+                SectionView("Split Ratio") {
                     Picker("", selection: vs.binding(\.windowBalance, k)) {
                         ForEach(Yabai.State.WindowBalance.allCases) {
                             Text($0.labelDescription.lowercased())
@@ -54,14 +41,11 @@ struct NewWindowSettings: View {
                     Slider(value: vs.binding(\.splitRatio, k))
                         .disabled(vs.windowBalance != .custom)
                         .opacity(vs.windowBalance != .custom ? 0.5 : 1.0)
-
+                    
                     Text(vs.windowBalance.caseDescription)
                         .foregroundColor(Color(.gray))
-                    
                 }
-                Spacer()
             }
-            .padding()
             .navigationTitle("Space")
         }
     }

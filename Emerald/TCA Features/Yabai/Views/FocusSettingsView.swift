@@ -14,8 +14,7 @@ struct FocusSettingsView: View {
     
     var body: some View {
         WithViewStore(store) { vs in
-            VStack(alignment: .leading, spacing: 20) {
-                
+            ScrollView {
                 // AutoFocus
                 VStack(alignment: .leading) {
                     HStack {
@@ -72,9 +71,7 @@ struct FocusSettingsView: View {
                         .disabled(!vs.mouseFollowsFocus || vs.sipEnabled)
                         .opacity( !vs.mouseFollowsFocus || vs.sipEnabled ? 0.5 : 1.0)
                 }
-                Spacer()
             }
-            .padding()
             .navigationTitle("Space")
         }
     }
