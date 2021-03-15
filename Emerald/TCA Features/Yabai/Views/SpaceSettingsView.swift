@@ -33,6 +33,7 @@ struct SpaceSettingsView: View {
                     KBShortcut(for: .restartYabai)
                     
                     VStack(alignment: .leading) {
+                        Divider()
                         Text("Layout")
                             .bold().font(.title3)
                         KBShortcut(for: .toggleFloating)
@@ -41,6 +42,7 @@ struct SpaceSettingsView: View {
                     }
                     
                     VStack(alignment: .leading) {
+                        Divider()
                         Text("Toggles")
                             .bold().font(.title3)
                         KBShortcut(for: .togglePadding)
@@ -50,6 +52,7 @@ struct SpaceSettingsView: View {
                     }
 
                     VStack(alignment: .leading) {
+                        Divider()
                         Text("Focus")
                             .bold().font(.title3)
                         KBShortcut(for: .focusNorth)
@@ -59,6 +62,7 @@ struct SpaceSettingsView: View {
                     }
                     
                     VStack(alignment: .leading) {
+                        Divider()
                         Text("Resize")
                             .bold().font(.title3)
                         KBShortcut(for: .resizeTop)
@@ -68,6 +72,7 @@ struct SpaceSettingsView: View {
                     }
 
                     VStack(alignment: .leading) {
+                        Divider()
                         Text("Move")
                             .bold().font(.title3)
                         KBShortcut(for: .moveNorth)
