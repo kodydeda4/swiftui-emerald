@@ -27,7 +27,7 @@ extension SKHD.State {
 #   \(version)
 #
 
-.blacklist [\"Emerald\"]
+.blacklist [\"YabaiUI\"]
             
 #============================================
 # Section A
