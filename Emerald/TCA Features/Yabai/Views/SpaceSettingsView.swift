@@ -17,7 +17,7 @@ struct SpaceSettingsView: View {
             VStack(alignment: .leading, spacing: 20) {
                 
                 // Layout
-                VStack(alignment: .leading, spacing: 20) {
+                VStack(alignment: .leading) {
                     Text("Layout")
                         .bold().font(.title3)
                     
