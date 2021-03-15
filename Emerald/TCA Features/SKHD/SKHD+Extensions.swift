@@ -43,7 +43,7 @@ extension SKHD.State {
 
 extension KeyboardShortcuts.Shortcut {
     var asSKHDString: String {
-        return "SKHD String"
+        return "SKHD<\(description)>"
     }
 }
 
