@@ -97,18 +97,18 @@ extension Root {
             
             switch action {
             case let .yabai(subAction):
-                //                switch subAction {
-                //                case .updateWindowOpacityDuration,
-                //                     .updatetActiveWindowOpacity,
-                //                     .updateNormalWindowOpacity:
-                //                    print("\(Date()) Debounce this ... \(subAction)")
-                //                    return environment
-                //                        .save(state.yabai, to: state.yabai.stateURL)
-                ////                        .debounce(id: SaveID(), for: 0.1, scheduler: DispatchQueue.main.eraseToAnyScheduler())
-                //
-                //                default:
-                //                    return environment.save(state.yabai, to: state.yabai.stateURL)
-                //                }
+//                switch subAction {
+//                case .updateWindowOpacityDuration,
+//                     .updatetActiveWindowOpacity,
+//                     .updateNormalWindowOpacity:
+//                    print("\(Date()) Debounce this ... \(subAction)")
+//                    return environment
+//                        .save(state.yabai, to: state.yabai.stateURL)
+////                        .debounce(id: SaveID(), for: 0.1, scheduler: DispatchQueue.main.eraseToAnyScheduler())
+//
+//                default:
+//                    return environment.save(state.yabai, to: state.yabai.stateURL)
+//                }
                 return environment.save(state.yabai, to: state.yabai.stateURL)
                 
             case .skhd:
@@ -210,30 +210,33 @@ extension Root {
                     //KeyboardShortcuts.reset(KeyboardShortcuts.Name.allCases)
                     state.skhd = SKHD.State()
                     
-                    let mod1: NSEvent.ModifierFlags  = [.option, .shift]
-                    let mod2: NSEvent.ModifierFlags  = [.control, .option, .shift]
+                    KeyboardShortcuts.set(.restartYabai,   [.option, .shift           ], .r)
                     
-                    KeyboardShortcuts.set(.restartYabai,   mod1, .r)
                     
-                    KeyboardShortcuts.set(.toggleFloating, mod1, .one)
-                    KeyboardShortcuts.set(.toggleBSP,      mod1, .two)
-                    KeyboardShortcuts.set(.toggleStacking, mod1, .three)
+                    KeyboardShortcuts.set(.togglePadding,  [.option,                  ], .seven)
+                    KeyboardShortcuts.set(.toggleGaps,     [.option,                  ], .eight)
+                    KeyboardShortcuts.set(.toggleSplit,    [.option,                  ], .nine)
+                    KeyboardShortcuts.set(.toggleBalance,  [.option,                  ], .zero)
 
                     
-                    KeyboardShortcuts.set(.focusNorth,     mod1, .k)
-                    KeyboardShortcuts.set(.focusSouth,     mod1, .j)
-                    KeyboardShortcuts.set(.focusWest,      mod1, .h)
-                    KeyboardShortcuts.set(.focusEast,      mod1, .l)
-                                        
-//                    KeyboardShortcuts.set(.resizeTop,      mod1, .r)
-//                    KeyboardShortcuts.set(.resizeRight,    mod1, .r)
-//                    KeyboardShortcuts.set(.resizeBottom,   mod1, .r)
-//                    KeyboardShortcuts.set(.resizeLeft,     mod1, .r)
-//                    
-//                    KeyboardShortcuts.set(.moveNorth,      mod1, .r)
-//                    KeyboardShortcuts.set(.moveEast,       mod1, .r)
-//                    KeyboardShortcuts.set(.moveSouth,      mod1, .r)
-//                    KeyboardShortcuts.set(.moveWest,       mod1, .r)
+                    KeyboardShortcuts.set(.toggleFloating, [.option, .shift           ], .one)
+                    KeyboardShortcuts.set(.toggleBSP,      [.option, .shift           ], .two)
+                    KeyboardShortcuts.set(.toggleStacking, [.option, .shift           ], .three)
+                               
+                    KeyboardShortcuts.set(.focusNorth,     [.option,                  ], .k)
+                    KeyboardShortcuts.set(.focusSouth,     [.option,                  ], .j)
+                    KeyboardShortcuts.set(.focusEast,      [.option,                  ], .l)
+                    KeyboardShortcuts.set(.focusWest,      [.option,                  ], .h)
+                    
+                    KeyboardShortcuts.set(.resizeTop,      [.option, .shift           ], .k)
+                    KeyboardShortcuts.set(.resizeBottom,   [.option, .shift           ], .j)
+                    KeyboardShortcuts.set(.resizeRight,    [.option, .shift           ], .l)
+                    KeyboardShortcuts.set(.resizeLeft,     [.option, .shift           ], .h)
+                    
+                    KeyboardShortcuts.set(.moveNorth,      [.option, .shift, .command,], .k)
+                    KeyboardShortcuts.set(.moveSouth,      [.option, .shift, .command,], .j)
+                    KeyboardShortcuts.set(.moveEast,       [.option, .shift, .command,], .l)
+                    KeyboardShortcuts.set(.moveWest,       [.option, .shift, .command,], .h)
 
                     
                 case .macOSAnimations:

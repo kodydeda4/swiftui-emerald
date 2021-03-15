@@ -41,11 +41,20 @@ struct SpaceSettingsView: View {
                     }
                     
                     VStack(alignment: .leading) {
+                        Text("Toggles")
+                            .bold().font(.title3)
+                        KBShortcut(for: .togglePadding)
+                        KBShortcut(for: .toggleGaps)
+                        KBShortcut(for: .toggleSplit)
+                        KBShortcut(for: .toggleBalance)
+                    }
+
+                    VStack(alignment: .leading) {
                         Text("Focus")
                             .bold().font(.title3)
                         KBShortcut(for: .focusNorth)
-                        KBShortcut(for: .focusEast)
                         KBShortcut(for: .focusSouth)
+                        KBShortcut(for: .focusEast)
                         KBShortcut(for: .focusWest)
                     }
                     
@@ -53,8 +62,8 @@ struct SpaceSettingsView: View {
                         Text("Resize")
                             .bold().font(.title3)
                         KBShortcut(for: .resizeTop)
-                        KBShortcut(for: .resizeRight)
                         KBShortcut(for: .resizeBottom)
+                        KBShortcut(for: .resizeRight)
                         KBShortcut(for: .resizeLeft)
                     }
 
@@ -62,11 +71,12 @@ struct SpaceSettingsView: View {
                         Text("Move")
                             .bold().font(.title3)
                         KBShortcut(for: .moveNorth)
-                        KBShortcut(for: .moveEast)
                         KBShortcut(for: .moveSouth)
+                        KBShortcut(for: .moveEast)
                         KBShortcut(for: .moveWest)
                     }
-
+                                        
+                    
                     Text(vs.layout.caseDescription)
                         .foregroundColor(Color(.gray))
                 }

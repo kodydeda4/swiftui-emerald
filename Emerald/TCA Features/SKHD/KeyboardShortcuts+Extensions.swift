@@ -10,6 +10,7 @@ import SwiftUI
 
 extension KeyboardShortcuts.Name {
     static let restartYabai   = Self("Restart Yabai")
+    
     static let togglePadding  = Self("Toggle Padding")
     static let toggleGaps     = Self("Toggle Gaps")
     static let toggleSplit    = Self("Toggle Split")
