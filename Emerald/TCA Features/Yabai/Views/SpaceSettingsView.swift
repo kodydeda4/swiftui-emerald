@@ -36,38 +36,35 @@ struct SpaceSettingsView: View {
                         KBShortcut(for: .toggleFloating)
                         KBShortcut(for: .toggleBSP)
                         KBShortcut(for: .toggleStacking)
-                        
                     }
                     
                     VStack(alignment: .leading) {
                         Text("Focus")
                             .bold().font(.title3)
-                        KBShortcut(for: .focusWest)
+                        KBShortcut(for: .focusNorth)
                         KBShortcut(for: .focusEast)
                         KBShortcut(for: .focusSouth)
-                        KBShortcut(for: .focusNorth)
+                        KBShortcut(for: .focusWest)
                     }
                     
-                    VStack(alignment: .leading) {
-                        Text("Move")
-                            .bold().font(.title3)
-                        KBShortcut(for: .moveWest)
-                        KBShortcut(for: .moveEast)
-                        KBShortcut(for: .moveSouth)
-                        KBShortcut(for: .moveNorth)
-                    }
-
                     VStack(alignment: .leading) {
                         Text("Resize")
                             .bold().font(.title3)
                         KBShortcut(for: .resizeTop)
-                        KBShortcut(for: .resizeLeft)
                         KBShortcut(for: .resizeRight)
                         KBShortcut(for: .resizeBottom)
+                        KBShortcut(for: .resizeLeft)
                     }
-                    
 
-                    
+                    VStack(alignment: .leading) {
+                        Text("Move")
+                            .bold().font(.title3)
+                        KBShortcut(for: .moveNorth)
+                        KBShortcut(for: .moveEast)
+                        KBShortcut(for: .moveSouth)
+                        KBShortcut(for: .moveWest)
+                    }
+
                     Text(vs.layout.caseDescription)
                         .foregroundColor(Color(.gray))
                 }
