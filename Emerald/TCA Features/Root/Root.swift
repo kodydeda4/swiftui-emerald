@@ -207,7 +207,7 @@ extension Root {
                 case .yabai:
                     state.yabai = Yabai.State()
                 case .skhd:
-                    //KeyboardShortcuts.reset(KeyboardShortcuts.Name.allCases)
+                    KeyboardShortcuts.reset(KeyboardShortcuts.Name.allCases)
                     state.skhd = SKHD.State()
                     
                     KeyboardShortcuts.set(.restartYabai,   [.option, .shift           ], .r)
