@@ -30,7 +30,43 @@ struct SpaceSettingsView: View {
                     .pickerStyle(SegmentedPickerStyle())
                     .frame(width: 200)
                     
-                    KBShortcut(for: .toggleBSP)
+                    VStack(alignment: .leading) {
+                        Text("Layout")
+                            .bold().font(.title3)
+                        KBShortcut(for: .toggleFloating)
+                        KBShortcut(for: .toggleBSP)
+                        KBShortcut(for: .toggleStacking)
+                        
+                    }
+                    
+                    VStack(alignment: .leading) {
+                        Text("Focus")
+                            .bold().font(.title3)
+                        KBShortcut(for: .focusWest)
+                        KBShortcut(for: .focusEast)
+                        KBShortcut(for: .focusSouth)
+                        KBShortcut(for: .focusNorth)
+                    }
+                    
+                    VStack(alignment: .leading) {
+                        Text("Move")
+                            .bold().font(.title3)
+                        KBShortcut(for: .moveWest)
+                        KBShortcut(for: .moveEast)
+                        KBShortcut(for: .moveSouth)
+                        KBShortcut(for: .moveNorth)
+                    }
+
+                    VStack(alignment: .leading) {
+                        Text("Resize")
+                            .bold().font(.title3)
+                        KBShortcut(for: .resizeTop)
+                        KBShortcut(for: .resizeLeft)
+                        KBShortcut(for: .resizeRight)
+                        KBShortcut(for: .resizeBottom)
+                    }
+                    
+
                     
                     Text(vs.layout.caseDescription)
                         .foregroundColor(Color(.gray))
@@ -66,7 +102,7 @@ struct SpaceSettingsView: View {
                         }
                         .disabled(vs.sipEnabled || vs.layout == .float)
                         .opacity( vs.sipEnabled || vs.layout == .float ? 0.5 : 1.0)
-
+                        
                         Spacer()
                         SIPButton(store: Root.defaultStore)
                     }
