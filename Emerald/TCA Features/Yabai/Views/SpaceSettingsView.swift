@@ -14,8 +14,13 @@ struct SpaceSettingsView: View {
     
     var body: some View {
         WithViewStore(store) { vs in
-            ScrollView {
-                SectionView("Layout") {
+            VStack(alignment: .leading, spacing: 20) {
+                
+                // Layout
+                VStack(alignment: .leading) {
+                    Text("Layout")
+                        .bold().font(.title3)
+                    
                     Picker("", selection: vs.binding(\.layout, k)) {
                         ForEach(Yabai.State.Layout.allCases) {
                             Text($0.labelDescription.lowercased())
@@ -25,10 +30,63 @@ struct SpaceSettingsView: View {
                     .pickerStyle(SegmentedPickerStyle())
                     .frame(width: 200)
                     
+                    KBShortcut(for: .restartYabai)
+                    
+                    VStack(alignment: .leading) {
+                        Text("Layout")
+                            .bold().font(.title3)
+                        KBShortcut(for: .toggleFloating)
+                        KBShortcut(for: .toggleBSP)
+                        KBShortcut(for: .toggleStacking)
+                    }
+                    
+                    VStack(alignment: .leading) {
+                        Text("Toggles")
+                            .bold().font(.title3)
+                        KBShortcut(for: .togglePadding)
+                        KBShortcut(for: .toggleGaps)
+                        KBShortcut(for: .toggleSplit)
+                        KBShortcut(for: .toggleBalance)
+                    }
+
+                    VStack(alignment: .leading) {
+                        Text("Focus")
+                            .bold().font(.title3)
+                        KBShortcut(for: .focusNorth)
+                        KBShortcut(for: .focusSouth)
+                        KBShortcut(for: .focusEast)
+                        KBShortcut(for: .focusWest)
+                    }
+                    
+                    VStack(alignment: .leading) {
+                        Text("Resize")
+                            .bold().font(.title3)
+                        KBShortcut(for: .resizeTop)
+                        KBShortcut(for: .resizeBottom)
+                        KBShortcut(for: .resizeRight)
+                        KBShortcut(for: .resizeLeft)
+                    }
+
+                    VStack(alignment: .leading) {
+                        Text("Move")
+                            .bold().font(.title3)
+                        KBShortcut(for: .moveNorth)
+                        KBShortcut(for: .moveSouth)
+                        KBShortcut(for: .moveEast)
+                        KBShortcut(for: .moveWest)
+                    }
+                                        
+                    
                     Text(vs.layout.caseDescription)
                         .foregroundColor(Color(.gray))
                 }
-                SectionView("Padding") {
+                
+                // Padding
+                VStack(alignment: .leading) {
+                    Divider()
+                    Text("Padding")
+                        .bold().font(.title3)
+                    
                     HStack {
                         StepperView("Top",    vs.binding(\.paddingTop, k))
                         StepperView("Bottom", vs.binding(\.paddingBottom, k))
@@ -38,38 +96,9 @@ struct SpaceSettingsView: View {
                     }
                 }
                 .disabled(vs.layout == .float)
-                .opacity( vs.layout == .float ? 0.5 : 1.0)
+                .opacity(vs.layout == .float ? 0.5 : 1.0)
                 
-                SectionView("Layout") {
-                    KBShortcut(for: .toggleFloating)
-                    KBShortcut(for: .toggleBSP)
-                    KBShortcut(for: .toggleStacking)
-                }
-                SectionView("Toggles") {
-                    KBShortcut(for: .restartYabai)
-                    KBShortcut(for: .togglePadding)
-                    KBShortcut(for: .toggleGaps)
-                    KBShortcut(for: .toggleSplit)
-                    KBShortcut(for: .toggleBalance)
-                }
-                SectionView("Focus") {
-                    KBShortcut(for: .focusNorth)
-                    KBShortcut(for: .focusSouth)
-                    KBShortcut(for: .focusEast)
-                    KBShortcut(for: .focusWest)
-                }
-                SectionView("Resize") {
-                    KBShortcut(for: .resizeTop)
-                    KBShortcut(for: .resizeBottom)
-                    KBShortcut(for: .resizeRight)
-                    KBShortcut(for: .resizeLeft)
-                }
-                SectionView("Move") {
-                    KBShortcut(for: .moveNorth)
-                    KBShortcut(for: .moveSouth)
-                    KBShortcut(for: .moveEast)
-                    KBShortcut(for: .moveWest)
-                }
+                // Float-On-Top
                 VStack(alignment: .leading) {
                     Divider()
                     HStack {
@@ -92,12 +121,15 @@ struct SpaceSettingsView: View {
                         .disabled(vs.sipEnabled || vs.layout == .float)
                         .opacity( vs.sipEnabled || vs.layout == .float ? 0.5 : 1.0)
                 }
-                .padding()
+                Spacer()
             }
+            .padding()
             .navigationTitle("Space")
         }
     }
 }
+
+
 
 // MARK:- SwiftUI_Previews
 struct SpaceSettingsView_Previews: PreviewProvider {

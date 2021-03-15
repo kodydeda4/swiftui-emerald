@@ -14,8 +14,13 @@ struct MouseSettingsView: View {
     
     var body: some View {
         WithViewStore(store) { vs in
-            ScrollView {
-                SectionView("Modifier Key") {
+            VStack(alignment: .leading, spacing: 20) {
+                
+                //Modifier Key
+                VStack(alignment: .leading) {
+                    Text("Modifier Key")
+                        .bold().font(.title3)
+                    
                     Picker("", selection: vs.binding(\.mouseModifier, k)) {
                         ForEach(Yabai.State.MouseModifier.allCases) {
                             Text($0.labelDescription.lowercased())
@@ -29,7 +34,13 @@ struct MouseSettingsView: View {
                         .foregroundColor(Color(.gray))
                 }
                 
-                SectionView("Left Click + Modifier") {
+                // Left Click + Modifier
+                VStack(alignment: .leading) {
+                    Divider()
+                    
+                    Text("Left Click + Modifier")
+                        .bold().font(.title3)
+                    
                     Picker("", selection: vs.binding(\.mouseAction1, k)) {
                         ForEach(Yabai.State.MouseAction.allCases) {
                             Text($0.rawValue)
@@ -43,7 +54,13 @@ struct MouseSettingsView: View {
                         .foregroundColor(Color(.gray))
                 }
                 
-                SectionView("Right Click + Modifier") {
+                // Right Click + Modifier
+                VStack(alignment: .leading) {
+                    Divider()
+                    
+                    Text("Right Click + Modifier")
+                        .bold().font(.title3)
+                    
                     Picker("", selection: vs.binding(\.mouseAction2, k)) {
                         ForEach(Yabai.State.MouseAction.allCases) {
                             Text($0.rawValue)
@@ -56,8 +73,14 @@ struct MouseSettingsView: View {
                     Text(vs.mouseAction2.caseDescription)
                         .foregroundColor(Color(.gray))
                 }
-            
-                SectionView("Drop Action") {
+                
+                // Drop Action
+                VStack(alignment: .leading) {
+                    Divider()
+                    
+                    Text("Drop Action")
+                        .bold().font(.title3)
+                    
                     Picker("", selection: vs.binding(\.mouseDropAction, k)) {
                         ForEach(Yabai.State.MouseDropAction.allCases) {
                             Text($0.rawValue)
@@ -70,7 +93,9 @@ struct MouseSettingsView: View {
                     Text(vs.mouseDropAction.caseDescription)
                         .foregroundColor(Color(.gray))
                 }
+                Spacer()
             }
+            .padding()
             .navigationTitle("Space")
         }
     }

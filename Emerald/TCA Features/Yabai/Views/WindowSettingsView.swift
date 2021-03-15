@@ -14,7 +14,8 @@ struct WindowSettingsView: View {
     
     var body: some View {
         WithViewStore(store) { vs in
-            ScrollView {
+            VStack(alignment: .leading, spacing: 20) {
+                
                 // Borders
                 VStack(alignment: .leading) {
                     HStack {
@@ -47,8 +48,8 @@ struct WindowSettingsView: View {
                 }
                 
                 // Disable Shadows
+                Divider()
                 VStack(alignment: .leading) {
-                    Divider()
                     HStack {
                         Group {
                             Toggle("", isOn: vs.binding(\.disableShadows, k))
@@ -86,8 +87,8 @@ struct WindowSettingsView: View {
                 }
                 
                 // Opacity Effects
+                Divider()
                 VStack(alignment: .leading) {
-                    Divider()
                     HStack {
                         Group {
                             Toggle("", isOn: vs.binding(\.windowOpacity, k))
@@ -123,7 +124,9 @@ struct WindowSettingsView: View {
                     .disabled(!vs.windowOpacity || vs.sipEnabled)
                     .opacity( !vs.windowOpacity || vs.sipEnabled ? 0.5 : 1.0)
                 }
+                Spacer()
             }
+            .padding()
             .navigationTitle("Space")
         }
     }
