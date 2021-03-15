@@ -32,7 +32,7 @@ struct KBShortcut: View {
 
 func convertToString(_ shortcut: KeyboardShortcuts.Shortcut) -> String {
     [
-        shortcut.modifiers.asString,
+        shortcut.modifiers.asStrings.joined(separator: " + "),
         shortcut.key?.asString,
     ]
     .compactMap({$0})
@@ -40,21 +40,19 @@ func convertToString(_ shortcut: KeyboardShortcuts.Shortcut) -> String {
 }
 
 extension NSEvent.ModifierFlags {
-    public var asString: String? {
-        switch self {
-        case .command : return "cmd"
-        case .option  : return "option"
-        case .control : return "cntrl"
-        case .shift   : return "shift"
-            
-        default:
-            return nil
-        }
+    public var asStrings: [String] {
+        var rv: [String] = []
+        
+        if self.contains(.command) { rv.append("cmd") }
+        if self.contains(.option)  { rv.append("option") }
+        if self.contains(.control) { rv.append("cntrl") }
+        if self.contains(.shift)   { rv.append("shift") }
+        
+        return rv
     }
 }
 
 extension KeyboardShortcuts.Key {
-    
     public var asString: String? {
         switch self {
         
