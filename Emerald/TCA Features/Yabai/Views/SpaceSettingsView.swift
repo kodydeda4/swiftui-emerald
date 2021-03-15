@@ -8,8 +8,6 @@
 import SwiftUI
 import ComposableArchitecture
 
-
-
 struct SpaceSettingsView: View {
     let store: Store<Yabai.State, Yabai.Action>
     let k = Yabai.Action.keyPath
@@ -19,7 +17,7 @@ struct SpaceSettingsView: View {
             VStack(alignment: .leading, spacing: 20) {
                 
                 // Layout
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 20) {
                     Text("Layout")
                         .bold().font(.title3)
                     
@@ -31,6 +29,8 @@ struct SpaceSettingsView: View {
                     .labelsHidden()
                     .pickerStyle(SegmentedPickerStyle())
                     .frame(width: 200)
+                    
+                    KBShortcut(for: .toggleBSP)
                     
                     Text(vs.layout.caseDescription)
                         .foregroundColor(Color(.gray))

@@ -29,15 +29,22 @@ extension SKHD.State {
 #============================================
 # Section A
 #============================================
-\(KeyboardShortcuts.getShortcut(for: .restartYabai)?.description   ?? "#<UNASSIGNED>") \"/bin/launchctl kickstart -k \"gui/${UID}/homebrew.mxcl.yabai\"
-\(KeyboardShortcuts.getShortcut(for: .togglePadding)?.description  ?? "#<UNASSIGNED>") : yabai -m space --toggle padding
-\(KeyboardShortcuts.getShortcut(for: .toggleGaps)?.description     ?? "#<UNASSIGNED>") : yabai -m space --toggle gap
-\(KeyboardShortcuts.getShortcut(for: .toggleSplit)?.description    ?? "#<UNASSIGNED>") : yabai -m window --toggle split
-\(KeyboardShortcuts.getShortcut(for: .toggleBalance)?.description  ?? "#<UNASSIGNED>") : yabai -m space --balance
-\(KeyboardShortcuts.getShortcut(for: .toggleStacking)?.description ?? "#<UNASSIGNED>") : yabai -m space --layout stack
-\(KeyboardShortcuts.getShortcut(for: .toggleFloating)?.description ?? "#<UNASSIGNED>") : yabai -m space --layout float
-\(KeyboardShortcuts.getShortcut(for: .toggleBSP)?.description      ?? "#<UNASSIGNED>") : yabai -m space --layout bsp
+\(KeyboardShortcuts.getShortcut(for: .restartYabai)?.asSKHDString   ?? "#<UNASSIGNED>") : \"/bin/launchctl kickstart -k \"gui/${UID}/homebrew.mxcl.yabai\"
+\(KeyboardShortcuts.getShortcut(for: .togglePadding)?.asSKHDString  ?? "#<UNASSIGNED>") : yabai -m space --toggle padding
+\(KeyboardShortcuts.getShortcut(for: .toggleGaps)?.asSKHDString     ?? "#<UNASSIGNED>") : yabai -m space --toggle gap
+\(KeyboardShortcuts.getShortcut(for: .toggleSplit)?.asSKHDString    ?? "#<UNASSIGNED>") : yabai -m window --toggle split
+\(KeyboardShortcuts.getShortcut(for: .toggleBalance)?.asSKHDString  ?? "#<UNASSIGNED>") : yabai -m space --balance
+\(KeyboardShortcuts.getShortcut(for: .toggleStacking)?.asSKHDString ?? "#<UNASSIGNED>") : yabai -m space --layout stack
+\(KeyboardShortcuts.getShortcut(for: .toggleFloating)?.asSKHDString ?? "#<UNASSIGNED>") : yabai -m space --layout float
+\(KeyboardShortcuts.getShortcut(for: .toggleBSP)?.asSKHDString      ?? "#<UNASSIGNED>") : yabai -m space --layout bsp
 """
     }
 }
 
+extension KeyboardShortcuts.Shortcut {
+    var asSKHDString: String {
+        return "SKHD String"
+    }
+}
+
+// Can't get f7 as F+7 -> if there's F followed by 1-2 digits then combine those as one button :s
