@@ -18,6 +18,11 @@ struct SKHD {
     enum Action: Equatable {
         // action
     }
+    
+    struct Environment {
+        
+    }
+
 }
 
 extension SKHD {

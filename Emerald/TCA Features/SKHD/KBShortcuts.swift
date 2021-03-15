@@ -11,47 +11,6 @@ import KeyboardShortcuts
 struct KBShortcut: View {
     let shortcut: KeyboardShortcuts.Name
     
-    let acceptedModifiers: NSEvent.ModifierFlags = [
-        .command,
-        .option,
-        .control,
-        .shift
-    ]
-    
-    var acceptedKeys: [KeyboardShortcuts.Key] {
-        let letters: [KeyboardShortcuts.Key] = [
-            .a, .b, .c, .d, .e, .f, .g,
-            .h, .i, .j, .k, .l, .m, .n, .o, .p,
-            .q, .r, .s, .t, .u, .v,
-            .w, .x, .y, .z,
-        ]
-        
-        let numbers: [KeyboardShortcuts.Key] = [
-            .zero,
-            .one, .two, .three,
-            .four, .five, .six,
-            .seven, .eight, .nine
-        ]
-        
-        let arrows: [KeyboardShortcuts.Key] = [
-            .upArrow, .downArrow,
-            .leftArrow, .rightArrow,
-        ]
-        
-        let fKeys: [KeyboardShortcuts.Key] = [
-            .f1, .f2, .f3,
-            .f4, .f5, .f6,
-            .f7, .f8, .f9,
-            .f10, .f11, .f12,
-        ]
-
-        return []
-            + letters
-            + numbers
-            + arrows
-            + fKeys
-    }
-
     init(for shortcut: KeyboardShortcuts.Name) {
         self.shortcut = shortcut
     }
@@ -60,35 +19,107 @@ struct KBShortcut: View {
         HStack {
             Text(shortcut.rawValue)
             KeyboardShortcuts.Recorder(for: shortcut, onChange: {
-                s in
-                if let x = s {
-                    
-//                    if x.key == KeyboardShortcuts.Key.a {
-//                        print("A")
-//                    }
-                    
-//                    if x.modifiers.isSubset(of: acceptedModifiers) {
-//                        print("Cool (mods)")
-//                    } else {
-//                        print("Nah (mods)")
-//                    }
-                    
-                    if acceptedKeys.contains(x.key!) {
-                        print("Cool (key)")
-                    } else {
-                        print("Nah (key)")
-                    }
-                    print("\(acceptedModifiers) | \(x.modifiers) \(x.modifiers.isSubset(of: acceptedModifiers))")
-                    
-                    print("--------")
-                    
-                    if x.modifiers.isSubset(of: acceptedModifiers) && acceptedKeys.contains(x.key!) {
-                        print("Pass")
-                    } else {
-                        print("Fail")
-                    }
+                if let kb = $0 {
+                    let s = convertToString(kb)
+                    print(s)
                 }
             })
+        }
+    }
+}
+
+// MARK:- Events
+
+func convertToString(_ shortcut: KeyboardShortcuts.Shortcut) -> String {
+    [
+        shortcut.modifiers.asString,
+        shortcut.key?.asString,
+    ]
+    .compactMap({$0})
+    .joined(separator: " + ")
+}
+
+extension NSEvent.ModifierFlags {
+    public var asString: String? {
+        switch self {
+        case .command : return "cmd"
+        case .option  : return "option"
+        case .control : return "cntrl"
+        case .shift   : return "shift"
+            
+        default:
+            return nil
+        }
+    }
+}
+
+extension KeyboardShortcuts.Key {
+    
+    public var asString: String? {
+        switch self {
+        
+        // Letter
+        case .a : return "a"
+        case .b : return "b"
+        case .c : return "c"
+        case .d : return "d"
+        case .e : return "e"
+        case .f : return "f"
+        case .g : return "g"
+        case .h : return "h"
+        case .i : return "i"
+        case .j : return "j"
+        case .k : return "k"
+        case .l : return "l"
+        case .m : return "m"
+        case .n : return "n"
+        case .o : return "o"
+        case .p : return "p"
+        case .q : return "q"
+        case .r : return "r"
+        case .s : return "s"
+        case .t : return "t"
+        case .u : return "u"
+        case .v : return "v"
+        case .w : return "w"
+        case .x : return "x"
+        case .y : return "y"
+        case .z : return "z"
+            
+        // Number
+        case .zero  : return "0"
+        case .one   : return "1"
+        case .two   : return "2"
+        case .three : return "3"
+        case .four  : return "4"
+        case .five  : return "5"
+        case .six   : return "6"
+        case .seven : return "7"
+        case .eight : return "8"
+        case .nine  : return "9"
+            
+        // ArrowDirection
+        case .upArrow    : return "up"
+        case .downArrow  : return "down"
+        case .leftArrow  : return "left"
+        case .rightArrow : return "right"
+            
+        // fKey
+        case .f1  : return "f1"
+        case .f2  : return "f2"
+        case .f3  : return "f3"
+        case .f4  : return "f4"
+        case .f5  : return "f5"
+        case .f6  : return "f6"
+        case .f7  : return "f7"
+        case .f8  : return "f8"
+        case .f9  : return "f9"
+        case .f10 : return "f10"
+        case .f11 : return "f11"
+        case .f12 : return "f12"
+            
+        default:
+            return nil
         }
     }
 }
