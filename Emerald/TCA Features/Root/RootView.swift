@@ -8,8 +8,6 @@
 import SwiftUI
 import ComposableArchitecture
 
-
-
 struct RootView: View {
     let store: Store<Root.State, Root.Action>
     
@@ -52,20 +50,14 @@ struct RootView: View {
                         Image(systemName: "sidebar.left")
                     }
                 }
-                //                ToolbarItem {
-                //                    Button("Toggle OnboardingView") {
-                //                        viewStore.send(.onboarding(.toggleIsOnboaring))
-                //                    }
-                //                }
-                //                ToolbarItem {
-                //                    Button("Apply Animation Changes") {
-                //                        viewStore.send(.export(.macOSAnimations))
-                //                        let _ = AppleScript.applyAnimationSettings.execute()
-                //                    }
-                //                }
+//                ToolbarItem {
+//                    Button("Apply Animation Changes") {
+//                        viewStore.send(.export(.macOSAnimations))
+//                        let _ = AppleScript.applyAnimationSettings.execute()
+//                    }
+//                }
                 ToolbarItem {
                     Toggle("Toggle SIP", isOn: viewStore.binding(get: \.yabai.sipEnabled, send: Root.Action.yabai(.toggleSIP)))
-                    //Text("SIP Enabled: \(viewStore.yabai.sipEnabled.description)")
                 }
                 
                 ToolbarItem {

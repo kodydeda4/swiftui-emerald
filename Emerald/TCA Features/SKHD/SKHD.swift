@@ -16,22 +16,26 @@ struct SKHD {
         var version                = run("/usr/local/bin/skhd", "-v").stdout
     }
     enum Action: Equatable {
-        // action
+        case reset
+        case setDefaults
     }
-    
-    struct Environment {
-        
-    }
-
 }
 
 extension SKHD {
     static let reducer = Reducer<State, Action, Void>.combine(
-//        Reducer { state, action, _ in
-//            switch action {
-//
-//            }
-//        }
+        Reducer { state, action, _ in
+            switch action {
+            case .reset:
+                KeyboardShortcuts.reset(KeyboardShortcuts.Name.allCases)
+                return .none
+                
+            case .setDefaults:
+                KeyboardShortcuts.setShortcut(.init(.a, modifiers: [.command, .shift]), for: KeyboardShortcuts.Name.focusEast)
+                
+                
+                return .none
+            }
+        }
     )
 }
 

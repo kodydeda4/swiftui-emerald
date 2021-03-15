@@ -46,7 +46,7 @@ struct Root {
                 .eraseToAnyPublisher()
             return foo
         }
-
+        
         func save<Value>(_ value: Value, to url: URL) -> Effect<Action, Never> where Value: Codable {
             let foo = savePublisher(value, to: url)
                 .map { (tuple) -> Result<Bool, CacheError> in
@@ -94,26 +94,26 @@ extension Root {
         ),
         Reducer { state, action, environment in
             struct SaveID: Hashable {}
-
+            
             switch action {
             case let .yabai(subAction):
-//                switch subAction {
-//                case .updateWindowOpacityDuration,
-//                     .updatetActiveWindowOpacity,
-//                     .updateNormalWindowOpacity:
-//                    print("\(Date()) Debounce this ... \(subAction)")
-//                    return environment
-//                        .save(state.yabai, to: state.yabai.stateURL)
-////                        .debounce(id: SaveID(), for: 0.1, scheduler: DispatchQueue.main.eraseToAnyScheduler())
-//
-//                default:
-//                    return environment.save(state.yabai, to: state.yabai.stateURL)
-//                }
-            return environment.save(state.yabai, to: state.yabai.stateURL)
+                //                switch subAction {
+                //                case .updateWindowOpacityDuration,
+                //                     .updatetActiveWindowOpacity,
+                //                     .updateNormalWindowOpacity:
+                //                    print("\(Date()) Debounce this ... \(subAction)")
+                //                    return environment
+                //                        .save(state.yabai, to: state.yabai.stateURL)
+                ////                        .debounce(id: SaveID(), for: 0.1, scheduler: DispatchQueue.main.eraseToAnyScheduler())
+                //
+                //                default:
+                //                    return environment.save(state.yabai, to: state.yabai.stateURL)
+                //                }
+                return environment.save(state.yabai, to: state.yabai.stateURL)
                 
             case .skhd:
                 return environment.save(state.skhd, to: state.skhd.stateURL)
-
+                
             case let .macOSAnimations(subAction):
                 return environment.save(state.macOSAnimations, to: state.macOSAnimations.stateURL)
                 
@@ -122,7 +122,7 @@ extension Root {
                 
             case .onboarding(_):
                 return .none
-                                
+                
             case .saveResult(.success(_)):
                 state.error = ""
                 print("We saved ... ")
@@ -207,9 +207,35 @@ extension Root {
                 case .yabai:
                     state.yabai = Yabai.State()
                 case .skhd:
-                    KeyboardShortcuts.reset(KeyboardShortcuts.Name.allCases)
-
+                    //KeyboardShortcuts.reset(KeyboardShortcuts.Name.allCases)
                     state.skhd = SKHD.State()
+                    
+                    let mod1: NSEvent.ModifierFlags  = [.option, .shift]
+                    let mod2: NSEvent.ModifierFlags  = [.control, .option, .shift]
+                    
+                    KeyboardShortcuts.set(.restartYabai,   mod1, .r)
+                    
+                    KeyboardShortcuts.set(.toggleFloating, mod1, .one)
+                    KeyboardShortcuts.set(.toggleBSP,      mod1, .two)
+                    KeyboardShortcuts.set(.toggleStacking, mod1, .three)
+
+                    
+                    KeyboardShortcuts.set(.focusNorth,     mod1, .k)
+                    KeyboardShortcuts.set(.focusSouth,     mod1, .j)
+                    KeyboardShortcuts.set(.focusWest,      mod1, .h)
+                    KeyboardShortcuts.set(.focusEast,      mod1, .l)
+                                        
+//                    KeyboardShortcuts.set(.resizeTop,      mod1, .r)
+//                    KeyboardShortcuts.set(.resizeRight,    mod1, .r)
+//                    KeyboardShortcuts.set(.resizeBottom,   mod1, .r)
+//                    KeyboardShortcuts.set(.resizeLeft,     mod1, .r)
+//                    
+//                    KeyboardShortcuts.set(.moveNorth,      mod1, .r)
+//                    KeyboardShortcuts.set(.moveEast,       mod1, .r)
+//                    KeyboardShortcuts.set(.moveSouth,      mod1, .r)
+//                    KeyboardShortcuts.set(.moveWest,       mod1, .r)
+
+                    
                 case .macOSAnimations:
                     state.macOSAnimations = MacOSAnimations.State()
                 }
@@ -223,6 +249,8 @@ extension Root {
         }
     )
 }
+
+
 
 extension Root {
     static let defaultStore = Store(

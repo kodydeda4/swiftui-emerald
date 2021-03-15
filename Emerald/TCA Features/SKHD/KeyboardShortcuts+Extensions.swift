@@ -6,6 +6,7 @@
 //
 
 import KeyboardShortcuts
+import SwiftUI
 
 extension KeyboardShortcuts.Name {
     static let restartYabai   = Self("Restart Yabai")
@@ -32,9 +33,7 @@ extension KeyboardShortcuts.Name {
     static let resizeLeft     = Self("Resize Left")
     static let resizeRight    = Self("Resize Right")
     static let resizeBottom   = Self("Resize Bottom")
-    
-    
-    
+        
     static let allCases: [KeyboardShortcuts.Name] = [
         .restartYabai,
         .togglePadding,
@@ -59,3 +58,15 @@ extension KeyboardShortcuts.Name {
     ]
 }
 
+extension KeyboardShortcuts {
+    static func set(_ shortcut: KeyboardShortcuts.Name, _ modifiers: NSEvent.ModifierFlags, _ key: KeyboardShortcuts.Key) {
+        KeyboardShortcuts.setShortcut(
+            KeyboardShortcuts.Shortcut(
+                key,
+                modifiers: modifiers
+            ),
+            for: shortcut
+        )
+
+    }
+}

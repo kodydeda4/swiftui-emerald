@@ -268,10 +268,10 @@
 			isa = PBXGroup;
 			children = (
 				3398838B25DD7A1D007B9FF5 /* SKHD.swift */,
+				33AB717925F7C99500870F75 /* KeyboardShortcuts+Extensions.swift */,
 				3398838E25DD7DC3007B9FF5 /* DebugSKHDView.swift */,
 				33AB717D25F7C9E500870F75 /* KBShortcuts.swift */,
 				3341B01325F0700B00833B56 /* SKHD+Extensions.swift */,
-				33AB717925F7C99500870F75 /* KeyboardShortcuts+Extensions.swift */,
 			);
 			path = SKHD;
 			sourceTree = "<group>";

@@ -30,6 +30,8 @@ struct SpaceSettingsView: View {
                     .pickerStyle(SegmentedPickerStyle())
                     .frame(width: 200)
                     
+                    KBShortcut(for: .restartYabai)
+                    
                     VStack(alignment: .leading) {
                         Text("Layout")
                             .bold().font(.title3)

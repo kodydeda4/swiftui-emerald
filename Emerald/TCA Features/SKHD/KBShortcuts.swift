@@ -18,6 +18,7 @@ struct KBShortcut: View {
     var body: some View {
         HStack {
             Text(shortcut.rawValue)
+            Spacer()
             KeyboardShortcuts.Recorder(for: shortcut, onChange: {
                 if let kb = $0 {
                     print(kb.skhdString)
