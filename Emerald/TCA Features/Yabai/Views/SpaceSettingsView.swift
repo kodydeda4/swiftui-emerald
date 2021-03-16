@@ -99,21 +99,19 @@ struct SpaceSettingsView: View {
                         VStack {
                             HStack {
                                 Text("Inner")
+                                TextField("", value: vs.binding(\.windowGap, k), formatter: NumberFormatter())
+                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                    .frame(width: 130)
+                                KeyboardShortcuts.Recorder(for: .toggleGaps)
+                            }
+                            HStack {
+                                Text("Outer")
                                 TextField("", value: vs.binding(\.padding, k), formatter: NumberFormatter())
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
                                     .frame(width: 130)
                                 
                                 KeyboardShortcuts.Recorder(for: .togglePadding)
                             }
-                            
-                            HStack {
-                                Text("Outer")
-                                TextField("", value: vs.binding(\.windowGap, k), formatter: NumberFormatter())
-                                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                                    .frame(width: 130)
-                                KeyboardShortcuts.Recorder(for: .toggleGaps)
-                            }
-                            
                         }
                     }
                 }
