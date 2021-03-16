@@ -210,33 +210,33 @@ extension Root {
                     KeyboardShortcuts.reset(KeyboardShortcuts.Name.allCases)
                     state.skhd = SKHD.State()
                     
-                    KeyboardShortcuts.set(.restartYabai,   [.option, .shift           ], .r)
+                    KeyboardShortcuts.set(.restartYabai,   [.option, .shift             ], .r)
                     
-                    
-                    KeyboardShortcuts.set(.togglePadding,  [.option,                  ], .seven)
-                    KeyboardShortcuts.set(.toggleGaps,     [.option,                  ], .eight)
-                    KeyboardShortcuts.set(.toggleSplit,    [.option,                  ], .nine)
-                    KeyboardShortcuts.set(.toggleBalance,  [.option,                  ], .zero)
+                    KeyboardShortcuts.set(.togglePadding,  [.option,                    ], .seven)
+                    KeyboardShortcuts.set(.toggleGaps,     [.option,                    ], .eight)
+                    KeyboardShortcuts.set(.toggleSplit,    [.option,                    ], .nine)
+                    KeyboardShortcuts.set(.toggleBalance,  [.option,                    ], .zero)
+  
+                      
+                    KeyboardShortcuts.set(.toggleFloating, [.option, .shift             ], .one)
+                    KeyboardShortcuts.set(.toggleBSP,      [.option, .shift             ], .two)
+                    KeyboardShortcuts.set(.toggleStacking, [.option, .shift             ], .three)
+                                 
+                    KeyboardShortcuts.set(.focusNorth,     [.control,                   ], .upArrow)
+                    KeyboardShortcuts.set(.focusSouth,     [.control,                   ], .downArrow)
+                    KeyboardShortcuts.set(.focusEast,      [.control,                   ], .rightArrow)
+                    KeyboardShortcuts.set(.focusWest,      [.control,                   ], .leftArrow)
+                      
+                    KeyboardShortcuts.set(.resizeTop,      [.control, .option,          ], .upArrow)
+                    KeyboardShortcuts.set(.resizeBottom,   [.control, .option,          ], .downArrow)
+                    KeyboardShortcuts.set(.resizeRight,    [.control, .option,          ], .rightArrow)
+                    KeyboardShortcuts.set(.resizeLeft,     [.control, .option,          ], .leftArrow)
+                     
+                    KeyboardShortcuts.set(.moveNorth,      [.control, .option, .command,], .upArrow)
+                    KeyboardShortcuts.set(.moveSouth,      [.control, .option, .command,], .downArrow)
+                    KeyboardShortcuts.set(.moveEast,       [.control, .option, .command,], .rightArrow)
+                    KeyboardShortcuts.set(.moveWest,       [.control, .option, .command,], .leftArrow)
 
-                    
-                    KeyboardShortcuts.set(.toggleFloating, [.option, .shift           ], .one)
-                    KeyboardShortcuts.set(.toggleBSP,      [.option, .shift           ], .two)
-                    KeyboardShortcuts.set(.toggleStacking, [.option, .shift           ], .three)
-                               
-                    KeyboardShortcuts.set(.focusNorth,     [.option,                  ], .k)
-                    KeyboardShortcuts.set(.focusSouth,     [.option,                  ], .j)
-                    KeyboardShortcuts.set(.focusEast,      [.option,                  ], .l)
-                    KeyboardShortcuts.set(.focusWest,      [.option,                  ], .h)
-                    
-                    KeyboardShortcuts.set(.resizeTop,      [.option, .shift           ], .k)
-                    KeyboardShortcuts.set(.resizeBottom,   [.option, .shift           ], .j)
-                    KeyboardShortcuts.set(.resizeRight,    [.option, .shift           ], .l)
-                    KeyboardShortcuts.set(.resizeLeft,     [.option, .shift           ], .h)
-                    
-                    KeyboardShortcuts.set(.moveNorth,      [.option, .shift, .command,], .k)
-                    KeyboardShortcuts.set(.moveSouth,      [.option, .shift, .command,], .j)
-                    KeyboardShortcuts.set(.moveEast,       [.option, .shift, .command,], .l)
-                    KeyboardShortcuts.set(.moveWest,       [.option, .shift, .command,], .h)
 
                     
                 case .macOSAnimations:
