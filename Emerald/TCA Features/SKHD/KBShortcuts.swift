@@ -19,11 +19,7 @@ struct KBShortcut: View {
         HStack {
             Text(shortcut.rawValue)
             Spacer()
-            KeyboardShortcuts.Recorder(for: shortcut, onChange: {
-                if let kb = $0 {
-                    print(kb.skhdString)
-                }
-            })
+            KeyboardShortcuts.Recorder(for: shortcut)
         }
     }
 }

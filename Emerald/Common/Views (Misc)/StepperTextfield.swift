@@ -35,7 +35,6 @@ struct StepperTextfield: View {
                 )
             Text(text)
                 .font(.caption)
-            
         }
     }
 }

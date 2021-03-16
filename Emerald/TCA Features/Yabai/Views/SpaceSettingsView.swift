@@ -7,6 +7,7 @@
 
 import SwiftUI
 import ComposableArchitecture
+import KeyboardShortcuts
 
 struct SpaceSettingsView: View {
     let store: Store<Yabai.State, Yabai.Action>
@@ -16,70 +17,61 @@ struct SpaceSettingsView: View {
         WithViewStore(store) { vs in
             VStack(alignment: .leading, spacing: 20) {
                 
-                
                 // Layout
                 VStack(alignment: .leading) {
                     Text("Layout")
                         .bold().font(.title3)
                     
-                    Picker("", selection: vs.binding(\.layout, k)) {
-                        ForEach(Yabai.State.Layout.allCases) {
-                            Text($0.labelDescription.lowercased())
+                    HStack {
+                        GroupBox {
+                            VStack {
+                                Text("Normal")
+                                    .bold().font(.title3)
+
+                                Button(action: {}) {
+                                    Rectangle()
+                                        .overlay(Text("Float"))
+                                }
+                                //.frame(width: 800/4, height: 600/4)
+                                .buttonStyle(PlainButtonStyle())
+                                
+                                KeyboardShortcuts.Recorder(for: .toggleFloating)
+                            }
+                            .padding(2)
+                        }
+                        GroupBox {
+                            VStack {
+                                Text("Tiling")
+                                    .bold().font(.title3)
+
+                                Button(action: {}) {
+                                    Rectangle()
+                                        .overlay(Text("Tiling"))
+                                }
+                                //.frame(width: 800/4, height: 600/4)
+                                .buttonStyle(PlainButtonStyle())
+                                
+                                KeyboardShortcuts.Recorder(for: .toggleBSP)
+                            }
+                            .padding(2)
+                        }
+                        GroupBox {
+                            VStack {
+                                Text("Stacking")
+                                    .bold().font(.title3)
+
+                                Button(action: {}) {
+                                    Rectangle()
+                                        .overlay(Text("Stacking"))
+                                }
+                                //.frame(width: 800/4, height: 600/4)
+                                .buttonStyle(PlainButtonStyle())
+                                
+                                KeyboardShortcuts.Recorder(for: .toggleStacking)
+                            }
+                            .padding(2)
                         }
                     }
-                    .labelsHidden()
-                    .pickerStyle(SegmentedPickerStyle())
-                    .frame(width: 200)
-                    
-                    KBShortcut(for: .restartYabai)
-                    
-                    VStack(alignment: .leading) {
-                        Text("Layout")
-                            .bold().font(.title3)
-                        KBShortcut(for: .toggleFloating)
-                        KBShortcut(for: .toggleBSP)
-                        KBShortcut(for: .toggleStacking)
-                    }
-                    
-                    VStack(alignment: .leading) {
-                        Text("Toggles")
-                            .bold().font(.title3)
-                        KBShortcut(for: .togglePadding)
-                        KBShortcut(for: .toggleGaps)
-                        KBShortcut(for: .toggleSplit)
-                        KBShortcut(for: .toggleBalance)
-                    }
-
-                    VStack(alignment: .leading) {
-                        Text("Focus")
-                            .bold().font(.title3)
-                        KBShortcut(for: .focusNorth)
-                        KBShortcut(for: .focusSouth)
-                        KBShortcut(for: .focusEast)
-                        KBShortcut(for: .focusWest)
-                    }
-                    
-                    VStack(alignment: .leading) {
-                        Text("Resize")
-                            .bold().font(.title3)
-                        KBShortcut(for: .resizeTop)
-                        KBShortcut(for: .resizeBottom)
-                        KBShortcut(for: .resizeRight)
-                        KBShortcut(for: .resizeLeft)
-                    }
-
-                    VStack(alignment: .leading) {
-                        Text("Move")
-                            .bold().font(.title3)
-                        KBShortcut(for: .moveNorth)
-                        KBShortcut(for: .moveSouth)
-                        KBShortcut(for: .moveEast)
-                        KBShortcut(for: .moveWest)
-                    }
-                                        
-                    
-                    Text(vs.layout.caseDescription)
-                        .foregroundColor(Color(.gray))
                 }
                 
                 // Padding
@@ -87,6 +79,10 @@ struct SpaceSettingsView: View {
                     Divider()
                     Text("Padding")
                         .bold().font(.title3)
+                    
+                    Text("Add padding between windows for Tiling & Stacking layouts")
+                        .foregroundColor(Color(.gray))
+
                     
                     HStack {
                         StepperTextfield("Top",    vs.binding(\.paddingTop, k))
@@ -96,8 +92,72 @@ struct SpaceSettingsView: View {
                         StepperTextfield("Gaps",   vs.binding(\.windowGap, k))
                     }
                 }
-                .disabled(vs.layout == .float)
-                .opacity(vs.layout == .float ? 0.5 : 1.0)
+//                .disabled(vs.layout == .float)
+//                .opacity(vs.layout == .float ? 0.5 : 1.0)
+
+                    //                    Picker("", selection: vs.binding(\.layout, k)) {
+                    //                        ForEach(Yabai.State.Layout.allCases) {
+                    //                            Text($0.labelDescription.lowercased())
+                    //                        }
+                    //                    }
+                    //                    .labelsHidden()
+                    //                    .pickerStyle(SegmentedPickerStyle())
+                    //                    .frame(width: 200)
+                    
+                VStack(alignment: .leading) {
+                    Divider()
+                    Text("Shortcuts")
+                        .bold().font(.title3)
+
+                    
+                    
+                    KBShortcut(for: .restartYabai)
+                    
+                    VStack(alignment: .leading) {
+                        Divider()
+                        Text("Toggles")
+                            .bold().font(.title3)
+                        KBShortcut(for: .togglePadding)
+                        KBShortcut(for: .toggleGaps)
+                        KBShortcut(for: .toggleSplit)
+                        KBShortcut(for: .toggleBalance)
+                    }
+                    
+                    VStack(alignment: .leading) {
+                        Divider()
+                        Text("Focus")
+                            .bold().font(.title3)
+                        KBShortcut(for: .focusNorth)
+                        KBShortcut(for: .focusSouth)
+                        KBShortcut(for: .focusEast)
+                        KBShortcut(for: .focusWest)
+                    }
+                    
+                    VStack(alignment: .leading) {
+                        Divider()
+                        Text("Resize")
+                            .bold().font(.title3)
+                        KBShortcut(for: .resizeTop)
+                        KBShortcut(for: .resizeBottom)
+                        KBShortcut(for: .resizeRight)
+                        KBShortcut(for: .resizeLeft)
+                    }
+                    
+                    VStack(alignment: .leading) {
+                        Divider()
+                        Text("Move")
+                            .bold().font(.title3)
+                        KBShortcut(for: .moveNorth)
+                        KBShortcut(for: .moveSouth)
+                        KBShortcut(for: .moveEast)
+                        KBShortcut(for: .moveWest)
+                    }
+                    
+                    
+                    Text(vs.layout.caseDescription)
+                        .foregroundColor(Color(.gray))
+                }
+                
                 
                 // Float-On-Top
                 VStack(alignment: .leading) {
