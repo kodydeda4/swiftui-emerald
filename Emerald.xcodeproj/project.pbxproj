@@ -35,7 +35,6 @@
 		336BC3A925F7FA5500BE3EBA /* NewWindowSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336BC3A825F7FA5500BE3EBA /* NewWindowSettings.swift */; };
 		336BC3B025F8069700BE3EBA /* FocusSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336BC3AF25F8069700BE3EBA /* FocusSettingsView.swift */; };
 		336BC3BA25F85B7C00BE3EBA /* SIPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336BC3B925F85B7C00BE3EBA /* SIPButton.swift */; };
-		337F3ABE25DEC897009155CA /* SKHDShortcutCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337F3ABD25DEC897009155CA /* SKHDShortcutCharacter.swift */; };
 		3380D2FF25D05F4200C10913 /* EmeraldApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380D2FE25D05F4200C10913 /* EmeraldApp.swift */; };
 		3380D30325D05F4200C10913 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3380D30225D05F4200C10913 /* Assets.xcassets */; };
 		3380D30625D05F4200C10913 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3380D30525D05F4200C10913 /* Preview Assets.xcassets */; };
@@ -83,7 +82,6 @@
 		336BC3A825F7FA5500BE3EBA /* NewWindowSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWindowSettings.swift; sourceTree = "<group>"; };
 		336BC3AF25F8069700BE3EBA /* FocusSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusSettingsView.swift; sourceTree = "<group>"; };
 		336BC3B925F85B7C00BE3EBA /* SIPButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIPButton.swift; sourceTree = "<group>"; };
-		337F3ABD25DEC897009155CA /* SKHDShortcutCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHDShortcutCharacter.swift; sourceTree = "<group>"; };
 		3380D2FB25D05F4200C10913 /* Emerald.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emerald.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3380D2FE25D05F4200C10913 /* EmeraldApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmeraldApp.swift; sourceTree = "<group>"; };
 		3380D30225D05F4200C10913 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -202,7 +200,6 @@
 			isa = PBXGroup;
 			children = (
 				335E78D525F117D700C8839B /* JSONDecoder+Extensions.swift */,
-				337F3ABD25DEC897009155CA /* SKHDShortcutCharacter.swift */,
 				3385DF6F25D6361200ACDE21 /* AppleScript.swift */,
 				333631FA25EEF0CD009FEB32 /* CodableColor.swift */,
 				3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */,
@@ -393,7 +390,6 @@
 				3380D33725D0723000C10913 /* Root.swift in Sources */,
 				3385DF6725D6270B00ACDE21 /* SidebarView.swift in Sources */,
 				339C453525D6ED0F0079ACA1 /* OnboardingView.swift in Sources */,
-				337F3ABE25DEC897009155CA /* SKHDShortcutCharacter.swift in Sources */,
 				3341B01725F0702C00833B56 /* MacOSAnimations+Extensions.swift in Sources */,
 				333631FB25EEF0CD009FEB32 /* CodableColor.swift in Sources */,
 				3385DF7025D6361200ACDE21 /* AppleScript.swift in Sources */,

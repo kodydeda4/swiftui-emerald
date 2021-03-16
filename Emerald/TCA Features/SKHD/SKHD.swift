@@ -50,10 +50,3 @@ extension SKHD {
         environment: ()
     )
 }
-
-func skhd(_ shortcut: KeyboardShortcuts.Shortcut?) -> String {
-    shortcut?.description
-        .compactMap { SKHDShortcutCharacter(rawValue: $0)?.configFile }
-        .joined(separator: " + ") ?? "# UNASSIGNED"
-}
-
