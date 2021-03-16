@@ -8,6 +8,7 @@
 import SwiftUI
 import ComposableArchitecture
 
+
 struct SidebarView: View {
     let store: Store<Root.State, Root.Action>
     

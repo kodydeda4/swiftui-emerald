@@ -17,17 +17,17 @@ struct RootView: View {
                 SidebarView(store: store)
                 SpaceSettingsView(store: store.scope(state: \.yabai, action: Root.Action.yabai))
                 
-                TabView {
-                    DebugConfigFileView(text: viewStore.yabai.asConfig)
-                        .tabItem { Label("Yabai", systemImage: "square.and.pencil") }
-                    
-                    DebugConfigFileView(text: viewStore.skhd.asConfig)
-                        .tabItem { Label("SKHD", systemImage: "square.and.pencil") }
-                    
-                    DebugConfigFileView(text: viewStore.macOSAnimations.asConfig)
-                        .tabItem { Label("Animations", systemImage: "square.and.pencil") }
-                }
-                .padding()
+//                TabView {
+//                    DebugConfigFileView(text: viewStore.yabai.asConfig)
+//                        .tabItem { Label("Yabai", systemImage: "square.and.pencil") }
+//
+//                    DebugConfigFileView(text: viewStore.skhd.asConfig)
+//                        .tabItem { Label("SKHD", systemImage: "square.and.pencil") }
+//
+//                    DebugConfigFileView(text: viewStore.macOSAnimations.asConfig)
+//                        .tabItem { Label("Animations", systemImage: "square.and.pencil") }
+//                }
+//                .padding()
             }
             .onAppear {
                 viewStore.send(.load(.yabai))
@@ -38,7 +38,7 @@ struct RootView: View {
                 isPresented:
                     viewStore.binding(
                         get: \.onboarding.isOnboaring,
-                        send: Root.Action.onboarding(.toggleIsOnboaring))
+                        send: .onboarding(.toggleIsOnboaring))
             ) {
                 OnboardingView(
                     store: store.scope(state: \.onboarding, action: Root.Action.onboarding)
@@ -50,24 +50,46 @@ struct RootView: View {
                         Image(systemName: "sidebar.left")
                     }
                 }
-//                ToolbarItem {
-//                    Button("Apply Animation Changes") {
-//                        viewStore.send(.export(.macOSAnimations))
-//                        let _ = AppleScript.applyAnimationSettings.execute()
-//                    }
-//                }
+                //                ToolbarItem {
+                //                    Button("Apply Animation Changes") {
+                //                        viewStore.send(.export(.macOSAnimations))
+                //                        let _ = AppleScript.applyAnimationSettings.execute()
+                //                    }
+                //                }
                 ToolbarItem {
-                    Toggle("Toggle SIP", isOn: viewStore.binding(get: \.yabai.sipEnabled, send: Root.Action.yabai(.toggleSIP)))
+                    Button(action: {
+                        viewStore.send(.yabai(.toggleSIP))
+                    }) {
+                        Image(systemName: "lock.fill")
+                            .foregroundColor(viewStore.yabai.sipEnabled ? .accentColor : .gray)
+                            .opacity(viewStore.yabai.sipEnabled ? 1 : 0.5)
+                            
+                    }
+                    .help("Toggle SIP Lock")
                 }
                 
+                ToolbarItem {
+                    Button(action: {
+                        viewStore.send(.skhd(.toggleIsEnabled))
+                    }) {
+                        Image(systemName: "keyboard")
+                            .foregroundColor(viewStore.skhd.isEnabled ? .accentColor : .gray)
+                            .opacity(viewStore.skhd.isEnabled ? 1 : 0.5)
+                            
+                    }
+                    .help("Toggle Keyboard Shortcuts")
+                    //.keyboardShortcut("a", modifiers: [.command, .shift])
+                }
+
                 ToolbarItem {
                     Button(action: {
                         viewStore.send(.reset(.yabai))
                         viewStore.send(.reset(.skhd))
                         viewStore.send(.reset(.macOSAnimations))
                     }) {
-                        Text("Reset (cmd+shift+r)")
+                        Text("Reset")
                     }
+                    .help("⇧ ⌘ R")
                     .keyboardShortcut("r", modifiers: [.command, .shift])
                 }
                 ToolbarItem {
@@ -76,8 +98,9 @@ struct RootView: View {
                         viewStore.send(.export(.skhd))
                         viewStore.send(.appleScript(.restartYabai))
                     }) {
-                        Text("Apply Changes (cmd+shift+a)")
+                        Text("Apply Changes")
                     }
+                    .help("⇧ ⌘ A")
                     .keyboardShortcut("a", modifiers: [.command, .shift])
                 }
             }
