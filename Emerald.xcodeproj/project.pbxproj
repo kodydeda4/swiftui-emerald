@@ -14,7 +14,7 @@
 		3325BFD525F05041007831C5 /* RoundedRectangleButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3325BFD425F05041007831C5 /* RoundedRectangleButtonStyle.swift */; };
 		332D567D25DEED5300C88FEE /* MacOSAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D567C25DEED5300C88FEE /* MacOSAnimations.swift */; };
 		332D568625DEEF7800C88FEE /* MacOSAnimationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D568525DEEF7800C88FEE /* MacOSAnimationSettingsView.swift */; };
-		33318F3325F2AD3500231233 /* StepperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33318F3225F2AD3500231233 /* StepperView.swift */; };
+		33318F3325F2AD3500231233 /* StepperTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33318F3225F2AD3500231233 /* StepperTextfield.swift */; };
 		333631F825EEE6B9009FEB32 /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = 333631F725EEE6B9009FEB32 /* DynamicColor */; };
 		333631FB25EEF0CD009FEB32 /* CodableColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333631FA25EEF0CD009FEB32 /* CodableColor.swift */; };
 		3336320025EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333631FF25EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift */; };
@@ -63,7 +63,7 @@
 		3325BFD425F05041007831C5 /* RoundedRectangleButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleButtonStyle.swift; sourceTree = "<group>"; };
 		332D567C25DEED5300C88FEE /* MacOSAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSAnimations.swift; sourceTree = "<group>"; };
 		332D568525DEEF7800C88FEE /* MacOSAnimationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSAnimationSettingsView.swift; sourceTree = "<group>"; };
-		33318F3225F2AD3500231233 /* StepperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperView.swift; sourceTree = "<group>"; };
+		33318F3225F2AD3500231233 /* StepperTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperTextfield.swift; sourceTree = "<group>"; };
 		333631FA25EEF0CD009FEB32 /* CodableColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableColor.swift; sourceTree = "<group>"; };
 		333631FF25EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemIntegrityProtectionView.swift; sourceTree = "<group>"; };
 		33387D6425D3F64300E76D29 /* Yabai.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yabai.swift; sourceTree = "<group>"; };
@@ -149,7 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				330E144925F2AFEE00E61969 /* SliderView.swift */,
-				33318F3225F2AD3500231233 /* StepperView.swift */,
+				33318F3225F2AD3500231233 /* StepperTextfield.swift */,
 				330E144D25F2B12600E61969 /* ColorPickerView.swift */,
 				3361CF0F25E6EF1300016875 /* DebugConfigFileView.swift */,
 				3361CF0E25E6EF1300016875 /* SectionView.swift */,
@@ -386,7 +386,7 @@
 				3380D2FF25D05F4200C10913 /* EmeraldApp.swift in Sources */,
 				334EC79225F908A4005AB9BF /* ViewStore+Extensions.swift in Sources */,
 				332D568625DEEF7800C88FEE /* MacOSAnimationSettingsView.swift in Sources */,
-				33318F3325F2AD3500231233 /* StepperView.swift in Sources */,
+				33318F3325F2AD3500231233 /* StepperTextfield.swift in Sources */,
 				330E144E25F2B12600E61969 /* ColorPickerView.swift in Sources */,
 				33AB717A25F7C99500870F75 /* KeyboardShortcuts+Extensions.swift in Sources */,
 				3356BCAD25F287D9006EB641 /* WindowSettingsView.swift in Sources */,

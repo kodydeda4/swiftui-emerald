@@ -33,7 +33,7 @@ struct WindowSettingsView: View {
                         SIPButton(store: Root.defaultStore)
                     }
                     HStack {
-                        StepperView("Width", vs.binding(\.windowBorderWidth, k))
+                        StepperTextfield("Width", vs.binding(\.windowBorderWidth, k))
                         ColorPickerView("Focused", vs.binding(\.activeWindowBorderColor, k))
                         ColorPickerView("Normal",  vs.binding(\.normalWindowBorderColor, k))
                         ColorPickerView("Insert",  vs.binding(\.insertWindowBorderColor, k))

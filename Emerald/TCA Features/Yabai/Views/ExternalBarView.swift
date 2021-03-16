@@ -48,8 +48,8 @@ struct ExternalBarSettingsView: View {
                         .bold().font(.title3)
                     
                     HStack {
-                        StepperView("Top", vs.binding(\.externalBarPaddingTop, k))
-                        StepperView("Bottom", vs.binding(\.externalBarPaddingBottom, k))
+                        StepperTextfield("Top", vs.binding(\.externalBarPaddingTop, k))
+                        StepperTextfield("Bottom", vs.binding(\.externalBarPaddingBottom, k))
                     }
                 }
                 .disabled(!vs.externalBarEnabled)

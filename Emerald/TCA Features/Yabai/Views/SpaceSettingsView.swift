@@ -89,11 +89,11 @@ struct SpaceSettingsView: View {
                         .bold().font(.title3)
                     
                     HStack {
-                        StepperView("Top",    vs.binding(\.paddingTop, k))
-                        StepperView("Bottom", vs.binding(\.paddingBottom, k))
-                        StepperView("Left",   vs.binding(\.paddingLeft, k))
-                        StepperView("Right",  vs.binding(\.paddingRight, k))
-                        StepperView("Gaps",   vs.binding(\.windowGap, k))
+                        StepperTextfield("Top",    vs.binding(\.paddingTop, k))
+                        StepperTextfield("Bottom", vs.binding(\.paddingBottom, k))
+                        StepperTextfield("Left",   vs.binding(\.paddingLeft, k))
+                        StepperTextfield("Right",  vs.binding(\.paddingRight, k))
+                        StepperTextfield("Gaps",   vs.binding(\.windowGap, k))
                     }
                 }
                 .disabled(vs.layout == .float)
