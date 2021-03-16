@@ -45,11 +45,11 @@ struct Yabai {
         var mouseAction2             : MouseAction       = .resize
         var mouseDropAction          : MouseDropAction   = .swap
         var layout                   : Layout            = .float
-        var paddingTop               : Int               = 0
-        var paddingBottom            : Int               = 0
-        var paddingLeft              : Int               = 0
-        var paddingRight             : Int               = 0
-        var windowGap                : Int               = 0
+        var paddingTop               : Int               = 20
+        var paddingBottom            : Int               = 20
+        var paddingLeft              : Int               = 20
+        var paddingRight             : Int               = 20
+        var windowGap                : Int               = 20
 
         enum ExternalBar: String, Codable, CaseIterable, Identifiable {
             var id: ExternalBar { self }

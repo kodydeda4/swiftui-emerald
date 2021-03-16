@@ -13,19 +13,16 @@ struct StepperView: View {
     let text: String
     @Binding var value: Int
     let range: ClosedRange<Int>
-    //var isEnabled: Bool
     
     @State var hovering = false
     
     init(_ text: String,
          _ value: Binding<Int>,
-         range: ClosedRange<Int> = 0...10//,
-         //isEnabled: Bool
+         range: ClosedRange<Int> = 0...20
     ) {
         self.text = text
         self._value = value
         self.range = range
-        //self.isEnabled = isEnabled
     }
     
     var body: some View {
@@ -34,12 +31,10 @@ struct StepperView: View {
                 Text("\(value)")
                     .offset(x: 6)
                     .foregroundColor(Color(.textColor).opacity(0.75))
-                    //.foregroundColor(isEnabled ? Color(.textColor).opacity(0.75) : Color(.disabledControlTextColor).opacity(0.75))
                     
                 Spacer()
                 
                 Stepper("", value: $value, in: range)
-                    //..disabled(!isEnabled)
                     .opacity(hovering ? 1:0)
             }
             .frame(width: 44)
@@ -47,15 +42,11 @@ struct StepperView: View {
             .clipShape(RoundedRectangle(cornerRadius: 6))
             .onHover { isHovered in
                 hovering.toggle()
-//                if isEnabled {
-//                    hovering.toggle()
-//                }
-            }
 
+            }
             Text("\(text)")
                 .font(.system(size: systemFontSize))
                 .foregroundColor(Color(.textColor))
-                //.foregroundColor(isEnabled ? Color(.textColor) : Color(.disabledControlTextColor))
         }
     }
 }
