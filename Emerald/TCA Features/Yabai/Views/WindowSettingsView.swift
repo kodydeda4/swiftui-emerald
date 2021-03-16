@@ -7,6 +7,7 @@
 
 import SwiftUI
 import ComposableArchitecture
+import KeyboardShortcuts
 
 struct WindowSettingsView: View {
     let store: Store<Yabai.State, Yabai.Action>
@@ -15,7 +16,45 @@ struct WindowSettingsView: View {
     var body: some View {
         WithViewStore(store) { vs in
             VStack(alignment: .leading, spacing: 20) {
-                
+                HStack {
+                    GroupBox {
+                        VStack {
+                            Text("Active")
+                                .bold().font(.title3)
+                            
+                            Button(action: {}) {
+                                Rectangle()
+                                    .overlay(Text("Active"))
+                            }
+                            //.frame(width: 800/4, height: 600/4)
+                            .buttonStyle(PlainButtonStyle())
+                            
+                            Text(Yabai.State.Layout.float.caseDescription)
+                                .foregroundColor(Color(.gray))
+                            KeyboardShortcuts.Recorder(for: .toggleFloating)
+                        }
+                        .padding(2)
+                    }
+                    GroupBox {
+                        VStack {
+                            Text("Normal")
+                                .bold().font(.title3)
+                            
+                            Button(action: {}) {
+                                Rectangle()
+                                    .overlay(Text("Normal"))
+                            }
+                            //.frame(width: 800/4, height: 600/4)
+                            .buttonStyle(PlainButtonStyle())
+                            
+                            Text(Yabai.State.Layout.bsp.caseDescription)
+                                .foregroundColor(Color(.gray))
+                            KeyboardShortcuts.Recorder(for: .toggleBSP)
+                        }
+                        .padding(2)
+                    }
+
+                }
                 // Borders
                 VStack(alignment: .leading) {
                     HStack {

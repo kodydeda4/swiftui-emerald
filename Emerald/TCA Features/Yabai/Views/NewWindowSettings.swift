@@ -15,6 +15,22 @@ struct NewWindowSettings: View {
     var body: some View {
         WithViewStore(store) { vs in
             VStack(alignment: .leading, spacing: 20) {
+                //Toggles
+                VStack(alignment: .leading) {
+                    Divider()
+                    Text("Shortcuts")
+                        .bold().font(.title3)
+                    
+                    KBShortcut(for: .restartYabai)
+                    
+                    VStack(alignment: .leading) {
+                        Divider()
+                        Text("Toggles")
+                            .bold().font(.title3)
+                        KBShortcut(for: .toggleSplit)
+                        KBShortcut(for: .toggleBalance)
+                    }
+                }
                 
                 // Placement
                 VStack(alignment: .leading) {
