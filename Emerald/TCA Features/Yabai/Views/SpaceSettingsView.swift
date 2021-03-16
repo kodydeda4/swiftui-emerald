@@ -16,6 +16,7 @@ struct SpaceSettingsView: View {
         WithViewStore(store) { vs in
             VStack(alignment: .leading, spacing: 20) {
                 
+                
                 // Layout
                 VStack(alignment: .leading) {
                     Text("Layout")
