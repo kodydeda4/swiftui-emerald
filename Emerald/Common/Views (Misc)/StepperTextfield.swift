@@ -24,7 +24,10 @@ struct StepperTextfield: View {
     }
     
     var body: some View {
-        VStack {
+        HStack {
+            Text(text)
+                .font(.caption)
+
             TextField(text, value: $value, formatter: NumberFormatter())
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .overlay(
@@ -33,8 +36,7 @@ struct StepperTextfield: View {
                         Stepper("", value: $value, in: range)
                     }
                 )
-            Text(text)
-                .font(.caption)
+                .frame(width: 100)
         }
     }
 }

@@ -29,6 +29,7 @@ struct RootView: View {
 //                }
 //                .padding()
             }
+            //.frame(width: 800, height: 800)
             .onAppear {
                 viewStore.send(.load(.yabai))
                 viewStore.send(.load(.skhd))

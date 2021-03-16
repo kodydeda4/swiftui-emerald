@@ -36,10 +36,10 @@ yabai -m config debug_output \(debugOutput == true ? "on" : "off")
 yabai -m config layout \(layout)
 
 # Padding
-yabai -m config top_padding \(paddingTop)
-yabai -m config bottom_padding \(paddingBottom)
-yabai -m config left_padding \(paddingLeft)
-yabai -m config right_padding \(paddingRight)
+yabai -m config top_padding \(padding)
+yabai -m config bottom_padding \(padding)
+yabai -m config left_padding \(padding)
+yabai -m config right_padding \(padding)
 yabai -m config window_gap \(windowGap)
 
 #============================================

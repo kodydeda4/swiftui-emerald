@@ -100,14 +100,35 @@ struct SpaceSettingsView: View {
                     
                     
                     HStack {
-                        StepperTextfield("Top",    vs.binding(\.paddingTop, k))
-                        StepperTextfield("Bottom", vs.binding(\.paddingBottom, k))
-                        StepperTextfield("Left",   vs.binding(\.paddingLeft, k))
-                        StepperTextfield("Right",  vs.binding(\.paddingRight, k))
-                        StepperTextfield("Gaps",   vs.binding(\.windowGap, k))
+                        StepperTextfield("Padding",    vs.binding(\.padding, k))
+                        KeyboardShortcuts.Recorder(for: .togglePadding)
                     }
+                    HStack {
+                        StepperTextfield("Gaps",   vs.binding(\.windowGap, k))
+                        KeyboardShortcuts.Recorder(for: .toggleGaps)
+                    }
+                    
 //                    KBShortcut(for: .toggleGaps)
 //                    KBShortcut(for: .togglePadding)
+
+//                    HStack {
+//                        VStack(alignment: .leading) {
+//                            StepperTextfield("Top",    vs.binding(\.paddingTop, k))
+//                            StepperTextfield("Bottom", vs.binding(\.paddingBottom, k))
+//
+//                        }
+//
+//                        VStack(alignment: .leading) {
+//                            StepperTextfield("Left",   vs.binding(\.paddingLeft, k))
+//                            StepperTextfield("Right",  vs.binding(\.paddingRight, k))
+//
+//                        }
+////                        StepperTextfield("Gaps",   vs.binding(\.windowGap, k))
+////                            .frame(width: 125)
+//                        Spacer()
+//                    }
+////
+////
                 }
                 
                 VStack(alignment: .leading, spacing: 20) {
@@ -162,28 +183,28 @@ struct SpaceSettingsView: View {
                 }
                 
                 // Float-On-Top
-                VStack(alignment: .leading) {
-                    Divider()
-                    HStack {
-                        Group {
-                            Toggle("", isOn: vs.binding(\.windowTopmost, k))
-                                .labelsHidden()
-                            
-                            Text("Float-On-Top")
-                                .bold().font(.title3)
-                        }
-                        .disabled(vs.sipEnabled || vs.layout == .float)
-                        .opacity( vs.sipEnabled || vs.layout == .float ? 0.5 : 1.0)
-                        
-                        Spacer()
-                        SIPButton(store: Root.defaultStore)
-                    }
-                    
-                    Text("Force floating windows to stay ontop of tiled/stacked windows")
-                        .foregroundColor(Color(.gray))
-                        .disabled(vs.sipEnabled || vs.layout == .float)
-                        .opacity( vs.sipEnabled || vs.layout == .float ? 0.5 : 1.0)
-                }
+//                VStack(alignment: .leading) {
+//                    Divider()
+//                    HStack {
+//                        Group {
+//                            Toggle("", isOn: vs.binding(\.windowTopmost, k))
+//                                .labelsHidden()
+//
+//                            Text("Float-On-Top")
+//                                .bold().font(.title3)
+//                        }
+//                        .disabled(vs.sipEnabled || vs.layout == .float)
+//                        .opacity( vs.sipEnabled || vs.layout == .float ? 0.5 : 1.0)
+//
+//                        Spacer()
+//                        SIPButton(store: Root.defaultStore)
+//                    }
+//
+//                    Text("Force floating windows to stay ontop of tiled/stacked windows")
+//                        .foregroundColor(Color(.gray))
+//                        .disabled(vs.sipEnabled || vs.layout == .float)
+//                        .opacity( vs.sipEnabled || vs.layout == .float ? 0.5 : 1.0)
+//                }
                 Spacer()
             }
             .padding()
