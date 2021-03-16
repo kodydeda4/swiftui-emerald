@@ -40,6 +40,7 @@ struct SpaceSettingsView: View {
                         KBShortcut(for: .toggleBSP)
                         KBShortcut(for: .toggleStacking)
                     }
+                    
                     VStack(alignment: .leading) {
                         Divider()
                         Text("Toggles")
@@ -59,20 +60,6 @@ struct SpaceSettingsView: View {
                         KBShortcut(for: .focusEast)
                         KBShortcut(for: .focusWest)
                     }
-                    
-//                    VStack(alignment: .leading) {
-//                        Divider()
-//                        Text("Focus")
-//                            .bold().font(.title3)
-//
-//                        TreeView(
-//                            northInt: .focusNorth,
-//                            southInt: .focusSouth,
-//                            eastInt: .focusEast,
-//                            westInt: .focusWest
-//                        )
-//                    }
-
                     
                     VStack(alignment: .leading) {
                         Divider()
