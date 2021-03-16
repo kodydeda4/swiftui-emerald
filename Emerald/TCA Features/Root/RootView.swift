@@ -96,7 +96,8 @@ struct RootView: View {
                     Button(action: {
                         viewStore.send(.export(.yabai))
                         viewStore.send(.export(.skhd))
-                        viewStore.send(.appleScript(.restartYabai))
+                        //viewStore.send(.appleScript(.restartYabai))
+                        viewStore.send(.appleScript(.brewServicesRestartYabai))
                     }) {
                         Text("Apply Changes")
                     }
