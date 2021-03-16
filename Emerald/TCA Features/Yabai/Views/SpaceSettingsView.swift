@@ -27,7 +27,7 @@ struct SpaceSettingsView: View {
                             VStack {
                                 Text("Normal")
                                     .bold().font(.title3)
-
+                                
                                 Button(action: {}) {
                                     Rectangle()
                                         .overlay(Text("Float"))
@@ -43,7 +43,7 @@ struct SpaceSettingsView: View {
                             VStack {
                                 Text("Tiling")
                                     .bold().font(.title3)
-
+                                
                                 Button(action: {}) {
                                     Rectangle()
                                         .overlay(Text("Tiling"))
@@ -59,7 +59,7 @@ struct SpaceSettingsView: View {
                             VStack {
                                 Text("Stacking")
                                     .bold().font(.title3)
-
+                                
                                 Button(action: {}) {
                                     Rectangle()
                                         .overlay(Text("Stacking"))
@@ -82,7 +82,7 @@ struct SpaceSettingsView: View {
                     
                     Text("Add padding between windows for Tiling & Stacking layouts")
                         .foregroundColor(Color(.gray))
-
+                    
                     
                     HStack {
                         StepperTextfield("Top",    vs.binding(\.paddingTop, k))
@@ -91,34 +91,22 @@ struct SpaceSettingsView: View {
                         StepperTextfield("Right",  vs.binding(\.paddingRight, k))
                         StepperTextfield("Gaps",   vs.binding(\.windowGap, k))
                     }
+                    KBShortcut(for: .toggleGaps)
+                    KBShortcut(for: .togglePadding)
                 }
-//                .disabled(vs.layout == .float)
-//                .opacity(vs.layout == .float ? 0.5 : 1.0)
 
-                    //                    Picker("", selection: vs.binding(\.layout, k)) {
-                    //                        ForEach(Yabai.State.Layout.allCases) {
-                    //                            Text($0.labelDescription.lowercased())
-                    //                        }
-                    //                    }
-                    //                    .labelsHidden()
-                    //                    .pickerStyle(SegmentedPickerStyle())
-                    //                    .frame(width: 200)
                     
                 VStack(alignment: .leading) {
                     Divider()
                     Text("Shortcuts")
                         .bold().font(.title3)
 
-                    
-                    
                     KBShortcut(for: .restartYabai)
                     
                     VStack(alignment: .leading) {
                         Divider()
                         Text("Toggles")
                             .bold().font(.title3)
-                        KBShortcut(for: .togglePadding)
-                        KBShortcut(for: .toggleGaps)
                         KBShortcut(for: .toggleSplit)
                         KBShortcut(for: .toggleBalance)
                     }
