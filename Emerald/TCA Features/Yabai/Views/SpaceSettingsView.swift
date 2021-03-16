@@ -101,13 +101,28 @@ struct SpaceSettingsView: View {
                                 Text("Inner")
                                 TextField("", value: vs.binding(\.windowGap, k), formatter: NumberFormatter())
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
+                                    .overlay(
+                                        HStack {
+                                            Spacer()
+                                            Stepper("", value: vs.binding(\.windowGap, k), in: 0...30)
+                                        }
+                                    )
+
                                     .frame(width: 130)
+
                                 KeyboardShortcuts.Recorder(for: .toggleGaps)
                             }
                             HStack {
                                 Text("Outer")
                                 TextField("", value: vs.binding(\.padding, k), formatter: NumberFormatter())
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
+                                    .overlay(
+                                        HStack {
+                                            Spacer()
+                                            Stepper("", value: vs.binding(\.padding, k), in: 0...30)
+                                        }
+                                    )
+
                                     .frame(width: 130)
                                 
                                 KeyboardShortcuts.Recorder(for: .togglePadding)
