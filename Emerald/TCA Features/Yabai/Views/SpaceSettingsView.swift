@@ -28,8 +28,8 @@ struct SpaceSettingsView: View {
                 
                 // Layout
                 VStack(alignment: .leading) {
-//                    Text("Layout")
-//                        .bold().font(.title3)
+                    //                    Text("Layout")
+                    //                        .bold().font(.title3)
                     
                     HStack {
                         GroupBox {
@@ -90,59 +90,46 @@ struct SpaceSettingsView: View {
                 }
                 
                 // Padding
-                VStack(alignment: .leading) {
-                    Divider()
-                    Text("Padding")
-                        .bold().font(.title3)
-                    
-    //                    Text("Add padding between windows for Tiling & Stacking layouts")
-    //                        .foregroundColor(Color(.gray))
-                    
-                    
-                    HStack {
-                        StepperTextfield("Padding",    vs.binding(\.padding, k))
-                        KeyboardShortcuts.Recorder(for: .togglePadding)
+                Divider()
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text("Gaps")
+                            .bold().font(.title3)
+                        
+                        VStack {
+                            HStack {
+                                Text("Inner")
+                                TextField("", value: vs.binding(\.padding, k), formatter: NumberFormatter())
+                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                    .frame(width: 130)
+                                
+                                KeyboardShortcuts.Recorder(for: .togglePadding)
+                            }
+                            
+                            HStack {
+                                Text("Outer")
+                                TextField("", value: vs.binding(\.windowGap, k), formatter: NumberFormatter())
+                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                    .frame(width: 130)
+                                KeyboardShortcuts.Recorder(for: .toggleGaps)
+                            }
+                            
+                        }
                     }
-                    HStack {
-                        StepperTextfield("Gaps",   vs.binding(\.windowGap, k))
-                        KeyboardShortcuts.Recorder(for: .toggleGaps)
-                    }
-                    
-//                    KBShortcut(for: .toggleGaps)
-//                    KBShortcut(for: .togglePadding)
-
-//                    HStack {
-//                        VStack(alignment: .leading) {
-//                            StepperTextfield("Top",    vs.binding(\.paddingTop, k))
-//                            StepperTextfield("Bottom", vs.binding(\.paddingBottom, k))
-//
-//                        }
-//
-//                        VStack(alignment: .leading) {
-//                            StepperTextfield("Left",   vs.binding(\.paddingLeft, k))
-//                            StepperTextfield("Right",  vs.binding(\.paddingRight, k))
-//
-//                        }
-////                        StepperTextfield("Gaps",   vs.binding(\.windowGap, k))
-////                            .frame(width: 125)
-//                        Spacer()
-//                    }
-////
-////
                 }
                 
                 VStack(alignment: .leading, spacing: 20) {
                     Divider()
                     Text("Shortcuts")
                         .bold().font(.title3)
-
+                    
                     
                     HStack {
-//                        VStack {
-//                            Text("Focus")
-//                            Text("Resize")
-//                            Text("Move")
-//                        }
+                        //                        VStack {
+                        //                            Text("Focus")
+                        //                            Text("Resize")
+                        //                            Text("Move")
+                        //                        }
                         VStack {
                             Label("↑", systemImage: "square.tophalf.fill")
                             KeyboardShortcuts.Recorder(for: .focusNorth)
@@ -178,33 +165,33 @@ struct SpaceSettingsView: View {
                     .labelsHidden()
                     .pickerStyle(SegmentedPickerStyle())
                     .frame(width: 150)
-
+                    
                     
                 }
                 
                 // Float-On-Top
-//                VStack(alignment: .leading) {
-//                    Divider()
-//                    HStack {
-//                        Group {
-//                            Toggle("", isOn: vs.binding(\.windowTopmost, k))
-//                                .labelsHidden()
-//
-//                            Text("Float-On-Top")
-//                                .bold().font(.title3)
-//                        }
-//                        .disabled(vs.sipEnabled || vs.layout == .float)
-//                        .opacity( vs.sipEnabled || vs.layout == .float ? 0.5 : 1.0)
-//
-//                        Spacer()
-//                        SIPButton(store: Root.defaultStore)
-//                    }
-//
-//                    Text("Force floating windows to stay ontop of tiled/stacked windows")
-//                        .foregroundColor(Color(.gray))
-//                        .disabled(vs.sipEnabled || vs.layout == .float)
-//                        .opacity( vs.sipEnabled || vs.layout == .float ? 0.5 : 1.0)
-//                }
+                //                VStack(alignment: .leading) {
+                //                    Divider()
+                //                    HStack {
+                //                        Group {
+                //                            Toggle("", isOn: vs.binding(\.windowTopmost, k))
+                //                                .labelsHidden()
+                //
+                //                            Text("Float-On-Top")
+                //                                .bold().font(.title3)
+                //                        }
+                //                        .disabled(vs.sipEnabled || vs.layout == .float)
+                //                        .opacity( vs.sipEnabled || vs.layout == .float ? 0.5 : 1.0)
+                //
+                //                        Spacer()
+                //                        SIPButton(store: Root.defaultStore)
+                //                    }
+                //
+                //                    Text("Force floating windows to stay ontop of tiled/stacked windows")
+                //                        .foregroundColor(Color(.gray))
+                //                        .disabled(vs.sipEnabled || vs.layout == .float)
+                //                        .opacity( vs.sipEnabled || vs.layout == .float ? 0.5 : 1.0)
+                //                }
                 Spacer()
             }
             .padding()
