@@ -256,13 +256,14 @@ extension Root {
             
             case .toggleEnabled:
                 if state.enabled {
-                    switch JSONDecoder().writeConfig("", to: state.yabai.configURL) {
+                    // Write blank configs
+                    switch JSONDecoder().writeConfig(Yabai.State().asConfig, to: state.yabai.configURL) {
                     case .success:
                         state.error = ""
                     case let .failure(error):
                         state.error = error.localizedDescription
                     }
-                    switch JSONDecoder().writeConfig("", to: state.skhd.configURL) {
+                    switch JSONDecoder().writeConfig(SKHD.State().asConfig, to: state.skhd.configURL) {
                     case .success:
                         state.error = ""
                     case let .failure(error):
@@ -275,6 +276,7 @@ extension Root {
                         state.error = error.localizedDescription
                     }
                 } else {
+                    // Write actual configs
                     switch JSONDecoder().writeConfig(state.yabai.asConfig, to: state.yabai.configURL) {
                     case .success:
                         state.error = ""
@@ -293,10 +295,9 @@ extension Root {
                     case let .failure(error):
                         state.error = error.localizedDescription
                     }
-
                 }
                 state.enabled.toggle()
-                return .none
+                return Effect(value: .homebrew(.restartYabai))
             }
         }
     )

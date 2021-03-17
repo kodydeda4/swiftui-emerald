@@ -201,6 +201,7 @@ struct Yabai {
     enum Action: Equatable {
         case keyPath(BindingAction<Yabai.State>)
         case toggleSIP
+        case updateLayout(Yabai.State.Layout)
     }
 }
 
@@ -213,6 +214,10 @@ extension Yabai {
 
         case .toggleSIP:
             state.sipEnabled.toggle()
+            return .none
+            
+        case let .updateLayout(layout):
+            state.layout = layout
             return .none
         }
     }

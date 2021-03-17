@@ -37,9 +37,10 @@ struct SpaceSettingsView: View {
                                 Text("Normal")
                                     .bold().font(.title3)
                                 
-                                Button(action: {}) {
+                                Button(action: { vs.send(.updateLayout(.float)) }) {
                                     Rectangle()
                                         .overlay(Text("Float"))
+                                        .foregroundColor(vs.layout == .float ? .accentColor : .gray)
                                 }
                                 //.frame(width: 800/4, height: 600/4)
                                 .buttonStyle(PlainButtonStyle())
@@ -55,9 +56,10 @@ struct SpaceSettingsView: View {
                                 Text("Tiling")
                                     .bold().font(.title3)
                                 
-                                Button(action: {}) {
+                                Button(action: { vs.send(.updateLayout(.bsp)) }) {
                                     Rectangle()
                                         .overlay(Text("Tiling"))
+                                        .foregroundColor(vs.layout == .bsp ? .accentColor : .gray)
                                 }
                                 //.frame(width: 800/4, height: 600/4)
                                 .buttonStyle(PlainButtonStyle())
@@ -73,9 +75,10 @@ struct SpaceSettingsView: View {
                                 Text("Stacking")
                                     .bold().font(.title3)
                                 
-                                Button(action: {}) {
+                                Button(action: { vs.send(.updateLayout(.stack)) }) {
                                     Rectangle()
                                         .overlay(Text("Stacking"))
+                                        .foregroundColor(vs.layout == .stack ? .accentColor : .gray)
                                 }
                                 //.frame(width: 800/4, height: 600/4)
                                 .buttonStyle(PlainButtonStyle())
