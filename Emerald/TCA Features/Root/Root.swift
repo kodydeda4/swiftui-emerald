@@ -263,7 +263,7 @@ extension Root {
                     case let .failure(error):
                         state.error = error.localizedDescription
                     }
-                    switch JSONDecoder().writeConfig(SKHD.State().asConfig, to: state.skhd.configURL) {
+                    switch JSONDecoder().writeConfig("", to: state.skhd.configURL) {
                     case .success:
                         state.error = ""
                     case let .failure(error):

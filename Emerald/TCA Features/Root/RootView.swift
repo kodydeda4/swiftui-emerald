@@ -56,16 +56,16 @@ struct RootView: View {
                     .opacity(viewStore.skhd.isEnabled && viewStore.enabled ? 1 : 0.5)
                     .disabled(!viewStore.enabled)
                 }
-                ToolbarItem {
-                    Button<Image>("timer") {
-                        viewStore.send(.export(.macOSAnimations))
-                        viewStore.send(.macOSAnimations(.executeShellScript))
-                    }
-                    .help("Apply Animation Changes")
-                    .foregroundColor(viewStore.enabled ? .accentColor : .gray)
-                    .opacity(viewStore.enabled ? 1 : 0.5)
-                    .disabled(!viewStore.enabled)
-                }
+//                ToolbarItem {
+//                    Button<Image>("timer") {
+//                        viewStore.send(.export(.macOSAnimations))
+//                        viewStore.send(.macOSAnimations(.executeShellScript))
+//                    }
+//                    .help("Apply Animation Changes")
+//                    .foregroundColor(viewStore.enabled ? .accentColor : .gray)
+//                    .opacity(viewStore.enabled ? 1 : 0.5)
+//                    .disabled(!viewStore.enabled)
+//                }
                 ToolbarItem {
                     Button<Image>("power") {
                         viewStore.send(.toggleEnabled)
