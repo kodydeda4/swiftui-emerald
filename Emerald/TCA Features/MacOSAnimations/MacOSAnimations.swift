@@ -37,9 +37,6 @@ extension MacOSAnimations {
         case .executeShellScript:
             let _ = AppleScript.execute("sudo chmod +x \(state.shellScript.relativePath)")
             let _ = AppleScript.execute("\(state.shellScript.relativePath)")
-            
-            print("sudo chmod +x \(state.shellScript.relativePath)")
-            
             return .none
         }
     }
