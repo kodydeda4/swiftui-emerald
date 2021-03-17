@@ -29,9 +29,9 @@ struct Root {
         case macOSAnimations(MacOSAnimations.Action)
         case homebrew(Homebrew.Action)
         case onboarding(Onboarding.Action)
-        case showResetSettingsAlert
-        case cancelResetSettingsAlert
-        case confirmResetSettingsAlert
+        case showResetAlert
+        case dismissResetAlert
+        case confirmResetAlert
         case appleScript(AppleScript)
         case saveResult(Result<Bool, CacheError>)
         case load(Environment.CodableState)
@@ -200,16 +200,16 @@ extension Root {
                 state.error = appleScript.execute()
                 return .none
                 
-            case .showResetSettingsAlert:
+            case .showResetAlert:
                 state.alert = .init(
                     title: TextState("Reset Settings?"),
                     message: TextState("You cannot undo this action."),
-                    primaryButton: .destructive(TextState("Confirm"), send: .confirmResetSettingsAlert),
+                    primaryButton: .destructive(TextState("Confirm"), send: .confirmResetAlert),
                     secondaryButton: .cancel()
                 )
                 return .none
                 
-            case .confirmResetSettingsAlert:
+            case .confirmResetAlert:
                 state.yabai = Yabai.State()
                 state.skhd = SKHD.State()
                 state.macOSAnimations = MacOSAnimations.State()
@@ -247,7 +247,7 @@ extension Root {
                 state.alert = nil
                 return .none
                 
-            case .cancelResetSettingsAlert:
+            case .dismissResetAlert:
                 state.alert = nil
                 return .none
 

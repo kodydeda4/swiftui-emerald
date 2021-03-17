@@ -45,7 +45,7 @@ struct RootView: View {
                 )
             }
 
-            .alert(store.scope(state: \.alert), dismiss: .cancelResetSettingsAlert)
+            .alert(store.scope(state: \.alert), dismiss: .dismissResetAlert)
             .toolbar {
                 ToolbarItem(placement: .navigation) {
                     Button(action: toggleSidebar) {
@@ -80,13 +80,10 @@ struct RootView: View {
                             
                     }
                     .help("Toggle Keyboard Shortcuts")
-                    //.keyboardShortcut("a", modifiers: [.command, .shift])
                 }
 
                 ToolbarItem {
-                    Button(action: {
-                        viewStore.send(.showResetSettingsAlert)
-                    }) {
+                    Button(action: { viewStore.send(.showResetAlert) }) {
                         Text("Reset")
                     }
                     .help("⇧ ⌘ R")
@@ -97,7 +94,6 @@ struct RootView: View {
                         viewStore.send(.applyingChanges)
                         viewStore.send(.export(.yabai))
                         viewStore.send(.export(.skhd))
-                        //viewStore.send(.appleScript(.restartYabai))
                         viewStore.send(.appleScript(.brewServicesRestartYabai))
                     }) {
                         Text("Apply Changes")
