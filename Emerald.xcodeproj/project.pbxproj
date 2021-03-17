@@ -30,6 +30,7 @@
 		335E78D625F117D700C8839B /* JSONDecoder+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335E78D525F117D700C8839B /* JSONDecoder+Extensions.swift */; };
 		3361BAD72602578700CC5495 /* ResetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361BAD62602578700CC5495 /* ResetAlert.swift */; };
 		3361BADA260257E700CC5495 /* ResetAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361BAD9260257E700CC5495 /* ResetAlertView.swift */; };
+		3361BADF260259EC00CC5495 /* ResetAlertV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361BADE260259EC00CC5495 /* ResetAlertV2.swift */; };
 		3361CDF725D44AEC0086F6A7 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */; };
 		3361CF1125E6EF1300016875 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CF0E25E6EF1300016875 /* SectionView.swift */; };
 		3361CF1225E6EF1300016875 /* DebugConfigFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CF0F25E6EF1300016875 /* DebugConfigFileView.swift */; };
@@ -79,6 +80,7 @@
 		335E78D525F117D700C8839B /* JSONDecoder+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Extensions.swift"; sourceTree = "<group>"; };
 		3361BAD62602578700CC5495 /* ResetAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetAlert.swift; sourceTree = "<group>"; };
 		3361BAD9260257E700CC5495 /* ResetAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetAlertView.swift; sourceTree = "<group>"; };
+		3361BADE260259EC00CC5495 /* ResetAlertV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetAlertV2.swift; sourceTree = "<group>"; };
 		3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		3361CF0E25E6EF1300016875 /* SectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		3361CF0F25E6EF1300016875 /* DebugConfigFileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugConfigFileView.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 			children = (
 				3380D33625D0723000C10913 /* Root.swift */,
 				339C453025D6ECCA0079ACA1 /* RootView.swift */,
+				3361BADE260259EC00CC5495 /* ResetAlertV2.swift */,
 				3385DF6625D6270B00ACDE21 /* SidebarView.swift */,
 				3385DF6925D6279200ACDE21 /* AboutView.swift */,
 				336BC3B925F85B7C00BE3EBA /* SIPButton.swift */,
@@ -386,6 +389,7 @@
 				3341B01125F06FF300833B56 /* Yabai+Extensions.swift in Sources */,
 				33B62D2925D5E31400DD5934 /* Onboarding.swift in Sources */,
 				330E144A25F2AFEE00E61969 /* SliderView.swift in Sources */,
+				3361BADF260259EC00CC5495 /* ResetAlertV2.swift in Sources */,
 				336BC3BA25F85B7C00BE3EBA /* SIPButton.swift in Sources */,
 				3325BFD525F05041007831C5 /* RoundedRectangleButtonStyle.swift in Sources */,
 				3356BCA325F28746006EB641 /* SpaceSettingsView.swift in Sources */,

@@ -18,8 +18,11 @@ struct Root {
         var macOSAnimations  = MacOSAnimations.State()
         var homebrew         = Homebrew.State()
         var onboarding       = Onboarding.State()
-        var resetAlert       = ResetAlert.State()
+        //var resetAlertV2     = ResetAlertV2.State()
         var error            = ""
+        
+        
+        var alert: AlertState<Root.Action>?
     }
     
     enum Action: Equatable {
@@ -28,12 +31,19 @@ struct Root {
         case macOSAnimations(MacOSAnimations.Action)
         case homebrew(Homebrew.Action)
         case onboarding(Onboarding.Action)
-        case resetAlert(ResetAlert.Action)
+        //case resetAlertV2(ResetAlertV2.Action)
         case appleScript(AppleScript)
         case saveResult(Result<Bool, CacheError>)
         case load(Environment.CodableState)
         case reset(Environment.CodableState)
         case export(Environment.CodableState)
+        
+        
+        
+        case showAlert
+        case cancelTapped
+        case confirmTapped
+
     }
     
     struct Environment {
@@ -94,11 +104,11 @@ extension Root {
             action: /Action.onboarding,
             environment: { _ in () }
         ),
-        ResetAlert.reducer.pullback(
-            state: \.resetAlert,
-            action: /Action.resetAlert,
-            environment: { _ in () }
-        ),
+//        ResetAlertV2.reducer.pullback(
+//            state: \.resetAlertV2,
+//            action: /Action.resetAlertV2,
+//            environment: { _ in () }
+//        ),
         Reducer { state, action, environment in
             struct SaveID: Hashable {}
             
@@ -119,8 +129,8 @@ extension Root {
             case .onboarding:
                 return .none
                 
-            case .resetAlert:
-                return .none
+//            case .resetAlertV2:
+//                return .none
                 
             case .saveResult(.success):
                 state.error = ""
@@ -206,33 +216,7 @@ extension Root {
                 case .yabai:
                     state.yabai = Yabai.State()
                 case .skhd:
-                    KeyboardShortcuts.reset(KeyboardShortcuts.Name.allCases)
-                    state.skhd = SKHD.State()
-                    
-                    KeyboardShortcuts.set(.restartYabai,   [.option, .shift             ], .r)
-                    
-                    KeyboardShortcuts.set(.togglePadding,  [.control, .option,          ], .nine)
-                    KeyboardShortcuts.set(.toggleGaps,     [.control, .option,          ], .zero)
-                    KeyboardShortcuts.set(.toggleSplit,    [.control, .option,          ], .x)
-                    
-                    KeyboardShortcuts.set(.toggleFloating, [.control, .option,          ], .one)
-                    KeyboardShortcuts.set(.toggleBSP,      [.control, .option,          ], .two)
-                    KeyboardShortcuts.set(.toggleStacking, [.control, .option,          ], .three)
-
-                    KeyboardShortcuts.set(.focusNorth,     [.control,                   ], .upArrow)
-                    KeyboardShortcuts.set(.focusSouth,     [.control,                   ], .downArrow)
-                    KeyboardShortcuts.set(.focusEast,      [.control,                   ], .rightArrow)
-                    KeyboardShortcuts.set(.focusWest,      [.control,                   ], .leftArrow)
-                      
-                    KeyboardShortcuts.set(.resizeTop,      [.control, .option,          ], .upArrow)
-                    KeyboardShortcuts.set(.resizeBottom,   [.control, .option,          ], .downArrow)
-                    KeyboardShortcuts.set(.resizeRight,    [.control, .option,          ], .rightArrow)
-                    KeyboardShortcuts.set(.resizeLeft,     [.control, .option,          ], .leftArrow)
-                     
-                    KeyboardShortcuts.set(.moveNorth,      [.control, .option, .command,], .upArrow)
-                    KeyboardShortcuts.set(.moveSouth,      [.control, .option, .command,], .downArrow)
-                    KeyboardShortcuts.set(.moveEast,       [.control, .option, .command,], .rightArrow)
-                    KeyboardShortcuts.set(.moveWest,       [.control, .option, .command,], .leftArrow)
+                    print("Delete this")
 
 
                     
@@ -244,6 +228,58 @@ extension Root {
             case let .appleScript(appleScript):
                 state.error = appleScript.execute()
                 return .none
+                
+            case .showAlert:
+                state.alert = .init(
+                    title: TextState("Reset all settings?"),
+                    message: TextState("You cannot undo this action."),
+                    primaryButton: .destructive(TextState("Confirm"), send: .confirmTapped),
+                    secondaryButton: .cancel()
+                )
+                return .none
+                
+            case .confirmTapped:
+                state.yabai = Yabai.State()
+                state.skhd = SKHD.State()
+                state.macOSAnimations = MacOSAnimations.State()
+                
+                
+                KeyboardShortcuts.reset(KeyboardShortcuts.Name.allCases)
+                state.skhd = SKHD.State()
+                
+                KeyboardShortcuts.set(.restartYabai,   [.option, .shift             ], .r)
+                
+                KeyboardShortcuts.set(.togglePadding,  [.control, .option,          ], .nine)
+                KeyboardShortcuts.set(.toggleGaps,     [.control, .option,          ], .zero)
+                KeyboardShortcuts.set(.toggleSplit,    [.control, .option,          ], .x)
+                
+                KeyboardShortcuts.set(.toggleFloating, [.control, .option,          ], .one)
+                KeyboardShortcuts.set(.toggleBSP,      [.control, .option,          ], .two)
+                KeyboardShortcuts.set(.toggleStacking, [.control, .option,          ], .three)
+
+                KeyboardShortcuts.set(.focusNorth,     [.control,                   ], .upArrow)
+                KeyboardShortcuts.set(.focusSouth,     [.control,                   ], .downArrow)
+                KeyboardShortcuts.set(.focusEast,      [.control,                   ], .rightArrow)
+                KeyboardShortcuts.set(.focusWest,      [.control,                   ], .leftArrow)
+                  
+                KeyboardShortcuts.set(.resizeTop,      [.control, .option,          ], .upArrow)
+                KeyboardShortcuts.set(.resizeBottom,   [.control, .option,          ], .downArrow)
+                KeyboardShortcuts.set(.resizeRight,    [.control, .option,          ], .rightArrow)
+                KeyboardShortcuts.set(.resizeLeft,     [.control, .option,          ], .leftArrow)
+                 
+                KeyboardShortcuts.set(.moveNorth,      [.control, .option, .command,], .upArrow)
+                KeyboardShortcuts.set(.moveSouth,      [.control, .option, .command,], .downArrow)
+                KeyboardShortcuts.set(.moveEast,       [.control, .option, .command,], .rightArrow)
+                KeyboardShortcuts.set(.moveWest,       [.control, .option, .command,], .leftArrow)
+
+                
+                state.alert = nil
+                return .none
+                
+            case .cancelTapped:
+                state.alert = nil
+                return .none
+
                 
             }
         }
