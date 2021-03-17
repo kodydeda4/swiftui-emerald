@@ -20,6 +20,7 @@ struct Root {
         var onboarding       = Onboarding.State()
         var alert            : AlertState<Root.Action>?
         var error            = ""
+        var applyingChanges  = false
     }
     
     enum Action: Equatable {
@@ -35,6 +36,7 @@ struct Root {
         case saveResult(Result<Bool, CacheError>)
         case load(Environment.CodableState)
         case export(Environment.CodableState)
+        case applyingChanges
     }
     
     struct Environment {
@@ -43,7 +45,7 @@ struct Root {
             case skhd
             case macOSAnimations
         }
-        
+                
         func savePublisher<Value>(_ value: Value, to url: URL) -> AnyPublisher<(Value, URL), Never> where Value: Codable {
             let foo = Just((value, url))
                 .eraseToAnyPublisher()
@@ -200,7 +202,7 @@ extension Root {
                 
             case .showResetSettingsAlert:
                 state.alert = .init(
-                    title: TextState("Reset all settings?"),
+                    title: TextState("Reset Settings?"),
                     message: TextState("You cannot undo this action."),
                     primaryButton: .destructive(TextState("Confirm"), send: .confirmResetSettingsAlert),
                     secondaryButton: .cancel()
@@ -250,6 +252,10 @@ extension Root {
                 return .none
 
                 
+            case .applyingChanges:
+                state.applyingChanges.toggle()
+                return .none
+                    //.debounce(id: SaveID(), for: 1.0, scheduler: DispatchQueue.main.eraseToAnyScheduler())
             }
         }
     )

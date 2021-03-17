@@ -44,6 +44,17 @@ struct RootView: View {
                     store: store.scope(state: \.onboarding, action: Root.Action.onboarding)
                 )
             }
+            .sheet(
+                isPresented:
+                    viewStore.binding(
+                        get: \.applyingChanges,
+                        send: .applyingChanges)
+            ) {
+                ApplyingChangesView(
+                    store: store
+                )
+            }
+
             .alert(store.scope(state: \.alert), dismiss: .cancelResetSettingsAlert)
             .toolbar {
                 ToolbarItem(placement: .navigation) {
@@ -93,6 +104,7 @@ struct RootView: View {
                 }
                 ToolbarItem {
                     Button(action: {
+                        viewStore.send(.applyingChanges)
                         viewStore.send(.export(.yabai))
                         viewStore.send(.export(.skhd))
                         //viewStore.send(.appleScript(.restartYabai))
