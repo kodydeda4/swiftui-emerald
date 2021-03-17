@@ -33,21 +33,21 @@ struct RootView: View {
             .alert(store.scope(state: \.alert), dismiss: .dismissResetAlert)
             .toolbar {
                 ToolbarItem(placement: .navigation) {
-                    Button(action: toggleSidebar) {
-                        Image(systemName: "sidebar.left")
+                    Button<Image>("sidebar.left") {
+                        toggleSidebar()
                     }
                 }
                 ToolbarItem {
-                    Button(action: { viewStore.send(.yabai(.toggleSIP))}) {
-                        Image(systemName: "lock.fill")
+                    Button<Image>("lock.fill") {
+                        viewStore.send(.yabai(.toggleSIP))
                     }
                     .foregroundColor(viewStore.yabai.sipEnabled ? .accentColor : .gray)
                     .opacity(viewStore.yabai.sipEnabled ? 1 : 0.5)
                     .help("Toggle SIP Lock")
                 }
                 ToolbarItem {
-                    Button(action: { viewStore.send(.skhd(.toggleIsEnabled))}) {
-                        Image(systemName: "keyboard")
+                    Button<Image>("keyboard") {
+                        viewStore.send(.skhd(.toggleIsEnabled))
                     }
                     .foregroundColor(viewStore.skhd.isEnabled ? .accentColor : .gray)
                     .opacity(viewStore.skhd.isEnabled ? 1 : 0.5)
@@ -80,6 +80,9 @@ struct RootView: View {
         }
     }
 }
+
+
+
 
 struct RootView_Previews: PreviewProvider {
     static var previews: some View {

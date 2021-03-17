@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3301D5012602765900D02C46 /* Button+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3301D5002602765900D02C46 /* Button+Extensions.swift */; };
 		330E144A25F2AFEE00E61969 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330E144925F2AFEE00E61969 /* SliderView.swift */; };
 		330E144E25F2B12600E61969 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330E144D25F2B12600E61969 /* ColorPickerView.swift */; };
 		3315223F25D5786C00C8E46A /* SwiftShell in Frameworks */ = {isa = PBXBuildFile; productRef = 3315223E25D5786C00C8E46A /* SwiftShell */; };
@@ -59,6 +60,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3301D5002602765900D02C46 /* Button+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Extensions.swift"; sourceTree = "<group>"; };
 		330E144925F2AFEE00E61969 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		330E144D25F2B12600E61969 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 		3325BFD425F05041007831C5 /* RoundedRectangleButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleButtonStyle.swift; sourceTree = "<group>"; };
@@ -150,14 +152,16 @@
 		3361CF1525E6EF1600016875 /* Views (Misc) */ = {
 			isa = PBXGroup;
 			children = (
-				330E144925F2AFEE00E61969 /* SliderView.swift */,
-				33318F3225F2AD3500231233 /* StepperTextfield.swift */,
+				3301D5002602765900D02C46 /* Button+Extensions.swift */,
+				333631FA25EEF0CD009FEB32 /* CodableColor.swift */,
 				330E144D25F2B12600E61969 /* ColorPickerView.swift */,
 				3361CF0F25E6EF1300016875 /* DebugConfigFileView.swift */,
-				3361CF0E25E6EF1300016875 /* SectionView.swift */,
-				3361CF1025E6EF1300016875 /* SpecialTextView.swift */,
-				333631FF25EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift */,
 				3325BFD425F05041007831C5 /* RoundedRectangleButtonStyle.swift */,
+				3361CF0E25E6EF1300016875 /* SectionView.swift */,
+				330E144925F2AFEE00E61969 /* SliderView.swift */,
+				3361CF1025E6EF1300016875 /* SpecialTextView.swift */,
+				33318F3225F2AD3500231233 /* StepperTextfield.swift */,
+				333631FF25EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift */,
 			);
 			path = "Views (Misc)";
 			sourceTree = "<group>";
@@ -204,9 +208,8 @@
 			isa = PBXGroup;
 			children = (
 				335E78D525F117D700C8839B /* JSONDecoder+Extensions.swift */,
-				3385DF6F25D6361200ACDE21 /* AppleScript.swift */,
-				333631FA25EEF0CD009FEB32 /* CodableColor.swift */,
 				3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */,
+				3385DF6F25D6361200ACDE21 /* AppleScript.swift */,
 				3361CF1525E6EF1600016875 /* Views (Misc) */,
 				334EC79125F908A4005AB9BF /* ViewStore+Extensions.swift */,
 			);
@@ -381,6 +384,7 @@
 				336BC3BA25F85B7C00BE3EBA /* SIPButton.swift in Sources */,
 				3325BFD525F05041007831C5 /* RoundedRectangleButtonStyle.swift in Sources */,
 				3356BCA325F28746006EB641 /* SpaceSettingsView.swift in Sources */,
+				3301D5012602765900D02C46 /* Button+Extensions.swift in Sources */,
 				33387D6525D3F64300E76D29 /* Yabai.swift in Sources */,
 				3361CF1225E6EF1300016875 /* DebugConfigFileView.swift in Sources */,
 				3398838C25DD7A1D007B9FF5 /* SKHD.swift in Sources */,
