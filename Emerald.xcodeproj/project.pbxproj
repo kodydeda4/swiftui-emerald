@@ -28,6 +28,8 @@
 		3356BCA925F287B1006EB641 /* MouseSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3356BCA825F287B1006EB641 /* MouseSettingsView.swift */; };
 		3356BCAD25F287D9006EB641 /* WindowSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3356BCAC25F287D9006EB641 /* WindowSettingsView.swift */; };
 		335E78D625F117D700C8839B /* JSONDecoder+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335E78D525F117D700C8839B /* JSONDecoder+Extensions.swift */; };
+		3361BAD72602578700CC5495 /* ResetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361BAD62602578700CC5495 /* ResetAlert.swift */; };
+		3361BADA260257E700CC5495 /* ResetAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361BAD9260257E700CC5495 /* ResetAlertView.swift */; };
 		3361CDF725D44AEC0086F6A7 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */; };
 		3361CF1125E6EF1300016875 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CF0E25E6EF1300016875 /* SectionView.swift */; };
 		3361CF1225E6EF1300016875 /* DebugConfigFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CF0F25E6EF1300016875 /* DebugConfigFileView.swift */; };
@@ -75,6 +77,8 @@
 		3356BCA825F287B1006EB641 /* MouseSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseSettingsView.swift; sourceTree = "<group>"; };
 		3356BCAC25F287D9006EB641 /* WindowSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowSettingsView.swift; sourceTree = "<group>"; };
 		335E78D525F117D700C8839B /* JSONDecoder+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Extensions.swift"; sourceTree = "<group>"; };
+		3361BAD62602578700CC5495 /* ResetAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetAlert.swift; sourceTree = "<group>"; };
+		3361BAD9260257E700CC5495 /* ResetAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetAlertView.swift; sourceTree = "<group>"; };
 		3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		3361CF0E25E6EF1300016875 /* SectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		3361CF0F25E6EF1300016875 /* DebugConfigFileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugConfigFileView.swift; sourceTree = "<group>"; };
@@ -141,6 +145,15 @@
 				3356BCA525F28782006EB641 /* ExternalBarView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		3361BADC260258E600CC5495 /* ResetAlert */ = {
+			isa = PBXGroup;
+			children = (
+				3361BAD62602578700CC5495 /* ResetAlert.swift */,
+				3361BAD9260257E700CC5495 /* ResetAlertView.swift */,
+			);
+			path = ResetAlert;
 			sourceTree = "<group>";
 		};
 		3361CF1525E6EF1600016875 /* Views (Misc) */ = {
@@ -212,6 +225,7 @@
 		3380D32425D06EB300C10913 /* TCA Features */ = {
 			isa = PBXGroup;
 			children = (
+				3361BADC260258E600CC5495 /* ResetAlert */,
 				33DEDCB725DDBC2F001582DC /* Root */,
 				33DEDCB925DDBC51001582DC /* Yabai */,
 				33DEDCBA25DDBC67001582DC /* SKHD */,
@@ -379,7 +393,9 @@
 				3361CF1225E6EF1300016875 /* DebugConfigFileView.swift in Sources */,
 				3398838C25DD7A1D007B9FF5 /* SKHD.swift in Sources */,
 				336BC3B025F8069700BE3EBA /* FocusSettingsView.swift in Sources */,
+				3361BAD72602578700CC5495 /* ResetAlert.swift in Sources */,
 				3398838F25DD7DC3007B9FF5 /* DebugSKHDView.swift in Sources */,
+				3361BADA260257E700CC5495 /* ResetAlertView.swift in Sources */,
 				3380D2FF25D05F4200C10913 /* EmeraldApp.swift in Sources */,
 				334EC79225F908A4005AB9BF /* ViewStore+Extensions.swift in Sources */,
 				332D568625DEEF7800C88FEE /* MacOSAnimationSettingsView.swift in Sources */,

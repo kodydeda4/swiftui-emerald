@@ -16,8 +16,6 @@ struct RootView: View {
             NavigationView {
                 SidebarView(store: store)
                 SpaceSettingsView(store: store.scope(state: \.yabai, action: Root.Action.yabai))
-                    
-                
 //                TabView {
 //                    DebugConfigFileView(text: viewStore.yabai.asConfig)
 //                        .tabItem { Label("Yabai", systemImage: "square.and.pencil") }
@@ -31,7 +29,6 @@ struct RootView: View {
 //                .padding()
             }
             .frame(width: 800, height: 700)
-            
             .onAppear {
                 viewStore.send(.load(.yabai))
                 viewStore.send(.load(.skhd))
@@ -45,6 +42,16 @@ struct RootView: View {
             ) {
                 OnboardingView(
                     store: store.scope(state: \.onboarding, action: Root.Action.onboarding)
+                )
+            }
+            .sheet(
+                isPresented:
+                    viewStore.binding(
+                        get: \.resetAlert.isActive,
+                        send: .resetAlert(.toggleIsActive))
+            ) {
+                ResetAlertView(
+                    store: store.scope(state: \.resetAlert, action: Root.Action.resetAlert)
                 )
             }
             .toolbar {
@@ -86,9 +93,11 @@ struct RootView: View {
 
                 ToolbarItem {
                     Button(action: {
-                        viewStore.send(.reset(.yabai))
-                        viewStore.send(.reset(.skhd))
-                        viewStore.send(.reset(.macOSAnimations))
+                        viewStore.send(.resetAlert(.toggleIsActive))
+                    
+//                        viewStore.send(.reset(.yabai))
+//                        viewStore.send(.reset(.skhd))
+//                        viewStore.send(.reset(.macOSAnimations))
                     }) {
                         Text("Reset")
                     }

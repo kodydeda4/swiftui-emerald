@@ -18,6 +18,7 @@ struct Root {
         var macOSAnimations  = MacOSAnimations.State()
         var homebrew         = Homebrew.State()
         var onboarding       = Onboarding.State()
+        var resetAlert       = ResetAlert.State()
         var error            = ""
     }
     
@@ -27,6 +28,7 @@ struct Root {
         case macOSAnimations(MacOSAnimations.Action)
         case homebrew(Homebrew.Action)
         case onboarding(Onboarding.Action)
+        case resetAlert(ResetAlert.Action)
         case appleScript(AppleScript)
         case saveResult(Result<Bool, CacheError>)
         case load(Environment.CodableState)
@@ -92,6 +94,11 @@ extension Root {
             action: /Action.onboarding,
             environment: { _ in () }
         ),
+        ResetAlert.reducer.pullback(
+            state: \.resetAlert,
+            action: /Action.resetAlert,
+            environment: { _ in () }
+        ),
         Reducer { state, action, environment in
             struct SaveID: Hashable {}
             
@@ -110,6 +117,9 @@ extension Root {
                 return .none
                 
             case .onboarding:
+                return .none
+                
+            case .resetAlert:
                 return .none
                 
             case .saveResult(.success):
