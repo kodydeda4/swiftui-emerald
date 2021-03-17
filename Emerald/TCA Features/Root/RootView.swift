@@ -19,7 +19,7 @@ struct RootView: View {
                 //ConfigTabView(store: store)
             }
             .disabled(!viewStore.enabled)
-            .frame(width: 800, height: 700)
+            //.frame(width: 800, height: 700)
             .onAppear {
                 viewStore.send(.load(.yabai))
                 viewStore.send(.load(.skhd))
