@@ -96,20 +96,9 @@ extension Root {
             struct SaveID: Hashable {}
             
             switch action {
-            case let .yabai(subAction):
-//                switch subAction {
-//                case .updateWindowOpacityDuration,
-//                     .updatetActiveWindowOpacity,
-//                     .updateNormalWindowOpacity:
-//                    print("\(Date()) Debounce this ... \(subAction)")
-//                    return environment
-//                        .save(state.yabai, to: state.yabai.stateURL)
-////                        .debounce(id: SaveID(), for: 0.1, scheduler: DispatchQueue.main.eraseToAnyScheduler())
-//
-//                default:
-//                    return environment.save(state.yabai, to: state.yabai.stateURL)
-//                }
+            case .yabai:
                 return environment.save(state.yabai, to: state.yabai.stateURL)
+                    //.debounce(id: SaveID(), for: 0.1, scheduler: DispatchQueue.main.eraseToAnyScheduler())
                 
             case .skhd:
                 return environment.save(state.skhd, to: state.skhd.stateURL)
@@ -117,13 +106,13 @@ extension Root {
             case let .macOSAnimations(subAction):
                 return environment.save(state.macOSAnimations, to: state.macOSAnimations.stateURL)
                 
-            case .homebrew(_):
+            case .homebrew:
                 return .none
                 
-            case .onboarding(_):
+            case .onboarding:
                 return .none
                 
-            case .saveResult(.success(_)):
+            case .saveResult(.success):
                 state.error = ""
                 print("We saved ... ")
                 return .none
@@ -174,7 +163,7 @@ extension Root {
                         state.yabai.asConfig,
                         to: state.yabai.configURL
                     ) {
-                    case .success(_):
+                    case .success:
                         state.error = ""
                     case let .failure(error):
                         state.error = error.localizedDescription
@@ -184,7 +173,7 @@ extension Root {
                         state.skhd.asConfig,
                         to: state.skhd.configURL
                     ) {
-                    case .success(_):
+                    case .success:
                         state.error = ""
                     case let .failure(error):
                         state.error = error.localizedDescription
@@ -194,7 +183,7 @@ extension Root {
                         state.macOSAnimations.asConfig,
                         to: state.macOSAnimations.configURL
                     ) {
-                    case .success(_):
+                    case .success:
                         state.error = ""
                     case let .failure(error):
                         state.error = error.localizedDescription
