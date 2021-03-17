@@ -44,7 +44,7 @@ struct RootView: View {
                     store: store.scope(state: \.onboarding, action: Root.Action.onboarding)
                 )
             }
-            .alert(store.scope(state: \.alert), dismiss: .cancelTapped)
+            .alert(store.scope(state: \.alert), dismiss: .cancelResetSettingsAlert)
             .toolbar {
                 ToolbarItem(placement: .navigation) {
                     Button(action: toggleSidebar) {
@@ -84,7 +84,7 @@ struct RootView: View {
 
                 ToolbarItem {
                     Button(action: {
-                        viewStore.send(.showAlert)
+                        viewStore.send(.showResetSettingsAlert)
                     }) {
                         Text("Reset")
                     }

@@ -18,11 +18,8 @@ struct Root {
         var macOSAnimations  = MacOSAnimations.State()
         var homebrew         = Homebrew.State()
         var onboarding       = Onboarding.State()
-        //var resetAlertV2     = ResetAlertV2.State()
+        var alert            : AlertState<Root.Action>?
         var error            = ""
-        
-        
-        var alert: AlertState<Root.Action>?
     }
     
     enum Action: Equatable {
@@ -31,19 +28,13 @@ struct Root {
         case macOSAnimations(MacOSAnimations.Action)
         case homebrew(Homebrew.Action)
         case onboarding(Onboarding.Action)
-        //case resetAlertV2(ResetAlertV2.Action)
+        case showResetSettingsAlert
+        case cancelResetSettingsAlert
+        case confirmResetSettingsAlert
         case appleScript(AppleScript)
         case saveResult(Result<Bool, CacheError>)
         case load(Environment.CodableState)
-        case reset(Environment.CodableState)
         case export(Environment.CodableState)
-        
-        
-        
-        case showAlert
-        case cancelTapped
-        case confirmTapped
-
     }
     
     struct Environment {
@@ -104,11 +95,6 @@ extension Root {
             action: /Action.onboarding,
             environment: { _ in () }
         ),
-//        ResetAlertV2.reducer.pullback(
-//            state: \.resetAlertV2,
-//            action: /Action.resetAlertV2,
-//            environment: { _ in () }
-//        ),
         Reducer { state, action, environment in
             struct SaveID: Hashable {}
             
@@ -128,10 +114,7 @@ extension Root {
                 
             case .onboarding:
                 return .none
-                
-//            case .resetAlertV2:
-//                return .none
-                
+
             case .saveResult(.success):
                 state.error = ""
                 print("We saved ... ")
@@ -210,35 +193,21 @@ extension Root {
                     }
                 }
                 return .none
-                
-            case let .reset(codableState):
-                switch codableState {
-                case .yabai:
-                    state.yabai = Yabai.State()
-                case .skhd:
-                    print("Delete this")
-
-
-                    
-                case .macOSAnimations:
-                    state.macOSAnimations = MacOSAnimations.State()
-                }
-                return .none
-                
+                                
             case let .appleScript(appleScript):
                 state.error = appleScript.execute()
                 return .none
                 
-            case .showAlert:
+            case .showResetSettingsAlert:
                 state.alert = .init(
                     title: TextState("Reset all settings?"),
                     message: TextState("You cannot undo this action."),
-                    primaryButton: .destructive(TextState("Confirm"), send: .confirmTapped),
+                    primaryButton: .destructive(TextState("Confirm"), send: .confirmResetSettingsAlert),
                     secondaryButton: .cancel()
                 )
                 return .none
                 
-            case .confirmTapped:
+            case .confirmResetSettingsAlert:
                 state.yabai = Yabai.State()
                 state.skhd = SKHD.State()
                 state.macOSAnimations = MacOSAnimations.State()
@@ -276,7 +245,7 @@ extension Root {
                 state.alert = nil
                 return .none
                 
-            case .cancelTapped:
+            case .cancelResetSettingsAlert:
                 state.alert = nil
                 return .none
 
