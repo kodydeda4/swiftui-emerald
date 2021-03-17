@@ -66,34 +66,34 @@ struct RootView: View {
 //                    .opacity(viewStore.enabled ? 1 : 0.5)
 //                    .disabled(!viewStore.enabled)
 //                }
+//                ToolbarItem {
+//                    Button("Reset") {
+//                        viewStore.send(.showResetAlert)
+//                    }
+//                    .help("⇧ ⌘ R")
+//                    .keyboardShortcut("r", modifiers: [.command, .shift])
+//                    .disabled(!viewStore.enabled)
+//                }
+//                ToolbarItem {
+//                    Button("Apply Changes") {
+//                        // TODO: Make this happen passively
+//                        //viewStore.send(.toggleApplyingChanges)
+//                        viewStore.send(.export(.yabai))
+//                        viewStore.send(.export(.skhd))
+//                        viewStore.send(.homebrew(.restartYabai))
+//                    }
+//                    .help("⇧ ⌘ A")
+//                    .keyboardShortcut("a", modifiers: [.command, .shift])
+//                    .disabled(!viewStore.enabled)
+//                }
                 ToolbarItem {
                     Button<Image>("power") {
                         viewStore.send(.toggleEnabled)
                         //viewStore.send(.homebrew(.restartYabai))
                         //viewStore.send(.macOSAnimations(.executeShellScript))
                     }
-                    .help("Toggle Emerald")
+                    .help("\(viewStore.enabled ? "Disable" : "Enable") Emerald")
                     .foregroundColor(viewStore.enabled && viewStore.enabled ? .accentColor : .red)
-                }
-                ToolbarItem {
-                    Button("Reset") {
-                        viewStore.send(.showResetAlert)
-                    }
-                    .help("⇧ ⌘ R")
-                    .keyboardShortcut("r", modifiers: [.command, .shift])
-                    .disabled(!viewStore.enabled)
-                }
-                ToolbarItem {
-                    Button("Apply Changes") {
-                        // TODO: Make this happen passively
-                        //viewStore.send(.toggleApplyingChanges)
-                        viewStore.send(.export(.yabai))
-                        viewStore.send(.export(.skhd))
-                        viewStore.send(.homebrew(.restartYabai))
-                    }
-                    .help("⇧ ⌘ A")
-                    .keyboardShortcut("a", modifiers: [.command, .shift])
-                    .disabled(!viewStore.enabled)
                 }
             }
         }

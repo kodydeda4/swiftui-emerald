@@ -247,14 +247,13 @@ extension Root {
                 state.alert = nil
                 return .none
 
-                
             case .toggleApplyingChanges:
                 state.applyingChanges.toggle()
                 return .none
                     //.debounce(id: SaveID(), for: 1.0, scheduler: DispatchQueue.main.eraseToAnyScheduler())
             
             case .toggleEnabled:
-                // TODO: Does not properly disable SKHD or Animations 
+                // TODO: Does not properly disable SKHD or Animations
                 if state.enabled {
                     state.enabled.toggle()
                     return Effect(value: .homebrew(.stopYabai))
