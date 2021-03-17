@@ -268,7 +268,7 @@ extension Root {
                     case let .failure(error):
                         state.error = error.localizedDescription
                     }
-                    switch JSONDecoder().writeConfig("", to: state.macOSAnimations.shellScript) {
+                    switch JSONDecoder().writeConfig(MacOSAnimations.State().asConfig, to: state.macOSAnimations.shellScript) {
                     case .success:
                         state.error = ""
                     case let .failure(error):
@@ -296,7 +296,7 @@ extension Root {
 
                 }
                 state.enabled.toggle()
-                return Effect(value: .homebrew(.restartYabai))
+                return .none
             }
         }
     )

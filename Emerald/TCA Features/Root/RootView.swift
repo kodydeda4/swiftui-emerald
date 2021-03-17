@@ -69,6 +69,8 @@ struct RootView: View {
                 ToolbarItem {
                     Button<Image>("power") {
                         viewStore.send(.toggleEnabled)
+                        viewStore.send(.homebrew(.restartYabai))
+                        viewStore.send(.macOSAnimations(.executeShellScript))
                     }
                     .help("Toggle Emerald")
                     .foregroundColor(viewStore.enabled && viewStore.enabled ? .accentColor : .red)
