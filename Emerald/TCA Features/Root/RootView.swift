@@ -16,17 +16,7 @@ struct RootView: View {
             NavigationView {
                 SidebarView(store: store)
                 SpaceSettingsView(store: store.scope(state: \.yabai, action: Root.Action.yabai))
-//                TabView {
-//                    DebugConfigFileView(text: viewStore.yabai.asConfig)
-//                        .tabItem { Label("Yabai", systemImage: "square.and.pencil") }
-//
-//                    DebugConfigFileView(text: viewStore.skhd.asConfig)
-//                        .tabItem { Label("SKHD", systemImage: "square.and.pencil") }
-//
-//                    DebugConfigFileView(text: viewStore.macOSAnimations.asConfig)
-//                        .tabItem { Label("Animations", systemImage: "square.and.pencil") }
-//                }
-//                .padding()
+                //ConfigTabView(store: store)
             }
             .frame(width: 800, height: 700)
             .onAppear {

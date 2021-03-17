@@ -23,6 +23,7 @@
 		3341B01425F0700B00833B56 /* SKHD+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B01325F0700B00833B56 /* SKHD+Extensions.swift */; };
 		3341B01725F0702C00833B56 /* MacOSAnimations+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B01625F0702C00833B56 /* MacOSAnimations+Extensions.swift */; };
 		334EC79225F908A4005AB9BF /* ViewStore+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334EC79125F908A4005AB9BF /* ViewStore+Extensions.swift */; };
+		3353C0EE26026A67002171B7 /* ConfigTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3353C0ED26026A67002171B7 /* ConfigTabView.swift */; };
 		3356BCA325F28746006EB641 /* SpaceSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3356BCA225F28746006EB641 /* SpaceSettingsView.swift */; };
 		3356BCA625F28782006EB641 /* ExternalBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3356BCA525F28782006EB641 /* ExternalBarView.swift */; };
 		3356BCA925F287B1006EB641 /* MouseSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3356BCA825F287B1006EB641 /* MouseSettingsView.swift */; };
@@ -71,6 +72,7 @@
 		3341B01325F0700B00833B56 /* SKHD+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKHD+Extensions.swift"; sourceTree = "<group>"; };
 		3341B01625F0702C00833B56 /* MacOSAnimations+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MacOSAnimations+Extensions.swift"; sourceTree = "<group>"; };
 		334EC79125F908A4005AB9BF /* ViewStore+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewStore+Extensions.swift"; sourceTree = "<group>"; };
+		3353C0ED26026A67002171B7 /* ConfigTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigTabView.swift; sourceTree = "<group>"; };
 		3356BCA225F28746006EB641 /* SpaceSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceSettingsView.swift; sourceTree = "<group>"; };
 		3356BCA525F28782006EB641 /* ExternalBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalBarView.swift; sourceTree = "<group>"; };
 		3356BCA825F287B1006EB641 /* MouseSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseSettingsView.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 			children = (
 				3380D33625D0723000C10913 /* Root.swift */,
 				339C453025D6ECCA0079ACA1 /* RootView.swift */,
+				3353C0ED26026A67002171B7 /* ConfigTabView.swift */,
 				3385DF6625D6270B00ACDE21 /* SidebarView.swift */,
 				3385DF6925D6279200ACDE21 /* AboutView.swift */,
 				336BC3B925F85B7C00BE3EBA /* SIPButton.swift */,
@@ -385,6 +388,7 @@
 				3398838F25DD7DC3007B9FF5 /* DebugSKHDView.swift in Sources */,
 				3380D2FF25D05F4200C10913 /* EmeraldApp.swift in Sources */,
 				334EC79225F908A4005AB9BF /* ViewStore+Extensions.swift in Sources */,
+				3353C0EE26026A67002171B7 /* ConfigTabView.swift in Sources */,
 				332D568625DEEF7800C88FEE /* MacOSAnimationSettingsView.swift in Sources */,
 				33318F3325F2AD3500231233 /* StepperTextfield.swift in Sources */,
 				330E144E25F2B12600E61969 /* ColorPickerView.swift in Sources */,
