@@ -18,6 +18,7 @@ struct RootView: View {
                 SpaceSettingsView(store: store.scope(state: \.yabai, action: Root.Action.yabai))
                 //ConfigTabView(store: store)
             }
+            .disabled(!viewStore.enabled)
             .frame(width: 800, height: 700)
             .onAppear {
                 viewStore.send(.load(.yabai))
@@ -42,16 +43,18 @@ struct RootView: View {
                         viewStore.send(.yabai(.toggleSIP))
                     }
                     .help("Toggle SIP Lock")
-                    .foregroundColor(viewStore.yabai.sipEnabled ? .accentColor : .gray)
-                    .opacity(viewStore.yabai.sipEnabled ? 1 : 0.5)
+                    .foregroundColor(viewStore.yabai.sipEnabled && viewStore.enabled ? .accentColor : .gray)
+                    .opacity(viewStore.yabai.sipEnabled && viewStore.enabled ? 1 : 0.5)
+                    .disabled(!viewStore.enabled)
                 }
                 ToolbarItem {
                     Button<Image>("keyboard") {
                         viewStore.send(.skhd(.toggleIsEnabled))
                     }
                     .help("Toggle Keyboard Shortcuts")
-                    .foregroundColor(viewStore.skhd.isEnabled ? .accentColor : .gray)
-                    .opacity(viewStore.skhd.isEnabled ? 1 : 0.5)
+                    .foregroundColor(viewStore.skhd.isEnabled && viewStore.enabled ? .accentColor : .gray)
+                    .opacity(viewStore.skhd.isEnabled && viewStore.enabled ? 1 : 0.5)
+                    .disabled(!viewStore.enabled)
                 }
                 ToolbarItem {
                     Button<Image>("timer") {
@@ -59,7 +62,16 @@ struct RootView: View {
                         viewStore.send(.macOSAnimations(.executeShellScript))
                     }
                     .help("Apply Animation Changes")
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(viewStore.enabled ? .accentColor : .gray)
+                    .opacity(viewStore.enabled ? 1 : 0.5)
+                    .disabled(!viewStore.enabled)
+                }
+                ToolbarItem {
+                    Button<Image>("power") {
+                        viewStore.send(.toggleEnabled)
+                    }
+                    .help("Toggle Emerald")
+                    .foregroundColor(viewStore.enabled && viewStore.enabled ? .accentColor : .red)
                 }
                 ToolbarItem {
                     Button("Reset") {
@@ -67,6 +79,7 @@ struct RootView: View {
                     }
                     .help("⇧ ⌘ R")
                     .keyboardShortcut("r", modifiers: [.command, .shift])
+                    .disabled(!viewStore.enabled)
                 }
                 ToolbarItem {
                     Button("Apply Changes") {
@@ -77,6 +90,7 @@ struct RootView: View {
                     }
                     .help("⇧ ⌘ A")
                     .keyboardShortcut("a", modifiers: [.command, .shift])
+                    .disabled(!viewStore.enabled)
                 }
             }
         }

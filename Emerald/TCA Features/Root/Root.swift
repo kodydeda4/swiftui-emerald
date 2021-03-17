@@ -21,6 +21,7 @@ struct Root {
         var alert            : AlertState<Root.Action>?
         var error            = ""
         var applyingChanges  = false
+        var enabled          = true
     }
     
     enum Action: Equatable {
@@ -36,6 +37,7 @@ struct Root {
         case load(Environment.CodableState)
         case export(Environment.CodableState)
         case toggleApplyingChanges
+        case toggleEnabled
     }
     
     struct Environment {
@@ -251,6 +253,50 @@ extension Root {
                 state.applyingChanges.toggle()
                 return .none
                     //.debounce(id: SaveID(), for: 1.0, scheduler: DispatchQueue.main.eraseToAnyScheduler())
+            
+            case .toggleEnabled:
+                if state.enabled {
+                    switch JSONDecoder().writeConfig("", to: state.yabai.configURL) {
+                    case .success:
+                        state.error = ""
+                    case let .failure(error):
+                        state.error = error.localizedDescription
+                    }
+                    switch JSONDecoder().writeConfig("", to: state.skhd.configURL) {
+                    case .success:
+                        state.error = ""
+                    case let .failure(error):
+                        state.error = error.localizedDescription
+                    }
+                    switch JSONDecoder().writeConfig("", to: state.macOSAnimations.shellScript) {
+                    case .success:
+                        state.error = ""
+                    case let .failure(error):
+                        state.error = error.localizedDescription
+                    }
+                } else {
+                    switch JSONDecoder().writeConfig(state.yabai.asConfig, to: state.yabai.configURL) {
+                    case .success:
+                        state.error = ""
+                    case let .failure(error):
+                        state.error = error.localizedDescription
+                    }
+                    switch JSONDecoder().writeConfig(state.skhd.asConfig, to: state.skhd.configURL) {
+                    case .success:
+                        state.error = ""
+                    case let .failure(error):
+                        state.error = error.localizedDescription
+                    }
+                    switch JSONDecoder().writeConfig(state.macOSAnimations.asConfig, to: state.macOSAnimations.shellScript) {
+                    case .success:
+                        state.error = ""
+                    case let .failure(error):
+                        state.error = error.localizedDescription
+                    }
+
+                }
+                state.enabled.toggle()
+                return Effect(value: .homebrew(.restartYabai))
             }
         }
     )
