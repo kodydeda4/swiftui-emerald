@@ -20,7 +20,7 @@ extension MacOSAnimations.State {
 #   ██║  ██║██║ ╚████║██║██║ ╚═╝ ██║
 #   ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝╚═╝     ╚═╝
 #
-#   ~/\(shellScript.relativePath)
+#   \(shellScript.relativePath)
 
 #============================================
 # Enabled Animations
@@ -55,7 +55,7 @@ killall Dock
 #   ██║  ██║██║ ╚████║██║██║ ╚═╝ ██║
 #   ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝╚═╝     ╚═╝
 #
-#   ~/\(shellScript.relativePath)
+#   \(shellScript.relativePath)
 
 #============================================
 # Disabled Animations
