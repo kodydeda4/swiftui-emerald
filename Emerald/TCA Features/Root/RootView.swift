@@ -16,6 +16,7 @@ struct RootView: View {
             NavigationView {
                 SidebarView(store: store)
                 SpaceSettingsView(store: store.scope(state: \.yabai, action: Root.Action.yabai))
+                    
                 
 //                TabView {
 //                    DebugConfigFileView(text: viewStore.yabai.asConfig)
@@ -29,7 +30,8 @@ struct RootView: View {
 //                }
 //                .padding()
             }
-            //.frame(width: 800, height: 800)
+            .frame(width: 800, height: 700)
+            
             .onAppear {
                 viewStore.send(.load(.yabai))
                 viewStore.send(.load(.skhd))

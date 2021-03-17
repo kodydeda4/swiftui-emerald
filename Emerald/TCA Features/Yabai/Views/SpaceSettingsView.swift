@@ -143,6 +143,12 @@ struct SpaceSettingsView: View {
                         //                            Text("Resize")
                         //                            Text("Move")
                         //                        }
+                        VStack(alignment: .leading) {
+                            Text("").frame(height: 25)
+                            Text("Focus ⌃").frame(height: 25)
+                            Text("Resize ⌃⌥").frame(height: 25)
+                            Text("Move ⌃⌥⌘").frame(height: 25)
+                        }
                         VStack {
                             Label("↑", systemImage: "square.tophalf.fill")
                             KeyboardShortcuts.Recorder(for: .focusNorth)
@@ -167,6 +173,7 @@ struct SpaceSettingsView: View {
                             KeyboardShortcuts.Recorder(for: .resizeLeft)
                             KeyboardShortcuts.Recorder(for: .moveWest)
                         }
+                        Spacer()
                     }
                     
                     
