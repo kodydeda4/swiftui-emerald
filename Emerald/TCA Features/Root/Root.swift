@@ -36,7 +36,7 @@ struct Root {
         case saveResult(Result<Bool, CacheError>)
         case load(Environment.CodableState)
         case export(Environment.CodableState)
-        case applyingChanges
+        case toggleApplyingChanges
     }
     
     struct Environment {
@@ -252,7 +252,7 @@ extension Root {
                 return .none
 
                 
-            case .applyingChanges:
+            case .toggleApplyingChanges:
                 state.applyingChanges.toggle()
                 return .none
                     //.debounce(id: SaveID(), for: 1.0, scheduler: DispatchQueue.main.eraseToAnyScheduler())

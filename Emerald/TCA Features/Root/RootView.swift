@@ -24,27 +24,12 @@ struct RootView: View {
                 viewStore.send(.load(.skhd))
                 viewStore.send(.load(.macOSAnimations))
             }
-            .sheet(
-                isPresented:
-                    viewStore.binding(
-                        get: \.onboarding.isOnboaring,
-                        send: .onboarding(.toggleIsOnboaring))
-            ) {
-                OnboardingView(
-                    store: store.scope(state: \.onboarding, action: Root.Action.onboarding)
-                )
+            .sheet(isPresented: viewStore.binding(get: \.onboarding.isOnboaring, send: .onboarding(.toggleIsOnboaring))) {
+                OnboardingView(store: store.scope(state: \.onboarding, action: Root.Action.onboarding))
             }
-            .sheet(
-                isPresented:
-                    viewStore.binding(
-                        get: \.applyingChanges,
-                        send: .applyingChanges)
-            ) {
-                ApplyingChangesView(
-                    store: store
-                )
+            .sheet(isPresented: viewStore.binding(get: \.applyingChanges, send: .toggleApplyingChanges)) {
+                ApplyingChangesView(store: store)
             }
-
             .alert(store.scope(state: \.alert), dismiss: .dismissResetAlert)
             .toolbar {
                 ToolbarItem(placement: .navigation) {
@@ -52,55 +37,45 @@ struct RootView: View {
                         Image(systemName: "sidebar.left")
                     }
                 }
+                ToolbarItem {
+                    Button(action: { viewStore.send(.yabai(.toggleSIP))}) {
+                        Image(systemName: "lock.fill")
+                    }
+                    .foregroundColor(viewStore.yabai.sipEnabled ? .accentColor : .gray)
+                    .opacity(viewStore.yabai.sipEnabled ? 1 : 0.5)
+                    .help("Toggle SIP Lock")
+                }
+                ToolbarItem {
+                    Button(action: { viewStore.send(.skhd(.toggleIsEnabled))}) {
+                        Image(systemName: "keyboard")
+                    }
+                    .foregroundColor(viewStore.skhd.isEnabled ? .accentColor : .gray)
+                    .opacity(viewStore.skhd.isEnabled ? 1 : 0.5)
+                    .help("Toggle Keyboard Shortcuts")
+                }
+                ToolbarItem {
+                    Button("Reset") {
+                        viewStore.send(.showResetAlert)
+                    }
+                    .help("⇧ ⌘ R")
+                    .keyboardShortcut("r", modifiers: [.command, .shift])
+                }
+                ToolbarItem {
+                    Button("Apply Changes") {
+                        viewStore.send(.toggleApplyingChanges)
+                        viewStore.send(.export(.yabai))
+                        viewStore.send(.export(.skhd))
+                        viewStore.send(.appleScript(.brewServicesRestartYabai))
+                    }
+                    .help("⇧ ⌘ A")
+                    .keyboardShortcut("a", modifiers: [.command, .shift])
+                }
                 //                ToolbarItem {
                 //                    Button("Apply Animation Changes") {
                 //                        viewStore.send(.export(.macOSAnimations))
                 //                        let _ = AppleScript.applyAnimationSettings.execute()
                 //                    }
                 //                }
-                ToolbarItem {
-                    Button(action: {
-                        viewStore.send(.yabai(.toggleSIP))
-                    }) {
-                        Image(systemName: "lock.fill")
-                            .foregroundColor(viewStore.yabai.sipEnabled ? .accentColor : .gray)
-                            .opacity(viewStore.yabai.sipEnabled ? 1 : 0.5)
-                            
-                    }
-                    .help("Toggle SIP Lock")
-                }
-                
-                ToolbarItem {
-                    Button(action: {
-                        viewStore.send(.skhd(.toggleIsEnabled))
-                    }) {
-                        Image(systemName: "keyboard")
-                            .foregroundColor(viewStore.skhd.isEnabled ? .accentColor : .gray)
-                            .opacity(viewStore.skhd.isEnabled ? 1 : 0.5)
-                            
-                    }
-                    .help("Toggle Keyboard Shortcuts")
-                }
-
-                ToolbarItem {
-                    Button(action: { viewStore.send(.showResetAlert) }) {
-                        Text("Reset")
-                    }
-                    .help("⇧ ⌘ R")
-                    .keyboardShortcut("r", modifiers: [.command, .shift])
-                }
-                ToolbarItem {
-                    Button(action: {
-                        viewStore.send(.applyingChanges)
-                        viewStore.send(.export(.yabai))
-                        viewStore.send(.export(.skhd))
-                        viewStore.send(.appleScript(.brewServicesRestartYabai))
-                    }) {
-                        Text("Apply Changes")
-                    }
-                    .help("⇧ ⌘ A")
-                    .keyboardShortcut("a", modifiers: [.command, .shift])
-                }
             }
         }
     }

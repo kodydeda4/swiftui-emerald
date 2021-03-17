@@ -17,7 +17,7 @@ struct ApplyingChangesView: View {
                 Text("Put an animation here")
                 
                 Button("finish (should debounce after like 3 seconds") {
-                    viewStore.send(.applyingChanges)
+                    viewStore.send(.toggleApplyingChanges)
                 }
             }
             .padding()
