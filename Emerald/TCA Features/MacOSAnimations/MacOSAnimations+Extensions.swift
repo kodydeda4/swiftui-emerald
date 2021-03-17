@@ -9,7 +9,7 @@ import Foundation
 
 extension MacOSAnimations.State {
     var asConfig: String {
-        if allEnabled { return
+        if enabled { return
             """
 #!/bin/bash
 #
@@ -20,7 +20,7 @@ extension MacOSAnimations.State {
 #   ██║  ██║██║ ╚████║██║██║ ╚═╝ ██║
 #   ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝╚═╝     ╚═╝
 #
-#   ~/\(configURL.relativePath)
+#   ~/\(shellScript.relativePath)
 
 #============================================
 # Enabled Animations
@@ -55,7 +55,7 @@ killall Dock
 #   ██║  ██║██║ ╚████║██║██║ ╚═╝ ██║
 #   ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝╚═╝     ╚═╝
 #
-#   ~/\(configURL.relativePath)
+#   ~/\(shellScript.relativePath)
 
 #============================================
 # Disabled Animations

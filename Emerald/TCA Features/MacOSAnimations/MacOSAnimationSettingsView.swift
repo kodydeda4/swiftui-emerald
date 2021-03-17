@@ -11,7 +11,6 @@ import ComposableArchitecture
 
 struct MacOSAnimationSettingsView: View {
     let store: Store<MacOSAnimations.State, MacOSAnimations.Action>
-    let k = MacOSAnimations.Action.keyPath
     
     var body: some View {
         WithViewStore(store) { vs in
@@ -21,7 +20,7 @@ struct MacOSAnimationSettingsView: View {
                 VStack {
                     VStack(alignment: .leading) {
                         SectionView("Animations") {
-                            Toggle("Enable All", isOn: vs.binding(keyPath: \.allEnabled, send: k))
+                            Toggle("Enabled", isOn: vs.binding(get: \.enabled, send: .toggleEnabled))
                         }
                     }
                 }

@@ -41,17 +41,25 @@ struct RootView: View {
                     Button<Image>("lock.fill") {
                         viewStore.send(.yabai(.toggleSIP))
                     }
+                    .help("Toggle SIP Lock")
                     .foregroundColor(viewStore.yabai.sipEnabled ? .accentColor : .gray)
                     .opacity(viewStore.yabai.sipEnabled ? 1 : 0.5)
-                    .help("Toggle SIP Lock")
                 }
                 ToolbarItem {
                     Button<Image>("keyboard") {
                         viewStore.send(.skhd(.toggleIsEnabled))
                     }
+                    .help("Toggle Keyboard Shortcuts")
                     .foregroundColor(viewStore.skhd.isEnabled ? .accentColor : .gray)
                     .opacity(viewStore.skhd.isEnabled ? 1 : 0.5)
-                    .help("Toggle Keyboard Shortcuts")
+                }
+                ToolbarItem {
+                    Button<Image>("timer") {
+                        viewStore.send(.export(.macOSAnimations))
+                        viewStore.send(.macOSAnimations(.executeShellScript))
+                    }
+                    .help("Apply Animation Changes")
+                    .foregroundColor(.accentColor)
                 }
                 ToolbarItem {
                     Button("Reset") {
@@ -62,24 +70,19 @@ struct RootView: View {
                 }
                 ToolbarItem {
                     Button("Apply Changes") {
-                        viewStore.send(.toggleApplyingChanges)
+                        //viewStore.send(.toggleApplyingChanges)
                         viewStore.send(.export(.yabai))
                         viewStore.send(.export(.skhd))
-                        viewStore.send(.appleScript(.brewServicesRestartYabai))
+                        viewStore.send(.homebrew(.restartYabai))
                     }
                     .help("⇧ ⌘ A")
                     .keyboardShortcut("a", modifiers: [.command, .shift])
                 }
-                //                ToolbarItem {
-                //                    Button("Apply Animation Changes") {
-                //                        viewStore.send(.export(.macOSAnimations))
-                //                        let _ = AppleScript.applyAnimationSettings.execute()
-                //                    }
-                //                }
             }
         }
     }
 }
+
 
 
 

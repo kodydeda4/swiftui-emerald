@@ -33,6 +33,9 @@ struct SidebarView: View {
                     NavigationLink(destination: ExternalBarSettingsView(store: yabaiStore)) {
                         Label("Menu Bar", systemImage: "rectangle.topthird.inset")
                     }
+                    NavigationLink(destination: MacOSAnimationSettingsView(store: store.scope(state: \.macOSAnimations, action: Root.Action.macOSAnimations))) {
+                        Label("Animations", systemImage: "timer")
+                    }
                 }
                 Section(header: Text("Other")) {
                     NavigationLink(destination: SystemIntegrityProtectionView()) {

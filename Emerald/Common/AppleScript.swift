@@ -7,30 +7,31 @@
 
 import Foundation
 
-enum AppleScript: String {
-    case restartYabai = "restartYabai"
-    case applyAnimationSettings = "applyAnimationSettings"
-    case brewServicesRestartYabai = "brewServicesRestartYabai-V"
-}
-
-extension AppleScript {
-    var url: URL {
-        try! FileManager.default.url(
-            for: .applicationScriptsDirectory,
-            in: .userDomainMask,
-            appropriateFor: nil,
-            create: true
-        )
-        .appendingPathComponent(rawValue)
-        .appendingPathExtension(for: .osaScript)
-    }
+struct AppleScript {
     
-    func execute() -> String {
+    // Run a shell command with elevated priviledges (Applescript)
+    static func execute(_ command: String) -> Result<Bool, Error> {
+        let data: String = "do shell script \"\(command)\""
+        
+        var url: URL {
+            try! FileManager.default.url(
+                for: .applicationScriptsDirectory,
+                in: .userDomainMask,
+                appropriateFor: nil,
+                create: true
+            )
+            .appendingPathComponent("AppleScript")
+            .appendingPathExtension(for: .osaScript)
+        }
+
+        
         do {
+            try data.write(to: url, atomically: true, encoding: .utf8)
             try NSUserScriptTask(url: url).execute()
-            return "\(rawValue) was executed successfully."
-        } catch {
-            return error.localizedDescription
+            return .success(true)
+        }
+        catch {
+            return .failure(error)
         }
     }
 }

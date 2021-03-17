@@ -8,17 +8,20 @@
 import SwiftUI
 import ComposableArchitecture
 
-// Disable OSX Animations: https://apple.stackexchange.com/questions/14001/how-to-turn-off-all-animations-on-os-x
+// Modify macOS Animations through a Shell Script.
+//      ~ Disable OSX Animations:
+//        https://apple.stackexchange.com/questions/14001/how-to-turn-off-all-animations-on-os-x
 
 struct MacOSAnimations {
     struct State: Equatable, Codable {
-        var stateURL  = URL(fileURLWithPath: "AnimationsState.json",  relativeTo: .HomeDirectory)
-        var configURL = URL(fileURLWithPath: ".macOSAnimationsRC.sh", relativeTo: .HomeDirectory)
+        var stateURL    = URL(fileURLWithPath: "AnimationsState.json",  relativeTo: .HomeDirectory)
+        var shellScript = URL(fileURLWithPath: ".macOSAnimationsRC.sh", relativeTo: .HomeDirectory)
         
-        var allEnabled: Bool = true
+        var enabled     = true
     }
     enum Action: Equatable {
-        case keyPath(BindingAction<MacOSAnimations.State>)
+        case toggleEnabled
+        case executeShellScript
     }
 }
 
@@ -26,11 +29,17 @@ extension MacOSAnimations {
     static let reducer = Reducer<State, Action, Void> {
         state, action, _ in
         switch action {
-        case .keyPath:
+
+        case .toggleEnabled:
+            state.enabled.toggle()
+            return.none
+
+        case .executeShellScript:
+            let _ = AppleScript.execute("sudo chmod +x ~/\(state.shellScript.relativePath)")
+            let _ = AppleScript.execute("~/\(state.shellScript.relativePath)")
             return .none
         }
     }
-    .binding(action: /Action.keyPath)
 }
 
 extension MacOSAnimations {

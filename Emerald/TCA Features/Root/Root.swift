@@ -32,7 +32,6 @@ struct Root {
         case showResetAlert
         case dismissResetAlert
         case confirmResetAlert
-        case appleScript(AppleScript)
         case saveResult(Result<Bool, CacheError>)
         case load(Environment.CodableState)
         case export(Environment.CodableState)
@@ -186,7 +185,7 @@ extension Root {
                 case .macOSAnimations:
                     switch JSONDecoder().writeConfig(
                         state.macOSAnimations.asConfig,
-                        to: state.macOSAnimations.configURL
+                        to: state.macOSAnimations.shellScript
                     ) {
                     case .success:
                         state.error = ""
@@ -195,11 +194,7 @@ extension Root {
                     }
                 }
                 return .none
-                                
-            case let .appleScript(appleScript):
-                state.error = appleScript.execute()
-                return .none
-                
+                                                
             case .showResetAlert:
                 state.alert = .init(
                     title: TextState("Reset Settings?"),
