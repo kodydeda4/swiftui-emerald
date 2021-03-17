@@ -169,9 +169,9 @@ struct Yabai {
             }
             var caseDescription: String {
                 switch self {
-                case .float : return "Default macOS window behavior"
-                case .bsp   : return "Windows automatically resize to maximize screen real-estate"
-                case .stack : return "Windows stack ontop of each other"
+                case .float : return "Description of Default"
+                case .bsp   : return "Description of Tiling"
+                case .stack : return "Description of Stacking"
                 }
             }
         }

@@ -90,6 +90,7 @@ struct SpaceSettingsView: View {
                             .padding(2)
                         }
                     }
+                    .frame(width: 500, height: 300)
                 }
                 
                 // Padding
