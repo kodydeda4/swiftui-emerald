@@ -18,6 +18,7 @@ struct RootView: View {
             NavigationView {
                 SidebarView(store: store)
                 SpaceSettingsView(store: store.scope(state: \.yabai, action: Root.Action.yabai))
+                
                 //ConfigTabView(store: store)
             }
             .disabled(!viewStore.enabled)
@@ -38,11 +39,11 @@ struct RootView: View {
             }
             .alert(store.scope(state: \.alert), dismiss: .dismissResetAlert)
             .toolbar {
-                ToolbarItem(placement: .navigation) {
-                    Button<Image>("sidebar.left") {
-                        toggleSidebar()
-                    }
-                }
+//                ToolbarItem(placement: .navigation) {
+//                    Button<Image>("sidebar.left") {
+//                        toggleSidebar()
+//                    }
+//                }
                 ToolbarItem {
                     Button<Image>("lock.fill") {
                         viewStore.send(.yabai(.toggleSIP))

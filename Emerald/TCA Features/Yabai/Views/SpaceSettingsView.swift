@@ -24,130 +24,152 @@ struct SpaceSettingsView: View {
     
     var body: some View {
         WithViewStore(store) { vs in
-            VStack(alignment: .leading, spacing: 20) {
+            VStack {
                 
                 // Layout
-                VStack(alignment: .leading) {
-                    //                    Text("Layout")
-                    //                        .bold().font(.title3)
+                VStack {
+                    HStack {
+                        Text("Layout")
+                            .font(.largeTitle)
+                            .bold()
+                        Spacer()
+                    }
+                    Divider()
                     
                     HStack {
-                        GroupBox {
-                            VStack {
-                                Text("Normal")
-                                    .bold().font(.title3)
-                                
-                                Button(action: { vs.send(.updateLayout(.float)) }) {
-                                    Rectangle()
-                                        .overlay(Text("Float"))
-                                        .foregroundColor(vs.layout == .float ? .accentColor : .gray)
-                                }
-                                //.frame(width: 800/4, height: 600/4)
-                                .buttonStyle(PlainButtonStyle())
-                                
-                                Text(Yabai.State.Layout.float.caseDescription)
-                                    .foregroundColor(Color(.gray))
-                                KeyboardShortcuts.Recorder(for: .toggleFloating)
+                        VStack {
+                            Button(action: { vs.send(.updateLayout(.float)) }) {
+                                Rectangle()
+                                    .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
+                                    .overlay(Text("Float"))
+                                    .foregroundColor(vs.layout == .float ? .accentColor : .gray)
+                                    
                             }
-                            .padding(2)
+                            .buttonStyle(PlainButtonStyle())
+                            
+                            Text("Normal")
+                                .bold().font(.title3)
+                            
+                            Text(Yabai.State.Layout.float.caseDescription)
+                                .foregroundColor(Color(.gray))
+                            
+                            KeyboardShortcuts.Recorder(for: .toggleFloating)
                         }
-                        GroupBox {
-                            VStack {
-                                Text("Tiling")
-                                    .bold().font(.title3)
-                                
-                                Button(action: { vs.send(.updateLayout(.bsp)) }) {
-                                    Rectangle()
-                                        .overlay(Text("Tiling"))
-                                        .foregroundColor(vs.layout == .bsp ? .accentColor : .gray)
-                                }
-                                //.frame(width: 800/4, height: 600/4)
-                                .buttonStyle(PlainButtonStyle())
-                                
-                                Text(Yabai.State.Layout.bsp.caseDescription)
-                                    .foregroundColor(Color(.gray))
-                                KeyboardShortcuts.Recorder(for: .toggleBSP)
-                            }
-                            .padding(2)
-                        }
-                        GroupBox {
-                            VStack {
-                                Text("Stacking")
-                                    .bold().font(.title3)
-                                
-                                Button(action: { vs.send(.updateLayout(.stack)) }) {
-                                    Rectangle()
-                                        .overlay(Text("Stacking"))
-                                        .foregroundColor(vs.layout == .stack ? .accentColor : .gray)
-                                }
-                                //.frame(width: 800/4, height: 600/4)
-                                .buttonStyle(PlainButtonStyle())
-                                
-                                Text(Yabai.State.Layout.stack.caseDescription)
-                                    .foregroundColor(Color(.gray))
-                                KeyboardShortcuts.Recorder(for: .toggleStacking)
-                            }
-                            .padding(2)
-                        }
-                    }
-                    .frame(width: 500, height: 300)
-                }
-                
-                // Padding
-                Divider()
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text("Gaps")
-                            .bold().font(.title3)
+                        .padding(2)
                         
                         VStack {
-                            HStack {
-                                Text("Inner")
-                                TextField("", value: vs.binding(\.windowGap, k), formatter: NumberFormatter())
-                                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                                    .overlay(
-                                        HStack {
-                                            Spacer()
-                                            Stepper("", value: vs.binding(\.windowGap, k), in: 0...30)
-                                        }
-                                    )
-
-                                    .frame(width: 130)
-
-                                KeyboardShortcuts.Recorder(for: .toggleGaps)
+                            Button(action: { vs.send(.updateLayout(.bsp)) }) {
+                                Rectangle()
+                                    .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
+                                    .overlay(Text("Tiling"))
+                                    .foregroundColor(vs.layout == .bsp ? .accentColor : .gray)
                             }
-                            HStack {
-                                Text("Outer")
-                                TextField("", value: vs.binding(\.padding, k), formatter: NumberFormatter())
-                                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                                    .overlay(
-                                        HStack {
-                                            Spacer()
-                                            Stepper("", value: vs.binding(\.padding, k), in: 0...30)
-                                        }
-                                    )
-
-                                    .frame(width: 130)
-                                
-                                KeyboardShortcuts.Recorder(for: .togglePadding)
-                            }
+                            .buttonStyle(PlainButtonStyle())
+                            
+                            Text("Tiling")
+                                .bold().font(.title3)
+                            
+                            Text(Yabai.State.Layout.bsp.caseDescription)
+                                .foregroundColor(Color(.gray))
+                            
+                            KeyboardShortcuts.Recorder(for: .toggleBSP)
                         }
+                        .padding(2)
+                        VStack {
+                            Button(action: { vs.send(.updateLayout(.stack)) }) {
+                                Rectangle()
+                                    .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
+                                    .overlay(Text("Stacking"))
+                                    .foregroundColor(vs.layout == .stack ? .accentColor : .gray)
+                            }
+                            .buttonStyle(PlainButtonStyle())
+                            
+                            Text("Stacking")
+                                .bold().font(.title3)
+                            
+                            Text(Yabai.State.Layout.stack.caseDescription)
+                                .foregroundColor(Color(.gray))
+                            
+                            KeyboardShortcuts.Recorder(for: .toggleStacking)
+                        }
+                        .padding(2)
                     }
+                    //.frame(width: 500, height: 300)
                 }
                 
-                VStack(alignment: .leading, spacing: 20) {
-                    Divider()
-                    Text("Shortcuts")
-                        .bold().font(.title3)
-                    
+                Divider()
+                VStack {
+                    HStack {
+                        Text("Gaps")
+                            .font(.title)
+                            .bold()
+                        Spacer()
+                    }
                     
                     HStack {
-                        //                        VStack {
-                        //                            Text("Focus")
-                        //                            Text("Resize")
-                        //                            Text("Move")
-                        //                        }
-                        VStack(alignment: .leading) {
+                        VStack {
+                            Rectangle()
+                                .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
+                                .foregroundColor(.blue)
+                            
+                            Text("Inner")
+                                .bold()
+                                .font(.title3)
+                            
+                            Text("Description")
+                                .foregroundColor(Color(.gray))
+
+                            
+                            TextField("", value: vs.binding(\.windowGap, k), formatter: NumberFormatter())
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .frame(width: 130)
+                                .overlay(
+                                    HStack {
+                                        Spacer()
+                                        Stepper("", value: vs.binding(\.windowGap, k), in: 0...30)
+                                    }
+                                )
+                            
+                            KeyboardShortcuts.Recorder(for: .toggleGaps)
+                        }
+                        
+                        VStack {
+                            Rectangle()
+                                .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
+                                .foregroundColor(.red)
+                            
+                            Text("Outer")
+                                .bold()
+                                .font(.title3)
+                            
+                            Text("Description")
+                                .foregroundColor(Color(.gray))
+
+                            TextField("", value: vs.binding(\.padding, k), formatter: NumberFormatter())
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .overlay(
+                                    HStack {
+                                        Spacer()
+                                        Stepper("", value: vs.binding(\.padding, k), in: 0...30)
+                                    }
+                                )
+                                .frame(width: 130)
+                            
+                            KeyboardShortcuts.Recorder(for: .togglePadding)
+                        }
+                    }
+                    //.padding(.horizontal)
+                }
+                VStack {
+                    Divider()
+                    HStack {
+                        Text("Shortcuts")
+                            .font(.title)
+                            .bold()
+                        Spacer()
+                    }
+                    HStack {
+                        VStack {
                             Text("").frame(height: 25)
                             Text("Focus ⌃").frame(height: 25)
                             Text("Resize ⌃⌥").frame(height: 25)
@@ -177,10 +199,7 @@ struct SpaceSettingsView: View {
                             KeyboardShortcuts.Recorder(for: .resizeLeft)
                             KeyboardShortcuts.Recorder(for: .moveWest)
                         }
-                        Spacer()
                     }
-                    
-                    
                     Picker("", selection: $shortcut) {
                         ForEach(Shortcuts.allCases) {
                             Text($0.rawValue)
@@ -189,37 +208,12 @@ struct SpaceSettingsView: View {
                     .labelsHidden()
                     .pickerStyle(SegmentedPickerStyle())
                     .frame(width: 150)
-                    
-                    
                 }
-                
-                // Float-On-Top
-                //                VStack(alignment: .leading) {
-                //                    Divider()
-                //                    HStack {
-                //                        Group {
-                //                            Toggle("", isOn: vs.binding(\.windowTopmost, k))
-                //                                .labelsHidden()
-                //
-                //                            Text("Float-On-Top")
-                //                                .bold().font(.title3)
-                //                        }
-                //                        .disabled(vs.sipEnabled || vs.layout == .float)
-                //                        .opacity( vs.sipEnabled || vs.layout == .float ? 0.5 : 1.0)
-                //
-                //                        Spacer()
-                //                        SIPButton(store: Root.defaultStore)
-                //                    }
-                //
-                //                    Text("Force floating windows to stay ontop of tiled/stacked windows")
-                //                        .foregroundColor(Color(.gray))
-                //                        .disabled(vs.sipEnabled || vs.layout == .float)
-                //                        .opacity( vs.sipEnabled || vs.layout == .float ? 0.5 : 1.0)
-                //                }
                 Spacer()
             }
             .padding()
-            .navigationTitle("Layout")
+            .navigationTitle("")
+            //.navigationTitle("Layout")
         }
     }
 }
