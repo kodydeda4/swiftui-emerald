@@ -85,11 +85,76 @@ struct LayoutButtonsView: View {
 }
 
 
+struct GapsView: View {
+    let store: Store<Yabai.State, Yabai.Action>
+    let k = Yabai.Action.keyPath
+        
+    var body: some View {
+        WithViewStore(store) { vs in
+            VStack {
+                HStack {
+                    Text("Gaps")
+                        .font(.title)
+                        .bold()
+                    Spacer()
+                }
+                HStack {
+                    VStack {
+                        Rectangle()
+                            .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
+                            .foregroundColor(.blue)
+                        
+                        Text("Inner")
+                            .bold()
+                            .font(.title3)
+                        
+                        Text("Description")
+                            .foregroundColor(Color(.gray))
+                        
+                        
+                        TextField("", value: vs.binding(\.windowGap, k), formatter: NumberFormatter())
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .frame(width: 130)
+                            .overlay(
+                                HStack {
+                                    Spacer()
+                                    Stepper("", value: vs.binding(\.windowGap, k), in: 0...30)
+                                }
+                            )
+                        KeyboardShortcuts.Recorder(for: .toggleGaps)
+                    }
+                    
+                    VStack {
+                        Rectangle()
+                            .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
+                            .foregroundColor(.red)
+                        
+                        Text("Outer")
+                            .bold()
+                            .font(.title3)
+                        
+                        Text("Description")
+                            .foregroundColor(Color(.gray))
+                        
+                        TextField("", value: vs.binding(\.padding, k), formatter: NumberFormatter())
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .overlay(
+                                HStack {
+                                    Spacer()
+                                    Stepper("", value: vs.binding(\.padding, k), in: 0...30)
+                                }
+                            )
+                            .frame(width: 130)
+                        
+                        KeyboardShortcuts.Recorder(for: .togglePadding)
+                    }
+                }
+            }
+        }
+    }
+}
 
-
-
-
-struct SpaceSettingsView: View {
+struct ShortcutsView: View {
     let store: Store<Yabai.State, Yabai.Action>
     let k = Yabai.Action.keyPath
     
@@ -100,183 +165,77 @@ struct SpaceSettingsView: View {
     }
     
     @State var shortcut: Shortcuts = .arrows
+
+        
+    var body: some View {
+        WithViewStore(store) { vs in
+            VStack {
+                HStack {
+                    Text("Shortcuts")
+                        .font(.title)
+                        .bold()
+                    Spacer()
+                }
+                HStack {
+                    VStack {
+                        Rectangle()
+                            .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
+                            .foregroundColor(.red)
+                        
+                        Text("Focus")
+                            .bold()
+                            .font(.title3)
+                        
+                        Text("⌃ + ARROW")
+                            .foregroundColor(Color(.gray))
+                        
+                    }
+                    VStack {
+                        Rectangle()
+                            .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
+                            .foregroundColor(.red)
+                        
+                        Text("Move")
+                            .bold()
+                            .font(.title3)
+                        
+                        Text("⌃ ⌥ + ARROW")
+                            .foregroundColor(Color(.gray))
+                        
+                    }
+                    VStack {
+                        Rectangle()
+                            .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
+                            .foregroundColor(.red)
+                        
+                        Text("Resize")
+                            .bold()
+                            .font(.title3)
+                        
+                        Text("⌃ ⌥ ⌘ + ARROW")
+                            .foregroundColor(Color(.gray))
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+struct SpaceSettingsView: View {
+    let store: Store<Yabai.State, Yabai.Action>
+    let k = Yabai.Action.keyPath
+    
     
     var body: some View {
         WithViewStore(store) { vs in
             VStack {
-                
                 LayoutButtonsView(store: store)
                 Divider()
-                VStack {
-                    HStack {
-                        Text("Gaps")
-                            .font(.title)
-                            .bold()
-                        Spacer()
-                    }
-                    
-                    HStack {
-                        VStack {
-                            Rectangle()
-                                .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
-                                .foregroundColor(.blue)
-                            
-                            Text("Inner")
-                                .bold()
-                                .font(.title3)
-                            
-                            Text("Description")
-                                .foregroundColor(Color(.gray))
-
-                            
-                            TextField("", value: vs.binding(\.windowGap, k), formatter: NumberFormatter())
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-                                .frame(width: 130)
-                                .overlay(
-                                    HStack {
-                                        Spacer()
-                                        Stepper("", value: vs.binding(\.windowGap, k), in: 0...30)
-                                    }
-                                )
-                            
-                            KeyboardShortcuts.Recorder(for: .toggleGaps)
-                        }
-                        
-                        VStack {
-                            Rectangle()
-                                .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
-                                .foregroundColor(.red)
-                            
-                            Text("Outer")
-                                .bold()
-                                .font(.title3)
-                            
-                            Text("Description")
-                                .foregroundColor(Color(.gray))
-
-                            TextField("", value: vs.binding(\.padding, k), formatter: NumberFormatter())
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-                                .overlay(
-                                    HStack {
-                                        Spacer()
-                                        Stepper("", value: vs.binding(\.padding, k), in: 0...30)
-                                    }
-                                )
-                                .frame(width: 130)
-                            
-                            KeyboardShortcuts.Recorder(for: .togglePadding)
-                        }
-                    }
-                }
-                VStack {
-                    Divider()
-                    HStack {
-                        Text("Shortcuts")
-                            .font(.title)
-                            .bold()
-                        Spacer()
-                    }
-                    
-
-                    HStack {
-                        VStack {
-                            Rectangle()
-                                .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
-                                .foregroundColor(.red)
-                            
-                            Text("Focus")
-                                .bold()
-                                .font(.title3)
-                            
-                            Text("⌃ + ARROW")
-                                .foregroundColor(Color(.gray))
-                            
-                        }
-                        VStack {
-                            Rectangle()
-                                .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
-                                .foregroundColor(.red)
-                            
-                            Text("Move")
-                                .bold()
-                                .font(.title3)
-                            
-                            Text("⌃ ⌥ + ARROW")
-                                .foregroundColor(Color(.gray))
-                            
-                        }
-                        VStack {
-                            Rectangle()
-                                .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
-                                .foregroundColor(.red)
-                            
-                            Text("Resize")
-                                .bold()
-                                .font(.title3)
-                            
-                            Text("⌃ ⌥ ⌘ + ARROW")
-                                .foregroundColor(Color(.gray))
-                        }
-                    }
-//                    Picker("", selection: $shortcut) {
-//                        ForEach(Shortcuts.allCases) {
-//                            Text($0.rawValue)
-//                        }
-//                    }
-//                    .labelsHidden()
-//                    .pickerStyle(SegmentedPickerStyle())
-//                    .frame(width: 150)
-                }
-
-//                VStack {
-//                    Divider()
-//                    HStack {
-//                        Text("Shortcuts")
-//                            .font(.title)
-//                            .bold()
-//                        Spacer()
-//                    }
-//                    HStack {
-//                        VStack {
-//                            Text("").frame(height: 25)
-//                            Text("Focus ⌃").frame(height: 25)
-//                            Text("Resize ⌃⌥").frame(height: 25)
-//                            Text("Move ⌃⌥⌘").frame(height: 25)
-//                        }
-//                        VStack {
-//                            Label("↑", systemImage: "square.tophalf.fill")
-//                            KeyboardShortcuts.Recorder(for: .focusNorth)
-//                            KeyboardShortcuts.Recorder(for: .resizeTop)
-//                            KeyboardShortcuts.Recorder(for: .moveNorth)
-//                        }
-//                        VStack {
-//                            Label("↓", systemImage: "square.bottomhalf.fill")
-//                            KeyboardShortcuts.Recorder(for: .focusSouth)
-//                            KeyboardShortcuts.Recorder(for: .resizeBottom)
-//                            KeyboardShortcuts.Recorder(for: .moveSouth)
-//                        }
-//                        VStack {
-//                            Label("→", systemImage: "square.righthalf.fill")
-//                            KeyboardShortcuts.Recorder(for: .focusEast)
-//                            KeyboardShortcuts.Recorder(for: .resizeRight)
-//                            KeyboardShortcuts.Recorder(for: .moveEast)
-//                        }
-//                        VStack {
-//                            Label("←", systemImage: "square.lefthalf.fill")
-//                            KeyboardShortcuts.Recorder(for: .focusWest)
-//                            KeyboardShortcuts.Recorder(for: .resizeLeft)
-//                            KeyboardShortcuts.Recorder(for: .moveWest)
-//                        }
-//                    }
-//                    Picker("", selection: $shortcut) {
-//                        ForEach(Shortcuts.allCases) {
-//                            Text($0.rawValue)
-//                        }
-//                    }
-//                    .labelsHidden()
-//                    .pickerStyle(SegmentedPickerStyle())
-//                    .frame(width: 150)
-//                }
+                GapsView(store: store)
+                Divider()
+                ShortcutsView(store: store)
                 Spacer()
             }
             .padding()
