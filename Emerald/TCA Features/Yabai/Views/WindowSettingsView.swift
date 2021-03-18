@@ -14,45 +14,29 @@ struct WindowSettingsView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            VStack(alignment: .leading, spacing: 20) {
+            ScrollView {
                 HStack {
-                    GroupBox {
+                    Text("Window")
+                        .font(.largeTitle)
+                        .bold()
+                    Spacer()
+                }
+                Divider()
+                
+                HStack {
+                    ForEach(["Active", "Normal"], id: \.self) { str in
                         VStack {
-                            Text("Active")
-                                .bold().font(.title3)
+                            Rectangle()
+                                .foregroundColor(.red)
+                                .aspectRatio(
+                                    CGSize(width: 16, height: 9),
+                                    contentMode: .fit)
                             
-                            Button(action: {}) {
-                                Rectangle()
-                                    .overlay(Text("Active"))
-                            }
-                            //.frame(width: 800/4, height: 600/4)
-                            .buttonStyle(PlainButtonStyle())
-                            
-                            Text(Yabai.State.Layout.float.caseDescription)
-                                .foregroundColor(Color(.gray))
-                            KeyboardShortcuts.Recorder(for: .toggleFloating)
+                            Text(str)
+                                .bold()
+                                .font(.title3)
                         }
-                        .padding(2)
                     }
-                    GroupBox {
-                        VStack {
-                            Text("Normal")
-                                .bold().font(.title3)
-                            
-                            Button(action: {}) {
-                                Rectangle()
-                                    .overlay(Text("Normal"))
-                            }
-                            //.frame(width: 800/4, height: 600/4)
-                            .buttonStyle(PlainButtonStyle())
-                            
-                            Text(Yabai.State.Layout.bsp.caseDescription)
-                                .foregroundColor(Color(.gray))
-                            KeyboardShortcuts.Recorder(for: .toggleBSP)
-                        }
-                        .padding(2)
-                    }
-
                 }
                 // Borders
                 VStack(alignment: .leading) {
@@ -185,12 +169,12 @@ struct WindowSettingsView: View {
                     //                        .disabled(vs.sipEnabled || vs.layout == .float)
                     //                        .opacity( vs.sipEnabled || vs.layout == .float ? 0.5 : 1.0)
                     //                }
-
+                    
                 }
                 Spacer()
             }
             .padding()
-            .navigationTitle("Space")
+            .navigationTitle("")
         }
     }
 }

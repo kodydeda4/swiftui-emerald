@@ -10,10 +10,7 @@ import ComposableArchitecture
 
 struct ApplyingChangesView: View {
     let store: Store<Root.State, Root.Action>
-    
     @State var opacity = true
-    
-            
     
     var body: some View {
         WithViewStore(store) { viewStore in

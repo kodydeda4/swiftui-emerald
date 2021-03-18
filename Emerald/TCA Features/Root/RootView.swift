@@ -8,8 +8,6 @@
 import SwiftUI
 import ComposableArchitecture
 
-// off/on switch still buggy
-
 struct RootView: View {
     let store: Store<Root.State, Root.Action>
     
@@ -18,7 +16,6 @@ struct RootView: View {
             NavigationView {
                 SidebarView(store: store)
                 SpaceSettingsView(store: store.scope(state: \.yabai, action: Root.Action.yabai))
-
                 //ConfigTabView(store: store)
             }
             .disabled(!viewStore.enabled)
