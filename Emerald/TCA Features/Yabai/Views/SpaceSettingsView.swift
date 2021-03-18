@@ -9,7 +9,6 @@ import SwiftUI
 import ComposableArchitecture
 import KeyboardShortcuts
 
-
 struct LayoutButtonsView: View {
     let store: Store<Yabai.State, Yabai.Action>
         
@@ -97,7 +96,6 @@ struct SpaceSettingsView: View {
         var id: Shortcuts { self }
         case arrows = "Arrows"
         case vim = "Vim"
-        case custom = "Custom"
     }
     
     @State var shortcut: Shortcuts = .arrows
@@ -177,6 +175,8 @@ struct SpaceSettingsView: View {
                             .bold()
                         Spacer()
                     }
+                    
+
                     HStack {
                         VStack {
                             Rectangle()
@@ -187,7 +187,7 @@ struct SpaceSettingsView: View {
                                 .bold()
                                 .font(.title3)
                             
-                            Text("⌃")
+                            Text("⌃ + ARROW")
                                 .foregroundColor(Color(.gray))
                             
                         }
@@ -200,7 +200,7 @@ struct SpaceSettingsView: View {
                                 .bold()
                                 .font(.title3)
                             
-                            Text("⌃ ⌥")
+                            Text("⌃ ⌥ + ARROW")
                                 .foregroundColor(Color(.gray))
                             
                         }
@@ -213,10 +213,18 @@ struct SpaceSettingsView: View {
                                 .bold()
                                 .font(.title3)
                             
-                            Text("⌃ ⌥ ⌘")
+                            Text("⌃ ⌥ ⌘ + ARROW")
                                 .foregroundColor(Color(.gray))
                         }
                     }
+//                    Picker("", selection: $shortcut) {
+//                        ForEach(Shortcuts.allCases) {
+//                            Text($0.rawValue)
+//                        }
+//                    }
+//                    .labelsHidden()
+//                    .pickerStyle(SegmentedPickerStyle())
+//                    .frame(width: 150)
                 }
 
 //                VStack {
