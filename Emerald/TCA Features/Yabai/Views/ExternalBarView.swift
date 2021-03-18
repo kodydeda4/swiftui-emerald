@@ -10,7 +10,6 @@ import ComposableArchitecture
 
 struct ExternalBarSettingsView: View {
     let store: Store<Yabai.State, Yabai.Action>
-    let k = Yabai.Action.keyPath
     
     var body: some View {
         WithViewStore(store) { vs in
@@ -19,13 +18,13 @@ struct ExternalBarSettingsView: View {
                 // External Bar
                 VStack(alignment: .leading) {
                     HStack {
-                        Toggle("", isOn: vs.binding(\.externalBarEnabled, k))
+                        Toggle("", isOn: vs.binding(keyPath: \.externalBarEnabled, send: Yabai.Action.keyPath))
                             .labelsHidden()
                         
                         Text("External Bar")
                             .bold().font(.title3)
                     }
-                    Picker("", selection: vs.binding(\.externalBar, k)) {
+                    Picker("", selection: vs.binding(keyPath: \.externalBar, send: Yabai.Action.keyPath)) {
                         ForEach(Yabai.State.ExternalBar.allCases) {
                             Text($0.rawValue)
                         }
@@ -48,8 +47,8 @@ struct ExternalBarSettingsView: View {
                         .bold().font(.title3)
                     
                     HStack {
-                        StepperTextfield("Top", vs.binding(\.externalBarPaddingTop, k))
-                        StepperTextfield("Bottom", vs.binding(\.externalBarPaddingBottom, k))
+                        StepperTextfield("Top", vs.binding(keyPath: \.externalBarPaddingTop, send: Yabai.Action.keyPath))
+                        StepperTextfield("Bottom", vs.binding(keyPath: \.externalBarPaddingBottom, send: Yabai.Action.keyPath))
                     }
                 }
                 .disabled(!vs.externalBarEnabled)

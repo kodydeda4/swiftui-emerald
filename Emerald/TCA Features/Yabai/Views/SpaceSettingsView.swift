@@ -13,7 +13,7 @@ struct LayoutButtonsView: View {
     let store: Store<Yabai.State, Yabai.Action>
     
     var body: some View {
-        WithViewStore(store) { vs in
+        WithViewStore(store) { viewStore in
             VStack {
                 HStack {
                     Text("Layout")
@@ -26,12 +26,12 @@ struct LayoutButtonsView: View {
                 HStack {
                     ForEach(Yabai.State.Layout.allCases) { str in
                         VStack {
-                            Button(action: { vs.send(.updateLayout(str)) }) {
+                            Button(action: { viewStore.send(.updateLayout(str)) }) {
                                 Rectangle()
                             }
                             .buttonStyle(PlainButtonStyle())
                             .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
-                            .foregroundColor(vs.layout == str ? .accentColor : .gray)
+                            .foregroundColor(viewStore.layout == str ? .accentColor : .gray)
                             
                             Text(str.labelDescription)
                                 .bold().font(.title3)
@@ -59,10 +59,9 @@ struct LayoutButtonsView_Previews: PreviewProvider {
 
 struct GapsView: View {
     let store: Store<Yabai.State, Yabai.Action>
-    let k = Yabai.Action.keyPath
     
     var body: some View {
-        WithViewStore(store) { vs in
+        WithViewStore(store) { viewStore in
             VStack {
                 HStack {
                     Text("Gaps")
@@ -71,7 +70,6 @@ struct GapsView: View {
                     Spacer()
                 }
                 HStack {
-//                    ForEach() { str in
                     VStack {
                         Rectangle()
                             .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
@@ -85,43 +83,41 @@ struct GapsView: View {
                             .foregroundColor(Color(.gray))
                         
                         
-                        TextField("", value: vs.binding(\.windowGap, k), formatter: NumberFormatter())
+                        TextField("", value: viewStore.binding(keyPath: \.windowGap, send: Yabai.Action.keyPath), formatter: NumberFormatter())
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .frame(width: 130)
                             .overlay(
                                 HStack {
                                     Spacer()
-                                    Stepper("", value: vs.binding(\.windowGap, k), in: 0...30)
+                                    Stepper("", value: viewStore.binding(keyPath: \.windowGap, send: Yabai.Action.keyPath), in: 0...30)
                                 }
                             )
                         KeyboardShortcuts.Recorder(for: .toggleGaps)
                     }
-//                    }
-                    
-//                    VStack {
-//                        Rectangle()
-//                            .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
-//                            .foregroundColor(.blue)
-//
-//                        Text("Outer")
-//                            .bold()
-//                            .font(.title3)
-//
-//                        Text("Description")
-//                            .foregroundColor(Color(.gray))
-//
-//                        TextField("", value: vs.binding(\.padding, k), formatter: NumberFormatter())
-//                            .textFieldStyle(RoundedBorderTextFieldStyle())
-//                            .overlay(
-//                                HStack {
-//                                    Spacer()
-//                                    Stepper("", value: vs.binding(\.padding, k), in: 0...30)
-//                                }
-//                            )
-//                            .frame(width: 130)
-//
-//                        KeyboardShortcuts.Recorder(for: .togglePadding)
-//                    }
+                    VStack {
+                        Rectangle()
+                            .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
+                            .foregroundColor(.blue)
+
+                        Text("Outer")
+                            .bold()
+                            .font(.title3)
+
+                        Text("Description")
+                            .foregroundColor(Color(.gray))
+
+                        TextField("", value: viewStore.binding(keyPath: \.padding, send: Yabai.Action.keyPath), formatter: NumberFormatter())
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .overlay(
+                                HStack {
+                                    Spacer()
+                                    Stepper("", value: viewStore.binding(keyPath: \.padding, send: Yabai.Action.keyPath), in: 0...30)
+                                }
+                            )
+                            .frame(width: 130)
+
+                        KeyboardShortcuts.Recorder(for: .togglePadding)
+                    }
                 }
             }
         }
@@ -137,7 +133,6 @@ struct GapsView_Previews: PreviewProvider {
 
 struct ShortcutsView: View {
     let store: Store<Yabai.State, Yabai.Action>
-    let k = Yabai.Action.keyPath
     
     enum Shortcuts: String, Identifiable, CaseIterable {
         var id: Shortcuts { self }
@@ -149,7 +144,7 @@ struct ShortcutsView: View {
     
     
     var body: some View {
-        WithViewStore(store) { vs in
+        WithViewStore(store) { viewStore in
             VStack {
                 HStack {
                     Text("Shortcuts")
@@ -176,21 +171,21 @@ struct ShortcutsView: View {
                         }
                     }
                 }
-//                HStack {
-//                    ForEach(["top", "bottom", "left", "right"], id: \.self) { str in
-//                        VStack {
-//                            Image(systemName: "square.\(str)half.fill")
-//                                .resizable()
-//                                .scaledToFit()
-//                                .foregroundColor(.red)
-//
-//                            Text(str)
-//                                .bold()
-//                                .font(.title3)
-//                        }
-//                        .padding(.horizontal)
-//                    }
-//                }
+                HStack {
+                    ForEach(["top", "bottom", "left", "right"], id: \.self) { str in
+                        VStack {
+                            Image(systemName: "square.\(str)half.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .foregroundColor(.red)
+
+                            Text(str)
+                                .bold()
+                                .font(.title3)
+                        }
+                        .padding(.horizontal)
+                    }
+                }
             }
         }
     }
@@ -206,11 +201,9 @@ struct ShortcutsView_Previews: PreviewProvider {
 
 struct SpaceSettingsView: View {
     let store: Store<Yabai.State, Yabai.Action>
-    let k = Yabai.Action.keyPath
-    
     
     var body: some View {
-        WithViewStore(store) { vs in
+        WithViewStore(store) { viewStore in
             ScrollView {
                 LayoutButtonsView(store: store)
                 Divider()

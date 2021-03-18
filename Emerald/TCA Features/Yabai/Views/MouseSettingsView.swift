@@ -10,7 +10,6 @@ import ComposableArchitecture
 
 struct MouseSettingsView: View {
     let store: Store<Yabai.State, Yabai.Action>
-    let k = Yabai.Action.keyPath
     
     var body: some View {
         WithViewStore(store) { vs in
@@ -21,7 +20,7 @@ struct MouseSettingsView: View {
                     Text("Modifier Key")
                         .bold().font(.title3)
                     
-                    Picker("", selection: vs.binding(\.mouseModifier, k)) {
+                    Picker("", selection: vs.binding(keyPath: \.mouseModifier, send: Yabai.Action.keyPath)) {
                         ForEach(Yabai.State.MouseModifier.allCases) {
                             Text($0.labelDescription.lowercased())
                         }
@@ -41,7 +40,7 @@ struct MouseSettingsView: View {
                     Text("Left Click + Modifier")
                         .bold().font(.title3)
                     
-                    Picker("", selection: vs.binding(\.mouseAction1, k)) {
+                    Picker("", selection: vs.binding(keyPath: \.mouseAction1, send: Yabai.Action.keyPath)) {
                         ForEach(Yabai.State.MouseAction.allCases) {
                             Text($0.rawValue)
                         }
@@ -61,7 +60,7 @@ struct MouseSettingsView: View {
                     Text("Right Click + Modifier")
                         .bold().font(.title3)
                     
-                    Picker("", selection: vs.binding(\.mouseAction2, k)) {
+                    Picker("", selection: vs.binding(keyPath: \.mouseAction2, send: Yabai.Action.keyPath)) {
                         ForEach(Yabai.State.MouseAction.allCases) {
                             Text($0.rawValue)
                         }
@@ -81,7 +80,7 @@ struct MouseSettingsView: View {
                     Text("Drop Action")
                         .bold().font(.title3)
                     
-                    Picker("", selection: vs.binding(\.mouseDropAction, k)) {
+                    Picker("", selection: vs.binding(keyPath: \.mouseDropAction, send: Yabai.Action.keyPath)) {
                         ForEach(Yabai.State.MouseDropAction.allCases) {
                             Text($0.rawValue)
                         }

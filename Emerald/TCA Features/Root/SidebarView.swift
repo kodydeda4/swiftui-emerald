@@ -52,13 +52,6 @@ struct SidebarView: View {
                 Spacer()
             }
             .listStyle(SidebarListStyle())
-            .toolbar {
-                ToolbarItem {
-                    Button<Image>("sidebar.left") {
-                        toggleSidebar()
-                    }
-                }
-            }
         }
     }
 }

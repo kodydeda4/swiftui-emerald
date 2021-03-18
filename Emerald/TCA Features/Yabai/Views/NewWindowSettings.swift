@@ -7,28 +7,37 @@
 
 import SwiftUI
 import ComposableArchitecture
+import KeyboardShortcuts
 
 struct NewWindowSettings: View {
     let store: Store<Yabai.State, Yabai.Action>
-    let k = Yabai.Action.keyPath
     
     var body: some View {
-        WithViewStore(store) { vs in
+        WithViewStore(store) { viewStore in
             VStack(alignment: .leading, spacing: 20) {
                 //Toggles
                 VStack(alignment: .leading) {
-                    Divider()
                     Text("Shortcuts")
                         .bold().font(.title3)
                     
-                    KBShortcut(for: .restartYabai)
+                    HStack {
+                        Text("Restart Yabai")
+                        KeyboardShortcuts.Recorder(for: .restartYabai)
+                    }
                     
                     VStack(alignment: .leading) {
                         Divider()
                         Text("Toggles")
                             .bold().font(.title3)
-                        KBShortcut(for: .toggleSplit)
-                        KBShortcut(for: .toggleBalance)
+                        
+                        HStack {
+                            Text("Toggle Splt")
+                            KeyboardShortcuts.Recorder(for: .toggleSplit)
+                        }
+                        HStack {
+                            Text("Toggle Balance")
+                            KeyboardShortcuts.Recorder(for: .toggleBalance)
+                        }
                     }
                 }
                 
@@ -37,7 +46,7 @@ struct NewWindowSettings: View {
                     Text("Placement")
                         .bold().font(.title3)
                     
-                    Picker("", selection: vs.binding(\.windowPlacement, k)) {
+                    Picker("", selection: viewStore.binding(keyPath: \.windowPlacement, send: Yabai.Action.keyPath)) {
                         ForEach(Yabai.State.WindowPlacement.allCases) {
                             Text($0.labelDescription.lowercased())
                         }
@@ -46,7 +55,7 @@ struct NewWindowSettings: View {
                     .pickerStyle(SegmentedPickerStyle())
                     .frame(width: 200)
                     
-                    Text(vs.windowPlacement.caseDescription)
+                    Text(viewStore.windowPlacement.caseDescription)
                         .foregroundColor(Color(.gray))
                     
                 }
@@ -58,7 +67,7 @@ struct NewWindowSettings: View {
                     Text("Split Ratio")
                         .bold().font(.title3)
                     
-                    Picker("", selection: vs.binding(\.windowBalance, k)) {
+                    Picker("", selection: viewStore.binding(keyPath: \.windowBalance, send: Yabai.Action.keyPath)) {
                         ForEach(Yabai.State.WindowBalance.allCases) {
                             Text($0.labelDescription.lowercased())
                         }
@@ -67,11 +76,11 @@ struct NewWindowSettings: View {
                     .pickerStyle(SegmentedPickerStyle())
                     .frame(width: 200)
                     
-                    Slider(value: vs.binding(\.splitRatio, k))
-                        .disabled(vs.windowBalance != .custom)
-                        .opacity(vs.windowBalance != .custom ? 0.5 : 1.0)
+                    Slider(value: viewStore.binding(keyPath: \.splitRatio, send: Yabai.Action.keyPath))
+                        .disabled(viewStore.windowBalance != .custom)
+                        .opacity(viewStore.windowBalance != .custom ? 0.5 : 1.0)
 
-                    Text(vs.windowBalance.caseDescription)
+                    Text(viewStore.windowBalance.caseDescription)
                         .foregroundColor(Color(.gray))
                     
                 }

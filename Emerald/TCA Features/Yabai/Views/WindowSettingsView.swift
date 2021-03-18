@@ -11,10 +11,9 @@ import KeyboardShortcuts
 
 struct WindowSettingsView: View {
     let store: Store<Yabai.State, Yabai.Action>
-    let k = Yabai.Action.keyPath
     
     var body: some View {
-        WithViewStore(store) { vs in
+        WithViewStore(store) { viewStore in
             VStack(alignment: .leading, spacing: 20) {
                 HStack {
                     GroupBox {
@@ -59,31 +58,31 @@ struct WindowSettingsView: View {
                 VStack(alignment: .leading) {
                     HStack {
                         Group {
-                            Toggle("", isOn: vs.binding(\.windowBorder, k))
+                            Toggle("", isOn: viewStore.binding(keyPath: \.windowBorder, send: Yabai.Action.keyPath))
                                 .labelsHidden()
                             
                             Text("Borders")
                                 .bold().font(.title3)
                         }
-                        .disabled(vs.sipEnabled)
-                        .opacity( vs.sipEnabled ? 0.5 : 1.0)
+                        .disabled(viewStore.sipEnabled)
+                        .opacity( viewStore.sipEnabled ? 0.5 : 1.0)
                         
                         Spacer()
                         SIPButton(store: Root.defaultStore)
                     }
                     HStack {
-                        StepperTextfield("Width", vs.binding(\.windowBorderWidth, k))
-                        ColorPickerView("Focused", vs.binding(\.activeWindowBorderColor, k))
-                        ColorPickerView("Normal",  vs.binding(\.normalWindowBorderColor, k))
-                        ColorPickerView("Insert",  vs.binding(\.insertWindowBorderColor, k))
+                        StepperTextfield("Width", viewStore.binding(keyPath: \.windowBorderWidth, send: Yabai.Action.keyPath))
+                        ColorPickerView("Focused", viewStore.binding(keyPath: \.activeWindowBorderColor, send: Yabai.Action.keyPath))
+                        ColorPickerView("Normal",  viewStore.binding(keyPath: \.normalWindowBorderColor, send: Yabai.Action.keyPath))
+                        ColorPickerView("Insert",  viewStore.binding(keyPath: \.insertWindowBorderColor, send: Yabai.Action.keyPath))
                     }
-                    .disabled(!vs.windowBorder || vs.sipEnabled)
-                    .opacity( !vs.windowBorder || vs.sipEnabled ? 0.5 : 1.0)
+                    .disabled(!viewStore.windowBorder || viewStore.sipEnabled)
+                    .opacity( !viewStore.windowBorder || viewStore.sipEnabled ? 0.5 : 1.0)
                     
                     Text("Draw a border around windows")
                         .foregroundColor(Color(.gray))
-                        .disabled(!vs.windowBorder || vs.sipEnabled)
-                        .opacity( !vs.windowBorder || vs.sipEnabled ? 0.5 : 1.0)
+                        .disabled(!viewStore.windowBorder || viewStore.sipEnabled)
+                        .opacity( !viewStore.windowBorder || viewStore.sipEnabled ? 0.5 : 1.0)
                 }
                 
                 // Disable Shadows
@@ -91,22 +90,22 @@ struct WindowSettingsView: View {
                 VStack(alignment: .leading) {
                     HStack {
                         Group {
-                            Toggle("", isOn: vs.binding(\.disableShadows, k))
+                            Toggle("", isOn: viewStore.binding(keyPath: \.disableShadows, send: Yabai.Action.keyPath))
                                 .labelsHidden()
                             
                             Text("Disable Shadows")
                                 .bold().font(.title3)
-                                .disabled(vs.sipEnabled)
-                                .opacity( vs.sipEnabled ? 0.5 : 1.0)
+                                .disabled(viewStore.sipEnabled)
+                                .opacity( viewStore.sipEnabled ? 0.5 : 1.0)
                         }
-                        .disabled(vs.sipEnabled)
-                        .opacity( vs.sipEnabled ? 0.5 : 1.0)
+                        .disabled(viewStore.sipEnabled)
+                        .opacity( viewStore.sipEnabled ? 0.5 : 1.0)
                         
                         Spacer()
                         SIPButton(store: Root.defaultStore)
                     }
                     HStack {
-                        Picker("", selection: vs.binding(\.windowShadow, k)) {
+                        Picker("", selection: viewStore.binding(keyPath: \.windowShadow, send: Yabai.Action.keyPath)) {
                             ForEach(Yabai.State.WindowShadow.allCases) {
                                 Text($0.labelDescription.lowercased())
                             }
@@ -114,15 +113,15 @@ struct WindowSettingsView: View {
                         .labelsHidden()
                         .pickerStyle(SegmentedPickerStyle())
                         .frame(width: 150)
-                        .disabled(!vs.disableShadows)
+                        .disabled(!viewStore.disableShadows)
                     }
-                    .disabled(!vs.disableShadows || vs.sipEnabled)
-                    .opacity( !vs.disableShadows || vs.sipEnabled ? 0.5 : 1.0)
+                    .disabled(!viewStore.disableShadows || viewStore.sipEnabled)
+                    .opacity( !viewStore.disableShadows || viewStore.sipEnabled ? 0.5 : 1.0)
                     
-                    Text(vs.windowShadow.caseDescription)
+                    Text(viewStore.windowShadow.caseDescription)
                         .foregroundColor(Color(.gray))
-                        .disabled(!vs.disableShadows || vs.sipEnabled)
-                        .opacity( !vs.disableShadows || vs.sipEnabled ? 0.5 : 1.0)
+                        .disabled(!viewStore.disableShadows || viewStore.sipEnabled)
+                        .opacity( !viewStore.disableShadows || viewStore.sipEnabled ? 0.5 : 1.0)
                 }
                 
                 // Opacity Effects
@@ -130,14 +129,14 @@ struct WindowSettingsView: View {
                 VStack(alignment: .leading) {
                     HStack {
                         Group {
-                            Toggle("", isOn: vs.binding(\.windowOpacity, k))
+                            Toggle("", isOn: viewStore.binding(keyPath: \.windowOpacity, send: Yabai.Action.keyPath))
                                 .labelsHidden()
                             
                             Text("Opacity Effects")
                                 .bold().font(.title3)
                         }
-                        .disabled(vs.sipEnabled)
-                        .opacity( vs.sipEnabled ? 0.5 : 1.0)
+                        .disabled(viewStore.sipEnabled)
+                        .opacity( viewStore.sipEnabled ? 0.5 : 1.0)
                         
                         Spacer()
                         SIPButton(store: Root.defaultStore)
@@ -146,22 +145,22 @@ struct WindowSettingsView: View {
                     VStack(alignment: .leading) {
                         VStack(alignment: .leading) {
                             Text("Animation Duration").foregroundColor(Color(.gray))
-                            Slider(value: vs.binding(\.windowOpacityDuration, k))
+                            Slider(value: viewStore.binding(keyPath: \.windowOpacityDuration, send: Yabai.Action.keyPath))
                         }
                         VStack(alignment: .leading) {
                             Text("Active Windows").foregroundColor(Color(.gray))
-                            Slider(value: vs.binding(\.activeWindowOpacity, k))
+                            Slider(value: viewStore.binding(keyPath: \.activeWindowOpacity, send: Yabai.Action.keyPath))
                         }
                         VStack(alignment: .leading) {
                             Text("Normal Windows").foregroundColor(Color(.gray))
-                            Slider(value: vs.binding(\.normalWindowOpacity, k))
+                            Slider(value: viewStore.binding(keyPath: \.normalWindowOpacity, send: Yabai.Action.keyPath))
                         }
                         Text("Change window opacity")
                             .foregroundColor(Color(.gray))
-                            .opacity( vs.sipEnabled ? 0.5 : 1.0)
+                            .opacity( viewStore.sipEnabled ? 0.5 : 1.0)
                     }
-                    .disabled(!vs.windowOpacity || vs.sipEnabled)
-                    .opacity( !vs.windowOpacity || vs.sipEnabled ? 0.5 : 1.0)
+                    .disabled(!viewStore.windowOpacity || viewStore.sipEnabled)
+                    .opacity( !viewStore.windowOpacity || viewStore.sipEnabled ? 0.5 : 1.0)
                     
                     // Float-On-Top
                     //                VStack(alignment: .leading) {
