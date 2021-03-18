@@ -28,12 +28,12 @@ struct LayoutButtonsView: View {
                     VStack {
                         Button(action: { vs.send(.updateLayout(.float)) }) {
                             Rectangle()
-                                .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
-                                .overlay(Text("Float"))
-                                .foregroundColor(vs.layout == .float ? .accentColor : .gray)
-                                
                         }
                         .buttonStyle(PlainButtonStyle())
+                        .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
+                        .overlay(Text("Float"))
+                        .foregroundColor(vs.layout == .float ? .accentColor : .gray)
+
                         
                         Text("Normal")
                             .bold().font(.title3)
@@ -46,11 +46,12 @@ struct LayoutButtonsView: View {
                     VStack {
                         Button(action: { vs.send(.updateLayout(.bsp)) }) {
                             Rectangle()
-                                .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
-                                .overlay(Text("Tiling"))
-                                .foregroundColor(vs.layout == .bsp ? .accentColor : .gray)
                         }
                         .buttonStyle(PlainButtonStyle())
+                        .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
+                        .overlay(Text("Tiling"))
+                        .foregroundColor(vs.layout == .bsp ? .accentColor : .gray)
+
                         
                         Text("Tiling")
                             .bold().font(.title3)
@@ -63,11 +64,11 @@ struct LayoutButtonsView: View {
                     VStack {
                         Button(action: { vs.send(.updateLayout(.stack)) }) {
                             Rectangle()
-                                .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
-                                .overlay(Text("Stacking"))
-                                .foregroundColor(vs.layout == .stack ? .accentColor : .gray)
                         }
                         .buttonStyle(PlainButtonStyle())
+                        .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
+                        .overlay(Text("Stacking"))
+                        .foregroundColor(vs.layout == .stack ? .accentColor : .gray)
                         
                         Text("Stacking")
                             .bold().font(.title3)
