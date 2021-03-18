@@ -38,9 +38,12 @@ struct LayoutButtonsView: View {
                         Text("Normal")
                             .bold().font(.title3)
                         
-                        Text(Yabai.State.Layout.float.caseDescription)
-                            .foregroundColor(Color(.gray))
+//                        Text(Yabai.State.Layout.float.caseDescription)
+//                            .foregroundColor(Color(.gray))
                         
+//                        Text("⌃ ⌥ + 1")
+//                            .foregroundColor(Color(.gray))
+
                         KeyboardShortcuts.Recorder(for: .toggleFloating)
                     }
                     VStack {
@@ -56,9 +59,12 @@ struct LayoutButtonsView: View {
                         Text("Tiling")
                             .bold().font(.title3)
                         
-                        Text(Yabai.State.Layout.bsp.caseDescription)
-                            .foregroundColor(Color(.gray))
+//                        Text(Yabai.State.Layout.bsp.caseDescription)
+//                            .foregroundColor(Color(.gray))
                         
+//                        Text("⌃ ⌥ + 2")
+//                            .foregroundColor(Color(.gray))
+
                         KeyboardShortcuts.Recorder(for: .toggleBSP)
                     }
                     VStack {
@@ -73,9 +79,12 @@ struct LayoutButtonsView: View {
                         Text("Stacking")
                             .bold().font(.title3)
                         
-                        Text(Yabai.State.Layout.stack.caseDescription)
-                            .foregroundColor(Color(.gray))
+//                        Text(Yabai.State.Layout.stack.caseDescription)
+//                            .foregroundColor(Color(.gray))
                         
+//                        Text("⌃ ⌥ + 3")
+//                            .foregroundColor(Color(.gray))
+
                         KeyboardShortcuts.Recorder(for: .toggleStacking)
                     }
                 }
@@ -83,6 +92,14 @@ struct LayoutButtonsView: View {
         }
     }
 }
+
+// MARK:- SwiftUI_Previews
+struct LayoutButtonsView_Previews: PreviewProvider {
+    static var previews: some View {
+        LayoutButtonsView(store: Yabai.defaultStore)
+    }
+}
+
 
 
 struct GapsView: View {
@@ -127,7 +144,7 @@ struct GapsView: View {
                     VStack {
                         Rectangle()
                             .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
-                            .foregroundColor(.red)
+                            .foregroundColor(.blue)
                         
                         Text("Outer")
                             .bold()
@@ -151,6 +168,13 @@ struct GapsView: View {
                 }
             }
         }
+    }
+}
+
+// MARK:- SwiftUI_Previews
+struct GapsView_Previews: PreviewProvider {
+    static var previews: some View {
+        GapsView(store: Yabai.defaultStore)
     }
 }
 
@@ -195,32 +219,40 @@ struct ShortcutsView: View {
                             .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
                             .foregroundColor(.red)
                         
-                        Text("Move")
+                        Text("Resize")
                             .bold()
                             .font(.title3)
                         
                         Text("⌃ ⌥ + ARROW")
                             .foregroundColor(Color(.gray))
-                        
                     }
+
                     VStack {
                         Rectangle()
                             .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
                             .foregroundColor(.red)
                         
-                        Text("Resize")
+                        Text("Move")
                             .bold()
                             .font(.title3)
                         
                         Text("⌃ ⌥ ⌘ + ARROW")
                             .foregroundColor(Color(.gray))
+                        
                     }
                 }
+                .padding(.horizontal, 30)
             }
         }
     }
 }
 
+// MARK:- SwiftUI_Previews
+struct ShortcutsView_Previews: PreviewProvider {
+    static var previews: some View {
+        ShortcutsView(store: Yabai.defaultStore)
+    }
+}
 
 
 struct SpaceSettingsView: View {
@@ -233,9 +265,10 @@ struct SpaceSettingsView: View {
             VStack {
                 LayoutButtonsView(store: store)
                 Divider()
-                GapsView(store: store)
-                Divider()
+//                GapsView(store: store)
+//                Divider()
                 ShortcutsView(store: store)
+
                 Spacer()
             }
             .padding()
