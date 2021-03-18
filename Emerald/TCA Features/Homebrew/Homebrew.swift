@@ -11,17 +11,19 @@ import SwiftShell
 struct Homebrew {
     struct State: Equatable {
         var version = run("/usr/local/bin/brew", "-v").stdout
+        
+        
+        var yabaiRunning = true
+        var skhdRunning = true
+        var macOSAnimationsRunning = true
     }
     
     enum Action: Equatable {
         case restartYabai
-        case restartYabaiLaunchCTL
-        case startYabai
-        case stopYabai
-        
+//        case restartYabaiLaunchCTL
+        case toggleYabai
         case restartSKHD
-        case startSKHD
-        case stopSKHD
+        case toggleSKHD
     }
 }
 
@@ -34,33 +36,32 @@ extension Homebrew {
                 let result = AppleScript.execute("/usr/local/bin/brew services restart yabai")
                 return .none
                 
-            case .restartYabaiLaunchCTL:
-                let result = AppleScript.execute(
-                    "/bin/launchctl kickstart -k \\\"gui/$UID/homebrew.mxcl.yabai\\\""
-                // do shell script "/bin/launchctl kickstart -k \"gui/$UID/homebrew.mxcl.yabai\""
-                )
-                return .none
+            //            case .restartYabaiLaunchCTL:
+            //                let result = AppleScript.execute(
+            //                    "/bin/launchctl kickstart -k \\\"gui/$UID/homebrew.mxcl.yabai\\\""
+            //                // do shell script "/bin/launchctl kickstart -k \"gui/$UID/homebrew.mxcl.yabai\""
+            //                )
+            //                return .none
                 
-            case .startYabai:
-                let result = AppleScript.execute("/usr/local/bin/brew services start yabai")
+            case .toggleYabai:
+                switch state.yabaiRunning {
+                case true : let result = AppleScript.execute("/usr/local/bin/brew services stop yabai")
+                case false: let result = AppleScript.execute("/usr/local/bin/brew services start yabai")
+                }
+                state.yabaiRunning.toggle()
                 return .none
 
-            case .stopYabai:
-                let result = AppleScript.execute("/usr/local/bin/brew services stop yabai")
+            case .toggleSKHD:
+                switch state.skhdRunning {
+                case true : let _ = AppleScript.execute("/usr/local/bin/brew services stop  skhd")
+                case false: let _ = AppleScript.execute("/usr/local/bin/brew services start skhd")
+                }
+                state.skhdRunning.toggle()
                 return .none
-                
+
             case .restartSKHD:
                 let result = AppleScript.execute("/usr/local/bin/brew services restart skhd")
                 return .none
-
-            case .startSKHD:
-                let result = AppleScript.execute("/usr/local/bin/brew services start skhd")
-                return .none
-
-            case .stopSKHD:
-                let result = AppleScript.execute("/usr/local/bin/brew services stop skhd")
-                return .none
-
             }
         }
     )

@@ -22,6 +22,7 @@ struct Root {
         var error            = ""
         var applyingChanges  = false
         var enabled          = true
+        var togglingActive   = false
     }
     enum Action: Equatable {
         case yabai(Yabai.Action)
@@ -37,6 +38,7 @@ struct Root {
         case export(Environment.CodableState)
         case toggleApplyingChanges
         case toggleEnabled
+        case togglingActive
     }
     
     struct Environment {
@@ -284,13 +286,35 @@ extension Root {
                 
             case .toggleEnabled:
                 // TODO: Does not properly disable SKHD or Animations
-                if state.enabled {
-                    state.enabled.toggle()
-                    return Effect(value: .homebrew(.stopYabai))
-                } else {
-                    state.enabled.toggle()
-                    return Effect(value: .homebrew(.startYabai))
+                state.enabled.toggle()
+                return Effect(value: .homebrew(.toggleYabai))
+
+            
+            case .togglingActive:
+                // TODO: Does not properly disable SKHD or Animations
+                state.togglingActive.toggle()
+                
+                if state.togglingActive {
+                    let _ = Homebrew.Action.toggleYabai
+                    
+                    return Effect(value: .togglingActive)
+                        .delay(for: 2.0, scheduler: DispatchQueue.main)
+                        .eraseToEffect()
                 }
+                
+                return .none
+
+                                
+//                if state.togglingActive {
+//                    return Effect(value: .homebrew(.stopYabai))
+//                        .delay(for: 2.0, scheduler: DispatchQueue.main)
+//                        .eraseToEffect()
+//
+//                } else {
+//                    return Effect(value: .homebrew(.startYabai))
+//                        .delay(for: 2.0, scheduler: DispatchQueue.main)
+//                        .eraseToEffect()
+//                }
             }
         }
     )

@@ -33,6 +33,9 @@ struct RootView: View {
             .sheet(isPresented: viewStore.binding(get: \.applyingChanges, send: .toggleApplyingChanges)) {
                 ApplyingChangesView(store: store)
             }
+            .sheet(isPresented: viewStore.binding(get: \.togglingActive, send: .togglingActive)) {
+                TogglingActiveView(store: store)
+            }
             .alert(store.scope(state: \.alert), dismiss: .dismissResetAlert)
             .toolbar {
                 ToolbarItem(placement: .navigation) {
@@ -91,6 +94,8 @@ struct RootView: View {
                 ToolbarItem {
                     Button<Image>("power") {
                         viewStore.send(.toggleEnabled)
+                        viewStore.send(.togglingActive)
+                        
                         //viewStore.send(.homebrew(.restartYabai))
                         //viewStore.send(.macOSAnimations(.executeShellScript))
                     }
