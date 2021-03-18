@@ -11,6 +11,10 @@ import ComposableArchitecture
 struct SidebarView: View {
     let store: Store<Root.State, Root.Action>
     
+    var yabaiStore: Store<Yabai.State, Yabai.Action> {
+        store.scope(state: \.yabai, action: Root.Action.yabai)
+    }
+    
     var body: some View {
         WithViewStore(store) { viewStore in
             List {
@@ -48,10 +52,15 @@ struct SidebarView: View {
                 Spacer()
             }
             .listStyle(SidebarListStyle())
+            .toolbar {
+                ToolbarItem {
+                    Button<Image>("sidebar.left") {
+                        toggleSidebar()
+                    }
+                }
+            }
         }
     }
-    
-    var yabaiStore: Store<Yabai.State, Yabai.Action> { store.scope(state: \.yabai, action: Root.Action.yabai) }
 }
 
 func toggleSidebar() {
