@@ -39,6 +39,8 @@ struct Root {
         case toggleApplyingChanges
         case toggleEnabled
         case togglingActive
+        
+        case powerButtonTapped
     }
     
     struct Environment {
@@ -301,7 +303,18 @@ extension Root {
                         .delay(for: 2.0, scheduler: DispatchQueue.main)
                         .eraseToEffect()
                 }
+                return .none
                 
+            case .powerButtonTapped:
+                state.togglingActive.toggle()
+                
+                if state.togglingActive {
+                    let _ = Homebrew.Action.toggleYabai
+                    
+                    return Effect(value: .togglingActive)
+                        .delay(for: 2.0, scheduler: DispatchQueue.main)
+                        .eraseToEffect()
+                }
                 return .none
             }
         }

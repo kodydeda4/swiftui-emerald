@@ -18,11 +18,9 @@ struct RootView: View {
             NavigationView {
                 SidebarView(store: store)
                 SpaceSettingsView(store: store.scope(state: \.yabai, action: Root.Action.yabai))
-                
                 //ConfigTabView(store: store)
             }
             .disabled(!viewStore.enabled)
-            //.frame(width: 800, height: 700)
             .onAppear {
                 viewStore.send(.load(.yabai))
                 viewStore.send(.load(.skhd))
@@ -82,7 +80,6 @@ struct RootView: View {
                 }
                 ToolbarItem {
                     Button("Apply Changes") {
-                        // TODO: Make this happen passively
                         viewStore.send(.toggleApplyingChanges)
                         viewStore.send(.export(.yabai))
                         viewStore.send(.export(.skhd))
@@ -94,11 +91,9 @@ struct RootView: View {
                 }
                 ToolbarItem {
                     Button<Image>("power") {
+//                        viewStore.send(.powerButtonTapped)
                         viewStore.send(.toggleEnabled)
                         viewStore.send(.togglingActive)
-                        
-                        //viewStore.send(.homebrew(.restartYabai))
-                        //viewStore.send(.macOSAnimations(.executeShellScript))
                     }
                     .help("\(viewStore.enabled ? "Disable" : "Enable") Emerald")
                     .foregroundColor(viewStore.enabled && viewStore.enabled ? .accentColor : .red)
