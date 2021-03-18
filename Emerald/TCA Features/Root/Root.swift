@@ -249,16 +249,14 @@ extension Root {
 
             case .toggleApplyingChanges:
                 state.applyingChanges.toggle()
-                switch state.applyingChanges {
-                case true:
+                
+                if state.applyingChanges {
                     return Effect(value: .toggleApplyingChanges)
                         .delay(for: 2.0, scheduler: DispatchQueue.main)
                         .eraseToEffect()
-                default:
-                    return .none
                 }
-                    //.debounce(id: SaveID(), for: 1.0, scheduler: DispatchQueue.main.eraseToAnyScheduler())
-            
+                return .none
+                
             case .toggleEnabled:
                 // TODO: Does not properly disable SKHD or Animations
                 if state.enabled {
