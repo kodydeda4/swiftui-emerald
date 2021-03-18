@@ -249,7 +249,14 @@ extension Root {
 
             case .toggleApplyingChanges:
                 state.applyingChanges.toggle()
-                return .none
+                switch state.applyingChanges {
+                case true:
+                    return Effect(value: .toggleApplyingChanges)
+                        .delay(for: 2.0, scheduler: DispatchQueue.main)
+                        .eraseToEffect()
+                default:
+                    return .none
+                }
                     //.debounce(id: SaveID(), for: 1.0, scheduler: DispatchQueue.main.eraseToAnyScheduler())
             
             case .toggleEnabled:

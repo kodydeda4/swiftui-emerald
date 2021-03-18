@@ -8,6 +8,8 @@
 import SwiftUI
 import ComposableArchitecture
 
+// off/on switch still buggy
+
 struct RootView: View {
     let store: Store<Root.State, Root.Action>
     
@@ -66,26 +68,26 @@ struct RootView: View {
 //                    .opacity(viewStore.enabled ? 1 : 0.5)
 //                    .disabled(!viewStore.enabled)
 //                }
-//                ToolbarItem {
-//                    Button("Reset") {
-//                        viewStore.send(.showResetAlert)
-//                    }
-//                    .help("⇧ ⌘ R")
-//                    .keyboardShortcut("r", modifiers: [.command, .shift])
-//                    .disabled(!viewStore.enabled)
-//                }
-//                ToolbarItem {
-//                    Button("Apply Changes") {
-//                        // TODO: Make this happen passively
-//                        //viewStore.send(.toggleApplyingChanges)
-//                        viewStore.send(.export(.yabai))
-//                        viewStore.send(.export(.skhd))
-//                        viewStore.send(.homebrew(.restartYabai))
-//                    }
-//                    .help("⇧ ⌘ A")
-//                    .keyboardShortcut("a", modifiers: [.command, .shift])
-//                    .disabled(!viewStore.enabled)
-//                }
+                ToolbarItem {
+                    Button("Reset") {
+                        viewStore.send(.showResetAlert)
+                    }
+                    .help("⇧ ⌘ R")
+                    .keyboardShortcut("r", modifiers: [.command, .shift])
+                    .disabled(!viewStore.enabled)
+                }
+                ToolbarItem {
+                    Button("Apply Changes") {
+                        // TODO: Make this happen passively
+                        viewStore.send(.toggleApplyingChanges)
+                        viewStore.send(.export(.yabai))
+                        viewStore.send(.export(.skhd))
+                        viewStore.send(.homebrew(.restartYabai))
+                    }
+                    .help("⇧ ⌘ A")
+                    .keyboardShortcut("a", modifiers: [.command, .shift])
+                    .disabled(!viewStore.enabled)
+                }
                 ToolbarItem {
                     Button<Image>("power") {
                         viewStore.send(.toggleEnabled)

@@ -15,8 +15,12 @@ struct Homebrew {
     
     enum Action: Equatable {
         case restartYabai
-        case stopYabai
         case startYabai
+        case stopYabai
+        
+        case restartSKHD
+        case startSKHD
+        case stopSKHD
     }
 }
 
@@ -24,16 +28,29 @@ extension Homebrew {
     static let reducer = Reducer<State, Action, Void>.combine(
         Reducer { state, action, _ in
             switch action {
+                    
             case .restartYabai:
-                let result = AppleScript.execute("/usr/local/bin/brew services restart Yabai")
-                return .none
-                
-            case .stopYabai:
-                let result = AppleScript.execute("/usr/local/bin/brew services stop Yabai")
-                return .none
+                let result = AppleScript.execute("/usr/local/bin/brew services restart yabai")
+                return Effect(value: .restartSKHD)
                 
             case .startYabai:
-                let result = AppleScript.execute("/usr/local/bin/brew services start Yabai")
+                let result = AppleScript.execute("/usr/local/bin/brew services start yabai")
+                return .none
+
+            case .stopYabai:
+                let result = AppleScript.execute("/usr/local/bin/brew services stop yabai")
+                return .none
+                
+            case .restartSKHD:
+                let result = AppleScript.execute("/usr/local/bin/brew services restart skhd")
+                return .none
+
+            case .startSKHD:
+                let result = AppleScript.execute("/usr/local/bin/brew services start skhd")
+                return .none
+
+            case .stopSKHD:
+                let result = AppleScript.execute("/usr/local/bin/brew services stop skhd")
                 return .none
 
             }
