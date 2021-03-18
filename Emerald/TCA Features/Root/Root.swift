@@ -303,18 +303,6 @@ extension Root {
                 }
                 
                 return .none
-
-                                
-//                if state.togglingActive {
-//                    return Effect(value: .homebrew(.stopYabai))
-//                        .delay(for: 2.0, scheduler: DispatchQueue.main)
-//                        .eraseToEffect()
-//
-//                } else {
-//                    return Effect(value: .homebrew(.startYabai))
-//                        .delay(for: 2.0, scheduler: DispatchQueue.main)
-//                        .eraseToEffect()
-//                }
             }
         }
     )

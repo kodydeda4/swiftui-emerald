@@ -16,12 +16,13 @@ struct TogglingActiveView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             VStack {
-                Image("Emerald")
+                Image(systemName: "power")
                     .resizable()
                     .scaledToFit()
+                    .foregroundColor(viewStore.enabled ? .green : .red)
                     .frame(width: 50, height: 50)
                 
-                Text("Applying Changes")
+                Text(viewStore.enabled ? "Starting Up" : "Shutting Down")
                     .font(.title)
                     .fontWeight(.medium)
                     .padding()
