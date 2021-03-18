@@ -37,11 +37,11 @@ struct RootView: View {
             }
             .alert(store.scope(state: \.alert), dismiss: .dismissResetAlert)
             .toolbar {
-//                ToolbarItem(placement: .navigation) {
-//                    Button<Image>("sidebar.left") {
-//                        toggleSidebar()
-//                    }
-//                }
+                ToolbarItem(placement: .navigation) {
+                    Button<Image>("sidebar.left") {
+                        toggleSidebar()
+                    }
+                }
                 ToolbarItem {
                     Button<Image>("lock.fill") {
                         viewStore.send(.yabai(.toggleSIP))

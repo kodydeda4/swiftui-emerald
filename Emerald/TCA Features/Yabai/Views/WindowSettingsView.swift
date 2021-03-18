@@ -162,31 +162,6 @@ struct WindowSettingsView: View {
                     }
                     .disabled(!vs.windowOpacity || vs.sipEnabled)
                     .opacity( !vs.windowOpacity || vs.sipEnabled ? 0.5 : 1.0)
-                    
-                    // Float-On-Top
-                    //                VStack(alignment: .leading) {
-                    //                    Divider()
-                    //                    HStack {
-                    //                        Group {
-                    //                            Toggle("", isOn: vs.binding(\.windowTopmost, k))
-                    //                                .labelsHidden()
-                    //
-                    //                            Text("Float-On-Top")
-                    //                                .bold().font(.title3)
-                    //                        }
-                    //                        .disabled(vs.sipEnabled || vs.layout == .float)
-                    //                        .opacity( vs.sipEnabled || vs.layout == .float ? 0.5 : 1.0)
-                    //
-                    //                        Spacer()
-                    //                        SIPButton(store: Root.defaultStore)
-                    //                    }
-                    //
-                    //                    Text("Force floating windows to stay ontop of tiled/stacked windows")
-                    //                        .foregroundColor(Color(.gray))
-                    //                        .disabled(vs.sipEnabled || vs.layout == .float)
-                    //                        .opacity( vs.sipEnabled || vs.layout == .float ? 0.5 : 1.0)
-                    //                }
-
                 }
                 Spacer()
             }
