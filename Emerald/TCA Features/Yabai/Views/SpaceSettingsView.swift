@@ -9,6 +9,86 @@ import SwiftUI
 import ComposableArchitecture
 import KeyboardShortcuts
 
+
+struct LayoutButtonsView: View {
+    let store: Store<Yabai.State, Yabai.Action>
+        
+    var body: some View {
+        WithViewStore(store) { vs in
+            // Layout
+            VStack {
+                HStack {
+                    Text("Layout")
+                        .font(.largeTitle)
+                        .bold()
+                    Spacer()
+                }
+                Divider()
+                
+                HStack {
+                    VStack {
+                        Button(action: { vs.send(.updateLayout(.float)) }) {
+                            Rectangle()
+                                .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
+                                .overlay(Text("Float"))
+                                .foregroundColor(vs.layout == .float ? .accentColor : .gray)
+                                
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                        
+                        Text("Normal")
+                            .bold().font(.title3)
+                        
+                        Text(Yabai.State.Layout.float.caseDescription)
+                            .foregroundColor(Color(.gray))
+                        
+                        KeyboardShortcuts.Recorder(for: .toggleFloating)
+                    }
+                    VStack {
+                        Button(action: { vs.send(.updateLayout(.bsp)) }) {
+                            Rectangle()
+                                .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
+                                .overlay(Text("Tiling"))
+                                .foregroundColor(vs.layout == .bsp ? .accentColor : .gray)
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                        
+                        Text("Tiling")
+                            .bold().font(.title3)
+                        
+                        Text(Yabai.State.Layout.bsp.caseDescription)
+                            .foregroundColor(Color(.gray))
+                        
+                        KeyboardShortcuts.Recorder(for: .toggleBSP)
+                    }
+                    VStack {
+                        Button(action: { vs.send(.updateLayout(.stack)) }) {
+                            Rectangle()
+                                .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
+                                .overlay(Text("Stacking"))
+                                .foregroundColor(vs.layout == .stack ? .accentColor : .gray)
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                        
+                        Text("Stacking")
+                            .bold().font(.title3)
+                        
+                        Text(Yabai.State.Layout.stack.caseDescription)
+                            .foregroundColor(Color(.gray))
+                        
+                        KeyboardShortcuts.Recorder(for: .toggleStacking)
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
 struct SpaceSettingsView: View {
     let store: Store<Yabai.State, Yabai.Action>
     let k = Yabai.Action.keyPath
@@ -26,77 +106,7 @@ struct SpaceSettingsView: View {
         WithViewStore(store) { vs in
             VStack {
                 
-                // Layout
-                VStack {
-                    HStack {
-                        Text("Layout")
-                            .font(.largeTitle)
-                            .bold()
-                        Spacer()
-                    }
-                    Divider()
-                    
-                    HStack {
-                        VStack {
-                            Button(action: { vs.send(.updateLayout(.float)) }) {
-                                Rectangle()
-                                    .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
-                                    .overlay(Text("Float"))
-                                    .foregroundColor(vs.layout == .float ? .accentColor : .gray)
-                                    
-                            }
-                            .buttonStyle(PlainButtonStyle())
-                            
-                            Text("Normal")
-                                .bold().font(.title3)
-                            
-                            Text(Yabai.State.Layout.float.caseDescription)
-                                .foregroundColor(Color(.gray))
-                            
-                            KeyboardShortcuts.Recorder(for: .toggleFloating)
-                        }
-                        .padding(2)
-                        
-                        VStack {
-                            Button(action: { vs.send(.updateLayout(.bsp)) }) {
-                                Rectangle()
-                                    .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
-                                    .overlay(Text("Tiling"))
-                                    .foregroundColor(vs.layout == .bsp ? .accentColor : .gray)
-                            }
-                            .buttonStyle(PlainButtonStyle())
-                            
-                            Text("Tiling")
-                                .bold().font(.title3)
-                            
-                            Text(Yabai.State.Layout.bsp.caseDescription)
-                                .foregroundColor(Color(.gray))
-                            
-                            KeyboardShortcuts.Recorder(for: .toggleBSP)
-                        }
-                        .padding(2)
-                        VStack {
-                            Button(action: { vs.send(.updateLayout(.stack)) }) {
-                                Rectangle()
-                                    .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
-                                    .overlay(Text("Stacking"))
-                                    .foregroundColor(vs.layout == .stack ? .accentColor : .gray)
-                            }
-                            .buttonStyle(PlainButtonStyle())
-                            
-                            Text("Stacking")
-                                .bold().font(.title3)
-                            
-                            Text(Yabai.State.Layout.stack.caseDescription)
-                                .foregroundColor(Color(.gray))
-                            
-                            KeyboardShortcuts.Recorder(for: .toggleStacking)
-                        }
-                        .padding(2)
-                    }
-                    //.frame(width: 500, height: 300)
-                }
-                
+                LayoutButtonsView(store: store)
                 Divider()
                 VStack {
                     HStack {
@@ -158,7 +168,6 @@ struct SpaceSettingsView: View {
                             KeyboardShortcuts.Recorder(for: .togglePadding)
                         }
                     }
-                    //.padding(.horizontal)
                 }
                 VStack {
                     Divider()
@@ -170,45 +179,95 @@ struct SpaceSettingsView: View {
                     }
                     HStack {
                         VStack {
-                            Text("").frame(height: 25)
-                            Text("Focus ⌃").frame(height: 25)
-                            Text("Resize ⌃⌥").frame(height: 25)
-                            Text("Move ⌃⌥⌘").frame(height: 25)
+                            Rectangle()
+                                .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
+                                .foregroundColor(.red)
+                            
+                            Text("Focus")
+                                .bold()
+                                .font(.title3)
+                            
+                            Text("⌃")
+                                .foregroundColor(Color(.gray))
+                            
                         }
                         VStack {
-                            Label("↑", systemImage: "square.tophalf.fill")
-                            KeyboardShortcuts.Recorder(for: .focusNorth)
-                            KeyboardShortcuts.Recorder(for: .resizeTop)
-                            KeyboardShortcuts.Recorder(for: .moveNorth)
+                            Rectangle()
+                                .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
+                                .foregroundColor(.red)
+                            
+                            Text("Move")
+                                .bold()
+                                .font(.title3)
+                            
+                            Text("⌃ ⌥")
+                                .foregroundColor(Color(.gray))
+                            
                         }
                         VStack {
-                            Label("↓", systemImage: "square.bottomhalf.fill")
-                            KeyboardShortcuts.Recorder(for: .focusSouth)
-                            KeyboardShortcuts.Recorder(for: .resizeBottom)
-                            KeyboardShortcuts.Recorder(for: .moveSouth)
-                        }
-                        VStack {
-                            Label("→", systemImage: "square.righthalf.fill")
-                            KeyboardShortcuts.Recorder(for: .focusEast)
-                            KeyboardShortcuts.Recorder(for: .resizeRight)
-                            KeyboardShortcuts.Recorder(for: .moveEast)
-                        }
-                        VStack {
-                            Label("←", systemImage: "square.lefthalf.fill")
-                            KeyboardShortcuts.Recorder(for: .focusWest)
-                            KeyboardShortcuts.Recorder(for: .resizeLeft)
-                            KeyboardShortcuts.Recorder(for: .moveWest)
+                            Rectangle()
+                                .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
+                                .foregroundColor(.red)
+                            
+                            Text("Resize")
+                                .bold()
+                                .font(.title3)
+                            
+                            Text("⌃ ⌥ ⌘")
+                                .foregroundColor(Color(.gray))
                         }
                     }
-                    Picker("", selection: $shortcut) {
-                        ForEach(Shortcuts.allCases) {
-                            Text($0.rawValue)
-                        }
-                    }
-                    .labelsHidden()
-                    .pickerStyle(SegmentedPickerStyle())
-                    .frame(width: 150)
                 }
+
+//                VStack {
+//                    Divider()
+//                    HStack {
+//                        Text("Shortcuts")
+//                            .font(.title)
+//                            .bold()
+//                        Spacer()
+//                    }
+//                    HStack {
+//                        VStack {
+//                            Text("").frame(height: 25)
+//                            Text("Focus ⌃").frame(height: 25)
+//                            Text("Resize ⌃⌥").frame(height: 25)
+//                            Text("Move ⌃⌥⌘").frame(height: 25)
+//                        }
+//                        VStack {
+//                            Label("↑", systemImage: "square.tophalf.fill")
+//                            KeyboardShortcuts.Recorder(for: .focusNorth)
+//                            KeyboardShortcuts.Recorder(for: .resizeTop)
+//                            KeyboardShortcuts.Recorder(for: .moveNorth)
+//                        }
+//                        VStack {
+//                            Label("↓", systemImage: "square.bottomhalf.fill")
+//                            KeyboardShortcuts.Recorder(for: .focusSouth)
+//                            KeyboardShortcuts.Recorder(for: .resizeBottom)
+//                            KeyboardShortcuts.Recorder(for: .moveSouth)
+//                        }
+//                        VStack {
+//                            Label("→", systemImage: "square.righthalf.fill")
+//                            KeyboardShortcuts.Recorder(for: .focusEast)
+//                            KeyboardShortcuts.Recorder(for: .resizeRight)
+//                            KeyboardShortcuts.Recorder(for: .moveEast)
+//                        }
+//                        VStack {
+//                            Label("←", systemImage: "square.lefthalf.fill")
+//                            KeyboardShortcuts.Recorder(for: .focusWest)
+//                            KeyboardShortcuts.Recorder(for: .resizeLeft)
+//                            KeyboardShortcuts.Recorder(for: .moveWest)
+//                        }
+//                    }
+//                    Picker("", selection: $shortcut) {
+//                        ForEach(Shortcuts.allCases) {
+//                            Text($0.rawValue)
+//                        }
+//                    }
+//                    .labelsHidden()
+//                    .pickerStyle(SegmentedPickerStyle())
+//                    .frame(width: 150)
+//                }
                 Spacer()
             }
             .padding()
