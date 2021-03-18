@@ -11,16 +11,15 @@ import ComposableArchitecture
 struct ApplyingChangesView: View {
     let store: Store<Root.State, Root.Action>
     
+    @State var opacity = true
+    
     var body: some View {
         WithViewStore(store) { viewStore in
-            VStack {
-                Text("Put an animation here")
-                
-                Button("finish (should debounce after like 3 seconds") {
-                    viewStore.send(.toggleApplyingChanges)
-                }
-            }
-            .padding()
+            Text("Applying Changes")
+                .padding()
+                .opacity(opacity ? 1 : 0)
+                .animation(Animation.easeOut(duration: 1).repeatForever(), value: opacity)
+                .onAppear { opacity.toggle() }
         }
     }
 }
@@ -30,3 +29,4 @@ struct ApplyingChangesView_Previews: PreviewProvider {
         ApplyingChangesView(store: Root.defaultStore)
     }
 }
+

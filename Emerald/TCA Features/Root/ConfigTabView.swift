@@ -20,7 +20,7 @@ struct ConfigTabView: View {
                 DebugConfigFileView(text: viewStore.skhd.asConfig)
                     .tabItem { Label("SKHD", systemImage: "square.and.pencil") }
 
-                DebugConfigFileView(text: viewStore.macOSAnimations.asConfig)
+                DebugConfigFileView(text: viewStore.macOSAnimations.asShellScript)
                     .tabItem { Label("Animations", systemImage: "square.and.pencil") }
             }
             .padding()

@@ -15,6 +15,7 @@ struct Homebrew {
     
     enum Action: Equatable {
         case restartYabai
+        case restartYabaiLaunchCTL
         case startYabai
         case stopYabai
         
@@ -31,7 +32,14 @@ extension Homebrew {
                     
             case .restartYabai:
                 let result = AppleScript.execute("/usr/local/bin/brew services restart yabai")
-                return Effect(value: .restartSKHD)
+                return .none
+                
+            case .restartYabaiLaunchCTL:
+                let result = AppleScript.execute(
+                    "/bin/launchctl kickstart -k \\\"gui/$UID/homebrew.mxcl.yabai\\\""
+                // do shell script "/bin/launchctl kickstart -k \"gui/$UID/homebrew.mxcl.yabai\""
+                )
+                return .none
                 
             case .startYabai:
                 let result = AppleScript.execute("/usr/local/bin/brew services start yabai")

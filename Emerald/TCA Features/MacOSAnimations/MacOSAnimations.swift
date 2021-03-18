@@ -15,7 +15,7 @@ import ComposableArchitecture
 struct MacOSAnimations {
     struct State: Equatable, Codable {
         var stateURL    = URL(fileURLWithPath: "AnimationsState.json",  relativeTo: .HomeDirectory)
-        var shellScript = URL(fileURLWithPath: ".macOSAnimationsRC.sh", relativeTo: .HomeDirectory)
+        var shellScriptURL = URL(fileURLWithPath: ".macOSAnimationsRC.sh", relativeTo: .HomeDirectory)
         
         var enabled     = true
     }
@@ -35,8 +35,8 @@ extension MacOSAnimations {
             return.none
 
         case .executeShellScript:
-            let _ = AppleScript.execute("sudo chmod +x \(state.shellScript.relativePath)")
-            let _ = AppleScript.execute("\(state.shellScript.relativePath)")
+            let _ = AppleScript.execute("sudo chmod +x \(state.shellScriptURL.relativePath)")
+            let _ = AppleScript.execute("\(state.shellScriptURL.relativePath)")
             return .none
         }
     }

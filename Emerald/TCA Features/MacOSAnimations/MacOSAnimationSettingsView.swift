@@ -15,7 +15,7 @@ struct MacOSAnimationSettingsView: View {
     var body: some View {
         WithViewStore(store) { vs in
             HStack {
-                DebugConfigFileView(text: vs.asConfig)
+                DebugConfigFileView(text: vs.asShellScript)
                 
                 VStack {
                     VStack(alignment: .leading) {

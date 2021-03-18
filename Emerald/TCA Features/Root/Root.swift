@@ -66,6 +66,17 @@ struct Root {
                 .map(Action.saveResult)
             return foo
         }
+        
+        func writeConfig(_ config: String, to url: URL) -> Result<Bool, Error> {
+            do {
+                let data: String = config
+                try data.write(to: url, atomically: true, encoding: .utf8)
+                return .success(true)
+            }
+            catch {
+                return .failure(error)
+            }
+        }
     }
 }
 
@@ -102,14 +113,19 @@ extension Root {
             
             switch action {
             case .yabai:
-                return environment.save(state.yabai, to: state.yabai.stateURL)
-                    //.debounce(id: SaveID(), for: 0.1, scheduler: DispatchQueue.main.eraseToAnyScheduler())
+                let _ = environment.writeConfig(state.yabai.asConfig, to: state.yabai.configURL)
+                let _ = environment.save(state.yabai, to: state.yabai.stateURL)
+                return .none
                 
             case .skhd:
-                return environment.save(state.skhd, to: state.skhd.stateURL)
+                let _ = environment.writeConfig(state.skhd.asConfig, to: state.skhd.configURL)
+                let _ = environment.save(state.skhd, to: state.skhd.stateURL)
+                return .none
                 
             case let .macOSAnimations(subAction):
-                return environment.save(state.macOSAnimations, to: state.macOSAnimations.stateURL)
+                let _ = environment.writeConfig(state.macOSAnimations.asShellScript, to: state.macOSAnimations.shellScriptURL)
+                let _ = environment.save(state.macOSAnimations, to: state.macOSAnimations.stateURL)
+                return .none
                 
             case .homebrew:
                 return .none
@@ -185,8 +201,8 @@ extension Root {
                     }
                 case .macOSAnimations:
                     switch JSONDecoder().writeConfig(
-                        state.macOSAnimations.asConfig,
-                        to: state.macOSAnimations.shellScript
+                        state.macOSAnimations.asShellScript,
+                        to: state.macOSAnimations.shellScriptURL
                     ) {
                     case .success:
                         state.error = ""
@@ -210,7 +226,16 @@ extension Root {
                 state.skhd = SKHD.State()
                 state.macOSAnimations = MacOSAnimations.State()
                 
+                let _ = environment.writeConfig(state.yabai.asConfig, to: state.yabai.configURL)
+                let _ = environment.save(state.yabai, to: state.yabai.stateURL)
                 
+                let _ = environment.writeConfig(state.skhd.asConfig, to: state.yabai.configURL)
+                let _ = environment.save(state.skhd, to: state.skhd.stateURL)
+
+                let _ = environment.writeConfig(state.macOSAnimations.asShellScript, to: state.macOSAnimations.shellScriptURL)
+                let _ = environment.save(state.macOSAnimations, to: state.macOSAnimations.stateURL)
+
+
                 KeyboardShortcuts.reset(KeyboardShortcuts.Name.allCases)
                 state.skhd = SKHD.State()
                 
@@ -241,7 +266,7 @@ extension Root {
 
                 
                 state.alert = nil
-                return .none
+                return Effect(value: .homebrew(.restartYabai))
                 
             case .dismissResetAlert:
                 state.alert = nil
