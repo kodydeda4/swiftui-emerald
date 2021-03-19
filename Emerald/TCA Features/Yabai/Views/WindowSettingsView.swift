@@ -24,7 +24,7 @@ struct WindowSettingsView: View {
                     }
                     Divider()
                     HStack {
-                        ForEach(["Active", "Inactive"], id: \.self) { str in
+                        ForEach(["Active", "Inactive", "-----"], id: \.self) { str in
                             VStack {
                                 VStack(alignment: .leading) {
                                     Text(str)
@@ -40,7 +40,7 @@ struct WindowSettingsView: View {
                                         .aspectRatio(
                                             CGSize(width: 16, height: 9),
                                             contentMode: .fill)
-
+                                    
                                     Text("Border")
                                         .bold()
                                         .font(.title3)
@@ -48,7 +48,7 @@ struct WindowSettingsView: View {
                                     HStack {
                                         ColorPicker("", selection: viewStore.binding(keyPath: \.normalWindowBorderColor.color, send: Yabai.Action.keyPath))
                                             .labelsHidden()
-
+                                        
                                         ForEach([Color.blue, .purple, .pink, .red, .orange, .yellow, .green, .gray], id: \.self) { color in
                                             Button(action: {}) {
                                                 Circle()

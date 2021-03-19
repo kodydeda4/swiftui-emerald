@@ -68,8 +68,9 @@ struct SpaceSettingsView: View {
                                     .bold()
                                     .font(.title3)
                                 
-                                Text("⌃ + ARROW")
-                                    .foregroundColor(Color(.gray))
+                                KeyboardShortcuts.Recorder(for: .moveNorth)
+                                //Text("⌃ + ARROW")
+                                //    .foregroundColor(Color(.gray))
                             }
                         }
                     }
