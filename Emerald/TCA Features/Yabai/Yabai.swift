@@ -169,9 +169,9 @@ struct Yabai {
             }
             var caseDescription: String {
                 switch self {
-                case .float : return "Description of Default"
-                case .bsp   : return "Description of Tiling"
-                case .stack : return "Description of Stacking"
+                case .float : return "Default macOS window behavior"
+                case .bsp   : return "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+                case .stack : return "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
                 }
             }
         }

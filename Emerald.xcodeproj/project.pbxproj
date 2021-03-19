@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3301D5012602765900D02C46 /* Button+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3301D5002602765900D02C46 /* Button+Extensions.swift */; };
 		330E144A25F2AFEE00E61969 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330E144925F2AFEE00E61969 /* SliderView.swift */; };
-		330E144E25F2B12600E61969 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330E144D25F2B12600E61969 /* ColorPickerView.swift */; };
 		3315223F25D5786C00C8E46A /* SwiftShell in Frameworks */ = {isa = PBXBuildFile; productRef = 3315223E25D5786C00C8E46A /* SwiftShell */; };
 		3325BFD125EFCEC4007831C5 /* OmenTextField in Frameworks */ = {isa = PBXBuildFile; productRef = 3325BFD025EFCEC4007831C5 /* OmenTextField */; };
 		3325BFD525F05041007831C5 /* RoundedRectangleButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3325BFD425F05041007831C5 /* RoundedRectangleButtonStyle.swift */; };
@@ -61,7 +60,6 @@
 /* Begin PBXFileReference section */
 		3301D5002602765900D02C46 /* Button+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Extensions.swift"; sourceTree = "<group>"; };
 		330E144925F2AFEE00E61969 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
-		330E144D25F2B12600E61969 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 		3325BFD425F05041007831C5 /* RoundedRectangleButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleButtonStyle.swift; sourceTree = "<group>"; };
 		332D567C25DEED5300C88FEE /* MacOSAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSAnimations.swift; sourceTree = "<group>"; };
 		332D568525DEEF7800C88FEE /* MacOSAnimationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSAnimationSettingsView.swift; sourceTree = "<group>"; };
@@ -152,7 +150,6 @@
 			children = (
 				3301D5002602765900D02C46 /* Button+Extensions.swift */,
 				333631FA25EEF0CD009FEB32 /* CodableColor.swift */,
-				330E144D25F2B12600E61969 /* ColorPickerView.swift */,
 				3361CF0F25E6EF1300016875 /* DebugConfigFileView.swift */,
 				3325BFD425F05041007831C5 /* RoundedRectangleButtonStyle.swift */,
 				3361CF0E25E6EF1300016875 /* SectionView.swift */,
@@ -207,9 +204,9 @@
 			children = (
 				335E78D525F117D700C8839B /* JSONDecoder+Extensions.swift */,
 				3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */,
+				334EC79125F908A4005AB9BF /* ViewStore+Extensions.swift */,
 				3385DF6F25D6361200ACDE21 /* AppleScript.swift */,
 				3361CF1525E6EF1600016875 /* Views (Misc) */,
-				334EC79125F908A4005AB9BF /* ViewStore+Extensions.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -391,7 +388,6 @@
 				3353C0EE26026A67002171B7 /* ConfigTabView.swift in Sources */,
 				332D568625DEEF7800C88FEE /* MacOSAnimationSettingsView.swift in Sources */,
 				33318F3325F2AD3500231233 /* StepperTextfield.swift in Sources */,
-				330E144E25F2B12600E61969 /* ColorPickerView.swift in Sources */,
 				33AB717A25F7C99500870F75 /* KeyboardShortcuts+Extensions.swift in Sources */,
 				3356BCAD25F287D9006EB641 /* WindowSettingsView.swift in Sources */,
 				3380D33725D0723000C10913 /* Root.swift in Sources */,

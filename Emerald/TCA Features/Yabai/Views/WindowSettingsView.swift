@@ -15,63 +15,70 @@ struct WindowSettingsView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             ScrollView {
-                HStack {
-                    Text("Window")
-                        .font(.largeTitle)
-                        .bold()
-                    Spacer()
-                }
-                Divider()
-                
-                HStack {
-                    ForEach(["Active", "Normal"], id: \.self) { str in
-                        VStack {
-                            Rectangle()
-                                .foregroundColor(.red)
-                                .aspectRatio(
-                                    CGSize(width: 16, height: 9),
-                                    contentMode: .fit)
-                            
-                            Text(str)
-                                .bold()
-                                .font(.title3)
-                        }
-                    }
-                }
-                // Borders
-                VStack(alignment: .leading) {
+                VStack(spacing: 30) {
                     HStack {
-                        Group {
-                            Toggle("", isOn: viewStore.binding(keyPath: \.windowBorder, send: Yabai.Action.keyPath))
-                                .labelsHidden()
-                            
-                            Text("Borders")
-                                .bold().font(.title3)
-                        }
-                        .disabled(viewStore.sipEnabled)
-                        .opacity( viewStore.sipEnabled ? 0.5 : 1.0)
-                        
+                        Text("Window")
+                            .font(.largeTitle)
+                            .bold()
                         Spacer()
-                        SIPButton(store: Root.defaultStore)
                     }
+                    Divider()
                     HStack {
-                        StepperTextfield("Width", viewStore.binding(keyPath: \.windowBorderWidth, send: Yabai.Action.keyPath))
-                        ColorPickerView("Focused", viewStore.binding(keyPath: \.activeWindowBorderColor, send: Yabai.Action.keyPath))
-                        ColorPickerView("Normal",  viewStore.binding(keyPath: \.normalWindowBorderColor, send: Yabai.Action.keyPath))
-                        ColorPickerView("Insert",  viewStore.binding(keyPath: \.insertWindowBorderColor, send: Yabai.Action.keyPath))
+                        ForEach(["Active", "Inactive"], id: \.self) { str in
+                            VStack {
+                                VStack(alignment: .leading) {
+                                    Text(str)
+                                        .bold()
+                                        .font(.title3)
+                                    
+                                    Text("Deasd alskj elasjsu fuaha")
+                                        .lineLimit(1)
+                                        .foregroundColor(Color(.gray))
+                                    
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .foregroundColor(.red)
+                                        .aspectRatio(
+                                            CGSize(width: 16, height: 9),
+                                            contentMode: .fill)
+
+                                    Text("Border")
+                                        .bold()
+                                        .font(.title3)
+                                    
+                                    HStack {
+                                        ColorPicker("", selection: viewStore.binding(keyPath: \.normalWindowBorderColor.color, send: Yabai.Action.keyPath))
+                                            .labelsHidden()
+
+                                        ForEach([Color.blue, .purple, .pink, .red, .orange, .yellow, .green, .gray], id: \.self) { color in
+                                            Button(action: {}) {
+                                                Circle()
+                                            }
+                                            .buttonStyle(PlainButtonStyle())
+                                            .frame(width: 16)
+                                            .foregroundColor(color)
+                                        }
+                                    }
+                                    Text("Opacity")
+                                        .bold()
+                                        .font(.title3)
+                                    
+                                    Slider(value: viewStore.binding(keyPath: \.activeWindowOpacity, send: Yabai.Action.keyPath))
+                                }
+                            }
+                        }
+                        //StepperTextfield("Width", viewStore.binding(keyPath: \.windowBorderWidth, send: Yabai.Action.keyPath))
                     }
-                    .disabled(!viewStore.windowBorder || viewStore.sipEnabled)
-                    .opacity( !viewStore.windowBorder || viewStore.sipEnabled ? 0.5 : 1.0)
-                    
-                    Text("Draw a border around windows")
-                        .foregroundColor(Color(.gray))
-                        .disabled(!viewStore.windowBorder || viewStore.sipEnabled)
-                        .opacity( !viewStore.windowBorder || viewStore.sipEnabled ? 0.5 : 1.0)
                 }
                 
                 // Disable Shadows
                 Divider()
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 30) {
+                    HStack {
+                        Text("Shadows")
+                            .font(.title)
+                            .bold()
+                        Spacer()
+                    }
                     HStack {
                         Group {
                             Toggle("", isOn: viewStore.binding(keyPath: \.disableShadows, send: Yabai.Action.keyPath))
@@ -109,68 +116,68 @@ struct WindowSettingsView: View {
                 }
                 
                 // Opacity Effects
-                Divider()
-                VStack(alignment: .leading) {
-                    HStack {
-                        Group {
-                            Toggle("", isOn: viewStore.binding(keyPath: \.windowOpacity, send: Yabai.Action.keyPath))
-                                .labelsHidden()
-                            
-                            Text("Opacity Effects")
-                                .bold().font(.title3)
-                        }
-                        .disabled(viewStore.sipEnabled)
-                        .opacity( viewStore.sipEnabled ? 0.5 : 1.0)
-                        
-                        Spacer()
-                        SIPButton(store: Root.defaultStore)
-                    }
-                    
-                    VStack(alignment: .leading) {
-                        VStack(alignment: .leading) {
-                            Text("Animation Duration").foregroundColor(Color(.gray))
-                            Slider(value: viewStore.binding(keyPath: \.windowOpacityDuration, send: Yabai.Action.keyPath))
-                        }
-                        VStack(alignment: .leading) {
-                            Text("Active Windows").foregroundColor(Color(.gray))
-                            Slider(value: viewStore.binding(keyPath: \.activeWindowOpacity, send: Yabai.Action.keyPath))
-                        }
-                        VStack(alignment: .leading) {
-                            Text("Normal Windows").foregroundColor(Color(.gray))
-                            Slider(value: viewStore.binding(keyPath: \.normalWindowOpacity, send: Yabai.Action.keyPath))
-                        }
-                        Text("Change window opacity")
-                            .foregroundColor(Color(.gray))
-                            .opacity( viewStore.sipEnabled ? 0.5 : 1.0)
-                    }
-                    .disabled(!viewStore.windowOpacity || viewStore.sipEnabled)
-                    .opacity( !viewStore.windowOpacity || viewStore.sipEnabled ? 0.5 : 1.0)
-                    
-                    // Float-On-Top
-                    //                VStack(alignment: .leading) {
-                    //                    Divider()
-                    //                    HStack {
-                    //                        Group {
-                    //                            Toggle("", isOn: vs.binding(\.windowTopmost, k))
-                    //                                .labelsHidden()
-                    //
-                    //                            Text("Float-On-Top")
-                    //                                .bold().font(.title3)
-                    //                        }
-                    //                        .disabled(vs.sipEnabled || vs.layout == .float)
-                    //                        .opacity( vs.sipEnabled || vs.layout == .float ? 0.5 : 1.0)
-                    //
-                    //                        Spacer()
-                    //                        SIPButton(store: Root.defaultStore)
-                    //                    }
-                    //
-                    //                    Text("Force floating windows to stay ontop of tiled/stacked windows")
-                    //                        .foregroundColor(Color(.gray))
-                    //                        .disabled(vs.sipEnabled || vs.layout == .float)
-                    //                        .opacity( vs.sipEnabled || vs.layout == .float ? 0.5 : 1.0)
-                    //                }
-                    
-                }
+                //                Divider()
+                //                VStack(alignment: .leading) {
+                //                    HStack {
+                //                        Group {
+                //                            Toggle("", isOn: viewStore.binding(keyPath: \.windowOpacity, send: Yabai.Action.keyPath))
+                //                                .labelsHidden()
+                //
+                //                            Text("Opacity Effects")
+                //                                .bold().font(.title3)
+                //                        }
+                //                        .disabled(viewStore.sipEnabled)
+                //                        .opacity( viewStore.sipEnabled ? 0.5 : 1.0)
+                //
+                //                        Spacer()
+                //                        SIPButton(store: Root.defaultStore)
+                //                    }
+                //
+                //                    VStack(alignment: .leading) {
+                //                        VStack(alignment: .leading) {
+                //                            Text("Animation Duration").foregroundColor(Color(.gray))
+                //                            Slider(value: viewStore.binding(keyPath: \.windowOpacityDuration, send: Yabai.Action.keyPath))
+                //                        }
+                //                        VStack(alignment: .leading) {
+                //                            Text("Active Windows").foregroundColor(Color(.gray))
+                //                            Slider(value: viewStore.binding(keyPath: \.activeWindowOpacity, send: Yabai.Action.keyPath))
+                //                        }
+                //                        VStack(alignment: .leading) {
+                //                            Text("Normal Windows").foregroundColor(Color(.gray))
+                //                            Slider(value: viewStore.binding(keyPath: \.normalWindowOpacity, send: Yabai.Action.keyPath))
+                //                        }
+                //                        Text("Change window opacity")
+                //                            .foregroundColor(Color(.gray))
+                //                            .opacity( viewStore.sipEnabled ? 0.5 : 1.0)
+                //                    }
+                //                    .disabled(!viewStore.windowOpacity || viewStore.sipEnabled)
+                //                    .opacity( !viewStore.windowOpacity || viewStore.sipEnabled ? 0.5 : 1.0)
+                //                }
+                
+                // Float-On-Top
+                //                VStack(alignment: .leading) {
+                //                    Divider()
+                //                    HStack {
+                //                        Group {
+                //                            Toggle("", isOn: vs.binding(\.windowTopmost, k))
+                //                                .labelsHidden()
+                //
+                //                            Text("Float-On-Top")
+                //                                .bold().font(.title3)
+                //                        }
+                //                        .disabled(vs.sipEnabled || vs.layout == .float)
+                //                        .opacity( vs.sipEnabled || vs.layout == .float ? 0.5 : 1.0)
+                //
+                //                        Spacer()
+                //                        SIPButton(store: Root.defaultStore)
+                //                    }
+                //
+                //                    Text("Force floating windows to stay ontop of tiled/stacked windows")
+                //                        .foregroundColor(Color(.gray))
+                //                        .disabled(vs.sipEnabled || vs.layout == .float)
+                //                        .opacity( vs.sipEnabled || vs.layout == .float ? 0.5 : 1.0)
+                //                }
+                
                 Spacer()
             }
             .padding()
