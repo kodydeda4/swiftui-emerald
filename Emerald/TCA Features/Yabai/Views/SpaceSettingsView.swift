@@ -66,8 +66,29 @@ struct SpaceSettingsView: View {
                                 Text(i.rawValue)
                                     .bold()
                                     .font(.title3)
-                            
-                                KeyboardShortcuts.Recorder(for: i)
+                                
+                                if i == .focus {
+                                    TextField("", text: .constant("⌃ Arrow"))
+                                        .multilineTextAlignment(.center)
+                                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                                        .frame(width: 130)
+                                        
+                                        
+                                } else if i == .resize {
+                                    TextField("", text: .constant("⌃⌥ Arrow"))
+                                        .multilineTextAlignment(.center)
+                                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                                        .frame(width: 130)
+
+                                } else if i == .move {
+                                    TextField("", text: .constant("⌃⌥⌘ Arrow"))
+                                        .multilineTextAlignment(.center)
+                                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                                        .frame(width: 130)
+                                }
+                                else {
+                                    KeyboardShortcuts.Recorder(for: i)
+                                }
                             }
                         }
                     }
