@@ -9,9 +9,6 @@ import SwiftUI
 import ComposableArchitecture
 import KeyboardShortcuts
 
-
-
-
 struct WindowSettingsView: View {
     let store: Store<Yabai.State, Yabai.Action>
     
@@ -28,49 +25,60 @@ struct WindowSettingsView: View {
                     Divider()
                     HStack {
                         VStack {
-                            HStack {
-                                RoundedRectangle(cornerRadius: 6)
-                                    .opacity(Double(viewStore.activeWindowOpacity))
-                                    .foregroundColor(Color(.controlBackgroundColor))
-                                    .overlay(Text("Focus").foregroundColor(.gray))
-                                    .shadow(radius: 6)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 6)
-                                            .stroke(Color.gray, lineWidth: 0.75)
-                                            .opacity(Double(viewStore.activeWindowOpacity))
-                                    )
-                                    .overlay(Rectangle().stroke(viewStore.activeWindowBorderColor.color, lineWidth: CGFloat(viewStore.windowBorderWidth/2)))
-                                    .padding()
+                            VStack {
+                                Rectangle()
+                                    .frame(height: 20)
+                                    .opacity(0.25)
                                 
-                                VStack {
+                                HStack {
                                     RoundedRectangle(cornerRadius: 6)
-                                        .opacity(Double(viewStore.normalWindowOpacity))
+                                        .opacity(Double(viewStore.activeWindowOpacity))
                                         .foregroundColor(Color(.controlBackgroundColor))
-                                        .overlay(Text("Focus").foregroundColor(.gray))
+                                        .overlay(Text("Focus").foregroundColor(.gray).opacity(Double(viewStore.activeWindowOpacity)))
                                         .shadow(radius: 6)
                                         .overlay(
                                             RoundedRectangle(cornerRadius: 6)
                                                 .stroke(Color.gray, lineWidth: 0.75)
-                                                .opacity(Double(viewStore.normalWindowOpacity))
+                                                .opacity(Double(viewStore.activeWindowOpacity))
                                         )
-                                        .overlay(Rectangle().stroke(viewStore.normalWindowBorderColor.color, lineWidth: CGFloat(viewStore.windowBorderWidth/2)))
+                                        .overlay(Rectangle().stroke(viewStore.activeWindowBorderColor.color, lineWidth: CGFloat(viewStore.windowBorderWidth/2)))
                                         .padding()
-
-                                    RoundedRectangle(cornerRadius: 6)
-                                        .opacity(Double(viewStore.normalWindowOpacity))
-                                        .foregroundColor(Color(.controlBackgroundColor))
-                                        .overlay(Text("Focus").foregroundColor(.gray))
-                                        .shadow(radius: 6)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 6)
-                                                .stroke(Color.gray, lineWidth: 0.75)
-                                                .opacity(Double(viewStore.normalWindowOpacity))
-                                        )
-                                        .overlay(Rectangle().stroke(viewStore.normalWindowBorderColor.color, lineWidth: CGFloat(viewStore.windowBorderWidth/2)))
-                                        .padding()
+                                    
+                                    VStack {
+                                        RoundedRectangle(cornerRadius: 6)
+                                            .opacity(Double(viewStore.normalWindowOpacity))
+                                            .foregroundColor(Color(.controlBackgroundColor))
+                                            .overlay(Text("Normal").foregroundColor(.gray).opacity(Double(viewStore.normalWindowOpacity)))
+                                            .shadow(radius: 6)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 6)
+                                                    .stroke(Color.gray, lineWidth: 0.75)
+                                                    .opacity(Double(viewStore.normalWindowOpacity))
+                                            )
+                                            .overlay(Rectangle().stroke(viewStore.normalWindowBorderColor.color, lineWidth: CGFloat(viewStore.windowBorderWidth/2)))
+                                            .padding()
+                                        
+                                        RoundedRectangle(cornerRadius: 6)
+                                            .opacity(Double(viewStore.normalWindowOpacity))
+                                            .foregroundColor(Color(.controlBackgroundColor))
+                                            .overlay(Text("Normal").foregroundColor(.gray).opacity(Double(viewStore.normalWindowOpacity)))
+                                            .shadow(radius: 6)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 6)
+                                                    .stroke(Color.gray, lineWidth: 0.75)
+                                                    .opacity(Double(viewStore.normalWindowOpacity))
+                                            )
+                                            .overlay(Rectangle().stroke(viewStore.normalWindowBorderColor.color, lineWidth: CGFloat(viewStore.windowBorderWidth/2)))
+                                            .padding()
+                                    }
                                 }
+                                
+                                RoundedRectangle(cornerRadius: 12)
+                                    .frame(height: 40)
+                                    .opacity(0.25)
+                                    .padding()
+                                    
                             }
-                            .padding()
                             .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fill)
                             .background(Color(.windowBackgroundColor))
                             
@@ -100,7 +108,7 @@ struct WindowSettingsView: View {
                                     }
                                     HStack {
                                         Text("Opacity")
-                                        Slider(value: viewStore.binding(keyPath: \.activeWindowOpacity, send: Yabai.Action.keyPath))
+                                        Slider(value: viewStore.binding(keyPath: \.activeWindowOpacity, send: Yabai.Action.keyPath), in: 0.1...1.0)
                                     }
                                 }
                                 //Normal
@@ -128,7 +136,7 @@ struct WindowSettingsView: View {
                                     
                                     HStack {
                                         Text("Opacity")
-                                        Slider(value: viewStore.binding(keyPath: \.normalWindowOpacity, send: Yabai.Action.keyPath))
+                                        Slider(value: viewStore.binding(keyPath: \.normalWindowOpacity, send: Yabai.Action.keyPath), in: 0.1...1.0)
                                     }
                                 }
                             }

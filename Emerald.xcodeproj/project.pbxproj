@@ -183,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				3380D2FE25D05F4200C10913 /* EmeraldApp.swift */,
+				3380D33625D0723000C10913 /* Root.swift */,
 				3380D32425D06EB300C10913 /* TCA Features */,
 				3380D31125D0667100C10913 /* Common */,
 				3380D30225D05F4200C10913 /* Assets.xcassets */,
@@ -246,7 +247,6 @@
 		33DEDCB725DDBC2F001582DC /* Root */ = {
 			isa = PBXGroup;
 			children = (
-				3380D33625D0723000C10913 /* Root.swift */,
 				339C453025D6ECCA0079ACA1 /* RootView.swift */,
 				3353C0ED26026A67002171B7 /* ConfigTabView.swift */,
 				3385DF6625D6270B00ACDE21 /* SidebarView.swift */,
