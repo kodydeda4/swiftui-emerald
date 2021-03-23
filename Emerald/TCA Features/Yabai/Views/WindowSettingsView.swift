@@ -30,19 +30,19 @@ struct WindowSettingsView: View {
                         VStack {
                             VStack(alignment: .leading) {
                                 HStack {
-                                    RoundedRectangle(cornerRadius: 6)
+                                    RoundedRectangle(cornerRadius: 10)
                                         .opacity(Double(viewStore.activeWindowOpacity))
                                         .border(viewStore.activeWindowBorderColor.color, width: CGFloat(viewStore.windowBorderWidth/2))
                                         .foregroundColor(Color(.controlBackgroundColor))
                                         .overlay(Text("Focus").foregroundColor(.gray))
                                     
                                     VStack {
-                                        RoundedRectangle(cornerRadius: 6)
+                                        RoundedRectangle(cornerRadius: 10)
                                             .opacity(Double(viewStore.normalWindowOpacity))
                                             .border(viewStore.normalWindowBorderColor.color, width: CGFloat(viewStore.windowBorderWidth/2))
                                             .foregroundColor(Color(.controlBackgroundColor))
                                             .overlay(Text("Normal").foregroundColor(.gray))
-                                        RoundedRectangle(cornerRadius: 6)
+                                        RoundedRectangle(cornerRadius: 10)
                                             .opacity(Double(viewStore.normalWindowOpacity))
                                             .border(viewStore.normalWindowBorderColor.color, width: CGFloat(viewStore.windowBorderWidth/2))
                                             .foregroundColor(Color(.controlBackgroundColor))
