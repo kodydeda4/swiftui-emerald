@@ -59,7 +59,6 @@ yabai -m config window_border \(windowBorder == true ? "on" : "off")
 yabai -m config window_border_width \(windowBorderWidth)
 yabai -m config active_window_border_color \"\(activeWindowBorderColor.asHexString)\"
 yabai -m config normal_window_border_color \"\(normalWindowBorderColor.asHexString)\"
-yabai -m config insert_window_border_color \"\(insertWindowBorderColor.asHexString)\"
 
 # New Window Placement
 yabai -m config window_placement \(windowPlacement)

@@ -9,6 +9,71 @@ import SwiftUI
 import ComposableArchitecture
 import KeyboardShortcuts
 
+
+struct WindowView: View {
+    var title: String
+    @State var opacity: Float
+    @State var borderColor: Color
+    @State var borderWidth: CGFloat
+    
+    
+    var body: some View {
+        VStack {
+            VStack(alignment: .leading) {
+                TextField("", value: $borderWidth, formatter: NumberFormatter())
+                
+                Text(title)
+                    .bold()
+                    .font(.title3)
+                
+                Text("Deasd alskj elasjsu fuaha")
+                    .lineLimit(1)
+                    .foregroundColor(Color(.gray))
+                
+                RoundedRectangle(cornerRadius: 6)
+                    .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fill)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 6)
+                            .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fill)
+                            .opacity(Double(opacity))
+                            .border(borderColor, width: borderWidth)
+                            .padding()
+                    )
+                    
+                Text("Border")
+                    .bold()
+                    .font(.title3)
+                
+                HStack {
+                    ColorPicker("", selection: $borderColor)
+                        .labelsHidden()
+                    
+                    ForEach([Color.blue, .purple, .pink, .red, .orange, .yellow, .green, .gray], id: \.self) { color in
+                        Button(action: { borderColor = color }) {
+                            Circle()
+                                .overlay(
+                                    Circle()
+                                        .foregroundColor(.white)
+                                        .frame(width: 6)
+                                        .opacity(borderColor == color ? 1 : 0)
+                                )
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                        .frame(width: 16)
+                        .foregroundColor(color)
+                    }
+                }
+                Text("Opacity")
+                    .bold()
+                    .font(.title3)
+                
+                Slider(value: $opacity)
+            }
+        }
+    }
+}
+
+
 struct WindowSettingsView: View {
     let store: Store<Yabai.State, Yabai.Action>
     
@@ -24,52 +89,21 @@ struct WindowSettingsView: View {
                     }
                     Divider()
                     HStack {
-                        ForEach(["Active", "Inactive", "-----"], id: \.self) { str in
-                            VStack {
-                                VStack(alignment: .leading) {
-                                    Text(str)
-                                        .bold()
-                                        .font(.title3)
-                                    
-                                    Text("Deasd alskj elasjsu fuaha")
-                                        .lineLimit(1)
-                                        .foregroundColor(Color(.gray))
-                                    
-                                    RoundedRectangle(cornerRadius: 6)
-                                        .foregroundColor(.red)
-                                        .aspectRatio(
-                                            CGSize(width: 16, height: 9),
-                                            contentMode: .fill)
-                                    
-                                    Text("Border")
-                                        .bold()
-                                        .font(.title3)
-                                    
-                                    HStack {
-                                        ColorPicker("", selection: viewStore.binding(keyPath: \.normalWindowBorderColor.color, send: Yabai.Action.keyPath))
-                                            .labelsHidden()
-                                        
-                                        ForEach([Color.blue, .purple, .pink, .red, .orange, .yellow, .green, .gray], id: \.self) { color in
-                                            Button(action: {}) {
-                                                Circle()
-                                            }
-                                            .buttonStyle(PlainButtonStyle())
-                                            .frame(width: 16)
-                                            .foregroundColor(color)
-                                        }
-                                    }
-                                    Text("Opacity")
-                                        .bold()
-                                        .font(.title3)
-                                    
-                                    Slider(value: viewStore.binding(keyPath: \.activeWindowOpacity, send: Yabai.Action.keyPath))
-                                }
-                            }
-                        }
-                        //StepperTextfield("Width", viewStore.binding(keyPath: \.windowBorderWidth, send: Yabai.Action.keyPath))
+                        WindowView(
+                            title: "Active",
+                            opacity: viewStore.activeWindowOpacity,//viewStore.binding(keyPath: \.activeWindowOpacity, send: Yabai.Action.keyPath),
+                            borderColor: viewStore.activeWindowBorderColor.color,//viewStore.binding(keyPath: \.activeWindowBorderColor, send: Yabai.Action.keyPath)
+                            borderWidth: CGFloat(viewStore.windowBorderWidth)
+                        )
+                        WindowView(
+                            title: "Normal",
+                            opacity: viewStore.normalWindowOpacity,//viewStore.binding(keyPath: \.normalWindowOpacity, send: Yabai.Action.keyPath),
+                            borderColor: viewStore.normalWindowBorderColor.color,//viewStore.binding(keyPath: \.normalWindowBorderColor, send: Yabai.Action.keyPath)
+                            borderWidth: CGFloat(viewStore.windowBorderWidth)
+                        )
                     }
+                    TextField("", value: viewStore.binding(keyPath: \.windowBorderWidth, send: Yabai.Action.keyPath), formatter: NumberFormatter())
                 }
-                
                 // Disable Shadows
                 Divider()
                 VStack(alignment: .leading, spacing: 30) {

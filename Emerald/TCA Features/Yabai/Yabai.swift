@@ -35,11 +35,14 @@ struct Yabai {
         var windowBalance            : WindowBalance     = .normal
         var splitRatio               : Float             = 50
         var autoBalance              : Bool              = false
+        
+        
         var windowBorder             : Bool              = false
         var windowBorderWidth        : Int               = 0
         var activeWindowBorderColor  : CodableColor      = .init(color: .green)
         var normalWindowBorderColor  : CodableColor      = .init(color: .red)
-        var insertWindowBorderColor  : CodableColor      = .init(color: .purple)
+        
+                   
         var mouseModifier            : MouseModifier     = .fn
         var mouseAction1             : MouseAction       = .move
         var mouseAction2             : MouseAction       = .resize
