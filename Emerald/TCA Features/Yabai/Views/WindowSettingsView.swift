@@ -79,7 +79,7 @@ struct WindowSettingsView: View {
                                     .padding()
                                     
                             }
-                            .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fill)
+                            .aspectRatio(CGSize(width: 16, height: 6), contentMode: .fill)
                             .background(Color(.windowBackgroundColor))
                             
                             
@@ -217,7 +217,7 @@ struct WindowSettingsView: View {
                 //                }
                 
             }
-            .frame(maxWidth: 1600)
+            .frame(maxWidth: 1200)
             .padding(.horizontal, 30)
             .padding(.vertical)
             .navigationTitle("")
