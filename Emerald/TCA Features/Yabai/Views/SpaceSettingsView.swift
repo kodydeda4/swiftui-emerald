@@ -94,7 +94,9 @@ struct SpaceSettingsView: View {
                     }
                 }
             }
-            .padding()
+            .frame(maxWidth: 1600)
+            .padding(.horizontal, 30)
+            .padding(.vertical)
             .navigationTitle("")
             //.navigationTitle("Layout")
         }

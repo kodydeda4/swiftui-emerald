@@ -14,7 +14,7 @@ struct NewWindowSettings: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            VStack(alignment: .leading, spacing: 20) {
+            ScrollView {
                 //Toggles
                 VStack(alignment: .leading) {
                     Text("Shortcuts")
@@ -84,7 +84,6 @@ struct NewWindowSettings: View {
                         .foregroundColor(Color(.gray))
                     
                 }
-                Spacer()
             }
             .padding()
             .navigationTitle("Space")

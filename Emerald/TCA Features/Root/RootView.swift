@@ -15,8 +15,8 @@ struct RootView: View {
         WithViewStore(store) { viewStore in
             NavigationView {
                 SidebarView(store: store)
-                SpaceSettingsView(store: store.scope(state: \.yabai, action: Root.Action.yabai))
-                ConfigTabView(store: store)
+                SpaceSettingsView(store: store.scope(state: \.yabai, action: Root.Action.yabai))       
+                //ConfigTabView(store: store)
             }
             .disabled(!viewStore.enabled)
             .onAppear {

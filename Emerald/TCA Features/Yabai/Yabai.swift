@@ -38,8 +38,8 @@ struct Yabai {
         
         
         var windowBorderWidth        : Float             = 0
-        var activeWindowBorderColor  : CodableColor      = .init(color: .green)
-        var normalWindowBorderColor  : CodableColor      = .init(color: .red)
+        var activeWindowBorderColor  : CodableColor      = .init(color: .accentColor)
+        var normalWindowBorderColor  : CodableColor      = .init(color: .gray)
         
                    
         var mouseModifier            : MouseModifier     = .fn

@@ -28,87 +28,85 @@ struct WindowSettingsView: View {
                     Divider()
                     HStack {
                         VStack {
-                            VStack(alignment: .leading) {
-                                HStack {
+                            HStack {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .opacity(Double(viewStore.activeWindowOpacity))
+                                    .border(viewStore.activeWindowBorderColor.color, width: CGFloat(viewStore.windowBorderWidth/2))
+                                    .foregroundColor(Color(.controlBackgroundColor))
+                                    .overlay(Text("Focus").foregroundColor(.gray))
+                                
+                                VStack {
                                     RoundedRectangle(cornerRadius: 10)
-                                        .opacity(Double(viewStore.activeWindowOpacity))
-                                        .border(viewStore.activeWindowBorderColor.color, width: CGFloat(viewStore.windowBorderWidth/2))
+                                        .opacity(Double(viewStore.normalWindowOpacity))
+                                        .border(viewStore.normalWindowBorderColor.color, width: CGFloat(viewStore.windowBorderWidth/2))
                                         .foregroundColor(Color(.controlBackgroundColor))
-                                        .overlay(Text("Focus").foregroundColor(.gray))
-                                    
-                                    VStack {
-                                        RoundedRectangle(cornerRadius: 10)
-                                            .opacity(Double(viewStore.normalWindowOpacity))
-                                            .border(viewStore.normalWindowBorderColor.color, width: CGFloat(viewStore.windowBorderWidth/2))
-                                            .foregroundColor(Color(.controlBackgroundColor))
-                                            .overlay(Text("Normal").foregroundColor(.gray))
-                                        RoundedRectangle(cornerRadius: 10)
-                                            .opacity(Double(viewStore.normalWindowOpacity))
-                                            .border(viewStore.normalWindowBorderColor.color, width: CGFloat(viewStore.windowBorderWidth/2))
-                                            .foregroundColor(Color(.controlBackgroundColor))
-                                            .overlay(Text("Normal").foregroundColor(.gray))
+                                        .overlay(Text("Normal").foregroundColor(.gray))
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .opacity(Double(viewStore.normalWindowOpacity))
+                                        .border(viewStore.normalWindowBorderColor.color, width: CGFloat(viewStore.windowBorderWidth/2))
+                                        .foregroundColor(Color(.controlBackgroundColor))
+                                        .overlay(Text("Normal").foregroundColor(.gray))
+                                }
+                            }
+                            .padding()
+                            .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fill)
+                            .background(Color(.windowBackgroundColor))
+                            
+                            
+                            HStack {
+                                //Active/Focused
+                                VStack {
+                                    HStack {
+                                        Text("Border")
+                                        ColorPicker("", selection: viewStore.binding(keyPath: \.activeWindowBorderColor.color, send: Yabai.Action.keyPath))
+                                            .labelsHidden()
+                                        
+                                        ForEach([Color.blue, .purple, .pink, .red, .orange, .yellow, .green, .gray], id: \.self) { color in
+                                            Button(action: { viewStore.send(.updateActiveWindowBorderColor(color))}) {
+                                                Circle()
+                                                    .overlay(
+                                                        Circle()
+                                                            .foregroundColor(.white)
+                                                            .frame(width: 6)
+                                                            .opacity(viewStore.activeWindowBorderColor.color == color ? 1 : 0)
+                                                    )
+                                            }
+                                            .buttonStyle(PlainButtonStyle())
+                                            .frame(width: 16)
+                                            .foregroundColor(color)
+                                        }
+                                    }
+                                    HStack {
+                                        Text("Opacity")
+                                        Slider(value: viewStore.binding(keyPath: \.activeWindowOpacity, send: Yabai.Action.keyPath))
                                     }
                                 }
-                                .padding()
-                                .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fill)
-                                .background(Color(.windowBackgroundColor))
-                                
-                                
-                                HStack {
-                                    //Active/Focused
-                                    VStack(alignment: .leading) {
-                                        HStack {
-                                            Text("Border")
-                                            ColorPicker("", selection: viewStore.binding(keyPath: \.activeWindowBorderColor.color, send: Yabai.Action.keyPath))
-                                                .labelsHidden()
-                                            
-                                            ForEach([Color.blue, .purple, .pink, .red, .orange, .yellow, .green, .gray], id: \.self) { color in
-                                                Button(action: { viewStore.send(.updateActiveWindowBorderColor(color))}) {
-                                                    Circle()
-                                                        .overlay(
-                                                            Circle()
-                                                                .foregroundColor(.white)
-                                                                .frame(width: 6)
-                                                                .opacity(viewStore.activeWindowBorderColor.color == color ? 1 : 0)
-                                                        )
-                                                }
-                                                .buttonStyle(PlainButtonStyle())
-                                                .frame(width: 16)
-                                                .foregroundColor(color)
+                                //Normal
+                                VStack {
+                                    HStack {
+                                        Text("Border")
+                                        ColorPicker("", selection: viewStore.binding(keyPath: \.normalWindowBorderColor.color, send: Yabai.Action.keyPath))
+                                            .labelsHidden()
+                                        
+                                        ForEach([Color.blue, .purple, .pink, .red, .orange, .yellow, .green, .gray], id: \.self) { color in
+                                            Button(action: { viewStore.send(.updateNormalWindowBorderColor(color))}) {
+                                                Circle()
+                                                    .overlay(
+                                                        Circle()
+                                                            .foregroundColor(.white)
+                                                            .frame(width: 6)
+                                                            .opacity(viewStore.normalWindowBorderColor.color == color ? 1 : 0)
+                                                    )
                                             }
-                                        }
-                                        HStack {
-                                            Text("Opacity")
-                                            Slider(value: viewStore.binding(keyPath: \.activeWindowOpacity, send: Yabai.Action.keyPath))
+                                            .buttonStyle(PlainButtonStyle())
+                                            .frame(width: 16)
+                                            .foregroundColor(color)
                                         }
                                     }
-                                    //Normal
-                                    VStack(alignment: .leading) {
-                                        HStack {
-                                            Text("Border")
-                                            ColorPicker("", selection: viewStore.binding(keyPath: \.normalWindowBorderColor.color, send: Yabai.Action.keyPath))
-                                                .labelsHidden()
-                                            
-                                            ForEach([Color.blue, .purple, .pink, .red, .orange, .yellow, .green, .gray], id: \.self) { color in
-                                                Button(action: { viewStore.send(.updateNormalWindowBorderColor(color))}) {
-                                                    Circle()
-                                                        .overlay(
-                                                            Circle()
-                                                                .foregroundColor(.white)
-                                                                .frame(width: 6)
-                                                                .opacity(viewStore.normalWindowBorderColor.color == color ? 1 : 0)
-                                                        )
-                                                }
-                                                .buttonStyle(PlainButtonStyle())
-                                                .frame(width: 16)
-                                                .foregroundColor(color)
-                                            }
-                                        }
-                                        
-                                        HStack {
-                                            Text("Opacity")
-                                            Slider(value: viewStore.binding(keyPath: \.normalWindowOpacity, send: Yabai.Action.keyPath))
-                                        }
+                                    
+                                    HStack {
+                                        Text("Opacity")
+                                        Slider(value: viewStore.binding(keyPath: \.normalWindowOpacity, send: Yabai.Action.keyPath))
                                     }
                                 }
                             }
@@ -188,9 +186,10 @@ struct WindowSettingsView: View {
                 //                        .opacity( vs.sipEnabled || vs.layout == .float ? 0.5 : 1.0)
                 //                }
                 
-                Spacer()
             }
-            .padding()
+            .frame(maxWidth: 1600)
+            .padding(.horizontal, 30)
+            .padding(.vertical)
             .navigationTitle("")
         }
     }
