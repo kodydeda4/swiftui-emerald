@@ -245,13 +245,16 @@ extension Root {
                 
                 KeyboardShortcuts.set(.restartYabai,   [.option, .shift             ], .r)
                 
-                KeyboardShortcuts.set(.togglePadding,  [.control, .option,          ], .nine)
-                KeyboardShortcuts.set(.toggleGaps,     [.control, .option,          ], .zero)
-                KeyboardShortcuts.set(.toggleSplit,    [.control, .option,          ], .x)
+                KeyboardShortcuts.set(.gaps,           [.control, .option,          ], .g)
+                KeyboardShortcuts.set(.padding,        [.control, .option,          ], .h)
+                KeyboardShortcuts.set(.split,          [.control, .option,          ], .x)
+                KeyboardShortcuts.set(.balance,        [.control, .option,          ], .b)
                 
-                KeyboardShortcuts.set(.toggleFloating, [.control, .option,          ], .one)
-                KeyboardShortcuts.set(.toggleBSP,      [.control, .option,          ], .two)
-                KeyboardShortcuts.set(.toggleStacking, [.control, .option,          ], .three)
+                
+                
+                KeyboardShortcuts.set(.float, [.control, .option,          ], .one)
+                KeyboardShortcuts.set(.bsp,      [.control, .option,          ], .two)
+                KeyboardShortcuts.set(.stack, [.control, .option,          ], .three)
 
                 KeyboardShortcuts.set(.focusNorth,     [.control,                   ], .upArrow)
                 KeyboardShortcuts.set(.focusSouth,     [.control,                   ], .downArrow)

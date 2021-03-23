@@ -9,17 +9,24 @@ import KeyboardShortcuts
 import SwiftUI
 
 extension KeyboardShortcuts.Name {
+    static let float          = Self("Normal")
+    static let bsp            = Self("Tiling")
+    static let stack          = Self("Stacking")
+    
+    //----------------------------------------
+    static let focus          = Self("Focus")
+    static let resize         = Self("Resize")
+    static let move           = Self("Move")
+    //----------------------------------------
+    
     static let restartYabai   = Self("Restart Yabai")
     
-    static let togglePadding  = Self("Toggle Padding")
-    static let toggleGaps     = Self("Toggle Gaps")
-    static let toggleSplit    = Self("Toggle Split")
-    static let toggleBalance  = Self("Toggle Balance")
+    static let gaps           = Self("Gaps")
+    static let padding        = Self("Padding")
     
-    static let toggleStacking = Self("Toggle Stacking")
-    static let toggleFloating = Self("Toggle Floating")
-    static let toggleBSP      = Self("Toggle BSP")
-    
+    static let split          = Self("Split")
+    static let balance        = Self("Balance")
+
     static let focusWest      = Self("Focus West")
     static let focusEast      = Self("Focus East")
     static let focusSouth     = Self("Focus South")
@@ -37,13 +44,15 @@ extension KeyboardShortcuts.Name {
         
     static let allCases: [KeyboardShortcuts.Name] = [
         .restartYabai,
-        .togglePadding,
-        .toggleGaps,
-        .toggleSplit,
-        .toggleBalance,
-        .toggleStacking,
-        .toggleFloating,
-        .toggleBSP,
+        .padding,
+        .gaps,
+        .split,
+        .balance,
+        
+        .float,
+        .bsp,
+        .stack,
+        
         .focusWest,
         .focusEast,
         .focusSouth,
@@ -60,7 +69,11 @@ extension KeyboardShortcuts.Name {
 }
 
 extension KeyboardShortcuts {
-    static func set(_ shortcut: KeyboardShortcuts.Name, _ modifiers: NSEvent.ModifierFlags, _ key: KeyboardShortcuts.Key) {
+    static func set(
+        _ shortcut: KeyboardShortcuts.Name,
+        _ modifiers: NSEvent.ModifierFlags,
+        _ key: KeyboardShortcuts.Key
+    ) {
         KeyboardShortcuts.setShortcut(
             KeyboardShortcuts.Shortcut(
                 key,
@@ -68,6 +81,5 @@ extension KeyboardShortcuts {
             ),
             for: shortcut
         )
-
     }
 }

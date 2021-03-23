@@ -51,6 +51,7 @@
 		3398839925DD9929007B9FF5 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 3398839825DD9929007B9FF5 /* KeyboardShortcuts */; };
 		339C453125D6ECCA0079ACA1 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C453025D6ECCA0079ACA1 /* RootView.swift */; };
 		339C453525D6ED0F0079ACA1 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C453425D6ED0F0079ACA1 /* OnboardingView.swift */; };
+		33A4BA032609EFB100AF9E59 /* Grid in Frameworks */ = {isa = PBXBuildFile; productRef = 33A4BA022609EFB100AF9E59 /* Grid */; };
 		33AB717A25F7C99500870F75 /* KeyboardShortcuts+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AB717925F7C99500870F75 /* KeyboardShortcuts+Extensions.swift */; };
 		33AD2F7D25F254ED0018875E /* Homebrew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AD2F7C25F254ED0018875E /* Homebrew.swift */; };
 		33AD2F8225F25D330018875E /* Overture in Frameworks */ = {isa = PBXBuildFile; productRef = 33AD2F8125F25D330018875E /* Overture */; };
@@ -111,6 +112,7 @@
 			files = (
 				333631F825EEE6B9009FEB32 /* DynamicColor in Frameworks */,
 				3325BFD125EFCEC4007831C5 /* OmenTextField in Frameworks */,
+				33A4BA032609EFB100AF9E59 /* Grid in Frameworks */,
 				33812A7725F30121001D42EA /* Sliders in Frameworks */,
 				33AD2F8225F25D330018875E /* Overture in Frameworks */,
 				3380D31C25D06E1500C10913 /* ComposableArchitecture in Frameworks */,
@@ -300,6 +302,7 @@
 				3325BFD025EFCEC4007831C5 /* OmenTextField */,
 				33AD2F8125F25D330018875E /* Overture */,
 				33812A7625F30121001D42EA /* Sliders */,
+				33A4BA022609EFB100AF9E59 /* Grid */,
 			);
 			productName = YabaiUI;
 			productReference = 3380D2FB25D05F4200C10913 /* Emerald.app */;
@@ -336,6 +339,7 @@
 				3325BFCF25EFCEC4007831C5 /* XCRemoteSwiftPackageReference "OmenTextField" */,
 				33AD2F8025F25D330018875E /* XCRemoteSwiftPackageReference "swift-overture" */,
 				33812A7525F30121001D42EA /* XCRemoteSwiftPackageReference "swiftui-sliders" */,
+				33A4BA012609EFB100AF9E59 /* XCRemoteSwiftPackageReference "swiftui-grid" */,
 			);
 			productRefGroup = 3380D2FC25D05F4200C10913 /* Products */;
 			projectDirPath = "";
@@ -645,6 +649,14 @@
 				minimumVersion = 0.7.0;
 			};
 		};
+		33A4BA012609EFB100AF9E59 /* XCRemoteSwiftPackageReference "swiftui-grid" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/spacenation/swiftui-grid";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
 		33AD2F8025F25D330018875E /* XCRemoteSwiftPackageReference "swift-overture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-overture";
@@ -685,6 +697,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3398839725DD9929007B9FF5 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
 			productName = KeyboardShortcuts;
+		};
+		33A4BA022609EFB100AF9E59 /* Grid */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 33A4BA012609EFB100AF9E59 /* XCRemoteSwiftPackageReference "swiftui-grid" */;
+			productName = Grid;
 		};
 		33AD2F8125F25D330018875E /* Overture */ = {
 			isa = XCSwiftPackageProductDependency;

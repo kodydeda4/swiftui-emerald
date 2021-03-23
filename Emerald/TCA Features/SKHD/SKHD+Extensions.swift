@@ -37,17 +37,17 @@ extension SKHD.State {
 #============================================
 # Layout
 #============================================
-\(KeyboardShortcuts.getShortcut(for: .toggleFloating)?.skhdString ?? "#<UNASSIGNED>") : yabai -m space --layout float
-\(KeyboardShortcuts.getShortcut(for: .toggleBSP)?.skhdString      ?? "#<UNASSIGNED>") : yabai -m space --layout bsp
-\(KeyboardShortcuts.getShortcut(for: .toggleStacking)?.skhdString ?? "#<UNASSIGNED>") : yabai -m space --layout stack
+\(KeyboardShortcuts.getShortcut(for: .float)?.skhdString ?? "#<UNASSIGNED>") : yabai -m space --layout float
+\(KeyboardShortcuts.getShortcut(for: .bsp)?.skhdString      ?? "#<UNASSIGNED>") : yabai -m space --layout bsp
+\(KeyboardShortcuts.getShortcut(for: .stack)?.skhdString ?? "#<UNASSIGNED>") : yabai -m space --layout stack
 
 #============================================
 # Toggle
 #============================================
-\(KeyboardShortcuts.getShortcut(for: .togglePadding)?.skhdString  ?? "#<UNASSIGNED>") : yabai -m space --toggle padding
-\(KeyboardShortcuts.getShortcut(for: .toggleGaps)?.skhdString     ?? "#<UNASSIGNED>") : yabai -m space --toggle gap
-\(KeyboardShortcuts.getShortcut(for: .toggleSplit)?.skhdString    ?? "#<UNASSIGNED>") : yabai -m window --toggle split
-\(KeyboardShortcuts.getShortcut(for: .toggleBalance)?.skhdString  ?? "#<UNASSIGNED>") : yabai -m space --balance
+\(KeyboardShortcuts.getShortcut(for: .padding)?.skhdString  ?? "#<UNASSIGNED>") : yabai -m space --toggle padding
+\(KeyboardShortcuts.getShortcut(for: .gaps)?.skhdString     ?? "#<UNASSIGNED>") : yabai -m space --toggle gap
+\(KeyboardShortcuts.getShortcut(for: .split)?.skhdString    ?? "#<UNASSIGNED>") : yabai -m window --toggle split
+\(KeyboardShortcuts.getShortcut(for: .balance)?.skhdString  ?? "#<UNASSIGNED>") : yabai -m space --balance
 
 #============================================
 # Focus
@@ -75,8 +75,6 @@ extension SKHD.State {
 """
     }
 }
-
-
 
 // MARK:- Parsing
 extension KeyboardShortcuts.Shortcut {

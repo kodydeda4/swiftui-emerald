@@ -32,11 +32,11 @@ struct NewWindowSettings: View {
                         
                         HStack {
                             Text("Toggle Splt")
-                            KeyboardShortcuts.Recorder(for: .toggleSplit)
+                            KeyboardShortcuts.Recorder(for: .split)
                         }
                         HStack {
                             Text("Toggle Balance")
-                            KeyboardShortcuts.Recorder(for: .toggleBalance)
+                            KeyboardShortcuts.Recorder(for: .balance)
                         }
                     }
                 }
