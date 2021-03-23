@@ -49,7 +49,7 @@ yabai -m config window_gap \(windowGap)
 yabai -m config window_shadow \(!disableShadows ? "on" : windowShadow.rawValue)
 
 # Opacity Effects
-yabai -m config window_opacity \(windowOpacityDuration > 0 ? "on" : "off")
+yabai -m config window_opacity \(activeWindowOpacity < 1 || normalWindowOpacity < 1 ? "on" : "off")
 yabai -m config window_opacity_duration \(windowOpacityDuration)
 yabai -m config active_window_opacity \(activeWindowOpacity)
 yabai -m config normal_window_opacity \(normalWindowOpacity)
