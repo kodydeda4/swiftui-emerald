@@ -10,68 +10,6 @@ import ComposableArchitecture
 import KeyboardShortcuts
 
 
-struct WindowView: View {
-    var title: String
-    @State var opacity: Float
-    @State var borderColor: Color
-    @State var borderWidth: CGFloat
-    
-    
-    var body: some View {
-        VStack {
-            VStack(alignment: .leading) {
-                TextField("", value: $borderWidth, formatter: NumberFormatter())
-                
-                Text(title)
-                    .bold()
-                    .font(.title3)
-                
-                Text("Deasd alskj elasjsu fuaha")
-                    .lineLimit(1)
-                    .foregroundColor(Color(.gray))
-                
-                RoundedRectangle(cornerRadius: 6)
-                    .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fill)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 6)
-                            .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fill)
-                            .opacity(Double(opacity))
-                            .border(borderColor, width: borderWidth)
-                            .padding()
-                    )
-                    
-                Text("Border")
-                    .bold()
-                    .font(.title3)
-                
-                HStack {
-                    ColorPicker("", selection: $borderColor)
-                        .labelsHidden()
-                    
-                    ForEach([Color.blue, .purple, .pink, .red, .orange, .yellow, .green, .gray], id: \.self) { color in
-                        Button(action: { borderColor = color }) {
-                            Circle()
-                                .overlay(
-                                    Circle()
-                                        .foregroundColor(.white)
-                                        .frame(width: 6)
-                                        .opacity(borderColor == color ? 1 : 0)
-                                )
-                        }
-                        .buttonStyle(PlainButtonStyle())
-                        .frame(width: 16)
-                        .foregroundColor(color)
-                    }
-                }
-                Text("Opacity")
-                    .bold()
-                    .font(.title3)
-                
-                Slider(value: $opacity)
-            }
-        }
-    }
-}
 
 
 struct WindowSettingsView: View {
@@ -89,20 +27,107 @@ struct WindowSettingsView: View {
                     }
                     Divider()
                     HStack {
-                        WindowView(
-                            title: "Active",
-                            opacity: viewStore.activeWindowOpacity,//viewStore.binding(keyPath: \.activeWindowOpacity, send: Yabai.Action.keyPath),
-                            borderColor: viewStore.activeWindowBorderColor.color,//viewStore.binding(keyPath: \.activeWindowBorderColor, send: Yabai.Action.keyPath)
-                            borderWidth: CGFloat(viewStore.windowBorderWidth)
-                        )
-                        WindowView(
-                            title: "Normal",
-                            opacity: viewStore.normalWindowOpacity,//viewStore.binding(keyPath: \.normalWindowOpacity, send: Yabai.Action.keyPath),
-                            borderColor: viewStore.normalWindowBorderColor.color,//viewStore.binding(keyPath: \.normalWindowBorderColor, send: Yabai.Action.keyPath)
-                            borderWidth: CGFloat(viewStore.windowBorderWidth)
-                        )
+                        VStack {
+                            VStack(alignment: .leading) {
+                                //TextField("", value: $borderWidth, formatter: NumberFormatter())
+                                
+                                Text("F")
+                                    .bold()
+                                    .font(.title3)
+                                
+                                Text("Deasd alskj elasjsu fuaha")
+                                    .lineLimit(1)
+                                    .foregroundColor(Color(.gray))
+                                
+                                HStack {
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .opacity(Double(viewStore.activeWindowOpacity))
+                                        .border(viewStore.activeWindowBorderColor.color, width: CGFloat(viewStore.windowBorderWidth))
+                                        .foregroundColor(Color(.controlBackgroundColor))
+                                        .overlay(Text("Focus").foregroundColor(.gray))
+                                    
+                                    VStack {
+                                        RoundedRectangle(cornerRadius: 6)
+                                            .opacity(Double(viewStore.normalWindowOpacity))
+                                            .border(viewStore.normalWindowBorderColor.color, width: CGFloat(viewStore.windowBorderWidth))
+                                            .foregroundColor(Color(.controlBackgroundColor))
+                                            .overlay(Text("Normal").foregroundColor(.gray))
+                                        RoundedRectangle(cornerRadius: 6)
+                                            .opacity(Double(viewStore.normalWindowOpacity))
+                                            .border(viewStore.normalWindowBorderColor.color, width: CGFloat(viewStore.windowBorderWidth))
+                                            .foregroundColor(Color(.controlBackgroundColor))
+                                            .overlay(Text("Normal").foregroundColor(.gray))
+                                    }
+                                }
+                                .padding()
+                                .frame(height: 400)
+                                .background(Color(.windowBackgroundColor))
+                                
+                                
+                                HStack {
+                                    //Active/Focused
+                                    VStack(alignment: .leading) {
+                                        HStack {
+                                            Text("Border")
+                                            ColorPicker("", selection: viewStore.binding(keyPath: \.activeWindowBorderColor.color, send: Yabai.Action.keyPath))
+                                                .labelsHidden()
+                                            
+                                            ForEach([Color.blue, .purple, .pink, .red, .orange, .yellow, .green, .gray], id: \.self) { color in
+                                                Button(action: { viewStore.send(.updateActiveWindowBorderColor(color))}) {
+                                                    Circle()
+                                                        .overlay(
+                                                            Circle()
+                                                                .foregroundColor(.white)
+                                                                .frame(width: 6)
+                                                                .opacity(viewStore.activeWindowBorderColor.color == color ? 1 : 0)
+                                                        )
+                                                }
+                                                .buttonStyle(PlainButtonStyle())
+                                                .frame(width: 16)
+                                                .foregroundColor(color)
+                                            }
+                                        }
+                                        HStack {
+                                            Text("Opacity")
+                                            Slider(value: viewStore.binding(keyPath: \.activeWindowOpacity, send: Yabai.Action.keyPath))
+                                        }
+                                    }
+                                    //Normal
+                                    VStack(alignment: .leading) {
+                                        HStack {
+                                            Text("Border")
+                                            ColorPicker("", selection: viewStore.binding(keyPath: \.normalWindowBorderColor.color, send: Yabai.Action.keyPath))
+                                                .labelsHidden()
+                                            
+                                            ForEach([Color.blue, .purple, .pink, .red, .orange, .yellow, .green, .gray], id: \.self) { color in
+                                                Button(action: { viewStore.send(.updateNormalWindowBorderColor(color))}) {
+                                                    Circle()
+                                                        .overlay(
+                                                            Circle()
+                                                                .foregroundColor(.white)
+                                                                .frame(width: 6)
+                                                                .opacity(viewStore.normalWindowBorderColor.color == color ? 1 : 0)
+                                                        )
+                                                }
+                                                .buttonStyle(PlainButtonStyle())
+                                                .frame(width: 16)
+                                                .foregroundColor(color)
+                                            }
+                                        }
+                                        
+                                        HStack {
+                                            Text("Opacity")
+                                            Slider(value: viewStore.binding(keyPath: \.normalWindowOpacity, send: Yabai.Action.keyPath))
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
-                    TextField("", value: viewStore.binding(keyPath: \.windowBorderWidth, send: Yabai.Action.keyPath), formatter: NumberFormatter())
+                    HStack {
+                        Text("Border Width")
+                        Slider(value: viewStore.binding(get: \.windowBorderWidth, send: Yabai.Action.updateWindowBorderWidth), in: 0...30)
+                    }
                 }
                 // Disable Shadows
                 Divider()

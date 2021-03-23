@@ -56,7 +56,7 @@ yabai -m config normal_window_opacity \(normalWindowOpacity)
 
 # Borders
 yabai -m config window_border \(windowBorder == true ? "on" : "off")
-yabai -m config window_border_width \(windowBorderWidth)
+yabai -m config window_border_width \(Int(windowBorderWidth))
 yabai -m config active_window_border_color \"\(activeWindowBorderColor.asHexString)\"
 yabai -m config normal_window_border_color \"\(normalWindowBorderColor.asHexString)\"
 

@@ -38,7 +38,7 @@ struct Yabai {
         
         
         var windowBorder             : Bool              = false
-        var windowBorderWidth        : Int               = 0
+        var windowBorderWidth        : Float             = 0
         var activeWindowBorderColor  : CodableColor      = .init(color: .green)
         var normalWindowBorderColor  : CodableColor      = .init(color: .red)
         
@@ -205,6 +205,9 @@ struct Yabai {
         case keyPath(BindingAction<Yabai.State>)
         case toggleSIP
         case updateLayout(Yabai.State.Layout)
+        case updateActiveWindowBorderColor(Color)
+        case updateNormalWindowBorderColor(Color)
+        case updateWindowBorderWidth(Float)
     }
 }
 
@@ -221,6 +224,18 @@ extension Yabai {
             
         case let .updateLayout(layout):
             state.layout = layout
+            return .none
+            
+        case let .updateActiveWindowBorderColor(color):
+            state.activeWindowBorderColor.color = color
+            return .none
+            
+        case let .updateNormalWindowBorderColor(color):
+            state.normalWindowBorderColor.color = color
+            return .none
+            
+        case let .updateWindowBorderWidth(num):
+            state.windowBorderWidth = num
             return .none
         }
     }
