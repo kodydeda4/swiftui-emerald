@@ -28,7 +28,7 @@ struct Yabai {
         var windowTopmost            : Bool              = false
         var disableShadows           : Bool              = false
         var windowShadow             : WindowShadow      = .off
-        var windowOpacity            : Bool              = false
+
         var windowOpacityDuration    : Float             = 100
         var activeWindowOpacity      : Float             = 100
         var normalWindowOpacity      : Float             = 100
@@ -37,7 +37,6 @@ struct Yabai {
         var autoBalance              : Bool              = false
         
         
-        var windowBorder             : Bool              = false
         var windowBorderWidth        : Float             = 0
         var activeWindowBorderColor  : CodableColor      = .init(color: .green)
         var normalWindowBorderColor  : CodableColor      = .init(color: .red)

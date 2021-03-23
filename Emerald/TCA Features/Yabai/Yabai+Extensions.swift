@@ -49,13 +49,13 @@ yabai -m config window_gap \(windowGap)
 yabai -m config window_shadow \(!disableShadows ? "on" : windowShadow.rawValue)
 
 # Opacity Effects
-yabai -m config window_opacity \(windowOpacity == true ? "on" : "off")
+yabai -m config window_opacity \(windowOpacityDuration > 0 ? "on" : "off")
 yabai -m config window_opacity_duration \(windowOpacityDuration)
 yabai -m config active_window_opacity \(activeWindowOpacity)
 yabai -m config normal_window_opacity \(normalWindowOpacity)
 
 # Borders
-yabai -m config window_border \(windowBorder == true ? "on" : "off")
+yabai -m config window_border \(windowBorderWidth > 0 ? "on" : "off")
 yabai -m config window_border_width \(Int(windowBorderWidth))
 yabai -m config active_window_border_color \"\(activeWindowBorderColor.asHexString)\"
 yabai -m config normal_window_border_color \"\(normalWindowBorderColor.asHexString)\"

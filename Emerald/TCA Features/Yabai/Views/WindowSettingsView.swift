@@ -29,38 +29,28 @@ struct WindowSettingsView: View {
                     HStack {
                         VStack {
                             VStack(alignment: .leading) {
-                                //TextField("", value: $borderWidth, formatter: NumberFormatter())
-                                
-                                Text("F")
-                                    .bold()
-                                    .font(.title3)
-                                
-                                Text("Deasd alskj elasjsu fuaha")
-                                    .lineLimit(1)
-                                    .foregroundColor(Color(.gray))
-                                
                                 HStack {
                                     RoundedRectangle(cornerRadius: 6)
                                         .opacity(Double(viewStore.activeWindowOpacity))
-                                        .border(viewStore.activeWindowBorderColor.color, width: CGFloat(viewStore.windowBorderWidth))
+                                        .border(viewStore.activeWindowBorderColor.color, width: CGFloat(viewStore.windowBorderWidth/2))
                                         .foregroundColor(Color(.controlBackgroundColor))
                                         .overlay(Text("Focus").foregroundColor(.gray))
                                     
                                     VStack {
                                         RoundedRectangle(cornerRadius: 6)
                                             .opacity(Double(viewStore.normalWindowOpacity))
-                                            .border(viewStore.normalWindowBorderColor.color, width: CGFloat(viewStore.windowBorderWidth))
+                                            .border(viewStore.normalWindowBorderColor.color, width: CGFloat(viewStore.windowBorderWidth/2))
                                             .foregroundColor(Color(.controlBackgroundColor))
                                             .overlay(Text("Normal").foregroundColor(.gray))
                                         RoundedRectangle(cornerRadius: 6)
                                             .opacity(Double(viewStore.normalWindowOpacity))
-                                            .border(viewStore.normalWindowBorderColor.color, width: CGFloat(viewStore.windowBorderWidth))
+                                            .border(viewStore.normalWindowBorderColor.color, width: CGFloat(viewStore.windowBorderWidth/2))
                                             .foregroundColor(Color(.controlBackgroundColor))
                                             .overlay(Text("Normal").foregroundColor(.gray))
                                     }
                                 }
                                 .padding()
-                                .frame(height: 400)
+                                .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fill)
                                 .background(Color(.windowBackgroundColor))
                                 
                                 
@@ -173,46 +163,7 @@ struct WindowSettingsView: View {
                         .disabled(!viewStore.disableShadows || viewStore.sipEnabled)
                         .opacity( !viewStore.disableShadows || viewStore.sipEnabled ? 0.5 : 1.0)
                 }
-                
-                // Opacity Effects
-                //                Divider()
-                //                VStack(alignment: .leading) {
-                //                    HStack {
-                //                        Group {
-                //                            Toggle("", isOn: viewStore.binding(keyPath: \.windowOpacity, send: Yabai.Action.keyPath))
-                //                                .labelsHidden()
-                //
-                //                            Text("Opacity Effects")
-                //                                .bold().font(.title3)
-                //                        }
-                //                        .disabled(viewStore.sipEnabled)
-                //                        .opacity( viewStore.sipEnabled ? 0.5 : 1.0)
-                //
-                //                        Spacer()
-                //                        SIPButton(store: Root.defaultStore)
-                //                    }
-                //
-                //                    VStack(alignment: .leading) {
-                //                        VStack(alignment: .leading) {
-                //                            Text("Animation Duration").foregroundColor(Color(.gray))
-                //                            Slider(value: viewStore.binding(keyPath: \.windowOpacityDuration, send: Yabai.Action.keyPath))
-                //                        }
-                //                        VStack(alignment: .leading) {
-                //                            Text("Active Windows").foregroundColor(Color(.gray))
-                //                            Slider(value: viewStore.binding(keyPath: \.activeWindowOpacity, send: Yabai.Action.keyPath))
-                //                        }
-                //                        VStack(alignment: .leading) {
-                //                            Text("Normal Windows").foregroundColor(Color(.gray))
-                //                            Slider(value: viewStore.binding(keyPath: \.normalWindowOpacity, send: Yabai.Action.keyPath))
-                //                        }
-                //                        Text("Change window opacity")
-                //                            .foregroundColor(Color(.gray))
-                //                            .opacity( viewStore.sipEnabled ? 0.5 : 1.0)
-                //                    }
-                //                    .disabled(!viewStore.windowOpacity || viewStore.sipEnabled)
-                //                    .opacity( !viewStore.windowOpacity || viewStore.sipEnabled ? 0.5 : 1.0)
-                //                }
-                
+
                 // Float-On-Top
                 //                VStack(alignment: .leading) {
                 //                    Divider()
