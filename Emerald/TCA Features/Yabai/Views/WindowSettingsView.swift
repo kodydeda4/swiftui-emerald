@@ -29,23 +29,45 @@ struct WindowSettingsView: View {
                     HStack {
                         VStack {
                             HStack {
-                                RoundedRectangle(cornerRadius: 10)
+                                RoundedRectangle(cornerRadius: 6)
                                     .opacity(Double(viewStore.activeWindowOpacity))
-                                    .border(viewStore.activeWindowBorderColor.color, width: CGFloat(viewStore.windowBorderWidth/2))
                                     .foregroundColor(Color(.controlBackgroundColor))
                                     .overlay(Text("Focus").foregroundColor(.gray))
+                                    .shadow(radius: 6)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 6)
+                                            .stroke(Color.gray, lineWidth: 0.75)
+                                            .opacity(Double(viewStore.activeWindowOpacity))
+                                    )
+                                    .overlay(Rectangle().stroke(viewStore.activeWindowBorderColor.color, lineWidth: CGFloat(viewStore.windowBorderWidth/2)))
+                                    .padding()
                                 
                                 VStack {
-                                    RoundedRectangle(cornerRadius: 10)
+                                    RoundedRectangle(cornerRadius: 6)
                                         .opacity(Double(viewStore.normalWindowOpacity))
-                                        .border(viewStore.normalWindowBorderColor.color, width: CGFloat(viewStore.windowBorderWidth/2))
                                         .foregroundColor(Color(.controlBackgroundColor))
-                                        .overlay(Text("Normal").foregroundColor(.gray))
-                                    RoundedRectangle(cornerRadius: 10)
+                                        .overlay(Text("Focus").foregroundColor(.gray))
+                                        .shadow(radius: 6)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 6)
+                                                .stroke(Color.gray, lineWidth: 0.75)
+                                                .opacity(Double(viewStore.normalWindowOpacity))
+                                        )
+                                        .overlay(Rectangle().stroke(viewStore.normalWindowBorderColor.color, lineWidth: CGFloat(viewStore.windowBorderWidth/2)))
+                                        .padding()
+
+                                    RoundedRectangle(cornerRadius: 6)
                                         .opacity(Double(viewStore.normalWindowOpacity))
-                                        .border(viewStore.normalWindowBorderColor.color, width: CGFloat(viewStore.windowBorderWidth/2))
                                         .foregroundColor(Color(.controlBackgroundColor))
-                                        .overlay(Text("Normal").foregroundColor(.gray))
+                                        .overlay(Text("Focus").foregroundColor(.gray))
+                                        .shadow(radius: 6)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 6)
+                                                .stroke(Color.gray, lineWidth: 0.75)
+                                                .opacity(Double(viewStore.normalWindowOpacity))
+                                        )
+                                        .overlay(Rectangle().stroke(viewStore.normalWindowBorderColor.color, lineWidth: CGFloat(viewStore.windowBorderWidth/2)))
+                                        .padding()
                                 }
                             }
                             .padding()
