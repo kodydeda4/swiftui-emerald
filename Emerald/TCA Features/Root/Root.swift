@@ -38,6 +38,8 @@ struct Root {
         case load(Environment.CodableState)
         case export(Environment.CodableState)
         
+        case keyboardButtonTapped
+        case lockButtonTapped
         case powerButtonTapped
         case powerButtonAnimation
         case applyChangesButtonTapped
@@ -276,6 +278,12 @@ extension Root {
                 state.alert = nil
                 return Effect(value: .homebrew(.restartYabai))
                 
+            case .lockButtonTapped:
+                return Effect(value: .yabai(.toggleSIP))
+                
+            case .keyboardButtonTapped:
+                return Effect(value: .homebrew(.toggleSKHD))
+                                    
             case .dismissResetAlert:
                 state.alert = nil
                 return .none
@@ -299,6 +307,10 @@ extension Root {
                 return .none
                 
             case .applyChangesButtonTapped:
+                //                        viewStore.send(.toggleApplyingChanges)
+                //                        viewStore.send(.export(.yabai))
+                //                        viewStore.send(.export(.skhd))
+                //                        viewStore.send(.homebrew(.restartYabai))
                 return Effect(value: .applyChangesButtonAnimation)
                 
             case .applyChangesButtonAnimation:

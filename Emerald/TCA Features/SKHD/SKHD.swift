@@ -14,12 +14,10 @@ struct SKHD {
         var stateURL  = URL(fileURLWithPath: "SKHDState.json", relativeTo: .HomeDirectory)
         var configURL = URL(fileURLWithPath: ".skhdrc", relativeTo: .HomeDirectory)
         var version   = run("/usr/local/bin/skhd", "-v").stdout
-        var isEnabled = true
     }
     enum Action: Equatable {
         case reset
         case setDefaults
-        case toggleIsEnabled
     }
 }
 
@@ -33,10 +31,6 @@ extension SKHD {
             
         case .setDefaults:
             KeyboardShortcuts.setShortcut(.init(.a, modifiers: [.command, .shift]), for: KeyboardShortcuts.Name.focusEast)
-            return .none
-            
-        case .toggleIsEnabled:
-            state.isEnabled.toggle()
             return .none
         }
     }

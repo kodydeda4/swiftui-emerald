@@ -43,7 +43,7 @@ struct RootView: View {
                 }
                 ToolbarItem {
                     Button<Image>("lock.fill") {
-                        viewStore.send(.yabai(.toggleSIP))
+                        viewStore.send(.lockButtonTapped)
                     }
                     .help("Toggle SIP Lock")
                     .foregroundColor(viewStore.yabai.sipEnabled && !viewStore.disabled ? .accentColor : .gray)
@@ -52,11 +52,11 @@ struct RootView: View {
                 }
                 ToolbarItem {
                     Button<Image>("keyboard") {
-                        viewStore.send(.skhd(.toggleIsEnabled))
+                        viewStore.send(.keyboardButtonTapped)
                     }
                     .help("Toggle Keyboard Shortcuts")
-                    .foregroundColor(viewStore.skhd.isEnabled && !viewStore.disabled ? .accentColor : .gray)
-                    .opacity(viewStore.skhd.isEnabled && !viewStore.disabled ? 1 : 0.5)
+                    .foregroundColor(viewStore.homebrew.skhdRunning && !viewStore.disabled ? .accentColor : .gray)
+                    .opacity(viewStore.homebrew.skhdRunning && !viewStore.disabled ? 1 : 0.5)
                     .disabled(viewStore.disabled)
                 }
 //                ToolbarItem {
@@ -80,10 +80,6 @@ struct RootView: View {
                 ToolbarItem {
                     Button("Apply Changes") {
                         viewStore.send(.applyChangesButtonTapped)
-//                        viewStore.send(.toggleApplyingChanges)
-//                        viewStore.send(.export(.yabai))
-//                        viewStore.send(.export(.skhd))
-//                        viewStore.send(.homebrew(.restartYabai))
                     }
                     .help("⇧ ⌘ A")
                     .keyboardShortcut("a", modifiers: [.command, .shift])
