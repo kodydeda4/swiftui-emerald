@@ -25,54 +25,61 @@ struct Root {
         var powerButtonAnimating        = false
         var applyChangesButtonAnimating = false
     }
+    
     enum Action: Equatable {
+        case onAppear
+        case save
+        
+        //Features
         case yabai(Yabai.Action)
         case skhd(SKHD.Action)
         case macOSAnimations(MacOSAnimations.Action)
         case homebrew(Homebrew.Action)
         case onboarding(Onboarding.Action)
-        case resetButtonTapped
-        case dismissResetAlert
-        case confirmResetAlert
-        case saveResult(Result<Bool, CacheError>)
-        case load(Environment.CodableState)
-        case export(Environment.CodableState)
         
+        //ToolbarButtons
         case sidebarButtonTapped
         case keyboardButtonTapped
         case lockButtonTapped
+        
+        //ResetAlert
+        case resetButtonTapped
+        case dismissResetAlert
+        case confirmResetAlert
+
+        //PowerButton
         case powerButtonTapped
         case powerButtonAnimation
+        
+        //ApplyChangesButton
         case applyChangesButtonTapped
-        case applyChangesButtonAnimation
     }
     
     struct Environment {
-        enum CodableState {
-            case yabai
-            case skhd
-            case macOSAnimations
-        }
+        func writeState<State>(_ state: State, to url: URL) -> Result<Bool, Error> where State: Codable {
+            let startDate = Date()
+            
+            print("writeState: to: '\(url.path)'")
+            do {
+                try JSONEncoder()
+                    .encode(state)
+                    .write(to: url)
                 
-        func savePublisher<Value>(_ value: Value, to url: URL) -> AnyPublisher<(Value, URL), Never> where Value: Codable {
-            let foo = Just((value, url))
-                .eraseToAnyPublisher()
-            return foo
+                print("\(Date()) elapsed: '\(startDate.timeIntervalSinceNow * -1000) ms'")
+                return .success(true)
+            } catch {
+                return .failure(error)
+            }
         }
         
-        func save<Value>(_ value: Value, to url: URL) -> Effect<Action, Never> where Value: Codable {
-            let foo = savePublisher(value, to: url)
-                .map { (tuple) -> Result<Bool, CacheError> in
-                    let rv = JSONEncoder().writeState(
-                        tuple.0,
-                        to: tuple.1
-                    )
-                    return rv
-                }
-                .eraseToAnyPublisher()
-                .eraseToEffect()
-                .map(Action.saveResult)
-            return foo
+        func decodeState<State>(_ type: State.Type, from url: URL) -> Result<State, Error> where State: Codable {
+            do {
+                let decoded = try JSONDecoder().decode(type.self, from: Data(contentsOf: url))
+                return .success(decoded)
+            }
+            catch {
+                return .failure(error)
+            }
         }
         
         func writeConfig(_ config: String, to url: URL) -> Result<Bool, Error> {
@@ -87,7 +94,6 @@ struct Root {
         }
     }
 }
-
 
 extension Root {
     static let reducer = Reducer<State, Action, Environment>.combine(
@@ -120,20 +126,33 @@ extension Root {
             struct SaveID: Hashable {}
             
             switch action {
-            case .yabai:
+            
+            case .onAppear:
+                switch environment.decodeState(Yabai.State.self, from: state.yabai.stateURL) {
+                case let .success(decodedState): state.yabai = decodedState
+                case let .failure(error): state.error = error.localizedDescription
+                }
+                switch environment.decodeState(SKHD.State.self, from: state.skhd.stateURL) {
+                case let .success(decodedState): state.skhd = decodedState
+                case let .failure(error): state.error = error.localizedDescription
+                }
+                switch environment.decodeState(MacOSAnimations.State.self, from: state.macOSAnimations.stateURL) {
+                case let .success(decodedState): state.macOSAnimations = decodedState
+                case let .failure(error): state.error = error.localizedDescription
+                }
+                return .none
+            
+            case .save:
+                let _ = environment.writeState(state.yabai, to: state.yabai.stateURL)
+                let _ = environment.writeState(state.skhd,  to: state.skhd.stateURL)
+                let _ = environment.writeState(state.macOSAnimations, to: state.macOSAnimations.stateURL)
                 let _ = environment.writeConfig(state.yabai.asConfig, to: state.yabai.configURL)
-                let _ = environment.save(state.yabai, to: state.yabai.stateURL)
-                return .none
-                
-            case .skhd:
-                let _ = environment.writeConfig(state.skhd.asConfig, to: state.skhd.configURL)
-                let _ = environment.save(state.skhd, to: state.skhd.stateURL)
-                return .none
-                
-            case let .macOSAnimations(subAction):
+                let _ = environment.writeConfig(state.skhd.asConfig,  to: state.skhd.configURL)
                 let _ = environment.writeConfig(state.macOSAnimations.asShellScript, to: state.macOSAnimations.shellScriptURL)
-                let _ = environment.save(state.macOSAnimations, to: state.macOSAnimations.stateURL)
                 return .none
+
+            case .yabai, .skhd, .macOSAnimations:
+                return Effect(value: .save)
                 
             case .homebrew:
                 return .none
@@ -146,86 +165,13 @@ extension Root {
                     .firstResponder?
                     .tryToPerform(#selector(NSSplitViewController.toggleSidebar), with: nil)
                 return .none
+                
+            case .keyboardButtonTapped:
+                return Effect(value: .homebrew(.toggleSKHD))
 
-            case .saveResult(.success):
-                state.error = ""
-                print("We saved ... ")
-                return .none
-                
-            case let .saveResult(.failure(error)):
-                state.error = error.localizedDescription
-                return .none
-                
-            case let .load(codableState):
-                switch codableState {
-                case .yabai:
-                    switch JSONDecoder().loadState(
-                        Yabai.State.self,
-                        from: state.yabai.stateURL
-                    ) {
-                    case let .success(decodedState):
-                        state.yabai = decodedState
-                    case let .failure(error):
-                        state.error = error.localizedDescription
-                    }
-                case .skhd:
-                    switch JSONDecoder().loadState(
-                        SKHD.State.self,
-                        from: state.skhd.stateURL
-                    ) {
-                    case let .success(decodedState):
-                        state.skhd = decodedState
-                    case let .failure(error):
-                        state.error = error.localizedDescription
-                    }
-                case .macOSAnimations:
-                    switch JSONDecoder().loadState(
-                        MacOSAnimations.State.self,
-                        from: state.macOSAnimations.stateURL
-                    ) {
-                    case let .success(decodedState):
-                        state.macOSAnimations = decodedState
-                    case let .failure(error):
-                        state.error = error.localizedDescription
-                    }
-                }
-                return .none
-                
-            case let .export(codableState):
-                switch codableState {
-                case .yabai:
-                    switch JSONDecoder().writeConfig(
-                        state.yabai.asConfig,
-                        to: state.yabai.configURL
-                    ) {
-                    case .success:
-                        state.error = ""
-                    case let .failure(error):
-                        state.error = error.localizedDescription
-                    }
-                case .skhd:
-                    switch JSONDecoder().writeConfig(
-                        state.skhd.asConfig,
-                        to: state.skhd.configURL
-                    ) {
-                    case .success:
-                        state.error = ""
-                    case let .failure(error):
-                        state.error = error.localizedDescription
-                    }
-                case .macOSAnimations:
-                    switch JSONDecoder().writeConfig(
-                        state.macOSAnimations.asShellScript,
-                        to: state.macOSAnimations.shellScriptURL
-                    ) {
-                    case .success:
-                        state.error = ""
-                    case let .failure(error):
-                        state.error = error.localizedDescription
-                    }
-                }
-                return .none
-                                                
+            case .lockButtonTapped:
+                return Effect(value: .yabai(.toggleSIP))
+
             case .resetButtonTapped:
                 state.alert = .init(
                     title: TextState("Reset Settings?"),
@@ -234,66 +180,16 @@ extension Root {
                     secondaryButton: .cancel()
                 )
                 return .none
-                
-            case .confirmResetAlert:
-                state.yabai = Yabai.State()
-                state.skhd = SKHD.State()
-                state.macOSAnimations = MacOSAnimations.State()
-                
-                let _ = environment.writeConfig(state.yabai.asConfig, to: state.yabai.configURL)
-                let _ = environment.save(state.yabai, to: state.yabai.stateURL)
-                
-                let _ = environment.writeConfig(state.skhd.asConfig, to: state.yabai.configURL)
-                let _ = environment.save(state.skhd, to: state.skhd.stateURL)
 
-                let _ = environment.writeConfig(state.macOSAnimations.asShellScript, to: state.macOSAnimations.shellScriptURL)
-                let _ = environment.save(state.macOSAnimations, to: state.macOSAnimations.stateURL)
-
-
-                KeyboardShortcuts.reset(KeyboardShortcuts.Name.allCases)
-                state.skhd = SKHD.State()
-                
-                KeyboardShortcuts.set(.restartYabai,   [.option, .shift             ], .r)
-                
-                KeyboardShortcuts.set(.gaps,           [.control, .option,          ], .g)
-                KeyboardShortcuts.set(.padding,        [.control, .option,          ], .h)
-                KeyboardShortcuts.set(.split,          [.control, .option,          ], .x)
-                KeyboardShortcuts.set(.balance,        [.control, .option,          ], .b)
-                
-                
-                
-                KeyboardShortcuts.set(.float,          [.control, .option,          ], .one)
-                KeyboardShortcuts.set(.bsp,            [.control, .option,          ], .two)
-                KeyboardShortcuts.set(.stack,          [.control, .option,          ], .three)
-
-                KeyboardShortcuts.set(.focusNorth,     [.control,                   ], .upArrow)
-                KeyboardShortcuts.set(.focusSouth,     [.control,                   ], .downArrow)
-                KeyboardShortcuts.set(.focusEast,      [.control,                   ], .rightArrow)
-                KeyboardShortcuts.set(.focusWest,      [.control,                   ], .leftArrow)
-                  
-                KeyboardShortcuts.set(.resizeTop,      [.control, .option,          ], .upArrow)
-                KeyboardShortcuts.set(.resizeBottom,   [.control, .option,          ], .downArrow)
-                KeyboardShortcuts.set(.resizeRight,    [.control, .option,          ], .rightArrow)
-                KeyboardShortcuts.set(.resizeLeft,     [.control, .option,          ], .leftArrow)
-                 
-                KeyboardShortcuts.set(.moveNorth,      [.control, .option, .command,], .upArrow)
-                KeyboardShortcuts.set(.moveSouth,      [.control, .option, .command,], .downArrow)
-                KeyboardShortcuts.set(.moveEast,       [.control, .option, .command,], .rightArrow)
-                KeyboardShortcuts.set(.moveWest,       [.control, .option, .command,], .leftArrow)
-
-                
-                state.alert = nil
-                return Effect(value: .homebrew(.restartYabai))
-                
-            case .lockButtonTapped:
-                return Effect(value: .yabai(.toggleSIP))
-                
-            case .keyboardButtonTapped:
-                return Effect(value: .homebrew(.toggleSKHD))
-                                    
             case .dismissResetAlert:
                 state.alert = nil
                 return .none
+
+            case .confirmResetAlert:
+                state = Root.State()
+                KeyboardShortcuts.resetEmeraldDefaults()
+                return Effect(value: .save)
+                                    
                 
             case .powerButtonTapped:
                 state.disabled.toggle()
@@ -314,27 +210,14 @@ extension Root {
                 return .none
                 
             case .applyChangesButtonTapped:
-                //                        viewStore.send(.toggleApplyingChanges)
-                //                        viewStore.send(.export(.yabai))
-                //                        viewStore.send(.export(.skhd))
-                //                        viewStore.send(.homebrew(.restartYabai))
-                return Effect(value: .applyChangesButtonAnimation)
                 
-            case .applyChangesButtonAnimation:
-                state.applyChangesButtonAnimating.toggle()
-                
-                if state.applyChangesButtonAnimating {
-                    return Effect(value: .powerButtonAnimation)
-                        .delay(for: 2.0, scheduler: DispatchQueue.main)
-                        .eraseToEffect()
-                }
-                return .none
+                return Effect(value: .homebrew(.restartYabai))
+                    .delay(for: 2.0, scheduler: DispatchQueue.main)
+                    .eraseToEffect()
             }
         }
     )
 }
-
-
 
 extension Root {
     static let defaultStore = Store(
