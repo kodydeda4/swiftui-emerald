@@ -33,7 +33,7 @@
 		3361CF1125E6EF1300016875 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CF0E25E6EF1300016875 /* SectionView.swift */; };
 		3361CF1225E6EF1300016875 /* DebugConfigFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CF0F25E6EF1300016875 /* DebugConfigFileView.swift */; };
 		3361CF1325E6EF1300016875 /* SpecialTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CF1025E6EF1300016875 /* SpecialTextView.swift */; };
-		336627362602642300C4B009 /* ApplyingChangesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336627352602642300C4B009 /* ApplyingChangesView.swift */; };
+		336627362602642300C4B009 /* ApplyChangesButtonTappedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336627352602642300C4B009 /* ApplyChangesButtonTappedView.swift */; };
 		336BC3A925F7FA5500BE3EBA /* NewWindowSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336BC3A825F7FA5500BE3EBA /* NewWindowSettings.swift */; };
 		336BC3B025F8069700BE3EBA /* FocusSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336BC3AF25F8069700BE3EBA /* FocusSettingsView.swift */; };
 		336BC3BA25F85B7C00BE3EBA /* SIPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336BC3B925F85B7C00BE3EBA /* SIPButton.swift */; };
@@ -82,7 +82,7 @@
 		3361CF0E25E6EF1300016875 /* SectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		3361CF0F25E6EF1300016875 /* DebugConfigFileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugConfigFileView.swift; sourceTree = "<group>"; };
 		3361CF1025E6EF1300016875 /* SpecialTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialTextView.swift; sourceTree = "<group>"; };
-		336627352602642300C4B009 /* ApplyingChangesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyingChangesView.swift; sourceTree = "<group>"; };
+		336627352602642300C4B009 /* ApplyChangesButtonTappedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyChangesButtonTappedView.swift; sourceTree = "<group>"; };
 		336BC3A825F7FA5500BE3EBA /* NewWindowSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWindowSettings.swift; sourceTree = "<group>"; };
 		336BC3AF25F8069700BE3EBA /* FocusSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusSettingsView.swift; sourceTree = "<group>"; };
 		336BC3B925F85B7C00BE3EBA /* SIPButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIPButton.swift; sourceTree = "<group>"; };
@@ -252,7 +252,7 @@
 				3385DF6625D6270B00ACDE21 /* SidebarView.swift */,
 				3385DF6925D6279200ACDE21 /* AboutView.swift */,
 				336BC3B925F85B7C00BE3EBA /* SIPButton.swift */,
-				336627352602642300C4B009 /* ApplyingChangesView.swift */,
+				336627352602642300C4B009 /* ApplyChangesButtonTappedView.swift */,
 				338973962603A7850052F159 /* PowerButtonTappedView.swift */,
 			);
 			path = Root;
@@ -395,7 +395,7 @@
 				33AB717A25F7C99500870F75 /* KeyboardShortcuts+Extensions.swift in Sources */,
 				3356BCAD25F287D9006EB641 /* WindowSettingsView.swift in Sources */,
 				3380D33725D0723000C10913 /* Root.swift in Sources */,
-				336627362602642300C4B009 /* ApplyingChangesView.swift in Sources */,
+				336627362602642300C4B009 /* ApplyChangesButtonTappedView.swift in Sources */,
 				3385DF6725D6270B00ACDE21 /* SidebarView.swift in Sources */,
 				339C453525D6ED0F0079ACA1 /* OnboardingView.swift in Sources */,
 				3341B01725F0702C00833B56 /* MacOSAnimations+Extensions.swift in Sources */,

@@ -13,6 +13,7 @@ import KeyboardShortcuts
 
 struct Root {
     struct State: Equatable {
+        var disabled         = false
         var yabai            = Yabai.State()
         var skhd             = SKHD.State()
         var macOSAnimations  = MacOSAnimations.State()
@@ -20,10 +21,9 @@ struct Root {
         var onboarding       = Onboarding.State()
         var alert            : AlertState<Root.Action>?
         var error            = ""
-//        var applyingChanges  = false
-        var disabled             = false
-        var powerButtonAnimating = false
-//        var togglingActive   = false
+        
+        var powerButtonAnimating        = false
+        var applyChangesButtonAnimating = false
     }
     enum Action: Equatable {
         case yabai(Yabai.Action)
@@ -37,12 +37,12 @@ struct Root {
         case saveResult(Result<Bool, CacheError>)
         case load(Environment.CodableState)
         case export(Environment.CodableState)
-//        case toggleApplyingChanges
-//        case toggleEnabled
-//        case togglingActive
-//
+        
+        
         case powerButtonTapped
         case powerButtonAnimation
+        case applyChangesButtonTapped
+        case applyChangesButtonAnimation
     }
     
     struct Environment {
@@ -254,9 +254,9 @@ extension Root {
                 
                 
                 
-                KeyboardShortcuts.set(.float, [.control, .option,          ], .one)
-                KeyboardShortcuts.set(.bsp,      [.control, .option,          ], .two)
-                KeyboardShortcuts.set(.stack, [.control, .option,          ], .three)
+                KeyboardShortcuts.set(.float,          [.control, .option,          ], .one)
+                KeyboardShortcuts.set(.bsp,            [.control, .option,          ], .two)
+                KeyboardShortcuts.set(.stack,          [.control, .option,          ], .three)
 
                 KeyboardShortcuts.set(.focusNorth,     [.control,                   ], .upArrow)
                 KeyboardShortcuts.set(.focusSouth,     [.control,                   ], .downArrow)
@@ -293,6 +293,19 @@ extension Root {
                 state.powerButtonAnimating.toggle()
                 
                 if state.powerButtonAnimating {
+                    return Effect(value: .powerButtonAnimation)
+                        .delay(for: 2.0, scheduler: DispatchQueue.main)
+                        .eraseToEffect()
+                }
+                return .none
+                
+            case .applyChangesButtonTapped:
+                return Effect(value: .applyChangesButtonAnimation)
+                
+            case .applyChangesButtonAnimation:
+                state.applyChangesButtonAnimating.toggle()
+                
+                if state.applyChangesButtonAnimating {
                     return Effect(value: .powerButtonAnimation)
                         .delay(for: 2.0, scheduler: DispatchQueue.main)
                         .eraseToEffect()

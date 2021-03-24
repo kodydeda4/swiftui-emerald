@@ -24,12 +24,12 @@ struct RootView: View {
                 viewStore.send(.load(.skhd))
                 viewStore.send(.load(.macOSAnimations))
             }
-//            .sheet(isPresented: viewStore.binding(get: \.onboarding.isOnboaring, send: .onboarding(.toggleIsOnboaring))) {
-//                OnboardingView(store: store.scope(state: \.onboarding, action: Root.Action.onboarding))
-//            }
-//            .sheet(isPresented: viewStore.binding(get: \.applyingChanges, send: .toggleApplyingChanges)) {
-//                ApplyingChangesView(store: store)
-//            }
+            .sheet(isPresented: viewStore.binding(get: \.onboarding.isOnboaring, send: .onboarding(.toggleIsOnboaring))) {
+                OnboardingView(store: store.scope(state: \.onboarding, action: Root.Action.onboarding))
+            }
+            .sheet(isPresented: viewStore.binding(get: \.applyChangesButtonAnimating, send: .applyChangesButtonAnimation)) {
+                ApplyChangesButtonTappedView(store: store)
+            }
             .sheet(isPresented: viewStore.binding(get: \.powerButtonAnimating, send: .powerButtonAnimation)) {
                 PowerButtonTappedView(store: store)
             }
@@ -79,6 +79,7 @@ struct RootView: View {
                 }
                 ToolbarItem {
                     Button("Apply Changes") {
+                        viewStore.send(.applyChangesButtonTapped)
 //                        viewStore.send(.toggleApplyingChanges)
 //                        viewStore.send(.export(.yabai))
 //                        viewStore.send(.export(.skhd))
