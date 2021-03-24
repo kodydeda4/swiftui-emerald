@@ -9,6 +9,7 @@ import SwiftUI
 import ComposableArchitecture
 import DynamicColor
 import SwiftShell
+import KeyboardShortcuts
 
 struct Yabai {
     struct State: Equatable, Codable {
@@ -203,10 +204,10 @@ struct Yabai {
     enum Action: Equatable {
         case keyPath(BindingAction<Yabai.State>)
         case toggleSIP
-        case updateLayout(Yabai.State.Layout)
         case updateActiveWindowBorderColor(Color)
         case updateNormalWindowBorderColor(Color)
         case updateWindowBorderWidth(Float)
+        case updateLayout(KeyboardShortcuts.Name)
     }
 }
 
@@ -220,11 +221,7 @@ extension Yabai {
         case .toggleSIP:
             state.sipEnabled.toggle()
             return .none
-            
-        case let .updateLayout(layout):
-            state.layout = layout
-            return .none
-            
+
         case let .updateActiveWindowBorderColor(color):
             state.activeWindowBorderColor.color = color
             return .none
@@ -236,6 +233,20 @@ extension Yabai {
         case let .updateWindowBorderWidth(num):
             state.windowBorderWidth = num
             return .none
+            
+        case let .updateLayout(shortcut):
+            switch shortcut {
+            case .float:
+                state.layout = .float
+            case .bsp:
+                state.layout = .bsp
+            case .stack:
+                state.layout = .stack
+            default:
+                return .none
+            }
+            return .none
+
         }
     }
     .binding(action: /Action.keyPath)

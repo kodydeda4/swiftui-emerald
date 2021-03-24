@@ -38,7 +38,6 @@ struct Root {
         case load(Environment.CodableState)
         case export(Environment.CodableState)
         
-        
         case powerButtonTapped
         case powerButtonAnimation
         case applyChangesButtonTapped

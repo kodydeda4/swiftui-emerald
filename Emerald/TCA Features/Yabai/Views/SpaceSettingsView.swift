@@ -35,7 +35,7 @@ struct SpaceSettingsView: View {
                                         .lineLimit(1)
                                         .foregroundColor(Color(.gray))
                                 
-                                    Button(action: {}) {
+                                    Button(action: { viewStore.send(.updateLayout(i)) }) {
                                         RoundedRectangle(cornerRadius: 6)
                                     }
                                     .buttonStyle(PlainButtonStyle())
