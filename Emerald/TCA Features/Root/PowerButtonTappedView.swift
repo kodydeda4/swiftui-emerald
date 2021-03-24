@@ -8,7 +8,7 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct TogglingActiveView: View {
+struct PowerButtonTappedView: View {
     let store: Store<Root.State, Root.Action>
     
     @State var opacity = true
@@ -19,10 +19,10 @@ struct TogglingActiveView: View {
                 Image(systemName: "power")
                     .resizable()
                     .scaledToFit()
-                    .foregroundColor(viewStore.enabled ? .green : .red)
+                    .foregroundColor(viewStore.disabled ? .red : .green)
                     .frame(width: 50, height: 50)
                 
-                Text(viewStore.enabled ? "Starting Up" : "Shutting Down")
+                Text(viewStore.disabled ? "Shutting Down" : "Starting Up")
                     .font(.title)
                     .fontWeight(.medium)
                     .padding()
@@ -36,9 +36,9 @@ struct TogglingActiveView: View {
     }
 }
 
-struct TogglingActiveView_Previews: PreviewProvider {
+struct PowerButtonTappedView_Previews: PreviewProvider {
     static var previews: some View {
-        TogglingActiveView(store: Root.defaultStore)
+        PowerButtonTappedView(store: Root.defaultStore)
     }
 }
 

@@ -12,7 +12,6 @@ struct Homebrew {
     struct State: Equatable {
         var version = run("/usr/local/bin/brew", "-v").stdout
         
-        
         var yabaiRunning = true
         var skhdRunning = true
         var macOSAnimationsRunning = true

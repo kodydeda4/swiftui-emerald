@@ -20,9 +20,10 @@ struct Root {
         var onboarding       = Onboarding.State()
         var alert            : AlertState<Root.Action>?
         var error            = ""
-        var applyingChanges  = false
-        var enabled          = true
-        var togglingActive   = false
+//        var applyingChanges  = false
+        var disabled             = false
+        var powerButtonAnimating = false
+//        var togglingActive   = false
     }
     enum Action: Equatable {
         case yabai(Yabai.Action)
@@ -36,11 +37,12 @@ struct Root {
         case saveResult(Result<Bool, CacheError>)
         case load(Environment.CodableState)
         case export(Environment.CodableState)
-        case toggleApplyingChanges
-        case toggleEnabled
-        case togglingActive
-        
+//        case toggleApplyingChanges
+//        case toggleEnabled
+//        case togglingActive
+//
         case powerButtonTapped
+        case powerButtonAnimation
     }
     
     struct Environment {
@@ -278,43 +280,20 @@ extension Root {
             case .dismissResetAlert:
                 state.alert = nil
                 return .none
-
-            case .toggleApplyingChanges:
-                state.applyingChanges.toggle()
-                
-                if state.applyingChanges {
-                    return Effect(value: .toggleApplyingChanges)
-                        .delay(for: 2.0, scheduler: DispatchQueue.main)
-                        .eraseToEffect()
-                }
-                return .none
-                
-            case .toggleEnabled:
-                // TODO: Does not properly disable SKHD or Animations
-                state.enabled.toggle()
-                return Effect(value: .homebrew(.toggleYabai))
-
-            
-            case .togglingActive:
-                // TODO: Does not properly disable SKHD or Animations
-                state.togglingActive.toggle()
-                
-                if state.togglingActive {
-                    let _ = Homebrew.Action.toggleYabai
-                    
-                    return Effect(value: .togglingActive)
-                        .delay(for: 2.0, scheduler: DispatchQueue.main)
-                        .eraseToEffect()
-                }
-                return .none
                 
             case .powerButtonTapped:
-                state.togglingActive.toggle()
+                state.disabled.toggle()
+//                return Effect(value: .homebrew(.toggleYabai))
+//                    .delay(for: 2.0, scheduler: DispatchQueue.main)
+//                    .eraseToEffect()
+                return Effect(value: .powerButtonAnimation)
+
                 
-                if state.togglingActive {
-                    let _ = Homebrew.Action.toggleYabai
-                    
-                    return Effect(value: .togglingActive)
+            case .powerButtonAnimation:
+                state.powerButtonAnimating.toggle()
+                
+                if state.powerButtonAnimating {
+                    return Effect(value: .powerButtonAnimation)
                         .delay(for: 2.0, scheduler: DispatchQueue.main)
                         .eraseToEffect()
                 }
