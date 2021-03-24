@@ -31,7 +31,7 @@ struct Root {
         case macOSAnimations(MacOSAnimations.Action)
         case homebrew(Homebrew.Action)
         case onboarding(Onboarding.Action)
-        case showResetAlert
+        case resetButtonTapped
         case dismissResetAlert
         case confirmResetAlert
         case saveResult(Result<Bool, CacheError>)
@@ -218,7 +218,7 @@ extension Root {
                 }
                 return .none
                                                 
-            case .showResetAlert:
+            case .resetButtonTapped:
                 state.alert = .init(
                     title: TextState("Reset Settings?"),
                     message: TextState("You cannot undo this action."),

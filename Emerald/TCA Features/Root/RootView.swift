@@ -71,7 +71,7 @@ struct RootView: View {
 //                }
                 ToolbarItem {
                     Button("Reset") {
-                        viewStore.send(.showResetAlert)
+                        viewStore.send(.resetButtonTapped)
                     }
                     .help("⇧ ⌘ R")
                     .keyboardShortcut("r", modifiers: [.command, .shift])
