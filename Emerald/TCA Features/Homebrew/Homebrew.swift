@@ -34,13 +34,13 @@ extension Homebrew {
             case .restartYabai:
                 let result = AppleScript.execute("/usr/local/bin/brew services restart yabai")
                 return .none
-                
-            //            case .restartYabaiLaunchCTL:
-            //                let result = AppleScript.execute(
-            //                    "/bin/launchctl kickstart -k \\\"gui/$UID/homebrew.mxcl.yabai\\\""
-            //                // do shell script "/bin/launchctl kickstart -k \"gui/$UID/homebrew.mxcl.yabai\""
-            //                )
-            //                return .none
+
+//            case .restartYabaiLaunchCTL:
+//                let result = AppleScript.execute(
+//                    "/bin/launchctl kickstart -k \\\"gui/$UID/homebrew.mxcl.yabai\\\""
+//                // do shell script "/bin/launchctl kickstart -k \"gui/$UID/homebrew.mxcl.yabai\""
+//                )
+//                return .none
                 
             case .toggleYabai:
                 switch state.yabaiRunning {

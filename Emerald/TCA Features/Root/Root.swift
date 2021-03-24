@@ -22,7 +22,7 @@ struct Root {
         var alert            : AlertState<Root.Action>?
         var error            = ""
         
-        var powerButtonAnimating        = false
+        var powerButtonAnimating = false
         var applyChangesButtonAnimating = false
     }
     
@@ -53,6 +53,7 @@ struct Root {
         
         //ApplyChangesButton
         case applyChangesButtonTapped
+        case applyChangesButtonAnimation
     }
     
     struct Environment {
@@ -154,10 +155,7 @@ extension Root {
             case .yabai, .skhd, .macOSAnimations:
                 return Effect(value: .save)
                 
-            case .homebrew:
-                return .none
-                
-            case .onboarding:
+            case .homebrew, .onboarding:
                 return .none
                 
             case .sidebarButtonTapped:
@@ -189,16 +187,14 @@ extension Root {
                 state = Root.State()
                 KeyboardShortcuts.resetEmeraldDefaults()
                 return Effect(value: .save)
-                                    
                 
             case .powerButtonTapped:
+                let _ = AppleScript.execute("/usr/local/bin/brew services \(state.disabled ? "start" : "stop") yabai")
+                let _ = AppleScript.execute("/usr/local/bin/brew services \(state.disabled ? "start" : "stop") skhd")
                 state.disabled.toggle()
-//                return Effect(value: .homebrew(.toggleYabai))
-//                    .delay(for: 2.0, scheduler: DispatchQueue.main)
-//                    .eraseToEffect()
+
                 return Effect(value: .powerButtonAnimation)
 
-                
             case .powerButtonAnimation:
                 state.powerButtonAnimating.toggle()
                 
@@ -210,10 +206,20 @@ extension Root {
                 return .none
                 
             case .applyChangesButtonTapped:
+                let _ = AppleScript.execute("/usr/local/bin/brew services restart yabai")
                 
-                return Effect(value: .homebrew(.restartYabai))
-                    .delay(for: 2.0, scheduler: DispatchQueue.main)
-                    .eraseToEffect()
+                return Effect(value: .applyChangesButtonAnimation)
+                
+            case .applyChangesButtonAnimation:
+                state.powerButtonAnimating.toggle()
+                
+                if state.applyChangesButtonAnimating {
+                    return Effect(value: .applyChangesButtonAnimation)
+                        .delay(for: 2.0, scheduler: DispatchQueue.main)
+                        .eraseToEffect()
+                }
+                return .none
+
             }
         }
     )

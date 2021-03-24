@@ -25,9 +25,10 @@ struct RootView: View {
             .sheet(isPresented: viewStore.binding(get: \.onboarding.isOnboaring, send: .onboarding(.toggleIsOnboaring))) {
                 OnboardingView(store: store.scope(state: \.onboarding, action: Root.Action.onboarding))
             }
-//            .sheet(isPresented: viewStore.binding(get: \.applyChangesButtonAnimating, send: .applyChangesButtonAnimation)) {
-//                ApplyChangesButtonTappedView(store: store)
-//            }
+            .sheet(isPresented: viewStore.binding(get: \.applyChangesButtonAnimating, send: .applyChangesButtonAnimation)) {
+                //ApplyChangesButtonTappedView(store: store)
+                Text("Woo")
+            }
             .sheet(isPresented: viewStore.binding(get: \.powerButtonAnimating, send: .powerButtonAnimation)) {
                 PowerButtonTappedView(store: store)
             }
