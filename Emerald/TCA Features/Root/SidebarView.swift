@@ -56,10 +56,6 @@ struct SidebarView: View {
     }
 }
 
-func toggleSidebar() {
-    NSApp.keyWindow?.firstResponder?.tryToPerform(#selector(NSSplitViewController.toggleSidebar), with: nil)
-}
-
 
 
 // MARK:- SwiftUI Previews

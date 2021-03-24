@@ -38,6 +38,7 @@ struct Root {
         case load(Environment.CodableState)
         case export(Environment.CodableState)
         
+        case sidebarButtonTapped
         case keyboardButtonTapped
         case lockButtonTapped
         case powerButtonTapped
@@ -138,6 +139,12 @@ extension Root {
                 return .none
                 
             case .onboarding:
+                return .none
+                
+            case .sidebarButtonTapped:
+                NSApp.keyWindow?
+                    .firstResponder?
+                    .tryToPerform(#selector(NSSplitViewController.toggleSidebar), with: nil)
                 return .none
 
             case .saveResult(.success):

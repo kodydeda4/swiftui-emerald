@@ -37,7 +37,7 @@ struct RootView: View {
             .toolbar {
                 ToolbarItem {
                     Button<Image>("sidebar.left") {
-                        toggleSidebar()
+                        viewStore.send(.sidebarButtonTapped)
                     }
                     .disabled(viewStore.disabled)
                 }
