@@ -47,7 +47,6 @@ struct FocusSettingsView: View {
                         .disabled(!vs.focusFollowsMouseEnabled || vs.sipEnabled)
                         .opacity( !vs.focusFollowsMouseEnabled || vs.sipEnabled ? 0.5 : 1.0)
                 }
-                
                 // Follow Focus
                 VStack(alignment: .leading) {
                     Divider()

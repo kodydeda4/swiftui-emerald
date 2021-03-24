@@ -29,9 +29,9 @@ struct Yabai {
         var disableShadows           : Bool              = false
         var windowShadow             : WindowShadow      = .off
 
-        var windowOpacityDuration    : Float             = 1
-        var activeWindowOpacity      : Float             = 1
-        var normalWindowOpacity      : Float             = 1
+        var windowOpacityDuration    : Double            = 1
+        var activeWindowOpacity      : Double            = 1
+        var normalWindowOpacity      : Double            = 1
         var windowBalance            : WindowBalance     = .normal
         var splitRatio               : Float             = 50
         var autoBalance              : Bool              = false

@@ -24,7 +24,6 @@ struct NewWindowSettings: View {
                         Text("Restart Yabai")
                         KeyboardShortcuts.Recorder(for: .restartYabai)
                     }
-                    
                     VStack(alignment: .leading) {
                         Divider()
                         Text("Toggles")
@@ -40,7 +39,6 @@ struct NewWindowSettings: View {
                         }
                     }
                 }
-                
                 // Placement
                 VStack(alignment: .leading) {
                     Text("Placement")
@@ -57,9 +55,7 @@ struct NewWindowSettings: View {
                     
                     Text(viewStore.windowPlacement.caseDescription)
                         .foregroundColor(Color(.gray))
-                    
                 }
-
                 // Split Ratio
                 VStack(alignment: .leading) {
                     Divider()
@@ -82,7 +78,6 @@ struct NewWindowSettings: View {
 
                     Text(viewStore.windowBalance.caseDescription)
                         .foregroundColor(Color(.gray))
-                    
                 }
             }
             .padding()

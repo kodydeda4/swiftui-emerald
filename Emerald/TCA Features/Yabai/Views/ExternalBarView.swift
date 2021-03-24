@@ -39,7 +39,6 @@ struct ExternalBarSettingsView: View {
                         .foregroundColor(Color(.gray))
                         .opacity(!vs.externalBarEnabled ? 0.5 : 1.0)
                 }
-                
                 // Padding
                 VStack(alignment: .leading) {
                     Divider()

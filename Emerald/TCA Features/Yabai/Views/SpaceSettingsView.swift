@@ -31,7 +31,7 @@ struct SpaceSettingsView: View {
                                         .bold()
                                         .font(.title3)
                                     
-                                    Text("Fee fo fi fum fo fi fum fo fi fum fo fi fum fo fi fum fo fi fum")
+                                    Text("Description about \(i.rawValue)")
                                         .lineLimit(1)
                                         .foregroundColor(Color(.gray))
                                 
@@ -72,7 +72,6 @@ struct SpaceSettingsView: View {
                                         .multilineTextAlignment(.center)
                                         .textFieldStyle(RoundedBorderTextFieldStyle())
                                         .frame(width: 130)
-                                        
                                         
                                 } else if i == .resize {
                                     TextField("", text: .constant("⌃⌥ Arrow"))

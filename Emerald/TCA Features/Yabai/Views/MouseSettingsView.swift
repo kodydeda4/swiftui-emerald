@@ -32,7 +32,6 @@ struct MouseSettingsView: View {
                     Text("Press & hold for mouse actions")
                         .foregroundColor(Color(.gray))
                 }
-                
                 // Left Click + Modifier
                 VStack(alignment: .leading) {
                     Divider()
@@ -52,7 +51,6 @@ struct MouseSettingsView: View {
                     Text(vs.mouseAction1.caseDescription)
                         .foregroundColor(Color(.gray))
                 }
-                
                 // Right Click + Modifier
                 VStack(alignment: .leading) {
                     Divider()
@@ -72,7 +70,6 @@ struct MouseSettingsView: View {
                     Text(vs.mouseAction2.caseDescription)
                         .foregroundColor(Color(.gray))
                 }
-                
                 // Drop Action
                 VStack(alignment: .leading) {
                     Divider()
