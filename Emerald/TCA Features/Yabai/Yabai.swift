@@ -66,13 +66,11 @@ struct Yabai {
         }
         enum WindowShadow: String, Codable, CaseIterable, Identifiable {
             var id: WindowShadow { self }
-            //case on
             case off
             case float
             
             var labelDescription: String {
                 switch self {
-                //case .on    : return "On"
                 case .off   : return "All"
                 case .float : return "Non-Floating"
                 }
@@ -86,7 +84,6 @@ struct Yabai {
         }
         enum FocusFollowsMouse: String, Codable, CaseIterable, Identifiable {
             var id: FocusFollowsMouse { self }
-            //case off
             case autofocus
             case autoraise
             
@@ -166,15 +163,15 @@ struct Yabai {
             var labelDescription: String {
                 switch self {
                 case .float : return "Normal"
-                case .bsp   : return "Tiling"
-                case .stack : return "Stacking"
+                case .bsp   : return "Tile"
+                case .stack : return "Stack"
                 }
             }
             var caseDescription: String {
                 switch self {
                 case .float : return "Default macOS window behavior"
-                case .bsp   : return "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-                case .stack : return "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+                case .bsp   : return "Automatically resize & organize"
+                case .stack : return "Full-screen focus"
                 }
             }
         }

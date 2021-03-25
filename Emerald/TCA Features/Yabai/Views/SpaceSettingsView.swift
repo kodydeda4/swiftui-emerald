@@ -31,6 +31,8 @@ struct SpaceSettingsView: View {
                                 LayoutShortcutView(layout: i, selected: viewStore.layout == i)
                             }
                             .buttonStyle(PlainButtonStyle())
+                            .padding(.vertical)
+                            .padding(.horizontal, 6)
                         }
                     }
                 }
@@ -44,11 +46,12 @@ struct SpaceSettingsView: View {
                         Spacer()
                     }
                     Divider()
+                        .padding(.bottom)
                     HStack {
                         ForEach([KeyboardShortcuts.Name.focus, .resize, .move, .gaps, .padding, .balance, .split], id: \.self) { i in
                             VStack {
                                 Button(action: {}) {
-                                    //LayoutShortcutView(shortcut: i)
+                                    RoundedRectangle(cornerRadius: 6)
                                     Text("")
                                 }
                                 .buttonStyle(PlainButtonStyle())
@@ -94,11 +97,11 @@ struct SpaceSettingsView: View {
     }
 }
 
-
-
-
 struct LayoutShortcutView: View {
     var layout: Yabai.State.Layout
+    var selected: Bool
+    
+    @State var hovering = false
     
     var bgColor: Color {
         switch layout {
@@ -108,76 +111,77 @@ struct LayoutShortcutView: View {
         }
     }
     
-    @State var hovering = false
-    var selected: Bool
-    
-    //KeyboardShortcuts.Recorder(for: i)
+    var shortcut: KeyboardShortcuts.Name {
+        switch layout {
+        case .float: return .float
+        case .bsp: return .bsp
+        case .stack: return .stack
+        }
+    }
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(layout.labelDescription)
-                .bold()
-                .font(.title)
-                .shadow(radius: 2, y: 2)
-            
-            Text(layout.caseDescription)
-                .lineLimit(1)
-                .padding(.bottom)
-                .shadow(radius: 2, y: 2)
-            
-            GeometryReader { geo in
-                if layout == .float {
-                    HStack {
+            VStack(alignment: .leading) {
+                Text(layout.labelDescription)
+                    .bold()
+                    .font(.title)
+                    .shadow(radius: 2, y: 2)
+                
+                Text(layout.caseDescription)
+                    .lineLimit(1)
+                    .padding(.top, 1)
+                    .padding(.bottom)
+                    .shadow(radius: 2, y: 2)
+            }
+            VStack {
+                GeometryReader { geo in
+                    if layout == .float {
                         window
-                            .padding(.vertical)
+                    } else if layout == .bsp {
+                        HStack {
+                            window
+                            VStack {
+                                window
+                                window
+                            }
+                        }
                         
-                        VStack {
-                            window
-                                .padding(.leading)
-                            window
-                                .padding()
-                                .padding(.bottom)
-                        }
-                    }
-                } else if layout == .bsp {
-                    HStack {
-                        window
-                        VStack {
-                            window
-                            window
-                        }
-                    }
-                    
-                } else if layout == .stack {
-                    ZStack {
-                        VStack {
-                            window.frame(width: geo.size.width * 0.8, height: geo.size.height * 1.0)
-                            Spacer()
-                        }
-                        VStack {
-                            window.frame(width: geo.size.width * 0.9, height: geo.size.height * 0.9)
-                            Spacer()
-                        }
-                        VStack {
-                            window.frame(width: geo.size.width * 1.0, height: geo.size.height * 0.8)
-                            Spacer()
+                    } else if layout == .stack {
+                        ZStack {
+                            VStack {
+                                window.frame(width: geo.size.width * 0.8, height: geo.size.height * 1.0)
+                                Spacer()
+                            }
+                            VStack {
+                                window.frame(width: geo.size.width * 0.9, height: geo.size.height * 0.9)
+                                Spacer()
+                            }
+                            VStack {
+                                window.frame(width: geo.size.width * 1.0, height: geo.size.height * 0.8)
+                                Spacer()
+                            }
                         }
                     }
                 }
+                .shadow(radius: 10, y: 6)
+                .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fill)
+                
+                Spacer()
+                KeyboardShortcuts.Recorder(for: shortcut)
+                    .padding(.top)
             }
-            .shadow(radius: 10, y: 6)
-            .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fill)
         }
         .padding()
         .padding()
         .background(Color.black.opacity(0.2))
         .background(bgColor.opacity(hovering || selected ? 1:0))
         .clipShape(RoundedRectangle(cornerRadius: 6))
-        //.shadow(radius: 3)
+        .shadow(radius: 3)
         .onHover { _ in
             hovering.toggle()
         }
     }
+    
     
     var window: some View {
         RoundedRectangle(cornerRadius: 6)
