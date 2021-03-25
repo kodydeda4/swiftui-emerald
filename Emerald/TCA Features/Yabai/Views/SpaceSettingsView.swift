@@ -28,13 +28,15 @@ struct SpaceSettingsView: View {
                     HStack {
                         ForEach(Yabai.State.Layout.allCases) { i in
                             Button(action: { viewStore.send(.updateLayout(i)) }) {
-                                LayoutShortcutView(layout: i)
+                                LayoutShortcutView(layout: i, selected: viewStore.layout == i)
                             }
                             .buttonStyle(PlainButtonStyle())
                         }
                     }
                 }
-                VStack(spacing: 30) {
+                .padding(.bottom)
+                
+                VStack {
                     HStack {
                         Text("Shortcuts")
                             .font(.largeTitle)
@@ -106,6 +108,9 @@ struct LayoutShortcutView: View {
         }
     }
     
+    @State var hovering = false
+    var selected: Bool
+    
     //KeyboardShortcuts.Recorder(for: i)
     
     var body: some View {
@@ -166,9 +171,12 @@ struct LayoutShortcutView: View {
         .padding()
         .padding()
         .background(Color.black.opacity(0.2))
-        .background(bgColor)
+        .background(bgColor.opacity(hovering || selected ? 1:0))
         .clipShape(RoundedRectangle(cornerRadius: 6))
         //.shadow(radius: 3)
+        .onHover { _ in
+            hovering.toggle()
+        }
     }
     
     var window: some View {
@@ -185,9 +193,9 @@ struct LayoutShortcutView: View {
 // MARK:- SwiftUI_Previews
 struct LayoutShortcutView_Previews: PreviewProvider {
     static var previews: some View {
-        LayoutShortcutView(layout: .float)
-        LayoutShortcutView(layout: .bsp)
-        LayoutShortcutView(layout: .stack)
+        LayoutShortcutView(layout: .float, selected: true)
+        LayoutShortcutView(layout: .bsp, selected: true)
+        LayoutShortcutView(layout: .stack, selected: true)
     }
 }
 
