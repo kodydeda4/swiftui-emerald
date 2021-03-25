@@ -197,7 +197,16 @@ extension Root {
             case .confirmResetAlert:
                 state = Root.State()
                 KeyboardShortcuts.resetEmeraldDefaults()
-                return Effect(value: .save)
+                
+                let _ = environment.writeState(state.yabai, to: state.yabai.stateURL)
+                let _ = environment.writeState(state.skhd,  to: state.skhd.stateURL)
+                let _ = environment.writeState(state.macOSAnimations, to: state.macOSAnimations.stateURL)
+                let _ = environment.writeConfig(state.yabai.asConfig, to: state.yabai.configURL)
+                let _ = environment.writeConfig(state.skhd.asConfig,  to: state.skhd.configURL)
+                let _ = environment.writeConfig(state.macOSAnimations.asShellScript, to: state.macOSAnimations.shellScriptURL)
+
+                let _ = AppleScript.execute("/usr/local/bin/brew services restart yabai")
+                return Effect(value: .applyChangesButtonTapped)
                 
             case .powerButtonTapped:
                 let _ = AppleScript.execute("/usr/local/bin/brew services \(state.disabled ? "start" : "stop") yabai")

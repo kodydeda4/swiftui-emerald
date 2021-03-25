@@ -58,7 +58,7 @@ struct SpaceSettingsView: View {
                         ForEach([KeyboardShortcuts.Name.focus, .resize, .move, .gaps, .padding, .balance, .split], id: \.self) { i in
                             VStack {
                                 Button(action: {}) {
-                                    RoundedRectangle(cornerRadius: 6)
+                                    LayoutShortcutView(shortcut: i)
                                 }
                                 .buttonStyle(PlainButtonStyle())
                                 .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fill)
@@ -102,6 +102,9 @@ struct SpaceSettingsView: View {
     }
 }
 
+
+ 
+
 struct LayoutShortcutView: View {
     var shortcut: KeyboardShortcuts.Name
     
@@ -141,6 +144,67 @@ struct LayoutShortcutView: View {
                     VStack {
                         window.frame(width: geo.size.width * 1.0, height: geo.size.height * 0.8)
                         Spacer()
+                    }
+                }
+            }
+            else if shortcut == .focus {
+                HStack {
+                    window
+                    VStack {
+                        window
+                        window
+                    }
+                }
+            } else if shortcut == .resize {
+                HStack {
+                    window
+                    VStack {
+                        window
+                        window
+                    }
+                }
+            } else if shortcut == .move {
+                HStack {
+                    window
+                    VStack {
+                        window
+                        window
+                    }
+                }
+            }
+            else if shortcut == .gaps {
+                HStack {
+                    window
+                    VStack {
+                        window
+                        window
+                    }
+                }
+            }
+            else if shortcut == .padding {
+                HStack {
+                    window
+                    VStack {
+                        window
+                        window
+                    }
+                }
+            }
+            else if shortcut == .balance {
+                HStack {
+                    window
+                    VStack {
+                        window
+                        window
+                    }
+                }
+            }
+            else if shortcut == .split {
+                HStack {
+                    window
+                    VStack {
+                        window
+                        window
                     }
                 }
             }
