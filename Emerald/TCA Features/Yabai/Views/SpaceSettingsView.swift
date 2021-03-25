@@ -9,6 +9,8 @@ import SwiftUI
 import ComposableArchitecture
 import KeyboardShortcuts
 
+
+
 struct SpaceSettingsView: View {
     let store: Store<Yabai.State, Yabai.Action>
     
@@ -24,27 +26,11 @@ struct SpaceSettingsView: View {
                     }
                     Divider()
                     HStack {
-                        ForEach([KeyboardShortcuts.Name.float, .bsp, .stack], id: \.self) { i in
-                            VStack {
-                                VStack(alignment: .leading) {
-                                    Text(i.rawValue)
-                                        .bold()
-                                        .font(.title2)
-                                        .shadow(radius: 2)
-                                    
-                                    Text("Description about \(i.rawValue)")
-                                        .lineLimit(1)
-                                        .foregroundColor(Color(.gray))
-                                        .shadow(radius: 2)
-
-                                    Button(action: { viewStore.send(.updateLayout(i)) }) {
-                                        LayoutShortcutView(shortcut: i)
-                                    }
-                                    .buttonStyle(PlainButtonStyle())
-                                    .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fill)
-                                }
-                                KeyboardShortcuts.Recorder(for: i)
+                        ForEach(Yabai.State.Layout.allCases) { i in
+                            Button(action: { viewStore.send(.updateLayout(i)) }) {
+                                LayoutShortcutView(layout: i)
                             }
+                            .buttonStyle(PlainButtonStyle())
                         }
                     }
                 }
@@ -60,7 +46,8 @@ struct SpaceSettingsView: View {
                         ForEach([KeyboardShortcuts.Name.focus, .resize, .move, .gaps, .padding, .balance, .split], id: \.self) { i in
                             VStack {
                                 Button(action: {}) {
-                                    LayoutShortcutView(shortcut: i)
+                                    //LayoutShortcutView(shortcut: i)
+                                    Text("")
                                 }
                                 .buttonStyle(PlainButtonStyle())
                                 .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fill)
@@ -74,13 +61,13 @@ struct SpaceSettingsView: View {
                                         .multilineTextAlignment(.center)
                                         .textFieldStyle(RoundedBorderTextFieldStyle())
                                         .frame(width: 130)
-                                        
+                                    
                                 } else if i == .resize {
                                     TextField("", text: .constant("⌃⌥ Arrow"))
                                         .multilineTextAlignment(.center)
                                         .textFieldStyle(RoundedBorderTextFieldStyle())
                                         .frame(width: 130)
-
+                                    
                                 } else if i == .move {
                                     TextField("", text: .constant("⌃⌥⌘ Arrow"))
                                         .multilineTextAlignment(.center)
@@ -99,79 +86,89 @@ struct SpaceSettingsView: View {
             .padding(.horizontal, 30)
             .padding(.vertical)
             .navigationTitle("")
+            
             //.navigationTitle("Layout")
         }
     }
 }
 
 
- 
+
 
 struct LayoutShortcutView: View {
-    var shortcut: KeyboardShortcuts.Name
+    var layout: Yabai.State.Layout
     
     var bgColor: Color {
-        switch shortcut {
-        case .float:
-            return Color(.systemBlue)
-        case .bsp:
-            return Color(.systemGreen)
-        case .stack:
-            return Color(.systemOrange)
-            
-        default:
-            return .white//Color(.controlBackgroundColor)
+        switch layout {
+        case .float : return Color(.systemBlue)
+        case .bsp   : return Color(.systemGreen)
+        case .stack : return Color(.systemOrange)
         }
     }
     
+    //KeyboardShortcuts.Recorder(for: i)
+    
     var body: some View {
-        GeometryReader { geo in
-            if shortcut == .float {
-                HStack {
-                    window
-                        .padding(.vertical)
+        VStack(alignment: .leading) {
+            Text(layout.labelDescription)
+                .bold()
+                .font(.title)
+                .shadow(radius: 2, y: 2)
+            
+            Text(layout.caseDescription)
+                .lineLimit(1)
+                .padding(.bottom)
+                .shadow(radius: 2, y: 2)
+            
+            GeometryReader { geo in
+                if layout == .float {
+                    HStack {
+                        window
+                            .padding(.vertical)
+                        
+                        VStack {
+                            window
+                                .padding(.leading)
+                            window
+                                .padding()
+                                .padding(.bottom)
+                        }
+                    }
+                } else if layout == .bsp {
+                    HStack {
+                        window
+                        VStack {
+                            window
+                            window
+                        }
+                    }
                     
-                    VStack {
-                        window
-                            .padding(.leading)
-                        window
-                            .padding()
-                            .padding(.bottom)
-                    }
-                }
-            } else if shortcut == .bsp {
-                HStack {
-                    window
-                    VStack {
-                        window
-                        window
-                    }
-                }
-                
-            } else if shortcut == .stack {
-                ZStack {
-                    VStack {
-                        window.frame(width: geo.size.width * 0.8, height: geo.size.height * 1.0)
-                        Spacer()
-                    }
-                    VStack {
-                        window.frame(width: geo.size.width * 0.9, height: geo.size.height * 0.9)
-                        Spacer()
-                    }
-                    VStack {
-                        window.frame(width: geo.size.width * 1.0, height: geo.size.height * 0.8)
-                        Spacer()
+                } else if layout == .stack {
+                    ZStack {
+                        VStack {
+                            window.frame(width: geo.size.width * 0.8, height: geo.size.height * 1.0)
+                            Spacer()
+                        }
+                        VStack {
+                            window.frame(width: geo.size.width * 0.9, height: geo.size.height * 0.9)
+                            Spacer()
+                        }
+                        VStack {
+                            window.frame(width: geo.size.width * 1.0, height: geo.size.height * 0.8)
+                            Spacer()
+                        }
                     }
                 }
             }
+            .shadow(radius: 10, y: 6)
+            .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fill)
         }
-        .shadow(radius: 5, y: 8)
         .padding()
         .padding()
-        .background(Color.black.opacity(0.1))
+        .background(Color.black.opacity(0.2))
         .background(bgColor)
         .clipShape(RoundedRectangle(cornerRadius: 6))
-        .shadow(radius: 4)
+        //.shadow(radius: 3)
     }
     
     var window: some View {
@@ -188,9 +185,9 @@ struct LayoutShortcutView: View {
 // MARK:- SwiftUI_Previews
 struct LayoutShortcutView_Previews: PreviewProvider {
     static var previews: some View {
-        LayoutShortcutView(shortcut: .float)
-        LayoutShortcutView(shortcut: .bsp)
-        LayoutShortcutView(shortcut: .stack)
+        LayoutShortcutView(layout: .float)
+        LayoutShortcutView(layout: .bsp)
+        LayoutShortcutView(layout: .stack)
     }
 }
 

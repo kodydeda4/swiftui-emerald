@@ -207,7 +207,7 @@ struct Yabai {
         case updateActiveWindowBorderColor(Color)
         case updateNormalWindowBorderColor(Color)
         case updateWindowBorderWidth(Float)
-        case updateLayout(KeyboardShortcuts.Name)
+        case updateLayout(Yabai.State.Layout)
     }
 }
 
@@ -234,17 +234,8 @@ extension Yabai {
             state.windowBorderWidth = num
             return .none
             
-        case let .updateLayout(shortcut):
-            switch shortcut {
-            case .float:
-                state.layout = .float
-            case .bsp:
-                state.layout = .bsp
-            case .stack:
-                state.layout = .stack
-            default:
-                return .none
-            }
+        case let .updateLayout(layout):
+            state.layout = layout
             return .none
 
         }
