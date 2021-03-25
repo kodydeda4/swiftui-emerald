@@ -109,15 +109,16 @@ struct LayoutShortcutView: View {
         GeometryReader { geo in
             if shortcut == .float {
                 HStack {
+                    window
+                        .padding(.vertical)
+                    
                     VStack {
                         window
-                            .padding(.trailing)
+                            .padding(.leading)
                         window
                             .padding()
                             .padding(.bottom)
                     }
-                    window
-                        .padding(.vertical)
                 }
             } else if shortcut == .bsp {
                 HStack {
