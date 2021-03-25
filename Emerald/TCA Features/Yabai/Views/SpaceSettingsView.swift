@@ -29,12 +29,14 @@ struct SpaceSettingsView: View {
                                 VStack(alignment: .leading) {
                                     Text(i.rawValue)
                                         .bold()
-                                        .font(.title3)
+                                        .font(.title2)
+                                        .shadow(radius: 2)
                                     
                                     Text("Description about \(i.rawValue)")
                                         .lineLimit(1)
                                         .foregroundColor(Color(.gray))
-                                
+                                        .shadow(radius: 2)
+
                                     Button(action: { viewStore.send(.updateLayout(i)) }) {
                                         LayoutShortcutView(shortcut: i)
                                     }
@@ -108,6 +110,20 @@ struct SpaceSettingsView: View {
 struct LayoutShortcutView: View {
     var shortcut: KeyboardShortcuts.Name
     
+    var bgColor: Color {
+        switch shortcut {
+        case .float:
+            return Color(.systemBlue)
+        case .bsp:
+            return Color(.systemGreen)
+        case .stack:
+            return Color(.systemOrange)
+            
+        default:
+            return .white//Color(.controlBackgroundColor)
+        }
+    }
+    
     var body: some View {
         GeometryReader { geo in
             if shortcut == .float {
@@ -131,6 +147,7 @@ struct LayoutShortcutView: View {
                         window
                     }
                 }
+                
             } else if shortcut == .stack {
                 ZStack {
                     VStack {
@@ -147,77 +164,20 @@ struct LayoutShortcutView: View {
                     }
                 }
             }
-            else if shortcut == .focus {
-                HStack {
-                    window
-                    VStack {
-                        window
-                        window
-                    }
-                }
-            } else if shortcut == .resize {
-                HStack {
-                    window
-                    VStack {
-                        window
-                        window
-                    }
-                }
-            } else if shortcut == .move {
-                HStack {
-                    window
-                    VStack {
-                        window
-                        window
-                    }
-                }
-            }
-            else if shortcut == .gaps {
-                HStack {
-                    window
-                    VStack {
-                        window
-                        window
-                    }
-                }
-            }
-            else if shortcut == .padding {
-                HStack {
-                    window
-                    VStack {
-                        window
-                        window
-                    }
-                }
-            }
-            else if shortcut == .balance {
-                HStack {
-                    window
-                    VStack {
-                        window
-                        window
-                    }
-                }
-            }
-            else if shortcut == .split {
-                HStack {
-                    window
-                    VStack {
-                        window
-                        window
-                    }
-                }
-            }
         }
+        .shadow(radius: 5, y: 8)
         .padding()
-        .background(Color(.windowBackgroundColor))
+        .padding()
+        .background(Color.black.opacity(0.1))
+        .background(bgColor)
         .clipShape(RoundedRectangle(cornerRadius: 6))
+        .shadow(radius: 4)
     }
     
     var window: some View {
         RoundedRectangle(cornerRadius: 6)
-            .foregroundColor(Color(.controlBackgroundColor))
-            .shadow(radius: 6)
+            .foregroundColor(Color(.windowBackgroundColor))
+            .shadow(radius: 2)
             .overlay(
                 RoundedRectangle(cornerRadius: 6)
                     .stroke(Color.gray, lineWidth: 0.75)
