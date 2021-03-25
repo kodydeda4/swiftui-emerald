@@ -28,13 +28,15 @@ struct Root {
         var alert            : AlertState<Root.Action>?
         var error            = ""
         
-        var powerButtonAnimating = false
-        var applyChangesButtonAnimating = false
+        var sheetView = false
+        var animatingApplyChanges = false
+        var animatingTogglePower = false
     }
     
     enum Action: Equatable {
         case onAppear
         case save
+        case toggleSheetView
         
         //Features
         case yabai(Yabai.Action)
@@ -55,11 +57,9 @@ struct Root {
 
         //PowerButton
         case powerButtonTapped
-        case powerButtonAnimation
         
         //ApplyChangesButton
         case applyChangesButtonTapped
-        case applyChangesButtonAnimation
     }
     
     struct Environment {
@@ -130,7 +130,6 @@ extension Root {
             environment: { _ in () }
         ),
         Reducer { state, action, environment in
-            struct SaveID: Hashable {}
             
             switch action {
             
@@ -204,35 +203,35 @@ extension Root {
                 let _ = AppleScript.execute("/usr/local/bin/brew services \(state.disabled ? "start" : "stop") yabai")
                 let _ = AppleScript.execute("/usr/local/bin/brew services \(state.disabled ? "start" : "stop") skhd")
                 state.disabled.toggle()
-
-                return Effect(value: .powerButtonAnimation)
-
-            case .powerButtonAnimation:
-                state.powerButtonAnimating.toggle()
                 
-                if state.powerButtonAnimating {
-                    return Effect(value: .powerButtonAnimation)
-                        .delay(for: 2.0, scheduler: DispatchQueue.main)
-                        .eraseToEffect()
-                }
-                return .none
+                //----------------------------------------
+                state.animatingTogglePower.toggle()
+                if state.animatingTogglePower { return Effect(value: .toggleSheetView) }
+                state.animatingTogglePower.toggle()
+                //----------------------------------------
+                return Effect(value: .toggleSheetView)
                 
+                            
             case .applyChangesButtonTapped:
                 let _ = AppleScript.execute("/usr/local/bin/brew services restart yabai")
-                //state.applyChanges.toggle()
                 
-                return Effect(value: .applyChangesButtonAnimation)
+                //----------------------------------------
+                state.animatingApplyChanges.toggle()
+                if state.animatingApplyChanges { return Effect(value: .toggleSheetView) }
+                state.animatingApplyChanges.toggle()
+                //----------------------------------------
+                return Effect(value: .toggleSheetView)
                 
-            case .applyChangesButtonAnimation:
-                state.applyChangesButtonAnimating.toggle()
                 
-                if state.applyChangesButtonAnimating {
-                    return Effect(value: .applyChangesButtonAnimation)
+            case .toggleSheetView:
+                state.sheetView.toggle()
+                
+                if state.sheetView {
+                    return Effect(value: .toggleSheetView)
                         .delay(for: 2.0, scheduler: DispatchQueue.main)
                         .eraseToEffect()
                 }
                 return .none
-
             }
         }
     )

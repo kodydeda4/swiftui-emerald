@@ -31,7 +31,6 @@ struct PowerButtonTappedView: View {
             .opacity(opacity ? 1 : 0)
             .animation(Animation.easeInOut(duration: 1).repeatForever(), value: opacity)
             .onAppear { opacity.toggle() }
-
         }
     }
 }

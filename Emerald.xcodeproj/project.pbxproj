@@ -51,6 +51,7 @@
 		339C453125D6ECCA0079ACA1 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C453025D6ECCA0079ACA1 /* RootView.swift */; };
 		339C453525D6ED0F0079ACA1 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C453425D6ED0F0079ACA1 /* OnboardingView.swift */; };
 		33A4BA032609EFB100AF9E59 /* Grid in Frameworks */ = {isa = PBXBuildFile; productRef = 33A4BA022609EFB100AF9E59 /* Grid */; };
+		33AAB5F6260C251500647057 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AAB5F5260C251500647057 /* SheetView.swift */; };
 		33AB717A25F7C99500870F75 /* KeyboardShortcuts+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AB717925F7C99500870F75 /* KeyboardShortcuts+Extensions.swift */; };
 		33AD2F7D25F254ED0018875E /* Homebrew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AD2F7C25F254ED0018875E /* Homebrew.swift */; };
 		33AD2F8225F25D330018875E /* Overture in Frameworks */ = {isa = PBXBuildFile; productRef = 33AD2F8125F25D330018875E /* Overture */; };
@@ -98,6 +99,7 @@
 		3398838B25DD7A1D007B9FF5 /* SKHD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHD.swift; sourceTree = "<group>"; };
 		339C453025D6ECCA0079ACA1 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		339C453425D6ED0F0079ACA1 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		33AAB5F5260C251500647057 /* SheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
 		33AB717925F7C99500870F75 /* KeyboardShortcuts+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyboardShortcuts+Extensions.swift"; sourceTree = "<group>"; };
 		33AD2F7C25F254ED0018875E /* Homebrew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homebrew.swift; sourceTree = "<group>"; };
 		33B62D2825D5E31400DD5934 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				3353C0ED26026A67002171B7 /* ConfigTabView.swift */,
 				3385DF6625D6270B00ACDE21 /* SidebarView.swift */,
 				3385DF6925D6279200ACDE21 /* AboutView.swift */,
+				33AAB5F5260C251500647057 /* SheetView.swift */,
 				336BC3B925F85B7C00BE3EBA /* SIPButton.swift */,
 				336627352602642300C4B009 /* ApplyChangesButtonTappedView.swift */,
 				338973962603A7850052F159 /* PowerButtonTappedView.swift */,
@@ -395,6 +398,7 @@
 				3385DF6725D6270B00ACDE21 /* SidebarView.swift in Sources */,
 				339C453525D6ED0F0079ACA1 /* OnboardingView.swift in Sources */,
 				3341B01725F0702C00833B56 /* MacOSAnimations+Extensions.swift in Sources */,
+				33AAB5F6260C251500647057 /* SheetView.swift in Sources */,
 				333631FB25EEF0CD009FEB32 /* CodableColor.swift in Sources */,
 				3385DF7025D6361200ACDE21 /* AppleScript.swift in Sources */,
 				3336320025EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift in Sources */,
