@@ -25,7 +25,7 @@ struct Yabai {
         var mouseFollowsFocus        : Bool              = false
         var focusFollowsMouse        : FocusFollowsMouse = .autofocus
         var focusFollowsMouseEnabled : Bool              = false
-        var windowPlacement          : WindowPlacement   = .first_child
+        var windowPlacement          : WindowPlacement   = .second_child
         var windowTopmost            : Bool              = false
         var disableShadows           : Bool              = false
         var windowShadow             : WindowShadow      = .off

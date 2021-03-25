@@ -201,7 +201,7 @@ extension Root {
                 
             case .powerButtonTapped:
                 let _ = AppleScript.execute("/usr/local/bin/brew services \(state.disabled ? "start" : "stop") yabai")
-                let _ = AppleScript.execute("/usr/local/bin/brew services \(state.disabled ? "start" : "stop") skhd")
+                //let _ = AppleScript.execute("/usr/local/bin/brew services \(state.disabled ? "start" : "stop") skhd")
                 state.disabled.toggle()
                 
                 //----------------------------------------

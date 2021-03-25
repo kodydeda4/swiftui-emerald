@@ -9,74 +9,6 @@ import SwiftUI
 import ComposableArchitecture
 import KeyboardShortcuts
 
-struct Window: View {
-    var opacity: Double
-    var borderColor: Color
-    var borderWidth: CGFloat
-    
-    var body: some View {
-        RoundedRectangle(cornerRadius: 6)
-            .opacity(opacity)
-            .foregroundColor(
-                Color(.controlBackgroundColor)
-            )
-            .overlay(
-                Text("Focus")
-                    .foregroundColor(.gray)
-                    .opacity(opacity)
-            )
-            .shadow(radius: 6)
-            .overlay(
-                RoundedRectangle(cornerRadius: 6)
-                    .stroke(Color.gray, lineWidth: 0.75)
-                    .opacity(opacity)
-            )
-            .overlay(
-                Rectangle()
-                    .stroke(borderColor, lineWidth: borderWidth/2)
-            )
-            .padding()
-    }
-}
-
-struct ColorList: View {
-    @Binding var color: Color
-    var action: () -> Void
-    @Binding var opacity: Double
-    
-    let colors: [Color] = [.blue, .purple, .pink, .red, .orange, .yellow, .green, .gray]
-     
-    var body: some View {
-        VStack {
-            HStack {
-                Text("Border")
-                ColorPicker("", selection: $color)
-                    .labelsHidden()
-                
-                ForEach(colors, id: \.self) { color in
-                    Button(action: action) {
-                        Circle()
-                            .overlay(
-                                Circle()
-                                    .foregroundColor(.white)
-                                    .frame(width: 6)
-                                    .opacity(opacity)
-                            )
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                    .frame(width: 16)
-                    .foregroundColor(color)
-                }
-            }
-            HStack {
-                Text("Opacity")
-                Slider(value: $opacity, in: 0.1...1.0)
-            }
-        }
-    }
-}
-
-
 struct WindowSettingsView: View {
     let store: Store<Yabai.State, Yabai.Action>
     
@@ -219,6 +151,73 @@ struct WindowSettingsView: View {
             .padding(.horizontal, 30)
             .padding(.vertical)
             .navigationTitle("")
+        }
+    }
+}
+
+private struct Window: View {
+    var opacity: Double
+    var borderColor: Color
+    var borderWidth: CGFloat
+    
+    var body: some View {
+        RoundedRectangle(cornerRadius: 6)
+            .opacity(opacity)
+            .foregroundColor(
+                Color(.controlBackgroundColor)
+            )
+            .overlay(
+                Text("Focus")
+                    .foregroundColor(.gray)
+                    .opacity(opacity)
+            )
+            .shadow(radius: 6)
+            .overlay(
+                RoundedRectangle(cornerRadius: 6)
+                    .stroke(Color.gray, lineWidth: 0.75)
+                    .opacity(opacity)
+            )
+            .overlay(
+                Rectangle()
+                    .stroke(borderColor, lineWidth: borderWidth/2)
+            )
+            .padding()
+    }
+}
+
+private struct ColorList: View {
+    @Binding var color: Color
+    var action: () -> Void
+    @Binding var opacity: Double
+    
+    let colors: [Color] = [.blue, .purple, .pink, .red, .orange, .yellow, .green, .gray]
+     
+    var body: some View {
+        VStack {
+            HStack {
+                Text("Border")
+                ColorPicker("", selection: $color)
+                    .labelsHidden()
+                
+                ForEach(colors, id: \.self) { color in
+                    Button(action: action) {
+                        Circle()
+                            .overlay(
+                                Circle()
+                                    .foregroundColor(.white)
+                                    .frame(width: 6)
+                                    .opacity(opacity)
+                            )
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    .frame(width: 16)
+                    .foregroundColor(color)
+                }
+            }
+            HStack {
+                Text("Opacity")
+                Slider(value: $opacity, in: 0.1...1.0)
+            }
         }
     }
 }

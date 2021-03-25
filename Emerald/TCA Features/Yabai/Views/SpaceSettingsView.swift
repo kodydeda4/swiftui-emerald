@@ -36,7 +36,7 @@ struct SpaceSettingsView: View {
                                         .foregroundColor(Color(.gray))
                                 
                                     Button(action: { viewStore.send(.updateLayout(i)) }) {
-                                        RoundedRectangle(cornerRadius: 6)
+                                        LayoutShortcutView(shortcut: i)
                                     }
                                     .buttonStyle(PlainButtonStyle())
                                     .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fill)
@@ -99,6 +99,73 @@ struct SpaceSettingsView: View {
             .navigationTitle("")
             //.navigationTitle("Layout")
         }
+    }
+}
+
+struct LayoutShortcutView: View {
+    var shortcut: KeyboardShortcuts.Name
+    
+    var body: some View {
+        GeometryReader { geo in
+            if shortcut == .float {
+                HStack {
+                    VStack {
+                        window
+                            .padding(.trailing)
+                        window
+                            .padding()
+                            .padding(.bottom)
+                    }
+                    window
+                        .padding(.vertical)
+                }
+            } else if shortcut == .bsp {
+                HStack {
+                    window
+                    VStack {
+                        window
+                        window
+                    }
+                }
+            } else if shortcut == .stack {
+                ZStack {
+                    VStack {
+                        window.frame(width: geo.size.width * 0.8, height: geo.size.height * 1.0)
+                        Spacer()
+                    }
+                    VStack {
+                        window.frame(width: geo.size.width * 0.9, height: geo.size.height * 0.9)
+                        Spacer()
+                    }
+                    VStack {
+                        window.frame(width: geo.size.width * 1.0, height: geo.size.height * 0.8)
+                        Spacer()
+                    }
+                }
+            }
+        }
+        .padding()
+        .background(Color(.windowBackgroundColor))
+        .clipShape(RoundedRectangle(cornerRadius: 6))
+    }
+    
+    var window: some View {
+        RoundedRectangle(cornerRadius: 6)
+            .foregroundColor(Color(.controlBackgroundColor))
+            .shadow(radius: 6)
+            .overlay(
+                RoundedRectangle(cornerRadius: 6)
+                    .stroke(Color.gray, lineWidth: 0.75)
+            )
+    }
+}
+
+// MARK:- SwiftUI_Previews
+struct LayoutShortcutView_Previews: PreviewProvider {
+    static var previews: some View {
+        LayoutShortcutView(shortcut: .float)
+        LayoutShortcutView(shortcut: .bsp)
+        LayoutShortcutView(shortcut: .stack)
     }
 }
 
