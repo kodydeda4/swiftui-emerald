@@ -14,22 +14,21 @@ struct ApplyChangesButtonTappedView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            Text("What the?")
-//            VStack {
-//                Image("Emerald")
-//                    .resizable()
-//                    .scaledToFit()
-//                    .frame(width: 50, height: 50)
-//
-//                Text("Applying Changes")
-//                    .font(.title)
-//                    .fontWeight(.medium)
-//                    .padding()
-//            }
-//            .padding(30)
-//            .opacity(opacity ? 1 : 0)
-//            .animation(Animation.easeInOut(duration: 1).repeatForever(), value: opacity)
-//            .onAppear { opacity.toggle() }
+            VStack {
+                Image("Emerald")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 50, height: 50)
+
+                Text("Applying Changes")
+                    .font(.title)
+                    .fontWeight(.medium)
+                    .padding()
+            }
+            .padding(30)
+            .opacity(opacity ? 1 : 0)
+            .animation(Animation.easeInOut(duration: 1).repeatForever(), value: opacity)
+            .onAppear { opacity.toggle() }
         }
     }
 }

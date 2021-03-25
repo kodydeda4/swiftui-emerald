@@ -11,6 +11,12 @@ import Overture
 import Combine
 import KeyboardShortcuts
 
+/*
+ Fix multiple sheets
+ - multiple .sheet modifiers doesn't work.
+ - the fix - have one sheetview, that changes depending on the action sent.
+  */
+
 struct Root {
     struct State: Equatable {
         var disabled         = false
@@ -130,16 +136,22 @@ extension Root {
             
             case .onAppear:
                 switch environment.decodeState(Yabai.State.self, from: state.yabai.stateURL) {
-                case let .success(decodedState): state.yabai = decodedState
-                case let .failure(error): state.error = error.localizedDescription
+                case let .success(decodedState):
+                    state.yabai = decodedState
+                case let .failure(error):
+                    state.error = error.localizedDescription
                 }
                 switch environment.decodeState(SKHD.State.self, from: state.skhd.stateURL) {
-                case let .success(decodedState): state.skhd = decodedState
-                case let .failure(error): state.error = error.localizedDescription
+                case let .success(decodedState):
+                    state.skhd = decodedState
+                case let .failure(error):
+                    state.error = error.localizedDescription
                 }
                 switch environment.decodeState(MacOSAnimations.State.self, from: state.macOSAnimations.stateURL) {
-                case let .success(decodedState): state.macOSAnimations = decodedState
-                case let .failure(error): state.error = error.localizedDescription
+                case let .success(decodedState):
+                    state.macOSAnimations = decodedState
+                case let .failure(error):
+                    state.error = error.localizedDescription
                 }
                 return .none
             
@@ -207,11 +219,12 @@ extension Root {
                 
             case .applyChangesButtonTapped:
                 let _ = AppleScript.execute("/usr/local/bin/brew services restart yabai")
+                //state.applyChanges.toggle()
                 
                 return Effect(value: .applyChangesButtonAnimation)
                 
             case .applyChangesButtonAnimation:
-                state.powerButtonAnimating.toggle()
+                state.applyChangesButtonAnimating.toggle()
                 
                 if state.applyChangesButtonAnimating {
                     return Effect(value: .applyChangesButtonAnimation)
