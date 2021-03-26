@@ -23,6 +23,7 @@
 		3341B01425F0700B00833B56 /* SKHD+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B01325F0700B00833B56 /* SKHD+Extensions.swift */; };
 		3341B01725F0702C00833B56 /* MacOSAnimations+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B01625F0702C00833B56 /* MacOSAnimations+Extensions.swift */; };
 		334EC79225F908A4005AB9BF /* ViewStore+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334EC79125F908A4005AB9BF /* ViewStore+Extensions.swift */; };
+		335299F9260E74A900EEFB58 /* TempView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335299F8260E74A900EEFB58 /* TempView.swift */; };
 		3353C0EE26026A67002171B7 /* ConfigTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3353C0ED26026A67002171B7 /* ConfigTabView.swift */; };
 		3356BCA325F28746006EB641 /* SpaceSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3356BCA225F28746006EB641 /* SpaceSettingsView.swift */; };
 		3356BCA625F28782006EB641 /* ExternalBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3356BCA525F28782006EB641 /* ExternalBarView.swift */; };
@@ -72,6 +73,7 @@
 		3341B01325F0700B00833B56 /* SKHD+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKHD+Extensions.swift"; sourceTree = "<group>"; };
 		3341B01625F0702C00833B56 /* MacOSAnimations+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MacOSAnimations+Extensions.swift"; sourceTree = "<group>"; };
 		334EC79125F908A4005AB9BF /* ViewStore+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewStore+Extensions.swift"; sourceTree = "<group>"; };
+		335299F8260E74A900EEFB58 /* TempView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempView.swift; sourceTree = "<group>"; };
 		3353C0ED26026A67002171B7 /* ConfigTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigTabView.swift; sourceTree = "<group>"; };
 		3356BCA225F28746006EB641 /* SpaceSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceSettingsView.swift; sourceTree = "<group>"; };
 		3356BCA525F28782006EB641 /* ExternalBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalBarView.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 		3356BCB125F288BC006EB641 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				335299F8260E74A900EEFB58 /* TempView.swift */,
 				3356BCA225F28746006EB641 /* SpaceSettingsView.swift */,
 				3356BCAC25F287D9006EB641 /* WindowSettingsView.swift */,
 				336BC3A825F7FA5500BE3EBA /* NewWindowSettings.swift */,
@@ -369,6 +372,7 @@
 			files = (
 				3356BCA925F287B1006EB641 /* MouseSettingsView.swift in Sources */,
 				338973972603A7850052F159 /* PowerButtonTappedView.swift in Sources */,
+				335299F9260E74A900EEFB58 /* TempView.swift in Sources */,
 				3385DF6A25D6279200ACDE21 /* AboutView.swift in Sources */,
 				3361CF1325E6EF1300016875 /* SpecialTextView.swift in Sources */,
 				3361CDF725D44AEC0086F6A7 /* URL+Extensions.swift in Sources */,

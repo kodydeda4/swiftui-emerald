@@ -55,6 +55,12 @@ struct LayoutShortcutView: View {
     var layout: Yabai.State.Layout
     @State var hovering = false
     
+    let angle: Double = -15
+    let x: CGFloat = 0
+    let y: CGFloat = 90
+    let z: CGFloat = -30
+
+    
     var bgColor: LinearGradient {
         var g: Gradient {
             switch layout {
@@ -89,7 +95,7 @@ struct LayoutShortcutView: View {
                     .padding(.bottom)
                     .shadow(radius: 1, y: 1)
                     .foregroundColor(.white)
-                    .opacity(0.85)
+                    .opacity(hovering ? 0.85 : 0)
                 
                 GeometryReader { geo in
                     if layout == .float {
@@ -104,23 +110,41 @@ struct LayoutShortcutView: View {
                         }
                     } else if layout == .stack {
                         ZStack {
-                            VStack {
-                                Window().frame(width: geo.size.width * 0.8, height: geo.size.height * 1.0)
-                                Spacer()
-                            }
-                            VStack {
-                                Window().frame(width: geo.size.width * 0.9, height: geo.size.height * 0.9)
-                                Spacer()
-                            }
-                            VStack {
-                                Window().frame(width: geo.size.width * 1.0, height: geo.size.height * 0.8)
-                                Spacer()
-                            }
+                            Window()
+                                .padding(.trailing, hovering ? 8 : 0)
+                                .padding(.leading, hovering ? 24 : 0)
+                                .padding(.top, hovering ? 24 : 0)
+                                .animation(.spring())
+                                .rotation3DEffect(
+                                    Angle(degrees: hovering ? angle : 0),
+                                    axis: (x: x, y: y, z: z)
+                                )
+
+                            Window()
+                                .padding(.trailing, hovering ? 16 : 0)
+                                .padding(.leading, hovering ? 16 : 0)
+                                .padding(.top, hovering ? 16 : 0)
+                                .padding(.bottom, hovering ? 16 : 8)
+                                .animation(.spring())
+                                .rotation3DEffect(
+                                    Angle(degrees: hovering ? angle : 0),
+                                    axis: (x: x, y: y, z: z)
+                                )
+
+                            Window()
+                                .padding(.trailing, hovering ? 24 : 0)
+                                .padding(.leading, hovering ? 0 : 0)
+                                .padding(.bottom, hovering ? 32 : 16)
+                                .animation(.spring())
+                                .rotation3DEffect(
+                                    Angle(degrees: hovering ? angle : 0),
+                                    axis: (x: x, y: y, z: z)
+                                )
                         }
                     }
                 }
                 .aspectRatio(CGSize(width: 16, height: 10), contentMode: .fill)
-                .scaleEffect(hovering ? 1.0 : 0.99)
+                .scaleEffect(hovering ? 0.9 : 1)
                 .animation(.spring(), value: hovering)
             }
             .padding()
@@ -159,6 +183,8 @@ struct ShortcutView: View {
                 GeometryReader { geo in
                     if shortcut == .focus {
                         Window()
+                    } else {
+                        Window()
                     }
                 }
                 .aspectRatio(CGSize(width: 16, height: 10), contentMode: .fill)
@@ -176,18 +202,18 @@ struct ShortcutView: View {
             
             VStack {
                 if shortcut == .focus {
-                    TextField("", text: .constant("⌃"))
+                    TextField("", text: .constant("⌃ + Arrow"))
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .multilineTextAlignment(.center)
                         .frame(width: 130)
                     
                 } else if shortcut == .resize {
-                    TextField("", text: .constant("⌃⌥"))
+                    TextField("", text: .constant("⌃⌥ + Arrow"))
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .multilineTextAlignment(.center)
                         .frame(width: 130)
                 } else if shortcut == .move {
-                    TextField("", text: .constant("⌃⌥⌘"))
+                    TextField("", text: .constant("⌃⌥⌘ + Arrow"))
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .multilineTextAlignment(.center)
                         .frame(width: 130)
