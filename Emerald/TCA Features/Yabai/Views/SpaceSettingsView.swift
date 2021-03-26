@@ -9,8 +9,6 @@ import SwiftUI
 import ComposableArchitecture
 import KeyboardShortcuts
 
-
-
 struct SpaceSettingsView: View {
     let store: Store<Yabai.State, Yabai.Action>
     
@@ -100,25 +98,23 @@ struct SpaceSettingsView: View {
 struct LayoutShortcutView: View {
     var layout: Yabai.State.Layout
     var selected: Bool
-    
     @State var hovering = false
     
-    var bgColor: Color {
+    var bgColor: LinearGradient {
         switch layout {
-        case .float : return Color(.systemBlue)
-        case .bsp   : return Color(.systemGreen)
-        case .stack : return Color(.systemOrange)
+        case .float : return LinearGradient(gradient: Gradient(colors: [.blue, Color(hexString: "#6dd5ed")]), startPoint: .top, endPoint: .bottomTrailing)
+        case .bsp   : return LinearGradient(gradient: Gradient(colors: [Color(hexString: "#2193b0"), Color(hexString: "#6dd5ed")]), startPoint: .top, endPoint: .bottomTrailing)
+        case .stack : return LinearGradient(gradient: Gradient(colors: [Color(hexString: "#ff5f6d"), Color(hexString: "#ffc371")]), startPoint: .top, endPoint: .bottomTrailing)
         }
     }
-    
+
     var shortcut: KeyboardShortcuts.Name {
         switch layout {
-        case .float: return .float
-        case .bsp: return .bsp
-        case .stack: return .stack
+        case .float : return .float
+        case .bsp   : return .bsp
+        case .stack : return .stack
         }
     }
-    
     var body: some View {
         VStack(alignment: .leading) {
             VStack(alignment: .leading) {
@@ -145,7 +141,6 @@ struct LayoutShortcutView: View {
                                 window
                             }
                         }
-                        
                     } else if layout == .stack {
                         ZStack {
                             VStack {
@@ -165,7 +160,6 @@ struct LayoutShortcutView: View {
                 }
                 .shadow(radius: 10, y: 6)
                 .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fill)
-                
                 Spacer()
                 KeyboardShortcuts.Recorder(for: shortcut)
                     .padding(.top)
@@ -173,15 +167,15 @@ struct LayoutShortcutView: View {
         }
         .padding()
         .padding()
-        .background(Color.black.opacity(0.2))
-        .background(bgColor.opacity(hovering || selected ? 1:0))
+        //.background(Color.black.opacity(hovering || selected ? 0 : 1))
+        .background(bgColor)
         .clipShape(RoundedRectangle(cornerRadius: 6))
         .shadow(radius: 3)
+        .animation(.spring(), value: hovering)
         .onHover { _ in
             hovering.toggle()
         }
     }
-    
     
     var window: some View {
         RoundedRectangle(cornerRadius: 6)
