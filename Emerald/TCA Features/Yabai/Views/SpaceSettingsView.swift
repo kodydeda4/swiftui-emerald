@@ -25,12 +25,16 @@ struct SpaceSettingsView: View {
                     Divider()
                     HStack {
                         ForEach(Yabai.State.Layout.allCases) { i in
-                            Button(action: { viewStore.send(.updateLayout(i)) }) {
-                                LayoutShortcutView(layout: i, selected: viewStore.layout == i)
-                            }
-                            .buttonStyle(PlainButtonStyle())
-                            .padding(.vertical)
-                            .padding(.horizontal, 6)
+//                            Button(action: { viewStore.send(.updateLayout(i)) }) {
+//                                LayoutShortcutView(layout: i, selected: viewStore.layout == i)
+//                            }
+//                            .buttonStyle(PlainButtonStyle())
+//                            .padding(.vertical)
+//                            .padding(.horizontal, 6)
+                            LayoutShortcutView(layout: i, selected: viewStore.layout == i)
+                                                        //.padding(.vertical)
+                                                        .padding(.horizontal, 6)
+
                         }
                     }
                 }
@@ -102,8 +106,8 @@ struct LayoutShortcutView: View {
     
     var bgColor: LinearGradient {
         switch layout {
-        case .float : return LinearGradient(gradient: Gradient(colors: [.blue, Color(hexString: "#6dd5ed")]), startPoint: .top, endPoint: .bottomTrailing)
-        case .bsp   : return LinearGradient(gradient: Gradient(colors: [Color(hexString: "#2193b0"), Color(hexString: "#6dd5ed")]), startPoint: .top, endPoint: .bottomTrailing)
+        case .float : return LinearGradient(gradient: Gradient(colors: [Color(hexString: "#08c8f6"), Color(hexString: "#4d5dfb")]), startPoint: .top, endPoint: .bottomTrailing)
+        case .bsp   : return LinearGradient(gradient: Gradient(colors: [Color(hexString: "#20bf55"), Color(hexString: "#01baef")]), startPoint: .top, endPoint: .bottomTrailing)
         case .stack : return LinearGradient(gradient: Gradient(colors: [Color(hexString: "#ff5f6d"), Color(hexString: "#ffc371")]), startPoint: .top, endPoint: .bottomTrailing)
         }
     }
@@ -116,7 +120,7 @@ struct LayoutShortcutView: View {
         }
     }
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack {
             VStack(alignment: .leading) {
                 Text(layout.labelDescription)
                     .bold()
@@ -168,7 +172,7 @@ struct LayoutShortcutView: View {
             .onHover { _ in
                 hovering.toggle()
             }
-            Spacer()
+            
             KeyboardShortcuts.Recorder(for: shortcut)
                 .padding()
         }
