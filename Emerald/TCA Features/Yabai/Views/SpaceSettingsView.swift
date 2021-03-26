@@ -37,7 +37,7 @@ struct SpaceSettingsView: View {
                         }
                     }
                     HStack {
-                        ForEach([KeyboardShortcuts.Name.balance, .split, .padding, .gaps], id: \.self) {
+                        ForEach([KeyboardShortcuts.Name.split, .balance, .padding, .gaps], id: \.self) {
                             ShortcutView(shortcut: $0)
                         }
                     }

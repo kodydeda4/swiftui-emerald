@@ -24,7 +24,7 @@ extension SKHD {
     static let reducer = Reducer<State, Action, Void> {
         state, action, _ in
         switch action {
-        //
+
         }
     }
 }
