@@ -32,8 +32,9 @@ struct SpaceSettingsView: View {
 //                            .padding(.vertical)
 //                            .padding(.horizontal, 6)
                             LayoutShortcutView(layout: i, selected: viewStore.layout == i)
+                                .padding()
                                                         //.padding(.vertical)
-                                                        .padding(.horizontal, 6)
+                                                        //.padding(.horizontal, 6)
 
                         }
                     }
@@ -89,9 +90,11 @@ struct SpaceSettingsView: View {
                     }
                 }
             }
-            .frame(maxWidth: 1200)
             .padding(.horizontal, 30)
             .padding(.vertical)
+            .frame(maxWidth: 1200)
+            //.padding(.horizontal, 30)
+            //.padding(.vertical)
             .navigationTitle("")
             
             //.navigationTitle("Layout")
@@ -106,7 +109,7 @@ struct LayoutShortcutView: View {
     
     var bgColor: LinearGradient {
         switch layout {
-        case .float : return LinearGradient(gradient: Gradient(colors: [Color(hexString: "#08c8f6"), Color(hexString: "#4d5dfb")]), startPoint: .top, endPoint: .bottomTrailing)
+        case .float : return LinearGradient(gradient: Gradient(colors: [Color(hexString: "#B721FF"), Color(hexString: "#21D4FD")]), startPoint: .top, endPoint: .bottomTrailing)
         case .bsp   : return LinearGradient(gradient: Gradient(colors: [Color(hexString: "#20bf55"), Color(hexString: "#01baef")]), startPoint: .top, endPoint: .bottomTrailing)
         case .stack : return LinearGradient(gradient: Gradient(colors: [Color(hexString: "#ff5f6d"), Color(hexString: "#ffc371")]), startPoint: .top, endPoint: .bottomTrailing)
         }
@@ -122,16 +125,23 @@ struct LayoutShortcutView: View {
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
-                Text(layout.labelDescription)
-                    .bold()
-                    .font(.title)
-                    .shadow(radius: 2, y: 2)
+                VStack(alignment: .leading) {
+                    Text(layout.labelDescription)
+                        .bold()
+                        .font(.title)
+                        .shadow(radius: 2, y: 2)
+                        .foregroundColor(.white)
+                    
+                    Text(layout.caseDescription)
+                        .lineLimit(1)
+                        .padding(.top, 1)
+                        .padding(.bottom)
+                        .shadow(radius: 2, y: 2)
+                        .foregroundColor(.white)
+                }
+                //.scaleEffect(hovering ? 1.0 : 0.95)
+                .animation(.spring(), value: hovering)
                 
-                Text(layout.caseDescription)
-                    .lineLimit(1)
-                    .padding(.top, 1)
-                    .padding(.bottom)
-                    .shadow(radius: 2, y: 2)
                 
                 GeometryReader { geo in
                     if layout == .float {
@@ -161,8 +171,10 @@ struct LayoutShortcutView: View {
                         }
                     }
                 }
-                .shadow(radius: 10, y: 6)
+                .shadow(radius: 10, y: 10)
                 .aspectRatio(CGSize(width: 16, height: 10), contentMode: .fill)
+                .scaleEffect(hovering ? 1.0 : 0.98)
+                .animation(.spring(), value: hovering)
             }
             .padding()
             .padding()
@@ -178,7 +190,7 @@ struct LayoutShortcutView: View {
         }
         .background(Color(.windowBackgroundColor))
         .clipShape(RoundedRectangle(cornerRadius: 6))
-        .shadow(radius: 3)
+        .shadow(radius: 7, y: 2)
     }
 }
 
@@ -189,10 +201,6 @@ struct Window: View {
         RoundedRectangle(cornerRadius: 6)
             .foregroundColor(Color(.windowBackgroundColor))
             .shadow(radius: 2)
-            .overlay(
-                RoundedRectangle(cornerRadius: 6)
-                    .stroke(Color.gray, lineWidth: 0.75)
-            )
     }
 }
 
