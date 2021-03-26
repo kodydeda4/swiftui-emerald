@@ -22,7 +22,7 @@ struct NewWindowSettings: View {
                     
                     HStack {
                         Text("Restart Yabai")
-                        KeyboardShortcuts.Recorder(for: .restartYabai)
+                        //KeyboardShortcuts.Recorder(for: .restartYabai)
                     }
                     VStack(alignment: .leading) {
                         Divider()

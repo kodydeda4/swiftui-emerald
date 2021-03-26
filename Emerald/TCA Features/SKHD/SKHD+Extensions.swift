@@ -28,11 +28,6 @@ extension SKHD.State {
 #
             
 #============================================
-# Gen
-#============================================
-\(KeyboardShortcuts.getShortcut(for: .restartYabai)?.skhdString ?? "#<UNASSIGNED>") : \"/bin/launchctl kickstart -k \"gui/${UID}/homebrew.mxcl.yabai\"
-
-#============================================
 # Layout
 #============================================
 \(KeyboardShortcuts.getShortcut(for: .float)?.skhdString ?? "#<UNASSIGNED>") : yabai -m space --layout float
@@ -50,26 +45,25 @@ extension SKHD.State {
 #============================================
 # Focus
 #============================================
-\(KeyboardShortcuts.getShortcut(for: .focusNorth)?.skhdString ?? "#<UNASSIGNED>") : yabai -m window --focus north
-\(KeyboardShortcuts.getShortcut(for: .focusSouth)?.skhdString ?? "#<UNASSIGNED>") : yabai -m window --focus south
-\(KeyboardShortcuts.getShortcut(for: .focusEast)?.skhdString  ?? "#<UNASSIGNED>") : yabai -m window --focus east
-\(KeyboardShortcuts.getShortcut(for: .focusWest)?.skhdString  ?? "#<UNASSIGNED>") : yabai -m window --focus west
+\(KeyboardShortcuts.getShortcut(for: .focus)?.skhdString ?? "#<UNASSIGNED>") - up    : yabai -m window --focus north
+\(KeyboardShortcuts.getShortcut(for: .focus)?.skhdString ?? "#<UNASSIGNED>") - down  : yabai -m window --focus south
+\(KeyboardShortcuts.getShortcut(for: .focus)?.skhdString ?? "#<UNASSIGNED>") - right : yabai -m window --focus east
+\(KeyboardShortcuts.getShortcut(for: .focus)?.skhdString ?? "#<UNASSIGNED>") - left  : yabai -m window --focus west
 
 #============================================
 # Move
 #============================================
-\(KeyboardShortcuts.getShortcut(for: .moveNorth)?.skhdString ?? "#<UNASSIGNED>") : yabai -m window --warp north
-\(KeyboardShortcuts.getShortcut(for: .moveSouth)?.skhdString ?? "#<UNASSIGNED>") : yabai -m window --warp south
-\(KeyboardShortcuts.getShortcut(for: .moveEast)?.skhdString  ?? "#<UNASSIGNED>") : yabai -m window --warp east
-\(KeyboardShortcuts.getShortcut(for: .moveWest)?.skhdString  ?? "#<UNASSIGNED>") : yabai -m window --warp west
-
+\(KeyboardShortcuts.getShortcut(for: .move)?.skhdString ?? "#<UNASSIGNED>") - up    : yabai -m window --warp north
+\(KeyboardShortcuts.getShortcut(for: .move)?.skhdString ?? "#<UNASSIGNED>") - down  : yabai -m window --warp south
+\(KeyboardShortcuts.getShortcut(for: .move)?.skhdString ?? "#<UNASSIGNED>") - right : yabai -m window --warp east
+\(KeyboardShortcuts.getShortcut(for: .move)?.skhdString ?? "#<UNASSIGNED>") - left  : yabai -m window --warp west
 #============================================
 # Resize
 #============================================
-\(KeyboardShortcuts.getShortcut(for: .resizeTop)?.skhdString    ?? "#<UNASSIGNED>") : yabai -m window --resize top:0:-50   ; yabai -m window --resize bottom:0:-
-\(KeyboardShortcuts.getShortcut(for: .resizeBottom)?.skhdString ?? "#<UNASSIGNED>") : yabai -m window --resize bottom:0:50 ; yabai -m window --resize top:0:50
-\(KeyboardShortcuts.getShortcut(for: .resizeRight)?.skhdString  ?? "#<UNASSIGNED>") : yabai -m window --resize right:50:0  ; yabai -m window --resize left:50:0
-\(KeyboardShortcuts.getShortcut(for: .resizeLeft)?.skhdString   ?? "#<UNASSIGNED>") : yabai -m window --resize left:-50:0  ; yabai -m window --resize right:-50:0
+\(KeyboardShortcuts.getShortcut(for: .resize)?.skhdString ?? "#<UNASSIGNED>") - up    : yabai -m window --resize top:0:-50   ; yabai -m window --resize bottom:0:-
+\(KeyboardShortcuts.getShortcut(for: .resize)?.skhdString ?? "#<UNASSIGNED>") - down  : yabai -m window --resize bottom:0:50 ; yabai -m window --resize top:0:50
+\(KeyboardShortcuts.getShortcut(for: .resize)?.skhdString ?? "#<UNASSIGNED>") - right : yabai -m window --resize right:50:0  ; yabai -m window --resize left:50:0
+\(KeyboardShortcuts.getShortcut(for: .resize)?.skhdString ?? "#<UNASSIGNED>") - left  : yabai -m window --resize left:-50:0  ; yabai -m window --resize right:-50:0
 """
     }
 }
