@@ -119,7 +119,6 @@ struct LayoutShortcutView: View {
                         }
                     }
                 }
-                //.shadow(radius: 10, y: 10)
                 .aspectRatio(CGSize(width: 16, height: 10), contentMode: .fill)
                 .scaleEffect(hovering ? 1.0 : 0.99)
                 .animation(.spring(), value: hovering)
@@ -156,15 +155,7 @@ struct ShortcutView: View {
                     .shadow(radius: 1, y: 1)
                     .foregroundColor(.white)
                     .opacity(0.85)
-                
-//                Text(shortcut.rawValue)
-//                    .lineLimit(1)
-//                    .padding(.top, 1)
-//                    .padding(.bottom)
-//                    .shadow(radius: 1, y: 1)
-//                    .foregroundColor(.white)
-//                    .opacity(0.85)
-                
+
                 GeometryReader { geo in
                     if shortcut == .focus {
                         Window()
@@ -183,8 +174,28 @@ struct ShortcutView: View {
                 hovering.toggle()
             }
             
-            KeyboardShortcuts.Recorder(for: shortcut)
-                .padding()
+            VStack {
+                if shortcut == .focus {
+                    TextField("", text: .constant("⌃"))
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .multilineTextAlignment(.center)
+                        .frame(width: 130)
+                    
+                } else if shortcut == .resize {
+                    TextField("", text: .constant("⌃⌥"))
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .multilineTextAlignment(.center)
+                        .frame(width: 130)
+                } else if shortcut == .move {
+                    TextField("", text: .constant("⌃⌥⌘"))
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .multilineTextAlignment(.center)
+                        .frame(width: 130)
+                } else {
+                    KeyboardShortcuts.Recorder(for: shortcut)
+                }
+            }
+            .padding()
         }
         .background(Color(.windowBackgroundColor))
         .clipShape(RoundedRectangle(cornerRadius: 6))
