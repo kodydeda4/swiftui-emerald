@@ -13,12 +13,10 @@ extension KeyboardShortcuts.Name {
     static let bsp            = Self("Tiling")
     static let stack          = Self("Stacking")
     
-    //----------------------------------------
     static let focus          = Self("Focus")
     static let resize         = Self("Resize")
     static let move           = Self("Move")
-    //----------------------------------------
-        
+
     static let gaps           = Self("Gaps")
     static let padding        = Self("Padding")
     
@@ -28,13 +26,21 @@ extension KeyboardShortcuts.Name {
 
 extension KeyboardShortcuts {
     static func resetEmeraldDefaults() {
-        KeyboardShortcuts.set(.gaps,           [.control, .option,          ], .g)
-        KeyboardShortcuts.set(.padding,        [.control, .option,          ], .h)
-        KeyboardShortcuts.set(.split,          [.control, .option,          ], .x)
-        KeyboardShortcuts.set(.balance,        [.control, .option,          ], .b)
         KeyboardShortcuts.set(.float,          [.control, .option,          ], .one)
         KeyboardShortcuts.set(.bsp,            [.control, .option,          ], .two)
         KeyboardShortcuts.set(.stack,          [.control, .option,          ], .three)
+        
+        // Temporary
+        KeyboardShortcuts.set(.focus,          [.control,                   ], .help)
+        KeyboardShortcuts.set(.resize,         [.control, .option,          ], .help)
+        KeyboardShortcuts.set(.move,           [.control, .option, .command ], .help)
+        
+        KeyboardShortcuts.set(.gaps,           [.control, .option,          ], .g)
+        KeyboardShortcuts.set(.padding,        [.control, .option,          ], .h)
+        
+        KeyboardShortcuts.set(.split,          [.control, .option,          ], .x)
+        KeyboardShortcuts.set(.balance,        [.control, .option,          ], .b)
+        
     }
 }
 

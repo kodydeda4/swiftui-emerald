@@ -45,25 +45,26 @@ extension SKHD.State {
 #============================================
 # Focus
 #============================================
-\(KeyboardShortcuts.getShortcut(for: .focus)?.skhdString ?? "#<UNASSIGNED>") - up    : yabai -m window --focus north
-\(KeyboardShortcuts.getShortcut(for: .focus)?.skhdString ?? "#<UNASSIGNED>") - down  : yabai -m window --focus south
-\(KeyboardShortcuts.getShortcut(for: .focus)?.skhdString ?? "#<UNASSIGNED>") - right : yabai -m window --focus east
-\(KeyboardShortcuts.getShortcut(for: .focus)?.skhdString ?? "#<UNASSIGNED>") - left  : yabai -m window --focus west
+lctrl - up    : yabai -m window --focus north
+lctrl - down  : yabai -m window --focus south
+lctrl - right : yabai -m window --focus east
+lctrl - left  : yabai -m window --focus west
 
 #============================================
 # Move
 #============================================
-\(KeyboardShortcuts.getShortcut(for: .move)?.skhdString ?? "#<UNASSIGNED>") - up    : yabai -m window --warp north
-\(KeyboardShortcuts.getShortcut(for: .move)?.skhdString ?? "#<UNASSIGNED>") - down  : yabai -m window --warp south
-\(KeyboardShortcuts.getShortcut(for: .move)?.skhdString ?? "#<UNASSIGNED>") - right : yabai -m window --warp east
-\(KeyboardShortcuts.getShortcut(for: .move)?.skhdString ?? "#<UNASSIGNED>") - left  : yabai -m window --warp west
+cmd + alt + lctrl - up   : yabai -m window --warp north
+cmd + alt + lctrl - down : yabai -m window --warp south
+cmd + alt + lctrl - right: yabai -m window --warp east
+cmd + alt + lctrl - left : yabai -m window --warp west
+
 #============================================
 # Resize
 #============================================
-\(KeyboardShortcuts.getShortcut(for: .resize)?.skhdString ?? "#<UNASSIGNED>") - up    : yabai -m window --resize top:0:-50   ; yabai -m window --resize bottom:0:-
-\(KeyboardShortcuts.getShortcut(for: .resize)?.skhdString ?? "#<UNASSIGNED>") - down  : yabai -m window --resize bottom:0:50 ; yabai -m window --resize top:0:50
-\(KeyboardShortcuts.getShortcut(for: .resize)?.skhdString ?? "#<UNASSIGNED>") - right : yabai -m window --resize right:50:0  ; yabai -m window --resize left:50:0
-\(KeyboardShortcuts.getShortcut(for: .resize)?.skhdString ?? "#<UNASSIGNED>") - left  : yabai -m window --resize left:-50:0  ; yabai -m window --resize right:-50:0
+alt + lctrl - up    : yabai -m window --resize top:0:-50   ; yabai -m window --resize bottom:0:-
+alt + lctrl - down  : yabai -m window --resize bottom:0:50 ; yabai -m window --resize top:0:50
+alt + lctrl - right : yabai -m window --resize right:50:0  ; yabai -m window --resize left:50:0
+alt + lctrl - left  : yabai -m window --resize left:-50:0  ; yabai -m window --resize right:-50:0
 """
     }
 }
@@ -156,7 +157,7 @@ extension KeyboardShortcuts.Key {
         case .f10 : return "f10"
         case .f11 : return "f11"
         case .f12 : return "f12"
-            
+                        
         default:
             return nil
         }
