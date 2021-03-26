@@ -188,7 +188,7 @@ struct Window: View {
     var body: some View {
         RoundedRectangle(cornerRadius: 6)
             .foregroundColor(Color(.windowBackgroundColor))
-            .shadow(radius: 10, y: 10)
+            .shadow(radius: 10, y: 6)
     }
 }
 
