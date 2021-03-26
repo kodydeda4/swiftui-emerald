@@ -115,22 +115,21 @@ struct LayoutShortcutView: View {
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
-                VStack(alignment: .leading) {
-                    Text(layout.labelDescription)
-                        .bold()
-                        .font(.title)
-                        .shadow(radius: 1, y: 1)
-                        .foregroundColor(.white)
-                        .opacity(0.85)
-                    
-                    Text(layout.caseDescription)
-                        .lineLimit(1)
-                        .padding(.top, 1)
-                        .padding(.bottom)
-                        .shadow(radius: 1, y: 1)
-                        .foregroundColor(.white)
-                        .opacity(0.85)
-                }
+                Text(layout.labelDescription)
+                    .bold()
+                    .font(.title)
+                    .shadow(radius: 1, y: 1)
+                    .foregroundColor(.white)
+                    .opacity(0.85)
+                
+                Text(layout.caseDescription)
+                    .lineLimit(1)
+                    .padding(.top, 1)
+                    .padding(.bottom)
+                    .shadow(radius: 1, y: 1)
+                    .foregroundColor(.white)
+                    .opacity(0.85)
+                
                 GeometryReader { geo in
                     if layout == .float {
                         Window()
@@ -161,12 +160,12 @@ struct LayoutShortcutView: View {
                 }
                 //.shadow(radius: 10, y: 10)
                 .aspectRatio(CGSize(width: 16, height: 10), contentMode: .fill)
-                .scaleEffect(hovering ? 1.0 : 0.98)
+                .scaleEffect(hovering ? 1.0 : 0.99)
                 .animation(.spring(), value: hovering)
             }
             .padding()
             .padding()
-            //.background(Color.black.opacity(hovering ? 0 : 0.2))
+            .background(Color.black.opacity(hovering ? 0 : 0.10))
             .background(bgColor)
             .animation(.spring(), value: hovering)
             .onHover { _ in
