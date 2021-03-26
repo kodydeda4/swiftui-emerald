@@ -15,76 +15,37 @@ struct SpaceSettingsView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             ScrollView {
-                VStack(spacing: 30) {
-                    HStack {
-                        Text("Layout")
-                            .font(.largeTitle)
-                            .bold()
-                        Spacer()
-                    }
+                VStack(alignment: .leading) {
+                    Text("Layout")
+                        .font(.largeTitle)
+                        .bold()
                     Divider()
                     HStack {
-                        ForEach(Yabai.State.Layout.allCases) { i in
-                            LayoutShortcutView(layout: i)
+                        ForEach(Yabai.State.Layout.allCases) {
+                            LayoutShortcutView(layout: $0)
                         }
                     }
                 }
-                .padding(.bottom)
-                
-                VStack {
-                    HStack {
-                        Text("Shortcuts")
-                            .font(.largeTitle)
-                            .bold()
-                        Spacer()
-                    }
+                VStack(alignment: .leading) {
+                    Text("Shortcuts")
+                        .font(.largeTitle)
+                        .bold()
                     Divider()
-                        .padding(.bottom)
                     HStack {
-                        ForEach([KeyboardShortcuts.Name.focus, .resize, .move, .gaps, .padding, .balance, .split], id: \.self) { i in
-                            VStack {
-                                Button(action: {}) {
-                                    RoundedRectangle(cornerRadius: 6)
-                                    Text("")
-                                }
-                                .buttonStyle(PlainButtonStyle())
-                                .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fill)
-                                
-                                Text(i.rawValue)
-                                    .bold()
-                                    .font(.title3)
-                                
-                                if i == .focus {
-                                    TextField("", text: .constant("⌃ Arrow"))
-                                        .multilineTextAlignment(.center)
-                                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                                        .frame(width: 130)
-                                    
-                                } else if i == .resize {
-                                    TextField("", text: .constant("⌃⌥ Arrow"))
-                                        .multilineTextAlignment(.center)
-                                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                                        .frame(width: 130)
-                                    
-                                } else if i == .move {
-                                    TextField("", text: .constant("⌃⌥⌘ Arrow"))
-                                        .multilineTextAlignment(.center)
-                                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                                        .frame(width: 130)
-                                }
-                                else {
-                                    KeyboardShortcuts.Recorder(for: i)
-                                }
-                            }
+                        ForEach([KeyboardShortcuts.Name.focus, .resize, .move], id: \.self) {
+                            ShortcutView(shortcut: $0)
+                        }
+                    }
+                    HStack {
+                        ForEach([KeyboardShortcuts.Name.balance, .split, .padding, .gaps], id: \.self) {
+                            ShortcutView(shortcut: $0)
                         }
                     }
                 }
             }
-            .padding(.horizontal, 30)
-            .padding(.vertical)
             .frame(maxWidth: 1200)
+            .padding()
             .navigationTitle("")
-            //.navigationTitle("Layout")
         }
     }
 }
@@ -177,7 +138,57 @@ struct LayoutShortcutView: View {
         }
         .background(Color(.windowBackgroundColor))
         .clipShape(RoundedRectangle(cornerRadius: 6))
-        .shadow(radius: 6, y: 2)
+        .shadow(radius: 6, y: 5)
+        .padding()
+    }
+}
+
+struct ShortcutView: View {
+    var shortcut: KeyboardShortcuts.Name
+    @State var hovering = false
+    
+    var body: some View {
+        VStack {
+            VStack(alignment: .leading) {
+                Text(shortcut.rawValue)
+                    .bold()
+                    .font(.title)
+                    .shadow(radius: 1, y: 1)
+                    .foregroundColor(.white)
+                    .opacity(0.85)
+                
+//                Text(shortcut.rawValue)
+//                    .lineLimit(1)
+//                    .padding(.top, 1)
+//                    .padding(.bottom)
+//                    .shadow(radius: 1, y: 1)
+//                    .foregroundColor(.white)
+//                    .opacity(0.85)
+                
+                GeometryReader { geo in
+                    if shortcut == .focus {
+                        Window()
+                    }
+                }
+                .aspectRatio(CGSize(width: 16, height: 10), contentMode: .fill)
+                .scaleEffect(hovering ? 1.0 : 0.99)
+                .animation(.spring(), value: hovering)
+            }
+            .padding()
+            .padding()
+            .background(Color.black.opacity(hovering ? 0 : 0.10))
+            //.background(bgColor)
+            .animation(.spring(), value: hovering)
+            .onHover { _ in
+                hovering.toggle()
+            }
+            
+            KeyboardShortcuts.Recorder(for: shortcut)
+                .padding()
+        }
+        .background(Color(.windowBackgroundColor))
+        .clipShape(RoundedRectangle(cornerRadius: 6))
+        .shadow(radius: 6, y: 5)
         .padding()
     }
 }
