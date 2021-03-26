@@ -107,7 +107,7 @@ struct LayoutShortcutView: View {
         case .stack : return LinearGradient(gradient: Gradient(colors: [Color(hexString: "#ff5f6d"), Color(hexString: "#ffc371")]), startPoint: .top, endPoint: .bottomTrailing)
         }
     }
-
+    
     var shortcut: KeyboardShortcuts.Name {
         switch layout {
         case .float : return .float
@@ -128,56 +128,60 @@ struct LayoutShortcutView: View {
                     .padding(.top, 1)
                     .padding(.bottom)
                     .shadow(radius: 2, y: 2)
-            }
-            VStack {
+                
                 GeometryReader { geo in
                     if layout == .float {
-                        window
+                        Window()
                     } else if layout == .bsp {
                         HStack {
-                            window
+                            Window()
                             VStack {
-                                window
-                                window
+                                Window()
+                                Window()
                             }
                         }
                     } else if layout == .stack {
                         ZStack {
                             VStack {
-                                window.frame(width: geo.size.width * 0.8, height: geo.size.height * 1.0)
+                                Window().frame(width: geo.size.width * 0.8, height: geo.size.height * 1.0)
                                 Spacer()
                             }
                             VStack {
-                                window.frame(width: geo.size.width * 0.9, height: geo.size.height * 0.9)
+                                Window().frame(width: geo.size.width * 0.9, height: geo.size.height * 0.9)
                                 Spacer()
                             }
                             VStack {
-                                window.frame(width: geo.size.width * 1.0, height: geo.size.height * 0.8)
+                                Window().frame(width: geo.size.width * 1.0, height: geo.size.height * 0.8)
                                 Spacer()
                             }
                         }
                     }
                 }
                 .shadow(radius: 10, y: 6)
-                .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fill)
-                Spacer()
-                KeyboardShortcuts.Recorder(for: shortcut)
-                    .padding(.top)
+                .aspectRatio(CGSize(width: 16, height: 10), contentMode: .fill)
             }
+            .padding()
+            .padding()
+            //.background(Color.black.opacity(hovering || selected ? 0 : 1))
+            .background(bgColor)
+            .animation(.spring(), value: hovering)
+            .onHover { _ in
+                hovering.toggle()
+            }
+            Spacer()
+            KeyboardShortcuts.Recorder(for: shortcut)
+                .padding()
         }
-        .padding()
-        .padding()
-        //.background(Color.black.opacity(hovering || selected ? 0 : 1))
-        .background(bgColor)
+        .background(Color(.windowBackgroundColor))
         .clipShape(RoundedRectangle(cornerRadius: 6))
         .shadow(radius: 3)
-        .animation(.spring(), value: hovering)
-        .onHover { _ in
-            hovering.toggle()
-        }
     }
+}
+
+struct Window: View {
+    var color: Color = Color(.windowBackgroundColor)
     
-    var window: some View {
+    var body: some View {
         RoundedRectangle(cornerRadius: 6)
             .foregroundColor(Color(.windowBackgroundColor))
             .shadow(radius: 2)

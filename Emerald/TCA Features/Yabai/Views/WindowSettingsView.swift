@@ -31,14 +31,14 @@ struct WindowSettingsView: View {
                                     .opacity(0.25)
                                 
                                 HStack {
-                                    Window(
+                                    Window2(
                                         opacity: viewStore.activeWindowOpacity,
                                         borderColor: viewStore.activeWindowBorderColor.color,
                                         borderWidth: CGFloat(viewStore.windowBorderWidth)
                                     )
                                     VStack {
                                         ForEach(0..<2) { _ in
-                                            Window(
+                                            Window2(
                                                 opacity: viewStore.normalWindowOpacity,
                                                 borderColor: viewStore.normalWindowBorderColor.color,
                                                 borderWidth: CGFloat(viewStore.windowBorderWidth)
@@ -155,7 +155,7 @@ struct WindowSettingsView: View {
     }
 }
 
-private struct Window: View {
+private struct Window2: View {
     var opacity: Double
     var borderColor: Color
     var borderWidth: CGFloat
