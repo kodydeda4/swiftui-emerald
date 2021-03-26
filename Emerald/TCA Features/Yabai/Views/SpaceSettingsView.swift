@@ -25,17 +25,7 @@ struct SpaceSettingsView: View {
                     Divider()
                     HStack {
                         ForEach(Yabai.State.Layout.allCases) { i in
-//                            Button(action: { viewStore.send(.updateLayout(i)) }) {
-//                                LayoutShortcutView(layout: i, selected: viewStore.layout == i)
-//                            }
-//                            .buttonStyle(PlainButtonStyle())
-//                            .padding(.vertical)
-//                            .padding(.horizontal, 6)
-                            LayoutShortcutView(layout: i, selected: viewStore.layout == i)
-                                .padding()
-                                                        //.padding(.vertical)
-                                                        //.padding(.horizontal, 6)
-
+                            LayoutShortcutView(layout: i)
                         }
                     }
                 }
@@ -93,26 +83,26 @@ struct SpaceSettingsView: View {
             .padding(.horizontal, 30)
             .padding(.vertical)
             .frame(maxWidth: 1200)
-            //.padding(.horizontal, 30)
-            //.padding(.vertical)
             .navigationTitle("")
-            
             //.navigationTitle("Layout")
         }
     }
 }
 
+
 struct LayoutShortcutView: View {
     var layout: Yabai.State.Layout
-    var selected: Bool
     @State var hovering = false
     
     var bgColor: LinearGradient {
-        switch layout {
-        case .float : return LinearGradient(gradient: Gradient(colors: [Color(hexString: "#B721FF"), Color(hexString: "#21D4FD")]), startPoint: .top, endPoint: .bottomTrailing)
-        case .bsp   : return LinearGradient(gradient: Gradient(colors: [Color(hexString: "#20bf55"), Color(hexString: "#01baef")]), startPoint: .top, endPoint: .bottomTrailing)
-        case .stack : return LinearGradient(gradient: Gradient(colors: [Color(hexString: "#ff5f6d"), Color(hexString: "#ffc371")]), startPoint: .top, endPoint: .bottomTrailing)
+        var g: Gradient {
+            switch layout {
+            case .float : return Gradient(colors: [Color(hexString: "#B721FF"), Color(hexString: "#21D4FD")])
+            case .bsp   : return Gradient(colors: [Color(hexString: "#20bf55"), Color(hexString: "#01baef")])
+            case .stack : return Gradient(colors: [Color(hexString: "#ff5f6d"), Color(hexString: "#ffc371")])
+            }
         }
+        return LinearGradient(gradient: g, startPoint: .top, endPoint: .bottomTrailing)
     }
     
     var shortcut: KeyboardShortcuts.Name {
@@ -129,20 +119,18 @@ struct LayoutShortcutView: View {
                     Text(layout.labelDescription)
                         .bold()
                         .font(.title)
-                        .shadow(radius: 2, y: 2)
+                        .shadow(radius: 1, y: 1)
                         .foregroundColor(.white)
+                        .opacity(0.85)
                     
                     Text(layout.caseDescription)
                         .lineLimit(1)
                         .padding(.top, 1)
                         .padding(.bottom)
-                        .shadow(radius: 2, y: 2)
+                        .shadow(radius: 1, y: 1)
                         .foregroundColor(.white)
+                        .opacity(0.85)
                 }
-                //.scaleEffect(hovering ? 1.0 : 0.95)
-                .animation(.spring(), value: hovering)
-                
-                
                 GeometryReader { geo in
                     if layout == .float {
                         Window()
@@ -171,14 +159,14 @@ struct LayoutShortcutView: View {
                         }
                     }
                 }
-                .shadow(radius: 10, y: 10)
+                //.shadow(radius: 10, y: 10)
                 .aspectRatio(CGSize(width: 16, height: 10), contentMode: .fill)
                 .scaleEffect(hovering ? 1.0 : 0.98)
                 .animation(.spring(), value: hovering)
             }
             .padding()
             .padding()
-            //.background(Color.black.opacity(hovering || selected ? 0 : 1))
+            //.background(Color.black.opacity(hovering ? 0 : 0.2))
             .background(bgColor)
             .animation(.spring(), value: hovering)
             .onHover { _ in
@@ -190,7 +178,8 @@ struct LayoutShortcutView: View {
         }
         .background(Color(.windowBackgroundColor))
         .clipShape(RoundedRectangle(cornerRadius: 6))
-        .shadow(radius: 7, y: 2)
+        .shadow(radius: 6, y: 2)
+        .padding()
     }
 }
 
@@ -200,16 +189,24 @@ struct Window: View {
     var body: some View {
         RoundedRectangle(cornerRadius: 6)
             .foregroundColor(Color(.windowBackgroundColor))
-            .shadow(radius: 2)
+            .shadow(radius: 10, y: 10)
     }
 }
 
 // MARK:- SwiftUI_Previews
+struct Window_Previews: PreviewProvider {
+    static var previews: some View {
+        Window()
+    }
+}
+
+
+// MARK:- SwiftUI_Previews
 struct LayoutShortcutView_Previews: PreviewProvider {
     static var previews: some View {
-        LayoutShortcutView(layout: .float, selected: true)
-        LayoutShortcutView(layout: .bsp, selected: true)
-        LayoutShortcutView(layout: .stack, selected: true)
+        LayoutShortcutView(layout: .float)
+        LayoutShortcutView(layout: .bsp)
+        LayoutShortcutView(layout: .stack)
     }
 }
 
