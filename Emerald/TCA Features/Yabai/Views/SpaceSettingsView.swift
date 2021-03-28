@@ -88,7 +88,6 @@ struct LayoutShortcutView: View {
                     .shadow(radius: 1, y: 1)
                     .foregroundColor(.white)
                     .opacity(0.85)
-//                    .blendMode(.overlay)
                 
                 Text(layout.caseDescription)
                     .lineLimit(1)
@@ -96,7 +95,7 @@ struct LayoutShortcutView: View {
                     .padding(.bottom)
                     .shadow(radius: 1, y: 1)
                     .foregroundColor(.white)
-                    .opacity(hovering ? 0.85 : 0)
+                    .opacity(0.80)
                 
                 GeometryReader { geo in
                     if layout == .float {
@@ -113,8 +112,9 @@ struct LayoutShortcutView: View {
                         ZStack {
                             //back
                             Window()
-                                .padding([.leading, .top],     hovering ? 16*2 : 0)
-                                .padding([.trailing, .bottom], hovering ? 16*0 : 0)
+                                .padding([.leading, .top],     hovering ? 32 : 0)
+                                //.padding([.trailing, .bottom], hovering ?  0 : 0)
+                                .padding(.horizontal, hovering ? 0 : 32)
                                 .animation(.spring())
                                 .rotation3DEffect(
                                     Angle(degrees: hovering ? angle : 0),
@@ -123,8 +123,11 @@ struct LayoutShortcutView: View {
 
                             //middle
                             Window()
-                                .padding([.leading, .top],     hovering ? 16*1 : 0)
-                                .padding([.trailing, .bottom], hovering ? 16*1 : 0)
+                                .padding([.leading, .top],     hovering ? 16 : 0)
+                                .padding(.trailing, hovering ? 16 : 0)
+                                .padding(.horizontal, hovering ? 0 : 16)
+
+                                .padding(.bottom, 16)
                                 .animation(.spring())
                                 .rotation3DEffect(
                                     Angle(degrees: hovering ? angle : 0),
@@ -133,14 +136,47 @@ struct LayoutShortcutView: View {
 
                             //top
                             Window()
-                                .padding([.leading, .top],     hovering ? 16*0 : 0)
-                                .padding([.trailing, .bottom], hovering ? 16*2 : 0)
+                                .padding([.leading, .top],     hovering ?  0 : 0)
+                                .padding(.trailing, hovering ? 32 : 0)
+                                .padding(.bottom, 32)
                                 .animation(.spring())
                                 .rotation3DEffect(
                                     Angle(degrees: hovering ? angle : 0),
                                     axis: (x: x, y: y, z: z)
                                 )
                         }
+
+//                        ZStack {
+//                            //back
+//                            Window()
+//                                .padding([.leading, .top],     hovering ? 16*2 : 0)
+//                                .padding([.trailing, .bottom], hovering ? 16*0 : 0)
+//                                .animation(.spring())
+//                                .rotation3DEffect(
+//                                    Angle(degrees: hovering ? angle : 0),
+//                                    axis: (x: x, y: y, z: z)
+//                                )
+//
+//                            //middle
+//                            Window()
+//                                .padding([.leading, .top],     hovering ? 16*1 : 0)
+//                                .padding([.trailing, .bottom], hovering ? 16*1 : 0)
+//                                .animation(.spring())
+//                                .rotation3DEffect(
+//                                    Angle(degrees: hovering ? angle : 0),
+//                                    axis: (x: x, y: y, z: z)
+//                                )
+//
+//                            //top
+//                            Window()
+//                                .padding([.leading, .top],     hovering ? 16*0 : 0)
+//                                .padding([.trailing, .bottom], hovering ? 16*2 : 0)
+//                                .animation(.spring())
+//                                .rotation3DEffect(
+//                                    Angle(degrees: hovering ? angle : 0),
+//                                    axis: (x: x, y: y, z: z)
+//                                )
+//                        }
                     }
                 }
                 .aspectRatio(CGSize(width: 16, height: 10), contentMode: .fill)
