@@ -88,6 +88,7 @@ struct LayoutShortcutView: View {
                     .shadow(radius: 1, y: 1)
                     .foregroundColor(.white)
                     .opacity(0.85)
+//                    .blendMode(.overlay)
                 
                 Text(layout.caseDescription)
                     .lineLimit(1)
@@ -110,31 +111,30 @@ struct LayoutShortcutView: View {
                         }
                     } else if layout == .stack {
                         ZStack {
+                            //back
                             Window()
-                                .padding(.trailing, hovering ? 8 : 0)
-                                .padding(.leading, hovering ? 24 : 0)
-                                .padding(.top, hovering ? 24 : 0)
+                                .padding([.leading, .top],     hovering ? 16*2 : 0)
+                                .padding([.trailing, .bottom], hovering ? 16*0 : 0)
                                 .animation(.spring())
                                 .rotation3DEffect(
                                     Angle(degrees: hovering ? angle : 0),
                                     axis: (x: x, y: y, z: z)
                                 )
 
+                            //middle
                             Window()
-                                .padding(.trailing, hovering ? 16 : 0)
-                                .padding(.leading, hovering ? 16 : 0)
-                                .padding(.top, hovering ? 16 : 0)
-                                .padding(.bottom, hovering ? 16 : 8)
+                                .padding([.leading, .top],     hovering ? 16*1 : 0)
+                                .padding([.trailing, .bottom], hovering ? 16*1 : 0)
                                 .animation(.spring())
                                 .rotation3DEffect(
                                     Angle(degrees: hovering ? angle : 0),
                                     axis: (x: x, y: y, z: z)
                                 )
 
+                            //top
                             Window()
-                                .padding(.trailing, hovering ? 24 : 0)
-                                .padding(.leading, hovering ? 0 : 0)
-                                .padding(.bottom, hovering ? 32 : 16)
+                                .padding([.leading, .top],     hovering ? 16*0 : 0)
+                                .padding([.trailing, .bottom], hovering ? 16*2 : 0)
                                 .animation(.spring())
                                 .rotation3DEffect(
                                     Angle(degrees: hovering ? angle : 0),
@@ -237,6 +237,8 @@ struct Window: View {
         RoundedRectangle(cornerRadius: 6)
             .foregroundColor(Color(.windowBackgroundColor))
             .shadow(radius: 10, y: 6)
+//            .border(Color.white.blendMode(.overlay))
+            
     }
 }
 
