@@ -1,10 +1,29 @@
 # Presentation Outline
 
+**Tell a story**
+
+- Breif Rundown
+- Body of presentation
+- Tell you what they just told them
+
+helps reinforce the points at least 3 times
+
+Graphs?
+
+Repitions is your friend - allows you to build ideas and remember key points and be memorable.
+
+Be authentic - lets you be relatable! be someone the audience can relate to or feel comfortable talking to.
+Helps them mentally engage.
+Workout hard before doing the presentation so that you're relaxed.
+
+Practice the presentation so you can sound natural, authentic, confident, relaxed.
+
 ## 1. Introduction
 
 ## 1.1  What is a TWM?
 
-Show them what a tiling window manager is through examples
+* Show them what a tiling window manager is through examples
+* Touch on Yabai
 
 ## 1.2 TWM Problems
 
