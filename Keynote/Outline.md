@@ -2,6 +2,8 @@
 
 ## 1. Introduction
 
+Over the last year I found myself interested in the Linux community.  I started watching Youtubers like Luke Smith, Distrotube, Mental Outlaw, to name a few.
+
 ### 1.1 Floating Window Managers
 
 I'm going to start by defining something we're all familiar with, but that most of us never knew had a name. It describes how windows are organized & laid out on the desktop. The word is **Window Manager**.
@@ -23,19 +25,16 @@ Today however, i'm going to introduce you to an alternative that I hope you find
 - Efficiency.
 - Organization.
 
-They do so by:
+They do so simply by:
 
-- Automatically resizing / moving windows for you.
+- Automatically resizing / moving windows for you into non-overlapping frames.
 - Empowering you with keyboard shortcuts for focusing, moving, & resizing windows.
 
-This means you no longer have to click and drag windows to the side over and over again.
-It just does it automatically.
+### 1.3 The problem with Tiling Window Managers
 
+You may be wondering "How come I haven't heard of this before?"
 
-
-They're commonly used within the Linux community, and there are actually several to choose from, each with their own nuances.  
-
-A few of the most common include:
+The truth is that while Tiling Window Managers do offer more features & functionality, they're not that commonly used outside of the Linux community. Despite this, there are actually quite a few out there, each with their own nuances and configurations.
 
 - DWM
 - XMonad
@@ -44,7 +43,53 @@ A few of the most common include:
 - Awesome
 
 
-### 1.3 The problem with Tiling Window Managers
+This is mostly due to how they're installed and configured. 
+
+------------------------------------------------------------------------------------------
+### 1. Getting Started
+
+To even get started using a tiling window manager, you have to install the program through the terminal.  
+
+For programmers like us, that might be easy, but for most users that comes across as really difficult.
+
+It sends a lot of people away before they ever start using it because they can't understand what it's supposed to do in the first place, and even if they did, it would seem overly complicated or difficult to install a program through the terminal.
+
+To make things even more complicated, some tiling window managers DO NOT come with built in way of adding shortcuts.  Yabai is like this, it actually relies on a completely seperate program to configure keyboard shortcuts, which is also installed and configured via the terminal.
+
+
+### 2. Configuration
+
+To configure these programs, you have to read through documentation, and be somewhat familiar with a programming language.
+
+DWM is written & configured in C
+XMonad is written & configured in Haskell
+Awesome is written & configured in Lua
+etc etc 
+
+In the case of Yabai, the configuration is just written in plaintext as a series of terminal commands.
+
+### 3. Extensibility
+
+
+
+I wanted to make a program that was way , and super easy to use. That is why I created Emerald.
+
+### Random
+
+Explain how they are normally configured and why this is annoying
+
+People have a hard time figuring out how to use them, even for the basics.
+
+I wanted to make a program that was way , and super easy to use. That is why I created Emerald.
+
+The main problem is that they're not so easy to use,
+You have to install the program through the command-line
+You have to read through documentation
+And you have to configure two seperate programs, the first is for the actual tiling window manager, and the second is for skhd, a program that configures keyboard shortcuts.  To configure these programs, you have to read through documentation on Github, and type up your preferences into a file hidden on your desktop called a `dotfile`.  This means that a lot of the options and capability for the program can never actually be realized.  Show examples.
+
+
+------------------------------------------------------------------------------------------
+
 
 Explain the problems with Tiling Window Managers
 use as a segway into demo - "That's why I decided to create what i'm about to show you."
@@ -162,58 +207,3 @@ LinkedIn
 
 Github
 <https://github.com/kodydeda4>
-
-
-<!-- ## 1. Introduction
-
-## 1.1  What is a TWM?
-
-* Show them what a tiling window manager is through examples
-
-## 1.2 TWM Problems
-
-### 1. Getting Started
-
-To even get started using a tiling window manager, you have to install the program through the terminal.  
-
-For programmers like us, that might be easy, but for most users that comes across as really difficult.
-
-It sends a lot of people away before they ever start using it because they can't understand what it's supposed to do in the first place, and even if they did, it would seem overly complicated or difficult to install a program through the terminal.
-
-To make things even more complicated, some tiling window managers DO NOT come with built in way of adding shortcuts.  Yabai is like this, it actually relies on a completely seperate program to configure keyboard shortcuts, which is also installed and configured via the terminal.
-
-
-### 2. Configuration
-
-To configure these programs, you have to read through documentation, and be somewhat familiar with a programming language.
-
-DWM is written & configured in C
-XMonad is written & configured in Haskell
-Awesome is written & configured in Lua
-etc etc 
-
-In the case of Yabai, the configuration is just written in plaintext as a series of terminal commands.
-
-### 3. Extensibility
-
-
-
-I wanted to make a program that was way , and super easy to use. That is why I created Emerald.
-
-### Random
-
-Explain how they are normally configured and why this is annoying
-
-People have a hard time figuring out how to use them, even for the basics.
-
-I wanted to make a program that was way , and super easy to use. That is why I created Emerald.
-
-The main problem is that they're not so easy to use,
-You have to install the program through the command-line
-You have to read through documentation
-And you have to configure two seperate programs, the first is for the actual tiling window manager, and the second is for skhd, a program that configures keyboard shortcuts.  To configure these programs, you have to read through documentation on Github, and type up your preferences into a file hidden on your desktop called a `dotfile`.  This means that a lot of the options and capability for the program can never actually be realized.  Show examples.
-
-
-------------
-
-The problem with these programs is that they aren't very easy to use. -->
