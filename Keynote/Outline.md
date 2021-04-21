@@ -1,25 +1,48 @@
 # Presentation Outline
 
-1. Show the problem with floating window managers.
-2. Explain a solution - Tiling Window Managers.
-3. Explain the problem with Tiling Window Managers
-4. Segway into demoing your product ("That's why I decided to create what i'm about to show you")
-5. Live demo of Emerald
-6. Explain how you built it, SwiftUI, TCA, FP, etc.
-7. Recap with 3 things you learned, future plans for the project (webflow etc), links & references for people interested in learning about SwiftUI
-8. Exit with profile pic & links to Github, LinkedIn, etc.
-
-## 1 Introduction
+## 1. Introduction
 
 ### 1.1 Explain the problem - Floating Window Managers
 
-### 1.2 Explain the solution - Tiling Window Managers.
+Show the problems with floating window managers.
 
-segway into demo - "That's why I decided to create what i'm about to show you."
+1. Windows can get messy
+2. Most of the time you're just snapping one on the left, one on the right.
+   _When you do this you can't see your wallpaper_
 
-## 2 Live Demo
+3. Inefficient use of screen realestate
+4. Having to move and resize windows with your mouse.
 
-## 3 Explain how you created it
+### 1.2 Explain the solution - Tiling Window Managers
+
+Explain a possible solution - Tiling Window Managers.
+Show pictures
+
+### 1.3 The problem with Tiling Window Managers
+
+Explain the problems with Tiling Window Managers
+use as a segway into demo - "That's why I decided to create what i'm about to show you."
+
+## 2. Live Demo
+
+Live demo of Emerald
+
+- **show live keyboard shortcuts**
+- set the logo as your wallpaper.
+- show it off using spotlight search
+- write a list of things you want to show off here:
+  1. toggle between floating, tiling, and stacking modes.
+  2. toggle gaps/padding
+  3. focus, resize, swap
+  4. how it plays with other keyboard shortcuts (spotlight search, cmd H, cmd M, cmd Q, cmd TAB, option + arrowkeys for text, cmd+ arrowkeys for text)
+  5. Mouse follows focus
+  6. Transparency
+  7. Always on top
+  8. Shadows
+
+## 3. Explain what you built and how you created it
+
+Explain how you wanted to make something simple and easy to use
 
 ### 3.1 SwiftUI
 
@@ -29,9 +52,32 @@ segway into demo - "That's why I decided to create what i'm about to show you."
 
 ## 4. Recap
 
+### 3 things you learned from building this project
 
+Recap with 3 things you learned, future plans for the project (webflow etc), links & references for people interested in learning about SwiftUI
 
+1. Plan - why i'm glad I didn't, learning from failures, why i will be planning from now on.
+ Planning gives you a direction, talk about how you struggled to create a simple - architecture that was actually what you naturally intended it to be from the start lol xD
 
+2. Functional Programming - value vs mutation, closures, view modifiers, capabilities, plug PointFree
+
+3.  
+
+### Future plans
+
+show other projects
+release version 1 with an associated WebFlow site
+
+### Resources
+
+- PointFree
+- PaulHudson
+- Swift documentation
+- Github links to Yabai & SKHD.
+
+### Exit
+
+Exit with profile pic & links to Github, LinkedIn, etc.
 
 <!-- ## 1. Introduction
 
