@@ -2,7 +2,11 @@
 
 ## 1. Introduction
 
-Over the last year I found myself interested in the Linux community.  I started watching Youtubers like Luke Smith, Distrotube, Mental Outlaw, to name a few.
+Over the last year I found myself interested in the Linux community.  I started watching Youtubers like Luke Smith, Distrotube, Mental Outlaw, to name a few.  I first became interested in this when I came across these screenshots:
+
+<!-- **screenshots** -->
+
+<!-- I really enjoyed seeing a level of personality and customization shine through yadayadyasdyasdf -->
 
 ### 1.1 Floating Window Managers
 
@@ -34,7 +38,9 @@ They do so simply by:
 
 You may be wondering _"How come I haven't heard of this before?"_
 
-Well, the truth is, while Tiling Window Managers do offer some extra features & functionality, they're not that commonly used outside of the Linux community. This mainly comes down to their being difficult to install and configure. The process for getting them up and running looks like this:
+Well, the truth is, while Tiling Window Managers do offer some extra features & functionality, and are increasingly common within the Linux Community, they're not that commonly used outside of it. This mainly comes down to their difficultly in installing and configuring them.
+
+The process for getting one up and running looks like this:
 
 - Install the program through the command line.
 - Read through the Github or MAN documentation to figure out how it works.
@@ -42,67 +48,50 @@ Well, the truth is, while Tiling Window Managers do offer some extra features & 
 
 PS. The configuration file, also called a dotfile, gets its name by the dot prefix before it's name, meansing it's hidden by default within Finder & Windows File Explorer. This means you gotta open / edit it in the terminal..  simple right? ;)
 
-**Despite this**, there are actually quite a few out there, each with their own nuances and configurations.
+Despite this, there are actually quite a few out there, each with their own nuances and configurations.
 
 To name a few:
 
-- DWM configured in C.
-- XMonad configured in Haskell
-- i3 configured in Bash
-- QTile configured in Python
-- Awesome configured in Lua
+- DWM (configured in C)
+- XMonad (configured in Haskell)
+- i3 (configured in Bash)
+- QTile (configured in Python)
+- Awesome (configured in Lua)
 
+### 1.4 Examples
 
-------------------------------------------------------------------------------------------
-### 1. Getting Started
+<!-- Need to talk about Amethyst here -->
+On the mac, the most featured rich tiling window manager is called Yabai.
 
-To even get started using a tiling window manager, you have to install the program through the terminal.  
+Unfortunately, like the others, it requires you to configure the program through a dotfile.
+It also requires you to install, run, and configure a seperate program called SKHD to actually create/use keybindings.
 
-For programmers like us, that might be easy, but for most users that comes across as really difficult.
+After some reading and configuration, I finally got it to work how I wanted it to.
 
-It sends a lot of people away before they ever start using it because they can't understand what it's supposed to do in the first place, and even if they did, it would seem overly complicated or difficult to install a program through the terminal.
+I was extremely impressed by the efficiency and utility of the program, and I was excited to show it off to my brother (also a CS Major).  **show video of it in action**.  
 
-To make things even more complicated, some tiling window managers DO NOT come with built in way of adding shortcuts.  Yabai is like this, it actually relies on a completely seperate program to configure keyboard shortcuts, which is also installed and configured via the terminal.
-
-
-### 2. Configuration
-
-To configure these programs, you have to read through documentation, and be somewhat familiar with a programming language.
-
-DWM is written & configured in C
-XMonad is written & configured in Haskell
-Awesome is written & configured in Lua
-etc etc 
-
-In the case of Yabai, the configuration is just written in plaintext as a series of terminal commands.
-
-### 3. Extensibility
+However, I knew the program could do more, I just didn't know how, and didn't feel bothered to learn at the time.
 
 
 
-I wanted to make a program that was way , and super easy to use. That is why I created Emerald.
 
-### Random
-
-Explain how they are normally configured and why this is annoying
-
-People have a hard time figuring out how to use them, even for the basics.
-
-I wanted to make a program that was way , and super easy to use. That is why I created Emerald.
-
-The main problem is that they're not so easy to use,
-You have to install the program through the command-line
-You have to read through documentation
-And you have to configure two seperate programs, the first is for the actual tiling window manager, and the second is for skhd, a program that configures keyboard shortcuts.  To configure these programs, you have to read through documentation on Github, and type up your preferences into a file hidden on your desktop called a `dotfile`.  This means that a lot of the options and capability for the program can never actually be realized.  Show examples.
+<!-- That last one, Yabai, is one of only two TWM for the mac, the other one, called Amethyst actually has a GUI, but is lacking for reasons i'll go into later.
 
 
-------------------------------------------------------------------------------------------
+Yabai actually asks you to configure two seperate programs.
 
+The first is for the actual tiling window manager,
+the second is for skhd, a program that configures keyboard shortcuts.  
 
-Explain the problems with Tiling Window Managers
+To configure these programs, you have to read through documentation on Github, and type up your preferences into a file hidden on your desktop called a `dotfile`.  
+
+This means that a lot of the options and capability for the program can never actually be realized.  
+Show examples.
+
 use as a segway into demo - "That's why I decided to create what i'm about to show you."
 
-vim keys, vim lol
+vim keys, vim lol -->
+
 
 ## 2. Live Demo
 
