@@ -70,7 +70,7 @@ yabai -m config auto_balance \(windowBalance == .auto ? "on" : "off")
 \(windowBalance == .auto ? "#" : "")yabai -m config split_ratio \(windowBalance == .custom ? splitRatio : 0.50)
 
 # Floating Windows Stay-On-Top
-yabai -m config window_topmost \(windowTopmost == true ? "on" : "off") #SA
+yabai -m config window_topmost \(windowTopmost == true ? "on" : "off")
 
 #============================================
 # Mouse
