@@ -57,10 +57,6 @@ struct NewSpaceSettingsView: View {
     }
 }
 
-
-//import SwiftUI
-//import KeyboardShortcuts
-//
 //struct MyKeyboardShortcutsView: View {
 //    let title: String
 //    let shortcut: KeyboardShortcuts.Name
@@ -86,8 +82,6 @@ struct NewSpaceSettingsView: View {
 //        }
 //    }
 //}
-//
-//ShortcutView(shortcut: $0, action: { vs.send(.updateRestartYabai(  $0)) })
 
 struct LayoutShortcutView: View {
     var layout: Yabai.State.Layout
