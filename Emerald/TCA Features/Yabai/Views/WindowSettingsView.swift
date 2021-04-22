@@ -23,61 +23,28 @@ struct WindowSettingsView: View {
                         Spacer()
                     }
                     Divider()
-                    HStack {
-                        VStack {
-                            VStack {
-                                Rectangle()
-                                    .frame(height: 20)
-                                    .opacity(0.25)
-                                
-                                HStack {
-                                    Window2(
-                                        opacity: viewStore.activeWindowOpacity,
-                                        borderColor: viewStore.activeWindowBorderColor.color,
-                                        borderWidth: CGFloat(viewStore.windowBorderWidth)
-                                    )
-                                    VStack {
-                                        ForEach(0..<2) { _ in
-                                            Window2(
-                                                opacity: viewStore.normalWindowOpacity,
-                                                borderColor: viewStore.normalWindowBorderColor.color,
-                                                borderWidth: CGFloat(viewStore.windowBorderWidth)
-                                            )
-                                        }
-                                    }
-                                }
-                                RoundedRectangle(cornerRadius: 12)
-                                    .frame(height: 40)
-                                    .opacity(0.25)
-                                    .padding()
-                            }
-                            .aspectRatio(CGSize(width: 16, height: 6), contentMode: .fill)
-                            .background(Color(.windowBackgroundColor))
-                            
-                            
-                            HStack {
-                                //Active/Focused
-                                ColorList(
-                                    color: viewStore.binding(keyPath: \.activeWindowBorderColor.color, send: Yabai.Action.keyPath),
-                                    action: {},// viewStore.send(.updateActiveWindowBorderColor(color)),
-                                    opacity: viewStore.binding(keyPath: \.activeWindowOpacity, send: Yabai.Action.keyPath)
-                                    )
 
-                                //Normal
-                                ColorList(
-                                    color: viewStore.binding(keyPath: \.normalWindowBorderColor.color, send: Yabai.Action.keyPath),
-                                    action: {},
-                                    opacity: viewStore.binding(keyPath: \.normalWindowOpacity, send: Yabai.Action.keyPath)
-                                    )
-                            }
+                    
+                    VStack(alignment: .leading) {
+                        Window2(
+                            opacity: viewStore.activeWindowOpacity,
+                            borderColor: viewStore.activeWindowBorderColor.color,
+                            borderWidth: CGFloat(viewStore.windowBorderWidth)
+                        )
+                        .frame(height: 100)
+                        
+                        ColorList(
+                            color: viewStore.binding(keyPath: \.activeWindowBorderColor.color, send: Yabai.Action.keyPath),
+                            action: {},// viewStore.send(.updateActiveWindowBorderColor(color)),
+                            opacity: viewStore.binding(keyPath: \.activeWindowOpacity, send: Yabai.Action.keyPath)
+                        )
+                        
+                        SectionView("Active") {
+                            
                         }
                     }
-                    HStack {
-                        Text("Border Width")
-                        Slider(value: viewStore.binding(get: \.windowBorderWidth, send: Yabai.Action.updateWindowBorderWidth), in: 0...30)
-                    }
                 }
-                // Disable Shadows
+
                 Divider()
                 VStack(alignment: .leading, spacing: 30) {
                     HStack {
@@ -121,31 +88,6 @@ struct WindowSettingsView: View {
                         .disabled(!viewStore.disableShadows || viewStore.sipEnabled)
                         .opacity( !viewStore.disableShadows || viewStore.sipEnabled ? 0.5 : 1.0)
                 }
-
-                // Float-On-Top
-                //                VStack(alignment: .leading) {
-                //                    Divider()
-                //                    HStack {
-                //                        Group {
-                //                            Toggle("", isOn: vs.binding(\.windowTopmost, k))
-                //                                .labelsHidden()
-                //
-                //                            Text("Float-On-Top")
-                //                                .bold().font(.title3)
-                //                        }
-                //                        .disabled(vs.sipEnabled || vs.layout == .float)
-                //                        .opacity( vs.sipEnabled || vs.layout == .float ? 0.5 : 1.0)
-                //
-                //                        Spacer()
-                //                        SIPButton(store: Root.defaultStore)
-                //                    }
-                //
-                //                    Text("Force floating windows to stay ontop of tiled/stacked windows")
-                //                        .foregroundColor(Color(.gray))
-                //                        .disabled(vs.sipEnabled || vs.layout == .float)
-                //                        .opacity( vs.sipEnabled || vs.layout == .float ? 0.5 : 1.0)
-                //                }
-                
             }
             .frame(maxWidth: 1200)
             .padding(.horizontal, 30)

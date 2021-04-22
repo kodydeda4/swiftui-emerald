@@ -28,7 +28,7 @@
 		3356BCA325F28746006EB641 /* SpaceSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3356BCA225F28746006EB641 /* SpaceSettingsView.swift */; };
 		3356BCA625F28782006EB641 /* ExternalBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3356BCA525F28782006EB641 /* ExternalBarView.swift */; };
 		3356BCA925F287B1006EB641 /* MouseSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3356BCA825F287B1006EB641 /* MouseSettingsView.swift */; };
-		3356BCAD25F287D9006EB641 /* NewWindowSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3356BCAC25F287D9006EB641 /* NewWindowSettingsView.swift */; };
+		3356BCAD25F287D9006EB641 /* WindowSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3356BCAC25F287D9006EB641 /* WindowSettingsView.swift */; };
 		3361CDF725D44AEC0086F6A7 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */; };
 		3361CF1225E6EF1300016875 /* DebugConfigFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CF0F25E6EF1300016875 /* DebugConfigFileView.swift */; };
 		3361CF1325E6EF1300016875 /* SpecialTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CF1025E6EF1300016875 /* SpecialTextView.swift */; };
@@ -77,7 +77,7 @@
 		3356BCA225F28746006EB641 /* SpaceSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceSettingsView.swift; sourceTree = "<group>"; };
 		3356BCA525F28782006EB641 /* ExternalBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalBarView.swift; sourceTree = "<group>"; };
 		3356BCA825F287B1006EB641 /* MouseSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseSettingsView.swift; sourceTree = "<group>"; };
-		3356BCAC25F287D9006EB641 /* NewWindowSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWindowSettingsView.swift; sourceTree = "<group>"; };
+		3356BCAC25F287D9006EB641 /* WindowSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowSettingsView.swift; sourceTree = "<group>"; };
 		3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		3361CF0F25E6EF1300016875 /* DebugConfigFileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugConfigFileView.swift; sourceTree = "<group>"; };
 		3361CF1025E6EF1300016875 /* SpecialTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialTextView.swift; sourceTree = "<group>"; };
@@ -137,7 +137,8 @@
 		3356BCB125F288BC006EB641 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3356BCAC25F287D9006EB641 /* NewWindowSettingsView.swift */,
+				3356BCA225F28746006EB641 /* SpaceSettingsView.swift */,
+				3356BCAC25F287D9006EB641 /* WindowSettingsView.swift */,
 				336BC3A825F7FA5500BE3EBA /* PlacementSettingsView.swift */,
 				3356BCA825F287B1006EB641 /* MouseSettingsView.swift */,
 				336BC3AF25F8069700BE3EBA /* FocusSettingsView.swift */,
@@ -253,7 +254,6 @@
 				336BC3B925F85B7C00BE3EBA /* SIPButton.swift */,
 				336627352602642300C4B009 /* ApplyChangesButtonTappedView.swift */,
 				338973962603A7850052F159 /* PowerButtonTappedView.swift */,
-				3356BCA225F28746006EB641 /* SpaceSettingsView.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -391,7 +391,7 @@
 				3353C0EE26026A67002171B7 /* ConfigTabView.swift in Sources */,
 				332D568625DEEF7800C88FEE /* MacOSAnimationSettingsView.swift in Sources */,
 				33318F3325F2AD3500231233 /* StepperTextfield.swift in Sources */,
-				3356BCAD25F287D9006EB641 /* NewWindowSettingsView.swift in Sources */,
+				3356BCAD25F287D9006EB641 /* WindowSettingsView.swift in Sources */,
 				3380D33725D0723000C10913 /* Root.swift in Sources */,
 				336627362602642300C4B009 /* ApplyChangesButtonTappedView.swift in Sources */,
 				3385DF6725D6270B00ACDE21 /* SidebarView.swift in Sources */,
