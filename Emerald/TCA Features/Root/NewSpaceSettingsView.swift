@@ -21,9 +21,9 @@ struct NewSpaceSettingsView: View {
                         .bold()
                     Divider()
                     HStack {
-                        ShortcutView(shortcut: .float, action: { viewStore.send(.skhd(.updateFloat($0))) })
-                        ShortcutView(shortcut: .bsp,   action: { viewStore.send(.skhd(.updateBsp($0))) })
-                        ShortcutView(shortcut: .stack, action: { viewStore.send(.skhd(.updateStack($0))) })
+                        LayoutShortcutView(layout: .float, action: { viewStore.send(.skhd(.updateFloat($0))) })
+                        LayoutShortcutView(layout: .bsp,   action: { viewStore.send(.skhd(.updateBsp($0))) })
+                        LayoutShortcutView(layout: .stack, action: { viewStore.send(.skhd(.updateStack($0))) })
                     }
                 }
                 VStack(alignment: .leading) {
@@ -50,32 +50,6 @@ struct NewSpaceSettingsView: View {
         }
     }
 }
-
-//struct MyKeyboardShortcutsView: View {
-//    let title: String
-//    let shortcut: KeyboardShortcuts.Name
-//    let action: ((KeyboardShortcuts.Shortcut?) -> Void)?
-//
-//    init(_ title: String,
-//         _ shortcut: KeyboardShortcuts.Name,
-//         _ action: ((KeyboardShortcuts.Shortcut?) -> Void)?
-//    ) {
-//        self.title = title
-//        self.shortcut = shortcut
-//        self.action = action
-//    }
-//
-//    var body: some View {
-//        HStack {
-//            HStack {
-//                Text(title)
-//                Spacer()
-//            }
-//            .frame(width: 110)
-//            KeyboardShortcuts.Recorder(for: shortcut, onChange: action)
-//        }
-//    }
-//}
 
 struct LayoutShortcutView: View {
     var layout: Yabai.State.Layout
