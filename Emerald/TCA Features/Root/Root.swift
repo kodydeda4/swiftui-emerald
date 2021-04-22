@@ -205,11 +205,11 @@ extension Root {
                 let _ = environment.writeConfig(state.skhd.asConfig,  to: state.skhd.configURL)
                 let _ = environment.writeConfig(state.macOSAnimations.asShellScript, to: state.macOSAnimations.shellScriptURL)
 
-                let _ = AppleScript.execute("/usr/local/bin/brew services restart yabai")
+                let _ = AppleScript.execute("/usr/local/bin/brew services restart yabai; /usr/local/bin/brew services restart skhd;")
                 return Effect(value: .applyChangesButtonTapped)
                 
             case .powerButtonTapped:
-                let _ = AppleScript.execute("/usr/local/bin/brew services \(state.disabled ? "start" : "stop") yabai")
+                let _ = AppleScript.execute("/usr/local/bin/brew services \(state.disabled ? "start" : "stop") yabai; /usr/local/bin/brew services \(state.disabled ? "start" : "stop") skhd;")
                 //let _ = AppleScript.execute("/usr/local/bin/brew services \(state.disabled ? "start" : "stop") skhd")
                 state.disabled.toggle()
                 
@@ -222,7 +222,7 @@ extension Root {
                 
                             
             case .applyChangesButtonTapped:
-                let _ = AppleScript.execute("/usr/local/bin/brew services restart yabai")
+                let _ = AppleScript.execute("/usr/local/bin/brew services restart yabai; /usr/local/bin/brew services restart skhd;")
                 
                 //----------------------------------------
                 state.animatingApplyChanges.toggle()

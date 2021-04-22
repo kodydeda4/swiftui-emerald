@@ -14,7 +14,14 @@ struct SpaceSettingsView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            Picker("", selection: viewStore.binding(keyPath: \.layout, send: Yabai.Action.keyPath)) {
+                ForEach(Yabai.State.Layout.allCases) {
+                    Text($0.rawValue)
+                }
+            }
+            .labelsHidden()
+            .pickerStyle(SegmentedPickerStyle())
+            .frame(width: 120)
         }
     }
 }
@@ -24,3 +31,4 @@ struct SpaceSettingsView_Previews: PreviewProvider {
         SpaceSettingsView(store: Yabai.defaultStore)
     }
 }
+
