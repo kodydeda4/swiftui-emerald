@@ -146,37 +146,6 @@ struct LayoutShortcutView: View {
                                 )
                         }
 
-//                        ZStack {
-//                            //back
-//                            Window()
-//                                .padding([.leading, .top],     hovering ? 16*2 : 0)
-//                                .padding([.trailing, .bottom], hovering ? 16*0 : 0)
-//                                .animation(.spring())
-//                                .rotation3DEffect(
-//                                    Angle(degrees: hovering ? angle : 0),
-//                                    axis: (x: x, y: y, z: z)
-//                                )
-//
-//                            //middle
-//                            Window()
-//                                .padding([.leading, .top],     hovering ? 16*1 : 0)
-//                                .padding([.trailing, .bottom], hovering ? 16*1 : 0)
-//                                .animation(.spring())
-//                                .rotation3DEffect(
-//                                    Angle(degrees: hovering ? angle : 0),
-//                                    axis: (x: x, y: y, z: z)
-//                                )
-//
-//                            //top
-//                            Window()
-//                                .padding([.leading, .top],     hovering ? 16*0 : 0)
-//                                .padding([.trailing, .bottom], hovering ? 16*2 : 0)
-//                                .animation(.spring())
-//                                .rotation3DEffect(
-//                                    Angle(degrees: hovering ? angle : 0),
-//                                    axis: (x: x, y: y, z: z)
-//                                )
-//                        }
                     }
                 }
                 .aspectRatio(CGSize(width: 16, height: 10), contentMode: .fill)

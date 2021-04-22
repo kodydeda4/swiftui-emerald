@@ -49,6 +49,14 @@ struct SidebarView: View {
                         Label("About", systemImage: "gear")
                     }
                 }
+                Section(header: Text("New")) {
+                    NavigationLink(destination: SpaceSettingsView(store: yabaiStore)) {
+                        Label("Space", systemImage: "rectangle.3.offgrid")
+                    }
+                    NavigationLink(destination: WindowSettingsView(store: yabaiStore)) {
+                        Label("Window", systemImage: "macwindow.on.rectangle")
+                    }
+                }
                 Spacer()
             }
             .listStyle(SidebarListStyle())
