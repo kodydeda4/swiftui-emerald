@@ -58,6 +58,10 @@
 		33AD2F7D25F254ED0018875E /* Homebrew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AD2F7C25F254ED0018875E /* Homebrew.swift */; };
 		33AD2F8225F25D330018875E /* Overture in Frameworks */ = {isa = PBXBuildFile; productRef = 33AD2F8125F25D330018875E /* Overture */; };
 		33B62D2925D5E31400DD5934 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B62D2825D5E31400DD5934 /* Onboarding.swift */; };
+		33BB8CFC2631CF66008759BA /* SKHDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BB8CF82631CF66008759BA /* SKHDView.swift */; };
+		33BB8CFD2631CF66008759BA /* 2SKHD+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BB8CF92631CF66008759BA /* 2SKHD+Extensions.swift */; };
+		33BB8CFE2631CF66008759BA /* 2SKHD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BB8CFA2631CF66008759BA /* 2SKHD.swift */; };
+		33BB8CFF2631CF66008759BA /* MyKeyboardShortcutsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BB8CFB2631CF66008759BA /* MyKeyboardShortcutsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,6 +111,10 @@
 		33AB717925F7C99500870F75 /* KeyboardShortcuts+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyboardShortcuts+Extensions.swift"; sourceTree = "<group>"; };
 		33AD2F7C25F254ED0018875E /* Homebrew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homebrew.swift; sourceTree = "<group>"; };
 		33B62D2825D5E31400DD5934 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		33BB8CF82631CF66008759BA /* SKHDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKHDView.swift; sourceTree = "<group>"; };
+		33BB8CF92631CF66008759BA /* 2SKHD+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "2SKHD+Extensions.swift"; sourceTree = "<group>"; };
+		33BB8CFA2631CF66008759BA /* 2SKHD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 2SKHD.swift; sourceTree = "<group>"; };
+		33BB8CFB2631CF66008759BA /* MyKeyboardShortcutsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyKeyboardShortcutsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +239,7 @@
 			children = (
 				33DEDCB725DDBC2F001582DC /* Root */,
 				33DEDCB925DDBC51001582DC /* Yabai */,
+				33BB8CF72631CF66008759BA /* SKHDOLD */,
 				33DEDCBA25DDBC67001582DC /* SKHD */,
 				332D567F25DEED5700C88FEE /* MacOSAnimations */,
 				33AD2F7B25F254E50018875E /* Homebrew */,
@@ -254,6 +263,17 @@
 				33AD2F7C25F254ED0018875E /* Homebrew.swift */,
 			);
 			path = Homebrew;
+			sourceTree = "<group>";
+		};
+		33BB8CF72631CF66008759BA /* SKHDOLD */ = {
+			isa = PBXGroup;
+			children = (
+				33BB8CF82631CF66008759BA /* SKHDView.swift */,
+				33BB8CF92631CF66008759BA /* 2SKHD+Extensions.swift */,
+				33BB8CFA2631CF66008759BA /* 2SKHD.swift */,
+				33BB8CFB2631CF66008759BA /* MyKeyboardShortcutsView.swift */,
+			);
+			path = SKHDOLD;
 			sourceTree = "<group>";
 		};
 		33DEDCB725DDBC2F001582DC /* Root */ = {
@@ -384,9 +404,11 @@
 				3356BCA925F287B1006EB641 /* MouseSettingsView.swift in Sources */,
 				338973972603A7850052F159 /* PowerButtonTappedView.swift in Sources */,
 				3385DF6A25D6279200ACDE21 /* AboutView.swift in Sources */,
+				33BB8CFD2631CF66008759BA /* 2SKHD+Extensions.swift in Sources */,
 				3361CF1325E6EF1300016875 /* SpecialTextView.swift in Sources */,
 				3361CDF725D44AEC0086F6A7 /* URL+Extensions.swift in Sources */,
 				3361CF1125E6EF1300016875 /* SectionView.swift in Sources */,
+				33BB8CFF2631CF66008759BA /* MyKeyboardShortcutsView.swift in Sources */,
 				336BC3A925F7FA5500BE3EBA /* PlacementSettingsView.swift in Sources */,
 				3356BCA625F28782006EB641 /* ExternalBarView.swift in Sources */,
 				3341B01125F06FF300833B56 /* Yabai+Extensions.swift in Sources */,
@@ -399,6 +421,7 @@
 				3301D5012602765900D02C46 /* Button+Extensions.swift in Sources */,
 				332A85032631B88100C6861D /* WindowSettingsView.swift in Sources */,
 				33387D6525D3F64300E76D29 /* Yabai.swift in Sources */,
+				33BB8CFE2631CF66008759BA /* 2SKHD.swift in Sources */,
 				3361CF1225E6EF1300016875 /* DebugConfigFileView.swift in Sources */,
 				3398838C25DD7A1D007B9FF5 /* SKHD.swift in Sources */,
 				336BC3B025F8069700BE3EBA /* FocusSettingsView.swift in Sources */,
@@ -409,6 +432,7 @@
 				33318F3325F2AD3500231233 /* StepperTextfield.swift in Sources */,
 				33AB717A25F7C99500870F75 /* KeyboardShortcuts+Extensions.swift in Sources */,
 				3356BCAD25F287D9006EB641 /* NewWindowSettingsView.swift in Sources */,
+				33BB8CFC2631CF66008759BA /* SKHDView.swift in Sources */,
 				3380D33725D0723000C10913 /* Root.swift in Sources */,
 				336627362602642300C4B009 /* ApplyChangesButtonTappedView.swift in Sources */,
 				3385DF6725D6270B00ACDE21 /* SidebarView.swift in Sources */,
