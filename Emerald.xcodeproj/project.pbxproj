@@ -56,6 +56,7 @@
 		33B62D2925D5E31400DD5934 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B62D2825D5E31400DD5934 /* Onboarding.swift */; };
 		33BB8CFC2631CF66008759BA /* SKHDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BB8CF82631CF66008759BA /* SKHDView.swift */; };
 		33BB8CFF2631CF66008759BA /* MyKeyboardShortcutsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BB8CFB2631CF66008759BA /* MyKeyboardShortcutsView.swift */; };
+		33BB8D0B2631D330008759BA /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BB8D0A2631D330008759BA /* SectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +104,7 @@
 		33B62D2825D5E31400DD5934 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		33BB8CF82631CF66008759BA /* SKHDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKHDView.swift; sourceTree = "<group>"; };
 		33BB8CFB2631CF66008759BA /* MyKeyboardShortcutsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyKeyboardShortcutsView.swift; sourceTree = "<group>"; };
+		33BB8D0A2631D330008759BA /* SectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 		3361CF1525E6EF1600016875 /* Views (Misc) */ = {
 			isa = PBXGroup;
 			children = (
+				33BB8D0A2631D330008759BA /* SectionView.swift */,
 				3301D5002602765900D02C46 /* Button+Extensions.swift */,
 				333631FA25EEF0CD009FEB32 /* CodableColor.swift */,
 				3361CF0F25E6EF1300016875 /* DebugConfigFileView.swift */,
@@ -379,6 +382,7 @@
 				33B62D2925D5E31400DD5934 /* Onboarding.swift in Sources */,
 				330E144A25F2AFEE00E61969 /* SliderView.swift in Sources */,
 				336BC3BA25F85B7C00BE3EBA /* SIPButton.swift in Sources */,
+				33BB8D0B2631D330008759BA /* SectionView.swift in Sources */,
 				3325BFD525F05041007831C5 /* RoundedRectangleButtonStyle.swift in Sources */,
 				3356BCA325F28746006EB641 /* NewSpaceSettingsView.swift in Sources */,
 				3301D5012602765900D02C46 /* Button+Extensions.swift in Sources */,
