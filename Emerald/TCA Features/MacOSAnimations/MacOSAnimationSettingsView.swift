@@ -14,15 +14,9 @@ struct MacOSAnimationSettingsView: View {
     
     var body: some View {
         WithViewStore(store) { vs in
-            HStack {
-                DebugConfigFileView(text: vs.asShellScript)
-                
-                VStack {
-                    VStack(alignment: .leading) {
-                        SectionView("Animations") {
-                            Toggle("Enabled", isOn: vs.binding(get: \.enabled, send: .toggleEnabled))
-                        }
-                    }
+            VStack(alignment: .leading) {
+                SectionView("Animations") {
+                    Toggle("Enabled", isOn: vs.binding(get: \.enabled, send: .toggleEnabled))
                 }
             }
             .navigationTitle("Debug Animations")

@@ -9,7 +9,7 @@ import SwiftUI
 import ComposableArchitecture
 import KeyboardShortcuts
 
-struct NewWindowSettingsView: View {
+struct WindowSettingsView: View {
     let store: Store<Yabai.State, Yabai.Action>
     
     var body: some View {
@@ -223,9 +223,9 @@ private struct ColorList: View {
 }
 
 // MARK:- SwiftUI_Previews
-struct NewWindowSettingsView_Previews: PreviewProvider {
+struct WindowSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        NewWindowSettingsView(store: Yabai.defaultStore)
+        WindowSettingsView(store: Yabai.defaultStore)
     }
 }
 

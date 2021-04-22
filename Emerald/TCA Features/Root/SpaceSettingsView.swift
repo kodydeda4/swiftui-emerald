@@ -9,7 +9,7 @@ import SwiftUI
 import ComposableArchitecture
 import KeyboardShortcuts
 
-struct NewSpaceSettingsView: View {
+struct SpaceSettingsView: View {
     let store: Store<Root.State, Root.Action>
     
     var body: some View {
@@ -173,6 +173,8 @@ struct LayoutShortcutView: View {
     }
 }
 
+
+
 struct ShortcutView: View {
     var shortcut: KeyboardShortcuts.Name
     var action: ((KeyboardShortcuts.Shortcut?) -> Void)?
@@ -269,9 +271,9 @@ struct LayoutShortcutView_Previews: PreviewProvider {
 
 
 // MARK:- SwiftUI_Previews
-struct NewSpaceSettingsView_Previews: PreviewProvider {
+struct SpaceSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        NewSpaceSettingsView(store: Root.defaultStore)
+        SpaceSettingsView(store: Root.defaultStore)
     }
 }
 
