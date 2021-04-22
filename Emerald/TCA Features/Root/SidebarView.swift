@@ -50,7 +50,7 @@ struct SidebarView: View {
                     }
                 }
                 Section(header: Text("New")) {
-                    NavigationLink(destination: NewSpaceSettingsView(store: yabaiStore)) {
+                    NavigationLink(destination: NewSpaceSettingsView(store: store)) {
                         Label("Space", systemImage: "rectangle.3.offgrid")
                     }
                     NavigationLink(destination: NewWindowSettingsView(store: yabaiStore)) {

@@ -10,7 +10,7 @@ import ComposableArchitecture
 import KeyboardShortcuts
 
 struct NewSpaceSettingsView: View {
-    let store: Store<Yabai.State, Yabai.Action>
+    let store: Store<Root.State, Root.Action>
     
     var body: some View {
         WithViewStore(store) { viewStore in
@@ -21,9 +21,12 @@ struct NewSpaceSettingsView: View {
                         .bold()
                     Divider()
                     HStack {
-                        ForEach(Yabai.State.Layout.allCases) {
-                            LayoutShortcutView(layout: $0)
-                        }
+//                        ForEach(Yabai.State.Layout.allCases) {
+//                            LayoutShortcutView(layout: $0, action: { $0 })
+//                        }
+                        ShortcutView(shortcut: KeyboardShortcuts.Name.float, action: { viewStore.send(.skhd(.updateFloat($0))) })
+                        ShortcutView(shortcut: KeyboardShortcuts.Name.bsp, action: { viewStore.send(.skhd(.updateBsp($0))) })
+                        ShortcutView(shortcut: KeyboardShortcuts.Name.stack, action: { viewStore.send(.skhd(.updateStack($0))) })
                     }
                 }
                 VStack(alignment: .leading) {
@@ -32,9 +35,13 @@ struct NewSpaceSettingsView: View {
                         .bold()
                     Divider()
                     HStack {
-                        ForEach([KeyboardShortcuts.Name.focus, .resize, .move], id: \.self) {
-                            ShortcutView(shortcut: $0)
-                        }
+                        ShortcutView(shortcut: KeyboardShortcuts.Name.focus, action: { viewStore.send(.skhd(.updateFocus($0))) })
+                        ShortcutView(shortcut: KeyboardShortcuts.Name.resize, action: { viewStore.send(.skhd(.updateResize($0))) })
+                        ShortcutView(shortcut: KeyboardShortcuts.Name.move, action: { viewStore.send(.skhd(.updateMove($0))) })
+                        
+//                        ForEach([KeyboardShortcuts.Name.focus, .resize, .move], id: \.self) {
+//                            ShortcutView(shortcut: $0, action: { viewStore.send(.skhd(.updateFocus($0))) })
+//                        }
                     }
                     HStack {
                         ForEach([KeyboardShortcuts.Name.split, .balance, .padding, .gaps], id: \.self) {
@@ -51,8 +58,40 @@ struct NewSpaceSettingsView: View {
 }
 
 
+//import SwiftUI
+//import KeyboardShortcuts
+//
+//struct MyKeyboardShortcutsView: View {
+//    let title: String
+//    let shortcut: KeyboardShortcuts.Name
+//    let action: ((KeyboardShortcuts.Shortcut?) -> Void)?
+//
+//    init(_ title: String,
+//         _ shortcut: KeyboardShortcuts.Name,
+//         _ action: ((KeyboardShortcuts.Shortcut?) -> Void)?
+//    ) {
+//        self.title = title
+//        self.shortcut = shortcut
+//        self.action = action
+//    }
+//
+//    var body: some View {
+//        HStack {
+//            HStack {
+//                Text(title)
+//                Spacer()
+//            }
+//            .frame(width: 110)
+//            KeyboardShortcuts.Recorder(for: shortcut, onChange: action)
+//        }
+//    }
+//}
+//
+//ShortcutView(shortcut: $0, action: { vs.send(.updateRestartYabai(  $0)) })
+
 struct LayoutShortcutView: View {
     var layout: Yabai.State.Layout
+    var action: ((KeyboardShortcuts.Shortcut?) -> Void)?
     @State var hovering = false
     
     let angle: Double = -15
@@ -162,7 +201,7 @@ struct LayoutShortcutView: View {
                 hovering.toggle()
             }
             
-            KeyboardShortcuts.Recorder(for: shortcut)
+            KeyboardShortcuts.Recorder(for: shortcut, onChange: action)
                 .padding()
         }
         .background(Color(.windowBackgroundColor))
@@ -174,6 +213,7 @@ struct LayoutShortcutView: View {
 
 struct ShortcutView: View {
     var shortcut: KeyboardShortcuts.Name
+    var action: ((KeyboardShortcuts.Shortcut?) -> Void)?
     @State var hovering = false
     
     var body: some View {
@@ -269,7 +309,7 @@ struct LayoutShortcutView_Previews: PreviewProvider {
 // MARK:- SwiftUI_Previews
 struct NewSpaceSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        NewSpaceSettingsView(store: Yabai.defaultStore)
+        NewSpaceSettingsView(store: Root.defaultStore)
     }
 }
 
