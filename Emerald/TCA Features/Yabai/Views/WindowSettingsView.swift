@@ -21,7 +21,7 @@ struct WindowSettingsView: View {
                         .font(.largeTitle)
                         .bold()
                     Divider()
-                    
+                
                     HStack {
                         Window2(
                             opacity: vs.activeWindowOpacity,
@@ -29,7 +29,7 @@ struct WindowSettingsView: View {
                             borderWidth: CGFloat(vs.windowBorderWidth)
                         )
                         .frame(height: 100)
-                        
+
                         Window2(
                             opacity: vs.normalWindowOpacity,
                             borderColor: vs.normalWindowBorderColor.color,
@@ -37,14 +37,14 @@ struct WindowSettingsView: View {
                         )
                         .frame(height: 100)
                     }
-                    
-                    
+
+
                     SectionView("Window") {
-                        
+
                         Section(header: Text("Disable Shadows").bold()) {
                             HStack {
                                 Toggle("Enabled", isOn: vs.binding(keyPath: \.disableShadows, send: k)).labelsHidden()
-                                
+
                                 Picker("", selection: vs.binding(keyPath: \.windowShadow, send: k)) {
                                     ForEach(Yabai.State.WindowShadow.allCases) {
                                         Text($0.labelDescription.lowercased())
@@ -71,8 +71,8 @@ struct WindowSettingsView: View {
         }
     }
 }
-
-// MARK:- SwiftUI_Previews
+//
+//// MARK:- SwiftUI_Previews
 struct WindowSettingsView_Previews: PreviewProvider {
     static var previews: some View {
         WindowSettingsView(store: Yabai.defaultStore)
@@ -83,7 +83,7 @@ struct WindowSettingsView_Previews: PreviewProvider {
 struct OpacitySettings: View {
     let store: Store<Yabai.State, Yabai.Action>
     let k = Yabai.Action.keyPath
-    
+
     var body: some View {
         WithViewStore(store) { vs in
             Section(header:
@@ -128,24 +128,24 @@ struct OpacitySettings: View {
         }
     }
 }
-
-
+//
+//
 struct BorderSettings: View {
     let store: Store<Yabai.State, Yabai.Action>
     let k = Yabai.Action.keyPath
-    
+
     var body: some View {
         WithViewStore(store) { vs in
             Section(header: Text("Borders").bold()) {
-                //                HStack {
-                //                    VStack {
-                //                        Toggle(
-                //                            "Borders",
-                //                            isOn: vs.binding(keyPath: \.windowBorder, send: k)
-                //                        )
-                //                        .labelsHidden()
-                //                        Text("")
-                //                    }
+                HStack {
+                    VStack {
+                        Toggle(
+                            "Borders",
+                            isOn: .constant(true)//vs.binding(keyPath: \.windowBorder, send: k)
+                        )
+                        .labelsHidden()
+                        Text("")
+                    }
                 //                    Group {
                 //                        StepperView(
                 //                            text: "Width",
@@ -166,16 +166,16 @@ struct BorderSettings: View {
                 //                                send: Yabai.Action.updateNormalWindowBorderColor
                 //                            )
                 //                        )
-                //                        ColorPickerView(
-                //                            text: "Insert",
-                //                            selection: vs.binding(
-                //                                get: \.insertWindowBorderColor.color,
-                //                                send: Yabai.Action.updateInsertWindowBorderColor
-                //                            )
-                //                        )
+                    //                        ColorPickerView(
+                    //                            text: "Insert",
+                    //                            selection: vs.binding(
+                    //                                get: \.insertWindowBorderColor.color,
+                    //                                send: Yabai.Action.updateInsertWindowBorderColor
+                    //                            )
+                    //                        )
                 //                    }
                 //                    .disabled(!vs.windowBorder)
-                //                }
+                                }
                 Divider()
                 Section(header: Text("New Window").bold()) {
                     Picker("", selection: vs.binding(keyPath: \.windowPlacement, send: k)) {
@@ -198,7 +198,7 @@ struct BorderSettings: View {
                         .labelsHidden()
                         .pickerStyle(SegmentedPickerStyle())
                         .frame(width: 200)
-                        
+
                         //                        SliderView(
                         //                            text: "Custom",
                         //                            value: vs.binding(keyPath: \.splitRatio, send: k),
