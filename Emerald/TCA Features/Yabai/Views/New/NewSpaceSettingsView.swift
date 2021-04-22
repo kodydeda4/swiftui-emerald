@@ -9,7 +9,7 @@ import SwiftUI
 import ComposableArchitecture
 import KeyboardShortcuts
 
-struct SpaceSettingsView: View {
+struct NewSpaceSettingsView: View {
     let store: Store<Yabai.State, Yabai.Action>
     
     var body: some View {
@@ -269,7 +269,7 @@ struct LayoutShortcutView_Previews: PreviewProvider {
 // MARK:- SwiftUI_Previews
 struct SpaceSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SpaceSettingsView(store: Yabai.defaultStore)
+        NewSpaceSettingsView(store: Yabai.defaultStore)
     }
 }
 

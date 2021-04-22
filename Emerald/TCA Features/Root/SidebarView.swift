@@ -19,13 +19,13 @@ struct SidebarView: View {
         WithViewStore(store) { viewStore in
             List {
                 Section(header: Text("Settings")) {
-                    NavigationLink(destination: SpaceSettingsView(store: yabaiStore)) {
+                    NavigationLink(destination: NewSpaceSettingsView(store: yabaiStore)) {
                         Label("Space", systemImage: "rectangle.3.offgrid")
                     }
-                    NavigationLink(destination: WindowSettingsView(store: yabaiStore)) {
+                    NavigationLink(destination: NewWindowSettingsView(store: yabaiStore)) {
                         Label("Window", systemImage: "macwindow.on.rectangle")
                     }
-                    NavigationLink(destination: NewWindowSettings(store: yabaiStore)) {
+                    NavigationLink(destination: PlacementSettingsView(store: yabaiStore)) {
                         Label("Placement", systemImage: "macwindow.badge.plus")
                     }
                     NavigationLink(destination: MouseSettingsView(store: yabaiStore)) {
@@ -50,10 +50,10 @@ struct SidebarView: View {
                     }
                 }
                 Section(header: Text("New")) {
-                    NavigationLink(destination: SpaceSettingsView(store: yabaiStore)) {
+                    NavigationLink(destination: NewSpaceSettingsView(store: yabaiStore)) {
                         Label("Space", systemImage: "rectangle.3.offgrid")
                     }
-                    NavigationLink(destination: WindowSettingsView(store: yabaiStore)) {
+                    NavigationLink(destination: NewWindowSettingsView(store: yabaiStore)) {
                         Label("Window", systemImage: "macwindow.on.rectangle")
                     }
                 }
