@@ -19,6 +19,7 @@
 		333631FB25EEF0CD009FEB32 /* CodableColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333631FA25EEF0CD009FEB32 /* CodableColor.swift */; };
 		3336320025EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333631FF25EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift */; };
 		33387D6525D3F64300E76D29 /* Yabai.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33387D6425D3F64300E76D29 /* Yabai.swift */; };
+		333B82312631D3EE00F42220 /* KeyboardShortcuts+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333B82302631D3EE00F42220 /* KeyboardShortcuts+Extensions.swift */; };
 		3341B01125F06FF300833B56 /* Yabai+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B01025F06FF300833B56 /* Yabai+Extensions.swift */; };
 		3341B01425F0700B00833B56 /* SKHD+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B01325F0700B00833B56 /* SKHD+Extensions.swift */; };
 		3341B01725F0702C00833B56 /* MacOSAnimations+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B01625F0702C00833B56 /* MacOSAnimations+Extensions.swift */; };
@@ -69,6 +70,7 @@
 		333631FA25EEF0CD009FEB32 /* CodableColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableColor.swift; sourceTree = "<group>"; };
 		333631FF25EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemIntegrityProtectionView.swift; sourceTree = "<group>"; };
 		33387D6425D3F64300E76D29 /* Yabai.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yabai.swift; sourceTree = "<group>"; };
+		333B82302631D3EE00F42220 /* KeyboardShortcuts+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyboardShortcuts+Extensions.swift"; sourceTree = "<group>"; };
 		3341B01025F06FF300833B56 /* Yabai+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Yabai+Extensions.swift"; sourceTree = "<group>"; };
 		3341B01325F0700B00833B56 /* SKHD+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKHD+Extensions.swift"; sourceTree = "<group>"; };
 		3341B01625F0702C00833B56 /* MacOSAnimations+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MacOSAnimations+Extensions.swift"; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				3398838B25DD7A1D007B9FF5 /* SKHD.swift */,
+				333B82302631D3EE00F42220 /* KeyboardShortcuts+Extensions.swift */,
 				33BB8CF82631CF66008759BA /* SKHDView.swift */,
 				33BB8CFB2631CF66008759BA /* MyKeyboardShortcutsView.swift */,
 				3341B01325F0700B00833B56 /* SKHD+Extensions.swift */,
@@ -403,6 +406,7 @@
 				339C453525D6ED0F0079ACA1 /* OnboardingView.swift in Sources */,
 				3341B01725F0702C00833B56 /* MacOSAnimations+Extensions.swift in Sources */,
 				33AAB5F6260C251500647057 /* SheetView.swift in Sources */,
+				333B82312631D3EE00F42220 /* KeyboardShortcuts+Extensions.swift in Sources */,
 				333631FB25EEF0CD009FEB32 /* CodableColor.swift in Sources */,
 				3385DF7025D6361200ACDE21 /* AppleScript.swift in Sources */,
 				3336320025EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift in Sources */,
