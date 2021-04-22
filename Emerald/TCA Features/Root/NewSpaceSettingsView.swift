@@ -21,12 +21,9 @@ struct NewSpaceSettingsView: View {
                         .bold()
                     Divider()
                     HStack {
-//                        ForEach(Yabai.State.Layout.allCases) {
-//                            LayoutShortcutView(layout: $0, action: { $0 })
-//                        }
-                        ShortcutView(shortcut: KeyboardShortcuts.Name.float, action: { viewStore.send(.skhd(.updateFloat($0))) })
-                        ShortcutView(shortcut: KeyboardShortcuts.Name.bsp, action: { viewStore.send(.skhd(.updateBsp($0))) })
-                        ShortcutView(shortcut: KeyboardShortcuts.Name.stack, action: { viewStore.send(.skhd(.updateStack($0))) })
+                        ShortcutView(shortcut: .float, action: { viewStore.send(.skhd(.updateFloat($0))) })
+                        ShortcutView(shortcut: .bsp,   action: { viewStore.send(.skhd(.updateBsp($0))) })
+                        ShortcutView(shortcut: .stack, action: { viewStore.send(.skhd(.updateStack($0))) })
                     }
                 }
                 VStack(alignment: .leading) {
@@ -35,18 +32,15 @@ struct NewSpaceSettingsView: View {
                         .bold()
                     Divider()
                     HStack {
-                        ShortcutView(shortcut: KeyboardShortcuts.Name.focus, action: { viewStore.send(.skhd(.updateFocus($0))) })
-                        ShortcutView(shortcut: KeyboardShortcuts.Name.resize, action: { viewStore.send(.skhd(.updateResize($0))) })
-                        ShortcutView(shortcut: KeyboardShortcuts.Name.move, action: { viewStore.send(.skhd(.updateMove($0))) })
-                        
-//                        ForEach([KeyboardShortcuts.Name.focus, .resize, .move], id: \.self) {
-//                            ShortcutView(shortcut: $0, action: { viewStore.send(.skhd(.updateFocus($0))) })
-//                        }
+                        ShortcutView(shortcut: .focus,  action: { viewStore.send(.skhd(.updateFocus($0))) })
+                        ShortcutView(shortcut: .resize, action: { viewStore.send(.skhd(.updateResize($0))) })
+                        ShortcutView(shortcut: .move,   action: { viewStore.send(.skhd(.updateMove($0))) })
                     }
                     HStack {
-                        ForEach([KeyboardShortcuts.Name.split, .balance, .padding, .gaps], id: \.self) {
-                            ShortcutView(shortcut: $0)
-                        }
+                        ShortcutView(shortcut: .split,   action: { viewStore.send(.skhd(.updateSplit($0))) })
+                        ShortcutView(shortcut: .balance, action: { viewStore.send(.skhd(.updateBalance($0))) })
+                        ShortcutView(shortcut: .padding, action: { viewStore.send(.skhd(.updatePadding($0))) })
+                        ShortcutView(shortcut: .gaps,    action: { viewStore.send(.skhd(.updateGaps($0))) })
                     }
                 }
             }
@@ -258,7 +252,7 @@ struct ShortcutView: View {
                         .multilineTextAlignment(.center)
                         .frame(width: 130)
                 } else {
-                    KeyboardShortcuts.Recorder(for: shortcut)
+                    KeyboardShortcuts.Recorder(for: shortcut, onChange: action)
                 }
             }
             .padding()

@@ -19,9 +19,6 @@ struct SidebarView: View {
         WithViewStore(store) { viewStore in
             List {
                 Section(header: Text("Settings")) {
-                    NavigationLink(destination: SKHDSettingsView(store: store)) {
-                        Label("debug skhd", systemImage: "rectangle.3.offgrid")
-                    }
                     NavigationLink(destination: NewSpaceSettingsView(store: store)) {
                         Label("Space", systemImage: "rectangle.3.offgrid")
                     }
