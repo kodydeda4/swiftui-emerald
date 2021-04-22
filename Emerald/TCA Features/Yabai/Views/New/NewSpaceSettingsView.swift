@@ -79,6 +79,7 @@ struct LayoutShortcutView: View {
         case .stack : return .stack
         }
     }
+    
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
