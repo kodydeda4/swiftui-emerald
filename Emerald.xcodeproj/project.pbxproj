@@ -12,8 +12,6 @@
 		3315223F25D5786C00C8E46A /* SwiftShell in Frameworks */ = {isa = PBXBuildFile; productRef = 3315223E25D5786C00C8E46A /* SwiftShell */; };
 		3325BFD125EFCEC4007831C5 /* OmenTextField in Frameworks */ = {isa = PBXBuildFile; productRef = 3325BFD025EFCEC4007831C5 /* OmenTextField */; };
 		3325BFD525F05041007831C5 /* RoundedRectangleButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3325BFD425F05041007831C5 /* RoundedRectangleButtonStyle.swift */; };
-		332A84FF2631B87600C6861D /* SpaceSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332A84FE2631B87600C6861D /* SpaceSettingsView.swift */; };
-		332A85032631B88100C6861D /* WindowSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332A85022631B88100C6861D /* WindowSettingsView.swift */; };
 		332D567D25DEED5300C88FEE /* MacOSAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D567C25DEED5300C88FEE /* MacOSAnimations.swift */; };
 		332D568625DEEF7800C88FEE /* MacOSAnimationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D568525DEEF7800C88FEE /* MacOSAnimationSettingsView.swift */; };
 		33318F3325F2AD3500231233 /* StepperTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33318F3225F2AD3500231233 /* StepperTextfield.swift */; };
@@ -54,13 +52,10 @@
 		339C453525D6ED0F0079ACA1 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C453425D6ED0F0079ACA1 /* OnboardingView.swift */; };
 		33A4BA032609EFB100AF9E59 /* Grid in Frameworks */ = {isa = PBXBuildFile; productRef = 33A4BA022609EFB100AF9E59 /* Grid */; };
 		33AAB5F6260C251500647057 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AAB5F5260C251500647057 /* SheetView.swift */; };
-		33AB717A25F7C99500870F75 /* KeyboardShortcuts+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AB717925F7C99500870F75 /* KeyboardShortcuts+Extensions.swift */; };
 		33AD2F7D25F254ED0018875E /* Homebrew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AD2F7C25F254ED0018875E /* Homebrew.swift */; };
 		33AD2F8225F25D330018875E /* Overture in Frameworks */ = {isa = PBXBuildFile; productRef = 33AD2F8125F25D330018875E /* Overture */; };
 		33B62D2925D5E31400DD5934 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B62D2825D5E31400DD5934 /* Onboarding.swift */; };
 		33BB8CFC2631CF66008759BA /* SKHDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BB8CF82631CF66008759BA /* SKHDView.swift */; };
-		33BB8CFD2631CF66008759BA /* 2SKHD+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BB8CF92631CF66008759BA /* 2SKHD+Extensions.swift */; };
-		33BB8CFE2631CF66008759BA /* 2SKHD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BB8CFA2631CF66008759BA /* 2SKHD.swift */; };
 		33BB8CFF2631CF66008759BA /* MyKeyboardShortcutsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BB8CFB2631CF66008759BA /* MyKeyboardShortcutsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -68,8 +63,6 @@
 		3301D5002602765900D02C46 /* Button+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Extensions.swift"; sourceTree = "<group>"; };
 		330E144925F2AFEE00E61969 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		3325BFD425F05041007831C5 /* RoundedRectangleButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleButtonStyle.swift; sourceTree = "<group>"; };
-		332A84FE2631B87600C6861D /* SpaceSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceSettingsView.swift; sourceTree = "<group>"; };
-		332A85022631B88100C6861D /* WindowSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowSettingsView.swift; sourceTree = "<group>"; };
 		332D567C25DEED5300C88FEE /* MacOSAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSAnimations.swift; sourceTree = "<group>"; };
 		332D568525DEEF7800C88FEE /* MacOSAnimationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSAnimationSettingsView.swift; sourceTree = "<group>"; };
 		33318F3225F2AD3500231233 /* StepperTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperTextfield.swift; sourceTree = "<group>"; };
@@ -108,12 +101,9 @@
 		339C453025D6ECCA0079ACA1 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		339C453425D6ED0F0079ACA1 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		33AAB5F5260C251500647057 /* SheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
-		33AB717925F7C99500870F75 /* KeyboardShortcuts+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyboardShortcuts+Extensions.swift"; sourceTree = "<group>"; };
 		33AD2F7C25F254ED0018875E /* Homebrew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homebrew.swift; sourceTree = "<group>"; };
 		33B62D2825D5E31400DD5934 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		33BB8CF82631CF66008759BA /* SKHDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKHDView.swift; sourceTree = "<group>"; };
-		33BB8CF92631CF66008759BA /* 2SKHD+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "2SKHD+Extensions.swift"; sourceTree = "<group>"; };
-		33BB8CFA2631CF66008759BA /* 2SKHD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 2SKHD.swift; sourceTree = "<group>"; };
 		33BB8CFB2631CF66008759BA /* MyKeyboardShortcutsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyKeyboardShortcutsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,13 +139,12 @@
 		3356BCB125F288BC006EB641 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				332A84FE2631B87600C6861D /* SpaceSettingsView.swift */,
-				332A85022631B88100C6861D /* WindowSettingsView.swift */,
+				3356BCA225F28746006EB641 /* NewSpaceSettingsView.swift */,
+				3356BCAC25F287D9006EB641 /* NewWindowSettingsView.swift */,
 				336BC3A825F7FA5500BE3EBA /* PlacementSettingsView.swift */,
 				3356BCA825F287B1006EB641 /* MouseSettingsView.swift */,
 				336BC3AF25F8069700BE3EBA /* FocusSettingsView.swift */,
 				3356BCA525F28782006EB641 /* ExternalBarView.swift */,
-				337185062631B81D00D4F542 /* New */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -174,15 +163,6 @@
 				333631FF25EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift */,
 			);
 			path = "Views (Misc)";
-			sourceTree = "<group>";
-		};
-		337185062631B81D00D4F542 /* New */ = {
-			isa = PBXGroup;
-			children = (
-				3356BCA225F28746006EB641 /* NewSpaceSettingsView.swift */,
-				3356BCAC25F287D9006EB641 /* NewWindowSettingsView.swift */,
-			);
-			path = New;
 			sourceTree = "<group>";
 		};
 		3380D2F225D05F4100C10913 = {
@@ -239,7 +219,6 @@
 			children = (
 				33DEDCB725DDBC2F001582DC /* Root */,
 				33DEDCB925DDBC51001582DC /* Yabai */,
-				33BB8CF72631CF66008759BA /* SKHDOLD */,
 				33DEDCBA25DDBC67001582DC /* SKHD */,
 				332D567F25DEED5700C88FEE /* MacOSAnimations */,
 				33AD2F7B25F254E50018875E /* Homebrew */,
@@ -263,17 +242,6 @@
 				33AD2F7C25F254ED0018875E /* Homebrew.swift */,
 			);
 			path = Homebrew;
-			sourceTree = "<group>";
-		};
-		33BB8CF72631CF66008759BA /* SKHDOLD */ = {
-			isa = PBXGroup;
-			children = (
-				33BB8CF82631CF66008759BA /* SKHDView.swift */,
-				33BB8CF92631CF66008759BA /* 2SKHD+Extensions.swift */,
-				33BB8CFA2631CF66008759BA /* 2SKHD.swift */,
-				33BB8CFB2631CF66008759BA /* MyKeyboardShortcutsView.swift */,
-			);
-			path = SKHDOLD;
 			sourceTree = "<group>";
 		};
 		33DEDCB725DDBC2F001582DC /* Root */ = {
@@ -306,7 +274,8 @@
 			isa = PBXGroup;
 			children = (
 				3398838B25DD7A1D007B9FF5 /* SKHD.swift */,
-				33AB717925F7C99500870F75 /* KeyboardShortcuts+Extensions.swift */,
+				33BB8CF82631CF66008759BA /* SKHDView.swift */,
+				33BB8CFB2631CF66008759BA /* MyKeyboardShortcutsView.swift */,
 				3341B01325F0700B00833B56 /* SKHD+Extensions.swift */,
 			);
 			path = SKHD;
@@ -404,7 +373,6 @@
 				3356BCA925F287B1006EB641 /* MouseSettingsView.swift in Sources */,
 				338973972603A7850052F159 /* PowerButtonTappedView.swift in Sources */,
 				3385DF6A25D6279200ACDE21 /* AboutView.swift in Sources */,
-				33BB8CFD2631CF66008759BA /* 2SKHD+Extensions.swift in Sources */,
 				3361CF1325E6EF1300016875 /* SpecialTextView.swift in Sources */,
 				3361CDF725D44AEC0086F6A7 /* URL+Extensions.swift in Sources */,
 				3361CF1125E6EF1300016875 /* SectionView.swift in Sources */,
@@ -413,15 +381,12 @@
 				3356BCA625F28782006EB641 /* ExternalBarView.swift in Sources */,
 				3341B01125F06FF300833B56 /* Yabai+Extensions.swift in Sources */,
 				33B62D2925D5E31400DD5934 /* Onboarding.swift in Sources */,
-				332A84FF2631B87600C6861D /* SpaceSettingsView.swift in Sources */,
 				330E144A25F2AFEE00E61969 /* SliderView.swift in Sources */,
 				336BC3BA25F85B7C00BE3EBA /* SIPButton.swift in Sources */,
 				3325BFD525F05041007831C5 /* RoundedRectangleButtonStyle.swift in Sources */,
 				3356BCA325F28746006EB641 /* NewSpaceSettingsView.swift in Sources */,
 				3301D5012602765900D02C46 /* Button+Extensions.swift in Sources */,
-				332A85032631B88100C6861D /* WindowSettingsView.swift in Sources */,
 				33387D6525D3F64300E76D29 /* Yabai.swift in Sources */,
-				33BB8CFE2631CF66008759BA /* 2SKHD.swift in Sources */,
 				3361CF1225E6EF1300016875 /* DebugConfigFileView.swift in Sources */,
 				3398838C25DD7A1D007B9FF5 /* SKHD.swift in Sources */,
 				336BC3B025F8069700BE3EBA /* FocusSettingsView.swift in Sources */,
@@ -430,7 +395,6 @@
 				3353C0EE26026A67002171B7 /* ConfigTabView.swift in Sources */,
 				332D568625DEEF7800C88FEE /* MacOSAnimationSettingsView.swift in Sources */,
 				33318F3325F2AD3500231233 /* StepperTextfield.swift in Sources */,
-				33AB717A25F7C99500870F75 /* KeyboardShortcuts+Extensions.swift in Sources */,
 				3356BCAD25F287D9006EB641 /* NewWindowSettingsView.swift in Sources */,
 				33BB8CFC2631CF66008759BA /* SKHDView.swift in Sources */,
 				3380D33725D0723000C10913 /* Root.swift in Sources */,

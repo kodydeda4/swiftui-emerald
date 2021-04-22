@@ -22,10 +22,10 @@ struct SidebarView: View {
                     NavigationLink(destination: SKHDSettingsView(store: store)) {
                         Label("debug skhd", systemImage: "rectangle.3.offgrid")
                     }
-                    NavigationLink(destination: SpaceSettingsView(store: yabaiStore)) {
+                    NavigationLink(destination: NewSpaceSettingsView(store: store)) {
                         Label("Space", systemImage: "rectangle.3.offgrid")
                     }
-                    NavigationLink(destination: WindowSettingsView(store: yabaiStore)) {
+                    NavigationLink(destination: NewWindowSettingsView(store: yabaiStore)) {
                         Label("Window", systemImage: "macwindow.on.rectangle")
                     }
                     NavigationLink(destination: PlacementSettingsView(store: yabaiStore)) {
@@ -50,14 +50,6 @@ struct SidebarView: View {
                     }
                     NavigationLink(destination: AboutView(store: store)) {
                         Label("About", systemImage: "gear")
-                    }
-                }
-                Section(header: Text("New")) {
-                    NavigationLink(destination: NewSpaceSettingsView(store: store)) {
-                        Label("Space", systemImage: "rectangle.3.offgrid")
-                    }
-                    NavigationLink(destination: NewWindowSettingsView(store: yabaiStore)) {
-                        Label("Window", systemImage: "macwindow.on.rectangle")
                     }
                 }
                 Spacer()
