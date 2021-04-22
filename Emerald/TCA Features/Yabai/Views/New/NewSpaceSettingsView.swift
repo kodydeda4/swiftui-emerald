@@ -265,9 +265,8 @@ struct LayoutShortcutView_Previews: PreviewProvider {
 }
 
 
-
 // MARK:- SwiftUI_Previews
-struct SpaceSettingsView_Previews: PreviewProvider {
+struct NewSpaceSettingsView_Previews: PreviewProvider {
     static var previews: some View {
         NewSpaceSettingsView(store: Yabai.defaultStore)
     }

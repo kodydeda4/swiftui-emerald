@@ -12,6 +12,8 @@
 		3315223F25D5786C00C8E46A /* SwiftShell in Frameworks */ = {isa = PBXBuildFile; productRef = 3315223E25D5786C00C8E46A /* SwiftShell */; };
 		3325BFD125EFCEC4007831C5 /* OmenTextField in Frameworks */ = {isa = PBXBuildFile; productRef = 3325BFD025EFCEC4007831C5 /* OmenTextField */; };
 		3325BFD525F05041007831C5 /* RoundedRectangleButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3325BFD425F05041007831C5 /* RoundedRectangleButtonStyle.swift */; };
+		332A84FF2631B87600C6861D /* SpaceSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332A84FE2631B87600C6861D /* SpaceSettingsView.swift */; };
+		332A85032631B88100C6861D /* WindowSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332A85022631B88100C6861D /* WindowSettingsView.swift */; };
 		332D567D25DEED5300C88FEE /* MacOSAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D567C25DEED5300C88FEE /* MacOSAnimations.swift */; };
 		332D568625DEEF7800C88FEE /* MacOSAnimationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D568525DEEF7800C88FEE /* MacOSAnimationSettingsView.swift */; };
 		33318F3325F2AD3500231233 /* StepperTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33318F3225F2AD3500231233 /* StepperTextfield.swift */; };
@@ -62,6 +64,8 @@
 		3301D5002602765900D02C46 /* Button+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Extensions.swift"; sourceTree = "<group>"; };
 		330E144925F2AFEE00E61969 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		3325BFD425F05041007831C5 /* RoundedRectangleButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleButtonStyle.swift; sourceTree = "<group>"; };
+		332A84FE2631B87600C6861D /* SpaceSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceSettingsView.swift; sourceTree = "<group>"; };
+		332A85022631B88100C6861D /* WindowSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowSettingsView.swift; sourceTree = "<group>"; };
 		332D567C25DEED5300C88FEE /* MacOSAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSAnimations.swift; sourceTree = "<group>"; };
 		332D568525DEEF7800C88FEE /* MacOSAnimationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSAnimationSettingsView.swift; sourceTree = "<group>"; };
 		33318F3225F2AD3500231233 /* StepperTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperTextfield.swift; sourceTree = "<group>"; };
@@ -137,6 +141,8 @@
 		3356BCB125F288BC006EB641 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				332A84FE2631B87600C6861D /* SpaceSettingsView.swift */,
+				332A85022631B88100C6861D /* WindowSettingsView.swift */,
 				336BC3A825F7FA5500BE3EBA /* PlacementSettingsView.swift */,
 				3356BCA825F287B1006EB641 /* MouseSettingsView.swift */,
 				336BC3AF25F8069700BE3EBA /* FocusSettingsView.swift */,
@@ -385,11 +391,13 @@
 				3356BCA625F28782006EB641 /* ExternalBarView.swift in Sources */,
 				3341B01125F06FF300833B56 /* Yabai+Extensions.swift in Sources */,
 				33B62D2925D5E31400DD5934 /* Onboarding.swift in Sources */,
+				332A84FF2631B87600C6861D /* SpaceSettingsView.swift in Sources */,
 				330E144A25F2AFEE00E61969 /* SliderView.swift in Sources */,
 				336BC3BA25F85B7C00BE3EBA /* SIPButton.swift in Sources */,
 				3325BFD525F05041007831C5 /* RoundedRectangleButtonStyle.swift in Sources */,
 				3356BCA325F28746006EB641 /* NewSpaceSettingsView.swift in Sources */,
 				3301D5012602765900D02C46 /* Button+Extensions.swift in Sources */,
+				332A85032631B88100C6861D /* WindowSettingsView.swift in Sources */,
 				33387D6525D3F64300E76D29 /* Yabai.swift in Sources */,
 				3361CF1225E6EF1300016875 /* DebugConfigFileView.swift in Sources */,
 				3398838C25DD7A1D007B9FF5 /* SKHD.swift in Sources */,

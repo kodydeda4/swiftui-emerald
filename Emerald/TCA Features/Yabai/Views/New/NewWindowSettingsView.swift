@@ -223,7 +223,7 @@ private struct ColorList: View {
 }
 
 // MARK:- SwiftUI_Previews
-struct WindowSettingsView_Previews: PreviewProvider {
+struct NewWindowSettingsView_Previews: PreviewProvider {
     static var previews: some View {
         NewWindowSettingsView(store: Yabai.defaultStore)
     }

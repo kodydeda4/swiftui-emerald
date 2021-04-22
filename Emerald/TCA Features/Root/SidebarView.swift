@@ -19,10 +19,10 @@ struct SidebarView: View {
         WithViewStore(store) { viewStore in
             List {
                 Section(header: Text("Settings")) {
-                    NavigationLink(destination: NewSpaceSettingsView(store: yabaiStore)) {
+                    NavigationLink(destination: SpaceSettingsView(store: yabaiStore)) {
                         Label("Space", systemImage: "rectangle.3.offgrid")
                     }
-                    NavigationLink(destination: NewWindowSettingsView(store: yabaiStore)) {
+                    NavigationLink(destination: WindowSettingsView(store: yabaiStore)) {
                         Label("Window", systemImage: "macwindow.on.rectangle")
                     }
                     NavigationLink(destination: PlacementSettingsView(store: yabaiStore)) {
