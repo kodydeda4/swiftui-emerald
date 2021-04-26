@@ -5,61 +5,6 @@
 //  Created by Kody Deda on 3/5/21.
 //
 
-//    # Shadows
-//    yabai -m config window_shadow \(!disableShadows ? "on" : windowShadow.rawValue)
-//
-//    # Opacity Effects
-//    yabai -m config window_opacity \(activeWindowOpacity < 1 || normalWindowOpacity < 1 ? "on" : "off")
-//    yabai -m config window_opacity_duration \(windowOpacityDuration)
-//    yabai -m config active_window_opacity \(activeWindowOpacity)
-//    yabai -m config normal_window_opacity \(normalWindowOpacity)
-//
-//    # Borders
-//    yabai -m config window_border \(windowBorderWidth > 0 ? "on" : "off")
-//    yabai -m config window_border_width \(Int(windowBorderWidth))
-//    yabai -m config active_window_border_color \"\(activeWindowBorderColor.asHexString)\"
-//    yabai -m config normal_window_border_color \"\(normalWindowBorderColor.asHexString)\"
-//
-//    # New Window Placement
-//    yabai -m config window_placement \(windowPlacement)
-//
-//    # Auto Balance
-//    yabai -m config auto_balance \(windowBalance == .auto ? "on" : "off")
-//
-//    # Split Ratio
-//    \(windowBalance == .auto ? "#" : "")yabai -m config split_ratio \(windowBalance == .custom ? splitRatio : 0.50)
-//
-//    # Floating Windows Stay-On-Top
-//    yabai -m config window_topmost \(windowTopmost == true ? "on" : "off")
-//
-//    #============================================
-//    # Mouse
-//    #============================================
-//    # Mouse Follows Focus
-//    yabai -m config mouse_follows_focus \(mouseFollowsFocus == true ? "on" : "off")
-//
-//    # Focus Follows Mouse
-//    yabai -m config focus_follows_mouse \(!focusFollowsMouseEnabled ? "off" : "\(focusFollowsMouse)")
-//
-//    # Modifier Key
-//    yabai -m config mouse_modifier \(mouseModifier)
-//
-//    # Left Click + Modifier
-//    yabai -m config mouse_action1 \(mouseAction1)
-//
-//    # Right Click + Modifier
-//    yabai -m config mouse_action2 \(mouseAction2)
-//
-//    # Drop Action
-//    yabai -m config mouse_drop_action \(mouseDropAction)
-
-//
-//  WindowSettingsView.swift
-//  Emerald
-//
-//  Created by Kody Deda on 3/5/21.
-//
-
 import SwiftUI
 import ComposableArchitecture
 import KeyboardShortcuts
@@ -79,52 +24,19 @@ struct WindowSettingsView: View {
                     }
                     Divider()
                     HStack {
-                        VStack {
-                            VStack {
-                                Rectangle()
-                                    .frame(height: 20)
-                                    .opacity(0.25)
-                                
-                                HStack {
-                                    Window2(
-                                        opacity: viewStore.activeWindowOpacity,
-                                        borderColor: viewStore.activeWindowBorderColor.color,
-                                        borderWidth: CGFloat(viewStore.windowBorderWidth)
-                                    )
-                                    VStack {
-                                        ForEach(0..<2) { _ in
-                                            Window2(
-                                                opacity: viewStore.normalWindowOpacity,
-                                                borderColor: viewStore.normalWindowBorderColor.color,
-                                                borderWidth: CGFloat(viewStore.windowBorderWidth)
-                                            )
-                                        }
-                                    }
-                                }
-                                RoundedRectangle(cornerRadius: 12)
-                                    .frame(height: 40)
-                                    .opacity(0.25)
-                                    .padding()
-                            }
-                            .aspectRatio(CGSize(width: 16, height: 6), contentMode: .fill)
-                            .background(Color(.windowBackgroundColor))
-                            
-                            
-                            HStack {
-                                //Active/Focused
-                                ColorList(
-                                    color: viewStore.binding(keyPath: \.activeWindowBorderColor.color, send: Yabai.Action.keyPath),
-                                    action: {},// viewStore.send(.updateActiveWindowBorderColor(color)),
-                                    opacity: viewStore.binding(keyPath: \.activeWindowOpacity, send: Yabai.Action.keyPath)
-                                    )
-
-                                //Normal
-                                ColorList(
-                                    color: viewStore.binding(keyPath: \.normalWindowBorderColor.color, send: Yabai.Action.keyPath),
-                                    action: {},
-                                    opacity: viewStore.binding(keyPath: \.normalWindowOpacity, send: Yabai.Action.keyPath)
-                                    )
-                            }
+                        SectionView("Active") {
+                            WindowSettings(
+                                color: viewStore.binding(keyPath: \.activeWindowBorderColor.color, send: Yabai.Action.keyPath),
+                                opacity: viewStore.binding(keyPath: \.activeWindowOpacity, send: Yabai.Action.keyPath),
+                                width: CGFloat(viewStore.windowBorderWidth)
+                            )
+                        }
+                        SectionView("Normal") {
+                            WindowSettings(
+                                color: viewStore.binding(keyPath: \.normalWindowBorderColor.color, send: Yabai.Action.keyPath),
+                                opacity: viewStore.binding(keyPath: \.normalWindowOpacity, send: Yabai.Action.keyPath),
+                                width: CGFloat(viewStore.windowBorderWidth)
+                            )
                         }
                     }
                     HStack {
@@ -176,7 +88,7 @@ struct WindowSettingsView: View {
                         .disabled(!viewStore.disableShadows || viewStore.sipEnabled)
                         .opacity( !viewStore.disableShadows || viewStore.sipEnabled ? 0.5 : 1.0)
                 }
-
+                
                 // Float-On-Top
                 //                VStack(alignment: .leading) {
                 //                    Divider()
@@ -210,52 +122,48 @@ struct WindowSettingsView: View {
     }
 }
 
-private struct Window2: View {
-    var opacity: Double
-    var borderColor: Color
-    var borderWidth: CGFloat
-    
-    var body: some View {
-        RoundedRectangle(cornerRadius: 6)
-            .opacity(opacity)
-            .foregroundColor(
-                Color(.controlBackgroundColor)
-            )
-            .overlay(
-                Text("Focus")
-                    .foregroundColor(.gray)
-                    .opacity(opacity)
-            )
-            .shadow(radius: 6)
-            .overlay(
-                RoundedRectangle(cornerRadius: 6)
-                    .stroke(Color.gray, lineWidth: 0.75)
-                    .opacity(opacity)
-            )
-            .overlay(
-                Rectangle()
-                    .stroke(borderColor, lineWidth: borderWidth/2)
-            )
-            .padding()
-    }
-}
 
-private struct ColorList: View {
+
+private struct WindowSettings: View {
     @Binding var color: Color
-    var action: () -> Void
     @Binding var opacity: Double
+    var width: CGFloat
     
     let colors: [Color] = [.blue, .purple, .pink, .red, .orange, .yellow, .green, .gray]
-     
+    
     var body: some View {
         VStack {
+            RoundedRectangle(cornerRadius: 6)
+                .opacity(opacity)
+                .foregroundColor(
+                    Color(.controlBackgroundColor)
+                )
+                .overlay(
+                    Text("Focus")
+                        .foregroundColor(.gray)
+                        .opacity(opacity)
+                )
+                .shadow(radius: 6)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 6)
+                        .stroke(Color.gray, lineWidth: 0.75)
+                        .opacity(opacity)
+                )
+                .overlay(
+                    Rectangle()
+                        .stroke(color, lineWidth: width/2)
+                )
+                .padding()
+                
+            .frame(height: 200)
+            
             HStack {
                 Text("Border")
                 ColorPicker("", selection: $color)
                     .labelsHidden()
                 
                 ForEach(colors, id: \.self) { color in
-                    Button(action: action) {
+                    Button(action: {}) {
                         Circle()
                             .overlay(
                                 Circle()
@@ -276,6 +184,7 @@ private struct ColorList: View {
         }
     }
 }
+
 
 // MARK:- SwiftUI_Previews
 struct WindowSettingsView_Previews: PreviewProvider {

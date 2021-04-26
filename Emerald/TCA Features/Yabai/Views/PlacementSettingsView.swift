@@ -80,6 +80,7 @@ struct PlacementSettingsView: View {
                         .foregroundColor(Color(.gray))
                 }
             }
+            .frame(alignment: .leading)
             .padding()
             .navigationTitle("Space")
         }

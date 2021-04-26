@@ -4,6 +4,8 @@
 
 Over the last year I found myself interested in the Linux community.  I started watching Youtubers like Luke Smith, Distrotube, Mental Outlaw, to name a few.  I first became interested in this when I came across these screenshots:
 
+<https://github.com/AdamWagner/stackline>
+
 <!-- **screenshots** -->
 
 <!-- I really enjoyed seeing a level of personality and customization shine through yadayadyasdyasdf -->
