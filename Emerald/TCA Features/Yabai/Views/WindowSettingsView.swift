@@ -15,13 +15,10 @@ struct WindowSettingsView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             ScrollView {
-                VStack(spacing: 30) {
-                    HStack {
-                        Text("Window")
-                            .font(.largeTitle)
-                            .bold()
-                        Spacer()
-                    }
+                VStack(alignment: .leading) {
+                    Text("Window")
+                        .font(.largeTitle)
+                        .bold()
                     Divider()
                     HStack {
                         SectionView("Active") {
@@ -46,6 +43,7 @@ struct WindowSettingsView: View {
                             Text("Border Width")
                             Slider(value: viewStore.binding(get: \.windowBorderWidth, send: Yabai.Action.updateWindowBorderWidth), in: 0...30)
                         }
+                        Divider()
                         HStack {
                             Toggle("", isOn: viewStore.binding(keyPath: \.disableShadows, send: Yabai.Action.keyPath))
                                 .labelsHidden()
@@ -90,8 +88,7 @@ struct WindowSettingsView: View {
                 }
             }
             .frame(maxWidth: 1200)
-            .padding(.horizontal, 30)
-            .padding(.vertical)
+            .padding()
             .navigationTitle("")
         }
     }
