@@ -9,6 +9,54 @@ import SwiftUI
 import ComposableArchitecture
 import KeyboardShortcuts
 
+//    # Shadows
+//    yabai -m config window_shadow \(!disableShadows ? "on" : windowShadow.rawValue)
+//
+//    # Opacity Effects
+//    yabai -m config window_opacity \(activeWindowOpacity < 1 || normalWindowOpacity < 1 ? "on" : "off")
+//    yabai -m config window_opacity_duration \(windowOpacityDuration)
+//    yabai -m config active_window_opacity \(activeWindowOpacity)
+//    yabai -m config normal_window_opacity \(normalWindowOpacity)
+//
+//    # Borders
+//    yabai -m config window_border \(windowBorderWidth > 0 ? "on" : "off")
+//    yabai -m config window_border_width \(Int(windowBorderWidth))
+//    yabai -m config active_window_border_color \"\(activeWindowBorderColor.asHexString)\"
+//    yabai -m config normal_window_border_color \"\(normalWindowBorderColor.asHexString)\"
+//
+//    # New Window Placement
+//    yabai -m config window_placement \(windowPlacement)
+//
+//    # Auto Balance
+//    yabai -m config auto_balance \(windowBalance == .auto ? "on" : "off")
+//
+//    # Split Ratio
+//    \(windowBalance == .auto ? "#" : "")yabai -m config split_ratio \(windowBalance == .custom ? splitRatio : 0.50)
+//
+//    # Floating Windows Stay-On-Top
+//    yabai -m config window_topmost \(windowTopmost == true ? "on" : "off")
+//
+//    #============================================
+//    # Mouse
+//    #============================================
+//    # Mouse Follows Focus
+//    yabai -m config mouse_follows_focus \(mouseFollowsFocus == true ? "on" : "off")
+//
+//    # Focus Follows Mouse
+//    yabai -m config focus_follows_mouse \(!focusFollowsMouseEnabled ? "off" : "\(focusFollowsMouse)")
+//
+//    # Modifier Key
+//    yabai -m config mouse_modifier \(mouseModifier)
+//
+//    # Left Click + Modifier
+//    yabai -m config mouse_action1 \(mouseAction1)
+//
+//    # Right Click + Modifier
+//    yabai -m config mouse_action2 \(mouseAction2)
+//
+//    # Drop Action
+//    yabai -m config mouse_drop_action \(mouseDropAction)
+
 struct WindowSettingsView: View {
     let store: Store<Yabai.State, Yabai.Action>
     let k = Yabai.Action.keyPath
@@ -21,70 +69,96 @@ struct WindowSettingsView: View {
                         .font(.largeTitle)
                         .bold()
                     Divider()
+                    
+                    
+
+                    HStack {
+                        Window2(
+                            opacity: vs.activeWindowOpacity,
+                            borderColor: vs.activeWindowBorderColor.color,
+                            borderWidth: CGFloat(vs.windowBorderWidth)
+                        )
+                        .frame(height: 100)
+
+                        Window2(
+                            opacity: vs.normalWindowOpacity,
+                            borderColor: vs.normalWindowBorderColor.color,
+                            borderWidth: CGFloat(vs.windowBorderWidth)
+                        )
+                        .frame(height: 100)
+                    }
+
+
+                    SectionView("Window") {
+                        Section(header: Text("Disable Shadows").bold()) {
+                            HStack {
+                                Toggle("Enabled", isOn: vs.binding(keyPath: \.disableShadows, send: k)).labelsHidden()
+
+                                Picker("", selection: vs.binding(keyPath: \.windowShadow, send: k)) {
+                                    ForEach(Yabai.State.WindowShadow.allCases) {
+                                        Text($0.labelDescription.lowercased())
+                                    }
+                                }
+                                .labelsHidden()
+                                .pickerStyle(SegmentedPickerStyle())
+                                .frame(width: 150)
+                                .disabled(!vs.disableShadows)
+                            }
+                        }
+                        Divider()
+                        Section(header: Text("Opacity").bold()) {
+                            Slider(value: vs.binding(keyPath: \.activeWindowOpacity, send: k))
+                            Slider(value: vs.binding(keyPath: \.normalWindowOpacity, send: k))
+                        }
+                    }
                 }
             }
+            .frame(maxWidth: 1200)
+            .padding()
+            .navigationTitle("")
         }
     }
 }
-//
-//                    HStack {
-//                        Window2(
-//                            opacity: vs.activeWindowOpacity,
-//                            borderColor: vs.activeWindowBorderColor.color,
-//                            borderWidth: CGFloat(vs.windowBorderWidth)
-//                        )
-//                        .frame(height: 100)
-//
-//                        Window2(
-//                            opacity: vs.normalWindowOpacity,
-//                            borderColor: vs.normalWindowBorderColor.color,
-//                            borderWidth: CGFloat(vs.windowBorderWidth)
-//                        )
-//                        .frame(height: 100)
-//                    }
-//
-//
-//                    SectionView("Window") {
-//
-//                        Section(header: Text("Disable Shadows").bold()) {
-//                            HStack {
-//                                Toggle("Enabled", isOn: vs.binding(keyPath: \.disableShadows, send: k)).labelsHidden()
-//
-//                                Picker("", selection: vs.binding(keyPath: \.windowShadow, send: k)) {
-//                                    ForEach(Yabai.State.WindowShadow.allCases) {
-//                                        Text($0.labelDescription.lowercased())
-//                                    }
-//                                }
-//                                .labelsHidden()
-//                                .pickerStyle(SegmentedPickerStyle())
-//                                .frame(width: 150)
-//                                .disabled(!vs.disableShadows)
-//                            }
-//                        }
-//                        Divider()
-//                        OpacitySettings(store: store)
-//                        Group {
-//                            Divider()
-//                            BorderSettings(store: store)
-//                        }
-//                    }
-//                }
-//            }
-//            .frame(maxWidth: 1200)
-//            .padding()
-//            .navigationTitle("")
-//        }
-//    }
-//}
-//
-//// MARK:- SwiftUI_Previews
-//struct WindowSettingsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        WindowSettingsView(store: Yabai.defaultStore)
-//    }
-//}
-//
-////MARK:--
+
+private struct Window2: View {
+    var opacity: Double
+    var borderColor: Color
+    var borderWidth: CGFloat
+    
+    var body: some View {
+        RoundedRectangle(cornerRadius: 6)
+            .opacity(opacity)
+            .foregroundColor(
+                Color(.controlBackgroundColor)
+            )
+            .overlay(
+                Text("Focus")
+                    .foregroundColor(.gray)
+                    .opacity(opacity)
+            )
+            .shadow(radius: 6)
+            .overlay(
+                RoundedRectangle(cornerRadius: 6)
+                    .stroke(Color.gray, lineWidth: 0.75)
+                    .opacity(opacity)
+            )
+            .overlay(
+                Rectangle()
+                    .stroke(borderColor, lineWidth: borderWidth/2)
+            )
+            .padding()
+    }
+}
+
+
+// MARK:- SwiftUI_Previews
+struct WindowSettingsView_Previews: PreviewProvider {
+    static var previews: some View {
+        WindowSettingsView(store: Yabai.defaultStore)
+    }
+}
+
+//MARK:--
 //struct OpacitySettings: View {
 //    let store: Store<Yabai.State, Yabai.Action>
 //    let k = Yabai.Action.keyPath
@@ -133,7 +207,7 @@ struct WindowSettingsView: View {
 //        }
 //    }
 //}
-//
+
 //
 //struct BorderSettings: View {
 //    let store: Store<Yabai.State, Yabai.Action>
@@ -232,9 +306,9 @@ struct WindowSettingsView: View {
 //        }
 //    }
 //}
-
-
-
+//
+//
+//
 //struct WindowSettingsView: View {
 //    let store: Store<Yabai.State, Yabai.Action>
 //
@@ -322,37 +396,8 @@ struct WindowSettingsView: View {
 //        }
 //    }
 //}
-//
-private struct Window2: View {
-    var opacity: Double
-    var borderColor: Color
-    var borderWidth: CGFloat
-    
-    var body: some View {
-        RoundedRectangle(cornerRadius: 6)
-            .opacity(opacity)
-            .foregroundColor(
-                Color(.controlBackgroundColor)
-            )
-            .overlay(
-                Text("Focus")
-                    .foregroundColor(.gray)
-                    .opacity(opacity)
-            )
-            .shadow(radius: 6)
-            .overlay(
-                RoundedRectangle(cornerRadius: 6)
-                    .stroke(Color.gray, lineWidth: 0.75)
-                    .opacity(opacity)
-            )
-            .overlay(
-                Rectangle()
-                    .stroke(borderColor, lineWidth: borderWidth/2)
-            )
-            .padding()
-    }
-}
-//
+
+
 //private struct ColorList: View {
 //    @Binding var color: Color
 //    var action: () -> Void
@@ -389,10 +434,4 @@ private struct Window2: View {
 //        }
 //    }
 //}
-//
-//// MARK:- SwiftUI_Previews
-//struct WindowSettingsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        WindowSettingsView(store: Yabai.defaultStore)
-//    }
-//}
+
