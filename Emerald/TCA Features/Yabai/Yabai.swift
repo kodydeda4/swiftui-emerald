@@ -16,7 +16,7 @@ struct Yabai {
         var stateURL                 = URL(fileURLWithPath: "YabaiState.json", relativeTo: .HomeDirectory)
         var configURL                = URL(fileURLWithPath: ".yabairc", relativeTo: .HomeDirectory)
         var version                  = run("/usr/local/bin/yabai", "-v").stdout
-        var sipEnabled               : Bool              = true
+        var sipEnabled               : Bool              = false
         var debugOutput              : Bool              = false
         var externalBar              : ExternalBar       = .all
         var externalBarEnabled       : Bool              = false
