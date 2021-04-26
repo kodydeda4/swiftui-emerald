@@ -36,24 +36,24 @@ struct RootView: View {
                     }
                     .disabled(viewStore.disabled)
                 }
-                ToolbarItem {
-                    Button<Image>("lock.fill") {
-                        viewStore.send(.lockButtonTapped)
-                    }
-                    .help("Toggle SIP Lock")
-                    .foregroundColor(viewStore.yabai.sipEnabled && !viewStore.disabled ? .accentColor : .gray)
-                    .opacity(viewStore.yabai.sipEnabled && !viewStore.disabled ? 1 : 0.5)
-                    .disabled(viewStore.disabled)
-                }
-                ToolbarItem {
-                    Button<Image>("keyboard") {
-                        viewStore.send(.keyboardButtonTapped)
-                    }
-                    .help("Toggle Keyboard Shortcuts")
-                    .foregroundColor(viewStore.homebrew.skhdRunning && !viewStore.disabled ? .accentColor : .gray)
-                    .opacity(viewStore.homebrew.skhdRunning && !viewStore.disabled ? 1 : 0.5)
-                    .disabled(viewStore.disabled)
-                }
+//                ToolbarItem {
+//                    Button<Image>("lock.fill") {
+//                        viewStore.send(.lockButtonTapped)
+//                    }
+//                    .help("Toggle SIP Lock")
+//                    .foregroundColor(viewStore.yabai.sipEnabled && !viewStore.disabled ? .accentColor : .gray)
+//                    .opacity(viewStore.yabai.sipEnabled && !viewStore.disabled ? 1 : 0.5)
+//                    .disabled(viewStore.disabled)
+//                }
+//                ToolbarItem {
+//                    Button<Image>("keyboard") {
+//                        viewStore.send(.keyboardButtonTapped)
+//                    }
+//                    .help("Toggle Keyboard Shortcuts")
+//                    .foregroundColor(viewStore.homebrew.skhdRunning && !viewStore.disabled ? .accentColor : .gray)
+//                    .opacity(viewStore.homebrew.skhdRunning && !viewStore.disabled ? 1 : 0.5)
+//                    .disabled(viewStore.disabled)
+//                }
 //                ToolbarItem {
 //                    Button<Image>("timer") {
 //                        viewStore.send(.export(.macOSAnimations))
