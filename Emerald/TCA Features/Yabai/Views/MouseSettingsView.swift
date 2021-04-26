@@ -92,7 +92,6 @@ struct MouseSettingsView: View {
                 Spacer()
             }
             .padding()
-            .navigationTitle("Space")
         }
     }
 }

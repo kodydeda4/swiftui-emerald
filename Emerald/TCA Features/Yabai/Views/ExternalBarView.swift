@@ -56,7 +56,6 @@ struct ExternalBarSettingsView: View {
                 Spacer()
             }
             .padding()
-            .navigationTitle("Space")
         }
     }
 }

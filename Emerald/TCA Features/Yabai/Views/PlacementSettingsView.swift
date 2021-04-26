@@ -62,7 +62,6 @@ struct PlacementSettingsView: View {
             }
             .frame(maxWidth: 1200)
             .padding()
-            .navigationTitle("Placement")
         }
     }
 }

@@ -73,7 +73,6 @@ struct FocusSettingsView: View {
                 Spacer()
             }
             .padding()
-            .navigationTitle("Space")
         }
     }
 }

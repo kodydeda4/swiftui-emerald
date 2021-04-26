@@ -89,7 +89,6 @@ struct WindowSettingsView: View {
             }
             .frame(maxWidth: 1200)
             .padding()
-            .navigationTitle("")
         }
     }
 }
