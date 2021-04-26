@@ -23,6 +23,7 @@ struct WindowSettingsView: View {
                     HStack {
                         SectionView("Active") {
                             WindowSettings(
+                                text: "Active",
                                 color: viewStore.binding(keyPath: \.activeWindowBorderColor.color, send: Yabai.Action.keyPath),
                                 opacity: viewStore.binding(keyPath: \.activeWindowOpacity, send: Yabai.Action.keyPath),
                                 width: CGFloat(viewStore.windowBorderWidth)
@@ -30,6 +31,7 @@ struct WindowSettingsView: View {
                         }
                         SectionView("Normal") {
                             WindowSettings(
+                                text: "Normal",
                                 color: viewStore.binding(keyPath: \.normalWindowBorderColor.color, send: Yabai.Action.keyPath),
                                 opacity: viewStore.binding(keyPath: \.normalWindowOpacity, send: Yabai.Action.keyPath),
                                 width: CGFloat(viewStore.windowBorderWidth)
@@ -83,7 +85,7 @@ struct WindowSettingsView: View {
                         }
                         Text("Force floating windows to stay ontop of tiled/stacked windows")
                             .foregroundColor(Color(.gray))
-
+                        
                     }
                 }
             }
@@ -96,6 +98,7 @@ struct WindowSettingsView: View {
 
 
 private struct WindowSettings: View {
+    var text: String
     @Binding var color: Color
     @Binding var opacity: Double
     var width: CGFloat
@@ -110,7 +113,7 @@ private struct WindowSettings: View {
                     Color(.controlBackgroundColor)
                 )
                 .overlay(
-                    Text("Focus")
+                    Text(text)
                         .foregroundColor(.gray)
                         .opacity(opacity)
                 )
