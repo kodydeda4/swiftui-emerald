@@ -39,80 +39,55 @@ struct WindowSettingsView: View {
                             )
                         }
                     }
-                    HStack {
-                        Text("Border Width")
-                        Slider(value: viewStore.binding(get: \.windowBorderWidth, send: Yabai.Action.updateWindowBorderWidth), in: 0...30)
-                    }
                 }
-                // Disable Shadows
-                Divider()
-                VStack(alignment: .leading, spacing: 30) {
-                    HStack {
-                        Text("Shadows")
-                            .font(.title)
-                            .bold()
-                        Spacer()
-                    }
-                    HStack {
-                        Group {
+                SectionView("Misc") {
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Text("Border Width")
+                            Slider(value: viewStore.binding(get: \.windowBorderWidth, send: Yabai.Action.updateWindowBorderWidth), in: 0...30)
+                        }
+                        HStack {
                             Toggle("", isOn: viewStore.binding(keyPath: \.disableShadows, send: Yabai.Action.keyPath))
                                 .labelsHidden()
                             
                             Text("Disable Shadows")
                                 .bold().font(.title3)
-                                .disabled(viewStore.sipEnabled)
-                                .opacity( viewStore.sipEnabled ? 0.5 : 1.0)
                         }
-                        .disabled(viewStore.sipEnabled)
-                        .opacity( viewStore.sipEnabled ? 0.5 : 1.0)
-                        
-                        Spacer()
-                        SIPButton(store: Root.defaultStore)
-                    }
-                    HStack {
-                        Picker("", selection: viewStore.binding(keyPath: \.windowShadow, send: Yabai.Action.keyPath)) {
-                            ForEach(Yabai.State.WindowShadow.allCases) {
-                                Text($0.labelDescription.lowercased())
+                        HStack {
+                            Picker("", selection: viewStore.binding(keyPath: \.windowShadow, send: Yabai.Action.keyPath)) {
+                                ForEach(Yabai.State.WindowShadow.allCases) {
+                                    Text($0.labelDescription.lowercased())
+                                }
                             }
+                            .labelsHidden()
+                            .pickerStyle(SegmentedPickerStyle())
+                            .frame(width: 150)
+                            .disabled(!viewStore.disableShadows)
                         }
-                        .labelsHidden()
-                        .pickerStyle(SegmentedPickerStyle())
-                        .frame(width: 150)
-                        .disabled(!viewStore.disableShadows)
-                    }
-                    .disabled(!viewStore.disableShadows || viewStore.sipEnabled)
-                    .opacity( !viewStore.disableShadows || viewStore.sipEnabled ? 0.5 : 1.0)
-                    
-                    Text(viewStore.windowShadow.caseDescription)
-                        .foregroundColor(Color(.gray))
                         .disabled(!viewStore.disableShadows || viewStore.sipEnabled)
                         .opacity( !viewStore.disableShadows || viewStore.sipEnabled ? 0.5 : 1.0)
+                        
+                        Text(viewStore.windowShadow.caseDescription)
+                            .foregroundColor(Color(.gray))
+                            .disabled(!viewStore.disableShadows || viewStore.sipEnabled)
+                            .opacity( !viewStore.disableShadows || viewStore.sipEnabled ? 0.5 : 1.0)
+                        
+                        Divider()
+                        HStack {
+                            Group {
+                                Toggle("", isOn: viewStore.binding(keyPath: \.windowTopmost, send: Yabai.Action.keyPath))
+                                    .labelsHidden()
+                                
+                                Text("Float-On-Top")
+                                    .bold().font(.title3)
+                            }
+                            Spacer()
+                        }
+                        Text("Force floating windows to stay ontop of tiled/stacked windows")
+                            .foregroundColor(Color(.gray))
+
+                    }
                 }
-                
-                // Float-On-Top
-                //                VStack(alignment: .leading) {
-                //                    Divider()
-                //                    HStack {
-                //                        Group {
-                //                            Toggle("", isOn: vs.binding(\.windowTopmost, k))
-                //                                .labelsHidden()
-                //
-                //                            Text("Float-On-Top")
-                //                                .bold().font(.title3)
-                //                        }
-                //                        .disabled(vs.sipEnabled || vs.layout == .float)
-                //                        .opacity( vs.sipEnabled || vs.layout == .float ? 0.5 : 1.0)
-                //
-                //                        Spacer()
-                //                        SIPButton(store: Root.defaultStore)
-                //                    }
-                //
-                //                    Text("Force floating windows to stay ontop of tiled/stacked windows")
-                //                        .foregroundColor(Color(.gray))
-                //                        .disabled(vs.sipEnabled || vs.layout == .float)
-                //                        .opacity( vs.sipEnabled || vs.layout == .float ? 0.5 : 1.0)
-                //                }
-                
             }
             .frame(maxWidth: 1200)
             .padding(.horizontal, 30)
@@ -155,7 +130,7 @@ private struct WindowSettings: View {
                 )
                 .padding()
                 
-            .frame(height: 200)
+                .frame(height: 200)
             
             HStack {
                 Text("Border")
