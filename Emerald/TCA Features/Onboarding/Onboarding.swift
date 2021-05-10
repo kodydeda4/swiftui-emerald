@@ -17,7 +17,7 @@ struct Feature: Identifiable, Equatable {
 
 struct Onboarding {
     struct State: Equatable {
-        var isOnboaring = false
+        var isOnboaring = true
         var currentPage: onboardingPage = .first
         
         enum onboardingPage {

@@ -111,46 +111,20 @@ struct LayoutShortcutView: View {
                         }
                     } else if layout == .stack {
                         ZStack {
-                            //back
                             Window()
-                                .padding([.leading, .top],     hovering ? 32 : 0)
-                                //.padding([.trailing, .bottom], hovering ?  0 : 0)
-                                .padding(.horizontal, hovering ? 0 : 32)
-                                .animation(.spring())
-                                .rotation3DEffect(
-                                    Angle(degrees: hovering ? angle : 0),
-                                    axis: (x: x, y: y, z: z)
-                                )
-
-                            //middle
+                                .padding(.horizontal, 32)
+                            
                             Window()
-                                .padding([.leading, .top],     hovering ? 16 : 0)
-                                .padding(.trailing, hovering ? 16 : 0)
-                                .padding(.horizontal, hovering ? 0 : 16)
-
-                                .padding(.bottom, 16)
-                                .animation(.spring())
-                                .rotation3DEffect(
-                                    Angle(degrees: hovering ? angle : 0),
-                                    axis: (x: x, y: y, z: z)
-                                )
-
-                            //top
+                                .padding([.horizontal, .bottom], 16)
+                            
                             Window()
-                                .padding([.leading, .top],     hovering ?  0 : 0)
-                                .padding(.trailing, hovering ? 32 : 0)
                                 .padding(.bottom, 32)
-                                .animation(.spring())
-                                .rotation3DEffect(
-                                    Angle(degrees: hovering ? angle : 0),
-                                    axis: (x: x, y: y, z: z)
-                                )
                         }
-
+                        
                     }
                 }
                 .aspectRatio(CGSize(width: 16, height: 10), contentMode: .fill)
-                .scaleEffect(hovering ? 0.9 : 1)
+                .scaleEffect(hovering ? 0.99 : 1)
                 .animation(.spring(), value: hovering)
             }
             .padding()

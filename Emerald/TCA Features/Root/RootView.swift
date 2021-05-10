@@ -49,6 +49,14 @@ struct RootView: View {
                     .disabled(viewStore.disabled)
                 }
                 ToolbarItem {
+                    Button("Install Programs") {
+                        viewStore.send(.installProgramsButtonTapped)
+                    }
+                    .help("⇧ ⌘ A")
+                    .keyboardShortcut("a", modifiers: [.command, .shift])
+                    .disabled(viewStore.disabled)
+                }
+                ToolbarItem {
                     Button<Image>("power") {
                         viewStore.send(.powerButtonTapped)
                     }

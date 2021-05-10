@@ -21,7 +21,7 @@ struct Root {
         var onboarding       = Onboarding.State()
         var alert            : AlertState<Root.Action>?
         var error            = ""
-        
+ 
         var sheetView = false
         var animatingApplyChanges = false
         var animatingTogglePower = false
@@ -31,6 +31,7 @@ struct Root {
         case onAppear
         case save
         case toggleSheetView
+        case installProgramsButtonTapped
         
         //Features
         case yabai(Yabai.Action)
@@ -91,6 +92,14 @@ extension Root {
         Reducer { state, action, environment in
             
             switch action {
+            
+            case .installProgramsButtonTapped:
+                let installHomebrew = AppleScript.execute("/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"")
+                let installYabai    = AppleScript.execute("/usr/local/bin/brew install yabai")
+                let installSKHD     = AppleScript.execute("/usr/local/bin/brew install skhd")
+                
+                
+                return .none
             
             case .onAppear:
                 switch JSONDecoder().decodeState(Yabai.State.self, from: state.yabai.stateURL) {
@@ -199,6 +208,8 @@ extension Root {
                         .eraseToEffect()
                 }
                 return .none
+                
+
             }
         }
     )
