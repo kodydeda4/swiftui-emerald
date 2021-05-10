@@ -11,12 +11,6 @@ import Overture
 import Combine
 import KeyboardShortcuts
 
-/*
- Fix multiple sheets
- - multiple .sheet modifiers doesn't work.
- - the fix - have one sheetview, that changes depending on the action sent.
-  */
-
 struct Root {
     struct State: Equatable {
         var disabled         = false
@@ -63,42 +57,7 @@ struct Root {
     }
     
     struct Environment {
-        func writeState<State>(_ state: State, to url: URL) -> Result<Bool, Error> where State: Codable {
-            let startDate = Date()
-            
-            print("writeState: to: '\(url.path)'")
-            do {
-                try JSONEncoder()
-                    .encode(state)
-                    .write(to: url)
-                
-                print("\(Date()) elapsed: '\(startDate.timeIntervalSinceNow * -1000) ms'")
-                return .success(true)
-            } catch {
-                return .failure(error)
-            }
-        }
-        
-        func decodeState<State>(_ type: State.Type, from url: URL) -> Result<State, Error> where State: Codable {
-            do {
-                let decoded = try JSONDecoder().decode(type.self, from: Data(contentsOf: url))
-                return .success(decoded)
-            }
-            catch {
-                return .failure(error)
-            }
-        }
-        
-        func writeConfig(_ config: String, to url: URL) -> Result<Bool, Error> {
-            do {
-                let data: String = config
-                try data.write(to: url, atomically: true, encoding: .utf8)
-                return .success(true)
-            }
-            catch {
-                return .failure(error)
-            }
-        }
+        //
     }
 }
 
@@ -134,19 +93,19 @@ extension Root {
             switch action {
             
             case .onAppear:
-                switch environment.decodeState(Yabai.State.self, from: state.yabai.stateURL) {
+                switch JSONDecoder().decodeState(Yabai.State.self, from: state.yabai.stateURL) {
                 case let .success(decodedState):
                     state.yabai = decodedState
                 case let .failure(error):
                     state.error = error.localizedDescription
                 }
-                switch environment.decodeState(SKHD.State.self, from: state.skhd.stateURL) {
+                switch JSONDecoder().decodeState(SKHD.State.self, from: state.skhd.stateURL) {
                 case let .success(decodedState):
                     state.skhd = decodedState
                 case let .failure(error):
                     state.error = error.localizedDescription
                 }
-                switch environment.decodeState(MacOSAnimations.State.self, from: state.macOSAnimations.stateURL) {
+                switch JSONDecoder().decodeState(MacOSAnimations.State.self, from: state.macOSAnimations.stateURL) {
                 case let .success(decodedState):
                     state.macOSAnimations = decodedState
                 case let .failure(error):
@@ -155,12 +114,12 @@ extension Root {
                 return .none
             
             case .save:
-                let _ = environment.writeState(state.yabai, to: state.yabai.stateURL)
-                let _ = environment.writeState(state.skhd,  to: state.skhd.stateURL)
-                let _ = environment.writeState(state.macOSAnimations, to: state.macOSAnimations.stateURL)
-                let _ = environment.writeConfig(state.yabai.asConfig, to: state.yabai.configURL)
-                let _ = environment.writeConfig(state.skhd.asConfig,  to: state.skhd.configURL)
-                let _ = environment.writeConfig(state.macOSAnimations.asShellScript, to: state.macOSAnimations.shellScriptURL)
+                let _ = JSONEncoder().writeState(state.yabai, to: state.yabai.stateURL)
+                let _ = JSONEncoder().writeState(state.skhd,  to: state.skhd.stateURL)
+                let _ = JSONEncoder().writeState(state.macOSAnimations, to: state.macOSAnimations.stateURL)
+                let _ = JSONEncoder().writeConfig(state.yabai.asConfig, to: state.yabai.configURL)
+                let _ = JSONEncoder().writeConfig(state.skhd.asConfig,  to: state.skhd.configURL)
+                let _ = JSONEncoder().writeConfig(state.macOSAnimations.asShellScript, to: state.macOSAnimations.shellScriptURL)
                 return .none
 
             case .yabai, .skhd, .macOSAnimations:
@@ -198,37 +157,36 @@ extension Root {
                 state = Root.State()
                 KeyboardShortcuts.resetEmeraldDefaults()
                 
-                let _ = environment.writeState(state.yabai, to: state.yabai.stateURL)
-                let _ = environment.writeState(state.skhd,  to: state.skhd.stateURL)
-                let _ = environment.writeState(state.macOSAnimations, to: state.macOSAnimations.stateURL)
-                let _ = environment.writeConfig(state.yabai.asConfig, to: state.yabai.configURL)
-                let _ = environment.writeConfig(state.skhd.asConfig,  to: state.skhd.configURL)
-                let _ = environment.writeConfig(state.macOSAnimations.asShellScript, to: state.macOSAnimations.shellScriptURL)
+                let _ = JSONEncoder().writeState(state.yabai, to: state.yabai.stateURL)
+                let _ = JSONEncoder().writeState(state.skhd,  to: state.skhd.stateURL)
+                let _ = JSONEncoder().writeState(state.macOSAnimations, to: state.macOSAnimations.stateURL)
+                let _ = JSONEncoder().writeConfig(state.yabai.asConfig, to: state.yabai.configURL)
+                let _ = JSONEncoder().writeConfig(state.skhd.asConfig,  to: state.skhd.configURL)
+                let _ = JSONEncoder().writeConfig(state.macOSAnimations.asShellScript, to: state.macOSAnimations.shellScriptURL)
 
                 let _ = AppleScript.execute("/usr/local/bin/brew services restart yabai; /usr/local/bin/brew services restart skhd;")
                 return Effect(value: .applyChangesButtonTapped)
                 
             case .powerButtonTapped:
-                let _ = AppleScript.execute("/usr/local/bin/brew services \(state.disabled ? "start" : "stop") yabai; /usr/local/bin/brew services \(state.disabled ? "start" : "stop") skhd;")
-                //let _ = AppleScript.execute("/usr/local/bin/brew services \(state.disabled ? "start" : "stop") skhd")
+                var startStop: String { state.disabled ? "start" : "stop" }
+                let _ = AppleScript.execute("/usr/local/bin/brew services \(startStop) yabai; /usr/local/bin/brew services \(startStop) skhd;")
                 state.disabled.toggle()
+                state.animatingTogglePower.toggle()
+                if state.animatingTogglePower {
+                    return Effect(value: .toggleSheetView)
+                }
+                state.animatingTogglePower.toggle()
                 
-                //----------------------------------------
-                state.animatingTogglePower.toggle()
-                if state.animatingTogglePower { return Effect(value: .toggleSheetView) }
-                state.animatingTogglePower.toggle()
-                //----------------------------------------
                 return Effect(value: .toggleSheetView)
                 
                             
             case .applyChangesButtonTapped:
                 let _ = AppleScript.execute("/usr/local/bin/brew services restart yabai; /usr/local/bin/brew services restart skhd;")
-                
-                //----------------------------------------
                 state.animatingApplyChanges.toggle()
-                if state.animatingApplyChanges { return Effect(value: .toggleSheetView) }
+                if state.animatingApplyChanges {
+                    return Effect(value: .toggleSheetView)
+                }
                 state.animatingApplyChanges.toggle()
-                //----------------------------------------
                 return Effect(value: .toggleSheetView)
                 
                 

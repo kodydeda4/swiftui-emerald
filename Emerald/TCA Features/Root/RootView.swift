@@ -16,7 +16,6 @@ struct RootView: View {
             NavigationView {
                 SidebarView(store: store)
                 SpaceSettingsView(store: store)       
-                ConfigTabView(store: store)
             }
             .disabled(viewStore.disabled)
             .onAppear {
@@ -25,9 +24,6 @@ struct RootView: View {
             .sheet(isPresented: viewStore.binding(get: \.sheetView, send: .toggleSheetView)) {
                 SheetView(store: store)
             }
-//            .sheet(isPresented: viewStore.binding(get: \.onboarding.isOnboaring, send: .onboarding(.toggleIsOnboaring))) {
-//                OnboardingView(store: store.scope(state: \.onboarding, action: Root.Action.onboarding))
-//            }
             .alert(store.scope(state: \.alert), dismiss: .dismissResetAlert)
             .toolbar {
                 ToolbarItem {
@@ -36,34 +32,6 @@ struct RootView: View {
                     }
                     .disabled(viewStore.disabled)
                 }
-//                ToolbarItem {
-//                    Button<Image>("lock.fill") {
-//                        viewStore.send(.lockButtonTapped)
-//                    }
-//                    .help("Toggle SIP Lock")
-//                    .foregroundColor(viewStore.yabai.sipEnabled && !viewStore.disabled ? .accentColor : .gray)
-//                    .opacity(viewStore.yabai.sipEnabled && !viewStore.disabled ? 1 : 0.5)
-//                    .disabled(viewStore.disabled)
-//                }
-//                ToolbarItem {
-//                    Button<Image>("keyboard") {
-//                        viewStore.send(.keyboardButtonTapped)
-//                    }
-//                    .help("Toggle Keyboard Shortcuts")
-//                    .foregroundColor(viewStore.homebrew.skhdRunning && !viewStore.disabled ? .accentColor : .gray)
-//                    .opacity(viewStore.homebrew.skhdRunning && !viewStore.disabled ? 1 : 0.5)
-//                    .disabled(viewStore.disabled)
-//                }
-//                ToolbarItem {
-//                    Button<Image>("timer") {
-//                        viewStore.send(.export(.macOSAnimations))
-//                        viewStore.send(.macOSAnimations(.executeShellScript))
-//                    }
-//                    .help("Apply Animation Changes")
-//                    .foregroundColor(viewStore.enabled ? .accentColor : .gray)
-//                    .opacity(viewStore.enabled ? 1 : 0.5)
-//                    .disabled(!viewStore.enabled)
-//                }
                 ToolbarItem {
                     Button("Reset") {
                         viewStore.send(.resetButtonTapped)

@@ -16,6 +16,7 @@ struct Yabai {
         var stateURL                 = URL(fileURLWithPath: "YabaiState.json", relativeTo: .HomeDirectory)
         var configURL                = URL(fileURLWithPath: ".yabairc", relativeTo: .HomeDirectory)
         var version                  = run("/usr/local/bin/yabai", "-v").stdout
+        
         var sipEnabled               : Bool              = false
         var debugOutput              : Bool              = false
         var externalBar              : ExternalBar       = .all
@@ -29,27 +30,22 @@ struct Yabai {
         var windowTopmost            : Bool              = false
         var disableShadows           : Bool              = false
         var windowShadow             : WindowShadow      = .off
-
         var windowOpacityDuration    : Double            = 1
         var activeWindowOpacity      : Double            = 1
         var normalWindowOpacity      : Double            = 1
         var windowBalance            : WindowBalance     = .normal
         var splitRatio               : Float             = 50
         var autoBalance              : Bool              = false
-        
-        
         var windowBorderWidth        : Float             = 0
         var activeWindowBorderColor  : CodableColor      = .init(color: .accentColor)
         var normalWindowBorderColor  : CodableColor      = .init(color: .gray)
-        
-                   
         var mouseModifier            : MouseModifier     = .fn
         var mouseAction1             : MouseAction       = .move
         var mouseAction2             : MouseAction       = .resize
         var mouseDropAction          : MouseDropAction   = .swap
         var layout                   : Layout            = .float
-        var padding                  : Int               = 20
-        var windowGap                : Int               = 20
+        var padding                  : Int               = 30
+        var windowGap                : Int               = 30
         
         enum ExternalBar: String, Codable, CaseIterable, Identifiable {
             var id: ExternalBar { self }

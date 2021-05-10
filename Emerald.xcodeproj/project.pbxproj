@@ -12,6 +12,7 @@
 		3315223F25D5786C00C8E46A /* SwiftShell in Frameworks */ = {isa = PBXBuildFile; productRef = 3315223E25D5786C00C8E46A /* SwiftShell */; };
 		3325BFD125EFCEC4007831C5 /* OmenTextField in Frameworks */ = {isa = PBXBuildFile; productRef = 3325BFD025EFCEC4007831C5 /* OmenTextField */; };
 		3325BFD525F05041007831C5 /* RoundedRectangleButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3325BFD425F05041007831C5 /* RoundedRectangleButtonStyle.swift */; };
+		3327A9472649612900C497B8 /* JSONDecoder+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3327A9462649612900C497B8 /* JSONDecoder+Extensions.swift */; };
 		332D567D25DEED5300C88FEE /* MacOSAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D567C25DEED5300C88FEE /* MacOSAnimations.swift */; };
 		332D568625DEEF7800C88FEE /* MacOSAnimationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D568525DEEF7800C88FEE /* MacOSAnimationSettingsView.swift */; };
 		33318F3325F2AD3500231233 /* StepperTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33318F3225F2AD3500231233 /* StepperTextfield.swift */; };
@@ -62,6 +63,7 @@
 		3301D5002602765900D02C46 /* Button+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Extensions.swift"; sourceTree = "<group>"; };
 		330E144925F2AFEE00E61969 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		3325BFD425F05041007831C5 /* RoundedRectangleButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleButtonStyle.swift; sourceTree = "<group>"; };
+		3327A9462649612900C497B8 /* JSONDecoder+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Extensions.swift"; sourceTree = "<group>"; };
 		332D567C25DEED5300C88FEE /* MacOSAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSAnimations.swift; sourceTree = "<group>"; };
 		332D568525DEEF7800C88FEE /* MacOSAnimationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSAnimationSettingsView.swift; sourceTree = "<group>"; };
 		33318F3225F2AD3500231233 /* StepperTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperTextfield.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 		3380D31125D0667100C10913 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				3327A9462649612900C497B8 /* JSONDecoder+Extensions.swift */,
 				3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */,
 				334EC79125F908A4005AB9BF /* ViewStore+Extensions.swift */,
 				3385DF6F25D6361200ACDE21 /* AppleScript.swift */,
@@ -393,6 +396,7 @@
 				332D568625DEEF7800C88FEE /* MacOSAnimationSettingsView.swift in Sources */,
 				33318F3325F2AD3500231233 /* StepperTextfield.swift in Sources */,
 				3380D33725D0723000C10913 /* Root.swift in Sources */,
+				3327A9472649612900C497B8 /* JSONDecoder+Extensions.swift in Sources */,
 				336627362602642300C4B009 /* ApplyChangesButtonTappedView.swift in Sources */,
 				3385DF6725D6270B00ACDE21 /* SidebarView.swift in Sources */,
 				339C453525D6ED0F0079ACA1 /* OnboardingView.swift in Sources */,
