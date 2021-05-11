@@ -25,8 +25,7 @@ struct SpaceSettingsView: View {
                         LayoutShortcutView(layout: .bsp,   action: { viewStore.send(.skhd(.updateBsp($0))) })
                         LayoutShortcutView(layout: .stack, action: { viewStore.send(.skhd(.updateStack($0))) })
                     }
-                }
-                VStack(alignment: .leading) {
+                    
                     Text("Shortcuts")
                         .font(.largeTitle)
                         .bold()
@@ -43,9 +42,10 @@ struct SpaceSettingsView: View {
                         ShortcutView(shortcut: .gaps,    action: { viewStore.send(.skhd(.updateGaps($0))) })
                     }
                 }
+                .padding()
             }
             .frame(maxWidth: 1200)
-            .padding()
+            //            .padding()
         }
     }
 }
