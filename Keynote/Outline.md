@@ -32,18 +32,26 @@ They do so simply by:
 
 ### 1.3 The problem with Tiling Window Managers
 
-You may be wondering "How come I haven't heard of this before?"
+You may be wondering _"How come I haven't heard of this before?"_
 
-The truth is that while Tiling Window Managers do offer more features & functionality, they're not that commonly used outside of the Linux community. Despite this, there are actually quite a few out there, each with their own nuances and configurations.
+Well, the truth is, while Tiling Window Managers do offer some extra features & functionality, they're not that commonly used outside of the Linux community. This mainly comes down to their being difficult to install and configure. The process for getting them up and running looks like this:
 
-- DWM
-- XMonad
-- i3
-- QTile
-- Awesome
+- Install the program through the command line.
+- Read through the Github or MAN documentation to figure out how it works.
+- Write your preferences into a configuration file in the programming language it was created in.
 
+PS. The configuration file, also called a dotfile, gets its name by the dot prefix before it's name, meansing it's hidden by default within Finder & Windows File Explorer. This means you gotta open / edit it in the terminal..  simple right? ;)
 
-This is mostly due to how they're installed and configured. 
+**Despite this**, there are actually quite a few out there, each with their own nuances and configurations.
+
+To name a few:
+
+- DWM configured in C.
+- XMonad configured in Haskell
+- i3 configured in Bash
+- QTile configured in Python
+- Awesome configured in Lua
+
 
 ------------------------------------------------------------------------------------------
 ### 1. Getting Started
