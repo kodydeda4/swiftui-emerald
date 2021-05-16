@@ -25,6 +25,7 @@ struct MouseSettingsView: View {
                     .tabItem { Text("Focus Behavior") }
             }
             .padding()
+            .frame(maxWidth: 900)
         }
     }
 }
@@ -119,6 +120,53 @@ struct DropActionView: View {
     }
 }
 
+struct FocusSettingsView: View {
+    let store: Store<Yabai.State, Yabai.Action>
+    
+    var body: some View {
+        WithViewStore(store) { vs in
+            VStack(alignment: .leading) {
+                
+                // AutoFocus
+                VStack(alignment: .leading) {
+                    Text("Mouse Focus")
+                        .bold().font(.title3)
+
+                    Picker("", selection: vs.binding(keyPath: \.focusFollowsMouse, send: Yabai.Action.keyPath)) {
+                        ForEach(Yabai.State.FocusFollowsMouse.allCases) {
+                            Text($0.labelDescription.lowercased())
+                        }
+                    }
+                    .labelsHidden().pickerStyle(SegmentedPickerStyle()).frame(width: 250)
+
+                    Text(vs.focusFollowsMouse.caseDescription)
+                        .foregroundColor(Color(.gray))
+                }
+                
+                // Follow Focus
+                VStack(alignment: .leading) {
+                    Divider()
+                    HStack {
+                        Group {
+                            Toggle("Enabled", isOn: vs.binding(keyPath: \.mouseFollowsFocus, send: Yabai.Action.keyPath))
+                                .labelsHidden()
+                            
+                            Text("Follow Focus")
+                                .bold().font(.title3)
+                        }
+                        Spacer()
+                        SIPButton(store: Root.defaultStore)
+                    }
+                    
+                    Text("Mouse will automatically reposition itself to center of focused window")
+                        .foregroundColor(Color(.gray))
+                }
+                Spacer()
+            }
+            .padding()
+        }
+    }
+}
 
 // MARK:- SwiftUI_Previews
 struct MouseSettingsView_Previews: PreviewProvider {

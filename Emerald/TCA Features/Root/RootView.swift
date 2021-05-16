@@ -15,7 +15,6 @@ struct RootView: View {
         WithViewStore(store) { viewStore in
             NavigationView {
                 SidebarView(store: store)
-                SpaceSettingsView(store: store)       
             }
             .disabled(viewStore.disabled)
             .onAppear {
@@ -69,7 +68,15 @@ struct RootView: View {
     }
 }
 
-
+struct ChildTabView: View {
+    var title: String
+    var index: Int
+    
+    var body: some View {
+        Text("\(title) - Index \(index)")
+            .padding()
+    }
+}
 
 
 

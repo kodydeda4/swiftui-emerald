@@ -9,6 +9,7 @@ import SwiftUI
 import ComposableArchitecture
 import KeyboardShortcuts
 
+// the view needs to shrink hroizontally but always make sure that all of the items are visible in the heirarchy.
 struct SpaceSettingsView: View {
     let store: Store<Root.State, Root.Action>
     
