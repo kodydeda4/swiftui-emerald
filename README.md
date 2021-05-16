@@ -1,6 +1,6 @@
 # 🪴 Emerald
 
-![banner](https://user-images.githubusercontent.com/45678211/116265366-0ef01b80-a749-11eb-8a3e-fad8dfed142c.png)
+![banner](https://user-images.githubusercontent.com/45678211/118408878-87b20b80-b655-11eb-8321-9f2ade9bb805.png)
 
 ## About Emerald
 
@@ -74,10 +74,5 @@ Perform actions by holding the modifier key and left/right clicking anywhere on 
 | Resize        | Resize the window.
 
 
+## About
 
-
-
-
-## Team Info
-
-![footer](https://user-images.githubusercontent.com/45678211/116265373-10b9df00-a749-11eb-95b3-6e76b19252a7.png)
