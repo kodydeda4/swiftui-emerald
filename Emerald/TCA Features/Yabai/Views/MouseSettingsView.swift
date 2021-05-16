@@ -34,51 +34,57 @@ struct MouseModfiersView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            VStack(alignment: .leading) {
-                Text("Left Click + Modifier")
-                    .bold().font(.title3)
+            VStack(alignment: .leading, spacing: 20) {
                 
-                Picker("", selection: viewStore.binding(keyPath: \.mouseAction1, send: Yabai.Action.keyPath)) {
-                    ForEach(Yabai.State.MouseAction.allCases) {
-                        Text($0.rawValue)
+                // Left Click + Modifier
+                VStack(alignment: .leading) {
+                    Text("Left Click + Modifier")
+                        .bold().font(.title3)
+                    
+                    Picker("", selection: viewStore.binding(keyPath: \.mouseAction1, send: Yabai.Action.keyPath)) {
+                        ForEach(Yabai.State.MouseAction.allCases) {
+                            Text($0.rawValue)
+                        }
                     }
+                    .labelsHidden().pickerStyle(SegmentedPickerStyle()).frame(width: 100)
+                    
+                    Text(viewStore.mouseAction1.caseDescription)
+                        .foregroundColor(Color(.gray))
                 }
-                .labelsHidden().pickerStyle(SegmentedPickerStyle()).frame(width: 100)
                 
-                Text(viewStore.mouseAction1.caseDescription)
-                    .foregroundColor(Color(.gray))
-                
-                Divider()
-                
-                Text("Right Click + Modifier")
-                    .bold().font(.title3)
-                
-                Picker("", selection: viewStore.binding(keyPath: \.mouseAction2, send: Yabai.Action.keyPath)) {
-                    ForEach(Yabai.State.MouseAction.allCases) {
-                        Text($0.rawValue)
+                // Right Click + Modifier
+                VStack(alignment: .leading) {
+                    Text("Right Click + Modifier")
+                        .bold().font(.title3)
+                    
+                    Picker("", selection: viewStore.binding(keyPath: \.mouseAction2, send: Yabai.Action.keyPath)) {
+                        ForEach(Yabai.State.MouseAction.allCases) {
+                            Text($0.rawValue)
+                        }
                     }
+                    .labelsHidden().pickerStyle(SegmentedPickerStyle()).frame(width: 100)
+                    
+                    Text(viewStore.mouseAction2.caseDescription)
+                        .foregroundColor(Color(.gray))
                 }
-                .labelsHidden().pickerStyle(SegmentedPickerStyle()).frame(width: 100)
-                
-                Text(viewStore.mouseAction2.caseDescription)
-                    .foregroundColor(Color(.gray))
-                
-                Divider()
-                
-                Text("Modifier Key")
-                    .bold().font(.title3)
-                
-                Picker("", selection: viewStore.binding(keyPath: \.mouseModifier, send: Yabai.Action.keyPath)) {
-                    ForEach(Yabai.State.MouseModifier.allCases) {
-                        Text($0.labelDescription.lowercased())
+
+                // Modifier Key
+                VStack(alignment: .leading) {
+                    Text("Modifier Key")
+                        .bold().font(.title3)
+                    
+                    Picker("", selection: viewStore.binding(keyPath: \.mouseModifier, send: Yabai.Action.keyPath)) {
+                        ForEach(Yabai.State.MouseModifier.allCases) {
+                            Text($0.labelDescription.lowercased())
+                        }
                     }
+                    .labelsHidden().pickerStyle(SegmentedPickerStyle()).frame(width: 350)
+                    
+                            Text("Press & hold for mouse actions")
+                                .foregroundColor(Color(.gray))
                 }
-                .labelsHidden().pickerStyle(SegmentedPickerStyle()).frame(width: 350)
-                
-//                Text("Press & hold for mouse actions")
-//                    .foregroundColor(Color(.gray))
+                Spacer()
             }
-            
             .padding()
         }
     }
@@ -105,17 +111,13 @@ struct DropActionView: View {
                 
                 Text(viewStore.mouseDropAction.caseDescription)
                     .foregroundColor(Color(.gray))
+                
+                Spacer()
             }
             .padding()
         }
     }
 }
-
-
-
-
-
-
 
 
 // MARK:- SwiftUI_Previews

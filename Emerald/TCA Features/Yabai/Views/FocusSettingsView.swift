@@ -13,40 +13,24 @@ struct FocusSettingsView: View {
     
     var body: some View {
         WithViewStore(store) { vs in
-            VStack(alignment: .leading, spacing: 20) {
+            VStack(alignment: .leading) {
                 
                 // AutoFocus
                 VStack(alignment: .leading) {
-                    HStack {
-                        Group {
-                            Toggle("", isOn: vs.binding(keyPath: \.focusFollowsMouseEnabled, send: Yabai.Action.keyPath))
-                                .labelsHidden()
-                            
-                            Text("Auto Focus")
-                                .bold().font(.title3)
-                        }
-                        .disabled(vs.sipEnabled)
-                        .opacity(vs.sipEnabled ? 0.5 : 1.0)
-                        
-                        Spacer()
-                        SIPButton(store: Root.defaultStore)
-                    }
+                    Text("Mouse Focus")
+                        .bold().font(.title3)
+
                     Picker("", selection: vs.binding(keyPath: \.focusFollowsMouse, send: Yabai.Action.keyPath)) {
                         ForEach(Yabai.State.FocusFollowsMouse.allCases) {
                             Text($0.rawValue)
                         }
                     }
-                    .labelsHidden()
-                    .pickerStyle(SegmentedPickerStyle())
-                    .frame(width: 150)
-                    .disabled(!vs.focusFollowsMouseEnabled || vs.sipEnabled)
-                    .opacity( !vs.focusFollowsMouseEnabled || vs.sipEnabled ? 0.5 : 1.0)
+                    .labelsHidden().pickerStyle(SegmentedPickerStyle()).frame(width: 200)
 
                     Text(vs.focusFollowsMouse.caseDescription)
                         .foregroundColor(Color(.gray))
-                        .disabled(!vs.focusFollowsMouseEnabled || vs.sipEnabled)
-                        .opacity( !vs.focusFollowsMouseEnabled || vs.sipEnabled ? 0.5 : 1.0)
                 }
+                
                 // Follow Focus
                 VStack(alignment: .leading) {
                     Divider()
@@ -58,17 +42,12 @@ struct FocusSettingsView: View {
                             Text("Follow Focus")
                                 .bold().font(.title3)
                         }
-                        .disabled(vs.sipEnabled)
-                        .opacity( vs.sipEnabled ? 0.5 : 1.0)
-
                         Spacer()
                         SIPButton(store: Root.defaultStore)
                     }
                     
                     Text("Mouse will automatically reposition itself to center of focused window")
                         .foregroundColor(Color(.gray))
-                        .disabled(!vs.mouseFollowsFocus || vs.sipEnabled)
-                        .opacity( !vs.mouseFollowsFocus || vs.sipEnabled ? 0.5 : 1.0)
                 }
                 Spacer()
             }

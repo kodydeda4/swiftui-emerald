@@ -16,7 +16,6 @@ struct Yabai {
         var stateURL                 = URL(fileURLWithPath: "YabaiState.json", relativeTo: .HomeDirectory)
         var configURL                = URL(fileURLWithPath: ".yabairc", relativeTo: .HomeDirectory)
         var version                  = run("/usr/local/bin/yabai", "-v").stdout
-        
         var sipEnabled               : Bool              = false
         var debugOutput              : Bool              = false
         var externalBar              : ExternalBar       = .all
@@ -24,8 +23,7 @@ struct Yabai {
         var externalBarPaddingTop    : Int               = 0
         var externalBarPaddingBottom : Int               = 0
         var mouseFollowsFocus        : Bool              = false
-        var focusFollowsMouse        : FocusFollowsMouse = .autofocus
-        var focusFollowsMouseEnabled : Bool              = false
+        var focusFollowsMouse        : FocusFollowsMouse = .off
         var windowPlacement          : WindowPlacement   = .second_child
         var windowTopmost            : Bool              = false
         var disableShadows           : Bool              = false
@@ -49,12 +47,13 @@ struct Yabai {
         
         enum ExternalBar: String, Codable, CaseIterable, Identifiable {
             var id: ExternalBar { self }
-            //case off
+            case off
             case all
             case main
             
             var caseDescription: String {
                 switch self {
+                case .off  : return "Disabled."
                 case .all  : return "Use an external statusbar on all screens"
                 case .main : return "Only use an external statusbar on the main screen"
                 }
@@ -80,11 +79,13 @@ struct Yabai {
         }
         enum FocusFollowsMouse: String, Codable, CaseIterable, Identifiable {
             var id: FocusFollowsMouse { self }
+            case off
             case autofocus
             case autoraise
             
             var caseDescription: String {
                 switch self {
+                case .off : return "Default"
                 case .autofocus : return "Mouse will focus window on hover"
                 case .autoraise : return "Mouse will focus & raise window on hover"
                 }
