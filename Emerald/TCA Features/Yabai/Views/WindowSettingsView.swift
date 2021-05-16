@@ -87,9 +87,12 @@ struct WindowSettingsView: View {
                             .foregroundColor(Color(.gray))
                         
                     }
+                    
                 }
+                PlacementSettingsView(store: store)
+                
             }
-            .frame(maxWidth: 1200)
+            .frame(maxWidth: 900)
             .padding()
         }
     }

@@ -22,10 +22,10 @@ struct FocusSettingsView: View {
 
                     Picker("", selection: vs.binding(keyPath: \.focusFollowsMouse, send: Yabai.Action.keyPath)) {
                         ForEach(Yabai.State.FocusFollowsMouse.allCases) {
-                            Text($0.rawValue)
+                            Text($0.labelDescription.lowercased())
                         }
                     }
-                    .labelsHidden().pickerStyle(SegmentedPickerStyle()).frame(width: 200)
+                    .labelsHidden().pickerStyle(SegmentedPickerStyle()).frame(width: 250)
 
                     Text(vs.focusFollowsMouse.caseDescription)
                         .foregroundColor(Color(.gray))

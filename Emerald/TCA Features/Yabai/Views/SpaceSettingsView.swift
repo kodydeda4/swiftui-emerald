@@ -44,7 +44,7 @@ struct SpaceSettingsView: View {
                 }
                 .padding()
             }
-            .frame(maxWidth: 1200)
+            .frame(maxWidth: 900)
             //            .padding()
         }
     }

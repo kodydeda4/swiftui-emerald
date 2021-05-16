@@ -83,11 +83,19 @@ struct Yabai {
             case autofocus
             case autoraise
             
+            var labelDescription: String {
+                switch self {
+                case .off : return "Default"
+                case .autofocus : return "AutoFocus"
+                case .autoraise : return "AutoRaise"
+                }
+            }
+
             var caseDescription: String {
                 switch self {
                 case .off : return "Default"
-                case .autofocus : return "Mouse will focus window on hover"
-                case .autoraise : return "Mouse will focus & raise window on hover"
+                case .autofocus : return "Focus windows on hover"
+                case .autoraise : return "Focus & raise windows on hover"
                 }
             }
         }

@@ -8,12 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		3301D5012602765900D02C46 /* Button+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3301D5002602765900D02C46 /* Button+Extensions.swift */; };
-		330E144A25F2AFEE00E61969 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330E144925F2AFEE00E61969 /* SliderView.swift */; };
 		3315223F25D5786C00C8E46A /* SwiftShell in Frameworks */ = {isa = PBXBuildFile; productRef = 3315223E25D5786C00C8E46A /* SwiftShell */; };
 		3325BFD125EFCEC4007831C5 /* OmenTextField in Frameworks */ = {isa = PBXBuildFile; productRef = 3325BFD025EFCEC4007831C5 /* OmenTextField */; };
 		3325BFD525F05041007831C5 /* RoundedRectangleButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3325BFD425F05041007831C5 /* RoundedRectangleButtonStyle.swift */; };
 		3327A9472649612900C497B8 /* JSONDecoder+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3327A9462649612900C497B8 /* JSONDecoder+Extensions.swift */; };
-		33318F3325F2AD3500231233 /* StepperTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33318F3225F2AD3500231233 /* StepperTextfield.swift */; };
 		333631F825EEE6B9009FEB32 /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = 333631F725EEE6B9009FEB32 /* DynamicColor */; };
 		333631FB25EEF0CD009FEB32 /* CodableColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333631FA25EEF0CD009FEB32 /* CodableColor.swift */; };
 		3336320025EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333631FF25EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift */; };
@@ -27,12 +25,10 @@
 		3356BCA925F287B1006EB641 /* MouseSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3356BCA825F287B1006EB641 /* MouseSettingsView.swift */; };
 		3361CDF725D44AEC0086F6A7 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */; };
 		3361CF1225E6EF1300016875 /* DebugConfigFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CF0F25E6EF1300016875 /* DebugConfigFileView.swift */; };
-		3361CF1325E6EF1300016875 /* SpecialTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CF1025E6EF1300016875 /* SpecialTextView.swift */; };
 		336627362602642300C4B009 /* ApplyChangesButtonTappedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336627352602642300C4B009 /* ApplyChangesButtonTappedView.swift */; };
 		336BC3A925F7FA5500BE3EBA /* PlacementSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336BC3A825F7FA5500BE3EBA /* PlacementSettingsView.swift */; };
 		336BC3B025F8069700BE3EBA /* FocusSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336BC3AF25F8069700BE3EBA /* FocusSettingsView.swift */; };
 		336BC3BA25F85B7C00BE3EBA /* SIPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336BC3B925F85B7C00BE3EBA /* SIPButton.swift */; };
-		336E00BB264B1FD300B990B9 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336E00BA264B1FD300B990B9 /* CardView.swift */; };
 		3380D2FF25D05F4200C10913 /* EmeraldApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380D2FE25D05F4200C10913 /* EmeraldApp.swift */; };
 		3380D30325D05F4200C10913 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3380D30225D05F4200C10913 /* Assets.xcassets */; };
 		3380D30625D05F4200C10913 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3380D30525D05F4200C10913 /* Preview Assets.xcassets */; };
@@ -57,10 +53,8 @@
 
 /* Begin PBXFileReference section */
 		3301D5002602765900D02C46 /* Button+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Extensions.swift"; sourceTree = "<group>"; };
-		330E144925F2AFEE00E61969 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		3325BFD425F05041007831C5 /* RoundedRectangleButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleButtonStyle.swift; sourceTree = "<group>"; };
 		3327A9462649612900C497B8 /* JSONDecoder+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Extensions.swift"; sourceTree = "<group>"; };
-		33318F3225F2AD3500231233 /* StepperTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperTextfield.swift; sourceTree = "<group>"; };
 		333631FA25EEF0CD009FEB32 /* CodableColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableColor.swift; sourceTree = "<group>"; };
 		333631FF25EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemIntegrityProtectionView.swift; sourceTree = "<group>"; };
 		33387D6425D3F64300E76D29 /* Yabai.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yabai.swift; sourceTree = "<group>"; };
@@ -73,12 +67,10 @@
 		3356BCA825F287B1006EB641 /* MouseSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseSettingsView.swift; sourceTree = "<group>"; };
 		3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		3361CF0F25E6EF1300016875 /* DebugConfigFileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugConfigFileView.swift; sourceTree = "<group>"; };
-		3361CF1025E6EF1300016875 /* SpecialTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialTextView.swift; sourceTree = "<group>"; };
 		336627352602642300C4B009 /* ApplyChangesButtonTappedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyChangesButtonTappedView.swift; sourceTree = "<group>"; };
 		336BC3A825F7FA5500BE3EBA /* PlacementSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementSettingsView.swift; sourceTree = "<group>"; };
 		336BC3AF25F8069700BE3EBA /* FocusSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusSettingsView.swift; sourceTree = "<group>"; };
 		336BC3B925F85B7C00BE3EBA /* SIPButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIPButton.swift; sourceTree = "<group>"; };
-		336E00BA264B1FD300B990B9 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		3380D2FB25D05F4200C10913 /* Emerald.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emerald.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3380D2FE25D05F4200C10913 /* EmeraldApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmeraldApp.swift; sourceTree = "<group>"; };
 		3380D30225D05F4200C10913 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -126,7 +118,6 @@
 				336BC3A825F7FA5500BE3EBA /* PlacementSettingsView.swift */,
 				3356BCA825F287B1006EB641 /* MouseSettingsView.swift */,
 				336BC3AF25F8069700BE3EBA /* FocusSettingsView.swift */,
-				336E00BA264B1FD300B990B9 /* CardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -139,9 +130,6 @@
 				333631FA25EEF0CD009FEB32 /* CodableColor.swift */,
 				3361CF0F25E6EF1300016875 /* DebugConfigFileView.swift */,
 				3325BFD425F05041007831C5 /* RoundedRectangleButtonStyle.swift */,
-				330E144925F2AFEE00E61969 /* SliderView.swift */,
-				3361CF1025E6EF1300016875 /* SpecialTextView.swift */,
-				33318F3225F2AD3500231233 /* StepperTextfield.swift */,
 				333631FF25EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift */,
 			);
 			path = "Views (Misc)";
@@ -353,26 +341,22 @@
 				3356BCA925F287B1006EB641 /* MouseSettingsView.swift in Sources */,
 				33FC16042631E6280050B428 /* WindowSettingsView.swift in Sources */,
 				338973972603A7850052F159 /* PowerButtonTappedView.swift in Sources */,
-				3361CF1325E6EF1300016875 /* SpecialTextView.swift in Sources */,
 				3361CDF725D44AEC0086F6A7 /* URL+Extensions.swift in Sources */,
 				336BC3A925F7FA5500BE3EBA /* PlacementSettingsView.swift in Sources */,
 				3341B01125F06FF300833B56 /* Yabai+Extensions.swift in Sources */,
 				33B62D2925D5E31400DD5934 /* Onboarding.swift in Sources */,
-				330E144A25F2AFEE00E61969 /* SliderView.swift in Sources */,
 				336BC3BA25F85B7C00BE3EBA /* SIPButton.swift in Sources */,
 				33BB8D0B2631D330008759BA /* SectionView.swift in Sources */,
 				3325BFD525F05041007831C5 /* RoundedRectangleButtonStyle.swift in Sources */,
 				3356BCA325F28746006EB641 /* SpaceSettingsView.swift in Sources */,
 				3301D5012602765900D02C46 /* Button+Extensions.swift in Sources */,
 				33387D6525D3F64300E76D29 /* Yabai.swift in Sources */,
-				336E00BB264B1FD300B990B9 /* CardView.swift in Sources */,
 				3361CF1225E6EF1300016875 /* DebugConfigFileView.swift in Sources */,
 				3398838C25DD7A1D007B9FF5 /* SKHD.swift in Sources */,
 				336BC3B025F8069700BE3EBA /* FocusSettingsView.swift in Sources */,
 				3380D2FF25D05F4200C10913 /* EmeraldApp.swift in Sources */,
 				334EC79225F908A4005AB9BF /* ViewStore+Extensions.swift in Sources */,
 				3353C0EE26026A67002171B7 /* ConfigTabView.swift in Sources */,
-				33318F3325F2AD3500231233 /* StepperTextfield.swift in Sources */,
 				3380D33725D0723000C10913 /* Root.swift in Sources */,
 				3327A9472649612900C497B8 /* JSONDecoder+Extensions.swift in Sources */,
 				336627362602642300C4B009 /* ApplyChangesButtonTappedView.swift in Sources */,

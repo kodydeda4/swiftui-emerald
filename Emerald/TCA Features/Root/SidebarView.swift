@@ -24,9 +24,6 @@ struct SidebarView: View {
                 NavigationLink(destination: WindowSettingsView(store: yabaiStore)) {
                     Label("Window", systemImage: "macwindow.on.rectangle")
                 }
-                NavigationLink(destination: PlacementSettingsView(store: yabaiStore)) {
-                    Label("Placement", systemImage: "macwindow.badge.plus")
-                }
                 NavigationLink(destination: MouseSettingsView(store: yabaiStore)) {
                     Label("Mouse", systemImage: "cursorarrow")
                 }

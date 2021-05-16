@@ -32,37 +32,38 @@ struct RootView: View {
                     }
                     .disabled(viewStore.disabled)
                 }
-//                ToolbarItem {
-//                    Button("Reset") {
-//                        viewStore.send(.resetButtonTapped)
-//                    }
-//                    .help("⇧ ⌘ R")
-//                    .keyboardShortcut("r", modifiers: [.command, .shift])
-//                    .disabled(viewStore.disabled)
-//                }
-//                ToolbarItem {
-//                    Button("Apply Changes") {
-//                        viewStore.send(.applyChangesButtonTapped)
-//                    }
-//                    .help("⇧ ⌘ A")
-//                    .keyboardShortcut("a", modifiers: [.command, .shift])
-//                    .disabled(viewStore.disabled)
-//                }
-//                ToolbarItem {
-//                    Button("Install Programs") {
-//                        viewStore.send(.installProgramsButtonTapped)
-//                    }
-//                    .help("⇧ ⌘ A")
-//                    .keyboardShortcut("a", modifiers: [.command, .shift])
-//                    .disabled(viewStore.disabled)
-//                }
-//                ToolbarItem {
-//                    Button<Image>("power") {
-//                        viewStore.send(.powerButtonTapped)
-//                    }
-//                    .help("\(viewStore.disabled ? "Enable" : "Disable") Emerald")
-//                    .foregroundColor(viewStore.disabled ? .red : .accentColor)
-//                }
+                ToolbarItem {
+                    Button("Install Programs") {
+                        viewStore.send(.installProgramsButtonTapped)
+                    }
+                    .help("⇧ ⌘ A")
+                    .keyboardShortcut("a", modifiers: [.command, .shift])
+                    .disabled(viewStore.disabled)
+                }
+                ToolbarItem {
+                    Button("Reset") {
+                        viewStore.send(.resetButtonTapped)
+                    }
+                    .help("⇧ ⌘ R")
+                    .keyboardShortcut("r", modifiers: [.command, .shift])
+                    .disabled(viewStore.disabled)
+                }
+                ToolbarItem {
+                    Button("Apply Changes") {
+                        viewStore.send(.applyChangesButtonTapped)
+                    }
+                    .help("⇧ ⌘ A")
+                    .keyboardShortcut("a", modifiers: [.command, .shift])
+                    .disabled(viewStore.disabled)
+                }
+
+                ToolbarItem {
+                    Button<Image>("power") {
+                        viewStore.send(.powerButtonTapped)
+                    }
+                    .help("\(viewStore.disabled ? "Enable" : "Disable") Emerald")
+                    .foregroundColor(viewStore.disabled ? .red : .accentColor)
+                }
             }
         }
     }

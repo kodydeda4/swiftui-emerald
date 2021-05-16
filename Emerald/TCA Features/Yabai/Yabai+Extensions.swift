@@ -40,7 +40,7 @@ yabai -m config top_padding \(padding)
 yabai -m config bottom_padding \(padding)
 yabai -m config left_padding \(padding)
 yabai -m config right_padding \(padding)
-yabai -m config window_gap \(windowGap)
+yabai -m config window_gap \(padding)
 
 #============================================
 # Window

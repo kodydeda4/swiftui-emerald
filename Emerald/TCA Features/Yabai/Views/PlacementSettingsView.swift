@@ -14,7 +14,6 @@ struct PlacementSettingsView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            ScrollView {
                 VStack(alignment: .leading) {
                     SectionView("Placement") {
                         // Placement
@@ -60,9 +59,6 @@ struct PlacementSettingsView: View {
                     }
                 }
             }
-            .frame(maxWidth: 1200)
-            .padding()
-        }
     }
 }
 
