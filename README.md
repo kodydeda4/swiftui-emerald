@@ -4,7 +4,7 @@
 
 ## About Emerald
 
-Emerald is a Tiling Window Manager for the Mac.  Emerald was built using Apple's [SwiftUI](https://developer.apple.com/xcode/swiftui/), framework, and uses [Yabai](https://github.com/koekeishiya/yabai/wiki), & [SKHD](https://github.com/koekeishiya/skhd) behind the scenes to do its magic.
+Emerald is a Tiling Window Manager for the Mac.  It was built with the [SwiftUI](https://developer.apple.com/xcode/swiftui/) framework, and uses [Yabai](https://github.com/koekeishiya/yabai/wiki), & [SKHD](https://github.com/koekeishiya/skhd) behind the scenes to do its magic.
 
 ## 👏 Onboarding /  About
 
@@ -43,16 +43,6 @@ Emerald is a Tiling Window Manager for the Mac.  Emerald was built using Apple's
 
 ## 🖱 Mouse Actions
 
-### Focus
-
-| Shortcut            | Description
-| ------------------- | ---------------------------
-| Autofocus           | Focus window on hover.
-| Autoraise           | Focus & raise window on hover.
-| Mouse-Follows-Focus | Position mouse in the center of focused windows. (toggle on/off)
-
-
-
 ### Drop Action
 
 Swap or Stack windows by dragging one window onto another.
@@ -62,9 +52,7 @@ Swap or Stack windows by dragging one window onto another.
 | Swap          | Swap one window with another.
 | Stack         | Stack one window ontop of another.
 
-
-
-### Mouse Action
+### Modifier + Mouse Action
 
 Perform actions by holding the modifier key and left/right clicking anywhere on a window.
 
@@ -73,6 +61,10 @@ Perform actions by holding the modifier key and left/right clicking anywhere on 
 | Swap          | Swap one window with another.
 | Resize        | Resize the window.
 
+### Focus Behavior
 
-## About
-
+| Shortcut            | Description
+| ------------------- | ---------------------------
+| Autofocus           | Focus window on hover.
+| Autoraise           | Focus & raise window on hover.
+| Mouse-Follows-Focus | Position mouse in the center of focused windows. (toggle on/off)
