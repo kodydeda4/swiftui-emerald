@@ -1,10 +1,10 @@
 # 🪴 Emerald
 
-![banner](https://user-images.githubusercontent.com/45678211/116265366-0ef01b80-a749-11eb-8a3e-fad8dfed142c.png)
+![banner](https://user-images.githubusercontent.com/45678211/118408878-87b20b80-b655-11eb-8321-9f2ade9bb805.png)
 
 ## About Emerald
 
-Emerald is a Tiling Window Manager for the Mac.  Emerald was built using Apple's [SwiftUI](https://developer.apple.com/xcode/swiftui/), framework, and uses [Yabai](https://github.com/koekeishiya/yabai/wiki), & [SKHD](https://github.com/koekeishiya/skhd) behind the scenes to do its magic.
+Emerald is a Tiling Window Manager for the Mac built with the [SwiftUI](https://developer.apple.com/xcode/swiftui/) framework.  It and uses [Yabai](https://github.com/koekeishiya/yabai/wiki), & [SKHD](https://github.com/koekeishiya/skhd) to do its magic behind the scenes.
 
 ## 👏 Onboarding /  About
 
@@ -43,17 +43,7 @@ Emerald is a Tiling Window Manager for the Mac.  Emerald was built using Apple's
 
 ## 🖱 Mouse Actions
 
-### Focus
-
-| Shortcut            | Description
-| ------------------- | ---------------------------
-| Autofocus           | Focus window on hover.
-| Autoraise           | Focus & raise window on hover.
-| Mouse-Follows-Focus | Position mouse in the center of focused windows. (toggle on/off)
-
-
-
-### Drop Action
+### Drop
 
 Swap or Stack windows by dragging one window onto another.
 
@@ -62,9 +52,7 @@ Swap or Stack windows by dragging one window onto another.
 | Swap          | Swap one window with another.
 | Stack         | Stack one window ontop of another.
 
-
-
-### Mouse Action
+### Modifier Key + Mouse Button
 
 Perform actions by holding the modifier key and left/right clicking anywhere on a window.
 
@@ -73,11 +61,10 @@ Perform actions by holding the modifier key and left/right clicking anywhere on 
 | Swap          | Swap one window with another.
 | Resize        | Resize the window.
 
+### Focus Behavior
 
-
-
-
-
-## Team Info
-
-![footer](https://user-images.githubusercontent.com/45678211/116265373-10b9df00-a749-11eb-95b3-6e76b19252a7.png)
+| Shortcut            | Description
+| ------------------- | ---------------------------
+| Autofocus           | Focus window on hover.
+| Autoraise           | Focus & raise window on hover.
+| Mouse-Follows-Focus | Position mouse in the center of focused windows. (toggle on/off)
