@@ -30,9 +30,6 @@ struct SidebarView: View {
                 NavigationLink(destination: MouseSettingsView(store: yabaiStore)) {
                     Label("Mouse", systemImage: "cursorarrow")
                 }
-                NavigationLink(destination: FocusSettingsView(store: yabaiStore)) {
-                    Label("Focus", systemImage: "cursorarrow.motionlines")
-                }
             }
             .listStyle(SidebarListStyle())
         }
