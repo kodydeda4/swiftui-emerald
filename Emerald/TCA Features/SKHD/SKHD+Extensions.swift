@@ -37,8 +37,8 @@ extension SKHD.State {
 #============================================
 # Toggle
 #============================================
-\(KeyboardShortcuts.getShortcut(for: .padding)?.skhdString  ?? "#<UNASSIGNED>") : yabai -m space --toggle padding
-\(KeyboardShortcuts.getShortcut(for: .gaps)?.skhdString     ?? "#<UNASSIGNED>") : yabai -m space --toggle gap
+\(KeyboardShortcuts.getShortcut(for: .padding)?.skhdString  ?? "#<UNASSIGNED>") : yabai -m space --toggle padding; yabai -m space --toggle gap
+\(KeyboardShortcuts.getShortcut(for: .gaps)?.skhdString     ?? "#<UNASSIGNED>") :
 \(KeyboardShortcuts.getShortcut(for: .split)?.skhdString    ?? "#<UNASSIGNED>") : yabai -m window --toggle split
 \(KeyboardShortcuts.getShortcut(for: .balance)?.skhdString  ?? "#<UNASSIGNED>") : yabai -m space --balance
 

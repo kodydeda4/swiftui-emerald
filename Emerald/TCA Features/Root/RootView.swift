@@ -15,7 +15,7 @@ struct RootView: View {
         WithViewStore(store) { viewStore in
             NavigationView {
                 SidebarView(store: store)
-                SpaceSettingsView(store: store)       
+                SpaceSettingsView(store: store)
             }
             .disabled(viewStore.disabled)
             .onAppear {
@@ -30,6 +30,14 @@ struct RootView: View {
                     Button<Image>("sidebar.left") {
                         viewStore.send(.sidebarButtonTapped)
                     }
+                    .disabled(viewStore.disabled)
+                }
+                ToolbarItem {
+                    Button("Install Programs") {
+                        viewStore.send(.installProgramsButtonTapped)
+                    }
+                    .help("⇧ ⌘ A")
+                    .keyboardShortcut("a", modifiers: [.command, .shift])
                     .disabled(viewStore.disabled)
                 }
                 ToolbarItem {
@@ -48,14 +56,7 @@ struct RootView: View {
                     .keyboardShortcut("a", modifiers: [.command, .shift])
                     .disabled(viewStore.disabled)
                 }
-                ToolbarItem {
-                    Button("Install Programs") {
-                        viewStore.send(.installProgramsButtonTapped)
-                    }
-                    .help("⇧ ⌘ A")
-                    .keyboardShortcut("a", modifiers: [.command, .shift])
-                    .disabled(viewStore.disabled)
-                }
+
                 ToolbarItem {
                     Button<Image>("power") {
                         viewStore.send(.powerButtonTapped)
@@ -68,7 +69,15 @@ struct RootView: View {
     }
 }
 
-
+struct ChildTabView: View {
+    var title: String
+    var index: Int
+    
+    var body: some View {
+        Text("\(title) - Index \(index)")
+            .padding()
+    }
+}
 
 
 

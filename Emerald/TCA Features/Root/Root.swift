@@ -10,13 +10,30 @@ import ComposableArchitecture
 import Overture
 import Combine
 import KeyboardShortcuts
-
+/*
+ Todos:
+ 
+ 1. Onboarding screen
+    - click through and download homebrew, yabai, skhd
+ 
+ 2. About
+    - show what version everything is running
+ 
+ 3. Distribute Package
+ 
+ 4. Test on guest account
+ 
+ 5. Fix save state file location
+    - app directory not home directory
+ 
+ 6. Remove or add to sidebar
+ 
+ */
 struct Root {
     struct State: Equatable {
         var disabled         = false
         var yabai            = Yabai.State()
         var skhd             = SKHD.State()
-        var macOSAnimations  = MacOSAnimations.State()
         var homebrew         = Homebrew.State()
         var onboarding       = Onboarding.State()
         var alert            : AlertState<Root.Action>?
@@ -36,7 +53,6 @@ struct Root {
         //Features
         case yabai(Yabai.Action)
         case skhd(SKHD.Action)
-        case macOSAnimations(MacOSAnimations.Action)
         case homebrew(Homebrew.Action)
         case onboarding(Onboarding.Action)
         
@@ -74,11 +90,6 @@ extension Root {
             action: /Action.skhd,
             environment: { _ in () }
         ),
-        MacOSAnimations.reducer.pullback(
-            state: \.macOSAnimations,
-            action: /Action.macOSAnimations,
-            environment: { _ in () }
-        ),
         Homebrew.reducer.pullback(
             state: \.homebrew,
             action: /Action.homebrew,
@@ -98,7 +109,6 @@ extension Root {
                 let installYabai    = AppleScript.execute("/usr/local/bin/brew install yabai")
                 let installSKHD     = AppleScript.execute("/usr/local/bin/brew install skhd")
                 
-                
                 return .none
             
             case .onAppear:
@@ -114,24 +124,16 @@ extension Root {
                 case let .failure(error):
                     state.error = error.localizedDescription
                 }
-                switch JSONDecoder().decodeState(MacOSAnimations.State.self, from: state.macOSAnimations.stateURL) {
-                case let .success(decodedState):
-                    state.macOSAnimations = decodedState
-                case let .failure(error):
-                    state.error = error.localizedDescription
-                }
                 return .none
             
             case .save:
                 let _ = JSONEncoder().writeState(state.yabai, to: state.yabai.stateURL)
                 let _ = JSONEncoder().writeState(state.skhd,  to: state.skhd.stateURL)
-                let _ = JSONEncoder().writeState(state.macOSAnimations, to: state.macOSAnimations.stateURL)
                 let _ = JSONEncoder().writeConfig(state.yabai.asConfig, to: state.yabai.configURL)
                 let _ = JSONEncoder().writeConfig(state.skhd.asConfig,  to: state.skhd.configURL)
-                let _ = JSONEncoder().writeConfig(state.macOSAnimations.asShellScript, to: state.macOSAnimations.shellScriptURL)
                 return .none
 
-            case .yabai, .skhd, .macOSAnimations:
+            case .yabai, .skhd:
                 return Effect(value: .save)
                 
             case .homebrew, .onboarding:
@@ -168,10 +170,8 @@ extension Root {
                 
                 let _ = JSONEncoder().writeState(state.yabai, to: state.yabai.stateURL)
                 let _ = JSONEncoder().writeState(state.skhd,  to: state.skhd.stateURL)
-                let _ = JSONEncoder().writeState(state.macOSAnimations, to: state.macOSAnimations.stateURL)
                 let _ = JSONEncoder().writeConfig(state.yabai.asConfig, to: state.yabai.configURL)
                 let _ = JSONEncoder().writeConfig(state.skhd.asConfig,  to: state.skhd.configURL)
-                let _ = JSONEncoder().writeConfig(state.macOSAnimations.asShellScript, to: state.macOSAnimations.shellScriptURL)
 
                 let _ = AppleScript.execute("/usr/local/bin/brew services restart yabai; /usr/local/bin/brew services restart skhd;")
                 return Effect(value: .applyChangesButtonTapped)

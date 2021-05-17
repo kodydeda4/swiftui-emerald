@@ -4,67 +4,38 @@
 
 ## About Emerald
 
-Emerald is a Tiling Window Manager for the Mac.  It was built with the [SwiftUI](https://developer.apple.com/xcode/swiftui/) framework, and uses [Yabai](https://github.com/koekeishiya/yabai/wiki), & [SKHD](https://github.com/koekeishiya/skhd) behind the scenes to do its magic.
+Emerald is a Tiling Window Manager for macOS built with the [SwiftUI](https://developer.apple.com/xcode/swiftui/) framework.  It attempts to provide a user-friendly experience for customizing [Yabai](https://github.com/koekeishiya/yabai/wiki) & [SKHD](https://github.com/koekeishiya/skhd).
 
 ## 👏 Onboarding /  About
 
 * Introduces the app
 * Installs Homebrew, Yabai, and SKHD.
 
-## ⌨️ Keyboard Shortcuts
+## ⌨️ Layout Keyboard Shortcuts
 
-| Layout        | Description
-| ------------- | ---------------------------
-| Floating      | Switch to the traditional macOS window behavior.
-| Tiling        | Switch to a TWM behavior, similar to QTile, DWM, i3, etc.
-| Stacking      | Switch to a stacking behavior.
-
-| Shortcut      | Description
-| ------------- | ---------------------------
-| Focus         | Focus a window
-| Move          | Move the focused window
-| Resize        | Resize the focused window (or space)
-
-| Shortcut      | Description
-| ------------- | ---------------------------
-| Split         | Toggle window split (horizontal/vertical)
-| Balance       | Balance a space
-| Padding       | Toggle window padding
-| Gaps          | Toggle window gaps
+* Switch between Floating, Tiling, and Stacking Mode
+* Focus, Move, Resize
+* Toggle Padding / Gaps
+* Split
+* Balance
+  
+<img width="1085" alt="layout" src="https://user-images.githubusercontent.com/45678211/118486081-2fc3e500-b6e7-11eb-83eb-b3e01c6a12de.png">
 
 ## ⚙️ Window Modifications
 
-| Shortcut            | Description
-| ------------------- | ---------------------------
-| Transparency        | Modify window transparency.
-| Shadows             | Toggle shadows on/off/floating-only
-| Borders             | Add colorful borders to windows.
-| Float-to-top        | Force unmanaged windows to float on top.
+* Change window transparency
+* Toggle shadows (on/off/floating)
+* Enable window borders
+* Toggle floating windows to stick ontop
 
-## 🖱 Mouse Actions
+<img width="1085" alt="window" src="https://user-images.githubusercontent.com/45678211/118486076-2f2b4e80-b6e7-11eb-8e7e-1810e5bf5dde.png">
 
-### Drop Action
+## 🖱 Mouse Features
 
-Swap or Stack windows by dragging one window onto another.
+* Swap or Stack windows while holding a modifier key
+* Switch between default, autofocus & autoraise modes
+* Toggle mouse-follows-focus
 
-| Action        | Description
-| ------------- | ---------------------------
-| Swap          | Swap one window with another.
-| Stack         | Stack one window ontop of another.
+<img width="608" alt="Mouse" src="https://user-images.githubusercontent.com/45678211/118487721-ff7d4600-b6e8-11eb-9c9b-877730ee64c3.png">
 
-### Modifier + Mouse Action
-
-Perform actions by holding the modifier key and left/right clicking anywhere on a window.
-
-| Action        | Description
-| ------------- | ---------------------------
-| Swap          | Swap one window with another.
-| Resize        | Resize the window.
-
-### Focus Behavior
-
-| Shortcut            | Description
-| ------------------- | ---------------------------
-| Autofocus           | Focus window on hover.
-| Autoraise           | Focus & raise window on hover.
-| Mouse-Follows-Focus | Position mouse in the center of focused windows. (toggle on/off)
+## 🎥 See it in action

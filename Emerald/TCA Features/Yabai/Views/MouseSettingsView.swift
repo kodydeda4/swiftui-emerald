@@ -12,72 +12,57 @@ struct MouseSettingsView: View {
     let store: Store<Yabai.State, Yabai.Action>
     
     var body: some View {
-        WithViewStore(store) { vs in
-            VStack(alignment: .leading, spacing: 20) {
+        WithViewStore(store) { viewStore in
+            ScrollView {
                 
-                //Modifier Key
-                VStack(alignment: .leading) {
-                    Text("Modifier Key")
-                        .bold().font(.title3)
+                // Left Click + Modifier
+                VStack {
+                    Text("Left Click + Modifier").bold().font(.title3)
+                    Text(viewStore.mouseAction1.caseDescription).foregroundColor(Color(.gray))
+
+                    Picker("", selection: viewStore.binding(keyPath: \.mouseAction1, send: Yabai.Action.keyPath)) {
+                        ForEach(Yabai.State.MouseAction.allCases) {
+                            Text($0.rawValue)
+                        }
+                    }
+                    .labelsHidden().pickerStyle(SegmentedPickerStyle()).frame(width: 100)
                     
-                    Picker("", selection: vs.binding(keyPath: \.mouseModifier, send: Yabai.Action.keyPath)) {
+                }
+                .padding()
+                
+                // Right Click + Modifier
+                VStack {
+                    Text("Right Click + Modifier").bold().font(.title3)
+                    Text(viewStore.mouseAction2.caseDescription).foregroundColor(Color(.gray))
+
+                    Picker("", selection: viewStore.binding(keyPath: \.mouseAction2, send: Yabai.Action.keyPath)) {
+                        ForEach(Yabai.State.MouseAction.allCases) { Text($0.rawValue) }
+                    }
+                    .labelsHidden().pickerStyle(SegmentedPickerStyle()).frame(width: 100)
+                    
+                }
+                .padding()
+                
+                // Modifier Key
+                VStack {
+                    Text("Modifier Key").bold().font(.title3)
+                    Text("Press & hold for mouse actions").foregroundColor(Color(.gray))
+
+                    Picker("", selection: viewStore.binding(keyPath: \.mouseModifier, send: Yabai.Action.keyPath)) {
                         ForEach(Yabai.State.MouseModifier.allCases) {
                             Text($0.labelDescription.lowercased())
                         }
                     }
-                    .labelsHidden()
-                    .pickerStyle(SegmentedPickerStyle())
-                    .frame(width: 350)
+                    .labelsHidden().pickerStyle(SegmentedPickerStyle()).frame(width: 350)
                     
-                    Text("Press & hold for mouse actions")
-                        .foregroundColor(Color(.gray))
                 }
-                // Left Click + Modifier
-                VStack(alignment: .leading) {
-                    Divider()
+                .padding()
+                
+                // DropAction
+                VStack {
+                    Text("Drop Action").bold().font(.title3)
                     
-                    Text("Left Click + Modifier")
-                        .bold().font(.title3)
-                    
-                    Picker("", selection: vs.binding(keyPath: \.mouseAction1, send: Yabai.Action.keyPath)) {
-                        ForEach(Yabai.State.MouseAction.allCases) {
-                            Text($0.rawValue)
-                        }
-                    }
-                    .labelsHidden()
-                    .pickerStyle(SegmentedPickerStyle())
-                    .frame(width: 100)
-                    
-                    Text(vs.mouseAction1.caseDescription)
-                        .foregroundColor(Color(.gray))
-                }
-                // Right Click + Modifier
-                VStack(alignment: .leading) {
-                    Divider()
-                    
-                    Text("Right Click + Modifier")
-                        .bold().font(.title3)
-                    
-                    Picker("", selection: vs.binding(keyPath: \.mouseAction2, send: Yabai.Action.keyPath)) {
-                        ForEach(Yabai.State.MouseAction.allCases) {
-                            Text($0.rawValue)
-                        }
-                    }
-                    .labelsHidden()
-                    .pickerStyle(SegmentedPickerStyle())
-                    .frame(width: 100)
-                    
-                    Text(vs.mouseAction2.caseDescription)
-                        .foregroundColor(Color(.gray))
-                }
-                // Drop Action
-                VStack(alignment: .leading) {
-                    Divider()
-                    
-                    Text("Drop Action")
-                        .bold().font(.title3)
-                    
-                    Picker("", selection: vs.binding(keyPath: \.mouseDropAction, send: Yabai.Action.keyPath)) {
+                    Picker("", selection: viewStore.binding(keyPath: \.mouseDropAction, send: Yabai.Action.keyPath)) {
                         ForEach(Yabai.State.MouseDropAction.allCases) {
                             Text($0.rawValue)
                         }
@@ -86,15 +71,45 @@ struct MouseSettingsView: View {
                     .pickerStyle(SegmentedPickerStyle())
                     .frame(width: 100)
                     
-                    Text(vs.mouseDropAction.caseDescription)
+                    Text(viewStore.mouseDropAction.caseDescription).foregroundColor(Color(.gray))
+                }
+                .padding()
+                
+                // AutoFocus
+                VStack {
+                    Text("Mouse Focus").bold().font(.title3)
+                    
+                    Picker("", selection: viewStore.binding(keyPath: \.focusFollowsMouse, send: Yabai.Action.keyPath)) {
+                        ForEach(Yabai.State.FocusFollowsMouse.allCases) {
+                            Text($0.labelDescription.lowercased())
+                        }
+                    }
+                    .labelsHidden().pickerStyle(SegmentedPickerStyle()).frame(width: 250)
+                    
+                    Text(viewStore.focusFollowsMouse.caseDescription).foregroundColor(Color(.gray))
+                }
+                .padding()
+                
+                // Follow Focus
+                VStack {
+                    HStack {
+                        Toggle("Enabled", isOn: viewStore.binding(keyPath: \.mouseFollowsFocus, send: Yabai.Action.keyPath)).labelsHidden()
+                        Text("Follow Focus").bold().font(.title3)
+                    }
+                    
+                    Text("Mouse will automatically reposition itself to center of focused window")
                         .foregroundColor(Color(.gray))
                 }
-                Spacer()
+                .padding()
             }
-            .padding()
+            .frame(alignment: .leading)
+            .frame(maxWidth: 900)
         }
     }
 }
+
+
+
 
 // MARK:- SwiftUI_Previews
 struct MouseSettingsView_Previews: PreviewProvider {
