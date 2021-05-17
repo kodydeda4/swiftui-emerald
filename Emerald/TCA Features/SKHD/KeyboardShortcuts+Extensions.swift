@@ -29,8 +29,9 @@ extension KeyboardShortcuts {
         KeyboardShortcuts.set(.focus,   [.control,                   ], .help)
         KeyboardShortcuts.set(.resize,  [.control, .option,          ], .help)
         KeyboardShortcuts.set(.move,    [.control, .option, .command ], .help)
-        KeyboardShortcuts.set(.gaps,    [.control, .option,          ], .g)
-        KeyboardShortcuts.set(.padding, [.control, .option,          ], .h)
+        //KeyboardShortcuts.set(.gaps,    [.control, .option,          ], .g)
+        //KeyboardShortcuts.set(.padding, [.control, .option,          ], .h)
+        KeyboardShortcuts.set(.padding, [.control, .option,          ], .g)
         KeyboardShortcuts.set(.split,   [.control, .option,          ], .x)
         KeyboardShortcuts.set(.balance, [.control, .option,          ], .b)
     }

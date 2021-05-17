@@ -10,7 +10,25 @@ import ComposableArchitecture
 import Overture
 import Combine
 import KeyboardShortcuts
-
+/*
+ Todos:
+ 
+ 1. Onboarding screen
+    - click through and download homebrew, yabai, skhd
+ 
+ 2. About
+    - show what version everything is running
+ 
+ 3. Distribute Package
+ 
+ 4. Test on guest account
+ 
+ 5. Fix save state file location
+    - app directory not home directory
+ 
+ 6. Remove or add to sidebar
+ 
+ */
 struct Root {
     struct State: Equatable {
         var disabled         = false
