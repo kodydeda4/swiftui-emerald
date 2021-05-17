@@ -15,6 +15,7 @@ struct RootView: View {
         WithViewStore(store) { viewStore in
             NavigationView {
                 SidebarView(store: store)
+                SpaceSettingsView(store: store)
             }
             .disabled(viewStore.disabled)
             .onAppear {
