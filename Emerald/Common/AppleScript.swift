@@ -10,8 +10,8 @@ import Foundation
 struct AppleScript {
     
     // Run a shell command with elevated priviledges (Applescript)
-    static func execute(_ command: String) -> Result<Bool, Error> {
-        let data: String = "do shell script \"\(command)\""
+    static func execute(_ command: String, sudo: Bool = false) -> Result<Bool, Error> {
+        let data: String = "do shell script \"\(command)\" \(sudo ? "with administrator privileges" : "")"
         
         var url: URL {
             try! FileManager.default.url(
