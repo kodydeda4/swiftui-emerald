@@ -12,7 +12,7 @@ import SwiftShell
 
 struct SKHD {
     struct State: Equatable, Codable {
-        var stateURL  = URL(fileURLWithPath: "SKHDState.json", relativeTo: .HomeDirectory)
+        var stateURL  = Bundle.main.bundleURL.appendingPathComponent("SKHDState.json")
         var configURL = URL(fileURLWithPath: ".skhdrc", relativeTo: .HomeDirectory)
         var version   = run("/usr/local/bin/skhd", "-v").stdout
         
