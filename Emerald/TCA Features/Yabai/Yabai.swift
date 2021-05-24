@@ -13,8 +13,8 @@ import KeyboardShortcuts
 
 struct Yabai {
     struct State: Equatable, Codable {
-        var stateURL                 = Bundle.main.bundleURL.appendingPathComponent("YabaiState.json")
-        var configURL                = URL(fileURLWithPath: ".yabairc", relativeTo: .HomeDirectory)
+        var stateURL                 = URL(fileURLWithPath: "YabaiState.json", relativeTo: .HomeDirectory)
+        var configURL                = URL(fileURLWithPath: ".yabairc",        relativeTo: .HomeDirectory)
         var version                  = run("/usr/local/bin/yabai", "-v").stdout
         var sipEnabled               : Bool              = false
         var debugOutput              : Bool              = false

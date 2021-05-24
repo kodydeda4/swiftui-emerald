@@ -12,8 +12,8 @@ import SwiftShell
 
 struct SKHD {
     struct State: Equatable, Codable {
-        var stateURL  = Bundle.main.bundleURL.appendingPathComponent("SKHDState.json")
-        var configURL = URL(fileURLWithPath: ".skhdrc", relativeTo: .HomeDirectory)
+        var stateURL  = URL(fileURLWithPath: "SKHDState.json", relativeTo: .HomeDirectory)
+        var configURL = URL(fileURLWithPath: ".skhdrc",        relativeTo: .HomeDirectory)
         var version   = run("/usr/local/bin/skhd", "-v").stdout
         
         var float   = KeyboardShortcuts.getShortcut(for: .float)
