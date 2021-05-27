@@ -75,4 +75,4 @@ The following are all examples of what can be achieved using Emerald, by Yabai f
 
 ## 🙏 Thank You
 
-Special thanks to the developers of Yabai & SKHD.  This project would not have been possible without you.
+Special thanks to the developers of Yabai & SKHD.
