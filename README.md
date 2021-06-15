@@ -1,6 +1,6 @@
 # 🪴 Emerald
 
-![banner](https://user-images.githubusercontent.com/45678211/118408878-87b20b80-b655-11eb-8321-9f2ade9bb805.png)
+![embanner](https://user-images.githubusercontent.com/45678211/122049006-eb903700-cdaf-11eb-89f7-03c27ca4b9be.png)
 
 ## About Emerald
 
