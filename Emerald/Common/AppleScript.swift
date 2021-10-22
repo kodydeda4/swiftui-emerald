@@ -8,30 +8,28 @@
 import Foundation
 
 struct AppleScript {
+  
+  // Run a shell command with elevated priviledges (Applescript)
+  static func execute(_ command: String) -> Result<Bool, Error> {
+    let data: String = "do shell script \"\(command)\""
     
-    // Run a shell command with elevated priviledges (Applescript)
-    static func execute(_ command: String) -> Result<Bool, Error> {
-        let data: String = "do shell script \"\(command)\""
-        
-        var url: URL {
-            try! FileManager.default.url(
-                for: .applicationScriptsDirectory,
-                in: .userDomainMask,
-                appropriateFor: nil,
-                create: true
-            )
-            .appendingPathComponent("AppleScript")
-            .appendingPathExtension(for: .osaScript)
-        }
-
-        
-        do {
-            try data.write(to: url, atomically: true, encoding: .utf8)
-            try NSUserScriptTask(url: url).execute()
-            return .success(true)
-        }
-        catch {
-            return .failure(error)
-        }
+    var url: URL {
+      try! FileManager.default.url(
+        for: .applicationScriptsDirectory,
+        in: .userDomainMask,
+        appropriateFor: nil,
+        create: true
+      )
+      .appendingPathComponent("AppleScript")
+      .appendingPathExtension(for: .osaScript)
     }
+    do {
+      try data.write(to: url, atomically: true, encoding: .utf8)
+      try NSUserScriptTask(url: url).execute()
+      return .success(true)
+    }
+    catch {
+      return .failure(error)
+    }
+  }
 }

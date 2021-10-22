@@ -9,8 +9,8 @@ import Foundation
 import SwiftShell
 
 extension Yabai.State {
-    var asConfig: String {
-"""
+  var asConfig: String {
+    """
 #
 #
 #   ██╗   ██╗ █████╗ ██████╗  █████╗ ██╗
@@ -109,5 +109,5 @@ yabai -m rule --add label=\"System Preferences\" app=\"^System Preferences$\" ma
 sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action=\"sudo yabai --load-sa\"
 """
-    }
+  }
 }
