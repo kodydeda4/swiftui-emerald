@@ -102,6 +102,7 @@
 		3380D31125D0667100C10913 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				338E2DFA27A599D60030BA3D /* AppError.swift */,
 				3385DF6F25D6361200ACDE21 /* AppleScript.swift */,
 				338E2E1C27A5F6C00030BA3D /* URL+Extensions.swift */,
 			);
@@ -113,7 +114,6 @@
 			children = (
 				338E2DF627A596D40030BA3D /* AppState.swift */,
 				338E2DF827A5975C0030BA3D /* AppView.swift */,
-				338E2DFA27A599D60030BA3D /* AppError.swift */,
 				338E2DFE27A5A3EE0030BA3D /* AppClient.swift */,
 			);
 			path = App;

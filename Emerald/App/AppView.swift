@@ -8,11 +8,10 @@ struct AppView: View {
     WithViewStore(store) { viewStore in
       HStack {
         MainView(config: viewStore.binding(\.$config))
-          .frame(maxWidth: .infinity, maxHeight: .infinity)
+          .frame(width: 400)
           .padding()
           
         DetailView(config: viewStore.config)
-          .padding()
       }
       .onAppear { viewStore.send(.load) }
       .frame(minWidth: 600, minHeight: 600)
