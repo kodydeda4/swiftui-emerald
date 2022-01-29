@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/pointfreeco/combine-schedulers",
         "state": {
           "branch": null,
-          "revision": "8eab6ad841ccc420f29f3e77e17e7b260841b50a",
-          "version": "0.2.0"
+          "revision": "4cf088c29a20f52be0f2ca54992b492c54e0076b",
+          "version": "0.5.3"
         }
       },
       {
@@ -29,39 +29,48 @@
         }
       },
       {
-        "package": "OmenTextField",
-        "repositoryURL": "https://github.com/kitlangton/OmenTextField",
-        "state": {
-          "branch": null,
-          "revision": "da87c6568700aa633639e85e159e6fbba73ce28a",
-          "version": "0.0.6"
-        }
-      },
-      {
         "package": "swift-case-paths",
         "repositoryURL": "https://github.com/pointfreeco/swift-case-paths",
         "state": {
           "branch": null,
-          "revision": "1aa1bf7c4069d9ba2f7edd36dbfc96ff1c58cbff",
-          "version": "0.1.3"
+          "revision": "241301b67d8551c26d8f09bd2c0e52cc49f18007",
+          "version": "0.8.0"
+        }
+      },
+      {
+        "package": "swift-collections",
+        "repositoryURL": "https://github.com/apple/swift-collections",
+        "state": {
+          "branch": null,
+          "revision": "48254824bb4248676bf7ce56014ff57b142b77eb",
+          "version": "1.0.2"
         }
       },
       {
         "package": "swift-composable-architecture",
         "repositoryURL": "https://github.com/pointfreeco/swift-composable-architecture",
         "state": {
-          "branch": null,
-          "revision": "0fb6c9bfc306e39dc750786edf28a4a77e67749c",
-          "version": "0.14.0"
+          "branch": "main",
+          "revision": "dd084dc147dadede0ad25f829a43ceafed2b9abc",
+          "version": null
         }
       },
       {
-        "package": "Overture",
-        "repositoryURL": "https://github.com/pointfreeco/swift-overture",
+        "package": "swift-custom-dump",
+        "repositoryURL": "https://github.com/pointfreeco/swift-custom-dump",
         "state": {
           "branch": null,
-          "revision": "7977acd7597f413717058acc1e080731249a1d7e",
-          "version": "0.5.0"
+          "revision": "51698ece74ecf31959d3fa81733f0a5363ef1b4e",
+          "version": "0.3.0"
+        }
+      },
+      {
+        "package": "swift-identified-collections",
+        "repositoryURL": "https://github.com/pointfreeco/swift-identified-collections",
+        "state": {
+          "branch": null,
+          "revision": "680bf440178a78a627b1c2c64c0855f6523ad5b9",
+          "version": "0.3.2"
         }
       },
       {
@@ -74,21 +83,12 @@
         }
       },
       {
-        "package": "Grid",
-        "repositoryURL": "https://github.com/spacenation/swiftui-grid",
+        "package": "xctest-dynamic-overlay",
+        "repositoryURL": "https://github.com/pointfreeco/xctest-dynamic-overlay",
         "state": {
           "branch": null,
-          "revision": "623f995c6ee0e5a5ed0e104d142daeae67b0ec92",
-          "version": "1.1.0"
-        }
-      },
-      {
-        "package": "Sliders",
-        "repositoryURL": "https://github.com/spacenation/swiftui-sliders",
-        "state": {
-          "branch": null,
-          "revision": "5109792d45a53c3c41680b8bdb0602b5dde39c9a",
-          "version": "1.0.0"
+          "revision": "50a70a9d3583fe228ce672e8923010c8df2deddd",
+          "version": "0.2.1"
         }
       }
     ]

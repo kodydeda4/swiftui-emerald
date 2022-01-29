@@ -7,84 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3301D5012602765900D02C46 /* Button+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3301D5002602765900D02C46 /* Button+Extensions.swift */; };
 		3315223F25D5786C00C8E46A /* SwiftShell in Frameworks */ = {isa = PBXBuildFile; productRef = 3315223E25D5786C00C8E46A /* SwiftShell */; };
-		3325BFD125EFCEC4007831C5 /* OmenTextField in Frameworks */ = {isa = PBXBuildFile; productRef = 3325BFD025EFCEC4007831C5 /* OmenTextField */; };
-		3325BFD525F05041007831C5 /* RoundedRectangleButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3325BFD425F05041007831C5 /* RoundedRectangleButtonStyle.swift */; };
 		3327A9472649612900C497B8 /* JSONDecoder+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3327A9462649612900C497B8 /* JSONDecoder+Extensions.swift */; };
 		333631F825EEE6B9009FEB32 /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = 333631F725EEE6B9009FEB32 /* DynamicColor */; };
-		333631FB25EEF0CD009FEB32 /* CodableColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333631FA25EEF0CD009FEB32 /* CodableColor.swift */; };
-		3336320025EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333631FF25EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift */; };
-		33387D6525D3F64300E76D29 /* Yabai.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33387D6425D3F64300E76D29 /* Yabai.swift */; };
-		333B82312631D3EE00F42220 /* KeyboardShortcuts+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333B82302631D3EE00F42220 /* KeyboardShortcuts+Extensions.swift */; };
-		3341B01125F06FF300833B56 /* Yabai+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B01025F06FF300833B56 /* Yabai+Extensions.swift */; };
-		3341B01425F0700B00833B56 /* SKHD+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341B01325F0700B00833B56 /* SKHD+Extensions.swift */; };
-		334EC79225F908A4005AB9BF /* ViewStore+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334EC79125F908A4005AB9BF /* ViewStore+Extensions.swift */; };
-		3353C0EE26026A67002171B7 /* ConfigTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3353C0ED26026A67002171B7 /* ConfigTabView.swift */; };
-		3356BCA325F28746006EB641 /* SpaceSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3356BCA225F28746006EB641 /* SpaceSettingsView.swift */; };
-		3356BCA925F287B1006EB641 /* MouseSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3356BCA825F287B1006EB641 /* MouseSettingsView.swift */; };
 		3361CDF725D44AEC0086F6A7 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */; };
-		3361CF1225E6EF1300016875 /* DebugConfigFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3361CF0F25E6EF1300016875 /* DebugConfigFileView.swift */; };
-		336627362602642300C4B009 /* ApplyChangesButtonTappedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336627352602642300C4B009 /* ApplyChangesButtonTappedView.swift */; };
-		336BC3BA25F85B7C00BE3EBA /* SIPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336BC3B925F85B7C00BE3EBA /* SIPButton.swift */; };
-		3380D2FF25D05F4200C10913 /* EmeraldApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380D2FE25D05F4200C10913 /* EmeraldApp.swift */; };
+		3380D2FF25D05F4200C10913 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380D2FE25D05F4200C10913 /* Main.swift */; };
 		3380D30325D05F4200C10913 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3380D30225D05F4200C10913 /* Assets.xcassets */; };
 		3380D30625D05F4200C10913 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3380D30525D05F4200C10913 /* Preview Assets.xcassets */; };
-		3380D31C25D06E1500C10913 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 3380D31B25D06E1500C10913 /* ComposableArchitecture */; };
-		3380D33725D0723000C10913 /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380D33625D0723000C10913 /* Root.swift */; };
-		33812A7725F30121001D42EA /* Sliders in Frameworks */ = {isa = PBXBuildFile; productRef = 33812A7625F30121001D42EA /* Sliders */; };
-		3385DF6725D6270B00ACDE21 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3385DF6625D6270B00ACDE21 /* SidebarView.swift */; };
 		3385DF7025D6361200ACDE21 /* AppleScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3385DF6F25D6361200ACDE21 /* AppleScript.swift */; };
-		338973972603A7850052F159 /* PowerButtonTappedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338973962603A7850052F159 /* PowerButtonTappedView.swift */; };
-		3398838C25DD7A1D007B9FF5 /* SKHD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398838B25DD7A1D007B9FF5 /* SKHD.swift */; };
+		338E2DF527A5966C0030BA3D /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 338E2DF427A5966C0030BA3D /* ComposableArchitecture */; };
+		338E2DF727A596D40030BA3D /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2DF627A596D40030BA3D /* AppState.swift */; };
+		338E2DF927A5975C0030BA3D /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2DF827A5975C0030BA3D /* AppView.swift */; };
 		3398839925DD9929007B9FF5 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 3398839825DD9929007B9FF5 /* KeyboardShortcuts */; };
-		339C453125D6ECCA0079ACA1 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C453025D6ECCA0079ACA1 /* RootView.swift */; };
-		339C453525D6ED0F0079ACA1 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C453425D6ED0F0079ACA1 /* OnboardingView.swift */; };
-		33A4BA032609EFB100AF9E59 /* Grid in Frameworks */ = {isa = PBXBuildFile; productRef = 33A4BA022609EFB100AF9E59 /* Grid */; };
-		33AAB5F6260C251500647057 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AAB5F5260C251500647057 /* SheetView.swift */; };
-		33AD2F7D25F254ED0018875E /* Homebrew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AD2F7C25F254ED0018875E /* Homebrew.swift */; };
-		33AD2F8225F25D330018875E /* Overture in Frameworks */ = {isa = PBXBuildFile; productRef = 33AD2F8125F25D330018875E /* Overture */; };
-		33B62D2925D5E31400DD5934 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B62D2825D5E31400DD5934 /* Onboarding.swift */; };
-		33BB8D0B2631D330008759BA /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BB8D0A2631D330008759BA /* SectionView.swift */; };
-		33FC16042631E6280050B428 /* WindowSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FC16032631E6280050B428 /* WindowSettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3301D5002602765900D02C46 /* Button+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Extensions.swift"; sourceTree = "<group>"; };
-		3325BFD425F05041007831C5 /* RoundedRectangleButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleButtonStyle.swift; sourceTree = "<group>"; };
 		3327A9462649612900C497B8 /* JSONDecoder+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Extensions.swift"; sourceTree = "<group>"; };
-		333631FA25EEF0CD009FEB32 /* CodableColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableColor.swift; sourceTree = "<group>"; };
-		333631FF25EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemIntegrityProtectionView.swift; sourceTree = "<group>"; };
-		33387D6425D3F64300E76D29 /* Yabai.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yabai.swift; sourceTree = "<group>"; };
-		333B82302631D3EE00F42220 /* KeyboardShortcuts+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyboardShortcuts+Extensions.swift"; sourceTree = "<group>"; };
-		3341B01025F06FF300833B56 /* Yabai+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Yabai+Extensions.swift"; sourceTree = "<group>"; };
-		3341B01325F0700B00833B56 /* SKHD+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKHD+Extensions.swift"; sourceTree = "<group>"; };
-		334EC79125F908A4005AB9BF /* ViewStore+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewStore+Extensions.swift"; sourceTree = "<group>"; };
-		3353C0ED26026A67002171B7 /* ConfigTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigTabView.swift; sourceTree = "<group>"; };
-		3356BCA225F28746006EB641 /* SpaceSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceSettingsView.swift; sourceTree = "<group>"; };
-		3356BCA825F287B1006EB641 /* MouseSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseSettingsView.swift; sourceTree = "<group>"; };
 		3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
-		3361CF0F25E6EF1300016875 /* DebugConfigFileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugConfigFileView.swift; sourceTree = "<group>"; };
-		336627352602642300C4B009 /* ApplyChangesButtonTappedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyChangesButtonTappedView.swift; sourceTree = "<group>"; };
-		336BC3B925F85B7C00BE3EBA /* SIPButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIPButton.swift; sourceTree = "<group>"; };
 		3380D2FB25D05F4200C10913 /* Emerald.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emerald.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3380D2FE25D05F4200C10913 /* EmeraldApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmeraldApp.swift; sourceTree = "<group>"; };
+		3380D2FE25D05F4200C10913 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		3380D30225D05F4200C10913 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3380D30525D05F4200C10913 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3380D30725D05F4200C10913 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3380D30825D05F4200C10913 /* Emerald.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Emerald.entitlements; sourceTree = "<group>"; };
-		3380D33625D0723000C10913 /* Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Root.swift; sourceTree = "<group>"; };
-		3385DF6625D6270B00ACDE21 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		3385DF6F25D6361200ACDE21 /* AppleScript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleScript.swift; sourceTree = "<group>"; };
-		338973962603A7850052F159 /* PowerButtonTappedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerButtonTappedView.swift; sourceTree = "<group>"; };
-		3398838B25DD7A1D007B9FF5 /* SKHD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHD.swift; sourceTree = "<group>"; };
-		339C453025D6ECCA0079ACA1 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
-		339C453425D6ED0F0079ACA1 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
-		33AAB5F5260C251500647057 /* SheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
-		33AD2F7C25F254ED0018875E /* Homebrew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homebrew.swift; sourceTree = "<group>"; };
-		33B62D2825D5E31400DD5934 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
-		33BB8D0A2631D330008759BA /* SectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
-		33FC16032631E6280050B428 /* WindowSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowSettingsView.swift; sourceTree = "<group>"; };
+		338E2DF627A596D40030BA3D /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		338E2DF827A5975C0030BA3D /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,12 +41,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				333631F825EEE6B9009FEB32 /* DynamicColor in Frameworks */,
-				3325BFD125EFCEC4007831C5 /* OmenTextField in Frameworks */,
-				33A4BA032609EFB100AF9E59 /* Grid in Frameworks */,
-				33812A7725F30121001D42EA /* Sliders in Frameworks */,
-				33AD2F8225F25D330018875E /* Overture in Frameworks */,
-				3380D31C25D06E1500C10913 /* ComposableArchitecture in Frameworks */,
 				3315223F25D5786C00C8E46A /* SwiftShell in Frameworks */,
+				338E2DF527A5966C0030BA3D /* ComposableArchitecture in Frameworks */,
 				3398839925DD9929007B9FF5 /* KeyboardShortcuts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -106,29 +50,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3356BCB125F288BC006EB641 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				3356BCA225F28746006EB641 /* SpaceSettingsView.swift */,
-				33FC16032631E6280050B428 /* WindowSettingsView.swift */,
-				3356BCA825F287B1006EB641 /* MouseSettingsView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		3361CF1525E6EF1600016875 /* Views (Misc) */ = {
-			isa = PBXGroup;
-			children = (
-				33BB8D0A2631D330008759BA /* SectionView.swift */,
-				3301D5002602765900D02C46 /* Button+Extensions.swift */,
-				333631FA25EEF0CD009FEB32 /* CodableColor.swift */,
-				3361CF0F25E6EF1300016875 /* DebugConfigFileView.swift */,
-				3325BFD425F05041007831C5 /* RoundedRectangleButtonStyle.swift */,
-				333631FF25EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift */,
-			);
-			path = "Views (Misc)";
-			sourceTree = "<group>";
-		};
 		3380D2F225D05F4100C10913 = {
 			isa = PBXGroup;
 			children = (
@@ -148,8 +69,9 @@
 		3380D2FD25D05F4200C10913 /* Emerald */ = {
 			isa = PBXGroup;
 			children = (
-				3380D2FE25D05F4200C10913 /* EmeraldApp.swift */,
-				3380D32425D06EB300C10913 /* TCA Features */,
+				3380D2FE25D05F4200C10913 /* Main.swift */,
+				338E2DF627A596D40030BA3D /* AppState.swift */,
+				338E2DF827A5975C0030BA3D /* AppView.swift */,
 				3380D31125D0667100C10913 /* Common */,
 				3380D30225D05F4200C10913 /* Assets.xcassets */,
 				3380D30725D05F4200C10913 /* Info.plist */,
@@ -172,75 +94,9 @@
 			children = (
 				3327A9462649612900C497B8 /* JSONDecoder+Extensions.swift */,
 				3361CDF625D44AEC0086F6A7 /* URL+Extensions.swift */,
-				334EC79125F908A4005AB9BF /* ViewStore+Extensions.swift */,
 				3385DF6F25D6361200ACDE21 /* AppleScript.swift */,
-				3361CF1525E6EF1600016875 /* Views (Misc) */,
 			);
 			path = Common;
-			sourceTree = "<group>";
-		};
-		3380D32425D06EB300C10913 /* TCA Features */ = {
-			isa = PBXGroup;
-			children = (
-				33DEDCB725DDBC2F001582DC /* Root */,
-				33DEDCB925DDBC51001582DC /* Yabai */,
-				33DEDCBA25DDBC67001582DC /* SKHD */,
-				33AD2F7B25F254E50018875E /* Homebrew */,
-				339C452D25D6ECA30079ACA1 /* Onboarding */,
-			);
-			path = "TCA Features";
-			sourceTree = "<group>";
-		};
-		339C452D25D6ECA30079ACA1 /* Onboarding */ = {
-			isa = PBXGroup;
-			children = (
-				33B62D2825D5E31400DD5934 /* Onboarding.swift */,
-				339C453425D6ED0F0079ACA1 /* OnboardingView.swift */,
-			);
-			path = Onboarding;
-			sourceTree = "<group>";
-		};
-		33AD2F7B25F254E50018875E /* Homebrew */ = {
-			isa = PBXGroup;
-			children = (
-				33AD2F7C25F254ED0018875E /* Homebrew.swift */,
-			);
-			path = Homebrew;
-			sourceTree = "<group>";
-		};
-		33DEDCB725DDBC2F001582DC /* Root */ = {
-			isa = PBXGroup;
-			children = (
-				3380D33625D0723000C10913 /* Root.swift */,
-				339C453025D6ECCA0079ACA1 /* RootView.swift */,
-				3353C0ED26026A67002171B7 /* ConfigTabView.swift */,
-				3385DF6625D6270B00ACDE21 /* SidebarView.swift */,
-				33AAB5F5260C251500647057 /* SheetView.swift */,
-				336BC3B925F85B7C00BE3EBA /* SIPButton.swift */,
-				336627352602642300C4B009 /* ApplyChangesButtonTappedView.swift */,
-				338973962603A7850052F159 /* PowerButtonTappedView.swift */,
-			);
-			path = Root;
-			sourceTree = "<group>";
-		};
-		33DEDCB925DDBC51001582DC /* Yabai */ = {
-			isa = PBXGroup;
-			children = (
-				33387D6425D3F64300E76D29 /* Yabai.swift */,
-				3341B01025F06FF300833B56 /* Yabai+Extensions.swift */,
-				3356BCB125F288BC006EB641 /* Views */,
-			);
-			path = Yabai;
-			sourceTree = "<group>";
-		};
-		33DEDCBA25DDBC67001582DC /* SKHD */ = {
-			isa = PBXGroup;
-			children = (
-				3398838B25DD7A1D007B9FF5 /* SKHD.swift */,
-				3341B01325F0700B00833B56 /* SKHD+Extensions.swift */,
-				333B82302631D3EE00F42220 /* KeyboardShortcuts+Extensions.swift */,
-			);
-			path = SKHD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,14 +116,10 @@
 			);
 			name = Emerald;
 			packageProductDependencies = (
-				3380D31B25D06E1500C10913 /* ComposableArchitecture */,
 				3315223E25D5786C00C8E46A /* SwiftShell */,
 				3398839825DD9929007B9FF5 /* KeyboardShortcuts */,
 				333631F725EEE6B9009FEB32 /* DynamicColor */,
-				3325BFD025EFCEC4007831C5 /* OmenTextField */,
-				33AD2F8125F25D330018875E /* Overture */,
-				33812A7625F30121001D42EA /* Sliders */,
-				33A4BA022609EFB100AF9E59 /* Grid */,
+				338E2DF427A5966C0030BA3D /* ComposableArchitecture */,
 			);
 			productName = YabaiUI;
 			productReference = 3380D2FB25D05F4200C10913 /* Emerald.app */;
@@ -297,14 +149,10 @@
 			);
 			mainGroup = 3380D2F225D05F4100C10913;
 			packageReferences = (
-				3380D31A25D06E1500C10913 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				3315223D25D5786C00C8E46A /* XCRemoteSwiftPackageReference "SwiftShell" */,
 				3398839725DD9929007B9FF5 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
 				333631F625EEE6B9009FEB32 /* XCRemoteSwiftPackageReference "DynamicColor" */,
-				3325BFCF25EFCEC4007831C5 /* XCRemoteSwiftPackageReference "OmenTextField" */,
-				33AD2F8025F25D330018875E /* XCRemoteSwiftPackageReference "swift-overture" */,
-				33812A7525F30121001D42EA /* XCRemoteSwiftPackageReference "swiftui-sliders" */,
-				33A4BA012609EFB100AF9E59 /* XCRemoteSwiftPackageReference "swiftui-grid" */,
+				338E2DF327A5966B0030BA3D /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 			);
 			productRefGroup = 3380D2FC25D05F4200C10913 /* Products */;
 			projectDirPath = "";
@@ -332,36 +180,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3356BCA925F287B1006EB641 /* MouseSettingsView.swift in Sources */,
-				33FC16042631E6280050B428 /* WindowSettingsView.swift in Sources */,
-				338973972603A7850052F159 /* PowerButtonTappedView.swift in Sources */,
 				3361CDF725D44AEC0086F6A7 /* URL+Extensions.swift in Sources */,
-				3341B01125F06FF300833B56 /* Yabai+Extensions.swift in Sources */,
-				33B62D2925D5E31400DD5934 /* Onboarding.swift in Sources */,
-				336BC3BA25F85B7C00BE3EBA /* SIPButton.swift in Sources */,
-				33BB8D0B2631D330008759BA /* SectionView.swift in Sources */,
-				3325BFD525F05041007831C5 /* RoundedRectangleButtonStyle.swift in Sources */,
-				3356BCA325F28746006EB641 /* SpaceSettingsView.swift in Sources */,
-				3301D5012602765900D02C46 /* Button+Extensions.swift in Sources */,
-				33387D6525D3F64300E76D29 /* Yabai.swift in Sources */,
-				3361CF1225E6EF1300016875 /* DebugConfigFileView.swift in Sources */,
-				3398838C25DD7A1D007B9FF5 /* SKHD.swift in Sources */,
-				3380D2FF25D05F4200C10913 /* EmeraldApp.swift in Sources */,
-				334EC79225F908A4005AB9BF /* ViewStore+Extensions.swift in Sources */,
-				3353C0EE26026A67002171B7 /* ConfigTabView.swift in Sources */,
-				3380D33725D0723000C10913 /* Root.swift in Sources */,
+				338E2DF727A596D40030BA3D /* AppState.swift in Sources */,
+				338E2DF927A5975C0030BA3D /* AppView.swift in Sources */,
+				3380D2FF25D05F4200C10913 /* Main.swift in Sources */,
 				3327A9472649612900C497B8 /* JSONDecoder+Extensions.swift in Sources */,
-				336627362602642300C4B009 /* ApplyChangesButtonTappedView.swift in Sources */,
-				3385DF6725D6270B00ACDE21 /* SidebarView.swift in Sources */,
-				339C453525D6ED0F0079ACA1 /* OnboardingView.swift in Sources */,
-				33AAB5F6260C251500647057 /* SheetView.swift in Sources */,
-				333B82312631D3EE00F42220 /* KeyboardShortcuts+Extensions.swift in Sources */,
-				333631FB25EEF0CD009FEB32 /* CodableColor.swift in Sources */,
 				3385DF7025D6361200ACDE21 /* AppleScript.swift in Sources */,
-				3336320025EEFDE1009FEB32 /* SystemIntegrityProtectionView.swift in Sources */,
-				3341B01425F0700B00833B56 /* SKHD+Extensions.swift in Sources */,
-				33AD2F7D25F254ED0018875E /* Homebrew.swift in Sources */,
-				339C453125D6ECCA0079ACA1 /* RootView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,7 +243,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -474,7 +298,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -501,7 +325,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kswift.Emerald;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -526,7 +350,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kswift.Emerald;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -565,14 +389,6 @@
 				minimumVersion = 5.1.0;
 			};
 		};
-		3325BFCF25EFCEC4007831C5 /* XCRemoteSwiftPackageReference "OmenTextField" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kitlangton/OmenTextField";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.6;
-			};
-		};
 		333631F625EEE6B9009FEB32 /* XCRemoteSwiftPackageReference "DynamicColor" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/yannickl/DynamicColor";
@@ -581,20 +397,12 @@
 				minimumVersion = 5.0.1;
 			};
 		};
-		3380D31A25D06E1500C10913 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+		338E2DF327A5966B0030BA3D /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.14.0;
-			};
-		};
-		33812A7525F30121001D42EA /* XCRemoteSwiftPackageReference "swiftui-sliders" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/spacenation/swiftui-sliders";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				branch = main;
+				kind = branch;
 			};
 		};
 		3398839725DD9929007B9FF5 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
@@ -605,22 +413,6 @@
 				minimumVersion = 0.7.0;
 			};
 		};
-		33A4BA012609EFB100AF9E59 /* XCRemoteSwiftPackageReference "swiftui-grid" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/spacenation/swiftui-grid";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.1.0;
-			};
-		};
-		33AD2F8025F25D330018875E /* XCRemoteSwiftPackageReference "swift-overture" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-overture";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.5.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -629,40 +421,20 @@
 			package = 3315223D25D5786C00C8E46A /* XCRemoteSwiftPackageReference "SwiftShell" */;
 			productName = SwiftShell;
 		};
-		3325BFD025EFCEC4007831C5 /* OmenTextField */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3325BFCF25EFCEC4007831C5 /* XCRemoteSwiftPackageReference "OmenTextField" */;
-			productName = OmenTextField;
-		};
 		333631F725EEE6B9009FEB32 /* DynamicColor */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 333631F625EEE6B9009FEB32 /* XCRemoteSwiftPackageReference "DynamicColor" */;
 			productName = DynamicColor;
 		};
-		3380D31B25D06E1500C10913 /* ComposableArchitecture */ = {
+		338E2DF427A5966C0030BA3D /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3380D31A25D06E1500C10913 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			package = 338E2DF327A5966B0030BA3D /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
 			productName = ComposableArchitecture;
-		};
-		33812A7625F30121001D42EA /* Sliders */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 33812A7525F30121001D42EA /* XCRemoteSwiftPackageReference "swiftui-sliders" */;
-			productName = Sliders;
 		};
 		3398839825DD9929007B9FF5 /* KeyboardShortcuts */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3398839725DD9929007B9FF5 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
 			productName = KeyboardShortcuts;
-		};
-		33A4BA022609EFB100AF9E59 /* Grid */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 33A4BA012609EFB100AF9E59 /* XCRemoteSwiftPackageReference "swiftui-grid" */;
-			productName = Grid;
-		};
-		33AD2F8125F25D330018875E /* Overture */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 33AD2F8025F25D330018875E /* XCRemoteSwiftPackageReference "swift-overture" */;
-			productName = Overture;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
