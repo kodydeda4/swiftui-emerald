@@ -3,8 +3,8 @@ import ComposableArchitecture
 struct AppState: Equatable {
   var inFlight = false
   @BindableState var config = Config()
-  @BindableState var stateURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!.appendingPathComponent("AppState")
-  @BindableState var configURL = URL(fileURLWithPath: NSHomeDirectory()).appendingPathComponent("YabaiConfig")
+  @BindableState var stateURL = FileManager.applicationSupportDirectory().appendingPathComponent("AppState")
+  @BindableState var configURL = URL(fileURLWithPath: NSHomeDirectory()).appendingPathComponent(".yabairc")
 }
 
 enum AppAction: BindableAction, Equatable {
@@ -64,13 +64,11 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, e
       .catchToEffect(AppAction.applyChangesResult)
     
   case let .applyChangesResult(.success(success)):
-    //state.config = success
     return .none
     
   case let .applyChangesResult(.failure(error)):
     print(error.localizedDescription)
     return .none
-  
   }
 }
 .binding()

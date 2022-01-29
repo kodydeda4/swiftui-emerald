@@ -22,6 +22,7 @@
 		338E2E1527A5BE810030BA3D /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2E1427A5BE810030BA3D /* Config.swift */; };
 		338E2E1727A5C01B0030BA3D /* Config+Output.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2E1627A5C01B0030BA3D /* Config+Output.swift */; };
 		338E2E1927A5C2CA0030BA3D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2E1827A5C2CA0030BA3D /* MainView.swift */; };
+		338E2E1D27A5F6C00030BA3D /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2E1C27A5F6C00030BA3D /* URL+Extensions.swift */; };
 		3398839925DD9929007B9FF5 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 3398839825DD9929007B9FF5 /* KeyboardShortcuts */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		338E2E1427A5BE810030BA3D /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		338E2E1627A5C01B0030BA3D /* Config+Output.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Config+Output.swift"; sourceTree = "<group>"; };
 		338E2E1827A5C2CA0030BA3D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		338E2E1C27A5F6C00030BA3D /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				3385DF6F25D6361200ACDE21 /* AppleScript.swift */,
+				338E2E1C27A5F6C00030BA3D /* URL+Extensions.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				338E2E1D27A5F6C00030BA3D /* URL+Extensions.swift in Sources */,
 				338E2E1527A5BE810030BA3D /* Config.swift in Sources */,
 				338E2E1927A5C2CA0030BA3D /* MainView.swift in Sources */,
 				338E2E1727A5C01B0030BA3D /* Config+Output.swift in Sources */,

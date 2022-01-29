@@ -39,8 +39,46 @@ extension AppClient {
       }
     },
     applyChanges: {
-      Effect(value: "hello")
+      Applescript.execute(command: "brew services restart yabai")
     }
   )
 }
 
+struct Applescript {
+  static func execute(command: String) -> Effect<String, AppError> {
+    Effect.future { callback in
+      String("do shell script \"\(command)\" with administrator privileges")
+        .write(to: applescriptURL)
+        .pipe { try! NSUserAppleScriptTask(url: $0) }
+        .execute {
+          if let error = $0 {
+            return callback(.failure(.init(error)))
+          }
+          else {
+            return callback(.success("Successfuly Completed."))
+          }
+        }
+    }
+  }
+}
+
+extension String {
+  func write(to url: URL) -> URL {
+    try! self.write(to: url, atomically: true, encoding: .utf8)
+    return url
+  }
+}
+private extension URL {
+  func pipe<T>(_ f: (Self) -> T) -> T {
+    f(self)
+  }
+}
+extension URL {
+  var appleScriptFormat: String {
+    "\\\"\(self.path)\\\""
+  }
+}
+let applescriptURL = try! FileManager.default
+  .url(for: .applicationScriptsDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+  .appendingPathComponent("AppleScript")
+  .appendingPathExtension(for: .osaScript)
