@@ -17,14 +17,12 @@
 		338E2DF727A596D40030BA3D /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2DF627A596D40030BA3D /* AppState.swift */; };
 		338E2DF927A5975C0030BA3D /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2DF827A5975C0030BA3D /* AppView.swift */; };
 		338E2DFB27A599D60030BA3D /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2DFA27A599D60030BA3D /* AppError.swift */; };
-		338E2DFD27A5A0AB0030BA3D /* FunctionalOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2DFC27A5A0AB0030BA3D /* FunctionalOperators.swift */; };
 		338E2DFF27A5A3EE0030BA3D /* AppClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2DFE27A5A3EE0030BA3D /* AppClient.swift */; };
-		338E2E0727A5AE0E0030BA3D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2E0627A5AE0E0030BA3D /* MainView.swift */; };
-		338E2E0B27A5B2240030BA3D /* ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2E0A27A5B2240030BA3D /* ConfigView.swift */; };
-		338E2E0E27A5B8FE0030BA3D /* Button+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2E0D27A5B8FE0030BA3D /* Button+Extensions.swift */; };
-		338E2E1027A5BD290030BA3D /* ReadMeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2E0F27A5BD290030BA3D /* ReadMeView.swift */; };
-		338E2E1527A5BE810030BA3D /* Yabai.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2E1427A5BE810030BA3D /* Yabai.swift */; };
-		338E2E1727A5C01B0030BA3D /* Yabai+Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2E1627A5C01B0030BA3D /* Yabai+Config.swift */; };
+		338E2E0B27A5B2240030BA3D /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2E0A27A5B2240030BA3D /* DetailView.swift */; };
+		338E2E1527A5BE810030BA3D /* YabaiConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2E1427A5BE810030BA3D /* YabaiConfig.swift */; };
+		338E2E1727A5C01B0030BA3D /* YabaiConfig+Output.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2E1627A5C01B0030BA3D /* YabaiConfig+Output.swift */; };
+		338E2E1927A5C2CA0030BA3D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2E1827A5C2CA0030BA3D /* MainView.swift */; };
+		338E2E1B27A5CFCA0030BA3D /* YabaiLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2E1A27A5CFCA0030BA3D /* YabaiLayout.swift */; };
 		3398839925DD9929007B9FF5 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 3398839825DD9929007B9FF5 /* KeyboardShortcuts */; };
 /* End PBXBuildFile section */
 
@@ -39,14 +37,12 @@
 		338E2DF627A596D40030BA3D /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		338E2DF827A5975C0030BA3D /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		338E2DFA27A599D60030BA3D /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
-		338E2DFC27A5A0AB0030BA3D /* FunctionalOperators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionalOperators.swift; sourceTree = "<group>"; };
 		338E2DFE27A5A3EE0030BA3D /* AppClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppClient.swift; sourceTree = "<group>"; };
-		338E2E0627A5AE0E0030BA3D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		338E2E0A27A5B2240030BA3D /* ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigView.swift; sourceTree = "<group>"; };
-		338E2E0D27A5B8FE0030BA3D /* Button+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Extensions.swift"; sourceTree = "<group>"; };
-		338E2E0F27A5BD290030BA3D /* ReadMeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMeView.swift; sourceTree = "<group>"; };
-		338E2E1427A5BE810030BA3D /* Yabai.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yabai.swift; sourceTree = "<group>"; };
-		338E2E1627A5C01B0030BA3D /* Yabai+Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Yabai+Config.swift"; sourceTree = "<group>"; };
+		338E2E0A27A5B2240030BA3D /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		338E2E1427A5BE810030BA3D /* YabaiConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiConfig.swift; sourceTree = "<group>"; };
+		338E2E1627A5C01B0030BA3D /* YabaiConfig+Output.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YabaiConfig+Output.swift"; sourceTree = "<group>"; };
+		338E2E1827A5C2CA0030BA3D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		338E2E1A27A5CFCA0030BA3D /* YabaiLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +83,6 @@
 				338E2E0027A5A6570030BA3D /* App */,
 				338E2E1327A5BE760030BA3D /* Yabai */,
 				3380D31125D0667100C10913 /* Common */,
-				338E2E0C27A5B8ED0030BA3D /* SwiftUI */,
 				3380D30225D05F4200C10913 /* Assets.xcassets */,
 				3380D30725D05F4200C10913 /* Info.plist */,
 				3380D30825D05F4200C10913 /* Emerald.entitlements */,
@@ -108,7 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				3385DF6F25D6361200ACDE21 /* AppleScript.swift */,
-				338E2DFC27A5A0AB0030BA3D /* FunctionalOperators.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -119,27 +113,19 @@
 				338E2DF627A596D40030BA3D /* AppState.swift */,
 				338E2DF827A5975C0030BA3D /* AppView.swift */,
 				338E2DFE27A5A3EE0030BA3D /* AppClient.swift */,
-				338E2E0627A5AE0E0030BA3D /* MainView.swift */,
 				338E2DFA27A599D60030BA3D /* AppError.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
 		};
-		338E2E0C27A5B8ED0030BA3D /* SwiftUI */ = {
-			isa = PBXGroup;
-			children = (
-				338E2E0F27A5BD290030BA3D /* ReadMeView.swift */,
-				338E2E0A27A5B2240030BA3D /* ConfigView.swift */,
-				338E2E0D27A5B8FE0030BA3D /* Button+Extensions.swift */,
-			);
-			path = SwiftUI;
-			sourceTree = "<group>";
-		};
 		338E2E1327A5BE760030BA3D /* Yabai */ = {
 			isa = PBXGroup;
 			children = (
-				338E2E1427A5BE810030BA3D /* Yabai.swift */,
-				338E2E1627A5C01B0030BA3D /* Yabai+Config.swift */,
+				338E2E1427A5BE810030BA3D /* YabaiConfig.swift */,
+				338E2E1627A5C01B0030BA3D /* YabaiConfig+Output.swift */,
+				338E2E1A27A5CFCA0030BA3D /* YabaiLayout.swift */,
+				338E2E1827A5C2CA0030BA3D /* MainView.swift */,
+				338E2E0A27A5B2240030BA3D /* DetailView.swift */,
 			);
 			path = Yabai;
 			sourceTree = "<group>";
@@ -225,16 +211,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				338E2E0E27A5B8FE0030BA3D /* Button+Extensions.swift in Sources */,
-				338E2DFD27A5A0AB0030BA3D /* FunctionalOperators.swift in Sources */,
-				338E2E0727A5AE0E0030BA3D /* MainView.swift in Sources */,
-				338E2E1027A5BD290030BA3D /* ReadMeView.swift in Sources */,
-				338E2E1527A5BE810030BA3D /* Yabai.swift in Sources */,
-				338E2E1727A5C01B0030BA3D /* Yabai+Config.swift in Sources */,
+				338E2E1527A5BE810030BA3D /* YabaiConfig.swift in Sources */,
+				338E2E1927A5C2CA0030BA3D /* MainView.swift in Sources */,
+				338E2E1727A5C01B0030BA3D /* YabaiConfig+Output.swift in Sources */,
+				338E2E1B27A5CFCA0030BA3D /* YabaiLayout.swift in Sources */,
 				338E2DFF27A5A3EE0030BA3D /* AppClient.swift in Sources */,
 				338E2DF727A596D40030BA3D /* AppState.swift in Sources */,
 				338E2DF927A5975C0030BA3D /* AppView.swift in Sources */,
-				338E2E0B27A5B2240030BA3D /* ConfigView.swift in Sources */,
+				338E2E0B27A5B2240030BA3D /* DetailView.swift in Sources */,
 				3380D2FF25D05F4200C10913 /* Main.swift in Sources */,
 				3385DF7025D6361200ACDE21 /* AppleScript.swift in Sources */,
 				338E2DFB27A599D60030BA3D /* AppError.swift in Sources */,

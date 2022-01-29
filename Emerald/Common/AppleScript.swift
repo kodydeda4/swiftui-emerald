@@ -1,10 +1,3 @@
-//
-//  AppleScript.swift
-//  Emerald
-//
-//  Created by Kody Deda on 2/11/21.
-//
-
 import Foundation
 
 struct AppleScript {

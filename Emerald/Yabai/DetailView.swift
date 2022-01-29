@@ -1,21 +1,15 @@
 import SwiftUI
 
-struct ConfigView: View {
-  let config: String
-  
-  init(_ config: String) {
-    self.config = config
-  }
+struct DetailView: View {
+  let config: YabaiConfig
   
   var body: some View {
     ScrollView {
-      Text(config)
+      Text(config.output)
         .foregroundColor(Color.accentColor)
         .font(.system(.body, design: .monospaced))
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-        
         .padding()
-      
     }
     .background(Color.black)
     .frame(maxWidth: 450)
@@ -23,8 +17,8 @@ struct ConfigView: View {
   }
 }
 
-struct ConfigView_Previews: PreviewProvider {
+struct DetailView_Previews: PreviewProvider {
   static var previews: some View {
-    ConfigView("Hello")
+    DetailView(config: YabaiConfig())
   }
 }

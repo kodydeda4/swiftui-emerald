@@ -7,20 +7,15 @@ struct AppView: View {
   var body: some View {
     WithViewStore(store) { viewStore in
       HStack {
-        MainView(yabai: viewStore.binding(\.$yabai))
+        MainView(config: viewStore.binding(\.$config))
+          .frame(maxWidth: .infinity, maxHeight: .infinity)
           .padding()
         
-        ConfigView(viewStore.yabai.config)
+        DetailView(config: viewStore.config)
           .padding()
       }
-      .onAppear { viewStore.send(.loadState) }
+      .onAppear { viewStore.send(.load) }
       .frame(minWidth: 600, minHeight: 600)
-      .toolbar {
-        Toggle("Readme", isOn: viewStore.binding(\.$sheet))
-      }
-      .sheet(isPresented: viewStore.binding(\.$sheet)) {
-        ReadMeView(isPresented: viewStore.binding(\.$sheet))
-      }
     }
   }
 }

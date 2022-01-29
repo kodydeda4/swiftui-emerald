@@ -1,97 +1,53 @@
 import ComposableArchitecture
-import SwiftShell
 
-struct AppState: Equatable, Codable {
+struct AppState: Equatable {
   var inFlight = false
-  @BindableState var yabai = Yabai()
-  @BindableState var sheet = false
+  @BindableState var config = YabaiConfig()
+  @BindableState var stateURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!.appendingPathComponent("AppState")
+  @BindableState var configURL = URL(fileURLWithPath: NSHomeDirectory()).appendingPathComponent("YabaiConfig")
 }
 
 enum AppAction: BindableAction, Equatable {
   case binding(BindingAction<AppState>)
-  
-  case saveState
-  case loadState
-  case saveStateResult(Result<Never, AppError>)
-  case loadStateResult(Result<AppState, AppError>)
-  
-  case saveConfig
-  case loadConfig
-  case saveConfigResult(Result<Never, AppError>)
-  case loadConfigResult(Result<String, AppError>)
+  case save
+  case load
+  case saveResult(Result<Never, AppError>)
+  case loadResult(Result<YabaiConfig, AppError>)
 }
 
 struct AppEnvironment {
   let mainQueue: AnySchedulerOf<DispatchQueue>
-  let localDataClient: AppClient
+  let client: AppClient
 }
 
 let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, environment in
   switch action {
     
   case .binding:
-    return Effect(value: .saveState)
+    return Effect(value: .save)
     
-  case .saveState:
-    state.inFlight = true
-    return environment.localDataClient.saveState(state)
+  case .save:
+    return environment.client
+      .save(state.config, state.stateURL, state.configURL)
       .receive(on: environment.mainQueue)
-      .catchToEffect(AppAction.saveStateResult)
+      .catchToEffect(AppAction.saveResult)
+        
+  case let .saveResult(.failure(error)):
+    print(error.localizedDescription)
+    return .none
     
-  case .loadState:
+  case .load:
     state.inFlight = true
-    return environment.localDataClient.loadState()
+    return environment.client.load(state.stateURL)
       .receive(on: environment.mainQueue)
-      .catchToEffect(AppAction.loadStateResult)
-    
-  case .saveStateResult(.success):
-    state.inFlight = false
-    return Effect(value: .saveConfig)
-    
-  case let .saveStateResult(.failure(error)):
-    state.inFlight = false
-    //state.error = error
+      .catchToEffect(AppAction.loadResult)
+        
+  case let .loadResult(.success(success)):
+    state.config = success
     return .none
     
-  case let .loadStateResult(.success(success)):
-    state = success
-    state.inFlight = false
-    return .none
-    
-  case let .loadStateResult(.failure(error)):
-    state.inFlight = false
-    //state.error = error
-    return .none
-    
-  case .saveConfig:
-    state.inFlight = true
-    return environment.localDataClient.saveConfig(state.yabai)
-      .receive(on: environment.mainQueue)
-      .catchToEffect(AppAction.saveConfigResult)
-    
-  case .loadConfig:
-    state.inFlight = true
-    return environment.localDataClient.loadConfig()
-      .receive(on: environment.mainQueue)
-      .catchToEffect(AppAction.loadConfigResult)
-    
-  case .saveConfigResult(.success):
-    state.inFlight = false
-    return .none
-    
-  case let .saveConfigResult(.failure(error)):
-    state.inFlight = false
-    //state.error = error
-    return .none
-    
-  case let .loadConfigResult(.success(success)):
-    //    state.config = success
-    state.inFlight = false
-    return .none
-    
-  case let .loadConfigResult(.failure(error)):
-    state.inFlight = false
-    //state.error = error
+  case let .loadResult(.failure(error)):
+    print(error.localizedDescription)
     return .none
   }
 }
@@ -105,7 +61,7 @@ extension AppState {
     reducer: appReducer,
     environment: AppEnvironment(
       mainQueue: .main,
-      localDataClient: .live
+      client: .live
     )
   )
 }
