@@ -112,8 +112,8 @@
 			children = (
 				338E2DF627A596D40030BA3D /* AppState.swift */,
 				338E2DF827A5975C0030BA3D /* AppView.swift */,
-				338E2DFE27A5A3EE0030BA3D /* AppClient.swift */,
 				338E2DFA27A599D60030BA3D /* AppError.swift */,
+				338E2DFE27A5A3EE0030BA3D /* AppClient.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
