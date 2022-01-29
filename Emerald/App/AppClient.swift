@@ -1,10 +1,11 @@
 import ComposableArchitecture
 
+
 struct AppClient {
-  let saveState: (AppState) -> Effect<AppState, AppError>
+  let saveState: (AppState) -> Effect<Never, AppError>
   let loadState: () -> Effect<AppState, AppError>
   
-  let saveConfig: (String) -> Effect<String, AppError>
+  let saveConfig: (Yabai) -> Effect<Never, AppError>
   let loadConfig: () -> Effect<String, AppError>
 }
 
@@ -12,8 +13,6 @@ extension AppClient {
   static let url = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
     .appendingPathComponent("AppState")
   
-  static let configURL = URL(fileURLWithPath: NSHomeDirectory())
-    .appendingPathComponent("YabaiConfig")
   
   static let `live` = Self(
     saveState: { state in
@@ -22,7 +21,7 @@ extension AppClient {
           try JSONEncoder()
             .encode(state)
             .write(to: url)
-          return state |> Result.success >>> callback
+          return// state |> Result.success >>> callback
         } catch {
           return "Failed to encode" |> AppError.init >>> Result.failure >>> callback
         }
@@ -40,12 +39,12 @@ extension AppClient {
         }
       }
     },
-    saveConfig: { config in
+    saveConfig: { yabai in
       Effect.future { callback in
         do {
-          let data: String = config
-          try data.write(to: configURL, atomically: true, encoding: .utf8)
-          return config |> Result.success >>> callback
+          let data: String = yabai.config
+          try data.write(to: yabai.configURL, atomically: true, encoding: .utf8)
+          return// yabai |> Result.success >>> callback
         }
         catch {
           return error |> AppError.init >>> Result.failure >>> callback

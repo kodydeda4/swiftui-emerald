@@ -1,16 +1,10 @@
 import ComposableArchitecture
+import SwiftShell
 
 struct AppState: Equatable, Codable {
   var inFlight = false
-  var error: AppError? = nil
-  
-  @BindableState var padding = 0
-  
-  var config: String {
-    """
-    padding: \(padding)
-    """
-  }
+  @BindableState var yabai = Yabai()
+  @BindableState var sheet = false
 }
 
 enum AppAction: BindableAction, Equatable {
@@ -18,12 +12,12 @@ enum AppAction: BindableAction, Equatable {
   
   case saveState
   case loadState
-  case saveStateResult(Result<AppState, AppError>)
+  case saveStateResult(Result<Never, AppError>)
   case loadStateResult(Result<AppState, AppError>)
   
   case saveConfig
   case loadConfig
-  case saveConfigResult(Result<String, AppError>)
+  case saveConfigResult(Result<Never, AppError>)
   case loadConfigResult(Result<String, AppError>)
 }
 
@@ -56,7 +50,7 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, e
     
   case let .saveStateResult(.failure(error)):
     state.inFlight = false
-    state.error = error
+    //state.error = error
     return .none
     
   case let .loadStateResult(.success(success)):
@@ -66,12 +60,12 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, e
     
   case let .loadStateResult(.failure(error)):
     state.inFlight = false
-    state.error = error
+    //state.error = error
     return .none
     
   case .saveConfig:
     state.inFlight = true
-    return environment.localDataClient.saveConfig(state.config)
+    return environment.localDataClient.saveConfig(state.yabai)
       .receive(on: environment.mainQueue)
       .catchToEffect(AppAction.saveConfigResult)
     
@@ -87,27 +81,22 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, e
     
   case let .saveConfigResult(.failure(error)):
     state.inFlight = false
-    state.error = error
+    //state.error = error
     return .none
     
   case let .loadConfigResult(.success(success)):
-//    state.config = success
+    //    state.config = success
     state.inFlight = false
     return .none
     
   case let .loadConfigResult(.failure(error)):
     state.inFlight = false
-    state.error = error
+    //state.error = error
     return .none
-    
-
-    
-    
-    
   }
 }
-  .binding()
-  .debug()
+.binding()
+.debug()
 
 
 extension AppState {

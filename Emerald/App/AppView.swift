@@ -6,24 +6,21 @@ struct AppView: View {
   
   var body: some View {
     WithViewStore(store) { viewStore in
-      HSplitView {
-        MainView(store: store)
-        .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+      HStack {
+        MainView(yabai: viewStore.binding(\.$yabai))
+          .padding()
         
-        ScrollView {
-          Text("Yabai Config")
-            .font(.title)
-          
-          Text(viewStore.config)
-            .font(.system(.body, design: .monospaced))
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-        }
-        .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+        ConfigView(viewStore.yabai.config)
+          .padding()
       }
       .onAppear { viewStore.send(.loadState) }
       .frame(minWidth: 600, minHeight: 600)
+      .toolbar {
+        Toggle("Readme", isOn: viewStore.binding(\.$sheet))
+      }
+      .sheet(isPresented: viewStore.binding(\.$sheet)) {
+        ReadMeView(isPresented: viewStore.binding(\.$sheet))
+      }
     }
   }
 }
