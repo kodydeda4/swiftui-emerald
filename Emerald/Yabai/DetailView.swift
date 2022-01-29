@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct DetailView: View {
-  let config: YabaiConfig
+  let config: Config
   
   var body: some View {
     ScrollView {
@@ -19,6 +19,6 @@ struct DetailView: View {
 
 struct DetailView_Previews: PreviewProvider {
   static var previews: some View {
-    DetailView(config: YabaiConfig())
+    DetailView(config: Config())
   }
 }

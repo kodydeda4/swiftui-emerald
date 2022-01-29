@@ -19,10 +19,9 @@
 		338E2DFB27A599D60030BA3D /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2DFA27A599D60030BA3D /* AppError.swift */; };
 		338E2DFF27A5A3EE0030BA3D /* AppClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2DFE27A5A3EE0030BA3D /* AppClient.swift */; };
 		338E2E0B27A5B2240030BA3D /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2E0A27A5B2240030BA3D /* DetailView.swift */; };
-		338E2E1527A5BE810030BA3D /* YabaiConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2E1427A5BE810030BA3D /* YabaiConfig.swift */; };
-		338E2E1727A5C01B0030BA3D /* YabaiConfig+Output.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2E1627A5C01B0030BA3D /* YabaiConfig+Output.swift */; };
+		338E2E1527A5BE810030BA3D /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2E1427A5BE810030BA3D /* Config.swift */; };
+		338E2E1727A5C01B0030BA3D /* Config+Output.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2E1627A5C01B0030BA3D /* Config+Output.swift */; };
 		338E2E1927A5C2CA0030BA3D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2E1827A5C2CA0030BA3D /* MainView.swift */; };
-		338E2E1B27A5CFCA0030BA3D /* YabaiLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2E1A27A5CFCA0030BA3D /* YabaiLayout.swift */; };
 		3398839925DD9929007B9FF5 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 3398839825DD9929007B9FF5 /* KeyboardShortcuts */; };
 /* End PBXBuildFile section */
 
@@ -39,10 +38,9 @@
 		338E2DFA27A599D60030BA3D /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		338E2DFE27A5A3EE0030BA3D /* AppClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppClient.swift; sourceTree = "<group>"; };
 		338E2E0A27A5B2240030BA3D /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
-		338E2E1427A5BE810030BA3D /* YabaiConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiConfig.swift; sourceTree = "<group>"; };
-		338E2E1627A5C01B0030BA3D /* YabaiConfig+Output.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YabaiConfig+Output.swift"; sourceTree = "<group>"; };
+		338E2E1427A5BE810030BA3D /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		338E2E1627A5C01B0030BA3D /* Config+Output.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Config+Output.swift"; sourceTree = "<group>"; };
 		338E2E1827A5C2CA0030BA3D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		338E2E1A27A5CFCA0030BA3D /* YabaiLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,9 +119,8 @@
 		338E2E1327A5BE760030BA3D /* Yabai */ = {
 			isa = PBXGroup;
 			children = (
-				338E2E1427A5BE810030BA3D /* YabaiConfig.swift */,
-				338E2E1627A5C01B0030BA3D /* YabaiConfig+Output.swift */,
-				338E2E1A27A5CFCA0030BA3D /* YabaiLayout.swift */,
+				338E2E1427A5BE810030BA3D /* Config.swift */,
+				338E2E1627A5C01B0030BA3D /* Config+Output.swift */,
 				338E2E1827A5C2CA0030BA3D /* MainView.swift */,
 				338E2E0A27A5B2240030BA3D /* DetailView.swift */,
 			);
@@ -211,10 +208,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				338E2E1527A5BE810030BA3D /* YabaiConfig.swift in Sources */,
+				338E2E1527A5BE810030BA3D /* Config.swift in Sources */,
 				338E2E1927A5C2CA0030BA3D /* MainView.swift in Sources */,
-				338E2E1727A5C01B0030BA3D /* YabaiConfig+Output.swift in Sources */,
-				338E2E1B27A5CFCA0030BA3D /* YabaiLayout.swift in Sources */,
+				338E2E1727A5C01B0030BA3D /* Config+Output.swift in Sources */,
 				338E2DFF27A5A3EE0030BA3D /* AppClient.swift in Sources */,
 				338E2DF727A596D40030BA3D /* AppState.swift in Sources */,
 				338E2DF927A5975C0030BA3D /* AppView.swift in Sources */,

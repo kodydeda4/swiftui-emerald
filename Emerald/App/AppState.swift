@@ -2,7 +2,7 @@ import ComposableArchitecture
 
 struct AppState: Equatable {
   var inFlight = false
-  @BindableState var config = YabaiConfig()
+  @BindableState var config = Config()
   @BindableState var stateURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!.appendingPathComponent("AppState")
   @BindableState var configURL = URL(fileURLWithPath: NSHomeDirectory()).appendingPathComponent("YabaiConfig")
 }
@@ -12,7 +12,10 @@ enum AppAction: BindableAction, Equatable {
   case save
   case load
   case saveResult(Result<Never, AppError>)
-  case loadResult(Result<YabaiConfig, AppError>)
+  case loadResult(Result<Config, AppError>)
+  case reset
+  case applyChanges
+  case applyChangesResult(Result<String, AppError>)
 }
 
 struct AppEnvironment {
@@ -49,6 +52,25 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, e
   case let .loadResult(.failure(error)):
     print(error.localizedDescription)
     return .none
+    
+  case .reset:
+    state.config = Config()
+    return Effect(value: .save)
+    
+  case .applyChanges:
+    return environment.client
+      .applyChanges()
+      .receive(on: environment.mainQueue)
+      .catchToEffect(AppAction.applyChangesResult)
+    
+  case let .applyChangesResult(.success(success)):
+    //state.config = success
+    return .none
+    
+  case let .applyChangesResult(.failure(error)):
+    print(error.localizedDescription)
+    return .none
+  
   }
 }
 .binding()

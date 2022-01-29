@@ -10,6 +10,13 @@ struct AppView: View {
         MainView(config: viewStore.binding(\.$config))
           .frame(maxWidth: .infinity, maxHeight: .infinity)
           .padding()
+          .toolbar {
+            ToolbarItemGroup {
+              Button("Reset") { viewStore.send(.reset) }
+              Button("Apply Changes") { viewStore.send(.applyChanges) }
+            }
+            
+          }
         
         DetailView(config: viewStore.config)
           .padding()
