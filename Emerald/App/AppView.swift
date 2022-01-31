@@ -8,10 +8,7 @@ struct AppView: View {
     WithViewStore(store) { viewStore in
       HSplitView {
         MainView(config: viewStore.binding(\.$config))
-          .padding()
-        
         DetailView(config: viewStore.config)
-          .background(Color.black)
       }
       .onAppear { viewStore.send(.load) }
       .sheet(isPresented: .constant(viewStore.inFlight)) {
