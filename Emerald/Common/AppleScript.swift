@@ -34,12 +34,13 @@ extension NSUserAppleScriptTask {
 }
 
 struct Applescript {
-  static func execute(command: String) -> Future<String, Error> {
-    String("do shell script \"\(command)\" with administrator privileges")
+  static func execute(sudo: Bool = false, command: String) -> Future<String, Error> {
+    let cmd = sudo ? "do shell script \"\(command)\" with administrator privileges" : command
+      
+    return String(cmd)
       .write(to: url)
       .pipe { try! NSUserAppleScriptTask(url: $0) }
       .execute()
-
   }
 }
 

@@ -1,14 +1,12 @@
 import Foundation
 
 extension FileManager {
-  /// Creates & returns Directory at: ~/Library/ApplicationSupport/`name`
-  static func applicationSupportDirectory(
-    for application: String = "Emerald"
-  ) -> URL {
+  /// ~/Library/ApplicationSupport/`Emerald`
+  static var applicationSupport: URL {
     let directory = FileManager.default
       .urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
-      .appendingPathComponent(application, isDirectory: true)
-
+      .appendingPathComponent("Emerald", isDirectory: true)
+    
     if !FileManager.default.fileExists(atPath: directory.path) {
       do {
         try FileManager.default.createDirectory(
@@ -22,4 +20,8 @@ extension FileManager {
     }
     return directory
   }
+  
+  
+  /// ~/
+  static let homeDirectory = URL(fileURLWithPath: NSHomeDirectory())
 }

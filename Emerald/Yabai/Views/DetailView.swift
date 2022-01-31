@@ -10,8 +10,6 @@ struct DetailView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         .padding()
     }
-    .background(Color.black)
-    .frame(maxWidth: 450)
   }
 }
 

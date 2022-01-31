@@ -6,22 +6,25 @@ struct AppView: View {
   
   var body: some View {
     WithViewStore(store) { viewStore in
-      HStack {
+      HSplitView {
         MainView(config: viewStore.binding(\.$config))
-          .frame(width: 400)
           .padding()
-          
+        
         DetailView(config: viewStore.config)
+          .background(Color.black)
       }
       .onAppear { viewStore.send(.load) }
-      .frame(minWidth: 600, minHeight: 600)
+      .sheet(isPresented: .constant(viewStore.inFlight)) {
+        Text("InFlight")
+          .frame(width: 400, height: 600)
+      }
       .toolbar {
         ToolbarItemGroup {
           Button("Reset") {
             viewStore.send(.reset)
           }
           Button("Apply Changes") {
-            viewStore.send(.applyChanges)
+            viewStore.send(.apply)
           }
         }
       }

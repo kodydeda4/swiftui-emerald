@@ -1,21 +1,19 @@
 import ComposableArchitecture
 
 struct AppState: Equatable {
-  var inFlight = false
   @BindableState var config = Config()
-  @BindableState var stateURL = FileManager.applicationSupportDirectory().appendingPathComponent("AppState")
-  @BindableState var configURL = URL(fileURLWithPath: NSHomeDirectory()).appendingPathComponent(".yabairc")
+  @BindableState var inFlight = false
 }
 
 enum AppAction: BindableAction, Equatable {
   case binding(BindingAction<AppState>)
   case save
   case load
+  case apply
+  case reset
   case saveResult(Result<Never, AppError>)
   case loadResult(Result<Config, AppError>)
-  case reset
-  case applyChanges
-  case applyChangesResult(Result<String, AppError>)
+  case applyResult(Result<String, AppError>)
 }
 
 struct AppEnvironment {
@@ -26,48 +24,39 @@ struct AppEnvironment {
 let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, environment in
   switch action {
     
-  case .binding:
+  case .binding(\.$config):
     return Effect(value: .save)
     
+  case .binding:
+    return .none
+    
   case .save:
-    return environment.client
-      .save(state.config, state.stateURL, state.configURL)
+    return environment.client.save(state.config)
       .receive(on: environment.mainQueue)
       .catchToEffect(AppAction.saveResult)
-        
-  case let .saveResult(.failure(error)):
-    print(error.localizedDescription)
-    return .none
     
   case .load:
-    state.inFlight = true
-    return environment.client.load(state.stateURL)
+    return environment.client.load()
       .receive(on: environment.mainQueue)
       .catchToEffect(AppAction.loadResult)
-        
-  case let .loadResult(.success(success)):
-    state.config = success
-    return .none
     
-  case let .loadResult(.failure(error)):
-    print(error.localizedDescription)
-    return .none
+  case .apply:
+    state.inFlight = true
+    return environment.client.apply()
+      .receive(on: environment.mainQueue)
+      .catchToEffect(AppAction.applyResult)
     
   case .reset:
     state.config = Config()
     return Effect(value: .save)
-    
-  case .applyChanges:
-    return environment.client
-      .applyChanges()
-      .receive(on: environment.mainQueue)
-      .catchToEffect(AppAction.applyChangesResult)
-    
-  case let .applyChangesResult(.success(success)):
+  
+  // Results
+  case let .loadResult(.success(success)):
+    state.config = success
     return .none
     
-  case let .applyChangesResult(.failure(error)):
-    print(error.localizedDescription)
+  case .saveResult, .loadResult, .applyResult:
+    state.inFlight = false
     return .none
   }
 }

@@ -11,9 +11,8 @@ struct Config {
   var windowPlacement = WindowPlacement.first_child
   var windowBalance = WindowBalance.normal
   var splitRatio = 50
-  var autoBalance = false
   var mouseFollowsFocus = false
-  var focusFollowsMouse = FocusFollowsMouse.autofocus
+  var focusFollowsMouse = FocusFollowsMouse.off
   var mouseModifier = MouseModifier.fn
   var mouseAction1 = MouseAction.move
   var mouseAction2 = MouseAction.resize
