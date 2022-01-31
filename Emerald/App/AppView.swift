@@ -10,7 +10,9 @@ struct AppView: View {
       NavigationView {
         SidebarView(config: viewStore.binding(\.$config))
         MainView()
-        DebugView(config: viewStore.config)
+        if sidebar {
+          DebugView(config: viewStore.config)
+        }
       }
       .frame(width: 1920/2, height: 1080/2)
       .onAppear { viewStore.send(.load) }
