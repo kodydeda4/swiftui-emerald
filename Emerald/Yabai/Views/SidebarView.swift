@@ -6,7 +6,9 @@ struct SidebarView: View {
   var body: some View {
     VStack {
       List {
-        HeaderView()
+        NavigationLink(destination: Text("hi")) {
+          HeaderView()
+        }
         
         Section("Settings") {
           NavigationLink(destination: ExternalBarSettingsView(config: $config)) {

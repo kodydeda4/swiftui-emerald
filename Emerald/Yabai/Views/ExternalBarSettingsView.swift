@@ -4,7 +4,7 @@ struct ExternalBarSettingsView: View {
   @Binding var config: Config
   
   var body: some View {
-    Group {
+    VStack {
       Picker("External Bar", selection: $config.externalBar) {
         ForEach(ExternalBar.allCases) {
           Text($0.rawValue)
@@ -18,6 +18,7 @@ struct ExternalBarSettingsView: View {
       .opacity(config.externalBar == .disabled ? 0.5 : 1)
     }
     .navigationTitle("Menu")
+    .padding()
   }
 }
 struct ExternalBarSettingsView_Previews: PreviewProvider {

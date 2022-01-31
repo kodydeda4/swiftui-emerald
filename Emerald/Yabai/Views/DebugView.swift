@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct DetailView: View {
+struct DebugView: View {
   let config: Config
   
   var body: some View {
@@ -16,6 +16,6 @@ struct DetailView: View {
 
 struct DetailView_Previews: PreviewProvider {
   static var previews: some View {
-    DetailView(config: Config())
+    DebugView(config: Config())
   }
 }

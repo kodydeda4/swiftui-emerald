@@ -23,7 +23,7 @@
 		338E2DF927A5975C0030BA3D /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2DF827A5975C0030BA3D /* AppView.swift */; };
 		338E2DFB27A599D60030BA3D /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2DFA27A599D60030BA3D /* AppError.swift */; };
 		338E2DFF27A5A3EE0030BA3D /* AppClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2DFE27A5A3EE0030BA3D /* AppClient.swift */; };
-		338E2E0B27A5B2240030BA3D /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2E0A27A5B2240030BA3D /* DetailView.swift */; };
+		338E2E0B27A5B2240030BA3D /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2E0A27A5B2240030BA3D /* DebugView.swift */; };
 		338E2E1527A5BE810030BA3D /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2E1427A5BE810030BA3D /* Config.swift */; };
 		338E2E1727A5C01B0030BA3D /* Config+Output.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2E1627A5C01B0030BA3D /* Config+Output.swift */; };
 		338E2E1927A5C2CA0030BA3D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E2E1827A5C2CA0030BA3D /* MainView.swift */; };
@@ -48,7 +48,7 @@
 		338E2DF827A5975C0030BA3D /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		338E2DFA27A599D60030BA3D /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		338E2DFE27A5A3EE0030BA3D /* AppClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppClient.swift; sourceTree = "<group>"; };
-		338E2E0A27A5B2240030BA3D /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		338E2E0A27A5B2240030BA3D /* DebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
 		338E2E1427A5BE810030BA3D /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		338E2E1627A5C01B0030BA3D /* Config+Output.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Config+Output.swift"; sourceTree = "<group>"; };
 		338E2E1827A5C2CA0030BA3D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -75,7 +75,7 @@
 			children = (
 				3336EA1027A85B1300681E4B /* SidebarView.swift */,
 				338E2E1827A5C2CA0030BA3D /* MainView.swift */,
-				338E2E0A27A5B2240030BA3D /* DetailView.swift */,
+				338E2E0A27A5B2240030BA3D /* DebugView.swift */,
 				3336EA0E27A8492C00681E4B /* SpaceSettingsView.swift */,
 				3336EA0C27A848EF00681E4B /* WindowSettingsView.swift */,
 				3336EA0A27A8489300681E4B /* MouseSettingsView.swift */,
@@ -243,7 +243,7 @@
 				3336EA0D27A848EF00681E4B /* WindowSettingsView.swift in Sources */,
 				338E2DF727A596D40030BA3D /* AppState.swift in Sources */,
 				338E2DF927A5975C0030BA3D /* AppView.swift in Sources */,
-				338E2E0B27A5B2240030BA3D /* DetailView.swift in Sources */,
+				338E2E0B27A5B2240030BA3D /* DebugView.swift in Sources */,
 				3336EA0827A8484600681E4B /* ExternalBarSettingsView.swift in Sources */,
 				3380D2FF25D05F4200C10913 /* Main.swift in Sources */,
 				3385DF7025D6361200ACDE21 /* AppleScript.swift in Sources */,

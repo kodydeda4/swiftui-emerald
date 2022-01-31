@@ -4,7 +4,7 @@ struct SpaceSettingsView: View {
   @Binding var config: Config
   
   var body: some View {
-    Group {
+    VStack {
       Picker("layout", selection: $config.layout) {
         ForEach(Layout.allCases) {
           Text($0.rawValue)
@@ -19,6 +19,7 @@ struct SpaceSettingsView: View {
       }
     }
     .navigationTitle("Layout")
+    .padding()
   }
 }
 

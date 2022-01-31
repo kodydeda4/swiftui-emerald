@@ -4,7 +4,7 @@ struct WindowSettingsView: View {
   @Binding var config: Config
   
   var body: some View {
-    Group {
+    VStack {
       Picker("placement", selection: $config.windowPlacement) {
         ForEach(WindowPlacement.allCases) {
           Text($0.rawValue)
@@ -22,6 +22,7 @@ struct WindowSettingsView: View {
       }
     }
     .navigationTitle("Balance")
+    .padding()
   }
 }
 

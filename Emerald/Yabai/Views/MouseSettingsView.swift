@@ -4,7 +4,7 @@ struct MouseSettingsView: View {
   @Binding var config: Config
   
   var body: some View {
-    Group {
+    VStack {
       Toggle("Mouse Follows Focus", isOn: $config.mouseFollowsFocus)
       
       Picker("Focus Follows Mouse", selection: $config.focusFollowsMouse) {
@@ -34,6 +34,7 @@ struct MouseSettingsView: View {
       }
     }
     .navigationTitle("Mouse")
+    .padding()
   }
 }
 
