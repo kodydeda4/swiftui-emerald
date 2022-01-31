@@ -21,6 +21,7 @@ struct WindowSettingsView: View {
           .opacity(config.windowBalance == .custom ? 1 : 0.5)
       }
     }
+    .navigationTitle("Balance")
   }
 }
 

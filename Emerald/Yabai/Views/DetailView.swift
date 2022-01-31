@@ -6,7 +6,7 @@ struct DetailView: View {
   var body: some View {
     ScrollView {
       Text(config.output)
-        .font(.system(.body, design: .monospaced))
+        .font(.system(size: 9, weight: Font.Weight.thin, design: .monospaced))
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         .padding()
     }

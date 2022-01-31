@@ -33,6 +33,7 @@ struct MouseSettingsView: View {
         }
       }
     }
+    .navigationTitle("Mouse")
   }
 }
 

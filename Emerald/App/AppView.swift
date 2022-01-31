@@ -3,17 +3,20 @@ import ComposableArchitecture
 
 struct AppView: View {
   let store: Store<AppState, AppAction>
+  @State var sidebar = true
   
   var body: some View {
     WithViewStore(store) { viewStore in
-      HSplitView {
-        MainView(config: viewStore.binding(\.$config))
-        DetailView(config: viewStore.config)
+      NavigationView {
+        SidebarView(config: viewStore.binding(\.$config))
+        MainView()
+          DetailView(config: viewStore.config)
       }
+      .frame(width: 1920/2, height: 1080/2)
       .onAppear { viewStore.send(.load) }
       .sheet(isPresented: .constant(viewStore.inFlight)) {
         Text("InFlight")
-          .frame(width: 400, height: 600)
+          .padding()
       }
       .toolbar {
         ToolbarItemGroup {
@@ -22,6 +25,9 @@ struct AppView: View {
           }
           Button("Apply Changes") {
             viewStore.send(.apply)
+          }
+          Button(action: { sidebar.toggle() }) {
+            Image(systemName: "sidebar.squares.right")
           }
         }
       }

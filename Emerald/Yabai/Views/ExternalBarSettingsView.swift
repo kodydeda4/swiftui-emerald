@@ -17,6 +17,7 @@ struct ExternalBarSettingsView: View {
       .disabled(config.externalBar == .disabled)
       .opacity(config.externalBar == .disabled ? 0.5 : 1)
     }
+    .navigationTitle("Menu")
   }
 }
 struct ExternalBarSettingsView_Previews: PreviewProvider {

@@ -18,6 +18,7 @@ struct SpaceSettingsView: View {
         Stepper("right \(config.paddingRight)", value: $config.paddingRight)
       }
     }
+    .navigationTitle("Layout")
   }
 }
 
