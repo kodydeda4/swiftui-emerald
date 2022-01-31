@@ -45,11 +45,11 @@ struct SidebarView: View {
 struct HeaderView: View {
   var body: some View {
     HStack {
-      Image("AppIcon")
+      Image("logo")
         .resizable()
         .scaledToFit()
-        .shadow(radius: 10)
-        .padding(-4)
+        .shadow(radius: 4)
+        .padding(2)
         .background(Color.accentColor)
         .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
         .frame(width: 35, height: 35)
