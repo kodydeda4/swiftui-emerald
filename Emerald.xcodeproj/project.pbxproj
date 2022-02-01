@@ -11,8 +11,8 @@
 		333631F825EEE6B9009FEB32 /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = 333631F725EEE6B9009FEB32 /* DynamicColor */; };
 		3336EA0827A8484600681E4B /* ExternalBarSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3336EA0727A8484600681E4B /* ExternalBarSettingsView.swift */; };
 		3336EA0B27A8489300681E4B /* MouseSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3336EA0A27A8489300681E4B /* MouseSettingsView.swift */; };
-		3336EA0D27A848EF00681E4B /* WindowSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3336EA0C27A848EF00681E4B /* WindowSettingsView.swift */; };
-		3336EA0F27A8492C00681E4B /* SpaceSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3336EA0E27A8492C00681E4B /* SpaceSettingsView.swift */; };
+		3336EA0D27A848EF00681E4B /* BalanceSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3336EA0C27A848EF00681E4B /* BalanceSettingsView.swift */; };
+		3336EA0F27A8492C00681E4B /* LayoutSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3336EA0E27A8492C00681E4B /* LayoutSettingsView.swift */; };
 		3336EA1127A85B1300681E4B /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3336EA1027A85B1300681E4B /* SidebarView.swift */; };
 		3380D2FF25D05F4200C10913 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380D2FE25D05F4200C10913 /* Main.swift */; };
 		3380D30325D05F4200C10913 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3380D30225D05F4200C10913 /* Assets.xcassets */; };
@@ -34,8 +34,8 @@
 /* Begin PBXFileReference section */
 		3336EA0727A8484600681E4B /* ExternalBarSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalBarSettingsView.swift; sourceTree = "<group>"; };
 		3336EA0A27A8489300681E4B /* MouseSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseSettingsView.swift; sourceTree = "<group>"; };
-		3336EA0C27A848EF00681E4B /* WindowSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowSettingsView.swift; sourceTree = "<group>"; };
-		3336EA0E27A8492C00681E4B /* SpaceSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceSettingsView.swift; sourceTree = "<group>"; };
+		3336EA0C27A848EF00681E4B /* BalanceSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceSettingsView.swift; sourceTree = "<group>"; };
+		3336EA0E27A8492C00681E4B /* LayoutSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutSettingsView.swift; sourceTree = "<group>"; };
 		3336EA1027A85B1300681E4B /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		3380D2FB25D05F4200C10913 /* Emerald.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emerald.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3380D2FE25D05F4200C10913 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
@@ -76,8 +76,8 @@
 				3336EA1027A85B1300681E4B /* SidebarView.swift */,
 				338E2E1827A5C2CA0030BA3D /* MainView.swift */,
 				338E2E0A27A5B2240030BA3D /* DebugView.swift */,
-				3336EA0E27A8492C00681E4B /* SpaceSettingsView.swift */,
-				3336EA0C27A848EF00681E4B /* WindowSettingsView.swift */,
+				3336EA0E27A8492C00681E4B /* LayoutSettingsView.swift */,
+				3336EA0C27A848EF00681E4B /* BalanceSettingsView.swift */,
 				3336EA0A27A8489300681E4B /* MouseSettingsView.swift */,
 				3336EA0727A8484600681E4B /* ExternalBarSettingsView.swift */,
 			);
@@ -240,14 +240,14 @@
 				338E2E1927A5C2CA0030BA3D /* MainView.swift in Sources */,
 				338E2E1727A5C01B0030BA3D /* Config+Output.swift in Sources */,
 				338E2DFF27A5A3EE0030BA3D /* AppClient.swift in Sources */,
-				3336EA0D27A848EF00681E4B /* WindowSettingsView.swift in Sources */,
+				3336EA0D27A848EF00681E4B /* BalanceSettingsView.swift in Sources */,
 				338E2DF727A596D40030BA3D /* AppState.swift in Sources */,
 				338E2DF927A5975C0030BA3D /* AppView.swift in Sources */,
 				338E2E0B27A5B2240030BA3D /* DebugView.swift in Sources */,
 				3336EA0827A8484600681E4B /* ExternalBarSettingsView.swift in Sources */,
 				3380D2FF25D05F4200C10913 /* Main.swift in Sources */,
 				3385DF7025D6361200ACDE21 /* AppleScript.swift in Sources */,
-				3336EA0F27A8492C00681E4B /* SpaceSettingsView.swift in Sources */,
+				3336EA0F27A8492C00681E4B /* LayoutSettingsView.swift in Sources */,
 				3336EA0B27A8489300681E4B /* MouseSettingsView.swift in Sources */,
 				338E2DFB27A599D60030BA3D /* AppError.swift in Sources */,
 			);

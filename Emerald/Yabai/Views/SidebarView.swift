@@ -13,16 +13,15 @@ struct SidebarView: View {
           NavigationLink(destination: ExternalBarSettingsView(config: $config)) {
             Label("Menu", systemImage: "rectangle.topthird.inset.filled")
           }
-          NavigationLink(destination: SpaceSettingsView(config: $config)) {
+          NavigationLink(destination: LayoutSettingsView(config: $config)) {
             Label("Layout", systemImage: "macwindow.on.rectangle")
           }
-          NavigationLink(destination: WindowSettingsView(config: $config)) {
+          NavigationLink(destination: BalanceSettingsView(config: $config)) {
             Label("Balance", systemImage: "circle.grid.2x1.left.filled")
           }
           NavigationLink(destination: MouseSettingsView(config: $config)) {
             Label("Mouse", systemImage: "magicmouse.fill")
           }
-          
         }
       }
       

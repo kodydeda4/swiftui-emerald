@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct WindowSettingsView: View {
+struct BalanceSettingsView: View {
   @Binding var config: Config
   
   var body: some View {
@@ -27,8 +27,8 @@ struct WindowSettingsView: View {
   }
 }
 
-struct WindowSettingsView_Previews: PreviewProvider {
+struct BalanceSettingsView_Previews: PreviewProvider {
   static var previews: some View {
-    WindowSettingsView(config: .constant(Config()))
+    BalanceSettingsView(config: .constant(Config()))
   }
 }
