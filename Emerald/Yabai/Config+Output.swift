@@ -29,20 +29,19 @@ yabai -m config window_gap \(windowGap)
 #===============================================
 
 # New Window Placement
-yabai -m config window_placement \(windowPlacement)
+yabai -m config window_placement \(windowPlacement)_child
 
 # Auto Balance
-yabai -m config auto_balance \(windowBalance == .auto ? "on" : "off")
+yabai -m config auto_balance \(autobalance ? "on" : "off")
 
 # Split Ratio
-\(windowBalance == .auto ? "#" : "")yabai -m config split_ratio \(windowBalance == .custom ? Float(splitRatio)/100 : 0.50)
-
+\(autobalance ? "#" : "yabai -m config split_ratio \(Float(splitRatio)/100)")
 
 #===============================================
 # Mouse
 #===============================================
 # Mouse Follows Focus
-yabai -m config mouse_follows_focus \(mouseFollowsFocus == true ? "on" : "off")
+yabai -m config mouse_follows_focus \(mouseFollowsFocus ? "on" : "off")
 
 # Focus Follows Mouse
 yabai -m config focus_follows_mouse \(focusFollowsMouse ? "autoraise" : "off")

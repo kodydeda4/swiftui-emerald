@@ -8,8 +8,8 @@ struct Config {
   var paddingLeft = 0
   var paddingRight = 0
   var windowGap = 0
-  var windowPlacement = WindowPlacement.first_child
-  var windowBalance = WindowBalance.normal
+  var windowPlacement = WindowPlacement.first
+  var autobalance = false
   var splitRatio = 50
   var mouseFollowsFocus = false
   var focusFollowsMouse = false
@@ -27,15 +27,9 @@ enum ExternalBar: String {
   case main
 }
 
-//enum FocusFollowsMouse: String {
-//  case off
-//  case autofocus
-//  case autoraise
-//}
-
 enum WindowPlacement: String {
-  case first_child
-  case second_child
+  case first
+  case second
 }
 
 enum MouseModifier: String {
@@ -58,11 +52,11 @@ enum Layout: String {
   case stack
 }
 
-enum WindowBalance: String {
-  case normal
-  case auto
-  case custom
-}
+//enum WindowBalance: String {
+//  case auto
+//  case normal
+////  case custom
+//}
 
 extension Config: Equatable, Codable {}
 
@@ -71,5 +65,5 @@ extension WindowPlacement     : Equatable, Codable, CaseIterable, Identifiable {
 extension MouseModifier       : Equatable, Codable, CaseIterable, Identifiable { var id: Self { self } }
 extension MouseDropAction     : Equatable, Codable, CaseIterable, Identifiable { var id: Self { self } }
 extension Layout              : Equatable, Codable, CaseIterable, Identifiable { var id: Self { self } }
-extension WindowBalance       : Equatable, Codable, CaseIterable, Identifiable { var id: Self { self } }
+//extension WindowBalance       : Equatable, Codable, CaseIterable, Identifiable { var id: Self { self } }
 

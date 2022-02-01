@@ -4,25 +4,26 @@ struct WindowSettingsView: View {
   @Binding var config: Config
   
   var body: some View {
-    VStack {
-      Picker("placement", selection: $config.windowPlacement) {
-        ForEach(WindowPlacement.allCases) {
-          Text($0.rawValue)
-        }
-      }
-      HStack {
-        Picker("balance", selection: $config.windowBalance) {
-          ForEach(WindowBalance.allCases) {
+    List {
+      Group {
+        Picker("Placement", selection: $config.windowPlacement) {
+          ForEach(WindowPlacement.allCases) {
             Text($0.rawValue)
           }
         }
-        Stepper("split \(config.splitRatio)%", value: $config.splitRatio)
-          .disabled(config.windowBalance != .custom)
-          .opacity(config.windowBalance == .custom ? 1 : 0.5)
+        Text("Specify whether managed windows should become the first or second leaf-node.")
+          .foregroundColor(.gray)
+      }
+      Group {
+        Stepper("Split \(config.splitRatio)%", value: $config.splitRatio)
+          .disabled(config.autobalance)
+          .opacity(config.autobalance ? 0 : 1)
+        
+        Text("Default split ratio.")
+          .foregroundColor(.gray)
       }
     }
     .navigationTitle("Balance")
-    .padding()
   }
 }
 

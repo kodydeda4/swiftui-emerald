@@ -4,12 +4,11 @@ struct MouseSettingsView: View {
   @Binding var config: Config
   
   var body: some View {
-    Form {
+    List {
       Group {
         Toggle("Autofocus", isOn: $config.focusFollowsMouse)
         Text("Automatically focus the window under the mouse.")
           .foregroundColor(.gray)
-          
       }
       Group {
         Toggle("Autocenter", isOn: $config.mouseFollowsFocus)
@@ -23,7 +22,6 @@ struct MouseSettingsView: View {
       }
     }
     .navigationTitle("Mouse")
-    .padding()
   }
 }
 
