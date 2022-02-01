@@ -45,16 +45,13 @@ yabai -m config auto_balance \(windowBalance == .auto ? "on" : "off")
 yabai -m config mouse_follows_focus \(mouseFollowsFocus == true ? "on" : "off")
 
 # Focus Follows Mouse
-yabai -m config focus_follows_mouse \(focusFollowsMouse)")
+yabai -m config focus_follows_mouse \(focusFollowsMouse ? "autoraise" : "off")
 
 # Modifier Key
 yabai -m config mouse_modifier \(mouseModifier)
 
-# Left Click + Modifier
-yabai -m config mouse_action1 \(mouseAction1)
-
-# Right Click + Modifier
-yabai -m config mouse_action2 \(mouseAction2)
+# Left/Right Click + Modifier
+\(mouseAction ? "" : "#") yabai -m config mouse_action1 resize
 
 # Drop Action
 yabai -m config mouse_drop_action \(mouseDropAction)
@@ -63,6 +60,6 @@ yabai -m config mouse_drop_action \(mouseDropAction)
 # External Bar
 #===============================================
 # External Bar top:bottom
-yabai -m config external_bar \(externalBar):\(externalBarPaddingTop):\(externalBarPaddingBottom)")
+yabai -m config external_bar \(externalBar):\(externalBarPaddingTop):\(externalBarPaddingBottom)
 """
 }}

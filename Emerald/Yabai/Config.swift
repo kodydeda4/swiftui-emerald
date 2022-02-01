@@ -12,27 +12,26 @@ struct Config {
   var windowBalance = WindowBalance.normal
   var splitRatio = 50
   var mouseFollowsFocus = false
-  var focusFollowsMouse = FocusFollowsMouse.off
+  var focusFollowsMouse = false
   var mouseModifier = MouseModifier.fn
-  var mouseAction1 = MouseAction.move
-  var mouseAction2 = MouseAction.resize
+  var mouseAction = false
   var mouseDropAction = MouseDropAction.swap
-  var externalBar = ExternalBar.disabled
+  var externalBar = ExternalBar.off
   var externalBarPaddingTop = 0
   var externalBarPaddingBottom = 0
 }
 
 enum ExternalBar: String {
-  case disabled
+  case off
   case all
   case main
 }
 
-enum FocusFollowsMouse: String {
-  case off
-  case autofocus
-  case autoraise
-}
+//enum FocusFollowsMouse: String {
+//  case off
+//  case autofocus
+//  case autoraise
+//}
 
 enum WindowPlacement: String {
   case first_child
@@ -47,10 +46,6 @@ enum MouseModifier: String {
   case cmd
 }
 
-enum MouseAction: String {
-  case move
-  case resize
-}
 
 enum MouseDropAction: String {
   case swap
@@ -71,12 +66,10 @@ enum WindowBalance: String {
 
 extension Config: Equatable, Codable {}
 
-extension ExternalBar       : Equatable, Codable, CaseIterable, Identifiable { var id: Self { self } }
-extension FocusFollowsMouse : Equatable, Codable, CaseIterable, Identifiable { var id: Self { self } }
-extension WindowPlacement   : Equatable, Codable, CaseIterable, Identifiable { var id: Self { self } }
-extension MouseModifier     : Equatable, Codable, CaseIterable, Identifiable { var id: Self { self } }
-extension MouseAction       : Equatable, Codable, CaseIterable, Identifiable { var id: Self { self } }
-extension MouseDropAction   : Equatable, Codable, CaseIterable, Identifiable { var id: Self { self } }
-extension Layout            : Equatable, Codable, CaseIterable, Identifiable { var id: Self { self } }
-extension WindowBalance     : Equatable, Codable, CaseIterable, Identifiable { var id: Self { self } }
+extension ExternalBar         : Equatable, Codable, CaseIterable, Identifiable { var id: Self { self } }
+extension WindowPlacement     : Equatable, Codable, CaseIterable, Identifiable { var id: Self { self } }
+extension MouseModifier       : Equatable, Codable, CaseIterable, Identifiable { var id: Self { self } }
+extension MouseDropAction     : Equatable, Codable, CaseIterable, Identifiable { var id: Self { self } }
+extension Layout              : Equatable, Codable, CaseIterable, Identifiable { var id: Self { self } }
+extension WindowBalance       : Equatable, Codable, CaseIterable, Identifiable { var id: Self { self } }
 

@@ -9,7 +9,6 @@ struct SidebarView: View {
         NavigationLink(destination: Text("hi")) {
           HeaderView()
         }
-        
         Section("Settings") {
           NavigationLink(destination: ExternalBarSettingsView(config: $config)) {
             Label("Menu", systemImage: "rectangle.topthird.inset.filled")

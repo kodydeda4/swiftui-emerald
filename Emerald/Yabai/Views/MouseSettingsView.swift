@@ -4,33 +4,22 @@ struct MouseSettingsView: View {
   @Binding var config: Config
   
   var body: some View {
-    VStack {
-      Toggle("Mouse Follows Focus", isOn: $config.mouseFollowsFocus)
-      
-      Picker("Focus Follows Mouse", selection: $config.focusFollowsMouse) {
-        ForEach(FocusFollowsMouse.allCases) {
-          Text($0.rawValue)
-        }
+    Form {
+      Group {
+        Toggle("Autofocus", isOn: $config.focusFollowsMouse)
+        Text("Automatically focus the window under the mouse.")
+          .foregroundColor(.gray)
+          
       }
-      Picker("Modifier Key", selection: $config.mouseModifier) {
-        ForEach(MouseModifier.allCases) {
-          Text($0.rawValue)
-        }
+      Group {
+        Toggle("Autocenter", isOn: $config.mouseFollowsFocus)
+        Text("When focusing a window, put the mouse at its center.")
+          .foregroundColor(.gray)
       }
-      Picker("Left Click + Modifier", selection: $config.mouseAction1) {
-        ForEach(MouseAction.allCases) {
-          Text($0.rawValue)
-        }
-      }
-      Picker("Right Click + Modifier", selection: $config.mouseAction2) {
-        ForEach(MouseAction.allCases) {
-          Text($0.rawValue)
-        }
-      }
-      Picker("Drop Action", selection: $config.mouseDropAction) {
-        ForEach(MouseDropAction.allCases) {
-          Text($0.rawValue)
-        }
+      Group {
+        Toggle("Resize Windows", isOn: $config.mouseAction)
+        Text("Hold shift & drag to resize windows in bsp.")
+          .foregroundColor(.gray)
       }
     }
     .navigationTitle("Mouse")

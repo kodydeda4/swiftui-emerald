@@ -14,8 +14,8 @@ struct ExternalBarSettingsView: View {
         Stepper("Padding Top \(config.externalBarPaddingTop)", value: $config.externalBarPaddingTop)
         Stepper("Padding Bottom \(config.externalBarPaddingBottom)", value: $config.externalBarPaddingBottom)
       }
-      .disabled(config.externalBar == .disabled)
-      .opacity(config.externalBar == .disabled ? 0.5 : 1)
+      .disabled(config.externalBar == .off)
+      .opacity(config.externalBar == .off ? 0.5 : 1)
     }
     .navigationTitle("Menu")
     .padding()
