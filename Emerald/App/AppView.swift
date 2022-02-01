@@ -25,7 +25,7 @@ struct AppView: View {
           Button("Reset") {
             viewStore.send(.reset)
           }
-          Button("Apply Changes") {
+          Button("Apply") {
             viewStore.send(.apply)
           }
           Button(action: { sidebar.toggle() }) {

@@ -15,16 +15,9 @@ struct Config {
   var focusFollowsMouse = false
   var mouseModifier = MouseModifier.fn
   var mouseAction = false
-  var mouseDropAction = MouseDropAction.swap
-  var externalBar = ExternalBar.off
+  var externalBar = false
   var externalBarPaddingTop = 0
   var externalBarPaddingBottom = 0
-}
-
-enum ExternalBar: String {
-  case off
-  case all
-  case main
 }
 
 enum WindowPlacement: String {
@@ -40,30 +33,14 @@ enum MouseModifier: String {
   case cmd
 }
 
-
-enum MouseDropAction: String {
-  case swap
-  case stack
-}
-
 enum Layout: String {
   case float
   case bsp
   case stack
 }
 
-//enum WindowBalance: String {
-//  case auto
-//  case normal
-////  case custom
-//}
-
 extension Config: Equatable, Codable {}
-
-extension ExternalBar         : Equatable, Codable, CaseIterable, Identifiable { var id: Self { self } }
 extension WindowPlacement     : Equatable, Codable, CaseIterable, Identifiable { var id: Self { self } }
 extension MouseModifier       : Equatable, Codable, CaseIterable, Identifiable { var id: Self { self } }
-extension MouseDropAction     : Equatable, Codable, CaseIterable, Identifiable { var id: Self { self } }
 extension Layout              : Equatable, Codable, CaseIterable, Identifiable { var id: Self { self } }
-//extension WindowBalance       : Equatable, Codable, CaseIterable, Identifiable { var id: Self { self } }
 

@@ -53,12 +53,12 @@ yabai -m config mouse_modifier \(mouseModifier)
 \(mouseAction ? "" : "#") yabai -m config mouse_action1 resize
 
 # Drop Action
-yabai -m config mouse_drop_action \(mouseDropAction)
+yabai -m config mouse_drop_action swap
 
 #===============================================
 # External Bar
 #===============================================
 # External Bar top:bottom
-yabai -m config external_bar \(externalBar):\(externalBarPaddingTop):\(externalBarPaddingBottom)
+yabai -m config external_bar \(externalBar ? "main" : "#"):\(externalBarPaddingTop):\(externalBarPaddingBottom)
 """
 }}

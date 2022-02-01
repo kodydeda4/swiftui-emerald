@@ -5,20 +5,33 @@ struct LayoutSettingsView: View {
   
   var body: some View {
     List {
-      Picker("Layout", selection: $config.layout) {
-        ForEach(Layout.allCases) {
-          Text($0.rawValue)
+      Group {
+        Picker("Layout", selection: $config.layout) {
+          ForEach(Layout.allCases) {
+            Text($0.rawValue)
+          }
         }
+        Text("Set the layout of the selected space.")
+          .foregroundColor(.gray)
       }
-      Text("Set the layout of the selected space.")
-        .foregroundColor(.gray)
-      
-      HStack {
-        Stepper("gaps \(config.windowGap)", value: $config.windowGap)
-        Stepper("top \(config.paddingTop)", value: $config.paddingTop)
-        Stepper("bottom \(config.paddingBottom)", value: $config.paddingBottom)
-        Stepper("left \(config.paddingLeft)", value: $config.paddingLeft)
-        Stepper("right \(config.paddingRight)", value: $config.paddingRight)
+      Group {
+        Stepper("Gaps \(config.windowGap)", value: $config.windowGap)
+
+        Text("Specify gaps between windows.")
+          .foregroundColor(.gray)
+      }
+      Group {
+        Text("Padding")
+        
+        Text("Specify padding between spaces.")
+          .foregroundColor(.gray)
+        
+        HStack {
+          Stepper("Top \(config.paddingTop)", value: $config.paddingTop)
+          Stepper("Bottom \(config.paddingBottom)", value: $config.paddingBottom)
+          Stepper("Left \(config.paddingLeft)", value: $config.paddingLeft)
+          Stepper("Right \(config.paddingRight)", value: $config.paddingRight)
+        }
       }
     }
     .navigationTitle("Layout")
